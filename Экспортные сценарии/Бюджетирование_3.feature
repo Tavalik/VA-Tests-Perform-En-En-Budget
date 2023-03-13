@@ -19,7 +19,7 @@
 Сценарий: Я открываю контруктор отчета с именем 'TheReportKindName'
 
 	И Я нахожу в списке вид отчета с именем '[TheReportKindName]'
-	И в таблице 'ListOfReportTypes' я нажимаю на кнопку с именем 'OpenDesigner'
+	И в таблице 'ListOfReportTypes' я нажимаю на кнопку с именем 'DoOpenDesigner'
 
 Сценарий: Я в конструкторе отчета добавляю строку с именем 'TheLineName' 
 
@@ -149,7 +149,7 @@
 	И в поле с именем 'DateBegin' я ввожу текст '[TheStartDate]'
 	И я перехожу к следующему реквизиту
 	И в поле с именем 'DateEnd' я ввожу текст '[TheEndDate]'
-	И я нажимаю на кнопку с именем 'select'
+	И я нажимаю на кнопку с именем 'Select'
 	Тогда открылось окно "Pivot table: *"
 	И из выпадающего списка с именем 'DisplayCurrency' я выбираю по строке '[TheCurrency]'
 	И из выпадающего списка с именем 'Item_Scenario' я выбираю по строке '[TheScenario]'
@@ -160,7 +160,7 @@
 Сценарий: Я Для вида отчета 'TheReportKindName' я создаю бланк для импорта по умолчанию
 
 	* Откроем вид отчета
-		Если открылось окно "[TheReportKindName] (Report kinds)" Тогда
+		Если текущее окно имеет заголовок "[TheReportKindName] (Report kinds)" Тогда
 			// Форма уже открыта
 		Иначе
 			И Я открываю вид отчета с именем '[TheReportKindName]'
@@ -173,7 +173,7 @@
 		Тогда открылось окно "Template [TheReportKindName] report kind: [TheReportKindName]"
 		И я нажимаю на кнопку с именем 'FormWand'
 		Тогда открылось окно "What to do?"
-		И я нажимаю на кнопку с именем 'CreateNewTemplate'
+		И я нажимаю на кнопку с именем 'CreateNewTemplate1'
 		И я нажимаю на кнопку с именем 'CommandRegenerateTemplate'
 		Тогда открылось окно "Template [TheReportKindName] report kind: [TheReportKindName] *"
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
@@ -182,7 +182,7 @@
 Сценарий: Я Для вида отчета 'TheReportKindName' я создаю бланк по умолчанию
 
 	* Откроем вид отчета
-		Если открылось окно "[TheReportKindName] (Report kinds)" Тогда
+		Если текущее окно имеет заголовок "[TheReportKindName] (Report kinds)" Тогда
 			// Форма уже открыта
 		Иначе
 			И Я открываю вид отчета с именем '[TheReportKindName]'
@@ -207,10 +207,10 @@
 		И я нажимаю на кнопку с именем 'FormButtonWriteAndClose'
 		И я жду закрытия окна "Template [TheReportKindName] report kind: [TheReportKindName] *" в течение 20 секунд		
 
-Сценарий: Я Для вида отчета 'TheReportKindName' в бланке для группы раскрытия с адресом 'TheCellAddress' задаю сортировку 'TheSorting'
+Сценарий: Я Для вида отчета 'TheReportKindName' в бланке для группы раскрытия с адресом 'TheCellAddress' задаю сортировку 'TheSortingObject' 'TheSortingProperty'
 
 	* Откроем вид отчета
-		Если открылось окно "[TheReportKindName] (Report kinds)" Тогда
+		Если текущее окно имеет заголовок "[TheReportKindName] (Report kinds)" Тогда
 			// Форма уже открыта
 		Иначе
 			И Я открываю вид отчета с именем '[TheReportKindName]'
@@ -224,10 +224,10 @@
 	* Добавляем сортировку
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCellAddress]'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно "Dimension drill-down area settings"
+		Тогда открылось окно "Set up dimension drilldown area"
 		И я перехожу к закладке с именем 'SectionSort'
 		И в таблице 'SettingsComposerSettingsOrder' я выбираю текущую строку
-		И в таблице 'SettingsComposerSettingsOrder' из выпадающего списка с именем 'SettingsComposerSettingsOrderField' я выбираю по строке '[TheSorting]'
+		И в таблице 'SettingsComposerSettingsOrder' из выпадающего списка с именем 'SettingsComposerSettingsOrderField' я выбираю по строке '[TheSortingObject].[TheSortingProperty]'
 		И в таблице 'SettingsComposerSettingsOrder' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'Apply'
 				
@@ -236,10 +236,10 @@
 		И я нажимаю на кнопку с именем 'FormButtonWriteAndClose'
 		И я жду закрытия окна "Template [TheReportKindName] report kind: [TheReportKindName] *" в течение 20 секунд
 
-Сценарий: Я Для вида отчета 'TheReportKindName' в бланке для группы раскрытия с адресом 'TheCellAddress' меняю сортировку 'TheSortingIinitial' на сортировку 'TheSorting'
+Сценарий: Я Для вида отчета 'TheReportKindName' в бланке для группы раскрытия с адресом 'TheCellAddress' меняю сортировку 'TheSortingIinitialObject' 'TheSortingIinitialProperty' на сортировку 'TheSortingObject' 'TheSortingProperty'
 
 	* Откроем вид отчета
-		Если открылось окно "[TheReportKindName] (Report kinds)" Тогда
+		Если текущее окно имеет заголовок "[TheReportKindName] (Report kinds)" Тогда
 			// Форма уже открыта
 		Иначе
 			И Я открываю вид отчета с именем '[TheReportKindName]'
@@ -253,13 +253,13 @@
 	* Меняем сортировку
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCellAddress]'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно "Dimension drill-down area settings"
+		Тогда открылось окно "Set up dimension drilldown area"
 		И я перехожу к закладке с именем 'SectionSort'
-		И Я запоминаю в переменную 'SortingIinitial' значение '[TheSortingIinitial]'
+		И Я запоминаю в переменную 'SortingIinitial' значение '[TheSortingIinitialObject].[TheSortingIinitialProperty]'
 		И в таблице 'SettingsComposerSettingsOrder' я перехожу к строке:
 			| "Field"              |
 			| '$SortingIinitial$' |
-		И в таблице 'SettingsComposerSettingsOrder' из выпадающего списка с именем 'SettingsComposerSettingsOrderField' я выбираю точное значение '[TheSorting]'
+		И в таблице 'SettingsComposerSettingsOrder' из выпадающего списка с именем 'SettingsComposerSettingsOrderField' я выбираю точное значение '[TheSortingObject].[TheSortingProperty]'
 		И в таблице 'SettingsComposerSettingsOrder' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'Apply'
 				
@@ -279,7 +279,7 @@
 		Тогда открылось окно '$WindowTitle$ *'
 		И я нажимаю на кнопку с именем 'ShowListOfColumns'
 		Тогда открылось окно "Set up column list"
-		И в таблице 'PivotTableColumnsListSettings' я нажимаю на кнопку с именем 'PivotTableColumnsListSettingsFillColumns'
+		И в таблице 'PivotTableColumnsListSettings' я нажимаю на кнопку с именем 'PivotTableColumnsListSettingsPopulateColumns'
 		И я нажимаю на кнопку с именем 'FormApply'
 		Тогда открылось окно '$WindowTitle$ *'
 		И я нажимаю на кнопку с именем 'ShowTableSettingsByAxes'
@@ -418,7 +418,7 @@
 Сценарий: Я создаю экземпляр отчета для вида отчета 'TheReportKind' сценарий 'TheScenario' период 'TheStartDate' 'TheEndDate' периодичность 'TheFrequency' организация 'TheBusinessUnit' проект 'TheProject' аналитики 'TheDimension1' 'TheDimension2' 'TheDimension3' 'TheDimension4' 'TheDimension5' 'TheDimension6' 
 
 	* Откроем форму ключевых реквизитов
-		Если открылось окно "Specify document key attributes" Тогда
+		Если текущее окно имеет заголовок "Specify document key attributes" Тогда
 			// Форма уже открыта
 		Иначе
 			И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report instances"
@@ -434,9 +434,9 @@
 		Тогда открылось окно "Select period"
 		И в поле с именем 'DateBegin' я ввожу текст '[TheStartDate]'
 		И в поле с именем 'DateEnd' я ввожу текст '[TheEndDate]'
-		И я нажимаю на кнопку с именем 'select'
+		И я нажимаю на кнопку с именем 'Select'
 		Тогда открылось окно "Specify document key attributes"
-		И я нажимаю кнопку выбора у поля с именем 'Company'
+		И я нажимаю кнопку выбора у поля с именем 'Organization'
 		Когда открылось окно "Business unit*"
 		И я выбираю пункт контекстного меню с именем 'ListContextMenuFind' на элементе формы с именем 'List'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'

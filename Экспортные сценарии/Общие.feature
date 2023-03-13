@@ -10,7 +10,7 @@
 	И Я запоминаю значение выражения 'ProductIDCPMClientServer.IsCorpPerformanceManagement() AND NOT ProductIDCPMClientServer.IsERPCP()' в переменную '$$IsCPM$$'
 	
 	Если '$$IsCPM$$' Тогда
-		Если в панели разделов есть команда 'Catalogs' Тогда
+		Если в панели разделов есть команда 'Справочники' Тогда
 			И Я запоминаю значение выражения 'False' в переменную '$$ЭтоPerform$$'
 		Иначе
 			И Я запоминаю значение выражения 'True' в переменную '$$ЭтоPerform$$'
@@ -54,3 +54,20 @@
 
 	Тогда таблица '[TheTable]' содержит строки:
 		| 'Table' |	
+
+Сценарий: Я в списке 'TheListName' по полю 'TheField' ищу элемент 'ThePattern' 'TheCompareType' 
+
+	Тогда открылось окно '[TheListName]'
+	И я выбираю пункт контекстного меню с именем 'ListContextMenuFind' на элементе формы с именем 'List'
+	Тогда открылось окно "Find"
+	И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение '[TheField]'
+	И я меняю значение переключателя с именем 'CompareType' на '[TheCompareType]'				
+	И в поле с именем 'Pattern' я ввожу текст '[ThePattern]'
+	И я нажимаю на кнопку с именем 'Find'
+	Тогда открылось окно '[TheListName]'
+	И Я запоминаю в переменную 'VarField' значение '[TheField]'
+	И Я запоминаю в переменную 'VarPattern' значение '[ThePattern]'	
+	И в таблице 'List' я перехожу к строке:
+		| '$VarField$'   |
+		| '$VarPattern$' |
+	И в таблице 'List' я выбираю текущую строку

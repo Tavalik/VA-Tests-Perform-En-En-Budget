@@ -10,7 +10,7 @@
 
 Контекст: 
 
-	И я подключаю TestClient 'CPM - Budgeting' логин "Administrator" пароль ''	
+	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''	
 	И я закрыл все окна клиентского приложения
 
 Сценарий: 01.00 Определение типа приложения
@@ -19,8 +19,8 @@
 
 Сценарий: 01.01 Создание вида отчета
 
-	И Я создаю вид отчета с именем 'VA - Manual entry for all analytics' и родителем 'VA - Report group'
-	И Я для вида отчета 'VA - Manual entry for all analytics' изменяю флаг 'ProjectSeparation'
+	И Я создаю вид отчета с именем "VA - Manual entry for all analytics" и родителем "VA - Report group"
+	И Я для вида отчета "VA - Manual entry for all analytics" изменяю флаг 'ProjectSeparation'
 
 Сценарий: 01.02 Тестируем кнопки формы списка и формы элемента вида отчета
 
@@ -31,13 +31,13 @@
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Report kind"
 		И я меняю значение переключателя с именем 'CompareType' на "Anywhere in the line"
-		И в поле с именем 'Pattern' я ввожу текст 'VA - Manual entry for all analytics'
+		И в поле с именем 'Pattern' я ввожу текст "VA - Manual entry for all analytics"
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда в таблице 'ListOfReportTypes' количество строк 'равно' 1
 
 	* Контруктор
 		Когда открылось окно "Report kinds and templates"
-		И в таблице 'ListOfReportTypes' я нажимаю на кнопку с именем 'OpenDesigner'
+		И в таблице 'ListOfReportTypes' я нажимаю на кнопку с именем 'DoOpenDesigner'
 		Тогда открылось окно "Edit tree"
 		И Я закрываю окно "Edit tree"
 
@@ -60,13 +60,13 @@
 		И в таблице 'ListOfReportTypes' я выбираю текущую строку		
 
 	* Конструктор
-		Тогда открылось окно 'VA - Manual entry for all analytics (Report kinds)'
+		Тогда открылось окно "VA - Manual entry for all analytics (Report kinds)"
 		И я нажимаю на кнопку с именем 'EditTree'
 		Тогда открылось окно "Edit tree"
 		И Я закрываю окно "Edit tree"
 
 	* Связи показателей графически
-		Тогда открылось окно 'VA - Manual entry for all analytics (Report kinds)'
+		Тогда открылось окно "VA - Manual entry for all analytics (Report kinds)"
 		Если '$$IsCPM$$' Тогда
 			И я нажимаю на кнопку с именем 'FormReportGraphicReportOnReportLinksOpenReport'
 		ИначеЕсли '$$IsERPCPM$$' Тогда
@@ -75,20 +75,20 @@
 		И Я закрываю окно "Report links report"
 
 	* Связи показателей
-		Тогда открылось окно 'VA - Manual entry for all analytics (Report kinds)'
+		Тогда открылось окно "VA - Manual entry for all analytics (Report kinds)"
 		И я нажимаю на кнопку с именем 'FormReportReportLinksReportOpenReport'
 		Тогда открылось окно "Report on report indicator links"
 		И Я закрываю окно "Report on report indicator links"
 
 	* Вкладки
-		Тогда открылось окно 'VA - Manual entry for all analytics (Report kinds)'
-		И я перехожу к закладке с именем 'ReportDimensions'
+		Тогда открылось окно "VA - Manual entry for all analytics (Report kinds)"
+		И я перехожу к закладке с именем 'DimensionsOfReport'
 		И я перехожу к закладке с именем 'DefaultSettings'
 		И я перехожу к закладке с именем 'ReportParameters'
 		И я перехожу к закладке с именем 'GroupSetLimits'
 
 	* Закрываем форму
-		И Я закрываю окно 'VA - Manual entry for all analytics (Report kinds)'
+		И Я закрываю окно "VA - Manual entry for all analytics (Report kinds)"
 
 	* Закрваем форму списка
 		Тогда открылось окно "Report kinds and templates"
@@ -96,38 +96,38 @@
 
 Сценарий: 01.03 Работа в контрукторе отчета - Настройка структуры отчета
 
-	И Я открываю контруктор отчета с именем 'VA - Manual entry for all analytics'
+	И Я открываю контруктор отчета с именем "VA - Manual entry for all analytics"
 
 	* Добавляем строки
 		Когда открылось окно "Edit tree"
 		И я нажимаю на кнопку с именем 'RowsTreeAddRows'
 		Тогда открылось окно "Adding new lines"
 		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст 'LineSynthetic'
+		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "LineSynthetic"
 		И в таблице 'NewLines' я завершаю редактирование строки
 		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст 'LineAnalytics1'
+		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "LineDimension1"
 		И в таблице 'NewLines' я завершаю редактирование строки
 		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст 'LineAnalytics2'
+		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "LineDimension2"
 		И в таблице 'NewLines' я завершаю редактирование строки
 		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст 'LineAnalytics3'
+		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "LineDimension3"
 		И в таблице 'NewLines' я завершаю редактирование строки
 		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст 'LineAnalytics4'
+		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "LineDimension4"
 		И в таблице 'NewLines' я завершаю редактирование строки
 		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст 'LineAnalytics5'
+		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "LineDimension5"
 		И в таблице 'NewLines' я завершаю редактирование строки
 		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст 'LineAnalytics6'
+		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "LineDimension6"
 		И в таблице 'NewLines' я завершаю редактирование строки
 		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст 'LineAnalytics6Currency'
+		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "LineDimension6Currency"
 		И в таблице 'NewLines' я завершаю редактирование строки
 		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст 'LineAnalyticsCurrency'
+		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "LineDimensionCurrency"
 		И в таблице 'NewLines' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'OK'
 	
@@ -136,7 +136,7 @@
 		И я нажимаю на кнопку с именем 'RowsTreeAddRows'
 		Тогда открылось окно "Adding new lines"
 		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст 'LinesGroup'
+		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "LinesGroup"
 		И в таблице 'NewLines' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'OK'
 	
@@ -160,7 +160,7 @@
 		И я нажимаю на кнопку с именем 'RowsTreeAddRows'
 		Тогда открылось окно "Adding new lines"
 		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст 'LineDelete'
+		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "LineDelete"
 		И в таблице 'NewLines' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'OK'
 		Тогда открылось окно "Edit tree"
@@ -171,13 +171,13 @@
 		И я нажимаю на кнопку с именем 'RowsTreeAddColumn'
 		Тогда открылось окно "Adding new columns"
 		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст 'Sum'
+		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Amount"
 		И в таблице 'NewLines' я завершаю редактирование строки
 		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст 'Count'
+		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Quantity"
 		И в таблице 'NewLines' я завершаю редактирование строки
 		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст 'Price'
+		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Price"
 		И в таблице 'NewLines' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'OK'
 
@@ -191,15 +191,15 @@
 	* Удаляем показатели
 		Когда открылось окно "Edit tree"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2:R11C4'
-		И я выбираю пункт контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuDeleteIndicator' на элементе формы с именем 'SpreadsheetFieldTemlate'
+		И В конструкторе отчета я нажимаю кнопку контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuDeleteIndicator'
 	
 	* Создаем показатели
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2:R11C4'
-		И я выбираю пункт контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuCreateIndicators' на элементе формы с именем 'SpreadsheetFieldTemlate'
+		И В конструкторе отчета я нажимаю кнопку контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuCreateIndicators'
 	
 	* Редактируем свойства показателей
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2:R11C4'
-		И я выбираю пункт контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuProperties' на элементе формы с именем 'SpreadsheetFieldTemlate'
+		И В конструкторе отчета я нажимаю кнопку контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuProperties'
 		Тогда открылось окно "Bulk edit indicators"
 		И я изменяю флаг с именем 'ValueTypeChange'
 		И из выпадающего списка с именем 'ValueType' я выбираю точное значение "Number"
@@ -212,7 +212,7 @@
 		И я нажимаю на кнопку с именем 'RowsTreeAddColumn'
 		Тогда открылось окно "Adding new columns"
 		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст 'ColumnDelete'
+		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "ColumnDelete"
 		И в таблице 'NewLines' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'OK'
 		Тогда открылось окно "Edit tree"
@@ -249,28 +249,28 @@
 
 	* Сравниваем с эталоном
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен по шаблону:
-			| 'String'                 | 'Code'              | "Indicator attributes" | 'Count'                   | 'Price'                   | 'Sum'                   | 'ColumnDelete' |
-			| 'LinesGroup'            | 'LinesGroup*'     | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | 'LinesGroup_Count1*'     | 'LinesGroup_Price1*'     | 'LinesGroup_Sum1*'     | ''               |
-			| 'LineSynthetic'        | 'LineSynthetic*'   | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | 'LineSynthetic_Count1*'   | 'LineSynthetic_Price1*'   | 'LineSynthetic_Sum1*'   | ''               |
-			| 'LineAnalytics1'       | 'LineAnalytics1*'       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | 'LineAnalytics1_Count1*'       | 'LineAnalytics1_Price1*'       | 'LineAnalytics1_Sum1*'       | ''               |
-			| 'LineAnalytics2'       | 'LineAnalytics2*'       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | 'LineAnalytics2_Count1*'       | 'LineAnalytics2_Price1*'       | 'LineAnalytics2_Sum1*'       | ''               |
-			| 'LineAnalytics3'       | 'LineAnalytics3*'       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | 'LineAnalytics3_Count1*'       | 'LineAnalytics3_Price1*'       | 'LineAnalytics3_Sum1*'       | ''               |
-			| 'LineAnalytics4'       | 'LineAnalytics4*'       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | 'LineAnalytics4_Count1*'       | 'LineAnalytics4_Price1*'       | 'LineAnalytics4_Sum1*'       | ''               |
-			| 'LineAnalytics5'       | 'LineAnalytics5*'       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | 'LineAnalytics5_Count1*'       | 'LineAnalytics5_Price1*'       | 'LineAnalytics5_Sum1*'       | ''               |
-			| 'LineAnalytics6'       | 'LineAnalytics6*'       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | 'LineAnalytics6_Count1*'       | 'LineAnalytics6_Price1*'       | 'LineAnalytics6_Sum1*'       | ''               |
-			| 'LineAnalytics6Currency' | 'LineAnalytics6Curren*' | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | 'LineAnalytics6Curren_Count1*' | 'LineAnalytics6Curren_Price1*' | 'LineAnalytics6Curren_Sum1*' | ''               |
-			| 'LineAnalyticsCurrency'  | 'LineAnalyticsCurrenc*'  | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | 'LineAnalyticsCurrenc_Count1*'  | 'LineAnalyticsCurrenc_Price1*'  | 'LineAnalyticsCurrenc_Sum1*'  | ''               |
-			| 'LineDelete'          | 'LineDelete*'     | ''                      | ''                             | ''                       | ''                        | ''               |
+			| 'String'                 | 'Code'              | "Indicator attributes" | "Quantity"                   | "Price"                   | "Amount"                   | "ColumnDelete" |
+			| "LinesGroup"            | "LinesGroup*"     | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LinesGroup_Quantity1*"     | "LinesGroup_Price1*"     | "LinesGroup_Amount1*"     | ''               |
+			| "LineSynthetic"        | "LineSynthetic*"   | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineSynthetic_Quantity1*"   | "LineSynthetic_Price1*"   | "LineSynthetic_Amount1*"   | ''               |
+			| "LineDimension1"       | "LineANLT1*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineANLT1_Quantity1*"       | "LineANLT1_Price1*"       | "LineANLT1_Amount1*"       | ''               |
+			| "LineDimension2"       | "LineANLT2*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineANLT2_Quantity1*"       | "LineANLT2_Price1*"       | "LineANLT2_Amount1*"       | ''               |
+			| "LineDimension3"       | "LineANLT3*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineANLT3_Quantity1*"       | "LineANLT3_Price1*"       | "LineANLT3_Amount1*"       | ''               |
+			| "LineDimension4"       | "LineANLT4*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineANLT4_Quantity1*"       | "LineANLT4_Price1*"       | "LineANLT4_Amount1*"       | ''               |
+			| "LineDimension5"       | "LineANLT5*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineANLT5_Quantity1*"       | "LineANLT5_Price1*"       | "LineANLT5_Amount1*"       | ''               |
+			| "LineDimension6"       | "LineANLT6*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineANLT6_Quantity1*"       | "LineANLT6_Price1*"       | "LineANLT6_Amount1*"       | ''               |
+			| "LineDimension6Currency" | "LineANLT6Currency*" | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineANLT6Currency_Quantity1*" | "LineANLT6Currency_Price1*" | "LineANLT6Currency_Amount1*" | ''               |
+			| "LineDimensionCurrency"  | "LineANLTCurrency*"  | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineANLTCurrency_Quantity1*"  | "LineANLTCurrency_Price1*"  | "LineANLTCurrency_Amount1*"  | ''               |
+			| "LineDelete"          | "LineDelete*"     | ''                      | ''                             | ''                       | ''                        | ''               |
 			| ''                       | ''                 | 'Code'                   | ''                             | ''                       | ''                        | ''               |
 
 	* Уберем все настройки и сравним
@@ -292,23 +292,23 @@
 
 	* Сравниваем с эталоном
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-			| 'String'                 | 'Count' | 'Price' | 'Sum' |
-			| 'LinesGroup'            | '■'          | '■'    | '■'     |
-			| 'LineSynthetic'        | '■'          | '■'    | '■'     |
-			| 'LineAnalytics1'       | '■'          | '■'    | '■'     |
-			| 'LineAnalytics2'       | '■'          | '■'    | '■'     |
-			| 'LineAnalytics3'       | '■'          | '■'    | '■'     |
-			| 'LineAnalytics4'       | '■'          | '■'    | '■'     |
-			| 'LineAnalytics5'       | '■'          | '■'    | '■'     |
-			| 'LineAnalytics6'       | '■'          | '■'    | '■'     |
-			| 'LineAnalytics6Currency' | '■'          | '■'    | '■'     |
-			| 'LineAnalyticsCurrency'  | '■'          | '■'    | '■'     |
+			| 'String'                 | "Quantity" | "Price" | "Amount" |
+			| "LinesGroup"            | '■'          | '■'    | '■'     |
+			| "LineSynthetic"        | '■'          | '■'    | '■'     |
+			| "LineDimension1"       | '■'          | '■'    | '■'     |
+			| "LineDimension2"       | '■'          | '■'    | '■'     |
+			| "LineDimension3"       | '■'          | '■'    | '■'     |
+			| "LineDimension4"       | '■'          | '■'    | '■'     |
+			| "LineDimension5"       | '■'          | '■'    | '■'     |
+			| "LineDimension6"       | '■'          | '■'    | '■'     |
+			| "LineDimension6Currency" | '■'          | '■'    | '■'     |
+			| "LineDimensionCurrency"  | '■'          | '■'    | '■'     |
 
 Сценарий: 01.04 Работа в контрукторе отчета - Настройка аналитик
 
-	И Я открываю контруктор отчета с именем 'VA - Manual entry for all analytics'
+	И Я открываю контруктор отчета с именем "VA - Manual entry for all analytics"
 	
-	* Зададим аналитику 'Товарные категории'
+	* Зададим аналитику "Товарные категории"
 		Когда открылось окно "Edit tree"
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicator dimensions"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C2'
@@ -318,7 +318,7 @@
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И в поле с именем 'Pattern' я ввожу текст 'VA0ProCate'
+		И в поле с именем 'Pattern' я ввожу текст "VA0ProCate"
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Dimension kinds (corporate)"
 		И в таблице 'List' я выбираю текущую строку
@@ -336,7 +336,7 @@
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И в поле с именем 'Pattern' я ввожу текст 'VA0Product'
+		И в поле с именем 'Pattern' я ввожу текст "VA0Product"
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Dimension kinds (corporate)"
 		И в таблице 'List' я выбираю текущую строку
@@ -354,7 +354,7 @@
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И в поле с именем 'Pattern' я ввожу текст 'VA0Counter'
+		И в поле с именем 'Pattern' я ввожу текст "VA0Counter"
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Dimension kinds (corporate)"
 		И в таблице 'List' я выбираю текущую строку
@@ -372,7 +372,7 @@
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И в поле с именем 'Pattern' я ввожу текст 'VA0Contrac'
+		И в поле с именем 'Pattern' я ввожу текст "VA0Contrac"
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Dimension kinds (corporate)"
 		И в таблице 'List' я выбираю текущую строку
@@ -390,7 +390,7 @@
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И в поле с именем 'Pattern' я ввожу текст 'VA0CFItems'
+		И в поле с именем 'Pattern' я ввожу текст "VA0CFItems"
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Dimension kinds (corporate)"
 		И в таблице 'List' я выбираю текущую строку
@@ -408,7 +408,7 @@
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И в поле с именем 'Pattern' я ввожу текст 'VA0IEItems'
+		И в поле с именем 'Pattern' я ввожу текст "VA0IEItems"
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Dimension kinds (corporate)"
 		И в таблице 'List' я выбираю текущую строку
@@ -423,19 +423,19 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C7'
 		И я нажимаю на кнопку с именем 'CopyDimension'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C7'
-		И я нажимаю на кнопку с именем 'InsertDim'
+		И я нажимаю на кнопку с именем 'InsertDimension'
 
 	* Удалим аналитики у валютного показателя
 		Когда открылось окно "Edit tree"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C7'
-		И я выбираю пункт контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuDeleteDimension' на элементе формы с именем 'SpreadsheetFieldTemlate'
+		И В конструкторе отчета я нажимаю кнопку контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuDeleteDimension'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C6'
-		И я выбираю пункт контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuDeleteDimension' на элементе формы с именем 'SpreadsheetFieldTemlate'
+		И В конструкторе отчета я нажимаю кнопку контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuDeleteDimension'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C2'
-		И я выбираю пункт контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuDeleteDimension' на элементе формы с именем 'SpreadsheetFieldTemlate'
-		И я выбираю пункт контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuDeleteDimension' на элементе формы с именем 'SpreadsheetFieldTemlate'
-		И я выбираю пункт контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuDeleteDimension' на элементе формы с именем 'SpreadsheetFieldTemlate'
-		И я выбираю пункт контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuDeleteDimension' на элементе формы с именем 'SpreadsheetFieldTemlate'
+		И В конструкторе отчета я нажимаю кнопку контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuDeleteDimension'
+		И В конструкторе отчета я нажимаю кнопку контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuDeleteDimension'
+		И В конструкторе отчета я нажимаю кнопку контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuDeleteDimension'
+		И В конструкторе отчета я нажимаю кнопку контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuDeleteDimension'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C8'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 
@@ -447,25 +447,25 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C9'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно 'GR_LineAnalytics6 (Report indicator dimension groups)'
-		И я изменяю флаг с именем 'IsCurrency'
+		Тогда открылось окно "DG_LineDimension6 (Report indicator dimension groups)"
+		И я изменяю флаг с именем 'CurrencyRelated'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна 'GR_LineAnalytics6 (Report indicator dimension groups) *' в течение 3 секунд
+		И я жду закрытия окна "DG_LineDimension6 (Report indicator dimension groups) *" в течение 3 секунд
 
 	* Сравним макет с эталоном
 		Тогда открылось окно "Edit tree"
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| 'String'                 | "Dimension 1"        | "Dimension 2"  | "Dimension 3" | "Dimension 4"           | "Dimension 5" | "Dimension 6"               | "Drilldown by currencies" | "Settings" |
-			| 'LinesGroup'            | ''                   | ''             | ''            | ''                      | ''            | ''                          | ''                     | ''          |
-			| 'LineSynthetic'        | ''                   | ''             | ''            | ''                      | ''            | ''                          | ''                     | ''          |
-			| 'LineAnalytics1'       | 'Product categories' | ''             | ''            | ''                      | ''            | ''                          | ''                     | ''          |
-			| 'LineAnalytics2'       | 'Product categories' | 'Products' | ''            | ''                      | ''            | ''                          | ''                     | ''          |
-			| 'LineAnalytics3'       | 'Product categories' | 'Products' | 'Counterparties' | ''                      | ''            | ''                          | ''                     | ''          |
-			| 'LineAnalytics4'       | 'Product categories' | 'Products' | 'Counterparties' | 'Contracts' | ''            | ''                          | ''                     | ''          |
-			| 'LineAnalytics5'       | 'Product categories' | 'Products' | 'Counterparties' | 'Contracts' | 'Cash flow items'  | ''                          | ''                     | ''          |
-			| 'LineAnalytics6'       | 'Product categories' | 'Products' | 'Counterparties' | 'Contracts' | 'Cash flow items'  | 'Income and expense items' | ''                     | ''          |
-			| 'LineAnalytics6Currency' | 'Product categories' | 'Products' | 'Counterparties' | 'Contracts' | 'Cash flow items'  | 'Income and expense items' | '■'                    | ''          |
-			| 'LineAnalyticsCurrency'  | ''                   | ''             | ''            | ''                      | ''            | ''                          | '■'                    | ''          |
+			| "LinesGroup"            | ''                   | ''             | ''            | ''                      | ''            | ''                          | ''                     | ''          |
+			| "LineSynthetic"        | ''                   | ''             | ''            | ''                      | ''            | ''                          | ''                     | ''          |
+			| "LineDimension1"       | "Product categories" | ''             | ''            | ''                      | ''            | ''                          | ''                     | ''          |
+			| "LineDimension2"       | "Product categories" | "Product range" | ''            | ''                      | ''            | ''                          | ''                     | ''          |
+			| "LineDimension3"       | "Product categories" | "Product range" | "Counterparties" | ''                      | ''            | ''                          | ''                     | ''          |
+			| "LineDimension4"       | "Product categories" | "Product range" | "Counterparties" | "Counterparty contracts" | ''            | ''                          | ''                     | ''          |
+			| "LineDimension5"       | "Product categories" | "Product range" | "Counterparties" | "Counterparty contracts" | "Cash flow items"  | ''                          | ''                     | ''          |
+			| "LineDimension6"       | "Product categories" | "Product range" | "Counterparties" | "Counterparty contracts" | "Cash flow items"  | "Income and expense items" | ''                     | ''          |
+			| "LineDimension6Currency" | "Product categories" | "Product range" | "Counterparties" | "Counterparty contracts" | "Cash flow items"  | "Income and expense items" | '■'                    | ''          |
+			| "LineDimensionCurrency"  | ''                   | ''             | ''            | ''                      | ''            | ''                          | '■'                    | ''          |
 
 	* Удалим аналитику	
 		Когда открылось окно "Edit tree"
@@ -478,29 +478,29 @@
 		Тогда открылось окно "Edit tree"
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| 'String'                 | "Dimension 1"        | "Dimension 2"  | "Dimension 3" | "Dimension 4"               | "Dimension 5" | "Dimension 6"               | "Drilldown by currencies" | "Settings" |
-			| 'LinesGroup'            | ''                   | ''             | ''            | ''                          | ''            | ''                          | ''                     | ''          |
-			| 'LineSynthetic'        | ''                   | ''             | ''            | ''                          | ''            | ''                          | ''                     | ''          |
-			| 'LineAnalytics1'       | 'Product categories' | ''             | ''            | ''                          | ''            | ''                          | ''                     | ''          |
-			| 'LineAnalytics2'       | 'Product categories' | 'Products' | ''            | ''                          | ''            | ''                          | ''                     | ''          |
-			| 'LineAnalytics3'       | 'Product categories' | 'Products' | 'Counterparties' | ''                          | ''            | ''                          | ''                     | ''          |
-			| 'LineAnalytics4'       | 'Product categories' | 'Products' | 'Counterparties' | 'Contracts'     | ''            | ''                          | ''                     | ''          |
-			| 'LineAnalytics5'       | 'Product categories' | 'Products' | 'Counterparties' | 'Contracts'     | 'Cash flow items'  | ''                          | ''                     | ''          |
-			| 'LineAnalytics6'       | 'Product categories' | 'Products' | 'Counterparties' | 'Contracts'     | 'Cash flow items'  | 'Income and expense items' | ''                     | ''          |
-			| 'LineAnalytics6Currency' | 'Product categories' | 'Products' | 'Counterparties' | 'Income and expense items' | ''            | ''                          | '■'                    | ''          |
-			| 'LineAnalyticsCurrency'  | ''                   | ''             | ''            | ''                          | ''            | ''                          | '■'                    | ''          |
+			| "LinesGroup"            | ''                   | ''             | ''            | ''                          | ''            | ''                          | ''                     | ''          |
+			| "LineSynthetic"        | ''                   | ''             | ''            | ''                          | ''            | ''                          | ''                     | ''          |
+			| "LineDimension1"       | "Product categories" | ''             | ''            | ''                          | ''            | ''                          | ''                     | ''          |
+			| "LineDimension2"       | "Product categories" | "Product range" | ''            | ''                          | ''            | ''                          | ''                     | ''          |
+			| "LineDimension3"       | "Product categories" | "Product range" | "Counterparties" | ''                          | ''            | ''                          | ''                     | ''          |
+			| "LineDimension4"       | "Product categories" | "Product range" | "Counterparties" | "Counterparty contracts"     | ''            | ''                          | ''                     | ''          |
+			| "LineDimension5"       | "Product categories" | "Product range" | "Counterparties" | "Counterparty contracts"     | "Cash flow items"  | ''                          | ''                     | ''          |
+			| "LineDimension6"       | "Product categories" | "Product range" | "Counterparties" | "Counterparty contracts"     | "Cash flow items"  | "Income and expense items" | ''                     | ''          |
+			| "LineDimension6Currency" | "Product categories" | "Product range" | "Counterparties" | "Income and expense items" | ''            | ''                          | '■'                    | ''          |
+			| "LineDimensionCurrency"  | ''                   | ''             | ''            | ''                          | ''            | ''                          | '■'                    | ''          |
 
 	* Заполним аналитику
 		Когда открылось окно "Edit tree"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C5'
 		И я нажимаю на кнопку с именем 'CopyDimension'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C5'
-		И я нажимаю на кнопку с именем 'InsertDim'	
+		И я нажимаю на кнопку с именем 'InsertDimension'	
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C9'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно 'GR_LineAnalytics6Currency (Report indicator dimension groups)'
+		Тогда открылось окно "DG_LineDimension6Currency (Report indicator dimension groups)"
 		И в таблице 'TabFieldsDisplaySetting' я перехожу к строке:
 			| "Group dimension" | "Required" |
-			| 'Dimension 5'      | "No"          |
+			| "Dimension 5"      | "No"          |
 		И в таблице 'TabFieldsDisplaySetting' я активизирую поле с именем 'DimensionType'
 		И в таблице 'TabFieldsDisplaySetting' я выбираю текущую строку
 		И в таблице 'TabFieldsDisplaySetting' я нажимаю кнопку выбора у реквизита с именем 'DimensionType'
@@ -509,16 +509,16 @@
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И в поле с именем 'Pattern' я ввожу текст 'VA0CFItems'	
+		И в поле с именем 'Pattern' я ввожу текст "VA0CFItems"	
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Dimension kinds (corporate)"
 		И в таблице 'List' я активизирую поле с именем 'Description'
 		И в таблице 'List' я выбираю текущую строку
-		Тогда открылось окно 'GR_LineAnalytics6Currency (Report indicator dimension groups)'
+		Тогда открылось окно "DG_LineDimension6Currency (Report indicator dimension groups)"
 		И в таблице 'TabFieldsDisplaySetting' я завершаю редактирование строки
 		И в таблице 'TabFieldsDisplaySetting' я перехожу к строке:
 			| "Group dimension" | "Required" |
-			| 'Dimension 6'      | "No"          |
+			| "Dimension 6"      | "No"          |
 		И в таблице 'TabFieldsDisplaySetting' я выбираю текущую строку
 		И в таблице 'TabFieldsDisplaySetting' я нажимаю кнопку выбора у реквизита с именем 'DimensionType'
 		Тогда открылось окно "Dimension kinds (corporate)"
@@ -526,15 +526,15 @@
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И в поле с именем 'Pattern' я ввожу текст 'VA0IEItems'
+		И в поле с именем 'Pattern' я ввожу текст "VA0IEItems"
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Dimension kinds (corporate)"
 		И в таблице 'List' я активизирую поле с именем 'Description'
 		И в таблице 'List' я выбираю текущую строку
-		Тогда открылось окно 'GR_LineAnalytics6Currency (Report indicator dimension groups) *'
+		Тогда открылось окно "DG_LineDimension6Currency (Report indicator dimension groups) *"
 		И в таблице 'TabFieldsDisplaySetting' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'	
-		И я жду закрытия окна 'GR_LineAnalytics6Currency (Report indicator dimension groups) *' в течение 5 секунд
+		И я жду закрытия окна "DG_LineDimension6Currency (Report indicator dimension groups) *" в течение 5 секунд
 		Тогда открылось окно "Edit tree"
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicator dimensions"
 
@@ -542,45 +542,45 @@
 		Тогда открылось окно "Edit tree"
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| 'String'                 | "Dimension 1"        | "Dimension 2"  | "Dimension 3" | "Dimension 4"           | "Dimension 5" | "Dimension 6"               | "Drilldown by currencies" | "Settings" |
-			| 'LinesGroup'            | ''                   | ''             | ''            | ''                      | ''            | ''                          | ''                     | ''          |
-			| 'LineSynthetic'        | ''                   | ''             | ''            | ''                      | ''            | ''                          | ''                     | ''          |
-			| 'LineAnalytics1'       | 'Product categories' | ''             | ''            | ''                      | ''            | ''                          | ''                     | ''          |
-			| 'LineAnalytics2'       | 'Product categories' | 'Products' | ''            | ''                      | ''            | ''                          | ''                     | ''          |
-			| 'LineAnalytics3'       | 'Product categories' | 'Products' | 'Counterparties' | ''                      | ''            | ''                          | ''                     | ''          |
-			| 'LineAnalytics4'       | 'Product categories' | 'Products' | 'Counterparties' | 'Contracts' | ''            | ''                          | ''                     | ''          |
-			| 'LineAnalytics5'       | 'Product categories' | 'Products' | 'Counterparties' | 'Contracts' | 'Cash flow items'  | ''                          | ''                     | ''          |
-			| 'LineAnalytics6'       | 'Product categories' | 'Products' | 'Counterparties' | 'Contracts' | 'Cash flow items'  | 'Income and expense items' | ''                     | ''          |
-			| 'LineAnalytics6Currency' | 'Product categories' | 'Products' | 'Counterparties' | 'Contracts' | 'Cash flow items'  | 'Income and expense items' | '■'                    | ''          |
-			| 'LineAnalyticsCurrency'  | ''                   | ''             | ''            | ''                      | ''            | ''                          | '■'                    | ''          |
+			| "LinesGroup"            | ''                   | ''             | ''            | ''                      | ''            | ''                          | ''                     | ''          |
+			| "LineSynthetic"        | ''                   | ''             | ''            | ''                      | ''            | ''                          | ''                     | ''          |
+			| "LineDimension1"       | "Product categories" | ''             | ''            | ''                      | ''            | ''                          | ''                     | ''          |
+			| "LineDimension2"       | "Product categories" | "Product range" | ''            | ''                      | ''            | ''                          | ''                     | ''          |
+			| "LineDimension3"       | "Product categories" | "Product range" | "Counterparties" | ''                      | ''            | ''                          | ''                     | ''          |
+			| "LineDimension4"       | "Product categories" | "Product range" | "Counterparties" | "Counterparty contracts" | ''            | ''                          | ''                     | ''          |
+			| "LineDimension5"       | "Product categories" | "Product range" | "Counterparties" | "Counterparty contracts" | "Cash flow items"  | ''                          | ''                     | ''          |
+			| "LineDimension6"       | "Product categories" | "Product range" | "Counterparties" | "Counterparty contracts" | "Cash flow items"  | "Income and expense items" | ''                     | ''          |
+			| "LineDimension6Currency" | "Product categories" | "Product range" | "Counterparties" | "Counterparty contracts" | "Cash flow items"  | "Income and expense items" | '■'                    | ''          |
+			| "LineDimensionCurrency"  | ''                   | ''             | ''            | ''                      | ''            | ''                          | '■'                    | ''          |
 
 Сценарий: 01.05 Настройка валютных показателей
 
-	И Я открываю контруктор отчета с именем 'VA - Manual entry for all analytics'
+	И Я открываю контруктор отчета с именем "VA - Manual entry for all analytics"
 
-	* Снимем раскрытие по валюте у показателя 'СтрокаАналитикаВалюта'
+	* Снимем раскрытие по валюте у показателя "LineDimensionВалюта"
 		Когда открылось окно "Edit tree"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C1'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Когда открылось окно 'LineAnalyticsCurrency (Report lines)'
-		И элемент формы с именем 'GroupExpand' стал равен 'GR_LineAnalyticsCurrency'
-		И Я закрываю окно 'LineAnalyticsCurrency (Report lines)'						
+		Когда открылось окно "LineDimensionCurrency (Report lines)"
+		И элемент формы с именем 'GroupExpand' стал равен "DG_LineDimensionCurrency"
+		И Я закрываю окно "LineDimensionCurrency (Report lines)"						
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C8'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C1'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Когда открылось окно 'LineAnalyticsCurrency (Report lines)'		
+		Когда открылось окно "LineDimensionCurrency (Report lines)"		
 		И элемент формы с именем 'GroupExpand' стал равен ''
-		И Я закрываю окно 'LineAnalyticsCurrency (Report lines)'
+		И Я закрываю окно "LineDimensionCurrency (Report lines)"
 
 	* Проверим что группа раскрытия очистились и у показателей
 		Когда открылось окно "Edit tree"
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Report structure"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке				
-		Когда открылось окно 'LineAnalyticsCurrency count (Report indicators)'
+		Когда открылось окно "LineDimensionCurrency quantity (Report indicators)"
 		И элемент формы с именем 'GroupExpand' стал равен ''
-		И элемент формы с именем 'ShouldRecalculateForeignCurrAmount' стал равен 'No'
-		И Я закрываю окно 'LineAnalyticsCurrency count (Report indicators)'
+		И элемент формы с именем 'ShouldRecalculateForeignCurrencyAmount' стал равен 'No'
+		И Я закрываю окно "LineDimensionCurrency quantity (Report indicators)"
 
 	* Снова установим раскрытие по валютам
 		Когда открылось окно "Edit tree"
@@ -593,42 +593,42 @@
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Report structure"	
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно 'LineAnalyticsCurrency count (Report indicators)'
-		И элемент формы с именем 'ShouldRecalculateForeignCurrAmount' стал равен 'Yes'
-		И я изменяю флаг с именем 'ShouldRecalculateForeignCurrAmount'
+		Тогда открылось окно "LineDimensionCurrency quantity (Report indicators)"
+		И элемент формы с именем 'ShouldRecalculateForeignCurrencyAmount' стал равен 'Yes'
+		И я изменяю флаг с именем 'ShouldRecalculateForeignCurrencyAmount'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна 'LineAnalyticsCurrency count (Report indicators) *' в течение 20 секунд
+		И я жду закрытия окна "LineDimensionCurrency quantity (Report indicators) *" в течение 20 секунд
 		Тогда открылось окно "Edit tree"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C3'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно 'LineAnalyticsCurrency price (Report indicators)'
-		И элемент формы с именем 'ShouldRecalculateForeignCurrAmount' стал равен 'Yes'
-		И Я закрываю окно 'LineAnalyticsCurrency price (Report indicators)'
+		Тогда открылось окно "LineDimensionCurrency price (Report indicators)"
+		И элемент формы с именем 'ShouldRecalculateForeignCurrencyAmount' стал равен 'Yes'
+		И Я закрываю окно "LineDimensionCurrency price (Report indicators)"
 		Тогда открылось окно "Edit tree"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно 'LineAnalytics6Currency count (Report indicators)'
-		И элемент формы с именем 'ShouldRecalculateForeignCurrAmount' стал равен 'Yes'
-		И я изменяю флаг с именем 'ShouldRecalculateForeignCurrAmount'
+		Тогда открылось окно "LineDimension6Currency quantity (Report indicators)"
+		И элемент формы с именем 'ShouldRecalculateForeignCurrencyAmount' стал равен 'Yes'
+		И я изменяю флаг с именем 'ShouldRecalculateForeignCurrencyAmount'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна 'LineAnalytics6Currency count (Report indicators) *' в течение 20 секунд
+		И я жду закрытия окна "LineDimension6Currency quantity (Report indicators) *" в течение 20 секунд
 		Тогда открылось окно "Edit tree"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C3'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно 'LineAnalytics6Currency price (Report indicators)'
-		И элемент формы с именем 'ShouldRecalculateForeignCurrAmount' стал равен 'Yes'
+		Тогда открылось окно "LineDimension6Currency price (Report indicators)"
+		И элемент формы с именем 'ShouldRecalculateForeignCurrencyAmount' стал равен 'Yes'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
 
 Сценарий: 01.06 Работа в контрукторе отчета - Ввод формул
 
-	И Я открываю контруктор отчета с именем 'VA - Manual entry for all analytics'
+	И Я открываю контруктор отчета с именем "VA - Manual entry for all analytics"
 
 	* Проверяем кнопку 'Сумма показателей' - 'ГруппаСтрок - Количество'
 		Когда открылось окно "Edit tree*"
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"				
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в поле с именем 'TextDocFieldProcedure' я ввожу текст ' '
+		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст ' '
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C2:R11C2'
 		И я нажимаю на кнопку с именем 'ButtonSum'
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
@@ -637,15 +637,15 @@
 		Когда открылось окно "Edit tree*"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C3'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в поле с именем 'TextDocFieldProcedure' я ввожу текст ' '
-		И в поле с именем 'TextDocFieldProcedure' я ввожу текст '({VAManualEntryForAllAnalytics.LineSynthetic_Price1}+{VAManualEntryForAllAnalytics.LineAnalytics1_Price1}+{VAManualEntryForAllAnalytics.LineAnalytics2_Price1}+{VAManualEntryForAllAnalytics.LineAnalytics3_Price1}+{VAManualEntryForAllAnalytics.LineAnalytics4_Price1}+{VAManualEntryForAllAnalytics.LineAnalytics5_Price1}+{VAManualEntryForAllAnalytics.LineAnalytics6_Price1}+{VAManualEntryForAllAnalytics.LineAnalytics6Currency_Price1}+{VAManualEntryForAllAnalytics.LineAnalyticsCurrency_Price1})/9'
+		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст ' '
+		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст "({VAManualEntryForAllAnalytics.LineSynthetic_Price1}+{VAManualEntryForAllAnalytics.LineANLT1_Price1}+{VAManualEntryForAllAnalytics.LineANLT2_Price1}+{VAManualEntryForAllAnalytics.LineANLT3_Price1}+{VAManualEntryForAllAnalytics.LineANLT4_Price1}+{VAManualEntryForAllAnalytics.LineANLT5_Price1}+{VAManualEntryForAllAnalytics.LineANLT6_Price1}+{VAManualEntryForAllAnalytics.LineANLT6Curren_Price1}+{VAManualEntryForAllAnalytics.LineANLTCurrenc_Price1})/9"
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
 
 	* Вводим формулу кнопками - 'ГруппаСтрок - Сумма'	
 		Когда открылось окно "Edit tree*"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C4'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в поле с именем 'TextDocFieldProcedure' я ввожу текст ' '
+		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст ' '
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И я нажимаю на кнопку с именем 'ButtonMultiply'
@@ -661,7 +661,7 @@
 		И я нажимаю на кнопку с именем 'InsertFormula'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C4'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в поле с именем 'TextDocFieldProcedure' я ввожу текст ' '
+		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст ' '
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
 
 	* Вводим формулу через конструктор - 'СтрокаСинтетика - Сумма'
@@ -669,19 +669,19 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C4'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И я нажимаю на кнопку с именем 'RefToIndicator1'
-		И Я выбираю показатель с кодом 'LineSynthetic_Count1' вида отчета 'VA - Manual entry for all analytics'
+		И Я выбираю показатель с кодом "LineSynthetic_Quantity1" вида отчета "VA - Manual entry for all analytics"
 		Тогда открылось окно "Edit tree*"
 		И я нажимаю на кнопку с именем 'ButtonMultiply'
 		И я нажимаю на кнопку с именем 'RefToIndicator1'
-		И Я выбираю показатель с кодом 'LineSynthetic_Price1'
+		И Я выбираю показатель с кодом "LineSynthetic_Price1"
 		Тогда открылось окно "Edit tree*"
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
 
-	* Вводим формулу кнопками - 'СтрокаАналитика1 - Сумма'
+	* Вводим формулу кнопками - 'LineDimension1 - Сумма'
 		Когда открылось окно "Edit tree*"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C4'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в поле с именем 'TextDocFieldProcedure' я ввожу текст ' '
+		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст ' '
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И я нажимаю на кнопку с именем 'ButtonMultiply'
@@ -689,7 +689,7 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
 
-	* Вводим формулу копированием - 'СтрокаАналитика6Валюта - Сумма'
+	* Вводим формулу копированием - 'LineDimension6Валюта - Сумма'
 		Когда открылось окно "Edit tree*"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C4'
 		И я нажимаю на кнопку с именем 'CopyFormula'
@@ -697,7 +697,7 @@
 		И я нажимаю на кнопку с именем 'InsertFormula'
 
 	* Редактируем формулу через форму источников данных
-		* Добавляем операнд 'Количество'
+		* Добавляем операнд "Количество"
 			Когда открылось окно "Edit tree*"
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C4'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
@@ -705,32 +705,32 @@
 			Когда открылось окно "Data sources"
 			И я нажимаю на кнопку с именем 'FormFind'
 			Тогда открылась форма с именем 'UniversalListFindExtForm'
-			И в поле с именем 'Pattern' я ввожу текст 'VA - Manual entry for all analytics_LineAnalytics1 count'
+			И в поле с именем 'Pattern' я ввожу текст "VA - Manual entry for all analytics_LineDimension1 quantity"
 			И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 			И я нажимаю на кнопку с именем 'Find'
 			Тогда открылось окно "Data sources"
 			И я выбираю пункт контекстного меню с именем 'ListContextMenuChange' на элементе формы с именем 'List'
-			Тогда открылось окно 'VA - Manual entry for all analytics_LineAnalytics1 count '"(Data source)"
+			Тогда открылось окно "VA - Manual entry for all analytics_LineDimension1 quantity (Data source)"
 			И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-			И Я выбираю показатель с кодом 'LineAnalytics6Curren_Count1'
-			Тогда открылось окно 'VA - Manual entry for all analytics_LineAnalytics1 count '"(Data source) *"
+			И Я выбираю показатель с кодом "LineANLT6Currency_Quantity1"
+			Тогда открылось окно "VA - Manual entry for all analytics_LineDimension1 quantity (Data source) *"
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна 'VA - Manual entry for all analytics_LineAnalytics1 count *' в течение 5 секунд
-		* Добавляем операнд 'Цена'
+			И я жду закрытия окна "VA - Manual entry for all analytics_LLineDimension1 quantity *" в течение 5 секунд
+		* Добавляем операнд "Цена"
 			Когда открылось окно "Data sources"
 			И я нажимаю на кнопку с именем 'FormFind'
 			Тогда открылась форма с именем 'UniversalListFindExtForm'
-			И в поле с именем 'Pattern' я ввожу текст 'VA - Manual entry for all analytics_LineAnalytics1 price'
+			И в поле с именем 'Pattern' я ввожу текст "VA - Manual entry for all analytics_LineDimension1 price"
 			И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 			И я нажимаю на кнопку с именем 'Find'
 			Тогда открылось окно "Data sources"
 			И я выбираю пункт контекстного меню с именем 'ListContextMenuChange' на элементе формы с именем 'List'
-			Когда открылось окно 'VA - Manual entry for all analytics_LineAnalytics1 price '"(Data source)"
+			Когда открылось окно "VA - Manual entry for all analytics_LineDimension1 price (Data source)"
 			И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-			И Я выбираю показатель с кодом 'LineAnalytics6Curren_Price1'
-			Тогда открылось окно 'VA - Manual entry for all analytics_LineAnalytics1 price '"(Data source) *"
+			И Я выбираю показатель с кодом "LineANLT6Currency_Price1"
+			Тогда открылось окно "VA - Manual entry for all analytics_LineDimension1 price (Data source) *"
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна 'VA - Manual entry for all analytics_LineAnalytics1 price *' в течение 5 секунд
+			И я жду закрытия окна "VA - Manual entry for all analytics_LineDimension1 price *" в течение 5 секунд
 			Тогда открылось окно "Data sources"
 			И Я закрываю окно "Data sources"
 			Тогда открылось окно "Edit tree*"
@@ -763,59 +763,59 @@
 	* Проверим, что открывается и записывается форма правила расчета
 		Когда открылось окно "Edit tree*"
 		И я нажимаю на кнопку открытия поля с именем 'ProcessingRule'
-		Тогда открылось окно 'VA - Manual entry for all analytics '"(Calculation rules)"
+		Тогда открылось окно "VA - Manual entry for all analytics (Calculation rules)"
 		И я нажимаю на кнопку с именем 'FormWrite'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна 'VA - Manual entry for all analytics *' в течение 5 секунд
+		И я жду закрытия окна "VA - Manual entry for all analytics *" в течение 5 секунд
 		Тогда открылось окно "Edit tree*"
 		И я нажимаю на кнопку открытия поля с именем 'ProcessingRule'
-		Тогда открылось окно 'VA - Manual entry for all analytics '"(Calculation rules)"
-		И Я закрываю окно 'VA - Manual entry for all analytics *'
+		Тогда открылось окно "VA - Manual entry for all analytics (Calculation rules)"
+		И Я закрываю окно "VA - Manual entry for all analytics *"
 
 Сценарий: 01.07 Создание бланка вида отчета
 
-	И Я для вида отчета 'VA - Manual entry for all analytics' я создаю бланк по умолчанию
+	И Я для вида отчета "VA - Manual entry for all analytics" я создаю бланк по умолчанию
 
 Сценарий: 01.08 Создание экземпляра отчета
 
-	И Я создаю экземпляр отчета для вида отчета 'VA - Manual entry for all analytics' сценарий 'VA - Main scenario' период '1/1/2021' '3/31/2021' периодичность "Month" организация 'Mercury LLC' проект 'VA - Main project' аналитики '' '' '' '' '' ''
+	И Я создаю экземпляр отчета для вида отчета "VA - Manual entry for all analytics" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект "VA - Main project" аналитики '' '' '' '' '' ''
 	Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ВидОтчетаСАналитиками_Пустой.mxl'
 		
 	* Вводим значения в таблицу
 		И Я ввожу значение '123.00000' в ячейку 'R7C2'
 
 		И Я добавляю значения с раскрытием показателей в ячейку 'R8C2'
-			| 'VA0ProCate'           | 'Value'    |
-			| 'Software products' | '1,000.00000' |
+			| "VA0ProCate"           | 'Value'    |
+			| "Software products" | '1,000.00000' |
 
 		И Я добавляю значения с раскрытием показателей в ячейку 'R10C2'
-			| 'VA0ProCate'           | 'VA0Product'                | 'Value'    |
-			| 'Software products' | '1C:Corporate performance management' | '2,000.00000' |
+			| "VA0ProCate"           | "VA0Product"                | 'Value'    |
+			| "Software products" | "5C:Corporate performance management" | '2,000.00000' |
 
 		И Я добавляю значения с раскрытием показателей в ячейку 'R13C2'
-			| 'VA0ProCate'           | 'VA0Product'                | 'VA0Counter'      | 'Value'    |
-			| 'Software products' | '1C:Corporate performance management' | 'LLC \"Ganymede\"' | '3,000.00000' |
+			| "VA0ProCate"           | "VA0Product"                | "VA0Counter"      | 'Value'    |
+			| "Software products" | "5C:Corporate performance management" | "LLC \"Ganymede\"" | '3,000.00000' |
 
 		И Я добавляю значения с раскрытием показателей в ячейку 'R17C2'
-			| 'VA0ProCate'           | 'VA0Product'                | 'VA0Counter'      | 'VA0Contrac'  | 'Value'    |
-			| 'Software products' | '1C:Corporate performance management' | 'LLC \"Ganymede\"' | 'Ganymede-001' | '4,000.00000' |
+			| "VA0ProCate"           | "VA0Product"                | "VA0Counter"      | "VA0Contrac"  | 'Value'    |
+			| "Software products" | "5C:Corporate performance management" | "LLC \"Ganymede\"" | "Ganymede-001" | '4,000.00000' |
 
 		И Я добавляю значения с раскрытием показателей в ячейку 'R22C2'
-			| 'VA0ProCate'           | 'VA0Product'                | 'VA0Counter'      | 'VA0Contrac'  | 'VA0CFItems'                       | 'Value'    |
-			| 'Software products' | '1C:Corporate performance management' | 'LLC \"Ganymede\"' | 'Ganymede-001' | 'Software sale' | '5,000.00000' |
+			| "VA0ProCate"           | "VA0Product"                | "VA0Counter"      | "VA0Contrac"  | "VA0CFItems"                       | 'Value'    |
+			| "Software products" | "5C:Corporate performance management" | "LLC \"Ganymede\"" | "Ganymede-001" | "3Software sale" | '5,000.00000' |
 
 		И Я добавляю значения с раскрытием показателей в ячейку 'R28C2'
-			| 'VA0ProCate'           | 'VA0Product'                | 'VA0Counter'      | 'VA0Contrac'  | 'VA0CFItems'                       | 'VA0IEItems'                       | 'Value'    |
-			| 'Software products' | '1C:Corporate performance management' | 'LLC \"Ganymede\"' | 'Ganymede-001' | 'Software sale' | 'Software sale' | '6,000.00000' |
+			| "VA0ProCate"           | "VA0Product"                | "VA0Counter"      | "VA0Contrac"  | "VA0CFItems"                       | "VA0IEItems"                       | 'Value'    |
+			| "Software products" | "5C:Corporate performance management" | "LLC \"Ganymede\"" | "Ganymede-001" | "3Software sale" | "3Software sale" | '6,000.00000' |
 
 		И Я добавляю значения с раскрытием показателей в ячейку 'R35C2'
-			| 'VA0ProCate'           | 'VA0Product'                | 'VA0Counter'      | 'VA0Contrac'  | 'VA0CFItems'                       | 'VA0IEItems'                       | 'DimensionCurrency' | 'Value'    |
-			| 'Software products' | '1C:Corporate performance management' | 'LLC \"Ganymede\"' | 'Ganymede-001' | 'Software sale' | 'Software sale' | 'RUB'             | '1,100.00000' |
-			| 'Software products' | '1C:Corporate performance management' | 'LLC \"Ganymede\"' | 'Ganymede-001' | 'Software sale' | 'Software sale' | 'USD'             | '1,200.00000' |
-			| 'Software products' | '1C:Corporate performance management' | 'LLC \"Ganymede\"' | 'Ganymede-001' | 'Software sale' | 'Software sale' | 'EUR'             | '1,300.00000' |
+			| "VA0ProCate"           | "VA0Product"                | "VA0Counter"      | "VA0Contrac"  | "VA0CFItems"                       | "VA0IEItems"                       | 'DimensionCurrency' | 'Value'    |
+			| "Software products" | "5C:Corporate performance management" | "LLC \"Ganymede\"" | "Ganymede-001" | "3Software sale" | "3Software sale" | 'RUB'             | '1,100.00000' |
+			| "Software products" | "5C:Corporate performance management" | "LLC \"Ganymede\"" | "Ganymede-001" | "3Software sale" | "3Software sale" | 'USD'             | '1,200.00000' |
+			| "Software products" | "5C:Corporate performance management" | "LLC \"Ganymede\"" | "Ganymede-001" | "3Software sale" | "3Software sale" | 'EUR'             | '1,300.00000' |
 
 	* Запомним заголовок окна
-		И Открылся экземпляр отчета для вида отчета 'VA - Manual entry for all analytics' валюта 'RUB' организация 'Mercury LLC' сценарий 'VA - Main scenario' периодичность "Month" проект 'VA - Main project' аналитики '' '' '' '' '' ''
+		И Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
 		И я запоминаю текущее окно как 'WindowTitle'
 
 	* Тестируем кнопку копирования вниз и кнопку очистики		
@@ -910,7 +910,7 @@
 	* Тестируем кнопку 'Отобразить примечания'
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormDisplayComments'
-		И в поле с именем 'AnalyticalTemplateNote' я ввожу текст 'Comment K бланKу'
+		И в поле с именем 'AnalyticalTemplateNote' я ввожу текст "Comment"
 		И я нажимаю на кнопку с именем 'FormDisplayComments'
 		И я нажимаю на кнопку с именем 'FormDisplayComments'
 		И поле с именем 'AnalyticalTemplateNote' заполнено 
@@ -921,55 +921,55 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C2'
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст 'Comment группы rows'
+		И в поле с именем 'NewComment' я ввожу текст "Comment Group"
 		И я нажимаю на кнопку с именем 'WriteComment'
 		Тогда открылось окно '$WindowTitle$'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C3'
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст 'Comment синтетика'
+		И в поле с именем 'NewComment' я ввожу текст "Comment Synthetic"
 		И я нажимаю на кнопку с именем 'WriteComment'
 		Тогда открылось окно '$WindowTitle$'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C4'
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст 'Comment 1 Dimension'
+		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 1"
 		И я нажимаю на кнопку с именем 'WriteComment'
 		Тогда открылось окно '$WindowTitle$'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C5'
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст 'Comment 2 Dimensions'
+		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 2"
 		И я нажимаю на кнопку с именем 'WriteComment'
 		Тогда открылось окно '$WindowTitle$'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R16C6'
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст 'Comment 3 Dimensions'
+		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 3"
 		И я нажимаю на кнопку с именем 'WriteComment'
 		Тогда открылось окно '$WindowTitle$'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R21C7'
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст 'Comment 4 Dimensions'
+		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 4"
 		И я нажимаю на кнопку с именем 'WriteComment'
 		Тогда открылось окно '$WindowTitle$'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R27C8'
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст 'Comment 5 Аналитик'
+		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 5"
 		И я нажимаю на кнопку с именем 'WriteComment'
 		Тогда открылось окно '$WindowTitle$'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R34C9'
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст 'Comment 6 Аналитик'
+		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 6"
 		И я нажимаю на кнопку с именем 'WriteComment'
 		Тогда открылось окно '$WindowTitle$'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R42C10'
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст 'Comment 6 Аналитик From1 валютой'
+		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 6 Currency"
 		И я нажимаю на кнопку с именем 'WriteComment'
 		Тогда открылось окно '$WindowTitle$'
 	
@@ -982,7 +982,7 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R47C2'
 			И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
 			Тогда открылось окно "Comments"
-			И в поле с именем 'NewComment' я ввожу текст 'Comment '
+			И в поле с именем 'NewComment' я ввожу текст "Comment"
 			И Я закрываю окно "Comments"
 		* Ввод комментария	
 			Тогда открылось окно '$WindowTitle$'
@@ -991,7 +991,7 @@
 			Тогда открылось окно "Comments"
 			Тогда элемент формы с именем 'CommentsHistory' стал равен ''
 			Тогда элемент формы с именем 'NewComment' стал равен ''
-			И в поле с именем 'NewComment' я ввожу текст 'Comment Currency'
+			И в поле с именем 'NewComment' я ввожу текст "Comment Currency"
 			И я нажимаю на кнопку с именем 'WriteComment'
 		* История комментария	
 			Тогда открылось окно '$WindowTitle$'
@@ -1000,9 +1000,9 @@
 			Тогда открылось окно "Comments"
 			Тогда элемент формы с именем 'CommentsHistory' стал равен по шаблону
 				|'* (*): '|
-				|'Comment Currency'|
+				|"Comment Currency"|
 			Тогда элемент формы с именем 'NewComment' стал равен ''
-			И в поле с именем 'NewComment' я ввожу текст 'More один комментарий Currency'
+			И в поле с именем 'NewComment' я ввожу текст "Comment Currency 2"
 			И я нажимаю на кнопку с именем 'WriteComment'
 		* История двух комментариев
 			Тогда открылось окно '$WindowTitle$'
@@ -1011,9 +1011,9 @@
 			Тогда открылось окно "Comments"
 			Тогда элемент формы с именем 'CommentsHistory' стал равен по шаблону
 				|'* (*): '|
-				|'Comment Currency'|
+				|"Comment Currency"|
 				|'* (*): '|
-				|'More один комментарий Currency'|
+				|"Comment Currency 2"|
 			И Я закрываю окно "Comments"
 
 	* Запишем и закроем документ
@@ -1026,14 +1026,14 @@
 Сценарий: 01.09 Проверяем движения документа
 
 	* Открываем документ
-		И Я нахожу в списке вид отчета с именем 'VA - Manual entry for all analytics'
+		И Я нахожу в списке вид отчета с именем "VA - Manual entry for all analytics"
 		Когда открылось окно "Report kinds and templates"
 		И в таблице 'ListOfReportTypes' я нажимаю на кнопку с именем 'ListOfReportTypesOpenInstancesList'
 		Тогда открылось окно "Report instances"
 		И в таблице 'List' я выбираю текущую строку
 
 	* Запомним заголовок окна
-		И Открылся экземпляр отчета для вида отчета 'VA - Manual entry for all analytics' валюта 'RUB' организация 'Mercury LLC' сценарий 'VA - Main scenario' периодичность "Month" проект 'VA - Main project' аналитики '' '' '' '' '' ''
+		И Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
 		И я запоминаю текущее окно как 'WindowTitle'	
 
 	* Загружаем эталонный макет
@@ -1049,18 +1049,16 @@
 		Если 'NOT $$ЭтоPerform$$' Тогда
 			Тогда открылось окно "Documents are identical: Compare spreadsheet documents"
 		И я изменяю флаг с именем 'AreOnlyValuesCompared'
-		И я нажимаю на кнопку с именем 'FormCompareDocs'
+		И я нажимаю на кнопку с именем 'FormCompareDocuments'
 		Тогда открылось окно "Documents are identical: Compare spreadsheet documents"
 		И я нажимаю на кнопку с именем 'FormClose'
 
 	* Проверяем движения документа
 		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormOpenDocRegisterRecordsFlatTab'
+		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
-		// ДОДЕЛАТЬ, Временная заглушка для CPMWE, пока не решился вопрос сравнения движений
-		Если 'NOT $$ЭтоPerform$$' Тогда
-			Дано Табличный документ 'ReportSpreadsheetDocument' равен макету '\\Макеты\ВА_ВидОтчетаСАналитиками_Меркурий_Движения.mxl' по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету '\\Макеты\ВА_ВидОтчетаСАналитиками_Меркурий_Движения.mxl' по шаблону
 		И Я закрываю окно "Flat table of indicator values"
 
 	* Запишем и закроем документ
@@ -1076,13 +1074,13 @@
 
 	* Фильтр по сценарию
 		И я устанавливаю флаг с именем 'UseScenario'
-		И я нажимаю кнопку выбора у поля с именем 'FilterByScenario'	
+		И я нажимаю кнопку выбора у поля с именем 'FilteringByScenario'	
 		Тогда открылось окно "Value list"
 		И Пока в таблице 'ValueList' количество строк 'больше' 0 Тогда
 			И я выбираю пункт контекстного меню с именем 'ValueListContextMenuDelete' на элементе формы с именем 'ValueList'	
 		Когда открылось окно "Value list"
 		И я нажимаю на кнопку с именем 'Add'
-		И в таблице 'ValueList' из выпадающего списка с именем 'value' я выбираю по строке 'VA - Main scenario'
+		И в таблице 'ValueList' из выпадающего списка с именем 'Value' я выбираю по строке "VA - Main scenario"
 		И в таблице 'ValueList' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'OK'			
 
@@ -1091,82 +1089,82 @@
 		И я устанавливаю флаг с именем 'UseCompanies'
 		Если в таблице 'Companies' есть строка Тогда
 			| "Value"    | "Use" |
-			| 'System LLC' | "Yes"          |
+			| "System LLC" | "Yes"          |
 			И в таблице 'Companies' я перехожу к строке:
 				| "Value"    | "Use" |
-				| 'System LLC' | "Yes"          |
-			И в таблице 'Companies' я снимаю флаг с именем 'CompaniesUse'
+				| "System LLC" | "Yes"          |
+			И в таблице 'Companies' я снимаю флаг с именем 'CompaniesShouldUse'
 			И в таблице 'Companies' я завершаю редактирование строки
 		И в таблице 'Companies' я перехожу к строке:
 			| "Value"    | "Use" |
-			| 'System LLC' | "No"          |
+			| "System LLC" | "No"          |
 		И в таблице 'Companies' я разворачиваю текущую строку
 		Если в таблице 'Companies' есть строка Тогда
 			| "Value"     | "Use" |
-			| 'Mercury LLC' | "No"          |
+			| "Mercury LLC" | "No"          |
 			И в таблице 'Companies' я перехожу к строке:
 				| "Value"     | "Use" |
-				| 'Mercury LLC' | "No"          |
-			И в таблице 'Companies' я устанавливаю флаг с именем 'CompaniesUse'
+				| "Mercury LLC" | "No"          |
+			И в таблице 'Companies' я устанавливаю флаг с именем 'CompaniesShouldUse'
 			И в таблице 'Companies' я завершаю редактирование строки
 		И в таблице 'Companies' я перехожу к строке:
 			| "Value"     | "Use" |
-			| 'Mercury LLC' | "Yes"           |
+			| "Mercury LLC" | "Yes"           |
 
 	* Фильтр по виду отчета
 		Когда открылось окно "Report instances"
 		И я устанавливаю флаг с именем 'UseReportTypes'
 		Если в таблице 'ReportsKinds' есть строка Тогда
 			| "Value"            | "Use" |
-			| 'VA - Report group' | "Yes"           |
+			| "VA - Report group" | "Yes"           |
 			И в таблице 'ReportsKinds' я перехожу к строке:
 				| "Value"            | "Use" |
-				| 'VA - Report group' | "Yes"           |
-			И в таблице 'ReportsKinds' я снимаю флаг с именем 'CompaniesUse'
+				| "VA - Report group" | "Yes"           |
+			И в таблице 'ReportsKinds' я снимаю флаг с именем 'CompaniesShouldUse'
 			И в таблице 'ReportsKinds' я завершаю редактирование строки
 		И в таблице 'ReportsKinds' я перехожу к строке:
 			| "Value"            | "Use" |
-			| 'VA - Report group' | "No"          |
+			| "VA - Report group" | "No"          |
 		И в таблице 'ReportsKinds' я разворачиваю текущую строку
 		Если в таблице 'ReportsKinds' есть строка Тогда
 			| "Value"                            | "Use" |
-			| 'VA - Manual entry for all analytics' | "No"          |
+			| "VA - Manual entry for all analytics" | "No"          |
 			И в таблице 'ReportsKinds' я перехожу к строке:
 				| "Value"                            | "Use" |
-				| 'VA - Manual entry for all analytics' | "No"          |
+				| "VA - Manual entry for all analytics" | "No"          |
 			И в таблице 'ReportsKinds' я устанавливаю флаг с именем 'ReportsKindsShouldUse'
 			И в таблице 'ReportsKinds' я завершаю редактирование строки
 		И в таблице 'ReportsKinds' я перехожу к строке:
 			| "Value"                            | "Use" |
-			| 'VA - Manual entry for all analytics' | "Yes"           |
+			| "VA - Manual entry for all analytics" | "Yes"           |
 
 	* Копирование экземпляра
 		Когда открылось окно "Report instances"
 		И я выбираю пункт контекстного меню с именем 'ListContextMenuCopy' на элементе формы с именем 'List'
-		Тогда Открылся экземпляр отчета для вида отчета 'VA - Manual entry for all analytics' валюта 'RUB' организация 'Mercury LLC' сценарий 'VA - Main scenario' периодичность "Month" проект 'VA - Main project' аналитики '' '' '' '' '' ''
+		Тогда Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
 
 	* Меняем организацию		
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
 		Тогда открылось окно "Edit report settings"
-		И из выпадающего списка с именем 'Company' я выбираю по строке 'Venus LLC'
+		И из выпадающего списка с именем 'Organization' я выбираю по строке "Venus LLC"
 		И я нажимаю на кнопку с именем 'FormApplyANDClose'
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
 		Тогда открылось окно "Report instances"
 		И в таблице 'Companies' я перехожу к строке:
 			| "Value"     | "Use" |
-			| 'Mercury LLC' | "Yes"           |
-		И в таблице 'Companies' я изменяю флаг с именем 'CompaniesUse'
+			| "Mercury LLC" | "Yes"           |
+		И в таблице 'Companies' я изменяю флаг с именем 'CompaniesShouldUse'
 		И в таблице 'Companies' я завершаю редактирование строки
 		И в таблице 'Companies' я перехожу к строке:
 			| "Value"   | "Use" |
-			| 'Venus LLC' | "No"          |
-		И в таблице 'Companies' я изменяю флаг с именем 'CompaniesUse'
+			| "Venus LLC" | "No"          |
+		И в таблице 'Companies' я изменяю флаг с именем 'CompaniesShouldUse'
 		И в таблице 'Companies' я завершаю редактирование строки
 		И в таблице 'List' я выбираю текущую строку
 
 	* Запомним заголовок окна
-		И Открылся экземпляр отчета для вида отчета 'VA - Manual entry for all analytics' валюта 'RUB' организация 'Venus LLC' сценарий 'VA - Main scenario' периодичность "Month" проект 'VA - Main project' аналитики '' '' '' '' '' ''
+		И Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'RUB' организация "Venus LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
 		И я запоминаю текущее окно как 'WindowTitle'	
 	
 	* Комментируем ячейки
@@ -1175,20 +1173,20 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R34C2'
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст 'Comment Dimension6'
+		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 6"
 		И я нажимаю на кнопку с именем 'WriteComment'
 		Когда открылось окно '$WindowTitle$ *'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R43C3'
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст 'Comment Dimension6Currency'
+		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 6 Currency"
 		И я нажимаю на кнопку с именем 'WriteComment'		
 		Тогда открылось окно '$WindowTitle$ *'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R46C4'
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст 'Comment DimensionCurrency'
-		И я нажимаю на кнопку с именем 'WriteComment'						
+		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension Currency"
+		И я нажимаю на кнопку с именем 'WriteComment'	
 		
 	* Загружаем эталонный макет
 		Когда открылось окно '$WindowTitle$ *'
@@ -1204,18 +1202,16 @@
 		Если '$$ЭтоPerform$$' Тогда
 			И я нажимаю на кнопку с именем 'FormCompareWithRefTemplateByValue'					
 		Иначе
-			И я нажимаю на кнопку с именем 'FormCompareWithRefTemplateByTemplate'
+			И я нажимаю на кнопку с именем 'FormCompareWithRefTemplateByШаблону'
 		Тогда открылось окно "Documents are identical: Compare spreadsheet documents"
 		И я нажимаю на кнопку с именем 'FormClose'
 
 	* Проверяем движения документа
 		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormOpenDocRegisterRecordsFlatTab'
+		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
-		// ДОДЕЛАТЬ, Временная заглушка для CPMWE, пока не решены проблемы перевода макетов
-		Если 'NOT $$ЭтоPerform$$' Тогда
-			Дано Табличный документ 'ReportSpreadsheetDocument' равен макету '\\Макеты\ВА_ВидОтчетаСАналитиками_Венера_Движения.mxl' по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету '\\Макеты\ВА_ВидОтчетаСАналитиками_Венера_Движения.mxl' по шаблону
 		И Я закрываю окно "Flat table of indicator values"
 
 	* Свернем все версии
@@ -1247,7 +1243,7 @@
 		И в таблице 'Filter' я перехожу к строке:
 			| "Comparison type" | "Use" | "Left value"        | "Display mode" |
 			| "Equal to"         | "No"           | "Company" | "Quick access"    |
-		И в таблице 'Filter' из выпадающего списка с именем 'FilterRightValue' я выбираю по строке 'Venus LLC'
+		И в таблице 'Filter' из выпадающего списка с именем 'FilterRightValue' я выбираю по строке "Venus LLC"
 		
 		И в таблице 'Filter' я перехожу к строке:
 			| "Comparison type" | "Use" | "Left value"          | "Display mode" |
@@ -1257,7 +1253,7 @@
 		И я нажимаю на кнопку с именем 'FormFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И в поле с именем 'Pattern' я ввожу текст 'January 2021'
+		И из выпадающего списка с именем 'Pattern' я выбираю по строке "January 2021"				
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Periods"
 		И в таблице 'List' я выбираю текущую строку
@@ -1266,17 +1262,17 @@
 	И в таблице 'Filter' я перехожу к строке:
 		| "Comparison type" | "Use" | "Left value"     | "Display mode" |
 		| "Equal to"         | "No"           | "Scenario" | "Quick access"    |
-	И в таблице 'Filter' из выпадающего списка с именем 'FilterRightValue' я выбираю по строке 'VA - Main scenario'
+	И в таблице 'Filter' из выпадающего списка с именем 'FilterRightValue' я выбираю по строке "VA - Main scenario"
 	
 	И в таблице 'Filter' я перехожу к строке:
 		| "Comparison type" | "Use" | "Left value"       | "Display mode" |
 		| "Equal to"         | "No"           | "Report kind" | "Quick access"    |
-	И в таблице 'Filter' из выпадающего списка с именем 'FilterRightValue' я выбираю по строке 'VA - Manual entry for all analytics'
+	И в таблице 'Filter' из выпадающего списка с именем 'FilterRightValue' я выбираю по строке "VA - Manual entry for all analytics"
 	
 	И в таблице 'Filter' я перехожу к строке:
 		| "Comparison type" | "Use" | "Left value"   | "Display mode" |
 		| "Equal to"         | "No"           | "Project" | "Quick access"    |
-	И в таблице 'Filter' из выпадающего списка с именем 'FilterRightValue' я выбираю по строке 'VA - Main project'
+	И в таблице 'Filter' из выпадающего списка с именем 'FilterRightValue' я выбираю по строке "VA - Main project"
 
 	* Сохраним настройку
 		Когда открылось окно "Report instances"
@@ -1286,18 +1282,18 @@
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Description"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И в поле с именем 'Pattern' я ввожу текст 'VA - Manual entry for all analytics - Venus LLC'
+		И в поле с именем 'Pattern' я ввожу текст "VA - Manual entry for all analytics - Venus LLC"
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Saved settings"
 		И Пока в таблице 'List' количество строк 'больше' 0 Тогда
 			И я выбираю пункт контекстного меню с именем 'ListContextMenuChange' на элементе формы с именем 'List'
-			Тогда открылось окно 'VA - Manual entry for all analytics - Venus LLC '"(Setup option)"
+			Тогда открылось окно "VA - Manual entry for all analytics - Venus LLC (Setup option)"
 			И в поле с именем 'Description' я ввожу значение переменной 'UID'
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна 'VA - Manual entry for all analytics - Venus LLC *' в течение 20 секунд
+			И я жду закрытия окна "VA - Manual entry for all analytics - Venus LLC *" в течение 20 секунд
 			
 	Тогда открылось окно "Saved settings"
-	И в поле с именем 'Description' я ввожу текст 'VA - Manual entry for all analytics - Venus LLC'
+	И в поле с именем 'Description' я ввожу текст "VA - Manual entry for all analytics - Venus LLC"
 	И я нажимаю на кнопку с именем 'FormSaveVariant'
 
 Сценарий: 01.12 Отображение в дополнительной валюте
@@ -1305,11 +1301,11 @@
 	* Открываем экземпляр отчета по сохраненной настройке
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report instances"
 		Тогда открылось окно "Report instances"
-		И из выпадающего списка с именем 'SavedSetting' я выбираю по строке 'VA - Manual entry for all analytics - Venus LLC'
+		И из выпадающего списка с именем 'SavedSetting' я выбираю по строке "VA - Manual entry for all analytics - Venus LLC"
 		И в таблице 'List' я выбираю текущую строку	
 
 	* Меняем параметры отображения в экземпляре отчета
-		И Открылся экземпляр отчета для вида отчета 'VA - Manual entry for all analytics' валюта 'RUB' организация 'Venus LLC' сценарий 'VA - Main scenario' периодичность "Month" проект 'VA - Main project' аналитики '' '' '' '' '' ''
+		И Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'RUB' организация "Venus LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
 		Тогда открылось окно "Edit report settings"
 		И я перехожу к закладке с именем 'GroupPageReportSettings'
@@ -1319,7 +1315,7 @@
 		И я нажимаю на кнопку с именем 'FormApplyANDClose'
 
 	* Запомним заголовок окна
-		И Открылся экземпляр отчета для вида отчета 'VA - Manual entry for all analytics' валюта 'USD' организация 'Venus LLC' сценарий 'VA - Main scenario' периодичность "Month" проект 'VA - Main project' аналитики '' '' '' '' '' ''
+		И Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'USD' организация "Venus LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
 		И я запоминаю текущее окно как 'WindowTitle'		
 
 	* Добавляем комментарий в отчет с дополнительной валютой
@@ -1328,13 +1324,13 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C2'
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст 'Comment Group'
+		И в поле с именем 'NewComment' я ввожу текст "Comment Group"
 		И я нажимаю на кнопку с именем 'WriteComment'
 		Когда открылось окно '$WindowTitle$'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R47C2'
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст 'Comment Dimension6Currency'
+		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 6 Currency"
 		И я нажимаю на кнопку с именем 'WriteComment'					
 
 	* Сравниваем с эталоном
@@ -1349,11 +1345,11 @@
 	* Открываем экземпляр отчета по сохраненной настройке
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report instances"
 		Тогда открылось окно "Report instances"
-		И из выпадающего списка с именем 'SavedSetting' я выбираю по строке 'VA - Manual entry for all analytics - Venus LLC'
+		И из выпадающего списка с именем 'SavedSetting' я выбираю по строке "VA - Manual entry for all analytics - Venus LLC"
 		И в таблице 'List' я выбираю текущую строку
 
 	* Запомним заголовок окна
-		И Открылся экземпляр отчета для вида отчета 'VA - Manual entry for all analytics' валюта 'RUB' организация 'Venus LLC' сценарий 'VA - Main scenario' периодичность "Month" проект 'VA - Main project' аналитики '' '' '' '' '' ''
+		И Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'RUB' организация "Venus LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
 		И я запоминаю текущее окно как 'WindowTitle'		
 
 	* Очищаем показатели
@@ -1374,11 +1370,11 @@
 	* Открываем экземпляр отчета по сохраненной настройке
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report instances"
 		Тогда открылось окно "Report instances"
-		И из выпадающего списка с именем 'SavedSetting' я выбираю по строке 'VA - Manual entry for all analytics - Venus LLC'
+		И из выпадающего списка с именем 'SavedSetting' я выбираю по строке "VA - Manual entry for all analytics - Venus LLC"
 		И в таблице 'List' я выбираю текущую строку
 
 	* Запомним заголовок окна
-		И Открылся экземпляр отчета для вида отчета 'VA - Manual entry for all analytics' валюта 'RUB' организация 'Venus LLC' сценарий 'VA - Main scenario' периодичность "Month" проект 'VA - Main project' аналитики '' '' '' '' '' ''
+		И Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'RUB' организация "Venus LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
 		И я запоминаю текущее окно как 'WindowTitle'		
 
 	* Проверим количество версий
@@ -1399,10 +1395,10 @@
 	* Откроем версию
 		Когда открылось окно "Indicator version management"
 		И я нажимаю на кнопку с именем 'ListOpenVersion'
-		Тогда открылось окно 'VA - Manual entry for all analytics '"(Version view mode)"
+		Тогда открылось окно "VA - Manual entry for all analytics (Version view mode)"
 		И я нажимаю на кнопку с именем 'FormFormulate'
 		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ВидОтчетаСАналитиками_Пустой.mxl'	
-		И Я закрываю окно 'VA - Manual entry for all analytics *'
+		И Я закрываю окно "VA - Manual entry for all analytics *"
 
 	* Закроем окно версий
 		Когда открылось окно "Indicator version management"
@@ -1413,11 +1409,11 @@
 	* Открываем экземпляр отчета по сохраненной настройке
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report instances"
 		Тогда открылось окно "Report instances"
-		И из выпадающего списка с именем 'SavedSetting' я выбираю по строке 'VA - Manual entry for all analytics - Venus LLC'
+		И из выпадающего списка с именем 'SavedSetting' я выбираю по строке "VA - Manual entry for all analytics - Venus LLC"
 		И в таблице 'List' я выбираю текущую строку
 
 	* Запомним заголовок окна
-		И Открылся экземпляр отчета для вида отчета 'VA - Manual entry for all analytics' валюта 'RUB' организация 'Venus LLC' сценарий 'VA - Main scenario' периодичность "Month" проект 'VA - Main project' аналитики '' '' '' '' '' ''
+		И Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'RUB' организация "Venus LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
 		И я запоминаю текущее окно как 'WindowTitle'	
 
 	* Удалим версию
@@ -1440,9 +1436,9 @@
 		Тогда открылось окно '$WindowTitle$'
 		// ДОДЕЛАТЬ, Временная заглушка для CPMWE, пока не приехали форматы
 		Если '$$ЭтоPerform$$' Тогда
-			И я нажимаю на кнопку с именем 'FormCompareWithRefTemplateByValue'					
+			И я нажимаю на кнопку с именем 'FormCompareWithRefTemplateByЗначениям'					
 		Иначе
-			И я нажимаю на кнопку с именем 'FormCompareWithRefTemplateByTemplate'
+			И я нажимаю на кнопку с именем 'FormCompareWithRefTemplateByШаблону'
 		Тогда открылось окно "Documents are identical: Compare spreadsheet documents"
 		И я нажимаю на кнопку с именем 'FormClose'	
 
@@ -1451,11 +1447,11 @@
 	* Открываем экземпляр отчета по сохраненной настройке
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report instances"
 		Тогда открылось окно "Report instances"
-		И из выпадающего списка с именем 'SavedSetting' я выбираю по строке 'VA - Manual entry for all analytics - Venus LLC'
+		И из выпадающего списка с именем 'SavedSetting' я выбираю по строке "VA - Manual entry for all analytics - Venus LLC"
 		И в таблице 'List' я выбираю текущую строку
 
 	* Запомним заголовок окна
-		И Открылся экземпляр отчета для вида отчета 'VA - Manual entry for all analytics' валюта 'RUB' организация 'Venus LLC' сценарий 'VA - Main scenario' периодичность "Month" проект 'VA - Main project' аналитики '' '' '' '' '' ''
+		И Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'RUB' организация "Venus LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
 		И я запоминаю текущее окно как 'WindowTitle'	
 
 	* Изменим показатели текущего отчета (процент)
@@ -1486,9 +1482,9 @@
 		Когда открылось окно "Indicator version management"
 		И в таблице 'List' я выделяю все строки
 		И я нажимаю на кнопку с именем 'ListCompareVersions'
-		Когда открылось окно 'VA - Manual entry for all analytics '"(Two versions comparison mode)"
+		Когда открылось окно "VA - Manual entry for all analytics (Two versions comparison mode)"
 		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ВидОтчетаСАналитиками_СравнениеВерсий_Различные.mxl'
-		И Я закрываю окно 'VA - Manual entry for all analytics *'
+		И Я закрываю окно "VA - Manual entry for all analytics *"
 
 	* Закроем окно версий
 		Когда открылось окно "Indicator version management"
@@ -1499,11 +1495,11 @@
 	* Открываем экземпляр отчета по сохраненной настройке
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report instances"
 		Тогда открылось окно "Report instances"
-		И из выпадающего списка с именем 'SavedSetting' я выбираю по строке 'VA - Manual entry for all analytics - Venus LLC'
+		И из выпадающего списка с именем 'SavedSetting' я выбираю по строке "VA - Manual entry for all analytics - Venus LLC"
 		И в таблице 'List' я выбираю текущую строку
 
 	* Запомним заголовок окна
-		И Открылся экземпляр отчета для вида отчета 'VA - Manual entry for all analytics' валюта 'RUB' организация 'Venus LLC' сценарий 'VA - Main scenario' периодичность "Month" проект 'VA - Main project' аналитики '' '' '' '' '' ''
+		И Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'RUB' организация "Venus LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
 		И я запоминаю текущее окно как 'WindowTitle'		
 
 	* Свернем до версии
@@ -1529,11 +1525,11 @@
 	* Открываем экземпляр отчета по сохраненной настройке
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report instances"
 		Тогда открылось окно "Report instances"
-		И из выпадающего списка с именем 'SavedSetting' я выбираю по строке 'VA - Manual entry for all analytics - Venus LLC'
+		И из выпадающего списка с именем 'SavedSetting' я выбираю по строке "VA - Manual entry for all analytics - Venus LLC"
 		И в таблице 'List' я выбираю текущую строку
 
 	* Запомним заголовок окна
-		И Открылся экземпляр отчета для вида отчета 'VA - Manual entry for all analytics' валюта 'RUB' организация 'Venus LLC' сценарий 'VA - Main scenario' периодичность "Month" проект 'VA - Main project' аналитики '' '' '' '' '' ''
+		И Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'RUB' организация "Venus LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
 		И я запоминаю текущее окно как 'WindowTitle'		
 
 	* Меняем параметры отображения в экземпляре отчета
@@ -1578,12 +1574,12 @@
 			
 Сценарий: 01.19 Созадем бланк сводной таблицы
 
-	И Я для вида отчета 'VA - Manual entry for all analytics' я создаю бланк сводной таблицы по умолчанию с отборами "Project"
+	И Я для вида отчета "VA - Manual entry for all analytics" я создаю бланк сводной таблицы по умолчанию с отборами "Project"
 
 	* Доработаем бланк
-		Когда открылось окно 'VA - Manual entry for all analytics (Report kinds)'
+		Когда открылось окно "VA - Manual entry for all analytics (Report kinds)"
 		И я нажимаю на кнопку открытия поля с именем 'DefaultPivotTableTemplate'
-		Тогда Открылся бланк сводной таблицы для вида отчета 'VA - Manual entry for all analytics'
+		Тогда Открылся бланк сводной таблицы для вида отчета "VA - Manual entry for all analytics"
 		И я запоминаю текущее окно как 'WindowTitle'
 		И я нажимаю на кнопку с именем 'ShowPeriodsSettings'
 		И я изменяю флаг с именем 'ShouldShowTotalQuarter'
@@ -1595,7 +1591,7 @@
 		Тогда открылось окно "Set up field location"
 		И в таблице 'TableRows1' я перехожу к строке:
 			| "Horizontally (in rows)" |
-			| 'Product categories'         |
+			| "Product categories"         |
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
@@ -1604,7 +1600,7 @@
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
 		И в таблице 'TableRows1' я перехожу к строке:
 			| "Horizontally (in rows)" |
-			| 'Products'               |
+			| "Product range"               |
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
@@ -1614,7 +1610,7 @@
 		И я нажимаю на кнопку с именем 'RowsMoveDown'
 		И в таблице 'TableRows1' я перехожу к строке:
 			| "Horizontally (in rows)" |
-			| 'Counterparties'                |
+			| "Counterparties"                |
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
@@ -1625,7 +1621,7 @@
 		И я нажимаю на кнопку с именем 'RowsMoveDown'
 		И в таблице 'TableRows1' я перехожу к строке:
 			| "Horizontally (in rows)" |
-			| 'Contracts'      |
+			| "Counterparty contracts"      |
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
@@ -1637,7 +1633,7 @@
 		И я нажимаю на кнопку с именем 'RowsMoveDown'
 		И в таблице 'TableRows1' я перехожу к строке:
 			| "Horizontally (in rows)" |
-			| 'Cash flow items'                 |
+			| "Cash flow items"                 |
 		И я нажимаю на кнопку с именем 'RowsMoveDown'
 		И я нажимаю на кнопку с именем 'RowsMoveDown'
 		И я нажимаю на кнопку с именем 'RowsMoveDown'
@@ -1648,7 +1644,7 @@
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
 		И в таблице 'TableRows1' я перехожу к строке:
 			| "Horizontally (in rows)" |
-			| 'Income and expense items'  |
+			| "Income and expense items"  |
 		И я нажимаю на кнопку с именем 'RowsMoveDown'
 		И я нажимаю на кнопку с именем 'RowsMoveDown'
 		И я нажимаю на кнопку с именем 'RowsMoveDown'
@@ -1665,12 +1661,12 @@
 
 Сценарий: 01.20 Переходим в режим отображения данных
 
-	И Я октрываю сводную таблицу отчета с именем 'VA - Manual entry for all analytics'
-	И Я устанавливаю отборы сводной таблицы: дата начала '1/1/2021', дата конца '3/31/2021', валюта 'RUB', сценарий 'VA - основной сценарий', организация 'Venus LLC'
-	И Я устанавливаю отбор сводной таблицы 'Item_Project' со значением 'VA - основной проект'
+	И Я октрываю сводную таблицу отчета с именем "VA - Manual entry for all analytics"
+	И Я устанавливаю отборы сводной таблицы: дата начала '1/1/2021', дата конца '3/31/2021', валюта 'RUB', сценарий "VA - Main scenario", организация "Venus LLC"
+	И Я устанавливаю отбор сводной таблицы 'Item_Project' со значением "VA - Main project"
 	
 	* Запомним заголовок окна
-		И Открылась сводная таблица для вида отчета 'VA - Manual entry for all analytics'
+		И Открылась сводная таблица для вида отчета "VA - Manual entry for all analytics"
 		И я запоминаю текущее окно как 'WindowTitle'
 
 	* Проверяем содержимое
@@ -1680,15 +1676,9 @@
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'ShowListOfColumns'
 		Тогда открылось окно "Set up column list"
-		Если '$$ЭтоPerform$$' Тогда
-			// ДОДЕЛАТЬ: В Перформе еще нет новой таблицы колонок
-			И в таблице 'PivotTableColumnsListSettings' я перехожу к строке:
-			| "Title in table" | "Column" | "Company"        | "Display in additional currency" | "Period"             | "Shows usage" | "Project"             | "Scenario"           | "Column type"      |
-			| 'Price'                | 'Price'    | "Context value" | "No"                     | "Context value" | "Yes"                    | "Context value" | "Context value" | "Basic value" |
-		Иначе
-			И в таблице "SettingsСоставаColumnsСводнойTables" я перехожу к строке:
-				| "Title in table" | "Report column/Formula" | "Company"        | "Display in additional currency" | "Period"             | "Shows usage" | "Project"             | "Scenario"           | "Column type"      |
-				| 'Price'                | 'Price'                   | "Context value" | "No"                     | "Context value" | "Yes"                    | "Context value" | "Context value" | "Basic value" |
+		И в таблице 'PivotTableColumnsListSettings' я перехожу к строке:
+			| "Title in table" | "Report column/Formula" | "Company"        | "Display in additional currency" | "Period"             | "Shows usage" | "Project"             | "Scenario"           | "Column type"      |
+			| "Price"                | "Price"                   | "Context value" | "No"                     | "Context value" | "Yes"                    | "Context value" | "Context value" | "Basic value" |
 		И в таблице 'PivotTableColumnsListSettings' я изменяю флаг с именем 'PivotTableColumnsListSettingsUsageFlag'
 		И в таблице 'PivotTableColumnsListSettings' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'FormApply'
@@ -1697,7 +1687,7 @@
 		Тогда открылось окно "Set up field location"
 		И в таблице 'TableRows1' я перехожу к строке:
 			| "Horizontally (in rows)" |
-			| 'Additional currencies'      |
+			| "Additional currencies"      |
 		И я нажимаю на кнопку с именем 'RowsMoveDown'
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
@@ -1707,12 +1697,12 @@
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
 		И в таблице 'TableRows1' я перехожу к строке:
 			| "Horizontally (in rows)" |
-			| 'Income and expense items'  |
+			| "Income and expense items"  |
 		И я выбираю пункт контекстного меню с именем 'TableRows1ContextMenuMoveToAvailableFields' на элементе формы с именем 'TableRows1'
 		И я выбираю пункт контекстного меню с именем 'TableRows1ContextMenuMoveToAvailableFields' на элементе формы с именем 'TableRows1'
 		И в таблице 'TableRows1' я перехожу к строке:
 			| "Horizontally (in rows)" |
-			| 'Products'               |
+			| "Product range"               |
 		И я нажимаю на кнопку с именем 'RowsMoveUp'
 		И я нажимаю на кнопку с именем 'ButtonApply'
 		Тогда открылось окно '$WindowTitle$'
@@ -1721,10 +1711,10 @@
 		И я нажимаю на кнопку с именем 'ShowAdditionalFilters'
 		И в таблице 'FiltersSettings' я перехожу к строке:
 			| "Comparison type" | "Value"| "Use" 	| "Field"        |
-			| "Equal to"         | ''        | "No"           | 'Counterparties' |		
+			| "Equal to"         | ''        | "No"           | "Counterparties" |		
 		И в таблице 'FiltersSettings' я устанавливаю флаг с именем 'FiltersSettingsUse'
 		И в таблице 'FiltersSettings' я активизирую поле с именем 'FiltersSettingsFilterValue'
-		И в таблице 'FiltersSettings' из выпадающего списка с именем 'FiltersSettingsFilterValue' я выбираю по строке 'LLC \"Ganymede\"'
+		И в таблице 'FiltersSettings' из выпадающего списка с именем 'FiltersSettingsFilterValue' я выбираю по строке "LLC \"Ganymede\""
 		И в таблице 'FiltersSettings' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'UpdateTabData'
 		И я жду открытия формы '$WindowTitle$' в течение 20 секунд
@@ -1740,8 +1730,8 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Когда открылось окно "Drill down indicators*"
 			Тогда таблица 'IndicatorsDrilldown' стала равной:
-				| 'Cash flow items'                       | 'Income and expense items'        | 'Value' |
-				| 'Software sale' | 'Software sale' | '800,000'  |
+				| "Cash flow items"                       | "Income and expense items"        | 'Value' |
+				| "3Software sale" | "3Software sale" | '800,000'  |
 			И я нажимаю на кнопку с именем 'FormCancel'
 		* Второй показатель	
 			Тогда открылось окно '$WindowTitle$'
@@ -1751,8 +1741,8 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Когда открылось окно "Drill down indicators*"
 			Тогда таблица 'IndicatorsDrilldown' стала равной:
-				| 'Cash flow items'                       | 'Value'  |
-				| 'Software sale' | '1,600,000' |
+				| "Cash flow items"                       | 'Value'  |
+				| "3Software sale" | '1,600,000' |
 			И я нажимаю на кнопку с именем 'FormCancel'
 		* Отменяем измененное значение
 			Когда открылось окно '$WindowTitle$'
@@ -1761,8 +1751,8 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Drill down indicators*"
 			Тогда таблица 'IndicatorsDrilldown' стала равной:
-				| 'Cash flow items'                       | 'Value' |
-				| 'Software sale' | '960,000'  |
+				| "Cash flow items"                       | 'Value' |
+				| "3Software sale" | '960,000'  |
 			И я нажимаю на кнопку с именем 'FormCancel'
 		* Показатель с валютной аналитикой
 			Когда открылось окно '$WindowTitle$'
@@ -1779,10 +1769,10 @@
 
 Сценарий: 01.21 Тестируем кнопки пересчета показателей
 
-	И Я октрываю сводную таблицу отчета с именем 'VA - Manual entry for all analytics'
+	И Я октрываю сводную таблицу отчета с именем "VA - Manual entry for all analytics"
 
 	* Запомним заголовок окна
-		И Открылась сводная таблица для вида отчета 'VA - Manual entry for all analytics'
+		И Открылась сводная таблица для вида отчета "VA - Manual entry for all analytics"
 		И я запоминаю текущее окно как 'WindowTitle'
 
 	* Проверим содержание таблицы
@@ -1838,21 +1828,21 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R19C2:R25C4'
 		И я нажимаю на кнопку с именем 'InsertNote'
 		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст 'Comment 1'
+		И в поле с именем 'NewComment' я ввожу текст "Comment 1"
 		И я нажимаю на кнопку с именем 'WriteComment'
 		Когда открылось окно '$WindowTitle$ *'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R19C2'
 		И я нажимаю на кнопку с именем 'InsertNote'
 		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст 'Comment 2'
+		И в поле с именем 'NewComment' я ввожу текст "Comment 2"
 		И я нажимаю на кнопку с именем 'WriteComment'
 		Тогда открылось окно '$WindowTitle$ *'
 		И я нажимаю на кнопку с именем 'InsertNote'
 		Тогда элемент формы с именем 'CommentsHistory' стал равен по шаблону
 			|'* (*): '|
-			|'Comment 1'|
+			|"Comment 1"|
 			|'* (*): '|
-			|'Comment 2'|
+			|"Comment 2"|
 		И Я закрываю окно "Comments"
 
 	* Тестируем кнопки изменения показателей
@@ -1886,7 +1876,7 @@
 		И в поле с именем 'Accuracy' я ввожу текст '5'
 		И из выпадающего списка с именем 'Divisor' я выбираю точное значение "thousand"
 		
-	* Меняем валюту отображения. 
+	* Меняем валюту отображения 
 		И Я устанавливаю отбор сводной таблицы 'DisplayCurrency' со значением 'USD'
 	
 	* Настраиваем аналитики
@@ -1911,26 +1901,26 @@
 	* Сохраним вариант
 		И я нажимаю на кнопку с именем 'SaveCurrentTabVariantAs'
 		Тогда открылось окно "Save the pivot table option"
-		И в поле с именем 'DescricptionSettings' я ввожу текст 'VA - Main variant'
+		И в поле с именем 'DescricptionSettings' я ввожу текст "VA - Main variant"
 		И я нажимаю на кнопку с именем 'Apply'
 		Если открылось окно "1C:Enterprise" Тогда
 			И я нажимаю на кнопку с именем 'Button0'
-		Тогда Открылась сводная таблица для варианта 'VA - Main variant'
+		Тогда Открылась сводная таблица для варианта "VA - Main variant"
 		И Я закрываю окно "Pivot table: *"
 							
 	* Загрузим вариант
-		И Я октрываю сводную таблицу отчета с именем 'VA - Manual entry for all analytics'
+		И Я октрываю сводную таблицу отчета с именем "VA - Manual entry for all analytics"
 		И я нажимаю на гиперссылку с именем 'FilterHeading'
 		И Пауза 1
 		И я нажимаю кнопку выбора у поля с именем 'PivotTableVariant'
 		Тогда открылось окно "Pivol table options"
 		И я нажимаю на кнопку с именем 'FormFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
-		И в поле с именем 'Pattern' я ввожу текст 'VA - Main variant'
+		И в поле с именем 'Pattern' я ввожу текст "VA - Main variant"
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Pivol table options"
 		И в таблице 'List' я выбираю текущую строку
-		Тогда Открылась сводная таблица для варианта 'VA - Main variant'
+		Тогда Открылась сводная таблица для варианта "VA - Main variant"
 		И я запоминаю текущее окно как 'WindowTitleВарианта'
 		И Пауза 1
 		И в поле с именем 'Accuracy' я ввожу текст '5'
@@ -1941,7 +1931,7 @@
 		И Я закрываю окно '$WindowTitleВарианта$'
 
 	* Откатываем версию
-		И Я октрываю сводную таблицу отчета с именем 'VA - Manual entry for all analytics'
+		И Я октрываю сводную таблицу отчета с именем "VA - Manual entry for all analytics"
 		И я нажимаю на кнопку с именем 'VersionsManagement'
 		Тогда открылось окно "Indicator version management"
 		И я нажимаю на кнопку с именем 'ListDeleteVersions'

@@ -28,7 +28,7 @@
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
 				И я жду закрытия окна "Classifier of Measurement Units (create) *" в течение 20 секунд							
 			Иначе
-				И я нажимаю на кнопку с именем 'FormPickFromМакета'
+				И я нажимаю на кнопку с именем 'FormPickFromTemplate'
 				Тогда открылось окно "All-Russian Classifier of Measurement Units"
 				И в поле с именем 'SearchString' я ввожу текст '[TheCode]'
 				И я нажимаю на кнопку с именем 'ShouldSearchGoForward'
@@ -169,7 +169,7 @@
 		Если в таблице 'List' количество строк 'больше' 0 Тогда
 			И в таблице 'List' я выбираю текущую строку
 			Тогда открылось окно "* (Business unit)"
-			И В текущем окне я нажимаю кнопку командного интерфейса "Business units"
+			И В текущем окне я нажимаю кнопку командного интерфейса "Departments"
 			Когда открылось окно "* (Business unit)"
 			И я нажимаю на кнопку с именем 'FormFind'
 			Тогда открылась форма с именем 'UniversalListFindExtForm'
@@ -185,18 +185,18 @@
 				* Перименовываем подразделение
 					И Я запоминаю значение выражения 'StrReplace(New UUID, "-", "")' в переменную 'UID'
 					И в таблице 'List' я выбираю текущую строку					
-					Тогда открылось окно "* (Business unit)"
+					Тогда открылось окно "* (Department)"
 					И в поле с именем 'Description' я ввожу значение переменной 'UID'
 					И я нажимаю на кнопку с именем 'FormWriteAndClose'
-					И я жду закрытия окна "* (Business unit) *" в течение 20 секунд
+					И я жду закрытия окна "* (Department) *" в течение 20 секунд
 	
 	* Создаем элемент
 		Когда открылось окно "* (Business unit)"
 		И я нажимаю на кнопку с именем 'FormCreate'
-		Тогда открылось окно "Business unit (create)"
+		Тогда открылось окно "Department (create)"
 		И в поле с именем 'Description' я ввожу текст '[TheSubdivisionName]'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна "Business unit (create) *" в течение 20 секунд
+		И я жду закрытия окна "Department (create) *" в течение 20 секунд
 
 	* Закрываем организацию
 		Когда открылось окно "* (Business unit)"
@@ -523,35 +523,35 @@
 		Когда открылось окно "* (Dimension kinds (corporate))"
 
 		Если в таблице 'TableBoxAttributes' есть строка Тогда
-			| "Attribute name" | "Key" | "Template" |
-			| "Description"  | "No"  | "No"   |
+			| "Attribute"     | "Key" | "Template" |
+			| "Description" | "No"  | "No"   |
 			И в таблице 'TableBoxAttributes' я перехожу к строке по шаблону:
-				| "Attribute name"     | "Key" | "Template" |
+				| "Attribute"     | "Key" | "Template" |
 				| "Description" | "No"  | "No"   |
 			И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableTemplate'
 			И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableKey'
 			И в таблице 'TableBoxAttributes' я завершаю редактирование строки
 		ИначеЕсли в таблице 'TableBoxAttributes' есть строка Тогда
-			| "Attribute name"            | "Key" | "Template" |
+			| "Attribute"                 | "Key" | "Template" |
 			| "Name in the application" | "No"  | "No"   |
 			И в таблице 'TableBoxAttributes' я перехожу к строке по шаблону:
-				| "Attribute name"                 | "Key" | "Template" |
+				| "Attribute"                 | "Key" | "Template" |
 				| "Name in the application" | "No"  | "No"   |
 			И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableTemplate'
 			И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableKey'
 			И в таблице 'TableBoxAttributes' я завершаю редактирование строки	
 		ИначеЕсли в таблице 'TableBoxAttributes' есть строка Тогда
-			| "Attribute name" | "Key" | "Template" |
-			| "Code"           | "No"  | "No"   |
+			| "Attribute" | "Key" | "Template" |
+			| "Code"      | "No"  | "No"   |
 			И в таблице 'TableBoxAttributes' я перехожу к строке:
-				| "Attribute name" | "Key" | "Template" |
+				| "Attribute" | "Key" | "Template" |
 				| "Code"      | "No"  | "No"   |
 			И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableTemplate'
 			И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableKey'
 			И в таблице 'TableBoxAttributes' я завершаю редактирование строки
 		
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна "Dimension kinds (корпоративные) (create) *" в течение 20 секунд
+		И я жду закрытия окна "Dimension kinds (corporate) (create) *" в течение 20 секунд
 
 	* Закрываем список	
 		И Я закрываю окно "Dimension kinds (corporate)"		
@@ -601,7 +601,7 @@
 Сценарий: Я создаю группу номенклатуры с именем 'TheProductGroupName'
 
 	* Открываем список
-		Если в панели разделов есть команда 'Catalogs' Тогда
+		Если в панели разделов есть команда 'Справочники' Тогда
 			И В командном интерфейсе я выбираю "Catalogs" "Product range"
 		Иначе
 			И В командном интерфейсе я выбираю "Quick menu" "Product range"
@@ -719,7 +719,7 @@
 		И в таблице 'MilestonesОплаты' я нажимаю на кнопку с именем 'MilestonesОплатыAdd'
 		И в таблице 'MilestonesОплаты' из выпадающего списка с именем 'MilestonesОплатыVariantОплаты' я выбираю точное значение "Постоплата (после базовой даты)"
 		И в таблице 'MilestonesОплаты' из выпадающего списка с именем 'MilestonesОплатыDueDate' я выбираю точное значение "60"
-		И в таблице 'MilestonesОплаты' в поле с именем 'MilestonesОплатыPayPercentage' я ввожу текст '100'
+		И в таблице 'MilestonesОплаты' в поле с именем 'MilestonesОплатыPercentОплаты' я ввожу текст '100'
 		И в таблице 'MilestonesОплаты' я завершаю редактирование строки
 		И я изменяю флаг с именем 'Автонаименование'
 		И в поле с именем 'Description' я ввожу текст '[TheTermsOfPaymentName]'
@@ -733,7 +733,7 @@
 Сценарий: Я создаю группу контрагентов с именем 'TheCounterpartyGroupName'
 
 	* Открываем форму списка
-		Если в панели разделов есть команда 'Catalogs' Тогда
+		Если в панели разделов есть команда 'Справочники' Тогда
 			И В командном интерфейсе я выбираю "Catalogs" "Counterparties"
 		Иначе
 			И В командном интерфейсе я выбираю "Quick menu" "Counterparties"
@@ -774,7 +774,7 @@
 Сценарий: Я создаю контрагента с именем 'TheCounterpartyName' родителем 'TheCounterpartyParent' страной регистрации 'TheRegistrationCountry'
 
 	* Открываем форму списка
-		Если в панели разделов есть команда 'Catalogs' Тогда
+		Если в панели разделов есть команда 'Справочники' Тогда
 			И В командном интерфейсе я выбираю "Catalogs" "Counterparties"
 		Иначе
 			И В командном интерфейсе я выбираю "Quick menu" "Counterparties"
@@ -862,7 +862,7 @@
 		И я нажимаю на кнопку с именем 'FormFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Description"
-		И в поле с именем 'Pattern' я ввожу текст '[TheNumber] dated [TheDate]'
+		И в поле с именем 'Pattern' я ввожу текст "[TheNumber] from [TheDate]"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 		И я нажимаю на кнопку с именем 'Find'
 		И Пока в таблице 'List' количество строк 'больше' 0 Тогда	
@@ -884,7 +884,7 @@
 		Когда открылось окно "* (Counterparty)"
 		И я нажимаю на кнопку с именем 'FormCreate'
 		Если '$$ЭтоPerform$$' Тогда
-			Когда открылось окно "Contract (create)*"
+			Когда открылось окно "Contract (Create)*"
 			И из выпадающего списка с именем 'ContractKind' я выбираю точное значение "TheContractKind"
 		Иначе	
 			Тогда открылось окно "Выберите вид договора"
@@ -892,11 +892,11 @@
 				| "Contract kind"     |
 				| '[TheContractKind]' |
 			И в таблице 'KindsДоговоров' я выбираю текущую строку
-		Тогда открылось окно "* (create)*"
+		Тогда открылось окно "* (Create)*"
 		И в поле с именем 'Number' я ввожу текст '[TheNumber]'
 		И в поле с именем 'Date' я ввожу текст '[TheDate]'
-		И в поле с именем 'Description' я ввожу текст '[TheNumber] dated [TheDate]'
-		И из выпадающего списка с именем 'Company' я выбираю по строке '[TheBusinessUnit]'
+		И в поле с именем 'Description' я ввожу текст "[TheNumber] from [TheDate]"
+		И из выпадающего списка с именем 'Organization' я выбираю по строке '[TheBusinessUnit]'
 		И из выпадающего списка с именем 'MutualSettlementsCurrency' я выбираю точное значение '[TheCurrency]'
 		Если '$$ЭтоPerform$$' Тогда
 			И в поле с именем 'Sum' я ввожу текст '[TheSum]'
@@ -908,7 +908,7 @@
 			И я перехожу к закладке с именем 'GroupCalculations'
 			И из выпадающего списка с именем 'ConditionОплаты' я выбираю по строке '[TheTermsOfPayment]'			
 			И я нажимаю на кнопку с именем 'FormPostAndClose'	
-		И я жду закрытия окна "* (create) *" в течение 20 секунд
+		И я жду закрытия окна "* (Create) *" в течение 20 секунд
 
 	* Закрываем формы
 		Когда открылось окно "* (Counterparty)"
@@ -944,13 +944,13 @@
 			Когда открылось окно "* (Business unit*)"
 			Если '$$IsCPM$$' Тогда
 				* Удаляем все подразделения
-					И В текущем окне я нажимаю кнопку командного интерфейса "Business units"
+					И В текущем окне я нажимаю кнопку командного интерфейса "Departments"
 					И я нажимаю на кнопку с именем 'FormListSettings'
 					И Я устанавливаю отбор в форме списка "Description" "Does not begin with" 'Delete_'
 					И Пока в таблице 'List' количество строк 'больше' 0 Тогда
 						И Я запоминаю значение выражения '"Delete_" + StrReplace(New UUID, "-", "")' в переменную 'UID'
 						И в таблице 'List' я выбираю текущую строку
-						Тогда открылось окно "* (Business unit)"
+						Тогда открылось окно "* (Department)"
 						И в поле с именем 'Description' я ввожу значение переменной 'UID'
 						И я нажимаю на кнопку с именем 'FormWriteAndClose'
 					Когда открылось окно "* (Business unit*)"						
@@ -968,23 +968,23 @@
 		Если '$$ЭтоPerform$$' Тогда
 			И я нажимаю на кнопку с именем 'FormCreate'
 			Тогда открылось окно "Business unit (create)"
-			Если '"[TheBusinessUnitType]"="SelectRF"' Тогда
+			Если '"[TheBusinessUnitType]"="SelectРФ"' Тогда
 				И из выпадающего списка с именем 'CompanyTypeCPM' я выбираю точное значение "Tax resident of the Russian Federation (Legal entity)"
 				Если '"[TheBusinessUnitKind]"="SelectЮL"' Тогда
 					И из выпадающего списка с именем 'CompanyIndividual' я выбираю точное значение "Legal entity"
 				Иначе
 					И из выпадающего списка с именем 'CompanyIndividual' я выбираю точное значение "Individual"
-			ИначеЕсли '"[TheBusinessUnitType]"="SelectIn_"' Тогда
+			ИначеЕсли '"[TheBusinessUnitType]"="SelectИн"' Тогда
 				// Нет примеров
 			ИначеЕсли '"[TheBusinessUnitType]"="SelectCenterForFinancialResponsibility"' Тогда
 				И из выпадающего списка с именем 'CompanyTypeCPM' я выбираю точное значение "Center for financial responsibility or consolidating business unit"	
 		ИначеЕсли '$$IsERPCPM$$' Тогда			
-			Если '"[TheBusinessUnitType]"="SelectRF"' Тогда
+			Если '"[TheBusinessUnitType]"="SelectРФ"' Тогда
 				Если '"[TheBusinessUnitKind]"="SelectЮL"' Тогда
-					И я нажимаю на кнопку с именем 'BusinessEntity'
+					И я нажимаю на кнопку с именем 'BusinessCompany'
 				Иначе
 					И я нажимаю на кнопку с именем 'IndividualEntrepreneur'
-			ИначеЕсли '"[TheBusinessUnitType]"="SelectIn_"' Тогда
+			ИначеЕсли '"[TheBusinessUnitType]"="SelectИн"' Тогда
 				// Нет примеров
 			ИначеЕсли '"[TheBusinessUnitType]"="SelectCenterForFinancialResponsibility"' Тогда
 				И я нажимаю на кнопку с именем 'FormCreateКонсолидируюшую'										
@@ -992,7 +992,7 @@
 			И я нажимаю на кнопку с именем 'FormCreate'
 			Тогда открылось окно "Company type"
 			И я нажимаю на кнопку с именем '[TheBusinessUnitType]'
-			Если '"[TheBusinessUnitType]"="SelectRF"' Тогда
+			Если '"[TheBusinessUnitType]"="SelectРФ"' Тогда
 				Когда открылось окно "Company kind"
 				И я нажимаю на кнопку с именем '[TheBusinessUnitKind]'
 				Если '"[TheBusinessUnitKind]"="SelectЮL"' Тогда
@@ -1000,9 +1000,9 @@
 					И я нажимаю на кнопку с именем '[TheTaxation]'
 				Иначе
 					// Нет примеров
-			ИначеЕсли '"[TheBusinessUnitType]"="SelectIn_"' Тогда
+			ИначеЕсли '"[TheBusinessUnitType]"="SelectИн"' Тогда
 				// Нет примеров
-			И в поле с именем 'AbbreviatedDescription' я ввожу текст '[TheBusinessUnitName]'
+			И в поле с именем 'DescriptionСокращенное' я ввожу текст '[TheBusinessUnitName]'
 		И в поле с именем 'Description' я ввожу текст '[TheBusinessUnitName]'
 		И в поле с именем 'DescriptionFull' я ввожу текст '[TheBusinessUnitName]'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
@@ -1191,7 +1191,7 @@
 			И В командном интерфейсе я выбираю "Catalogs" "Product range"
 		ИначеЕсли '$$IsERPCPM$$' Тогда
 			И В командном интерфейсе я выбираю "Quick menu" "Product range"
-			И я снимаю флаг с именем 'UseDisplayFilters'		
+			И я снимаю флаг с именем 'ShouldUseDisplayFilters'		
 		Тогда открылось окно "Product range"
 
 	* Удаляем текущий элемент
@@ -1241,7 +1241,7 @@
 					Когда открылось окно "* (Product range)"								
 					Тогда в поле с именем 'Description' я ввожу значение переменной 'UID'
 					И в поле с именем 'ProductID' я ввожу текст ' '	
-					И я нажимаю на кнопку с именем 'FillDescriptionForPrintFromTemplate'
+					И я нажимаю на кнопку с именем 'FillDescrForPrintFromTemplate'
 					И я нажимаю на кнопку с именем 'FormWriteAndClose'
 					И я жду закрытия окна "* (Product range)" в течение 20 секунд
 					Если появилось окно с заголовком 'Search' в течение 1 секунд Тогда
@@ -1255,7 +1255,7 @@
 			И в поле с именем 'Description' я ввожу текст '[TheProductName]'
 			И в поле с именем 'ProductID' я ввожу текст '[TheProductID]'
 			И из выпадающего списка с именем 'Parent' я выбираю по строке '[TheProductParent]'
-			И из выпадающего списка с именем 'UnitOfMeasure' я выбираю по строке 'PCs'
+			И из выпадающего списка с именем 'UnitOfMeasure' я выбираю по строке "PCs"
 			Если 'NOT $$ЭтоPerform$$' Тогда
 				И из выпадающего списка с именем 'ProductKind' я выбираю по строке '[TheProductKind]'
 		ИначеЕсли '$$IsERPCPM$$' Тогда
@@ -1271,7 +1271,7 @@
 	* Закрываем список
 		Когда открылось окно "Product range"
 		Если '$$IsERPCPM$$' Тогда
-			И я устанавливаю флаг с именем 'UseDisplayFilters'
+			И я устанавливаю флаг с именем 'ShouldUseDisplayFilters'
 		И Я закрываю окно "Product range"	
 
 Сценарий: Я создаю вид номенклатуры с именем 'TheProductKindName'
@@ -1307,7 +1307,7 @@
 		И я нажимаю на кнопку с именем 'FormCreate'
 		Тогда открылось окно "Виды номенклатуры (create)"
 		И в поле с именем 'Description' я ввожу текст '[TheProductKindName]'
-		И я меняю значение переключателя с именем 'CPM_ObjectTypePurchases' на 'OwnGoods'
+		И я меняю значение переключателя с именем 'CPM_ObjectTypePurchases' на 'Товар'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
 		И я жду закрытия окна "Виды номенклатуры (create) *" в течение 20 секунд
 
@@ -1318,8 +1318,8 @@
 Сценарий: Я создаю товарную категорию с именем 'TheProductCategoryName' видом номенклатуры 'TheProductKind'
 
 	* Открываем список
-		И В командном интерфейсе я выбираю "Корпоративные закупки" "Товарные категории"
-		Тогда открылось окно "Товарные категории"
+		И В командном интерфейсе я выбираю "Корпоративные закупки" "Product categories"
+		Тогда открылось окно "Product categories"
 
 	* Найдем вид номенклатуры
 		Если '$$IsCPM$$' Тогда
@@ -1333,7 +1333,7 @@
 			И в поле с именем 'Pattern' я ввожу текст '[TheProductKind]'
 			И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 			И я нажимаю на кнопку с именем 'Find'
-			Тогда открылось окно "Товарные категории"
+			Тогда открылось окно "Product categories"
 			И в таблице 'ListOfSpeciesНоменклатуры' количество строк 'равно' 1
 			И в таблице 'List' я нажимаю на кнопку с именем 'ListFind'
 			Тогда открылась форма с именем 'UniversalListFindExtForm'
@@ -1352,10 +1352,10 @@
 			* Перименовываем 
 				И Я запоминаю значение выражения 'StrReplace(New UUID, "-", "")' в переменную 'UID'
 				И в таблице 'List' я выбираю текущую строку
-				Когда открылось окно "* (Товарные категории)"
+				Когда открылось окно "* (Product categories)"
 				Тогда в поле с именем 'Description' я ввожу значение переменной 'UID'
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
-				И я жду закрытия окна "* (Товарные категории) *" в течение 20 секунд
+				И я жду закрытия окна "* (Product categories) *" в течение 20 секунд
 
 	* Создаем новый элемент
 		Если '$$IsCPM$$' Тогда
@@ -1364,16 +1364,16 @@
 		Если '$$IsERPCPM$$' Тогда
 			И в таблице 'List' я нажимаю на кнопку с именем 'ListCreate'				
 			И из выпадающего списка с именем 'Owner' я выбираю по строке '[TheProductKind]'
-		Тогда открылось окно "Товарные категории (create) *"
+		Тогда открылось окно "Product categories (create) *"
 		И в поле с именем 'Description' я ввожу текст '[TheProductCategoryName]'
 		И из выпадающего списка с именем 'VATRate' я выбираю точное значение "20%"
-		И из выпадающего списка с именем 'UnitOfMeasure' я выбираю по строке 'PCs'					
+		И из выпадающего списка с именем 'UnitOfMeasure' я выбираю по строке "PCs"					
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна "Товарные категории (create) *" в течение 20 секунд
+		И я жду закрытия окна "Product categories (create) *" в течение 20 секунд
 
 	* Закрываем список
-		Когда открылось окно "Товарные категории"
-		И Я закрываю окно "Товарные категории"
+		Когда открылось окно "Product categories"
+		И Я закрываю окно "Product categories"
 
 Сценарий: Я создаю номенклатурную группу с именем 'TheProductGroupName'
 
@@ -1423,7 +1423,7 @@
 			И В командном интерфейсе я выбираю "Catalogs" "Product range"
 		ИначеЕсли '$$IsERPCPM$$' Тогда
 			И В командном интерфейсе я выбираю "Quick menu" "Product range"
-			И я снимаю флаг с именем 'UseDisplayFilters'		
+			И я снимаю флаг с именем 'ShouldUseDisplayFilters'		
 		Тогда открылось окно "Product range"
 
 	* Ищем текущий элемент
@@ -1445,7 +1445,7 @@
 			Если появилось окно с заголовком 'Search' в течение 1 секунд Тогда
 				И я нажимаю на кнопку с именем 'Button0'
 			Когда открылось окно "Product range"
-			И я устанавливаю флаг с именем 'UseDisplayFilters'					
+			И я устанавливаю флаг с именем 'ShouldUseDisplayFilters'					
 			И в таблице 'ListAdvancedSearchProducts' я выбираю текущую строку
 			Тогда открылось окно "* (Product range)"
 			И я перехожу к закладке с именем 'PageProductRangeAttributes'
