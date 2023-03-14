@@ -557,7 +557,7 @@
 
 	И Я открываю контруктор отчета с именем "VA - Manual entry for all analytics"
 
-	* Снимем раскрытие по валюте у показателя "LineDimensionВалюта"
+	* Снимем раскрытие по валюте у показателя "СтрокаАналитикаВалюта"
 		Когда открылось окно "Edit tree"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C1'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
@@ -638,7 +638,7 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C3'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст ' '
-		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст "({VAManualEntryForAllAnalytics.LineSynthetic_Price1}+{VAManualEntryForAllAnalytics.LineANLT1_Price1}+{VAManualEntryForAllAnalytics.LineANLT2_Price1}+{VAManualEntryForAllAnalytics.LineANLT3_Price1}+{VAManualEntryForAllAnalytics.LineANLT4_Price1}+{VAManualEntryForAllAnalytics.LineANLT5_Price1}+{VAManualEntryForAllAnalytics.LineANLT6_Price1}+{VAManualEntryForAllAnalytics.LineANLT6Curren_Price1}+{VAManualEntryForAllAnalytics.LineANLTCurrenc_Price1})/9"
+		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст "({VAManualEntryForAllAnalytics.LineSynthetic_Price1}+{VAManualEntryForAllAnalytics.LineANLT1_Price1}+{VAManualEntryForAllAnalytics.LineANLT2_Price1}+{VAManualEntryForAllAnalytics.LineANLT3_Price1}+{VAManualEntryForAllAnalytics.LineANLT4_Price1}+{VAManualEntryForAllAnalytics.LineANLT5_Price1}+{VAManualEntryForAllAnalytics.LineANLT6_Price1}+{VAManualEntryForAllAnalytics.LineANLT6Currency_Price1}+{VAManualEntryForAllAnalytics.LineANLTCurrency_Price1})/9"
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
 
 	* Вводим формулу кнопками - 'ГруппаСтрок - Сумма'	
@@ -677,7 +677,7 @@
 		Тогда открылось окно "Edit tree*"
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
 
-	* Вводим формулу кнопками - 'LineDimension1 - Сумма'
+	* Вводим формулу кнопками - 'СтрокаАналитика1 - Сумма'
 		Когда открылось окно "Edit tree*"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C4'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
@@ -689,7 +689,7 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
 
-	* Вводим формулу копированием - 'LineDimension6Валюта - Сумма'
+	* Вводим формулу копированием - 'СтрокаАналитика6Валюта - Сумма'
 		Когда открылось окно "Edit tree*"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C4'
 		И я нажимаю на кнопку с именем 'CopyFormula'
@@ -715,7 +715,7 @@
 			И Я выбираю показатель с кодом "LineANLT6Currency_Quantity1"
 			Тогда открылось окно "VA - Manual entry for all analytics_LineDimension1 quantity (Data source) *"
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "VA - Manual entry for all analytics_LLineDimension1 quantity *" в течение 5 секунд
+			И я жду закрытия окна "VA - Manual entry for all analytics_LineDimension1 quantity *" в течение 5 секунд
 		* Добавляем операнд "Цена"
 			Когда открылось окно "Data sources"
 			И я нажимаю на кнопку с именем 'FormFind'
@@ -1186,7 +1186,7 @@
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
 		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension Currency"
-		И я нажимаю на кнопку с именем 'WriteComment'	
+		И я нажимаю на кнопку с именем 'WriteComment'						
 		
 	* Загружаем эталонный макет
 		Когда открылось окно '$WindowTitle$ *'
@@ -1202,7 +1202,7 @@
 		Если '$$ЭтоPerform$$' Тогда
 			И я нажимаю на кнопку с именем 'FormCompareWithRefTemplateByValue'					
 		Иначе
-			И я нажимаю на кнопку с именем 'FormCompareWithRefTemplateByШаблону'
+			И я нажимаю на кнопку с именем 'FormCompareWithRefTemplateByTemplate'
 		Тогда открылось окно "Documents are identical: Compare spreadsheet documents"
 		И я нажимаю на кнопку с именем 'FormClose'
 
@@ -1436,9 +1436,9 @@
 		Тогда открылось окно '$WindowTitle$'
 		// ДОДЕЛАТЬ, Временная заглушка для CPMWE, пока не приехали форматы
 		Если '$$ЭтоPerform$$' Тогда
-			И я нажимаю на кнопку с именем 'FormCompareWithRefTemplateByЗначениям'					
+			И я нажимаю на кнопку с именем 'FormCompareWithRefTemplateByValue'					
 		Иначе
-			И я нажимаю на кнопку с именем 'FormCompareWithRefTemplateByШаблону'
+			И я нажимаю на кнопку с именем 'FormCompareWithRefTemplateByTemplate'
 		Тогда открылось окно "Documents are identical: Compare spreadsheet documents"
 		И я нажимаю на кнопку с именем 'FormClose'	
 

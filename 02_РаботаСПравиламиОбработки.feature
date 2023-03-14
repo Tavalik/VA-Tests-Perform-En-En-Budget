@@ -342,22 +342,22 @@
 				| 'UClearAll()'                       |
 
 	* Видимость ВидыОтчетов
-		И у элемента формы с именем 'FormVisibilityReportsKinds' установлена пометка
+		И у элемента формы с именем 'FormReportsTypesVisibility' установлена пометка
 		И элемент формы с именем 'UsedReportTypes' присутствует на форме	 	
-		И я нажимаю на кнопку с именем 'FormVisibilityReportsKinds'
-		И у элемента формы с именем 'FormVisibilityReportsKinds' не установлена пометка
+		И я нажимаю на кнопку с именем 'FormReportsTypesVisibility'
+		И у элемента формы с именем 'FormReportsTypesVisibility' не установлена пометка
 		И элемент формы с именем 'UsedReportTypes' отсутствует на форме
-		И я нажимаю на кнопку с именем 'FormVisibilityReportsKinds'
-		И у элемента формы с именем 'FormVisibilityReportsKinds' установлена пометка
+		И я нажимаю на кнопку с именем 'FormReportsTypesVisibility'
+		И у элемента формы с именем 'FormReportsTypesVisibility' установлена пометка
 
 	* Видимость Процедуры и функции
-		И у элемента формы с именем 'FormVisibilityПроцедурANDФункций' установлена пометка
+		И у элемента формы с именем 'FormProceduresAndFunctionsVisibility' установлена пометка
 		И элемент формы с именем 'GroupMethods' присутствует на форме	 	
-		И я нажимаю на кнопку с именем 'FormVisibilityПроцедурANDФункций'
-		И у элемента формы с именем 'FormVisibilityПроцедурANDФункций' не установлена пометка
+		И я нажимаю на кнопку с именем 'FormProceduresAndFunctionsVisibility'
+		И у элемента формы с именем 'FormProceduresAndFunctionsVisibility' не установлена пометка
 		И элемент формы с именем 'GroupMethods' отсутствует на форме
-		И я нажимаю на кнопку с именем 'FormVisibilityПроцедурANDФункций'
-		И у элемента формы с именем 'FormVisibilityПроцедурANDФункций' установлена пометка
+		И я нажимаю на кнопку с именем 'FormProceduresAndFunctionsVisibility'
+		И у элемента формы с именем 'FormProceduresAndFunctionsVisibility' установлена пометка
 
 	* Ввод показателей
 		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст ' '
@@ -560,9 +560,9 @@
 				И в таблице 'Definitions' я выбираю текущую строку
 				Тогда элемент формы с именем 'TextDocumentFieldProcedure' стал равен 
 					|' UPerimeterContent('|
-					|'	[<Scenario>], [<ReportPeriod>], [<Company>],'|
+					|'	[<Scenario>], [<ReportPeriod>], [<Organization>],'|
 					|'	[<ConsolidationMethod>], [<MinTotalOwnershipShare>], [<MaxTotalOwnershipShare>],'|
-					|'	[<CompanyTypes>], [<PerimeterOwner>]);'|
+					|'	[<OrganizationTypes>], [<PerimeterOwner>]);'|
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст ' '
 			* СоставПериметраДляЭлиминации
 				И в таблице 'Definitions' я перехожу к строке:
@@ -691,7 +691,7 @@
 		Иначе
 			И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 				|'ReportData = New Structure(\"Organization,Scenario,Currency,ReportPeriod\",'|
-				|'  CalcStructure.Entity, CalcStructure.Scenario, CalcStructure.BaseCurrency, CalcStructure.ArrayPeriods);'|
+				|'  CalcStructure.Organization, CalcStructure.Scenario, CalcStructure.MainCurrency, CalcStructure.PeriodsArray);'|
 				|'DisclosedAnalysts = New Structure(\"Dimension1\");'|
 				|'ExtraOptions = New Structure(\"GrandTotal\",Enums.IndicatorTotalsTypes.Sum);'|
 				|''|
@@ -713,8 +713,8 @@
 				|'For Each StringValue In tValuesIndicators_Number Do'|
 				|''|
 				|' PeriodOffset = URelativePeriod(StringValue.ReportPeriod, 1);'|
-				|' If UDateBelongsToPeriod(PeriodOffset.StartDate,CalcStructure.ArrayPeriods.Get(1)) OR'|
-				|'  UDateBelongsToPeriod(PeriodOffset.StartDate,CalcStructure.ArrayPeriods.Get(2)) Then'|
+				|' If UDateBelongsToPeriod(PeriodOffset.StartDate,CalcStructure.PeriodsArray.Get(1)) OR'|
+				|'  UDateBelongsToPeriod(PeriodOffset.StartDate,CalcStructure.PeriodsArray.Get(2)) Then'|
 				|''|
 				|'  USetIndicatorsValue('|
 				|'   StringValue.ReportIndicator,'|
@@ -733,8 +733,8 @@
 				|' EndIf;'|
 				|''|
 				|' PeriodOffset = URelativePeriod(StringValue.ReportPeriod, 1);'|
-				|' If UDateBelongsToPeriod(PeriodOffset.StartDate,CalcStructure.ArrayPeriods.Get(1)) OR'|
-				|'  UDateBelongsToPeriod(PeriodOffset.StartDate,CalcStructure.ArrayPeriods.Get(2)) Then'|
+				|' If UDateBelongsToPeriod(PeriodOffset.StartDate,CalcStructure.PeriodsArray.Get(1)) OR'|
+				|'  UDateBelongsToPeriod(PeriodOffset.StartDate,CalcStructure.PeriodsArray.Get(2)) Then'|
 				|''|
 				|'  USetIndicatorsValue('|
 				|'   StringValue.ReportIndicator,'|

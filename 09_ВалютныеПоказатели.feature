@@ -204,10 +204,10 @@
 
 	* Сравниваем движения	
 		Тогда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormOpenDocRegisterRecordsFlatTab'
+		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Templates\DimenKind_CurrencyIndicators_Source_RegisterRecords.mxl' по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Макеты\ВА_ВалютныеПоказатели_Источник_Движения.mxl' по шаблону
 
 Сценарий: 09.05 Создание вида отчета "VA - Currency indicators (recipient)"
 
@@ -894,8 +894,8 @@
 
 	* Сравниваем движения
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Currency indicators (recipient)" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' '' 
-		И я нажимаю на кнопку с именем 'FormOpenDocRegisterRecordsFlatTab'
+		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Templates\DimenKind_CurrencyIndicators_Receiver_RegisterRecords.mxl' по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Макеты\ВА_ВалютныеПоказатели_Приемник_Движения.mxl' по шаблону
 		И Я закрываю окно "Flat table of indicator values"

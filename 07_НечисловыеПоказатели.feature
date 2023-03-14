@@ -877,10 +877,10 @@
 				И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C5'
 				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
-					|'Result = String(SettlementObject.Organization) + Chars.PС +'|
-					|'String(SettlementObject.Scenario) + Chars.PС + '|
-					|'String(SettlementObject.MainCurrency) + Chars.PС + '|
-					|'String(SettlementObject.ReportPeriod) + Chars.PС + '|
+					|'Result = String(SettlementObject.Organization) + Chars.LF +'|
+					|'String(SettlementObject.Scenario) + Chars.LF + '|
+					|'String(SettlementObject.MainCurrency) + Chars.LF + '|
+					|'String(SettlementObject.ReportPeriod) + Chars.LF + '|
 					|'String(SettlementObject.Periodicity);'|
 					|''|
 				И я нажимаю на кнопку с именем 'ArbitraryCode'
@@ -1022,13 +1022,13 @@
 	
 	* Записываем документ и сверяем движения	
 		Когда открылось окно '$WindowTitle$ *'
-		И я нажимаю на кнопку с именем 'FormOpenDocRegisterRecordsFlatTab'
+		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
 		Когда Я задаю параметры чтения области макета 'R1C1:R800C20'
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Templates\DimenKind_CalculationINКоде_RegisterRecords.mxl' по шаблону			
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Макеты\ВА_РасчетВКоде_Движения.mxl' по шаблону			
 
 Сценарий: 07.08 Создание вида отчета "VA - Grouping by analytics"
 
@@ -1190,9 +1190,9 @@
 
 	* Проверяем движения	
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Grouping by analytics" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики "3Software sale" '' '' '' '' '' 
-		И я нажимаю на кнопку с именем 'FormOpenDocRegisterRecordsFlatTab'
+		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
 		Когда Я задаю параметры чтения области макета 'R1C1:R450C20'
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Templates\DimenKind_GroupOnАналитикам_RegisterRecords.mxl' по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Макеты\ВА_ГруппировкаПоАналитикам_Движения.mxl' по шаблону
 													

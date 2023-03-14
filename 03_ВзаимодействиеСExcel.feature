@@ -218,7 +218,7 @@
 		И я нажимаю на кнопку с именем 'StartExport'
 		Тогда открылось окно "Save report template"
 		И из выпадающего списка с именем 'ExternalIB' я выбираю по строке "VA - Import from Excel"
-		И в поле с именем 'ExportFileName' я ввожу текст '$DirectoryПроекта$\Templates\DimenKind_ImportExcel_Template.xlsx'
+		И в поле с именем 'ExportFileName' я ввожу текст '$КаталогПроекта$\Макеты\ВА_ИмпортExcel_Шаблон.xlsx'
 		И из выпадающего списка с именем 'Periodicity' я выбираю точное значение "Month"
 		И в поле с именем 'PeriodCount' я ввожу текст '3'
 		И я нажимаю на кнопку с именем 'FormExport'
@@ -230,11 +230,11 @@
 	* Сравниваем файл
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Compare spreadsheet documents"
 		Тогда открылось окно "Compare spreadsheet documents"
-		И в поле с именем 'DocumentPath1' я ввожу текст '$DirectoryПроекта$\Templates\DimenKind_ImportExcel_Template.xlsx'
-		И в поле с именем 'DocumentPath2' я ввожу текст '$DirectoryПроекта$\Templates\DimenKind_ImportExcel_Template.mxl'
+		И в поле с именем 'DocumentPath1' я ввожу текст '$КаталогПроекта$\Макеты\ВА_ИмпортExcel_Шаблон.xlsx'
+		И в поле с именем 'DocumentPath2' я ввожу текст '$КаталогПроекта$\Макеты\ВА_ИмпортExcel_Шаблон.mxl'
 		И я устанавливаю флаг с именем 'AreOnlyValuesCompared'
 		И я устанавливаю флаг с именем 'ShouldCompareByTemplate'								
-		И я нажимаю на кнопку с именем 'FormCompareDocs'
+		И я нажимаю на кнопку с именем 'FormCompareDocuments'
 		Тогда открылось окно "Documents are identical: Compare spreadsheet documents"
 		И Я закрываю окно "Documents are identical: Compare spreadsheet documents"
 

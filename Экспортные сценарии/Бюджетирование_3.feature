@@ -153,7 +153,7 @@
 	Тогда открылось окно "Pivot table: *"
 	И из выпадающего списка с именем 'DisplayCurrency' я выбираю по строке '[TheCurrency]'
 	И из выпадающего списка с именем 'Item_Scenario' я выбираю по строке '[TheScenario]'
-	И из выпадающего списка с именем 'Item_Company' я выбираю по строке '[TheBusinessUnit]'
+	И из выпадающего списка с именем 'Item_Organization' я выбираю по строке '[TheBusinessUnit]'
 	И я нажимаю на кнопку с именем 'UpdateTabData1'
 	И я жду открытия формы "Pivot table: *" в течение 20 секунд
 

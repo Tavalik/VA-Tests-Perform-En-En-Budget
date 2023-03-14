@@ -436,8 +436,8 @@
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'SaveAsExcel'
 		Тогда открылось окно "Save in Excel"
-		И в поле с именем 'Directory' я ввожу текст '$DirectoryПроекта$\\Templates'
-		И в поле с именем 'ExistingFile' я ввожу текст 'DimenKind_ContextualПересчетИсходный'
+		И в поле с именем 'Directory' я ввожу текст '$КаталогПроекта$\\Макеты'
+		И в поле с именем 'ExistingFile' я ввожу текст 'ВА_КонтекстныйПересчетИсходный'
 		И я нажимаю на кнопку с именем 'Save'
 		Затем я жду, что в сообщениях пользователю будет подстрока "saved successfully" в течение 60 секунд		
 		И я очищаю окно сообщений пользователю	
@@ -661,7 +661,7 @@
 		И Я закрываю окно "Copy report indicator data"
 
 	И Я устанавливаю отбор сводной таблицы 'Item_Scenario' со значением "VA - Script for indexing"				
-	И Я устанавливаю отбор сводной таблицы 'Item_Company' со значением "Venus LLC"
+	И Я устанавливаю отбор сводной таблицы 'Item_Organization' со значением "Venus LLC"
 
 	* Сверяем результат
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
@@ -786,7 +786,7 @@
 		И Я закрываю окно "Copy report indicator data"
 
 	* Проверяем результат
-		И Я устанавливаю отбор сводной таблицы 'Item_Company' со значением "Mercury LLC"								
+		И Я устанавливаю отбор сводной таблицы 'Item_Organization' со значением "Mercury LLC"								
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Recalculation in context (pivot table)"                    | "January 2021" | ''            | ''     | ''     | ''       | "February 2021" | ''            | ''      | ''           | ''        | "March 2021" | ''            | ''       | ''           | ''        | "TOTAL"      | ''            | ''       | ''           | ''       |
 			| "VA - Recalculation in context (pivot table)"                    | "Quantity"     | "Coefficient" | "Total" | "Date" | "Line" | "Quantity"      | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity"   | "Coefficient" | "Total"   | "Date"       | "Line"  | "Quantity" | "Coefficient" | "Total"   | "Date"       | "Line" |

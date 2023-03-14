@@ -424,24 +424,24 @@
 
 	* Рассчитываем и сверяем документ
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
-		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету 'Templates\DimenKind_CumulativeTotal.mxl'
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету 'Макеты\ВА_НарастающийИтог.mxl'
 
 	* Еще раз расчитаем документ, убедимся, что ничего не поменялось
 		Когда открылось окно '$WindowTitle$'	
 		И я нажимаю на кнопку с именем 'FormWriteANDContinue'
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Cumulative total (recipient)" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики "3Software sale" '' '' '' '' '' 
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
-		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету 'Templates\DimenKind_CumulativeTotal.mxl'					
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету 'Макеты\ВА_НарастающийИтог.mxl'					
 
 	* Смотрим движения
 		Когда открылось окно '$WindowTitle$ *'
-		И я нажимаю на кнопку с именем 'FormOpenDocRegisterRecordsFlatTab'
+		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
 		Когда Я задаю параметры чтения области макета 'R1C1:R452C20'
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Templates\DimenKind_CumulativeTotal_RegisterRecords.mxl' по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Макеты\ВА_НарастающийИтог_Движения.mxl' по шаблону
 
 	* Закроем отчет и документ
 		Когда открылось окно "Flat table of indicator values"

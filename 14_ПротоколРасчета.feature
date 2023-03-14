@@ -121,8 +121,9 @@
 	* Проверяем расчет для "Меркурий ООО"
 		Тогда открылось окно "Report instances"
 		И в таблице 'List' я перехожу к строке:
-			| "Primary currency" | "Report kind"            | "Company"  | "Report period"  | "End period" | "Scenario"               |
-			| 'RUB'             | "VA - Calculation protocol" | "Mercury LLC" | "January 2021" | "March 2021"     | "VA - Main scenario" |
+			| "Report currency" | "Report kind"               | "Company"     | "Start period" | "End period" | "Scenario"           |
+			| 'RUB'             | "VA - Calculation protocol" | "Mercury LLC" | "January 2021" | "March 2021" | "VA - Main scenario" |
+
 		И в таблице 'List' я выбираю текущую строку
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Calculation protocol" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
@@ -137,7 +138,7 @@
 	* Проверяем расчет для "Меркурий ООО"
 		Тогда открылось окно "Report instances"
 		И в таблице 'List' я перехожу к строке:
-			| "Primary currency" | "Report kind"            | "Company" | "Report period"  | "End period" | "Scenario"               |
+			| "Report currency" | "Report kind"            | "Company" | "Start period"  | "End period" | "Scenario"               |
 			| 'RUB'             | "VA - Calculation protocol" | "Earth LLC"   | "January 2021" | "March 2021"     | "VA - Main scenario" |
 		И в таблице 'List' я выбираю текущую строку
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Calculation protocol" валюта 'RUB' организация "Earth LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
