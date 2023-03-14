@@ -24,13 +24,13 @@
 		И я перехожу к закладке с именем 'GroupLoad'
 		Если '$$ЭтоPerform$$' Тогда
 			Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
-				И в поле с именем 'NameOfImportFile' я ввожу текст '$DirectoryПроекта$\Templates\ADO\Model_ADO_Perform.xml'
+				И в поле с именем 'NameOfImportFile' я ввожу текст '$КаталогПроекта$\Макеты\ADO\Model_ADO_Perform.xml'
 			Иначе
-				И в поле с именем 'NameOfImportFile' я ввожу текст '$DirectoryПроекта$\Templates\ADO_En\Model_ADO_Perform_En.xml'
+				И в поле с именем 'NameOfImportFile' я ввожу текст '$КаталогПроекта$\Макеты\ADO_En\Model_ADO_Perform_En_En.xml'
 		ИначеЕсли '$$IsCPM$$' Тогда
-			И в поле с именем 'NameOfImportFile' я ввожу текст '$DirectoryПроекта$\Templates\ADO\Model_ADO_CPM32.xml'	
+			И в поле с именем 'NameOfImportFile' я ввожу текст '$КаталогПроекта$\Макеты\ADO\Model_ADO_УХ32.xml'	
 		ИначеЕсли '$$IsERPCPM$$' Тогда
-			И в поле с именем 'NameOfImportFile' я ввожу текст '$DirectoryПроекта$\Templates\ADO\Model_ADO_ERP.xml'
+			И в поле с именем 'NameOfImportFile' я ввожу текст '$КаталогПроекта$\Макеты\ADO\Model_ADO_ERP.xml'
 		И я нажимаю на кнопку с именем 'UploadData'
 		Затем я жду, что в сообщениях пользователю будет подстрока "Data is imported successfully" в течение 60 секунд
 		И Я закрываю окно "Instructional model exchange"
@@ -57,14 +57,14 @@
 			Тогда открылось окно "Company file path items: List form"
 			И я перехожу к закладке с именем 'Page_ReportType'
 			Когда открылось окно "Company file path items: List form"
-			И в таблице 'List_ReportType' я нажимаю на кнопку с именем 'List_ReportKindFind'
+			И в таблице 'List_ReportType' я нажимаю на кнопку с именем 'List_ReportTypeFind'
 			Тогда открылась форма с именем 'UniversalListFindExtForm'
 			И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Object"						
 			И в поле с именем 'Pattern' я ввожу текст "VA - Download test by ADO"
 			И я нажимаю на кнопку с именем 'Find'
 			Тогда открылось окно "Company file path items: List form"
 			Если в таблице 'List_ReportType' количество строк 'равно' 0 Тогда
-				И в таблице 'List_ReportType' я нажимаю на кнопку с именем 'List_ReportKindCreate'
+				И в таблице 'List_ReportType' я нажимаю на кнопку с именем 'List_ReportTypeCreate'
 			Иначе
 				И в таблице 'List_ReportType' я выбираю текущую строку								
 			Тогда открылось окно "Company file path items*"
@@ -101,13 +101,13 @@
 			Тогда открылось окно "VA - Download test by ADO (Calculation rules)"
 			И я нажимаю на кнопку открытия поля с именем 'DBType'
 			Тогда открылось окно "VA - ADO tables (Infobase type)"
-			И я нажимаю на кнопку с именем 'FormConfigureMaps1'
+			И я нажимаю на кнопку с именем 'FormConfigureMappings'
 			Тогда открылось окно "Correspondence with external infobases"
 			И в таблице 'List' я перехожу к строке:
 				| "File name"           | "Description"                                  |
-				| "VA_LoadingADO_En.xlsx" | "ВидСубконто.Product range -> ТаблицаADO.Sheet1$" |
+				| "VA_LoadingADO_En.xlsx" | "ВидСубконто.Product range -> ADOTable.Sheet1$" |
 			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "ВидСубконто.Product range -> ТаблицаADO.Sheet1$ (Correspondence with external infobases)"
+			Тогда открылось окно "ВидСубконто.Product range -> ADOTable.Sheet1$ (Correspondence with external infobases)"
 			Если '$$IsCPM$$' Тогда
 				И я нажимаю кнопку выбора у поля с именем 'RootDirectory1'
 				Тогда открылось окно 'Catalog.Products'
@@ -115,7 +115,7 @@
 					| "Reference"            |
 					| "VA - Products" |
 				И в таблице 'List' я нажимаю на кнопку с именем 'ListChoose'
-				Тогда открылось окно "ВидСубконто.Product range -> ТаблицаADO.Sheet1*"
+				Тогда открылось окно "ВидСубконто.Product range -> ADOTable.Sheet1*"
 			Если '$$ЭтоPerform$$' Тогда
 				И в таблице 'MappingTable' я перехожу к строке:
 					| "Field"                  |
@@ -141,7 +141,7 @@
 			И я нажимаю на кнопку с именем 'Find'
 			Тогда открылось окно "Enter a value"
 			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "ВидСубконто.Product range -> ТаблицаADO.Sheet1*"
+			Тогда открылось окно "ВидСубконто.Product range -> ADOTable.Sheet1*"
 			Если '$$IsCPM$$' Тогда
 				И в таблице 'MappingTable' я перехожу к строке:
 					| "Field"    |
@@ -170,18 +170,18 @@
 			И я нажимаю на кнопку с именем 'Find'
 			Тогда открылось окно "Enter a value"
 			И в таблице 'List' я выбираю текущую строку	
-			Тогда открылось окно "ВидСубконто.Product range -> ТаблицаADO.Sheet1*"	
+			Тогда открылось окно "ВидСубконто.Product range -> ADOTable.Sheet1*"	
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "ВидСубконто.Product range -> ТаблицаADO.Sheet1*" в течение 20 секунд			
+			И я жду закрытия окна "ВидСубконто.Product range -> ADOTable.Sheet1*" в течение 20 секунд			
 		* Статьи ДДС
 			Тогда открылось окно "Correspondence with external infobases"
 			И в таблице 'List' я перехожу к строке:
 				| "File name"           | "Description"                                |
-				| "VA_LoadingADO_En.xlsx" | "ВидСубконто.Cash flow items -> ТаблицаADO.Sheet1$" |
+				| "VA_LoadingADO_En.xlsx" | "ВидСубконто.Cash flow items -> ADOTable.Sheet1$" |
 			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "ВидСубконто.Cash flow items -> ТаблицаADO.Sheet1$ (Correspondence with external infobases)"
+			Тогда открылось окно "ВидСубконто.Cash flow items -> ADOTable.Sheet1$ (Correspondence with external infobases)"
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "ВидСубконто.Cash flow items -> ТаблицаADO.Sheet1*" в течение 20 секунд
+			И я жду закрытия окна "ВидСубконто.Cash flow items -> ADOTable.Sheet1*" в течение 20 секунд
 
 Сценарий: 10.02 Создаем экземпляр отчета
 
@@ -248,12 +248,12 @@
 
 	* Сверим движения
 		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormOpenDocRegisterRecordsFlatTab'
+		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
 		И я жду открытия формы "Flat table of indicator values" в течение 30 секунд
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 60 секунд
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Templates\DimenKind_TestЗагрузкиOnADO_RegisterRecords.mxl' по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Макеты\ВА_ТестЗагрузкиПоADO_Движения.mxl' по шаблону
 		И Я закрываю окно "Flat table of indicator values"
 
 	* Рассчитываем документ по правилу еще раз
@@ -283,12 +283,12 @@
 
 	* Сверим движения еще раз
 		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormOpenDocRegisterRecordsFlatTab'
+		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
 		И я жду открытия формы "Flat table of indicator values" в течение 30 секунд
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Templates\DimenKind_TestЗагрузкиOnADO_RegisterRecords.mxl' по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Макеты\ВА_ТестЗагрузкиПоADO_Движения.mxl' по шаблону
 		И Я закрываю окно "Flat table of indicator values"		
 
 Сценарий: 10.03 Изменим вид номенклатуры
