@@ -306,10 +306,10 @@
 	* Создаем новый элемент
 		Тогда открылось окно "Scenarios"
 		И я нажимаю на кнопку с именем 'FormCreate'
-		Тогда открылось окно "Scenarios: Scenarios (create)"
+		Тогда открылось окно "Scenarios (create)"
 		И в поле с именем 'Description' я ввожу текст '[TheScenarioName]'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна "Scenarios: Scenarios (create) *" в течение 5 секунд
+		И я жду закрытия окна "Scenarios (create) *" в течение 5 секунд
 
 	* Закрываем список
 		Когда открылось окно "Scenarios"
@@ -969,13 +969,9 @@
 			И я нажимаю на кнопку с именем 'FormCreate'
 			Тогда открылось окно "Business unit (create)"
 			Если '"[TheBusinessUnitType]"="SelectРФ"' Тогда
-				И из выпадающего списка с именем 'CompanyTypeCPM' я выбираю точное значение "Tax resident of the Russian Federation (Legal entity)"
-				Если '"[TheBusinessUnitKind]"="SelectЮL"' Тогда
-					И из выпадающего списка с именем 'CompanyIndividual' я выбираю точное значение "Legal entity"
-				Иначе
-					И из выпадающего списка с именем 'CompanyIndividual' я выбираю точное значение "Individual"
-			ИначеЕсли '"[TheBusinessUnitType]"="SelectИн"' Тогда
-				// Нет примеров
+				И из выпадающего списка с именем 'CompanyTypeCPM' я выбираю точное значение "Организация"					
+			ИначеЕсли '"[TheBusinessUnitType]"="SelectЭл"' Тогда
+				И из выпадающего списка с именем "CompanyTypeCPM" я выбираю точное значение 'Eliminating business unit'								
 			ИначеЕсли '"[TheBusinessUnitType]"="SelectCenterForFinancialResponsibility"' Тогда
 				И из выпадающего списка с именем 'CompanyTypeCPM' я выбираю точное значение "Center for financial responsibility or consolidating business unit"	
 		ИначеЕсли '$$IsERPCPM$$' Тогда			
