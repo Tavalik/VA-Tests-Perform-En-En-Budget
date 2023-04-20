@@ -21,24 +21,24 @@
 	* Загрузка модели
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Export and import instructional models"
 		Тогда открылось окно "Instructional model exchange"
-		И я перехожу к закладке с именем 'GroupLoad'
+		И я перехожу к закладке с именем 'GroupImport'
 		Если '$$ЭтоPerform$$' Тогда
 			Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
-				И в поле с именем 'NameOfImportFile' я ввожу текст '$КаталогПроекта$\Макеты\ADO\Model_ADO_Perform.xml'
+				И в поле с именем 'ImportFileName' я ввожу текст '$КаталогПроекта$\Макеты\ADO\Model_ADO_Perform.xml'
 			Иначе
-				И в поле с именем 'NameOfImportFile' я ввожу текст '$КаталогПроекта$\Макеты\ADO_En\Model_ADO_Perform_En_En.xml'
+				И в поле с именем 'ImportFileName' я ввожу текст '$КаталогПроекта$\Макеты\ADO_En\Model_ADO_Perform_En_En.xml'
 		ИначеЕсли '$$IsCPM$$' Тогда
-			И в поле с именем 'NameOfImportFile' я ввожу текст '$КаталогПроекта$\Макеты\ADO\Model_ADO_УХ32.xml'	
+			И в поле с именем 'ImportFileName' я ввожу текст '$КаталогПроекта$\Макеты\ADO\Model_ADO_УХ32.xml'	
 		ИначеЕсли '$$IsERPCPM$$' Тогда
-			И в поле с именем 'NameOfImportFile' я ввожу текст '$КаталогПроекта$\Макеты\ADO\Model_ADO_ERP.xml'
-		И я нажимаю на кнопку с именем 'UploadData'
+			И в поле с именем 'ImportFileName' я ввожу текст '$КаталогПроекта$\Макеты\ADO\Model_ADO_ERP.xml'
+		И я нажимаю на кнопку с именем 'ImportData'
 		Затем я жду, что в сообщениях пользователю будет подстрока "Data is imported successfully" в течение 60 секунд
 		И Я закрываю окно "Instructional model exchange"
 
 	* Устанавливаем группу отчетов
 		И Я открываю вид отчета с именем "VA - Download test by ADO"
 		И из выпадающего списка с именем 'Parent' я выбираю по строке "VA - Report group"
-		И я нажимаю на кнопку с именем 'FormButtonWrite'
+		И я нажимаю на кнопку с именем 'RecordButtonForm'
 
 	* Настроим соответствия имен файлов
 		Когда открылось окно "VA - Download test by ADO (Report kinds)"
@@ -49,7 +49,7 @@
 		Тогда открылось окно "VA - ADO tables (Infobase type)"
 		И я нажимаю на кнопку открытия поля с именем 'DefaultEIB'
 		Тогда открылось окно "VA - ADO tables (External infobases)"
-		И в поле с именем 'RefDirectory' я ввожу текст "$КаталогПроекта$\Макеты\ADO_En"
+		И в поле с именем 'ReferenceDirectory' я ввожу текст "$КаталогПроекта$\Макеты\ADO_En"
 		И в поле с именем 'NameBeginning' я ввожу текст "$КаталогПроекта$\Макеты\ADO_En"
 	
 		* Добавляем или обновляем запись в РС
@@ -117,19 +117,19 @@
 				И в таблице 'List' я нажимаю на кнопку с именем 'ListChoose'
 				Тогда открылось окно "ВидСубконто.Product range -> ADOTable.Sheet1*"
 			Если '$$ЭтоPerform$$' Тогда
-				И в таблице 'MappingTable' я перехожу к строке:
+				И в таблице 'ComplianceTable' я перехожу к строке:
 					| "Field"                  |
 					| "Product range group" |	
 			Иначе						
-				И в таблице 'MappingTable' я перехожу к строке:
+				И в таблице 'ComplianceTable' я перехожу к строке:
 					| "Field"             |
 					| "Kind номенклатуры" |
-			И в таблице 'MappingTable' я активизирую поле с именем 'MappingTableFillingMethod'
-			И в таблице 'MappingTable' я выбираю текущую строку
-			И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Fixed value"
-			И в таблице 'MappingTable' я завершаю редактирование строки
-			И в таблице 'MappingTable' я активизирую поле с именем 'MappingTableEIBAlias'
-			И в таблице 'MappingTable' я выбираю текущую строку
+			И в таблице 'ComplianceTable' я активизирую поле с именем 'ComplianceTableFillingMethod'
+			И в таблице 'ComplianceTable' я выбираю текущую строку
+			И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Fixed value"
+			И в таблице 'ComplianceTable' я завершаю редактирование строки
+			И в таблице 'ComplianceTable' я активизирую поле с именем 'MappingTableEIBAlias'
+			И в таблице 'ComplianceTable' я выбираю текущую строку
 			Тогда открылось окно "Enter a value"
 			И я нажимаю на кнопку с именем 'FormFind'
 			Тогда открылась форма с именем 'UniversalListFindExtForm'
@@ -143,19 +143,19 @@
 			И в таблице 'List' я выбираю текущую строку
 			Тогда открылось окно "ВидСубконто.Product range -> ADOTable.Sheet1*"
 			Если '$$IsCPM$$' Тогда
-				И в таблице 'MappingTable' я перехожу к строке:
+				И в таблице 'ComplianceTable' я перехожу к строке:
 					| "Field"    |
 					| "Unit" |
 			Если '$$IsERPCPM$$' Тогда
-				И в таблице 'MappingTable' я перехожу к строке:
+				И в таблице 'ComplianceTable' я перехожу к строке:
 					| "Field"             |
 					| "Unit хранения" |		
-			И в таблице 'MappingTable' я активизирую поле с именем 'MappingTableFillingMethod'
-			И в таблице 'MappingTable' я выбираю текущую строку
-			И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Fixed value"
-			И в таблице 'MappingTable' я завершаю редактирование строки
-			И в таблице 'MappingTable' я активизирую поле с именем 'MappingTableEIBAlias'
-			И в таблице 'MappingTable' я выбираю текущую строку
+			И в таблице 'ComplianceTable' я активизирую поле с именем 'ComplianceTableFillingMethod'
+			И в таблице 'ComplianceTable' я выбираю текущую строку
+			И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Fixed value"
+			И в таблице 'ComplianceTable' я завершаю редактирование строки
+			И в таблице 'ComplianceTable' я активизирую поле с именем 'MappingTableEIBAlias'
+			И в таблице 'ComplianceTable' я выбираю текущую строку
 			Тогда открылось окно "Enter a value"
 			И я нажимаю на кнопку с именем 'FormFind'
 			Тогда открылась форма с именем 'UniversalListFindExtForm'
@@ -188,12 +188,12 @@
 	* Ищем существующий экземпляр отчета
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report kinds and templates"
 		Тогда открылось окно "Report kinds and templates"
-		И в таблице 'ListOfReportTypes' я нажимаю на кнопку с именем 'ListOfReportTypesFind'
+		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'Pattern' я выбираю по строке "VA - Download test by ADO"
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Report kinds and templates"
-		И в таблице 'ListOfReportTypes' я нажимаю на кнопку с именем 'ListOfReportTypesOpenInstancesList'
+		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListOpenInstancesList'
 		Когда открылось окно "Report instances"
 		* Отбора по сценарию
 			И я устанавливаю флаг с именем 'UseScenario'
@@ -212,15 +212,36 @@
 			И в таблице 'Companies' я перехожу к строке:
 				| "Value"     | "Use" |
 				| "Mercury LLC" | "No"          |
-			И в таблице 'Companies' я устанавливаю флаг с именем 'CompaniesShouldUse'
+			И в таблице 'Companies' я устанавливаю флаг с именем 'CompaniesUse'
 			И в таблице 'Companies' я завершаю редактирование строки
 		
 		Если в таблице 'List' количество строк 'равно' 0 Тогда
 			И Я создаю экземпляр отчета для вида отчета "VA - Download test by ADO" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' '' 
 		Иначе
 			И в таблице 'List' я выбираю текущую строку
-		И Открылся экземпляр отчета для вида отчета "VA - Download test by ADO" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
-		
+			И Открылся экземпляр отчета для вида отчета "VA - Download test by ADO" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
+			И я нажимаю на кнопку с именем 'EnableEdit'		
+		И я нажимаю на кнопку с именем 'Clear'
+		Тогда открылось окно '1C:Предприятие'
+		И я нажимаю на кнопку с именем 'Button0'
+		Тогда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'Write'
+		Тогда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormRefreshСУчетомВерсий'
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+			| "VA - Download test by ADO" | ''               | ''           | ''     | ''      | ''                | ''           | ''     | ''      | ''             | ''           | ''     | ''      | ''        | ''           | ''     | ''      |
+			| ''                          | ''               | ''           | ''     | ''      | ''                | ''           | ''     | ''      | ''             | ''           | ''     | ''      | ''        | ''           | ''     | ''      |
+			| ''                          | "January 2021" | ''           | ''     | ''      | "February 2021" | ''           | ''     | ''      | "March 2021" | ''           | ''     | ''      | "TOTAL"   | ''           | ''     | ''      |
+			| ''                          | "Product ID"        | "Quantity" | "Price" | "Amount" | "Product ID"         | "Quantity" | "Price" | "Amount" | "Product ID"      | "Quantity" | "Price" | "Amount" | "Product ID" | "Quantity" | "Price" | "Amount" |
+			| "Line1"                   | ''               | '0'          | '0'    | '0'     | ''                | '0'          | '0'    | '0'     | ''             | '0'          | '0'    | '0'     | ''        | '0'          | '0'    | '0'     |
+		* Сверим движения
+			Когда открылось окно '$WindowTitle$'
+			И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
+			И я жду открытия формы "Flat table of indicator values" в течение 30 секунд
+			И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 60 секунд
+			Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Templates\RegisterRecords_Empty1.mxl' по шаблону
+			И Я закрываю окно "Flat table of indicator values"
+			
 	* Рассчитываем документ по правилу
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
 
@@ -294,8 +315,8 @@
 Сценарий: 10.03 Изменим вид номенклатуры
 
 	Если '$$ЭтоPerform$$' Тогда
-		И Я Для номенклатуры с именем "1C:KP GU PROF for 12 months" для реквизита 'ProductCategory' выбираю значение '' в группе ''
-		И Я Для номенклатуры с именем "1C:KP GU PROF for 6 months" для реквизита 'ProductCategory' выбираю значение '' в группе ''
+		И Я Для номенклатуры с именем "1C:KP GU PROF for 12 months" для реквизита 'Product_Category' выбираю значение '' в группе ''
+		И Я Для номенклатуры с именем "1C:KP GU PROF for 6 months" для реквизита 'Product_Category' выбираю значение '' в группе ''
 
 	ИначеЕсли '$$IsCPM$$' Тогда 
 		И В командном интерфейсе я выбираю "Catalogs" "Product range"
@@ -306,24 +327,30 @@
 		И в таблице  'List' я перехожу на один уровень вниз
 
 		* 1С:КП ГУ ПРОФ на 12 месяцев
-			И в таблице 'List' я перехожу к строке:
+			Если в таблице 'List' есть строка Тогда
 				| "Product ID"    | "Unit" | "Description"                |
-				| "KPGUProf12" | "PCs"      | "1C:KP GU PROF for 12 months" |
-			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "1C:KP GU PROF for 12 months (Product range)"
-			И из выпадающего списка с именем 'ProductKind' я выбираю по строке "VA - Other"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "1C:KP GU PROF for 12 months (Product range) *" в течение 20 секунд
+				| "KPGUProf12" | "PCs"      | "1C:KP GU PROF for 12 months" |			
+				И в таблице 'List' я перехожу к строке:
+					| "Product ID"    | "Unit" | "Description"                |
+					| "KPGUProf12" | "PCs"      | "1C:KP GU PROF for 12 months" |
+				И в таблице 'List' я выбираю текущую строку
+				Тогда открылось окно "1C:KP GU PROF for 12 months (Product range)"
+				И из выпадающего списка с именем 'ProductKind' я выбираю по строке "VA - Other"
+				И я нажимаю на кнопку с именем 'FormWriteAndClose'
+				И я жду закрытия окна "1C:KP GU PROF for 12 months (Product range) *" в течение 20 секунд
 
 		* 1С:КП ГУ ПРОФ на 6 месяцев
-			И в таблице 'List' я перехожу к строке:
+			Если в таблице 'List' есть строка Тогда
 				| "Product ID"   | "Unit" | "Description"               |
 				| "KPGUProf6" | "PCs"      | "1C:KP GU PROF for 6 months" |
-			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "1C:KP GU PROF for 6 months (Product range)"
-			И из выпадающего списка с именем 'ProductKind' я выбираю по строке "VA - Other"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "1C:KP GU PROF for 6 months (Product range) *" в течение 20 секунд	
+				И в таблице 'List' я перехожу к строке:
+					| "Product ID"   | "Unit" | "Description"               |
+					| "KPGUProf6" | "PCs"      | "1C:KP GU PROF for 6 months" |
+				И в таблице 'List' я выбираю текущую строку
+				Тогда открылось окно "1C:KP GU PROF for 6 months (Product range)"
+				И из выпадающего списка с именем 'ProductKind' я выбираю по строке "VA - Other"
+				И я нажимаю на кнопку с именем 'FormWriteAndClose'
+				И я жду закрытия окна "1C:KP GU PROF for 6 months (Product range) *" в течение 20 секунд	
 		
 	ИначеЕсли '$$IsERPCPM$$' Тогда
 		И В командном интерфейсе я выбираю "Quick menu" "Product range"
@@ -341,14 +368,14 @@
 					| "KPGUProf6" | "1C:KP GU PROF for 6 months" |
 				И в таблице 'ListAdvancedSearchProducts' я выбираю текущую строку
 				Тогда открылось окно "1C:KP GU PROF for 6 months (Product range)"
-				И я перехожу к закладке с именем 'PageProductRangeAttributes'
+				И я перехожу к закладке с именем 'PageProductAttributes'
 				Если открылось окно 'Полезный совет' Тогда
 					И я нажимаю на кнопку с именем 'Button0'
 				Тогда открылось окно "1C:KP GU PROF for 6 months (Product range)"
-				И я разворачиваю группу с именем 'СворачиваемаяGroupMainParametersУчета'
+				И я разворачиваю группу с именем 'СворачиваемаяMainParametersGroupУчета'
 				И из выпадающего списка с именем 'ProductKind' я выбираю по строке "VA - Other"
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'				
-				Если открылось окно 'Rate VAT применZ2етFrom1Z2 From1:' Тогда
+				Если открылось окно 'Rate1 VAT применZ2етFrom1Z2 From1:' Тогда
 					И в поле с именем 'InputFld' я ввожу текст '1/1/2021'
 					И я нажимаю на кнопку с именем 'OK'
 					Тогда открылось окно "1С:FN ГУ PРОФ for * месяцев (Product range)"
@@ -367,12 +394,12 @@
 					| "KPGUProf12" | "1C:KP GU PROF for 12 months" |
 				И в таблице 'ListAdvancedSearchProducts' я выбираю текущую строку
 				Тогда открылось окно "1C:KP GU PROF for 12 months (Product range)"
-				И я перехожу к закладке с именем 'PageProductRangeAttributes'
+				И я перехожу к закладке с именем 'PageProductAttributes'
 				Тогда открылось окно "1C:KP GU PROF for 12 months (Product range)"
-				И я разворачиваю группу с именем 'СворачиваемаяGroupMainParametersУчета'
+				И я разворачиваю группу с именем 'СворачиваемаяMainParametersGroupУчета'
 				И из выпадающего списка с именем 'ProductKind' я выбираю по строке "VA - Other"
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
-				Если открылось окно 'Rate VAT применZ2етFrom1Z2 From1:' Тогда
+				Если открылось окно 'Rate1 VAT применZ2етFrom1Z2 From1:' Тогда
 					И в поле с именем 'InputFld' я ввожу текст '1/1/2021'
 					И я нажимаю на кнопку с именем 'OK'
 					Тогда открылось окно "1С:FN ГУ PРОФ for * месяцев (Product range)"

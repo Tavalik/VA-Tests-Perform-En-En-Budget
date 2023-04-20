@@ -48,22 +48,22 @@
 				И я нажимаю на кнопку с именем 'FormCreate'
 			* Заполняем источник получения, проверяем заполнение полей				
 				Когда открылось окно "Data source (create)"
-				И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Current infobase accumulation register"
-				И из выпадающего списка с именем 'DBAccumulationRegister' я выбираю по строке 'CashFlowsCPM'
-				Тогда таблица 'MappingTable' стала равной:
-					| 'Dimension приемника'     | 'Approach заполнения' | 'Name колонки'                        | 'Kind аналитики' |
-					| "Dimension 1: Cash flow items" | 'Field источника'    | '[Item движения денежных средств]' | "Cash flow items"    |
+				И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase accumulation register"
+				И из выпадающего списка с именем 'DBAccumulationRegister' я выбираю по строке 'CashFlowCPM'
+				Тогда таблица 'ComplianceTable' стала равной:
+					| 'Dimension приемника'     | 'Method заполнения' | 'Name колонки'                        | 'Type аналитики' |
+					| "Dimension 1: Cash flow items" | 'Field источника'    | '[AssetRef движения денежных средств]' | "Cash flow items"    |
 				И у элемента с именем 'DBRegisterResource' я жду значения "Amount" в течение 10 секунд
-				И у элемента с именем 'TotalTypeDB' я жду значения 'Оборот' в течение 10 секунд			
+				И у элемента с именем 'TotalKindDB' я жду значения 'Оборот' в течение 10 секунд			
 			* Заполняем отборы		
 				И я перехожу к закладке с именем 'FiltersPage'
 				И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 					| 'Filter'         | 'Field'         |
-					| 'Project report' | '[Dimension1]' |
+					| 'Project Report_' | '[Dimension1]' |
 				И я нажимаю на кнопку с именем 'TreeOfFilterParametersDBDelete'	
 				И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 					| 'Filter'           | 'Field'         |
-					| 'Scenario report' | '[Dimension2]' |
+					| 'Scenario Report_' | '[Dimension2]' |
 				И я нажимаю на кнопку с именем 'TreeOfFilterParametersDBDelete'
 				И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 					| 'Filter'         | 'Field'         |
@@ -140,9 +140,9 @@
 
 		* Записываем документ, проверяем движения
 			Когда открылось окно '$WindowTitle$'
-			И я нажимаю на кнопку с именем 'FormWriteANDContinue'
+			И я нажимаю на кнопку с именем 'Write'
 			И я жду открытия формы '$WindowTitle$' в течение 30 секунд
-			И я нажимаю на кнопку с именем 'FormOpenDocRegisterRecordsFlatTab'
+			И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 			Тогда открылось окно "Flat table of indicator values"
 			И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд				
 			Тогда табличный документ 'ReportSpreadsheetDocument' равен по шаблону:
@@ -216,7 +216,7 @@
 				| 'Factor'                              | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | 'Value нечисловое' | ''                |
 				| 'Version'                                  | "Report period"                                      | 'Currency' | 'Dimension 1'                      | 'Dimension 2'      | 'Dimension 3'      | 'Dimension4'       | 'Dimension5'       | 'Dimension6'       | 'Dimension валюта' | ''                    | ''                |
 				| ''                                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| 'Comments значений показателей'        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
+				| 'Comments Values_ показателей'        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| ''                                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Factor'                              | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | 'Comment'         | ''                |
 				| 'Version'                                  | "Report period"                                      | 'Currency' | 'Dimension 1'                      | 'Dimension 2'      | 'Dimension 3'      | 'Dimension4'       | 'Dimension5'       | 'Dimension6'       | 'Dimension валюта' | ''                    | ''                |
@@ -239,8 +239,8 @@
 				И я нажимаю на кнопку с именем 'FormCreate'
 			* Заполняем источник получения, проверяем заполнение полей				
 				Когда открылось окно "Data source (create)"
-				И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Current infobase accumulation register"
-				И из выпадающего списка с именем 'DBAccumulationRegister' я выбираю по строке 'CashFlowsCPM'
+				И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase accumulation register"
+				И из выпадающего списка с именем 'DBAccumulationRegister' я выбираю по строке 'CashFlowCPM'
 				И я устанавливаю флаг с именем 'IsRegisterMainTable'						
 				И у элемента с именем 'DBRegisterResource' я жду значения "Amount" в течение 10 секунд
 				Тогда таблица 'FieldsTreeDB' стала равной по шаблону:
@@ -248,9 +248,9 @@
 					| 'Регистратор'            |
 					| 'Dimensions регистра(13)' |
 					| 'Attributes регистра(0)'  |
-				Тогда таблица 'MappingTable' стала равной:
-					| 'Dimension приемника'     | 'Approach заполнения' | 'Name колонки'                        | 'Kind аналитики' |
-					| "Dimension 1: Cash flow items" | 'Field источника'    | '[Item движения денежных средств]' | "Cash flow items"    |
+				Тогда таблица 'ComplianceTable' стала равной:
+					| 'Dimension приемника'     | 'Method заполнения' | 'Name колонки'                        | 'Type аналитики' |
+					| "Dimension 1: Cash flow items" | 'Field источника'    | '[AssetRef движения денежных средств]' | "Cash flow items"    |
 
 			* Добавляем отборы
 				И я перехожу к закладке с именем 'FiltersPage'		
@@ -258,11 +258,11 @@
 					И я нажимаю на кнопку с именем 'TreeOfFilterParametersDBDelete'
 					И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 						| 'Filter'         | 'Field'         |
-						| 'Project report' | '[Dimension1]' |
+						| 'Project Report_' | '[Dimension1]' |
 					И я нажимаю на кнопку с именем 'TreeOfFilterParametersDBDelete'
 					И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 						| 'Filter'           | 'Field'         |
-						| 'Scenario report' | '[Dimension2]' |
+						| 'Scenario Report_' | '[Dimension2]' |
 					И я нажимаю на кнопку с именем 'TreeOfFilterParametersDBDelete'
 					И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 						| 'Filter'         | 'Field'         |
@@ -295,13 +295,13 @@
 					Когда открылось окно "Data source (create) *"
 					И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 						| 'Filter'                      | 'Field'                      |
-						| 'Date beginning периода report' | 'Date beginning отбора data' |
+						| 'Date beginning периода Report_' | 'Date beginning отбора data_' |
 					И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "Start date of report period with a shift"
 					И в таблице 'TreeOfFilterParametersDB' в поле с именем 'DefiningMethodClarification' я ввожу текст '-1'
 					И в таблице 'TreeOfFilterParametersDB' я завершаю редактирование строки
 					И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 						| 'Filter'                     | 'Field'                         |
-						| 'Date конца периода report' | 'Date end отбора data' |
+						| 'Date конца периода Report_' | 'Date окончания отбора data_' |
 					И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "Reporting period end date with a shift"
 					И в таблице 'TreeOfFilterParametersDB' в поле с именем 'DefiningMethodClarification' я ввожу текст '-1'
 					И в таблице 'TreeOfFilterParametersDB' я завершаю редактирование строки								
@@ -342,17 +342,17 @@
 			Когда открылось окно "Report kinds and templates"
 			И в таблице "List" я перехожу к строке:
 				| 'Description'                                          |
-				| 'DimenKind - Заполнение From РН (без истории) (pivot table)' |
+				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' |
 			И в таблице 'List' я выбираю текущую строку
 			* Состав строк
 				Когда Открылся бланк сводной таблицы для вида отчета "VA - Filling from PH (no history)"
 				И я нажимаю на кнопку с именем 'ShowListOfRows'
 				Тогда открылось окно "Set up line list"
 				И в таблице 'SettingTree' я перехожу к строке:
-					| 'Kind аналитики 1' | 'Group аналитик' | 'Code'       | 'IntendedPurpose'      | 'String report' |
-					| "Cash flow items"      | 'ГР_Статьи Cash_Flow'   | 'CashFlowItems' | 'Произвольные данные' | "Cash flow items"    |
+					| 'Type аналитики 1' | 'Group аналитик' | 'Code'       | 'IntendedPurpose'      | 'String Report_' |
+					| "Cash flow items"      | 'ГR_Статьи Cash_Flow'   | 'CFItems' | 'Произвольные данные' | "Cash flow items"    |
 				И я нажимаю на кнопку с именем 'MoveLeft'
-				И я нажимаю на кнопку с именем 'ApplyChanges'
+				И я нажимаю на кнопку с именем 'ApplyTheChanges'
 			* Состав колонок	
 				Тогда Открылся бланк сводной таблицы для вида отчета "VA - Filling from PH (no history)"
 				И я запоминаю заголовок формы в переменную 'WindowTitle'				
@@ -408,8 +408,8 @@
 			И Я устанавливаю отборы сводной таблицы: дата начала '1/1/2021', дата конца '3/31/2021', валюта 'RUB', сценарий "VA - Main scenario", организация "Mercury LLC"
 			И Я устанавливаю отбор сводной таблицы 'Project' со значением "VA - Main project"	
 			Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-				| 'DimenKind - Заполнение From РН (без истории) (pivot table)' | "January 2021" | "February 2021" | "March 2021" |
-				| 'DimenKind - Заполнение From РН (без истории) (pivot table)' | "Amount"          | "Amount"           | "Amount"        |
+				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' | "January 2021" | "February 2021" | "March 2021" |
+				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' | "Amount"          | "Amount"           | "Amount"        |
 				| "Cash flow items"                                            | '3,120,000'      | '16,000,000'      | '0'            |
 				| "1Software upgrade"                         | '0'              | '3,450,000'       | '0'            |
 				| "2Software implementation"                       | '2,340,000'      | '7,350,000'       | '0'            |
@@ -417,33 +417,34 @@
 		
 		* Рассчитываем по регламенту
 			И Открылась сводная таблица для вида отчета "VA - Filling from PH (no history)"
-			И я запоминаю заголовок формы в переменную "TitleОкна"			
-			И я нажимаю на кнопку с именем 'RecalculateByRule'
-			Тогда открылось окно "Processing rule selection"
-			И в таблице 'ProcessingRulesList' я перехожу к строке:
-				| 'Rule'                 |
-				| 'Fill по регламенту' |
-			И в таблице 'ProcessingRulesList' я выбираю текущую строку
+			И я нажимаю на кнопку с именем 'ShouldRecalculateOnРегламенту'
 			И я жду открытия формы '$WindowTitle$' в течение 30 секунд
 			Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-				| 'DimenKind - Заполнение From РН (без истории) (pivot table)' | "January 2021" | "February 2021" | "March 2021" |
-				| 'DimenKind - Заполнение From РН (без истории) (pivot table)' | "Amount"          | "Amount"           | "Amount"        |
+				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' | "January 2021" | "February 2021" | "March 2021" |
+				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' | "Amount"          | "Amount"           | "Amount"        |
 				| "Cash flow items"                                            | '0'              | '3,120,000'       | '0'            |
 				| "2Software implementation"                       | '0'              | '2,340,000'       | '0'            |
 				| "3Software sale"                      | '0'              | '780,000'         | '0'            |
 
+		* Отменим транзакцию
+			И я нажимаю на кнопку с именем 'CancelAction'
+			Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' | "January 2021" | "February 2021" | "March 2021" |
+				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' | "Amount"          | "Amount"           | "Amount"        |
+				| "Cash flow items"                                            | '3,120,000'      | '16,000,000'      | '0'            |
+				| "1Software upgrade"                         | '0'              | '3,450,000'       | '0'            |
+				| "2Software implementation"                       | '2,340,000'      | '7,350,000'       | '0'            |
+				| "3Software sale"                      | '780,000'        | '5,200,000'       | '0'            |								
+
 		* Рассчитываем по правилу
 			Когда открылось окно '$WindowTitle$'
-			И я нажимаю на кнопку с именем 'RecalculateByRule'
-			Тогда открылось окно "Processing rule selection"
-			И в таблице 'ProcessingRulesList' я перехожу к строке:
-				| 'Rule'                             |
-				| "VA - Filling from PH (no history)" |
-			И я нажимаю на кнопку с именем 'Evaluate'
+			И я нажимаю на кнопку с именем 'ShouldRecalculateOtherItems'
+			Тогда открылось окно "Select способа расчета indicators"
+			И я нажимаю на кнопку с именем 'FormSelect'
 			И я жду открытия формы '$WindowTitle$' в течение 30 секунд
 			Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-				| 'DimenKind - Заполнение From РН (без истории) (pivot table)' | "January 2021" | "February 2021" | "March 2021" |
-				| 'DimenKind - Заполнение From РН (без истории) (pivot table)' | "Amount"          | "Amount"           | "Amount"        |
+				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' | "January 2021" | "February 2021" | "March 2021" |
+				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' | "Amount"          | "Amount"           | "Amount"        |
 				| "Cash flow items"                                            | '0'              | '3,120,000'       | '0'            |
 				| "2Software implementation"                       | '0'              | '2,340,000'       | '0'            |
 				| "3Software sale"                      | '0'              | '780,000'         | '0'            |
@@ -451,8 +452,10 @@
 		* Сохраняем таблицу
 			Когда открылось окно '$WindowTitle$'
 			И Я закрываю окно '$WindowTitle$'
+			Тогда открылось окно '1C:Предприятие'
+			И я нажимаю на кнопку с именем 'Button0'
 
-Сценарий: 05.07 Проверяем движения экземпляра отчета - 'Заполнение From РН (no history)'
+Сценарий: 05.07 Проверяем движения экземпляра отчета - 'Заполнение From RН (no history)'
 
 	Если 'NOT $$ЭтоPerform$$' Тогда
 
@@ -469,7 +472,7 @@
 
 		* Проверяем, движения после сводной таблицы
 			Когда открылось окно '$WindowTitle$'
-			И я нажимаю на кнопку с именем 'FormOpenDocRegisterRecordsFlatTab'
+			И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 			Тогда открылось окно "Flat table of indicator values"
 			И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
 			Тогда табличный документ 'ReportSpreadsheetDocument' равен по шаблону:
@@ -480,9 +483,6 @@
 				| 'Factor'                              | ''                                                   | ''       | 'Value'                         | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Version'                                  | "Report period"                                      | 'Currency' | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Статьи Cash_Flow сумма'                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'RUB'    | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'USD'    | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'EUR'    | '*'                                | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'RUB'    | '3,120,000.00000'                  | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'USD'    | '41,949.7490*'                     | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'EUR'    | '34,692.84049'                     | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
@@ -497,19 +497,10 @@
 				| 'Factor'                              | ''                                                   | ''       | ''                                 | ''                 | 'Value'         | 'Value валюта'  | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Version'                                  | "Report period"                                      | 'Currency' | 'Dimension 1'                      | 'Dimension валюта' | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Статьи Cash_Flow сумма'                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'RUB'    | "2Software implementation"  | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'RUB'    | "3Software sale" | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'USD'    | "2Software implementation"  | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'USD'    | "3Software sale" | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'EUR'    | "2Software implementation"  | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'EUR'    | "3Software sale" | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "February 2021"                                    | 'RUB'    | "1Software upgrade"    | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'RUB'    | "2Software implementation"  | ''                 | '2,340,000.00000'  | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'RUB'    | "3Software sale" | ''                 | '780,000.00000'    | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "February 2021"                                    | 'USD'    | "1Software upgrade"    | ''                 | '*'                | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'USD'    | "2Software implementation"  | ''                 | '31,462.3117*'     | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'USD'    | "3Software sale" | ''                 | '10,487.43726'     | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "February 2021"                                    | 'EUR'    | "1Software upgrade"    | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'EUR'    | "2Software implementation"  | ''                 | '26,019.63037'     | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'EUR'    | "3Software sale" | ''                 | '8,673.21012'      | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| ''                                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
@@ -543,7 +534,7 @@
 				| 'Factor'                              | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | 'Value нечисловое' | ''                |
 				| 'Version'                                  | "Report period"                                      | 'Currency' | 'Dimension 1'                      | 'Dimension 2'      | 'Dimension 3'      | 'Dimension4'       | 'Dimension5'       | 'Dimension6'       | 'Dimension валюта' | ''                    | ''                |
 				| ''                                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| 'Comments значений показателей'        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
+				| 'Comments Values_ показателей'        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| ''                                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Factor'                              | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | 'Comment'         | ''                |
 				| 'Version'                                  | "Report period"                                      | 'Currency' | 'Dimension 1'                      | 'Dimension 2'      | 'Dimension 3'      | 'Dimension4'       | 'Dimension5'       | 'Dimension6'       | 'Dimension валюта' | ''                    | ''                |
@@ -555,13 +546,13 @@
 
 		* Проверяем движения
 			Когда открылось окно '$WindowTitle$'
-			И я нажимаю на кнопку с именем 'FormOpenDocRegisterRecordsFlatTab'
+			И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 			Тогда открылось окно "1C:Enterprise"
 			И я нажимаю на кнопку с именем 'Button1'
 			Когда открылось окно '$WindowTitle$'
-			И я нажимаю на кнопку с именем 'FormWriteANDContinue'
+			И я нажимаю на кнопку с именем 'Write'
 			И я жду открытия формы '$WindowTitle$' в течение 30 секунд
-			И я нажимаю на кнопку с именем 'FormOpenDocRegisterRecordsFlatTab'
+			И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 			Тогда открылось окно "Flat table of indicator values"
 			И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
 			Тогда табличный документ 'ReportSpreadsheetDocument' равен по шаблону:
@@ -572,9 +563,6 @@
 				| 'Factor'                              | ''                                                   | ''       | 'Value'                         | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Version'                                  | "Report period"                                      | 'Currency' | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Статьи Cash_Flow сумма'                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'RUB'    | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'USD'    | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'EUR'    | '*'                                | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'RUB'    | '3,120,000.00000'                  | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'USD'    | '41,949.7490*'                     | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'EUR'    | '34,692.84049'                     | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
@@ -589,19 +577,10 @@
 				| 'Factor'                              | ''                                                   | ''       | ''                                 | ''                 | 'Value'         | 'Value валюта'  | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Version'                                  | "Report period"                                      | 'Currency' | 'Dimension 1'                      | 'Dimension валюта' | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Статьи Cash_Flow сумма'                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'RUB'    | "2Software implementation"  | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'RUB'    | "3Software sale" | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'USD'    | "2Software implementation"  | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'USD'    | "3Software sale" | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'EUR'    | "2Software implementation"  | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "January 2021"                                     | 'EUR'    | "3Software sale" | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "February 2021"                                    | 'RUB'    | "1Software upgrade"    | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'RUB'    | "2Software implementation"  | ''                 | '2,340,000.00000'  | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'RUB'    | "3Software sale" | ''                 | '780,000.00000'    | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "February 2021"                                    | 'USD'    | "1Software upgrade"    | ''                 | '*'                | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'USD'    | "2Software implementation"  | ''                 | '31,462.3117*'     | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'USD'    | "3Software sale" | ''                 | '10,487.43726'     | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| '*'                                       | "February 2021"                                    | 'EUR'    | "1Software upgrade"    | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'EUR'    | "2Software implementation"  | ''                 | '26,019.63037'     | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'EUR'    | "3Software sale" | ''                 | '8,673.21012'      | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| ''                                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
@@ -635,7 +614,7 @@
 				| 'Factor'                              | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | 'Value нечисловое' | ''                |
 				| 'Version'                                  | "Report period"                                      | 'Currency' | 'Dimension 1'                      | 'Dimension 2'      | 'Dimension 3'      | 'Dimension4'       | 'Dimension5'       | 'Dimension6'       | 'Dimension валюта' | ''                    | ''                |
 				| ''                                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| 'Comments значений показателей'        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
+				| 'Comments Values_ показателей'        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| ''                                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Factor'                              | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | 'Comment'         | ''                |
 				| 'Version'                                  | "Report period"                                      | 'Currency' | 'Dimension 1'                      | 'Dimension 2'      | 'Dimension 3'      | 'Dimension4'       | 'Dimension5'       | 'Dimension6'       | 'Dimension валюта' | ''                    | ''                |

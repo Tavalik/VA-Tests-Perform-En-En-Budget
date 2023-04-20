@@ -8,7 +8,7 @@
 Сценарий: Я открываю вид отчета с именем 'TheReportKindName'
 
 	И Я нахожу в списке вид отчета с именем '[TheReportKindName]'
-	И в таблице 'ListOfReportTypes' я выбираю текущую строку
+	И в таблице 'ReportKindList' я выбираю текущую строку
 	Тогда открылось окно "* (Report kinds)"
 
 Сценарий: Я выбираю показатель с кодом 'TheIndicatorCode' вида отчета 'TheReportKindName'
@@ -35,7 +35,7 @@
 			// Форма уже открыта
 		Иначе
 			И Я нахожу в списке вид отчета с именем '[TheReportKindName]'
-			И в таблице 'ListOfReportTypes' я выбираю текущую строку
+			И в таблице 'ReportKindList' я выбираю текущую строку
 		Когда открылось окно "[TheReportKindName] (Report kinds)"
 		И я перехожу к закладке с именем 'DefaultSettings'
 		И я нажимаю на кнопку открытия поля с именем 'DefaultPivotTableTemplate'

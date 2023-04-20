@@ -26,7 +26,7 @@
 	
 	И Я открываю вид отчета с именем "VA - Currency indicators (source)"
 	И я устанавливаю флаг с именем 'ProjectSeparation'	
-	И я нажимаю на кнопку с именем 'FormButtonWrite'
+	И я нажимаю на кнопку с именем 'RecordButtonForm'
 
 	И я нажимаю на кнопку с именем 'EditTree'
 	Когда открылось окно "Edit tree"
@@ -42,9 +42,9 @@
 
 	И я в конструкторе отчета в ячейке 'R5C2' я меняю свойство показателя 'ValueType' на "Date"
 	И я в конструкторе отчета в ячейке 'R5C2' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-	И я в конструкторе отчета в ячейке 'R6C2' я меняю свойство показателя 'IsNonFinancial' на "True"
+	И я в конструкторе отчета в ячейке 'R6C2' я меняю свойство показателя 'NonFinancial' на "True"
 	И я в конструкторе отчета в ячейке 'R6C2' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-	И я в конструкторе отчета в ячейке 'R7C2' я меняю свойство показателя 'IsNonFinancial' на "True"
+	И я в конструкторе отчета в ячейке 'R7C2' я меняю свойство показателя 'NonFinancial' на "True"
 	И я в конструкторе отчета в ячейке 'R7C2' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
 	
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0Counter" в ячейку 'R2C2'
@@ -134,25 +134,68 @@
 
 	И Я создаю экземпляр отчета для вида отчета "VA - Currency indicators (source)" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект "VA - Main project" аналитики '' '' '' '' '' '' 
 
-	* Вводим значения показателей
+	* Вводим значения невалютных показателей
 		Когда открылось окно '$WindowTitle$'		
 		И Я добавляю значения с раскрытием показателей в ячейку 'R6C2'
-				| "VA0Counter"      | 'Value'      |
+				| "VA0Counter"      | 'Value1'     |
 				| "LLC \"Ganymede\"" | '100,000.00000' |
 				| "LLC \"Io\""      | '200,000.00000' |
-		И Я добавляю значения с раскрытием показателей в ячейку 'R9C2'
-				| "VA0Counter"      | 'DimensionCurrency' | 'Value'      |
-				| "LLC \"Ganymede\"" | 'RUB'             | '100,000.00000' |
-				| "LLC \"Ganymede\"" | 'USD'             | '90,000.00000'  |
-				| "LLC \"Ganymede\"" | 'EUR'             | '110,000.00000' |
-				| "LLC \"Io\""      | 'RUB'             | '200,000.00000' |
-				| "LLC \"Io\""      | 'USD'             | '180,000.00000' |
-				| "LLC \"Io\""      | 'EUR'             | '220,000.00000' |
-		И Я добавляю значения с раскрытием показателей в ячейку 'R18C2'
-				| 'DimensionCurrency' | 'Value'      |
-				| 'RUB'             | '300,000.00000' |
-				| 'USD'             | '270,000.00000' |
-				| 'EUR'             | '330,000.00000' |
+
+	// ДОДЕЛАТЬ
+	// Добавить тест на пересчет валюты в многопериодном режиме формы редактирования показателей			
+
+	* Вводим значения с аналитиками, проверяем пересчет в валюту
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C2'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		Тогда открылось окно "Drill down indicators: *"
+		И я заполняю таблицу 'IndicatorsDrilldown' данными
+			| "VA0Counter"      | 'DimensionCurrency' | 'Value1'     | 'ValueCurrency1' |
+			| "LLC \"Ganymede\"" | 'RUB'             | ''              | '100,000.00000'   |
+			| "LLC \"Ganymede\"" | 'USD'             | '90,000.00000'  | ''                |
+			| "LLC \"Ganymede\"" | 'EUR'             | '110,000.00000' | ''                |
+			| "LLC \"Io\""      | 'RUB'             | ''              | '200,000.00000'   |
+			| "LLC \"Io\""      | 'USD'             | '180,000.00000' |                   |
+			| "LLC \"Io\""      | 'EUR'             | '220,000.00000' |                   |
+		Тогда таблица 'IndicatorsDrilldown' стала равной:
+			| 'Counterparties'     | 'Currencies' | 'Value1' | 'ValueCurrency1' |
+			| "LLC \"Ganymede\"" | 'RUB'    | '100,000'   | '100,000'         |
+			| "LLC \"Ganymede\"" | 'USD'    | '90,000'    | '1,213'           |
+			| "LLC \"Ganymede\"" | 'EUR'    | '110,000'   | '1,216'           |
+			| "LLC \"Io\""      | 'RUB'    | '200,000'   | '200,000'         |
+			| "LLC \"Io\""      | 'USD'    | '180,000'   | '2,425'           |
+			| "LLC \"Io\""      | 'EUR'    | '220,000'   | '2,431'           |
+		И я нажимаю на кнопку с именем 'FormOKButton1'
+		И я жду закрытия окна "Drill down indicators: *" в течение 20 секунд	
+
+	* Вводим значения, проверяем пересчет в валюту			
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R18C2'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		Тогда открылось окно "Drill down indicators: *"
+		И я заполняю таблицу 'IndicatorsDrilldown' данными
+			| 'DimensionCurrency' | 'Value1' | 'ValueCurrency1' |
+			| 'RUB'             | ''          | '300,000.00000'   |
+			| 'USD'             | ''          | '3500'            |
+			| 'EUR'             | ''          | '3600'            |
+		И в поле с именем 'Accuracy' я ввожу текст '4'
+		И из выпадающего списка с именем 'Divisor' я выбираю точное значение "thousand"
+		Тогда таблица 'IndicatorsDrilldown' стала равной:
+			| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+			| 'RUB'    | '300.0000'  | '300.0000'        |
+			| 'USD'    | '259.7714'  | '3.5000'          |
+			| 'EUR'    | '325.7896'  | '3.6000'          |
+		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'
+		И я заполняю таблицу 'IndicatorsDrilldown' данными		
+			| 'DimensionCurrency' | 'Value1'     |
+			| 'RUB'             | '300,000.00000' |
+			| 'USD'             | '270,000.00000' |
+			| 'EUR'             | '330,000.00000' |
+		Тогда таблица 'IndicatorsDrilldown' стала равной:
+			| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+			| 'RUB'    | '300.0000'  | '300.0000'        |
+			| 'USD'    | '270.0000'  | '3.6378'          |
+			| 'EUR'    | '330.0000'  | '3.6465'          |
+		И я нажимаю на кнопку с именем 'FormOKButton1'
+		И я жду закрытия окна "Drill down indicators: *" в течение 20 секунд
 
 	* Копируем значения показателей
 		Когда открылось окно '$WindowTitle$'
@@ -199,8 +242,7 @@
 
 	* Записываем документ	
 		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormWriteANDContinue'
-		И я запоминаю заголовок формы в переменную 'WindowTitle'		
+		И я нажимаю на кнопку с именем 'Write'
 
 	* Сравниваем движения	
 		Тогда открылось окно '$WindowTitle$'
@@ -211,11 +253,11 @@
 
 Сценарий: 09.05 Создание вида отчета "VA - Currency indicators (recipient)"
 
-	И Я создаю вид отчета с именем "VA - Currency indicators (recipient)" и родителем 'DimenKind - Нарастающий итог (group)'
+	И Я создаю вид отчета с именем "VA - Currency indicators (recipient)" и родителем 'DimenKind - Currency_1 показатели (group)'
 
 	И Я открываю вид отчета с именем "VA - Currency indicators (recipient)"
 	И я устанавливаю флаг с именем 'ProjectSeparation'	
-	И я нажимаю на кнопку с именем 'FormButtonWrite'
+	И я нажимаю на кнопку с именем 'RecordButtonForm'
 
 	И я нажимаю на кнопку с именем 'EditTree'
 	Когда открылось окно "Edit tree"
@@ -373,7 +415,7 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "* (Report indicators)"
 			И из выпадающего списка с именем 'PeriodTotalCalcMethod' я выбираю точное значение "Total by period is not calculated"
-			И я изменяю флаг с именем 'IsNonFinancial'
+			И я изменяю флаг с именем 'NonFinancial'
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
 		* Курс (USD)	
@@ -382,7 +424,7 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "* (Report indicators)"
 			И из выпадающего списка с именем 'PeriodTotalCalcMethod' я выбираю точное значение "Total by period is not calculated"
-			И я изменяю флаг с именем 'IsNonFinancial'
+			И я изменяю флаг с именем 'NonFinancial'
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
 		* Выручка по валюте [Курс указанный в показателе]	
@@ -569,7 +611,70 @@
 			И Я выбираю показатель с кодом "RateUSD_Value" вида отчета "VA - Currency indicators (source)"
 			Тогда открылось окно "Edit tree *"
 			И я нажимаю на кнопку с именем 'WriteAndCollapse'
-				
+
+	* Включим возможность редактирования показателей
+		Когда открылось окно "Edit tree"
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R3C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R4C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R5C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R6C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R7C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R8C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R9C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R10C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R11C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R12C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R13C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R14C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R15C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R16C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R17C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'				
+
 Сценарий: 09.06 Создание многопериодного бланка для вида отчета "VA - Currency indicators (recipient)"
 
 	И Я Для вида отчета "VA - Currency indicators (recipient)" я создаю бланк по умолчанию
@@ -816,11 +921,340 @@
 		Когда открылось окно '$WindowTitle$ *'
 		И я нажимаю на кнопку с именем 'FormButtonWriteAndClose'
 				
-Сценарий: 09.07 Создание экземпляра отчета - "VA - Currency indicators (recipient)" 
+Сценарий: 09.07 Ручное заполнение экземпляра отчета - "VA - Currency indicators (recipient)" 
 
 	И Я создаю экземпляр отчета для вида отчета "VA - Currency indicators (recipient)" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект "VA - Main project" аналитики '' '' '' '' '' '' 
 
+	* Проверяем значения в форме редактирования показателей
+		* Выручка по валюте [Средний курс за период]
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Drill down indicators: *"
+			И я заполняю таблицу 'IndicatorsDrilldown' данными
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | ''                |
+				| 'USD'    | '270,000'   | ''                |
+				| 'EUR'    | '330,000'   | ''                |
+			Тогда таблица 'IndicatorsDrilldown' стала равной:
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | '300,000'         |
+				| 'USD'    | '270,000'   | '3,638'           |
+				| 'EUR'    | '330,000'   | '3,647'           |
+			И я нажимаю на кнопку с именем 'FormOKButton1'
+			И я жду закрытия окна "Drill down indicators: *" в течение 20 секунд
+		* Выручка по валюте [Средний курс за период МСФО]
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Drill down indicators: *"
+			И я заполняю таблицу 'IndicatorsDrilldown' данными
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | ''                |
+				| 'USD'    | '270,000'   | ''                |
+				| 'EUR'    | '330,000'   | ''                |
+			Тогда таблица 'IndicatorsDrilldown' стала равной:
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | '300,000'         |
+				| 'USD'    | '270,000'   | '3,597'           |
+				| 'EUR'    | '330,000'   | '3,605'           |
+			И я нажимаю на кнопку с именем 'FormOKButton1'
+			И я жду закрытия окна "Drill down indicators: *" в течение 20 секунд
+		* Выручка по валюте [Средний курс за период ЦБ]
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R15C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Drill down indicators: *"
+			И я заполняю таблицу 'IndicatorsDrilldown' данными
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | ''                |
+				| 'USD'    | '270,000'   | ''                |
+				| 'EUR'    | '330,000'   | ''                |
+			Тогда таблица 'IndicatorsDrilldown' стала равной:
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | '300,000'         |
+				| 'USD'    | '270,000'   | '3,641'           |
+				| 'EUR'    | '330,000'   | '3,648'           |
+			И я нажимаю на кнопку с именем 'FormOKButton1'
+			И я жду закрытия окна "Drill down indicators: *" в течение 20 секунд	
+		* Выручка по валюте [Курс на начало периода]
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R19C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Drill down indicators: *"
+			И я заполняю таблицу 'IndicatorsDrilldown' данными
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | ''                |
+				| 'USD'    | '270,000'   | ''                |
+				| 'EUR'    | '330,000'   | ''                |
+			Тогда таблица 'IndicatorsDrilldown' стала равной:
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | '300,000'         |
+				| 'USD'    | '270,000'   | '3,655'           |
+				| 'EUR'    | '330,000'   | '3,635'           |
+			И я нажимаю на кнопку с именем 'FormOKButton1'
+			И я жду закрытия окна "Drill down indicators: *" в течение 20 секунд
+		* Выручка по валюте [Курс на конец периода]
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R23C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Drill down indicators: *"
+			И я заполняю таблицу 'IndicatorsDrilldown' данными
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | ''                |
+				| 'USD'    | '270,000'   | ''                |
+				| 'EUR'    | '330,000'   | ''                |
+			Тогда таблица 'IndicatorsDrilldown' стала равной:
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | '300,000'         |
+				| 'USD'    | '270,000'   | '3,541'           |
+				| 'EUR'    | '330,000'   | '3,575'           |
+			И я нажимаю на кнопку с именем 'FormOKButton1'
+			И я жду закрытия окна "Drill down indicators: *" в течение 20 секунд
+		* Выручка по валюте [Средний курс за предыдущий период]
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R27C4'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Drill down indicators: *"
+			И я заполняю таблицу 'IndicatorsDrilldown' данными
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | ''                |
+				| 'USD'    | '270,000'   | ''                |
+				| 'EUR'    | '330,000'   | ''                |
+			Тогда таблица 'IndicatorsDrilldown' стала равной:
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | '300,000'         |
+				| 'USD'    | '270,000'   | '3,638'           |
+				| 'EUR'    | '330,000'   | '3,647'           |
+			И я нажимаю на кнопку с именем 'FormOKButton1'
+			И я жду закрытия окна "Drill down indicators: *" в течение 20 секунд
+		* Выручка по валюте [Курс на конец предыдущего периода]
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R31C4'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Drill down indicators: *"
+			И я заполняю таблицу 'IndicatorsDrilldown' данными
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | ''                |
+				| 'USD'    | '270,000'   | ''                |
+				| 'EUR'    | '330,000'   | ''                |
+			Тогда таблица 'IndicatorsDrilldown' стала равной:
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | '300,000'         |
+				| 'USD'    | '270,000'   | '3,541'           |
+				| 'EUR'    | '330,000'   | '3,575'           |
+			И я нажимаю на кнопку с именем 'FormOKButton1'
+			И я жду закрытия окна "Drill down indicators: *" в течение 20 секунд
+		* Выручка по валюте [Средний курс за предыдущий период ЦБ]
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R35C4'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Drill down indicators: *"
+			И я заполняю таблицу 'IndicatorsDrilldown' данными
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | ''                |
+				| 'USD'    | '270,000'   | ''                |
+				| 'EUR'    | '330,000'   | ''                |
+			Тогда таблица 'IndicatorsDrilldown' стала равной:
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | '300,000'         |
+				| 'USD'    | '270,000'   | '3,641'           |
+				| 'EUR'    | '330,000'   | '3,648'           |
+			И я нажимаю на кнопку с именем 'FormOKButton1'
+			И я жду закрытия окна "Drill down indicators: *" в течение 20 секунд
+		* Дата курса
+			И Я ввожу значение '3/1/2021' в ячейку 'R39C2'
+		* Выручка по валюте [Курс на дату указанную в показателе]
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R40C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Drill down indicators: *"
+			И я заполняю таблицу 'IndicatorsDrilldown' данными
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | ''                |
+				| 'USD'    | '270,000'   | ''                |
+				| 'EUR'    | '330,000'   | ''                |
+			Тогда таблица 'IndicatorsDrilldown' стала равной:
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | '300,000'         |
+				| 'USD'    | '270,000'   | '3,627'           |
+				| 'EUR'    | '330,000'   | '3,651'           |
+			И я нажимаю на кнопку с именем 'FormOKButton1'
+			И я жду закрытия окна "Drill down indicators: *" в течение 20 секунд
+		* Выручка по валюте [Курс на дату указанную в показателе другого отчета]
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R44C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Drill down indicators: *"
+			И я заполняю таблицу 'IndicatorsDrilldown' данными
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | ''                |
+				| 'USD'    | '270,000'   | ''                |
+				| 'EUR'    | '330,000'   | ''                |
+			Тогда таблица 'IndicatorsDrilldown' стала равной:
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | '300,000'         |
+				| 'USD'    | '270,000'   | '3,627'           |
+				| 'EUR'    | '330,000'   | '3,651'           |
+			И я нажимаю на кнопку с именем 'FormOKButton1'
+			И я жду закрытия окна "Drill down indicators: *" в течение 20 секунд	
+		* Дата курса
+			И Я ввожу значение '90' в ячейку 'R48C2'
+		* Дата курса
+			И Я ввожу значение '73' в ячейку 'R49C2'
+		* Выручка по валюте [Курс указанный в показателе]
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R50C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Drill down indicators: *"
+			И я заполняю таблицу 'IndicatorsDrilldown' данными
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | ''                |
+				| 'USD'    | '270,000'   | ''                |
+				| 'EUR'    | '330,000'   | ''                 |
+			Тогда таблица 'IndicatorsDrilldown' стала равной:
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | '300,000'         |
+				| 'USD'    | '270,000'   | '3,699'           |
+				| 'EUR'    | '330,000'   | '3,667'           |
+			И я нажимаю на кнопку с именем 'FormOKButton1'
+			И я жду закрытия окна "Drill down indicators: *" в течение 20 секунд
+		* Выручка по валюте [Курс указанный в показателе другого отчета]
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R54C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Drill down indicators: *"
+			И я заполняю таблицу 'IndicatorsDrilldown' данными
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | ''                |
+				| 'USD'    | '270,000'   | ''                |
+				| 'EUR'    | '330,000'   | ''                |
+			Тогда таблица 'IndicatorsDrilldown' стала равной:
+				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| 'RUB'    | '300,000'   | '300,000'         |
+				| 'USD'    | '270,000'   | '3,699'           |
+				| 'EUR'    | '330,000'   | '3,667'           |
+			И я нажимаю на кнопку с именем 'FormOKButton1'
+			И я жду закрытия окна "Drill down indicators: *" в течение 20 секунд
+
+	* Проверяем результат
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+			| "VA - Currency indicators (recipient)"                                    | ''               | ''         | ''                | ''         | ''             | ''         | ''         | ''         |
+			| ''                                                                       | ''               | ''         | ''                | ''         | ''             | ''         | ''         | ''         |
+			| ''                                                                       | "January 2021" | ''         | "February 2021" | ''         | "March 2021" | ''         | "TOTAL"    | ''         |
+			| ''                                                                       | "Value"       | "Value" | "Value"        | "Value" | "Value"     | "Value" | "Value" | "Value" |
+			| "Revenue by currency"                                                      | '0'              | ''         | '0'               | ''         | '0'            | ''         | '0'        | ''         |
+			| "Revenue by currency [Average rate for period]"                             | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,647'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,647'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,638'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,638'    |
+			| "Revenue by currency [Average rate for IFRS period]"                        | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,605'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,605'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,597'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,597'    |
+			| "Revenue by currency [Average rate for period CB]"                          | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,648'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,648'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,641'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,641'    |
+			| "Revenue by currency [Exchange rate at the beginning of the period]"                             | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,635'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,635'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,655'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,655'    |
+			| "Revenue by currency [Exchange rate at the end of the period]"                              | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,575'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,575'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,541'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,541'    |
+			| "Revenue by currency [Average rate for the previous period]"                  | '0'              | ''         | '900,000'         | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '0'              | '0'        | '330,000'         | '3,647'    | '0'            | '0'        | '330,000'  | '3,647'    |
+			| 'RUB '                                                                   | '0'              | '0'        | '300,000'         | '300,000'  | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '0'              | '0'        | '270,000'         | '3,638'    | '0'            | '0'        | '270,000'  | '3,638'    |
+			| "Revenue by currency [Exchange rate at the end of the previous period]"                  | '0'              | ''         | '900,000'         | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '0'              | '0'        | '330,000'         | '3,575'    | '0'            | '0'        | '330,000'  | '3,575'    |
+			| 'RUB '                                                                   | '0'              | '0'        | '300,000'         | '300,000'  | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '0'              | '0'        | '270,000'         | '3,541'    | '0'            | '0'        | '270,000'  | '3,541'    |
+			| "Revenue by currency [Average rate for the previous period CB]"               | '0'              | ''         | '900,000'         | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '0'              | '0'        | '330,000'         | '3,648'    | '0'            | '0'        | '330,000'  | '3,648'    |
+			| 'RUB '                                                                   | '0'              | '0'        | '300,000'         | '300,000'  | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '0'              | '0'        | '270,000'         | '3,641'    | '0'            | '0'        | '270,000'  | '3,641'    |
+			| "Effective on"                                                             | '3/1/2021'     | ''         | ''                | ''         | ''             | ''         | ''         | ''         |
+			| "Revenue by currency [Exchange rate as of the date specified in the indicator]"                | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,651'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,651'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,627'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,627'    |
+			| "Revenue by currency [Exchange rate as of the date specified in the indicator another report]" | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,651'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,651'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,627'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,627'    |
+			| "Rate [EUR]"                                                             | '90'             | ''         | '0'               | ''         | '0'            | ''         | '0'        | ''         |
+			| "Rate [USD]"                                                             | '73'             | ''         | '0'               | ''         | '0'            | ''         | '0'        | ''         |
+			| "Revenue by currency [Rate specified in the indicator]"                        | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,667'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,667'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,699'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,699'    |
+			| "Revenue by currency [Rate specified in the indicator another report]"         | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,667'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,667'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,699'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,699'    |
+
+	* Записываем и закрываем документ
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'WriteAndClose'
+		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд
+
+Сценарий: 09.08 Расчет по правилу экземпляра отчета - "VA - Currency indicators (recipient)" 
+
+	И Я открываю первый экземпляр отчета для вида отчета "VA - Currency indicators (recipient)"
+	Тогда Открылся экземпляр отчета для вида отчета "VA - Currency indicators (recipient)" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' '' 
+
+	* Проверяем результат
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+			| "VA - Currency indicators (recipient)"                                    | ''               | ''         | ''                | ''         | ''             | ''         | ''         | ''         |
+			| ''                                                                       | ''               | ''         | ''                | ''         | ''             | ''         | ''         | ''         |
+			| ''                                                                       | "January 2021" | ''         | "February 2021" | ''         | "March 2021" | ''         | "TOTAL"    | ''         |
+			| ''                                                                       | "Value"       | "Value" | "Value"        | "Value" | "Value"     | "Value" | "Value" | "Value" |
+			| "Revenue by currency"                                                      | '0'              | ''         | '0'               | ''         | '0'            | ''         | '0'        | ''         |
+			| "Revenue by currency [Average rate for period]"                             | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,647'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,647'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,638'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,638'    |
+			| "Revenue by currency [Average rate for IFRS period]"                        | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,605'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,605'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,597'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,597'    |
+			| "Revenue by currency [Average rate for period CB]"                          | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,648'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,648'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,641'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,641'    |
+			| "Revenue by currency [Exchange rate at the beginning of the period]"                             | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,635'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,635'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,655'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,655'    |
+			| "Revenue by currency [Exchange rate at the end of the period]"                              | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,575'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,575'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,541'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,541'    |
+			| "Revenue by currency [Average rate for the previous period]"                  | '0'              | ''         | '900,000'         | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '0'              | '0'        | '330,000'         | '3,647'    | '0'            | '0'        | '330,000'  | '3,647'    |
+			| 'RUB '                                                                   | '0'              | '0'        | '300,000'         | '300,000'  | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '0'              | '0'        | '270,000'         | '3,638'    | '0'            | '0'        | '270,000'  | '3,638'    |
+			| "Revenue by currency [Exchange rate at the end of the previous period]"                  | '0'              | ''         | '900,000'         | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '0'              | '0'        | '330,000'         | '3,575'    | '0'            | '0'        | '330,000'  | '3,575'    |
+			| 'RUB '                                                                   | '0'              | '0'        | '300,000'         | '300,000'  | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '0'              | '0'        | '270,000'         | '3,541'    | '0'            | '0'        | '270,000'  | '3,541'    |
+			| "Revenue by currency [Average rate for the previous period CB]"               | '0'              | ''         | '900,000'         | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '0'              | '0'        | '330,000'         | '3,648'    | '0'            | '0'        | '330,000'  | '3,648'    |
+			| 'RUB '                                                                   | '0'              | '0'        | '300,000'         | '300,000'  | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '0'              | '0'        | '270,000'         | '3,641'    | '0'            | '0'        | '270,000'  | '3,641'    |
+			| "Effective on"                                                             | '3/1/2021'     | ''         | ''                | ''         | ''             | ''         | ''         | ''         |
+			| "Revenue by currency [Exchange rate as of the date specified in the indicator]"                | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,651'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,651'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,627'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,627'    |
+			| "Revenue by currency [Exchange rate as of the date specified in the indicator another report]" | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,651'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,651'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,627'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,627'    |
+			| "Rate [EUR]"                                                             | '90'             | ''         | '0'               | ''         | '0'            | ''         | '0'        | ''         |
+			| "Rate [USD]"                                                             | '73'             | ''         | '0'               | ''         | '0'            | ''         | '0'        | ''         |
+			| "Revenue by currency [Rate specified in the indicator]"                        | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,667'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,667'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,699'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,699'    |
+			| "Revenue by currency [Rate specified in the indicator another report]"         | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
+			| 'EUR '                                                                   | '330,000'        | '3,667'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,667'    |
+			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
+			| 'USD '                                                                   | '270,000'        | '3,699'    | '0'               | '0'        | '0'            | '0'        | '270,000'  | '3,699'    |
+
 	* Рассчитываем документ по правилу и сверяем результат
+		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Currency indicators (recipient)"                                    | ''               | ''         | ''                | ''         | ''             | ''         | ''          | ''         |
@@ -890,10 +1324,10 @@
 	
 	* Записываем документ	
 		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormWriteANDContinue'
+		И я нажимаю на кнопку с именем 'Write'
 
 	* Сравниваем движения
-		Тогда Открылся экземпляр отчета для вида отчета "VA - Currency indicators (recipient)" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' '' 
+		Когда открылось окно '$WindowTitle$' 
 		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд

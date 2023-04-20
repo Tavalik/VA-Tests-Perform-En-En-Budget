@@ -2,7 +2,7 @@
 
 @tree
 
-Функционал: 11. Проверка функционала контекстного пересчета ячеек
+Функционал: 02. Проверка работы сводной таблицы
 
 Как Администратор я хочу
 Проверить создание и работу сводных таблиц
@@ -12,23 +12,22 @@
 	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''
 	И я закрыл все окна клиентского приложения	
 
-Сценарий: 11.00 Определеняем тип приложения
+Сценарий: 02.00 Определеняем тип приложения
 
 	Пусть Инициализация переменных
 
-Сценарий: 11.01 Создаем вид отчета
+Сценарий: 02.01 Создаем вид отчета
 
 	* Создаем вид отчета
-		И Я создаю группу видов отчетов с именем "VA - Recalculations in context (группа)" и родителем "VA - Report group"
-		И Я создаю вид отчета с именем "VA - Recalculation in context" и родителем "VA - Recalculations in context (группа)"
+		И Я создаю вид отчета с именем "VA - Recalculation in context" и родителем "VA - Report group"
 		И Я открываю вид отчета с именем "VA - Recalculation in context"
 
 	* Доработаем вид отчета
 		И я изменяю флаг с именем 'IsChangeTrackingEnabled'
 		И я перехожу к закладке с именем 'DimensionsOfReport'
-		И из выпадающего списка с именем 'DimensionType1' я выбираю по строке "VA0CFItems"
+		И из выпадающего списка с именем 'DimensionKind1' я выбираю по строке "VA0CFItems"
 		И я перехожу к закладке с именем 'Main'
-		И я нажимаю на кнопку с именем 'FormButtonWrite'
+		И я нажимаю на кнопку с именем 'RecordButtonForm'
 		Тогда открылось окно "Data restructuring"
 		И я нажимаю на кнопку с именем 'FormOK'
 	
@@ -43,11 +42,11 @@
 		И Я в конструкторе отчета добавляю колонку с именем "Line"
 
 	* Меняем тип показателей
-		И Я в конструкторе отчета в ячейке 'R2C3' я меняю свойство показателя 'IsNonFinancial' на "False"
+		И Я в конструкторе отчета в ячейке 'R2C3' я меняю свойство показателя 'NonFinancial' на "False"
 		И Я в конструкторе отчета в ячейке 'R2C5' я меняю свойство показателя 'ValueType' на "Date"
 		И Я в конструкторе отчета в ячейке 'R3C5' я меняю свойство показателя 'ValueType' на "Date"
-		И Я в конструкторе отчета в ячейке 'R3C5' я меняю свойство показателя 'TotalType' на "Minimum"
-		И Я в конструкторе отчета в ячейке 'R3C3' я меняю свойство показателя 'IsNonFinancial' на "True"
+		И Я в конструкторе отчета в ячейке 'R3C5' я меняю свойство показателя 'TotalKind' на "Minimum"
+		И Я в конструкторе отчета в ячейке 'R3C3' я меняю свойство показателя 'NonFinancial' на "True"
 		И Я в конструкторе отчета в ячейке 'R2C6:R3C6' я меняю свойства показателей 'ValueType' на "Line"
 
 	* Устанавливаем аналитики
@@ -93,7 +92,7 @@
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'		
 		И Я закрываю окно "Edit tree"
 
-Сценарий: 11.02 Создаем бланки для вида отчета				
+Сценарий: 02.02 Создаем бланки для вида отчета				
 
 	И Я для вида отчета "VA - Recalculation in context" я создаю бланк по умолчанию
 	
@@ -123,7 +122,7 @@
 	И я нажимаю на кнопку с именем 'FormWriteAndClose'
 	И я жду закрытия окна '$WindowTitle$' в течение 20 секунд				
 
-Сценарий: 11.03 Вводим данные в сводную таблицу	
+Сценарий: 02.03 Вводим данные в сводную таблицу	
 
 	* Открываем сводную таблицу
 		И Я октрываю сводную таблицу отчета с именем "VA - Recalculation in context"
@@ -132,12 +131,12 @@
 		
 	* Вводим значения вручную
 		И Я добавляю значения с раскрытием показателей в ячейку 'R5C2'
-			| "VA0Product"                                                     | 'Value' |
-			| "1C:ERP. Corporate performance management"                                   | '10.00000' |
-			| "2C:Corporation"                                                  | '20.00000' |
-			| "3C:Enterprise 8 CORP. Client license for 100 users" | '30.00000' |
-			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '40.00000' |
-			| "5C:Corporate performance management"                                      | '50.00000' |		
+			| "VA0Product"                                                     | 'Value1' |
+			| "1C:ERP. Corporate performance management"                                   | '10.00000'  |
+			| "2C:Corporation"                                                  | '20.00000'  |
+			| "3C:Enterprise 8 CORP. Client license for 100 users" | '30.00000'  |
+			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '40.00000'  |
+			| "5C:Corporate performance management"                                      | '50.00000'  |		
 		
 		И Я ввожу значение '2.00000' в ячейку 'R6C3'
 		И Я ввожу значение '1/1/2021' в ячейку 'R6C5'
@@ -208,41 +207,18 @@
 	* Изменяем показатели
 		* На процент
 			Когда открылось окно '$WindowTitle$'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C7:R10C8'
-			И я нажимаю на кнопку с именем 'ChangeIndicators'
-			Тогда открылось окно "Change values"
-			И я меняю значение переключателя с именем 'AdjustmentType' на "Percentage"
-			И в поле с именем 'ValueAdjustments' я ввожу текст '100.00000'
-			И я нажимаю на кнопку с именем 'Apply'
+			И Я изменяю значение на '100.00000' процентов в ячейке 'R6C7:R10C8'
 			Тогда открылось окно '$WindowTitle$'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C12:R10C12'
-			И я нажимаю на кнопку с именем 'ChangeIndicators'
-			Тогда открылось окно "Change values"
-			И я меняю значение переключателя с именем 'AdjustmentType' на "Percentage"
-			И в поле с именем 'ValueAdjustments' я ввожу текст '200.00000'
-			И я нажимаю на кнопку с именем 'Apply'
+			И Я изменяю значение на '200.00000' процентов в ячейке 'R6C12:R10C12'
 			* Нечисловые
 				Тогда открылось окно '$WindowTitle$'
-				И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C6:R10C6'
-				И я нажимаю на кнопку с именем 'ChangeIndicators'
-				Тогда открылось окно "Change values"
-				И я меняю значение переключателя с именем 'AdjustmentType' на "Percentage"
-				И в поле с именем 'ValueAdjustments' я ввожу текст '100.00000'
-				И я нажимаю на кнопку с именем 'Apply'			
+				И Я изменяю значение на '100.00000' процентов в ячейке 'R6C6:R10C6'
 		* На значение
 			Тогда открылось окно '$WindowTitle$'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C13:R10C13'
-			И я нажимаю на кнопку с именем 'ChangeIndicators'
-			Тогда открылось окно "Change values"
-			И в поле с именем 'ValueAdjustments' я ввожу текст '4.00000'
-			И я нажимаю на кнопку с именем 'Apply'
+			И Я изменяю значение на '4.00000' в ячейке 'R6C13:R10C13'
 			* Нечисловые
 				Когда открылось окно '$WindowTitle$'
-				И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C5:R10C5'
-				И я нажимаю на кнопку с именем 'ChangeIndicators'
-				Тогда открылось окно "Change values"
-				И в поле с именем 'ValueAdjustments' я ввожу текст '200.00000'
-				И я нажимаю на кнопку с именем 'Apply'
+				И Я изменяю значение на '200.00000' в ячейке 'R6C5:R10C5'
 
 	* Очистка показателей
 		Когда открылось окно '$WindowTitle$'
@@ -280,7 +256,7 @@
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'CancelApplyDetailed'
 		Тогда открылось окно "Action history"
-		И в таблице 'Transactions' я выделяю все строки
+		И в таблице 'Transactions_' я выделяю все строки
 		И я нажимаю на кнопку с именем 'FormApply'
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Recalculation in context (pivot table)" | "January 2021" | ''            | ''     | ''     | ''       | "February 2021" | ''            | ''     | ''     | ''       | "March 2021" | ''            | ''     | ''     | ''       | "TOTAL"      | ''            | ''     | ''     | ''       |
@@ -309,12 +285,12 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		Тогда открылось окно "Drill down indicators: *"
 		Тогда Таблица 'IndicatorsDrilldown' содержит '5' строк из списка:
-			| "Product range"                                                   | 'Value' |
-			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '40'       |
-			| "3C:Enterprise 8 CORP. Client license for 100 users" | '30'       |
-			| "5C:Corporate performance management"                                      | '100'      |
-			| "2C:Corporation"                                                  | '20'       |
-			| "1C:ERP. Corporate performance management"                                   | '10'       |
+			| "Product range"                                                   | 'Value1' |
+			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '40'        |
+			| "3C:Enterprise 8 CORP. Client license for 100 users" | '30'        |
+			| "5C:Corporate performance management"                                      | '100'       |
+			| "2C:Corporation"                                                  | '20'        |
+			| "1C:ERP. Corporate performance management"                                   | '10'        |
 					
 		И я нажимаю на кнопку с именем 'FormCancel'
 		Тогда открылось окно '$WindowTitle$'
@@ -322,9 +298,9 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		Тогда открылось окно "Drill down indicators: *"
 		И в таблице 'IndicatorsDrilldown' я перехожу к строке:
-			| 'Value' | "Product range"              |
-			| '100'      | "5C:Corporate performance management" |
-		И в таблице 'IndicatorsDrilldown' в поле с именем 'Value' я ввожу текст '10.00000'
+			| "Product range"              | 'Value1' |
+			| "5C:Corporate performance management" | '100'       |
+		И в таблице 'IndicatorsDrilldown' в поле с именем 'Value1' я ввожу текст '10.00000'
 		И в таблице 'IndicatorsDrilldown' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'FormOKButton1'
 
@@ -406,7 +382,7 @@
 			| "1C:ERP. Corporate performance management"                                   | '10'             | '2'           | '20'    | '1/1/2021' | "Line1" | '20'              | '4'           | '80'    | '1/1/2021' | "Line1" | '30'           | '6'           | '180'    | '1/1/2021' | "Line1" | '60'         | '12'          | '280'    | '1/1/2021' | ''       |
 			| "3C:Enterprise 8 CORP. Client license for 100 users" | '30'             | '2'           | '60'    | '1/1/2021' | "Line1" | '60'              | '4'           | '240'   | '1/1/2021' | "Line1" | '90'           | '6'           | '540'    | '1/1/2021' | "Line1" | '180'        | '12'          | '840'    | '1/1/2021' | ''       |
 					
-Сценарий: 11.04 Выгрузка и загрузка из Excel
+Сценарий: 02.04 Выгрузка и загрузка из Excel
 
 	* Открываем сводную таблицу
 		И Я октрываю сводную таблицу отчета с именем "VA - Recalculation in context"
@@ -482,7 +458,7 @@
 			| "1C:ERP. Corporate performance management"                                   | '40'             | '2'           | '80'    | '1/1/2021' | "Line1" | '80'              | '4'           | '320'   | '1/1/2021' | "Line1" | '120'          | '6'           | '720'    | '1/1/2021' | "Line1" | '240'        | '12'          | '1,120'  | '1/1/2021' | ''       |
 			| "3C:Enterprise 8 CORP. Client license for 100 users" | '50'             | '2'           | '100'   | '1/1/2021' | "Line1" | '100'             | '4'           | '400'   | '1/1/2021' | "Line1" | '150'          | '6'           | '900'    | '1/1/2021' | "Line1" | '300'        | '12'          | '1,400'  | '1/1/2021' | ''       |
 				
-Сценарий: 11.05 Тестирование формы ввода показателей
+Сценарий: 02.05 Тестирование формы ввода показателей
 
 	И Я октрываю сводную таблицу отчета с именем "VA - Recalculation in context"
 
@@ -490,30 +466,42 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C1'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		Тогда открылось окно "Drill down indicators: *"
+		И Таблица 'IndicatorsDrilldown' содержит '5' строк из списка:
+			| "Product range"                                                   | 'Period_1_Value1' | 'Period_1_Value2' | 'Period_1_Value3' | 'Period_1_Value4' | 'Period_1_Value5' | 'Period_2_Value1' | 'Period_2_Value2' | 'Period_2_Value3' | 'Period_2_Value4' | 'Period_2_Value5' | 'Period_3_Value3' | 'Period_3_Value1' | 'Period_3_Value2' | 'Period_3_Value4' | 'Period_3_Value5' |
+			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '30.00000'           | '2.00000'            | '60.00000'           | '1/1/2021'         | "Line1"            | '60.00000'           | '4.00000'            | '240.00000'          | '1/1/2021'         | "Line1"            | '540.00000'          | '90.00000'           | '6.00000'            | '1/1/2021'         | "Line1"            |
+			| "3C:Enterprise 8 CORP. Client license for 100 users" | '50.00000'           | '2.00000'            | '100.00000'          | '1/1/2021'         | "Line1"            | '100.00000'          | '4.00000'            | '400.00000'          | '1/1/2021'         | "Line1"            | '900.00000'          | '150.00000'          | '6.00000'            | '1/1/2021'         | "Line1"            |
+			| "5C:Corporate performance management"                                      | '10.00000'           | '2.00000'            | '20.00000'           | '1/1/2021'         | "Line1"            | '20.00000'           | '4.00000'            | '80.00000'           | '1/1/2021'         | "Line1"            | '180.00000'          | '30.00000'           | '6.00000'            | '1/1/2021'         | "Line1"            |
+			| "2C:Corporation"                                                  | '20.00000'           | '2.00000'            | '40.00000'           | '1/1/2021'         | "Line1"            | '40.00000'           | '4.00000'            | '160.00000'          | '1/1/2021'         | "Line1"            | '360.00000'          | '60.00000'           | '6.00000'            | '1/1/2021'         | "Line1"            |
+			| "1C:ERP. Corporate performance management"                                   | '40.00000'           | '2.00000'            | '80.00000'           | '1/1/2021'         | "Line1"            | '80.00000'           | '4.00000'            | '320.00000'          | '1/1/2021'         | "Line1"            | '720.00000'          | '120.00000'          | '6.00000'            | '1/1/2021'         | "Line1"            |
+		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownPeriodsInColumns'
 		И Таблица 'IndicatorsDrilldown' содержит '15' строк из списка:
 			| 'ReportPeriod'    | "Product range"                                                   | 'Value1' | 'Value3' | 'Value2' | 'Value4'  | 'Value5' |
-			| "February 2021" | "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '60'        | '240'       | '4'         | '1/1/2021' | "Line1"   |
-			| "February 2021" | "3C:Enterprise 8 CORP. Client license for 100 users" | '100'       | '400'       | '4'         | '1/1/2021' | "Line1"   |
-			| "February 2021" | "5C:Corporate performance management"                                      | '20'        | '80'        | '4'         | '1/1/2021' | "Line1"   |
-			| "February 2021" | "2C:Corporation"                                                  | '40'        | '160'       | '4'         | '1/1/2021' | "Line1"   |
-			| "February 2021" | "1C:ERP. Corporate performance management"                                   | '80'        | '320'       | '4'         | '1/1/2021' | "Line1"   |
-			| "March 2021"    | "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '90'        | '540'       | '6'         | '1/1/2021' | "Line1"   |
-			| "March 2021"    | "3C:Enterprise 8 CORP. Client license for 100 users" | '150'       | '900'       | '6'         | '1/1/2021' | "Line1"   |
-			| "March 2021"    | "5C:Corporate performance management"                                      | '30'        | '180'       | '6'         | '1/1/2021' | "Line1"   |
-			| "March 2021"    | "2C:Corporation"                                                  | '60'        | '360'       | '6'         | '1/1/2021' | "Line1"   |
-			| "March 2021"    | "1C:ERP. Corporate performance management"                                   | '120'       | '720'       | '6'         | '1/1/2021' | "Line1"   |
-			| "January 2021"  | "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '30'        | '60'        | '2'         | '1/1/2021' | "Line1"   |
-			| "January 2021"  | "3C:Enterprise 8 CORP. Client license for 100 users" | '50'        | '100'       | '2'         | '1/1/2021' | "Line1"   |
-			| "January 2021"  | "5C:Corporate performance management"                                      | '10'        | '20'        | '2'         | '1/1/2021' | "Line1"   |
-			| "January 2021"  | "2C:Corporation"                                                  | '20'        | '40'        | '2'         | '1/1/2021' | "Line1"   |
-			| "January 2021"  | "1C:ERP. Corporate performance management"                                   | '40'        | '80'        | '2'         | '1/1/2021' | "Line1"   |
-			
+			| "January 2021"  | "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '30.00000'  | '60.00000'  | '2.00000'   | '1/1/2021' | "Line1"   |
+			| "January 2021"  | "3C:Enterprise 8 CORP. Client license for 100 users" | '50.00000'  | '100.00000' | '2.00000'   | '1/1/2021' | "Line1"   |
+			| "January 2021"  | "5C:Corporate performance management"                                      | '10.00000'  | '20.00000'  | '2.00000'   | '1/1/2021' | "Line1"   |
+			| "January 2021"  | "2C:Corporation"                                                  | '20.00000'  | '40.00000'  | '2.00000'   | '1/1/2021' | "Line1"   |
+			| "January 2021"  | "1C:ERP. Corporate performance management"                                   | '40.00000'  | '80.00000'  | '2.00000'   | '1/1/2021' | "Line1"   |
+			| "February 2021" | "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '60.00000'  | '240.00000' | '4.00000'   | '1/1/2021' | "Line1"   |
+			| "February 2021" | "3C:Enterprise 8 CORP. Client license for 100 users" | '100.00000' | '400.00000' | '4.00000'   | '1/1/2021' | "Line1"   |
+			| "February 2021" | "5C:Corporate performance management"                                      | '20.00000'  | '80.00000'  | '4.00000'   | '1/1/2021' | "Line1"   |
+			| "February 2021" | "2C:Corporation"                                                  | '40.00000'  | '160.00000' | '4.00000'   | '1/1/2021' | "Line1"   |
+			| "February 2021" | "1C:ERP. Corporate performance management"                                   | '80.00000'  | '320.00000' | '4.00000'   | '1/1/2021' | "Line1"   |
+			| "March 2021"    | "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '90.00000'  | '540.00000' | '6.00000'   | '1/1/2021' | "Line1"   |
+			| "March 2021"    | "3C:Enterprise 8 CORP. Client license for 100 users" | '150.00000' | '900.00000' | '6.00000'   | '1/1/2021' | "Line1"   |
+			| "March 2021"    | "5C:Corporate performance management"                                      | '30.00000'  | '180.00000' | '6.00000'   | '1/1/2021' | "Line1"   |
+			| "March 2021"    | "2C:Corporation"                                                  | '60.00000'  | '360.00000' | '6.00000'   | '1/1/2021' | "Line1"   |
+			| "March 2021"    | "1C:ERP. Corporate performance management"                                   | '120.00000' | '720.00000' | '6.00000'   | '1/1/2021' | "Line1"   |
 		И элемент формы с именем 'Accuracy' стал равен '0'
 		И у элемента формы с именем 'Divisor' текст редактирования стал равен "units"
 		И в поле с именем 'Accuracy' я ввожу текст '5'
 		И из выпадающего списка с именем 'Divisor' я выбираю точное значение "thousand"
 		И Таблица 'IndicatorsDrilldown' содержит '15' строк из списка:
 			| 'ReportPeriod'    | "Product range"                                                   | 'Value1' | 'Value3' | 'Value2' | 'Value4'  | 'Value5' |
+			| "January 2021"  | "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '0.03000'   | '0.06000'   | '0.00200'   | '1/1/2021' | "Line1"   |
+			| "January 2021"  | "3C:Enterprise 8 CORP. Client license for 100 users" | '0.05000'   | '0.10000'   | '0.00200'   | '1/1/2021' | "Line1"   |
+			| "January 2021"  | "5C:Corporate performance management"                                      | '0.01000'   | '0.02000'   | '0.00200'   | '1/1/2021' | "Line1"   |
+			| "January 2021"  | "2C:Corporation"                                                  | '0.02000'   | '0.04000'   | '0.00200'   | '1/1/2021' | "Line1"   |
+			| "January 2021"  | "1C:ERP. Corporate performance management"                                   | '0.04000'   | '0.08000'   | '0.00200'   | '1/1/2021' | "Line1"   |
 			| "February 2021" | "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '0.06000'   | '0.24000'   | '0.00400'   | '1/1/2021' | "Line1"   |
 			| "February 2021" | "3C:Enterprise 8 CORP. Client license for 100 users" | '0.10000'   | '0.40000'   | '0.00400'   | '1/1/2021' | "Line1"   |
 			| "February 2021" | "5C:Corporate performance management"                                      | '0.02000'   | '0.08000'   | '0.00400'   | '1/1/2021' | "Line1"   |
@@ -524,57 +512,311 @@
 			| "March 2021"    | "5C:Corporate performance management"                                      | '0.03000'   | '0.18000'   | '0.00600'   | '1/1/2021' | "Line1"   |
 			| "March 2021"    | "2C:Corporation"                                                  | '0.06000'   | '0.36000'   | '0.00600'   | '1/1/2021' | "Line1"   |
 			| "March 2021"    | "1C:ERP. Corporate performance management"                                   | '0.12000'   | '0.72000'   | '0.00600'   | '1/1/2021' | "Line1"   |
-			| "January 2021"  | "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '0.03000'   | '0.06000'   | '0.00200'   | '1/1/2021' | "Line1"   |
-			| "January 2021"  | "3C:Enterprise 8 CORP. Client license for 100 users" | '0.05000'   | '0.10000'   | '0.00200'   | '1/1/2021' | "Line1"   |
-			| "January 2021"  | "5C:Corporate performance management"                                      | '0.01000'   | '0.02000'   | '0.00200'   | '1/1/2021' | "Line1"   |
-			| "January 2021"  | "2C:Corporation"                                                  | '0.02000'   | '0.04000'   | '0.00200'   | '1/1/2021' | "Line1"   |
-			| "January 2021"  | "1C:ERP. Corporate performance management"                                   | '0.04000'   | '0.08000'   | '0.00200'   | '1/1/2021' | "Line1"   |
 		И элемент формы с именем 'Accuracy' стал равен '5'
 		И у элемента формы с именем 'Divisor' текст редактирования стал равен "thousand"
 		И я нажимаю на кнопку с именем 'FormOKButton1'
 				
 	* Режим таблицы по периодам
+		Когда открылось окно '$WindowTitle$'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C1'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		Когда открылось окно "Drill down indicators: *"
-		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownPeriodsInColumns'
 		И Таблица 'IndicatorsDrilldown' содержит '5' строк из списка:
-			| "Product range"                                                   | 'Period_3_Value3' | 'Period_1_Value1' | 'Period_3_Value5' | 'Period_1_Value2' | 'Period_2_Value1' | 'Period_2_Value5' | 'Period_1_Value3' | 'Period_1_Value4' | 'Period_1_Value5' | 'Period_3_Value2' | 'Period_2_Value2' | 'Period_2_Value3' | 'Period_2_Value4' | 'Period_3_Value1' | 'Period_3_Value4' |
-			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '540.00000'          | '30.00000'           | "Line1"            | '2.00000'            | '60.00000'           | "Line1"            | '60.00000'           | '1/1/2021'         | "Line1"            | '6.00000'            | '4.00000'            | '240.00000'          | '1/1/2021'         | '90.00000'           | '1/1/2021'         |
-			| "3C:Enterprise 8 CORP. Client license for 100 users" | '900.00000'          | '50.00000'           | "Line1"            | '2.00000'            | '100.00000'          | "Line1"            | '100.00000'          | '1/1/2021'         | "Line1"            | '6.00000'            | '4.00000'            | '400.00000'          | '1/1/2021'         | '150.00000'          | '1/1/2021'         |
-			| "5C:Corporate performance management"                                      | '180.00000'          | '10.00000'           | "Line1"            | '2.00000'            | '20.00000'           | "Line1"            | '20.00000'           | '1/1/2021'         | "Line1"            | '6.00000'            | '4.00000'            | '80.00000'           | '1/1/2021'         | '30.00000'           | '1/1/2021'         |
-			| "2C:Corporation"                                                  | '360.00000'          | '20.00000'           | "Line1"            | '2.00000'            | '40.00000'           | "Line1"            | '40.00000'           | '1/1/2021'         | "Line1"            | '6.00000'            | '4.00000'            | '160.00000'          | '1/1/2021'         | '60.00000'           | '1/1/2021'         |
-			| "1C:ERP. Corporate performance management"                                   | '720.00000'          | '40.00000'           | "Line1"            | '2.00000'            | '80.00000'           | "Line1"            | '80.00000'           | '1/1/2021'         | "Line1"            | '6.00000'            | '4.00000'            | '320.00000'          | '1/1/2021'         | '120.00000'          | '1/1/2021'         |
+			| "Product range"                                                   | 'Period_1_Value1' | 'Period_1_Value2' | 'Period_1_Value3' | 'Period_1_Value4' | 'Period_1_Value5' | 'Period_2_Value1' | 'Period_2_Value2' | 'Period_2_Value3' | 'Period_2_Value4' | 'Period_2_Value5' | 'Period_3_Value1' | 'Period_3_Value2' | 'Period_3_Value3' | 'Period_3_Value4' | 'Period_3_Value5' |
+			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '30.00000'           | '2.00000'            | '60.00000'           | '1/1/2021'         | "Line1"            | '60.00000'           | '4.00000'            | '240.00000'          | '1/1/2021'         | "Line1"            | '90.00000'           | '6.00000'            | '540.00000'          | '1/1/2021'         | "Line1"            |
+			| "3C:Enterprise 8 CORP. Client license for 100 users" | '50.00000'           | '2.00000'            | '100.00000'          | '1/1/2021'         | "Line1"            | '100.00000'          | '4.00000'            | '400.00000'          | '1/1/2021'         | "Line1"            | '150.00000'          | '6.00000'            | '900.00000'          | '1/1/2021'         | "Line1"            |
+			| "5C:Corporate performance management"                                      | '10.00000'           | '2.00000'            | '20.00000'           | '1/1/2021'         | "Line1"            | '20.00000'           | '4.00000'            | '80.00000'           | '1/1/2021'         | "Line1"            | '30.00000'           | '6.00000'            | '180.00000'          | '1/1/2021'         | "Line1"            |
+			| "2C:Corporation"                                                  | '20.00000'           | '2.00000'            | '40.00000'           | '1/1/2021'         | "Line1"            | '40.00000'           | '4.00000'            | '160.00000'          | '1/1/2021'         | "Line1"            | '60.00000'           | '6.00000'            | '360.00000'          | '1/1/2021'         | "Line1"            |
+			| "1C:ERP. Corporate performance management"                                   | '40.00000'           | '2.00000'            | '80.00000'           | '1/1/2021'         | "Line1"            | '80.00000'           | '4.00000'            | '320.00000'          | '1/1/2021'         | "Line1"            | '120.00000'          | '6.00000'            | '720.00000'          | '1/1/2021'         | "Line1"            |
 
 	* Удаление аналитики
-		// ДОДЕЛАТЬ	
+		И в таблице 'IndicatorsDrilldown' я перехожу к строке:
+			| "Product range"  |
+			| "2C:Corporation" |
+		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'
+		И в таблице 'IndicatorsDrilldown' я перехожу к строке:
+			| "Product range"                 |
+			| "1C:ERP. Corporate performance management" |
+		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'		
+		И я нажимаю на кнопку с именем 'FormOKButton1'
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormRowsWithValues'
+		И я нажимаю на кнопку с именем 'FormColumnsWithValues'
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+			| "VA - Recalculation in context (pivot table)"                    | "January 2021" | ''            | ''     | ''           | ''        | "February 2021" | ''            | ''      | ''           | ''        | "March 2021" | ''            | ''      | ''           | ''        | 'TOTAL'      | ''            | ''      | ''           | ''       |
+			| "VA - Recalculation in context (pivot table)"                    | "Quantity"     | "Coefficient" | "Total" | "Date"       | "Line"  | "Quantity"      | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity"   | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity" | "Coefficient" | "Total"  | "Date"       | "Line" |
+			| "Total"                                                           | '90'             | '6'           | '540'  | '1/1/2021' | ''        | '180'             | '12'          | '2,160' | '1/1/2021' | ''        | '270'          | '18'          | '4,860' | '1/1/2021' | ''        | '540'        | '36'          | '7,560' | '1/1/2021' | ''       |
+			| 'Goods'                                                         | '90'             | '6'           | '180'  | ''           | ''        | '180'             | '12'          | '720'   | ''           | ''        | '270'          | '18'          | '1,620' | ''           | ''        | '540'        | '36'          | '2,520' | ''           | ''       |
+			| "5C:Corporate performance management"                                      | '10'             | '2'           | '20'   | '1/1/2021' | "Line1" | '20'              | '4'           | '80'    | '1/1/2021' | "Line1" | '30'           | '6'           | '180'   | '1/1/2021' | "Line1" | '60'         | '12'          | '280'   | '1/1/2021' | ''       |
+			| "2C:Corporation"                                                  | '0'              | '0'           | '0'    | ''           | ''        | '0'               | '0'           | '0'     | ''           | ''        | '0'            | '0'           | '0'     | ''           | ''        | '0'          | '0'           | '0'     | ''           | ''       |
+			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '30'             | '2'           | '60'   | '1/1/2021' | "Line1" | '60'              | '4'           | '240'   | '1/1/2021' | "Line1" | '90'           | '6'           | '540'   | '1/1/2021' | "Line1" | '180'        | '12'          | '840'   | '1/1/2021' | ''       |
+			| "1C:ERP. Corporate performance management"                                   | '0'              | '0'           | '0'    | ''           | ''        | '0'               | '0'           | '0'     | ''           | ''        | '0'            | '0'           | '0'     | ''           | ''        | '0'          | '0'           | '0'     | ''           | ''       |
+			| "3C:Enterprise 8 CORP. Client license for 100 users" | '50'             | '2'           | '100'  | '1/1/2021' | "Line1" | '100'             | '4'           | '400'   | '1/1/2021' | "Line1" | '150'          | '6'           | '900'   | '1/1/2021' | "Line1" | '300'        | '12'          | '1,400' | '1/1/2021' | ''       |
 
-Сценарий: 11.06 Факторный анализ
+	* Добавляем аналитики
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C1'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		Когда открылось окно "Drill down indicators: *"
+		* Очищаем поле "Строка"
+			И в таблице 'IndicatorsDrilldown' я перехожу к строке:
+				| "Product range"                                         |
+				| "4C:Enterprise 8.3 CORP. Server License (x86-64)" |
+			И в таблице 'IndicatorsDrilldown' в поле с именем 'Period_1_Value5' я ввожу текст ''
+			И в таблице 'IndicatorsDrilldown' я перехожу к строке:
+				| "Product range"                                                   |
+				| "3C:Enterprise 8 CORP. Client license for 100 users" |
+			И в таблице 'IndicatorsDrilldown' в поле с именем 'Period_1_Value5' я ввожу текст ''
+			И в таблице 'IndicatorsDrilldown' я перехожу к строке:
+				| "Product range"              |
+				| "5C:Corporate performance management" |
+			И в таблице 'IndicatorsDrilldown' в поле с именем 'Period_1_Value5' я ввожу текст ''
+			И в таблице 'IndicatorsDrilldown' я перехожу к строке:
+				| "Product range"  |
+				| "2C:Corporation" |
+		* Добавляем строки
+			И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'
+			И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownAdd'
+			И в таблице 'IndicatorsDrilldown' из выпадающего списка с именем "VA0Product" я выбираю точное значение "2C:Corporation"
+			И в таблице 'IndicatorsDrilldown' в поле с именем 'Period_1_Value1' я ввожу текст '50.00000'
+			И в таблице 'IndicatorsDrilldown' в поле с именем 'Period_1_Value2' я ввожу текст '2.00000'
+			И в таблице 'IndicatorsDrilldown' в поле с именем 'Period_1_Value4' я ввожу текст '1/1/2021'
+			И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownAdd'
+			И в таблице 'IndicatorsDrilldown' из выпадающего списка с именем "VA0Product" я выбираю точное значение "5C:Corporate performance management"
+			И в таблице 'IndicatorsDrilldown' в поле с именем 'Period_1_Value1' я ввожу текст '20.00000'
+			И в таблице 'IndicatorsDrilldown' в поле с именем 'Period_1_Value4' я ввожу текст '1/31/2021'
+		* Сверяем результат
+			И я нажимаю на кнопку с именем 'FormOKButton1'
+			Когда открылось окно '$WindowTitle$'
+			// ДОДЕЛАТЬ: Пропадают периоды
+//			Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+//				| "VA - Recalculation in context (pivot table)"                    | "January 2021" | ''            | ''      | ''           | ''       | "February 2021" | ''            | ''      | ''           | ''        | "March 2021" | ''            | ''      | ''           | ''        | 'TOTAL'      | ''            | ''      | ''           | ''       |
+//				| "VA - Recalculation in context (pivot table)"                    | "Quantity"     | "Coefficient" | "Total"  | "Date"       | "Line" | "Quantity"      | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity"   | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity" | "Coefficient" | "Total"  | "Date"       | "Line" |
+//				| "Total"                                                           | '160'            | '8'           | '1,280' | '1/31/2021' | ''       | '180'             | '12'          | '2,160' | '1/1/2021' | ''        | '270'          | '18'          | '4,860' | '1/1/2021' | ''        | '610'        | '38'          | '8,300' | '1/31/2021' | ''       |
+//				| 'Goods'                                                         | '160'            | '8'           | '320'   | ''           | ''       | '180'             | '12'          | '720'   | ''           | ''        | '270'          | '18'          | '1,620' | ''           | ''        | '610'        | '38'          | '2,660' | ''           | ''       |
+//				| "5C:Corporate performance management"                                      | '30'             | '2'           | '60'    | '1/31/2021' | ''       | '20'              | '4'           | '80'    | '1/1/2021' | "Line1" | '30'           | '6'           | '180'   | '1/1/2021' | "Line1" | '80'         | '12'          | '320'   | '1/1/2021' | ''       |
+//				| "2C:Corporation"                                                  | '50'             | '2'           | '100'   | '1/1/2021' | ''       | '0'               | '0'           | '0'     | ''           | ''        | '0'            | '0'           | '0'     | ''           | ''        | '50'         | '2'           | '100'   | ''           | ''       |
+//				| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '30'             | '2'           | '60'    | '1/1/2021' | ''       | '60'              | '4'           | '240'   | '1/1/2021' | "Line1" | '90'           | '6'           | '540'   | '1/1/2021' | "Line1" | '180'        | '12'          | '840'   | '1/1/2021' | ''       |
+//				| "1C:ERP. Corporate performance management"                                   | '0'              | '0'           | '0'     | ''           | ''       | '0'               | '0'           | '0'     | ''           | ''        | '0'            | '0'           | '0'     | ''           | ''        | '0'          | '0'           | '0'     | ''           | ''       |
+//				| "3C:Enterprise 8 CORP. Client license for 100 users" | '50'             | '2'           | '100'   | '1/1/2021' | ''       | '100'             | '4'           | '400'   | '1/1/2021' | "Line1" | '150'          | '6'           | '900'   | '1/1/2021' | "Line1" | '300'        | '12'          | '1,400' | '1/1/2021' | ''       |
+		
+	* Октрываем форму для одного периода (Количество)
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C2'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		Когда открылось окно "Drill down indicators: *"	
+		Тогда Таблица 'IndicatorsDrilldown' содержит '4' строк из списка:
+			| "Product range"                                                   | 'Value1' |
+			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '30'        |
+			| "3C:Enterprise 8 CORP. Client license for 100 users" | '50'        |
+			| "5C:Corporate performance management"                                      | '30'        |
+			| "2C:Corporation"                                                  | '50'        |
+		И в таблице 'IndicatorsDrilldown' я перехожу к строке:
+			| "Product range"  |
+			| "2C:Corporation" |
+		И в таблице 'IndicatorsDrilldown' в поле с именем 'Value1' я ввожу текст '70.00000'
+		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownAdd'
+		И в таблице 'IndicatorsDrilldown' из выпадающего списка с именем "VA0Product" я выбираю точное значение "5C:Corporate performance management"
+		И в таблице 'IndicatorsDrilldown' в поле с именем 'Value1' я ввожу текст '20.00000'			
+		И я нажимаю на кнопку с именем 'FormButtonApply'
+		И я нажимаю на кнопку с именем 'FormCancel'
+		// ДОДЕЛАТЬ: Пропадают периоды
+//		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+//			| "VA - Recalculation in context (pivot table)"                    | "January 2021" | ''            | ''      | ''           | ''       | "February 2021" | ''            | ''      | ''           | ''        | "March 2021" | ''            | ''      | ''           | ''        | 'TOTAL'      | ''            | ''      | ''           | ''       |
+//			| "VA - Recalculation in context (pivot table)"                    | "Quantity"     | "Coefficient" | "Total"  | "Date"       | "Line" | "Quantity"      | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity"   | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity" | "Coefficient" | "Total"  | "Date"       | "Line" |
+//			| "Total"                                                           | '200'            | '8'           | '1,600' | '1/31/2021' | ''       | '180'             | '12'          | '2,160' | '1/1/2021' | ''        | '270'          | '18'          | '4,860' | '1/1/2021' | ''        | '650'        | '38'          | '8,620' | '1/31/2021' | ''       |
+//			| 'Goods'                                                         | '200'            | '8'           | '400'   | ''           | ''       | '180'             | '12'          | '720'   | ''           | ''        | '270'          | '18'          | '1,620' | ''           | ''        | '650'        | '38'          | '2,740' | ''           | ''       |
+//			| "5C:Corporate performance management"                                      | '50'             | '2'           | '100'   | '1/31/2021' | ''       | '20'              | '4'           | '80'    | '1/1/2021' | "Line1" | '30'           | '6'           | '180'   | '1/1/2021' | "Line1" | '100'        | '12'          | '360'   | '1/1/2021' | ''       |
+//			| "2C:Corporation"                                                  | '70'             | '2'           | '140'   | '1/1/2021' | ''       | '0'               | '0'           | '0'     | ''           | ''        | '0'            | '0'           | '0'     | ''           | ''        | '70'         | '2'           | '140'   | ''           | ''       |
+//			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '30'             | '2'           | '60'    | '1/1/2021' | ''       | '60'              | '4'           | '240'   | '1/1/2021' | "Line1" | '90'           | '6'           | '540'   | '1/1/2021' | "Line1" | '180'        | '12'          | '840'   | '1/1/2021' | ''       |
+//			| "1C:ERP. Corporate performance management"                                   | '0'              | '0'           | '0'     | ''           | ''       | '0'               | '0'           | '0'     | ''           | ''        | '0'            | '0'           | '0'     | ''           | ''        | '0'          | '0'           | '0'     | ''           | ''       |
+//			| "3C:Enterprise 8 CORP. Client license for 100 users" | '50'             | '2'           | '100'   | '1/1/2021' | ''       | '100'             | '4'           | '400'   | '1/1/2021' | "Line1" | '150'          | '6'           | '900'   | '1/1/2021' | "Line1" | '300'        | '12'          | '1,400' | '1/1/2021' | ''       |
+		
+	* Октрываем форму для одного периода (Дата)
+		Когда открылось окно '$WindowTitle$'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R5C5"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		Когда открылось окно "Drill down indicators: *"	
+		Тогда Таблица 'IndicatorsDrilldown' содержит '5' строк из списка:
+			| "Product range"                                                   | 'Value1'  |
+			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '1/1/2021' |
+			| "3C:Enterprise 8 CORP. Client license for 100 users" | '1/1/2021' |
+			| "5C:Corporate performance management"                                      | '1/31/2021' |
+			| "2C:Corporation"                                                  | '1/1/2021' |
+			| "1C:ERP. Corporate performance management"                                   | ''           |
+		* Меняем пустое значение	
+			И в таблице 'IndicatorsDrilldown' я перехожу к строке:
+				| "Product range"                 |
+				| "1C:ERP. Corporate performance management" |
+			И в таблице 'IndicatorsDrilldown' в поле с именем 'Value1' я ввожу текст '2/5/2021'	
+		* Меняем существующее значение
+			И в таблице 'IndicatorsDrilldown' я перехожу к строке:
+				| "Product range"                 |
+				| "2C:Corporation" |
+			И в таблице 'IndicatorsDrilldown' в поле с именем 'Value1' я ввожу текст '2/5/2021'
+		* Добавляем новое значение
+			И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownAdd'
+			И в таблице 'IndicatorsDrilldown' из выпадающего списка с именем "VA0Product" я выбираю точное значение "5C:Corporate performance management"
+			И в таблице 'IndicatorsDrilldown' в поле с именем 'Value1' я ввожу текст '2/5/2021'
+			И в таблице 'IndicatorsDrilldown' я завершаю редактирование строки
+		И я нажимаю на кнопку с именем 'FormOKButton1'
+		Когда открылось окно '$WindowTitle$'	
+		// ДОДЕЛАТЬ: Пропадают периоды
+//		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+//			| "VA - Recalculation in context (pivot table)"                    | "January 2021" | ''            | ''      | ''           | ''       | "February 2021" | ''            | ''      | ''           | ''        | "March 2021" | ''            | ''      | ''           | ''        | 'TOTAL'      | ''            | ''      | ''           | ''       |
+//			| "VA - Recalculation in context (pivot table)"                    | "Quantity"     | "Coefficient" | "Total"  | "Date"       | "Line" | "Quantity"      | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity"   | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity" | "Coefficient" | "Total"  | "Date"       | "Line" |
+//			| "Total"                                                           | '200'            | '8'           | '1,600' | '2/5/2021' | ''       | '180'             | '12'          | '2,160' | '1/1/2021' | ''        | '270'          | '18'          | '4,860' | '1/1/2021' | ''        | '650'        | '38'          | '8,620' | '2/5/2021' | ''       |
+//			| 'Goods'                                                         | '200'            | '8'           | '400'   | '1/1/2021' | ''       | '180'             | '12'          | '720'   | ''           | ''        | '270'          | '18'          | '1,620' | ''           | ''        | '650'        | '38'          | '2,740' | ''           | ''       |
+//			| "5C:Corporate performance management"                                      | '50'             | '2'           | '100'   | '2/5/2021' | ''       | '20'              | '4'           | '80'    | '1/1/2021' | "Line1" | '30'           | '6'           | '180'   | '1/1/2021' | "Line1" | '100'        | '12'          | '360'   | '1/1/2021' | ''       |
+//			| "2C:Corporation"                                                  | '70'             | '2'           | '140'   | '2/5/2021' | ''       | '0'               | '0'           | '0'     | ''           | ''        | '0'            | '0'           | '0'     | ''           | ''        | '70'         | '2'           | '140'   | ''           | ''       |
+//			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '30'             | '2'           | '60'    | '1/1/2021' | ''       | '60'              | '4'           | '240'   | '1/1/2021' | "Line1" | '90'           | '6'           | '540'   | '1/1/2021' | "Line1" | '180'        | '12'          | '840'   | '1/1/2021' | ''       |
+//			| "1C:ERP. Corporate performance management"                                   | '0'              | '0'           | '0'     | '2/5/2021' | ''       | '0'               | '0'           | '0'     | ''           | ''        | '0'            | '0'           | '0'     | ''           | ''        | '0'          | '0'           | '0'     | ''           | ''       |
+//			| "3C:Enterprise 8 CORP. Client license for 100 users" | '50'             | '2'           | '100'   | '1/1/2021' | ''       | '100'             | '4'           | '400'   | '1/1/2021' | "Line1" | '150'          | '6'           | '900'   | '1/1/2021' | "Line1" | '300'        | '12'          | '1,400' | '1/1/2021' | ''       |
+		
+	* Открываем форму для одного периода (Строка)
+		Когда открылось окно '$WindowTitle$'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R5C6"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		Когда открылось окно "Drill down indicators: *"	
+		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'
+		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'
+		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'
+		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'
+		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'
+		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownAdd'
+		И в таблице 'IndicatorsDrilldown' из выпадающего списка с именем "VA0Product" я выбираю точное значение "5C:Corporate performance management"
+		И в таблице 'IndicatorsDrilldown' в поле с именем 'Value1' я ввожу текст 'String2'
+		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownAdd'
+		И в таблице 'IndicatorsDrilldown' из выпадающего списка с именем "VA0Product" я выбираю точное значение "5C:Corporate performance management"
+		И в таблице 'IndicatorsDrilldown' в поле с именем 'Value1' я ввожу текст 'String3'
+		И я нажимаю на кнопку с именем 'FormOKButton1'
+		Когда открылось окно '$WindowTitle$'
+		// ДОДЕЛАТЬ: Пропадают периоды
+//		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+//			| "VA - Recalculation in context (pivot table)"                    | "January 2021" | ''            | ''      | ''           | ''        | "February 2021" | ''            | ''      | ''           | ''        | "March 2021" | ''            | ''      | ''           | ''        | 'TOTAL'      | ''            | ''      | ''           | ''       |
+//			| "VA - Recalculation in context (pivot table)"                    | "Quantity"     | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity"      | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity"   | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity" | "Coefficient" | "Total"  | "Date"       | "Line" |
+//			| "Total"                                                           | '200'            | '8'           | '1,600' | '2/5/2021' | ''        | '180'             | '12'          | '2,160' | '1/1/2021' | ''        | '270'          | '18'          | '4,860' | '1/1/2021' | ''        | '650'        | '38'          | '8,620' | '2/5/2021' | ''       |
+//			| 'Goods'                                                         | '200'            | '8'           | '400'   | '1/1/2021' | ''        | '180'             | '12'          | '720'   | ''           | ''        | '270'          | '18'          | '1,620' | ''           | ''        | '650'        | '38'          | '2,740' | ''           | ''       |
+//			| "5C:Corporate performance management"                                      | '50'             | '2'           | '100'   | '2/5/2021' | 'String3' | '20'              | '4'           | '80'    | '1/1/2021' | "Line1" | '30'           | '6'           | '180'   | '1/1/2021' | "Line1" | '100'        | '12'          | '360'   | '1/1/2021' | ''       |
+//			| "2C:Corporation"                                                  | '70'             | '2'           | '140'   | '2/5/2021' | ''        | '0'               | '0'           | '0'     | ''           | ''        | '0'            | '0'           | '0'     | ''           | ''        | '70'         | '2'           | '140'   | ''           | ''       |
+//			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '30'             | '2'           | '60'    | '1/1/2021' | ''        | '60'              | '4'           | '240'   | '1/1/2021' | "Line1" | '90'           | '6'           | '540'   | '1/1/2021' | "Line1" | '180'        | '12'          | '840'   | '1/1/2021' | ''       |
+//			| "1C:ERP. Corporate performance management"                                   | '0'              | '0'           | '0'     | '2/5/2021' | ''        | '0'               | '0'           | '0'     | ''           | ''        | '0'            | '0'           | '0'     | ''           | ''        | '0'          | '0'           | '0'     | ''           | ''       |
+//			| "3C:Enterprise 8 CORP. Client license for 100 users" | '50'             | '2'           | '100'   | '1/1/2021' | ''        | '100'             | '4'           | '400'   | '1/1/2021' | "Line1" | '150'          | '6'           | '900'   | '1/1/2021' | "Line1" | '300'        | '12'          | '1,400' | '1/1/2021' | ''       |
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R5C6"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		Когда открылось окно "Drill down indicators: *"	
+		И в таблице 'IndicatorsDrilldown' я перехожу к строке:
+			| "Product range"                 |
+			| "1C:ERP. Corporate performance management" |
+		И в таблице 'IndicatorsDrilldown' в поле с именем 'Value1' я ввожу текст 'String4'
+		И в таблице 'IndicatorsDrilldown' я перехожу к строке:
+			| "Product range"              | 'Value1' |
+			| "5C:Corporate performance management" | 'String3'   |
+		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'
+		И я нажимаю на кнопку с именем 'FormOKButton1'
+		Когда открылось окно '$WindowTitle$'
+//		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+//			| "VA - Recalculation in context (pivot table)"                    | "January 2021" | ''            | ''      | ''           | ''        | "February 2021" | ''            | ''      | ''           | ''        | "March 2021" | ''            | ''      | ''           | ''        | 'TOTAL'      | ''            | ''      | ''           | ''       |
+//			| "VA - Recalculation in context (pivot table)"                    | "Quantity"     | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity"      | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity"   | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity" | "Coefficient" | "Total"  | "Date"       | "Line" |
+//			| "Total"                                                           | '200'            | '8'           | '1,600' | '2/5/2021' | ''        | '180'             | '12'          | '2,160' | '1/1/2021' | ''        | '270'          | '18'          | '4,860' | '1/1/2021' | ''        | '650'        | '38'          | '8,620' | '2/5/2021' | ''       |
+//			| 'Goods'                                                         | '200'            | '8'           | '400'   | '1/1/2021' | ''        | '180'             | '12'          | '720'   | ''           | ''        | '270'          | '18'          | '1,620' | ''           | ''        | '650'        | '38'          | '2,740' | ''           | ''       |
+//			| "5C:Corporate performance management"                                      | '50'             | '2'           | '100'   | '2/5/2021' | ''        | '20'              | '4'           | '80'    | '1/1/2021' | "Line1" | '30'           | '6'           | '180'   | '1/1/2021' | "Line1" | '100'        | '12'          | '360'   | '1/1/2021' | ''       |
+//			| "2C:Corporation"                                                  | '70'             | '2'           | '140'   | '2/5/2021' | ''        | '0'               | '0'           | '0'     | ''           | ''        | '0'            | '0'           | '0'     | ''           | ''        | '70'         | '2'           | '140'   | ''           | ''       |
+//			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '30'             | '2'           | '60'    | '1/1/2021' | ''        | '60'              | '4'           | '240'   | '1/1/2021' | "Line1" | '90'           | '6'           | '540'   | '1/1/2021' | "Line1" | '180'        | '12'          | '840'   | '1/1/2021' | ''       |
+//			| "1C:ERP. Corporate performance management"                                   | '0'              | '0'           | '0'     | '2/5/2021' | 'String4' | '0'               | '0'           | '0'     | ''           | ''        | '0'            | '0'           | '0'     | ''           | ''        | '0'          | '0'           | '0'     | ''           | ''       |
+//			| "3C:Enterprise 8 CORP. Client license for 100 users" | '50'             | '2'           | '100'   | '1/1/2021' | ''        | '100'             | '4'           | '400'   | '1/1/2021' | "Line1" | '150'          | '6'           | '900'   | '1/1/2021' | "Line1" | '300'        | '12'          | '1,400' | '1/1/2021' | ''       |
 
+	* Открываем форму для итога по периодам
+		Когда открылось окно '$WindowTitle$'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R4C17"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		Когда открылось окно "Drill down indicators (read-only): *"	
+		Тогда Таблица 'IndicatorsDrilldown' содержит '3' строк из списка:
+			| 'ReportPeriod'    | 'Value1' |
+			| "February 2021" | '180'       |
+			| "March 2021"    | '270'       |
+			| "January 2021"  | '200'       |
+		И я нажимаю на кнопку с именем 'FormCancel'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R5C17"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		Когда открылось окно "Drill down indicators: *"
+		* Удаляем строку
+			И в таблице 'IndicatorsDrilldown' я перехожу к строке:
+				| 'Value1' | "Product range"                                                   | 'ReportPeriod'   |
+				| '50'        | "3C:Enterprise 8 CORP. Client license for 100 users" | "January 2021" |
+			И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'
+		* Меняем значение
+			И в таблице 'IndicatorsDrilldown' я перехожу к строке:
+				| 'Value1' | "Product range"              | 'ReportPeriod'   |
+				| '50'        | "5C:Corporate performance management" | "January 2021" |
+			И в таблице 'IndicatorsDrilldown' в поле с именем 'Value1' я ввожу текст '100'
+		* Добавляем значение		
+			И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownAdd'
+			И в таблице 'IndicatorsDrilldown' из выпадающего списка с именем 'ReportPeriod' я выбираю по строке "January 2021"
+			И в таблице 'IndicatorsDrilldown' я активизирую поле с именем "VA0Product"
+			И в таблице 'IndicatorsDrilldown' из выпадающего списка с именем "VA0Product" я выбираю по строке "2C:Corporation"
+			И в таблице 'IndicatorsDrilldown' в поле с именем 'Value1' я ввожу текст '30'
+		И я нажимаю на кнопку с именем 'FormOKButton1'
+		// ДОДЕЛАТЬ: Пропадают периоды
+//		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+//			| "VA - Recalculation in context (pivot table)"                    | "January 2021" | ''            | ''      | ''           | ''        | "February 2021" | ''            | ''      | ''           | ''        | "March 2021" | ''            | ''      | ''           | ''        | 'TOTAL'      | ''            | ''      | ''           | ''       |
+//			| "VA - Recalculation in context (pivot table)"                    | "Quantity"     | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity"      | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity"   | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity" | "Coefficient" | "Total"  | "Date"       | "Line" |
+//			| "Total"                                                           | '230'            | '8'           | '1,840' | '2/5/2021' | ''        | '180'             | '12'          | '2,160' | '1/1/2021' | ''        | '270'          | '18'          | '4,860' | '1/1/2021' | ''        | '680'        | '38'          | '8,860' | '2/5/2021' | ''       |
+//			| 'Goods'                                                         | '230'            | '8'           | '460'   | '1/1/2021' | ''        | '180'             | '12'          | '720'   | ''           | ''        | '270'          | '18'          | '1,620' | ''           | ''        | '680'        | '38'          | '2,800' | ''           | ''       |
+//			| "5C:Corporate performance management"                                      | '100'            | '2'           | '200'   | '2/5/2021' | ''        | '20'              | '4'           | '80'    | '1/1/2021' | "Line1" | '30'           | '6'           | '180'   | '1/1/2021' | "Line1" | '150'        | '12'          | '460'   | '1/1/2021' | ''       |
+//			| "2C:Corporation"                                                  | '100'            | '2'           | '200'   | '2/5/2021' | ''        | '0'               | '0'           | '0'     | ''           | ''        | '0'            | '0'           | '0'     | ''           | ''        | '100'        | '2'           | '200'   | ''           | ''       |
+//			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '30'             | '2'           | '60'    | '1/1/2021' | ''        | '60'              | '4'           | '240'   | '1/1/2021' | "Line1" | '90'           | '6'           | '540'   | '1/1/2021' | "Line1" | '180'        | '12'          | '840'   | '1/1/2021' | ''       |
+//			| "1C:ERP. Corporate performance management"                                   | '0'              | '0'           | '0'     | '2/5/2021' | 'String4' | '0'               | '0'           | '0'     | ''           | ''        | '0'            | '0'           | '0'     | ''           | ''        | '0'          | '0'           | '0'     | ''           | ''       |
+//			| "3C:Enterprise 8 CORP. Client license for 100 users" | '0'              | '2'           | '0'     | '1/1/2021' | ''        | '100'             | '4'           | '400'   | '1/1/2021' | "Line1" | '150'          | '6'           | '900'   | '1/1/2021' | "Line1" | '250'        | '12'          | '1,300' | '1/1/2021' | ''       |
+		
+	* Открываем форму для итога по периодам (Дата)
+		Когда открылось окно '$WindowTitle$'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R5C20"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		Когда открылось окно "Drill down indicators: *"
+		* Удаляем строку
+			И в таблице 'IndicatorsDrilldown' я перехожу к строке:
+				| 'Value1'  | "Product range"                                                   | 'ReportPeriod'   |
+				| '1/1/2021' | "3C:Enterprise 8 CORP. Client license for 100 users" | "January 2021" |
+			И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'
+		* Меняем значение			
+			И в таблице 'IndicatorsDrilldown' я перехожу к строке:
+				| 'Value1'  | "Product range"              | 'ReportPeriod'   |
+				| '2/5/2021' | "5C:Corporate performance management" | "January 2021" |
+			И в таблице 'IndicatorsDrilldown' в поле с именем 'Value1' я ввожу текст '3/10/2021'	
+		* Добавляем значение
+			И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownAdd'
+			И в таблице 'IndicatorsDrilldown' из выпадающего списка с именем 'ReportPeriod' я выбираю точное значение "January 2021"
+			И в таблице 'IndicatorsDrilldown' из выпадающего списка с именем "VA0Product" я выбираю точное значение "2C:Corporation"
+			И в таблице 'IndicatorsDrilldown' в поле с именем 'Value1' я ввожу текст '3/10/2021'
+		И я нажимаю на кнопку с именем 'FormOKButton1'
+		Когда открылось окно '$WindowTitle$'
+		// ДОДЕЛАТЬ: Пропадают периоды
+//		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+//			| "VA - Recalculation in context (pivot table)"                    | "January 2021" | ''            | ''      | ''           | ''        | "February 2021" | ''            | ''      | ''           | ''        | "March 2021" | ''            | ''      | ''           | ''        | 'TOTAL'      | ''            | ''      | ''           | ''       |
+//			| "VA - Recalculation in context (pivot table)"                    | "Quantity"     | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity"      | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity"   | "Coefficient" | "Total"  | "Date"       | "Line"  | "Quantity" | "Coefficient" | "Total"  | "Date"       | "Line" |
+//			| "Total"                                                           | '230'            | '8'           | '1,840' | '3/10/2021' | ''        | '180'             | '12'          | '2,160' | '1/1/2021' | ''        | '270'          | '18'          | '4,860' | '1/1/2021' | ''        | '680'        | '38'          | '8,860' | '3/10/2021' | ''       |
+//			| 'Goods'                                                         | '230'            | '8'           | '460'   | ''           | ''        | '180'             | '12'          | '720'   | ''           | ''        | '270'          | '18'          | '1,620' | ''           | ''        | '680'        | '38'          | '2,800' | ''           | ''       |
+//			| "5C:Corporate performance management"                                      | '100'            | '2'           | '200'   | '3/10/2021' | ''        | '20'              | '4'           | '80'    | '1/1/2021' | "Line1" | '30'           | '6'           | '180'   | '1/1/2021' | "Line1" | '150'        | '12'          | '460'   | '1/1/2021' | ''       |
+//			| "2C:Corporation"                                                  | '100'            | '2'           | '200'   | '3/10/2021' | ''        | '0'               | '0'           | '0'     | ''           | ''        | '0'            | '0'           | '0'     | ''           | ''        | '100'        | '2'           | '200'   | ''           | ''       |
+//			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '30'             | '2'           | '60'    | '1/1/2021' | ''        | '60'              | '4'           | '240'   | '1/1/2021' | "Line1" | '90'           | '6'           | '540'   | '1/1/2021' | "Line1" | '180'        | '12'          | '840'   | '1/1/2021' | ''       |
+//			| "1C:ERP. Corporate performance management"                                   | '0'              | '0'           | '0'     | '2/5/2021' | 'String4' | '0'               | '0'           | '0'     | ''           | ''        | '0'            | '0'           | '0'     | ''           | ''        | '0'          | '0'           | '0'     | ''           | ''       |
+//			| "3C:Enterprise 8 CORP. Client license for 100 users" | '0'              | '2'           | '0'     | ''           | ''        | '100'             | '4'           | '400'   | '1/1/2021' | "Line1" | '150'          | '6'           | '900'   | '1/1/2021' | "Line1" | '250'        | '12'          | '1,300' | ''           | ''       |
 	
+	* Закрываем сводную таблицу не сохраняя
+		Тогда открылось окно '$WindowTitle$'
+		И Я закрываю окно '$WindowTitle$'
+		Тогда открылось окно "1C:Enterprise"
+		И я нажимаю на кнопку с именем 'Button1'		
 
+Сценарий: 02.06 Факторный анализ
 
+	И Я октрываю сводную таблицу отчета с именем "VA - Recalculation in context"
 
-Сценарий: 11.07 Создаем новый сценарий для индексации
+	// ДОДЕЛАТЬ: Не работает, если есть аналитики вида отчета
+	
+Сценарий: 02.07 Создаем новый сценарий для индексации
 
 	И Я создаю сценарий с именем "VA - Script for indexing"
-
-	* Меняем флаг индексации
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Scenarios"
-		Тогда открылось окно "Scenarios"
-		И я нажимаю на кнопку с именем 'FormFind'
-		Тогда открылось окно "Find"
-		И в поле с именем 'Pattern' я ввожу текст "VA - Script for indexing"
-		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Scenarios"
-		И в таблице 'List' я выбираю текущую строку
-		И я запоминаю заголовок формы в переменную 'FormCaption'		
-		Тогда открылось окно '$FormCaption$'
-		И я перехожу к закладке с именем 'Budgeting'
-		И я изменяю флаг с именем 'AllocationScenario'
-		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна '$FormCaption$ *' в течение 20 секунд	
+	И Я для сценария "VA - Script for indexing" на закладке "Budgeting" для реквизита 'ScenarioOfAllocation' устанавливаю значение "True"
 
 	* Документ управления перидом
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Reporting period management"
@@ -604,14 +846,14 @@
 		И я нажимаю на кнопку с именем 'FormGoForward'
 		* Закрываем период
 			И я нажимаю на кнопку с именем 'PeriodsManagement1'
-			Тогда открылось окно "Managing period lock boundary and indicator updates"
+			Тогда открылось окно "Manage period lock duration and indicator updates"
 			И в табличном документе 'SpreadsheetFieldPeriodsManagement' я перехожу к ячейке 'R6C2'
 			И я нажимаю на кнопку с именем 'ClosePeriod'
-			И Я закрываю окно "Managing period lock boundary and indicator updates"
+			И Я закрываю окно "Manage period lock duration and indicator updates"
 		Тогда открылось окно '$FormCaption$'
 		И я нажимаю на кнопку с именем 'FormClose'										
 
-Сценарий: 11.08 Копируем все данные отчетного периода
+Сценарий: 02.08 Копируем все данные отчетного периода
 
 	И Я октрываю сводную таблицу отчета с именем "VA - Recalculation in context"
 
@@ -645,11 +887,11 @@
 		Тогда открылось окно "Business units"
 		И в таблице 'List' я перехожу к строке:
 			| "Name in the application" | "Company type"       |
-			| "System LLC"              | "Russian tax resident" |
+			| "System LLC"              | "Tax resident" |
 		И в таблице  'List' я перехожу на один уровень вниз
 		И в таблице 'List' я перехожу к строке:
 			| "Name in the application" | "Company type" |
-			| "Venus LLC"               | "CFR"             |
+			| "Venus LLC"               | "Financial responsibility center"             |
 		И в таблице 'List' я выбираю текущую строку
 		Тогда открылось окно "Copy report indicator data"
 		И я изменяю флаг с именем 'TransferReportsInstances'
@@ -675,7 +917,7 @@
 			| "1C:ERP. Corporate performance management"                                   | '40'             | '2'           | '80'    | '1/1/2021' | "Line1" | '80'              | '4'           | '320'   | '1/1/2021' | "Line1" | '120'          | '6'           | '720'    | '1/1/2021' | "Line1" | '240'        | '12'          | '1,120'  | '1/1/2021' | ''       |
 			| "3C:Enterprise 8 CORP. Client license for 100 users" | '50'             | '2'           | '100'   | '1/1/2021' | "Line1" | '100'             | '4'           | '400'   | '1/1/2021' | "Line1" | '150'          | '6'           | '900'    | '1/1/2021' | "Line1" | '300'        | '12'          | '1,400'  | '1/1/2021' | ''       |
 					
-Сценарий: 11.09 Копируем данные по показателям
+Сценарий: 02.09 Копируем данные по показателям
 
 	И Я октрываю сводную таблицу отчета с именем "VA - Recalculation in context"		
 
@@ -705,11 +947,11 @@
 		Тогда открылось окно "Business units"
 		И в таблице 'List' я перехожу к строке:
 			| "Name in the application" | "Company type"       |
-			| "System LLC"              | "Russian tax resident" |
+			| "System LLC"              | "Tax resident" |
 		И в таблице  'List' я перехожу на один уровень вниз
 		И в таблице 'List' я перехожу к строке:
 			| "Name in the application" | "Company type"       |
-			| "Mercury LLC"             | "Russian tax resident" |
+			| "Mercury LLC"             | "Tax resident" |
 		И в таблице 'List' я выбираю текущую строку
 		Тогда открылось окно "Copy report indicator data"
 		И в таблице 'AdvancedSettingFilter' я перехожу к строке:
@@ -757,7 +999,7 @@
 	* Должен появиться лог с ошибкой
 		И я жду открытия окна "Protocol" в течение 60 секунд
 		Тогда табличный документ 'SpreadsheetDocumentField' равен:
-			| "Errors"                                                                                                                                                                                              |
+			| "Errors"                                                                                                                                                                    |
 			| "Cannot save indicator values. Block to change by parameters is set:\n	Scenario: \"VA - Script for indexing\",\n	Company: \"Mercury LLC\",\n	Period: \"January 2021\"" |
 		Тогда в логе сообщений TestClient есть строка "Copy successful"
 		И Я закрываю окно "Protocol"
@@ -797,7 +1039,7 @@
 			| "1C:ERP. Corporate performance management"                                   | '0'              | '0'           | '0'    | ''     | ''       | '40'              | '2'           | '80'    | '1/1/2021' | "Line1" | '120'          | '6'           | '720'    | '1/1/2021' | "Line1" | '160'        | '8'           | '800'    | '1/1/2021' | ''       |
 			| "3C:Enterprise 8 CORP. Client license for 100 users" | '0'              | '0'           | '0'    | ''     | ''       | '50'              | '2'           | '100'   | '1/1/2021' | "Line1" | '150'          | '6'           | '900'    | '1/1/2021' | "Line1" | '200'        | '8'           | '1,000'  | '1/1/2021' | ''       |
 				
-Сценарий: 11.10 Проверяем сводную таблицу
+Сценарий: 02.10 Проверяем сводную таблицу
 
 	И Я октрываю сводную таблицу отчета с именем "VA - Recalculation in context"
 	И я запоминаю заголовок формы в переменную 'WindowTitle'
@@ -847,7 +1089,7 @@
 			| "Goods"                                      | ''                             | '0'              | '0'           | '0'    | ''     | ''       | '0.0005*'         | '0.00200'     | '0.0010*' | '1/1/2021' | ''        | '0.0016*'      | '0.00600'     | '0.0096*' | '1/1/2021' | ''        | '0.0021*'           | '0.00800'     | '0.0107*' | '1/1/2021' | ''        | '0.0021*'    | '0.00800'     | '0.0107*' | '1/1/2021' | ''       |
 			| ''                                            | "1C:ERP. Corporate performance management" | '0'              | '0'           | '0'    | ''     | ''       | '0.0005*'         | '0.00200'     | '0.0010*' | '1/1/2021' | "Line1" | '0.0016*'      | '0.00600'     | '0.0096*' | '1/1/2021' | "Line1" | '0.0021*'           | '0.00800'     | '0.0107*' | '1/1/2021' | "Line1" | '0.0021*'    | '0.00800'     | '0.0107*' | '1/1/2021' | ''       |
 					
-Сценарий: 11.11 Индексируем по сценарию
+Сценарий: 02.11 Индексируем по сценарию
 
 	* Открываем сводную таблицу
 		И Я октрываю сводную таблицу отчета с именем "VA - Recalculation in context"
@@ -898,7 +1140,7 @@
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button1'
 
-Сценарий: 11.12 Обратное распределение (равномерное)
+Сценарий: 02.12 Обратное распределение (равномерное)
 	
 	* Открываем сводную таблицу
 		И Я октрываю сводную таблицу отчета с именем "VA - Recalculation in context"
@@ -1025,7 +1267,7 @@
 			| "1C:ERP. Corporate performance management"                                   | '1,000'          | '2'           | '2,000'   | '1/1/2021' | "Line1" | '1,000'           | '200'         | '200,000'   | '1/1/2021' | "Line1" | '1,000'        | '200'         | '200,000'   | '1/1/2021' | "Line1" | '3,000'      | '402'         | '402,000'    | '1/1/2021' | ''       |
 			| "3C:Enterprise 8 CORP. Client license for 100 users" | '1,000'          | '2'           | '2,000'   | '1/1/2021' | "Line1" | '1,000'           | '200'         | '200,000'   | '1/1/2021' | "Line1" | '1,000'        | '200'         | '200,000'   | '1/1/2021' | "Line1" | '3,000'      | '402'         | '402,000'    | '1/1/2021' | ''       |
 
-Сценарий: 11.13 Обратное распределение (пропорциональное)
+Сценарий: 02.13 Обратное распределение (пропорциональное)
 
 	* Открываем сводную таблицу
 		И Я октрываю сводную таблицу отчета с именем "VA - Recalculation in context"
@@ -1137,7 +1379,7 @@
 				| "1C:ERP. Corporate performance management"                                   | '800'            | '80'          | '64,000'  | '1/1/2021' | "Line1" | '160'             | '8'           | '1,280'  | '1/1/2021' | "Line1" | '240'          | '12'          | '2,880'  | '1/1/2021' | "Line1" | '1,200'      | '100'         | '68,160'  | '1/1/2021' | ''       |
 				| "3C:Enterprise 8 CORP. Client license for 100 users" | '50'             | '80'          | '4,000'   | '1/1/2021' | "Line1" | '200'             | '8'           | '1,600'  | '1/1/2021' | "Line1" | '300'          | '12'          | '3,600'  | '1/1/2021' | "Line1" | '550'        | '100'         | '9,200'   | '1/1/2021' | ''       |
 						
-Сценарий: 11.14 Изменение показателей в дополнительной валюте
+Сценарий: 02.14 Изменение показателей в дополнительной валюте
 
 	* Открываем сводную таблицу
 		И Я октрываю сводную таблицу отчета с именем "VA - Recalculation in context"			
@@ -1254,7 +1496,7 @@
 			| "1C:ERP. Corporate performance management"                                   | '40.00000'       | '1.00000'     | '39.99966'      | '1/1/2021' | "Line1"   | '80.00000'        | '4.00000'     | '319.99851'     | '1/1/2021' | "Line1"   | '120.00000'    | '6.00000'     | '719.99702'     | '1/1/2021' | "Line1"   | '240.00000'     | '11.00000'    | '1,079.99519'   | '1/1/2021' | ''       |
 			| "3C:Enterprise 8 CORP. Client license for 100 users" | '74.22034'       | '1.00000'     | '74.22028'      | '1/1/2021' | "Line1"   | '100.00000'       | '4.00000'     | '399.99851'     | '1/1/2021' | "Line1"   | '150.00000'    | '6.00000'     | '899.99851'     | '1/1/2021' | "Line1"   | '324.22034'     | '11.00000'    | '1,374.21730'   | '1/1/2021' | ''       |
 				
-Сценарий: 11.15 Изменение показателей в валюте не из регламента
+Сценарий: 02.15 Изменение показателей в валюте не из регламента
 
 	* Открываем сводную таблицу
 		И Я октрываю сводную таблицу отчета с именем "VA - Recalculation in context"	
@@ -1271,7 +1513,7 @@
 	* Добавлеям значения
 		Когда открылось окно '$WindowTitle$'
 		И Я добавляю значения с раскрытием показателей в ячейку 'R5C2'
-			| "VA0Product"                | 'Value'  |
+			| "VA0Product"                | 'Value1' |
 			| "5C:Corporate performance management" | '100.00000' |
 
 	* Должен появиться протокол

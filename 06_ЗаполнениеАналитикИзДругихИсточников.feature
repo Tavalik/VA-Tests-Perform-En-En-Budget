@@ -26,8 +26,8 @@
 	И Я создаю вид отчета с именем "VA - Data to add analytics" и родителем "VA - Analysts from other sources (группа)"
 	И Я открываю вид отчета с именем "VA - Data to add analytics"
 	И я перехожу к закладке с именем 'DimensionsOfReport'
-	И из выпадающего списка с именем 'DimensionType1' я выбираю по строке "VA0ProCate"				
-	И я нажимаю на кнопку с именем 'FormButtonWrite'
+	И из выпадающего списка с именем 'DimensionKind1' я выбираю по строке "VA0ProCate"				
+	И я нажимаю на кнопку с именем 'RecordButtonForm'
 	Когда открылось окно "Data restructuring"
 	И я нажимаю на кнопку с именем 'FormOK'		
 
@@ -58,17 +58,17 @@
 	* Вводим значения показателей
 		* Товарные категории
 			И Я добавляю значения с раскрытием показателей в ячейку 'R6C2'
-				| "VA0CFItems"                       | 'Value' |
-				| "3Software sale" | '1.00000'  |
-				| "2Software implementation"  | '2.00000'  |
+				| "VA0CFItems"                       | 'Value1' |
+				| "3Software sale" | '1.00000'   |
+				| "2Software implementation"  | '2.00000'   |
 			И Я ввожу значение '1.00000' в ячейку 'R7C3'
 			И Я ввожу значение '2.00000' в ячейку 'R8C3'
 		* Товары
 			И Я добавляю значения с раскрытием показателей в ячейку 'R9C2'
-				| "VA0Product"                                                     | 'Value' |
-				| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '1.00000'  |
-				| "3C:Enterprise 8 CORP. Client license for 100 users" | '3.00000'  |
-				| "5C:Corporate performance management"                                      | '2.00000'  |
+				| "VA0Product"                                                     | 'Value1' |
+				| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '1.00000'   |
+				| "3C:Enterprise 8 CORP. Client license for 100 users" | '3.00000'   |
+				| "5C:Corporate performance management"                                      | '2.00000'   |
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C2:R12C2'
 			И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateCopyDataOnRow'
 			И я изменяю значение на '100.00000' процентов в ячейке 'R10C3:R12C3'
@@ -84,8 +84,8 @@
 	И Я создаю вид отчета с именем "VA - Analysts from fields of other sources" и родителем "VA - Analysts from other sources (группа)"
 	И Я открываю вид отчета с именем "VA - Analysts from fields of other sources"
 	И я перехожу к закладке с именем 'DimensionsOfReport'
-	И из выпадающего списка с именем 'DimensionType1' я выбираю по строке "VA0ProCate"				
-	И я нажимаю на кнопку с именем 'FormButtonWrite'
+	И из выпадающего списка с именем 'DimensionKind1' я выбираю по строке "VA0ProCate"				
+	И я нажимаю на кнопку с именем 'RecordButtonForm'
 	Когда открылось окно "Data restructuring"
 	И я нажимаю на кнопку с именем 'FormOK'	
 
@@ -125,14 +125,14 @@
 					Тогда открылось окно "Data sources"
 					И я нажимаю на кнопку с именем 'FormCreate'
 					Тогда открылось окно "Data source (create)"
-					И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Arbitrary query to current infobase"
-					И я изменяю флаг с именем 'ShouldUseMultiperiodContext'
+					И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Arbitrary query to current infobase"
+					И я изменяю флаг с именем 'UseMultiperiodContext'
 					И в поле с именем 'QueryTextForm' я ввожу текст 'SELECT 2 AS VALUE'
 					И я нажимаю на кнопку с именем 'EditQueryText'
-					И я перехожу к закладке с именем 'DimensionsMap'
-					И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Another source field"
-					И в таблице 'MappingTable' я активизирую поле с именем 'MapTableDBAlias'
-					И в таблице 'MappingTable' я выбираю текущую строку
+					И я перехожу к закладке с именем 'ComplianceAnalyst'
+					И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Another source field"
+					И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
+					И в таблице 'ComplianceTable' я выбираю текущую строку
 					Тогда открылось окно "Data sources"
 					И в таблице 'List' я выбираю текущую строку
 					Тогда открылось окно "Data source (create)*"
@@ -152,14 +152,14 @@
 				Тогда открылось окно "Data sources"
 				И я нажимаю на кнопку с именем 'FormCreate'
 				Тогда открылось окно "Data source (create)"
-				И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Arbitrary query to current infobase"
-				И я изменяю флаг с именем 'ShouldUseMultiperiodContext'
+				И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Arbitrary query to current infobase"
+				И я изменяю флаг с именем 'UseMultiperiodContext'
 				И в поле с именем 'QueryTextForm' я ввожу текст 'SELECT 2 AS VALUE'
 				И я нажимаю на кнопку с именем 'EditQueryText'
-				И я перехожу к закладке с именем 'DimensionsMap'
-				И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Another source field"
-				И в таблице 'MappingTable' я активизирую поле с именем 'MapTableDBAlias'
-				И в таблице 'MappingTable' я выбираю текущую строку
+				И я перехожу к закладке с именем 'ComplianceAnalyst'
+				И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Another source field"
+				И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
+				И в таблице 'ComplianceTable' я выбираю текущую строку
 				* Источник для дополнения аналитик
 					Тогда открылось окно "Data sources"
 					И я нажимаю на кнопку с именем 'FormCreate'
@@ -184,17 +184,17 @@
 				Тогда открылось окно "Data sources"
 				И я нажимаю на кнопку с именем 'FormCreate'
 				Тогда открылось окно "Data source (create)"
-				И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Arbitrary query to current infobase"
-				И я изменяю флаг с именем 'ShouldUseMultiperiodContext'
+				И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Arbitrary query to current infobase"
+				И я изменяю флаг с именем 'UseMultiperiodContext'
 				И в поле с именем 'QueryTextForm' я ввожу текст 'SELECT 3 AS VALUE'
 				И я нажимаю на кнопку с именем 'EditQueryText'
-				И я перехожу к закладке с именем 'DimensionsMap'
-				И в таблице 'MappingTable' я активизирую поле с именем 'MappingTableFillingMethod'
-				И в таблице 'MappingTable' я выбираю текущую строку
-				И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Another source field"
-				И в таблице 'MappingTable' я завершаю редактирование строки
-				И в таблице 'MappingTable' я активизирую поле с именем 'MapTableDBAlias'
-				И в таблице 'MappingTable' я выбираю текущую строку
+				И я перехожу к закладке с именем 'ComplianceAnalyst'
+				И в таблице 'ComplianceTable' я активизирую поле с именем 'ComplianceTableFillingMethod'
+				И в таблице 'ComplianceTable' я выбираю текущую строку
+				И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Another source field"
+				И в таблице 'ComplianceTable' я завершаю редактирование строки
+				И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
+				И в таблице 'ComplianceTable' я выбираю текущую строку
 				Когда открылось окно "Data sources"
 				И в таблице 'List' я перехожу к строке:
 					| "Description"                                          | "Receipt method"                                 | "Infobase type"                      | "Indicator filter"  |
@@ -220,11 +220,11 @@
 				И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
 				И Я выбираю показатель с кодом "Goods_Quantity"
 				Тогда открылось окно "Data source (create) *"
-				И в таблице 'MappingTable' я выбираю текущую строку
-				И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Fixed value"
-				И в таблице 'MappingTable' я завершаю редактирование строки
-				И в таблице 'MappingTable' я активизирую поле с именем 'MapTableDBAlias'
-				И в таблице 'MappingTable' я выбираю текущую строку
+				И в таблице 'ComplianceTable' я выбираю текущую строку
+				И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Fixed value"
+				И в таблице 'ComplianceTable' я завершаю редактирование строки
+				И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
+				И в таблице 'ComplianceTable' я выбираю текущую строку
 				Тогда открылось окно "Cash flow items"
 				И я нажимаю на кнопку с именем 'FormFind'
 				Тогда открылась форма с именем 'UniversalListFindExtForm'
@@ -250,7 +250,7 @@
 				Тогда открылось окно "Data sources"
 				И я нажимаю на кнопку с именем 'FormCreate'
 				Тогда открылось окно "Data source (create)"
-				И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Arbitrary query to current infobase"
+				И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Arbitrary query to current infobase"
 				И в поле с именем 'QueryTextForm' я ввожу текст 
 					|'SELECT'|
 					|' TimeIntervals.StartDate AS Date,'|
@@ -260,12 +260,12 @@
 					|'WHERE'|
 					|' TimeIntervals.Ref IN (&Periods)'|
 				И я нажимаю на кнопку с именем 'EditQueryText'
-				И я перехожу к закладке с именем 'DimensionsMap'
-				И в таблице 'MappingTable' я выбираю текущую строку
-				И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Another source field"
-				И в таблице 'MappingTable' я завершаю редактирование строки
-				И в таблице 'MappingTable' я активизирую поле с именем 'MapTableDBAlias'
-				И в таблице 'MappingTable' я выбираю текущую строку
+				И я перехожу к закладке с именем 'ComplianceAnalyst'
+				И в таблице 'ComplianceTable' я выбираю текущую строку
+				И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Another source field"
+				И в таблице 'ComplianceTable' я завершаю редактирование строки
+				И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
+				И в таблице 'ComplianceTable' я выбираю текущую строку
 				* Источник для заполнения Анилитики2
 					Тогда открылось окно "Data sources"
 					И я нажимаю на кнопку с именем 'FormCreate'
@@ -278,13 +278,13 @@
 					Тогда открылось окно "Data sources"
 					И в таблице 'List' я выбираю текущую строку
 				Тогда открылось окно "Data source (create) *"
-				И в таблице 'MappingTable' я перехожу к строке:
+				И в таблице 'ComplianceTable' я перехожу к строке:
 					| "Destination dimension"       | "Dimension kind" |
 					| "Dimension 3: Product range" | "Product range"  |
-				И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Another source field"
-				И в таблице 'MappingTable' я завершаю редактирование строки
-				И в таблице 'MappingTable' я активизирую поле с именем 'MapTableDBAlias'
-				И в таблице 'MappingTable' я выбираю текущую строку
+				И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Another source field"
+				И в таблице 'ComplianceTable' я завершаю редактирование строки
+				И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
+				И в таблице 'ComplianceTable' я выбираю текущую строку
 				* Источник для заполненния Анилитики3
 					Тогда открылось окно "Data sources"
 					И я нажимаю на кнопку с именем 'FormCreate'
@@ -312,13 +312,13 @@
 				Тогда открылось окно "Data sources"
 				И я нажимаю на кнопку с именем 'FormCreate'
 				Тогда открылось окно "Data source (create)"
-				И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Current infobase information register"
-				И из выпадающего списка с именем 'DBInformationRegister' я выбираю по строке 'ProductPrices'
+				И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase information register"
+				И из выпадающего списка с именем 'DBInformationRegister' я выбираю по строке 'ItemsPrices'
 				И из выпадающего списка с именем 'SliceType' я выбираю точное значение "Slice of the last ones"
-				И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Another source field"
-				И в таблице 'MappingTable' я завершаю редактирование строки
-				И в таблице 'MappingTable' я активизирую поле с именем 'MapTableDBAlias'
-				И в таблице 'MappingTable' я выбираю текущую строку
+				И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Another source field"
+				И в таблице 'ComplianceTable' я завершаю редактирование строки
+				И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
+				И в таблице 'ComplianceTable' я выбираю текущую строку
 				* Источник с доп. аналитиками - Статьи ДДС 
 					Тогда открылось окно "Data sources"
 					И я нажимаю на кнопку с именем 'FormCreate'
@@ -331,13 +331,13 @@
 					Тогда открылось окно "Data sources"
 					И в таблице 'List' я выбираю текущую строку
 				Тогда открылось окно "Data source (create)*"
-				И в таблице 'MappingTable' я перехожу к строке:
+				И в таблице 'ComplianceTable' я перехожу к строке:
 					| "Destination dimension"       | "Dimension kind" | "Column name"    | "Filling method" |
 					| "Dimension 3: Product range" | "Product range"  | "[Product range]" | "Source field"    |
-				И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Another source field"
-				И в таблице 'MappingTable' я завершаю редактирование строки
-				И в таблице 'MappingTable' я активизирую поле с именем 'MapTableDBAlias'
-				И в таблице 'MappingTable' я выбираю текущую строку
+				И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Another source field"
+				И в таблице 'ComplianceTable' я завершаю редактирование строки
+				И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
+				И в таблице 'ComplianceTable' я выбираю текущую строку
 				* Источник с доп. аналитиками - Товары 
 					Тогда открылось окно "Data sources"
 					И я нажимаю на кнопку с именем 'FormCreate'
@@ -374,11 +374,11 @@
 					Если '$$IsERPCPM$$' Тогда
 						И в таблице 'FieldsTreeDB' я перехожу к строке:
 							| "Field"    |
-							| 'Kind цены' |
+							| 'Type цены' |
 						И я нажимаю на кнопку с именем 'AddConditionItem'
 						И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 							| "Field"   |
-							| 'KindЦены' |
+							| 'TypeЦены' |
 					И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "Fixed value"
 					И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'DefiningMethodClarification' я выбираю по строке "VA - Products"
 					И в таблице 'TreeOfFilterParametersDB' я завершаю редактирование строки
@@ -489,11 +489,11 @@
 		И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
 		И Я выбираю показатель с кодом "CurrentFormula_Quantity"
 		Тогда открылось окно "Data source (create)*"
-		И в таблице 'MappingTable' я выбираю текущую строку
-		И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Another source field"
-		И в таблице 'MappingTable' я завершаю редактирование строки
-		И в таблице 'MappingTable' я активизирую поле с именем 'MapTableDBAlias'
-		И в таблице 'MappingTable' я выбираю текущую строку
+		И в таблице 'ComplianceTable' я выбираю текущую строку
+		И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Another source field"
+		И в таблице 'ComplianceTable' я завершаю редактирование строки
+		И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
+		И в таблице 'ComplianceTable' я выбираю текущую строку
 		* Источник данных для дополнения аналитик №1
 			Тогда открылось окно "Data sources"
 			И я нажимаю на кнопку с именем 'FormCreate'
@@ -502,11 +502,11 @@
 			И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
 			И Я выбираю показатель с кодом "Goods_Quantity"
 			Тогда открылось окно "Data source (create) *"
-			И в таблице 'MappingTable' я выбираю текущую строку
-			И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Another source field"
-			И в таблице 'MappingTable' я завершаю редактирование строки
-			И в таблице 'MappingTable' я активизирую поле с именем 'MapTableDBAlias'
-			И в таблице 'MappingTable' я выбираю текущую строку
+			И в таблице 'ComplianceTable' я выбираю текущую строку
+			И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Another source field"
+			И в таблице 'ComplianceTable' я завершаю редактирование строки
+			И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
+			И в таблице 'ComplianceTable' я выбираю текущую строку
 			* Источник данных для дополнения аналитик №2
 				Тогда открылось окно "Data sources"
 				И я нажимаю на кнопку с именем 'FormCreate'

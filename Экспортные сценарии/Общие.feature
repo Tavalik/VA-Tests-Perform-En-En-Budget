@@ -71,3 +71,12 @@
 		| '$VarField$'   |
 		| '$VarPattern$' |
 	И в таблице 'List' я выбираю текущую строку
+
+Сценарий: Я для реквизита 'TheProperty' устанавливаю значение 'TheValue'
+
+	Если 'Upper("[TheValue]") = "TRUE" OR Upper("[TheValue]") = "TRUE"' Тогда
+		И я устанавливаю флаг с именем '[TheProperty]'
+	ИначеЕсли 'Upper("[TheValue]") = "FALSE" OR Upper("[TheValue]") = "FALSE"' Тогда
+		И я снимаю флаг с именем '[TheProperty]'
+	Иначе
+		И из выпадающего списка с именем '[TheProperty]' я выбираю точное значение "[TheValue]"

@@ -27,8 +27,8 @@
 	И Я открываю вид отчета с именем "VA - Non-Numbers (source)"
 	И я устанавливаю флаг с именем 'ProjectSeparation'		
 	И я перехожу к закладке с именем 'DimensionsOfReport'
-	И из выпадающего списка с именем 'DimensionType1' я выбираю по строке "VA0CFItems"				
-	И я нажимаю на кнопку с именем 'FormButtonWrite'
+	И из выпадающего списка с именем 'DimensionKind1' я выбираю по строке "VA0CFItems"				
+	И я нажимаю на кнопку с именем 'RecordButtonForm'
 	Когда открылось окно "Data restructuring"
 	И я нажимаю на кнопку с именем 'FormOK'
 
@@ -43,12 +43,12 @@
 	И Я в конструкторе отчета добавляю колонку с именем "Product ID"	
 
 	И я в конструкторе отчета в ячейке 'R2C2' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-	И я в конструкторе отчета в ячейке 'R2C2' я меняю свойство показателя 'TotalType' на "Average"
+	И я в конструкторе отчета в ячейке 'R2C2' я меняю свойство показателя 'TotalKind' на "Average"
 	И я в конструкторе отчета в ячейке 'R2C3' я меняю свойство показателя 'ValueType' на "Date"
-	И я в конструкторе отчета в ячейке 'R2C3' я меняю свойство показателя 'TotalType' на "Minimum"
+	И я в конструкторе отчета в ячейке 'R2C3' я меняю свойство показателя 'TotalKind' на "Minimum"
 	И я в конструкторе отчета в ячейке 'R2C4' я меняю свойство показателя 'ValueType' на "Boolean"
 	И я в конструкторе отчета в ячейке 'R2C4' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"		
-	И я в конструкторе отчета в ячейке 'R2C4' я меняю свойство показателя 'TotalType' на "Cannot calculate the total by group drilldown"
+	И я в конструкторе отчета в ячейке 'R2C4' я меняю свойство показателя 'TotalKind' на "Cannot calculate the total by group drilldown"
 	И я в конструкторе отчета в ячейке 'R2C5' я меняю свойство показателя 'ValueType' на "Line"
 	И я в конструкторе отчета в ячейке 'R2C5' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
 
@@ -72,12 +72,12 @@
 	* Вводим значения показателей
 		* Ввод цены
 			И Я добавляю значения с раскрытием показателей в ячейку 'R6C2'
-				| "VA0Product"                                                     | 'Value'        |
-				| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '180,000.00000'   |
-				| "3C:Enterprise 8 CORP. Client license for 100 users" | '600,000.00000'   |
-				| "5C:Corporate performance management"                                      | '1,250,000.00000' |
-				| "2C:Corporation"                                                  | '2,050,000.00000' |
-				| "1C:ERP. Corporate performance management"                                   | '1,950,000.00000' |
+				| "VA0Product"                                                     | 'Value1'        |
+				| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '180,000.00000'    |
+				| "3C:Enterprise 8 CORP. Client license for 100 users" | '600,000.00000'    |
+				| "5C:Corporate performance management"                                      | '1,250,000.00000'  |
+				| "2C:Corporation"                                                  | '2,050,000.00000'  |
+				| "1C:ERP. Corporate performance management"                                   | '1,950,000.00000'  |
 		* Ввод даты поступления в ячейке
 			И Я ввожу значение '1/1/2021' в ячейку 'R7C3'
 			И Я ввожу значение '2/1/2021' в ячейку 'R8C3'
@@ -104,20 +104,20 @@
 			И Я ввожу значение '1,375,000.00000' в ячейку 'R11C6'
 		* Ввод даты поступления в форме
 			И Я добавляю значения с раскрытием показателей в ячейку 'R6C7'
-				| "VA0Product"                   | 'Value'   |
-				| "5C:Corporate performance management"    | '5/2/2021' |
-				| "1C:ERP. Corporate performance management" | '1/2/2021' |
+				| "VA0Product"                   | 'Value1'   |
+				| "5C:Corporate performance management"    | '5/2/2021'  |
+				| "1C:ERP. Corporate performance management" | '1/2/2021'  |
 		* Ввод флага включение в прайс в форме
 			И Я добавляю значения с раскрытием показателей в ячейку 'R6C8'
-				| "VA0Product"                   | 'Value' |
-				| "5C:Corporate performance management"    | "Yes"       |
-				| "1C:ERP. Corporate performance management" | "Yes"       |
-				| "2C:Corporation"                | "No"      |
+				| "VA0Product"                   | 'Value1' |
+				| "5C:Corporate performance management"    | "Yes"        |
+				| "1C:ERP. Corporate performance management" | "Yes"        |
+				| "2C:Corporation"                | "No"       |
 		* Ввод артикула в форме
 			И Я добавляю значения с раскрытием показателей в ячейку 'R6C9'
-				| "VA0Product"                   | 'Value' |
-				| "1C:ERP. Corporate performance management" | '2000001'  |
-				| "5C:Corporate performance management"    | '2000005'  |			
+				| "VA0Product"                   | 'Value1' |
+				| "1C:ERP. Corporate performance management" | '2000001'   |
+				| "5C:Corporate performance management"    | '2000005'   |			
 		* Копирование показателей
 			Когда открылось окно '$WindowTitle$'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C6:R11C6'
@@ -155,8 +155,8 @@
 	И Я открываю вид отчета с именем "VA - Non-Numbers (recipient)"
 	И я устанавливаю флаг с именем 'ProjectSeparation'		
 	И я перехожу к закладке с именем 'DimensionsOfReport'
-	И из выпадающего списка с именем 'DimensionType1' я выбираю по строке "VA0CFItems"				
-	И я нажимаю на кнопку с именем 'FormButtonWrite'
+	И из выпадающего списка с именем 'DimensionKind1' я выбираю по строке "VA0CFItems"				
+	И я нажимаю на кнопку с именем 'RecordButtonForm'
 	Когда открылось окно "Data restructuring"
 	И я нажимаю на кнопку с именем 'FormOK'
 
@@ -327,8 +327,8 @@
 				Тогда открылось окно "Data sources"
 				И я нажимаю на кнопку с именем 'FormCreate'
 				Тогда открылось окно "Data source (create)"
-				И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Current infobase information register"
-				И из выпадающего списка с именем 'DBInformationRegister' я выбираю по строке 'ProductPrices'
+				И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase information register"
+				И из выпадающего списка с именем 'DBInformationRegister' я выбираю по строке 'ItemsPrices'
 				И из выпадающего списка с именем 'SliceType' я выбираю точное значение "Slice of the last ones"
 				И я перехожу к закладке с именем 'FiltersPage'
 				И в таблице 'FieldsTreeDB' я разворачиваю текущую строку
@@ -343,11 +343,11 @@
 				Если '$$IsERPCPM$$' Тогда
 					И в таблице 'FieldsTreeDB' я перехожу к строке:
 						| "Field"    |
-						| 'Kind цены' |
+						| 'Type цены' |
 					И я нажимаю на кнопку с именем 'AddConditionItem'
 					И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 						| "Field"   |
-						| 'KindЦены' | 
+						| 'TypeЦены' | 
 				И в таблице 'TreeOfFilterParametersDB' я активизирую поле с именем 'ParameterCalculationMethod'
 				И в таблице 'TreeOfFilterParametersDB' я выбираю текущую строку
 				И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "Fixed value"
@@ -367,49 +367,49 @@
 				Тогда открылось окно "Data sources"
 				И я нажимаю на кнопку с именем 'FormCreate'
 				Тогда открылось окно "Data source (create)"
-				И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Arbitrary query to current infobase"
+				И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Arbitrary query to current infobase"
 				Если '$$IsCPM$$' Тогда 
 					И в поле с именем 'QueryTextForm' я ввожу текст 
 						|'SELECT'|
-						|' BEGINOFPERIOD(ProductPrices.Period, MONTH) AS Period,'|
-						|' MAX(DATEADD(BEGINOFPERIOD(ProductPrices.Period, MONTH), DAY, 3)) AS Date,'|
-						|' ProductPrices.Products AS Products'|
+						|' BEGINOFPERIOD(ItemsPrices.Period, MONTH) AS Period,'|
+						|' MAX(DATEADD(BEGINOFPERIOD(ItemsPrices.Period, MONTH), DAY, 3)) AS Date,'|
+						|' ItemsPrices.Products AS Products'|
 						|'FROM'|
-						|' InformationRegister.ProductPrices AS ProductPrices'|
+						|' InformationRegister.ItemsPrices AS ItemsPrices'|
 						|'WHERE'|
-						|' ProductPrices.PricesType = &PricesType'|
+						|' ItemsPrices.PriceType_ = &PriceType_'|
 						|''|
 						|'GROUP BY'|
-						|' ProductPrices.Products,'|
-						|' BEGINOFPERIOD(ProductPrices.Period, MONTH) '|
+						|' ItemsPrices.Products,'|
+						|' BEGINOFPERIOD(ItemsPrices.Period, MONTH) '|
 				Если '$$IsERPCPM$$' Тогда
 					И в поле с именем 'QueryTextForm' я ввожу текст 
 						|'SELECT'|
-						|' BEGINOFPERIOD(ProductPrices.Period, MONTH) AS Period,'|
-						|' MAX(DATEADD(BEGINOFPERIOD(ProductPrices.Period, MONTH), DAY, 3)) AS Date,'|
-						|' ProductPrices.Products AS Products'|
+						|' BEGINOFPERIOD(ItemsPrices.Period, MONTH) AS Period,'|
+						|' MAX(DATEADD(BEGINOFPERIOD(ItemsPrices.Period, MONTH), DAY, 3)) AS Date,'|
+						|' ItemsPrices.Products AS Products'|
 						|'FROM'|
-						|' InformationRegister.ProductPrices AS ProductPrices'|
+						|' InformationRegister.ItemsPrices AS ItemsPrices'|
 						|'WHERE'|
-						|' ProductPrices.KindЦены = &PricesType'|
+						|' ItemsPrices.TypeЦены = &PriceType_'|
 						|''|
 						|'GROUP BY'|
-						|' ProductPrices.Products,'|
-						|' BEGINOFPERIOD(ProductPrices.Period, MONTH) '|
+						|' ItemsPrices.Products,'|
+						|' BEGINOFPERIOD(ItemsPrices.Period, MONTH) '|
 				И я нажимаю на кнопку с именем 'EditQueryText'
-				И я перехожу к закладке с именем 'DimensionsMap'
+				И я перехожу к закладке с именем 'ComplianceAnalyst'
 				И в таблице 'FieldsTreeDB' я разворачиваю строку:
 					| "Field"                     |
 					| "Data source fields(3)" |
 				И в таблице 'FieldsTreeDB' я перехожу к строке:
 					| "Field" |
 					| 'Date' |
-				И в таблице 'MappingTable' я перехожу к строке:
+				И в таблице 'ComplianceTable' я перехожу к строке:
 					| "Destination dimension" | "Column name" | "Filling method" |
 					| 'Value'            | '[Period]'    | "Source field"    |
-				И в таблице 'MappingTable' я активизирую поле с именем 'MapTableDBAlias'
-				И я выбираю пункт контекстного меню с именем 'ButtonUnmap' на элементе формы с именем 'MappingTable'
-				И я выбираю пункт контекстного меню с именем 'ButtonMapDimensions' на элементе формы с именем 'MappingTable'
+				И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
+				И я выбираю пункт контекстного меню с именем 'ButtonUnmap' на элементе формы с именем 'ComplianceTable'
+				И я выбираю пункт контекстного меню с именем 'ButtonMapDimensions' на элементе формы с именем 'ComplianceTable'
 				И я перехожу к закладке с именем 'FiltersPage'
 				И в таблице 'TreeOfFilterParametersDB' я активизирую поле с именем 'ParameterCalculationMethod'
 				И в таблице 'TreeOfFilterParametersDB' я выбираю текущую строку
@@ -432,8 +432,8 @@
 				Тогда открылось окно "Data sources"
 				И я нажимаю на кнопку с именем 'FormCreate'
 				Тогда открылось окно "Data source (create)"
-				И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Arbitrary query to current infobase"
-				И я изменяю флаг с именем 'ShouldUseMultiperiodContext'
+				И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Arbitrary query to current infobase"
+				И я изменяю флаг с именем 'UseMultiperiodContext'
 				Если '$$ЭтоPerform$$' Тогда
 					И в поле с именем 'QueryTextForm' я ввожу текст 
 						|'SELECT'|
@@ -455,7 +455,7 @@
 						|' Products.ProductKind = &ProductKind'|
 						|' AND NOT Products.IsFolder'|
 				И я нажимаю на кнопку с именем 'EditQueryText'
-				И я перехожу к закладке с именем 'DimensionsMap'
+				И я перехожу к закладке с именем 'ComplianceAnalyst'
 				И я перехожу к закладке с именем 'FiltersPage'				
 				И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 					| "Field"              |
@@ -521,7 +521,7 @@
 				Тогда открылось окно "Data sources"
 				И я нажимаю на кнопку с именем 'FormCreate'
 				Тогда открылось окно "Data source (create)"
-				И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Current infobase catalog"
+				И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase catalog"
 				И я нажимаю кнопку выбора у поля с именем 'DBObjects'
 				И Я в списке "Infobase catalogs" по полю "Catalog" ищу элемент "Product range" "At beginning of line"
 				Если '$$IsCPM$$' Тогда
@@ -533,13 +533,13 @@
 				Если '$$IsERPCPM$$' Тогда
 					И в таблице 'FieldsTreeDB' я перехожу к строке:
 						| "Field"     |
-						| 'ProductID ' |			
-				И в таблице 'MappingTable' я перехожу к строке:
+						| 'SKU ' |			
+				И в таблице 'ComplianceTable' я перехожу к строке:
 					| "Destination dimension" | "Column name" | "Filling method" |
 					| 'Value'            | "[Code]"       | "Source field"    |
-				И в таблице 'MappingTable' я активизирую поле с именем 'MapTableDBAlias'
-				И я выбираю пункт контекстного меню с именем 'ButtonUnmap' на элементе формы с именем 'MappingTable'
-				И я выбираю пункт контекстного меню с именем 'ButtonMapDimensions' на элементе формы с именем 'MappingTable'
+				И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
+				И я выбираю пункт контекстного меню с именем 'ButtonUnmap' на элементе формы с именем 'ComplianceTable'
+				И я выбираю пункт контекстного меню с именем 'ButtonMapDimensions' на элементе формы с именем 'ComplianceTable'
 				И я перехожу к закладке с именем 'FiltersPage'
 				И Пока в таблице 'TreeOfFilterParametersDB' количество строк 'больше' 0 Тогда
 					И я нажимаю на кнопку с именем 'TreeOfFilterParametersDBDelete'
@@ -559,7 +559,7 @@
 				Если '$$IsERPCPM$$' Тогда
 					И в таблице 'FieldsTreeDB' я перехожу к строке:
 						| "Field"             |
-						| 'Kind номенклатуры' |
+						| 'Type номенклатуры' |
 					И я нажимаю на кнопку с именем 'AddConditionItem'
 					И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 						| "Field"            |
@@ -650,7 +650,7 @@
 	И Я создаю вид отчета с именем "VA - Calculation in code" и родителем "VA - Non-Numbers and Groupings (группа)"
 	И Я открываю вид отчета с именем "VA - Calculation in code"
 	И я устанавливаю флаг с именем 'ProjectSeparation'		
-	И я нажимаю на кнопку с именем 'FormButtonWrite'
+	И я нажимаю на кнопку с именем 'RecordButtonForm'
 
 	И я нажимаю на кнопку с именем 'EditTree'
 	Когда открылось окно "Edit tree"
@@ -722,8 +722,8 @@
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 					|'ArrayIndicators = New Array;'|
 					|"ArrayIndicators.Add(\"VANonNumbersSource:Goods_Price\");"|
-					|'AdditionalParameters = New Structure("GrandTotal",Enums.IndicatorTotalsTypes.Sum);'|
-					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,SettlementObject.MainCurrency,SettlementObject.ReportPeriod),,AdditionalParameters);'|
+					|'AdditionalParameters = New Structure("Overall",Enums.IndicatorTotalsTypes.Sum);'|
+					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod),,AdditionalParameters);'|
 					|''|
 					|'If tIndicatorsValues.Count() = 0 Then'|
 					|' Result = 0;'|
@@ -743,7 +743,7 @@
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 					|'ArrayIndicators = New Array;'|
 					|"ArrayIndicators.Add(\"VANonNumbersSource:Goods_DateInflow\");"|
-					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,SettlementObject.MainCurrency,SettlementObject.ReportPeriod));'|
+					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod));'|
 					|''|
 					|'If tIndicatorsValues.Count() = 0 Then'|
 					|' Result = Undefined;'|
@@ -759,7 +759,7 @@
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст
 					|'ArrayIndicators = New Array;'|
 					|"ArrayIndicators.Add(\"VANonNumbersSource:Goods_IncludeInPrice\");"|
-					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,SettlementObject.MainCurrency,SettlementObject.ReportPeriod));'|
+					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod));'|
 					|''|
 					|'If tIndicatorsValues.Count() = 0 Then'|
 					|' Result = Undefined;'|
@@ -775,7 +775,7 @@
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 					|'ArrayIndicators = New Array;'|
 					|"ArrayIndicators.Add(\"VANonNumbersSource:Goods_ProductID\");"|
-					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,SettlementObject.MainCurrency,SettlementObject.ReportPeriod));'|
+					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod));'|
 					|''|
 					|'If tIndicatorsValues.Count() = 0 Then'|
 					|' Result = Undefined;'|
@@ -792,8 +792,8 @@
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст
 					|'ArrayIndicators = New Array;'|
 					|"ArrayIndicators.Add(\"VACalculationInCode:Source_Number\");"|
-					|'AdditionalParameters = New Structure("GrandTotal",Enums.IndicatorTotalsTypes.Sum);'|
-					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,SettlementObject.MainCurrency,SettlementObject.ReportPeriod),,AdditionalParameters);'|
+					|'AdditionalParameters = New Structure("Overall",Enums.IndicatorTotalsTypes.Sum);'|
+					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod),,AdditionalParameters);'|
 					|''|
 					|'If tIndicatorsValues.Count() = 0 Then'|
 					|' Result = 0;'|
@@ -809,7 +809,7 @@
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст
 					|'ArrayIndicators = New Array;'|
 					|"ArrayIndicators.Add(\"VACalculationInCode:Source_Date\");"|
-					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,SettlementObject.MainCurrency,SettlementObject.ReportPeriod));'|
+					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod));'|
 					|''|
 					|'If tIndicatorsValues.Count() = 0 Then'|
 					|' Result = Undefined;'|
@@ -825,7 +825,7 @@
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 					|'ArrayIndicators = New Array;'|
 					|"ArrayIndicators.Add(\"VACalculationInCode:Source_Boolean\");"|
-					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,SettlementObject.MainCurrency,SettlementObject.ReportPeriod));'|
+					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod));'|
 					|''|
 					|'If tIndicatorsValues.Count() = 0 Then'|
 					|' Result = Undefined;'|
@@ -841,7 +841,7 @@
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 					|'ArrayIndicators = New Array;'|
 					|"ArrayIndicators.Add(\"VACalculationInCode:Source_Line\");"|
-					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,SettlementObject.MainCurrency,SettlementObject.ReportPeriod));'|
+					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod));'|
 					|''|
 					|'If tIndicatorsValues.Count() = 0 Then'|
 					|' Result = Undefined;'|
@@ -855,21 +855,21 @@
 				Когда открылось окно "Edit tree"
 				И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C2'
 				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 'Result = Month(SettlementObject.ReportPeriod.StartDate);'
+				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 'Result = Month(ObjectOfARAP.ReportPeriod.StartDate);'
 				И я нажимаю на кнопку с именем 'ArbitraryCode'
 				И я нажимаю на кнопку с именем 'WriteAndCollapse'
 			* Дата
 				Когда открылось окно "Edit tree"
 				И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C3'
 				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 'Result = RelativePeriod(SettlementObject.ReportPeriod, -1).StartDate;'
+				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 'Result = RelativePeriod(ObjectOfARAP.ReportPeriod, -1).StartDate;'
 				И я нажимаю на кнопку с именем 'ArbitraryCode'
 				И я нажимаю на кнопку с именем 'WriteAndCollapse'
 			* Булево
 				Когда открылось окно "Edit tree"
 				И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C4'
 				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 'Result = DateBelongsToPeriod(SettlementObject.ReportPeriod.StartDate, SettlementObject.PeriodsArray.Get(0));'
+				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 'Result = DateBelongsToPeriod(ObjectOfARAP.ReportPeriod.StartDate, ObjectOfARAP.ArrayOfPeriods.Get(0));'
 				И я нажимаю на кнопку с именем 'ArbitraryCode'
 				И я нажимаю на кнопку с именем 'WriteAndCollapse'
 			* Строка
@@ -877,11 +877,11 @@
 				И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C5'
 				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
-					|'Result = String(SettlementObject.Organization) + Chars.LF +'|
-					|'String(SettlementObject.Scenario) + Chars.LF + '|
-					|'String(SettlementObject.MainCurrency) + Chars.LF + '|
-					|'String(SettlementObject.ReportPeriod) + Chars.LF + '|
-					|'String(SettlementObject.Periodicity);'|
+					|'Result = String(ObjectOfARAP.Organization) + Chars.LF +'|
+					|'String(ObjectOfARAP.Scenario) + Chars.LF + '|
+					|'String(ObjectOfARAP.MainCurrency) + Chars.LF + '|
+					|'String(ObjectOfARAP.ReportPeriod) + Chars.LF + '|
+					|'String(ObjectOfARAP.Periodicity);'|
 					|''|
 				И я нажимаю на кнопку с именем 'ArbitraryCode'
 				И я нажимаю на кнопку с именем 'WriteAndCollapse'
@@ -894,7 +894,7 @@
 				Тогда открылось окно "Data sources"
 				И я нажимаю на кнопку с именем 'FormCreate'
 				Тогда открылось окно "Data source (create)"
-				И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Current infobase report item indicator"
+				И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase report item indicator"
 				И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Calculation in code"
 				И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
 				И Я выбираю показатель с кодом "Source_Number"
@@ -909,17 +909,17 @@
 				Тогда открылось окно "Data sources"
 				И я нажимаю на кнопку с именем 'FormCreate'
 				Тогда открылось окно "Data source (create)"
-				И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Current infobase report item indicator"
+				И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase report item indicator"
 				И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Calculation in code"
 				И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
 				И Я выбираю показатель с кодом "FormulasCode_Number"
 				Тогда открылось окно "Data source (create) *"
-				И в таблице 'MappingTable' я активизирую поле с именем 'MappingTableFillingMethod'
-				И в таблице 'MappingTable' я выбираю текущую строку
-				И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Another source field"
-				И в таблице 'MappingTable' я завершаю редактирование строки
-				И в таблице 'MappingTable' я активизирую поле с именем 'MapTableDBAlias'
-				И в таблице 'MappingTable' я выбираю текущую строку
+				И в таблице 'ComplianceTable' я активизирую поле с именем 'ComplianceTableFillingMethod'
+				И в таблице 'ComplianceTable' я выбираю текущую строку
+				И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Another source field"
+				И в таблице 'ComplianceTable' я завершаю редактирование строки
+				И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
+				И в таблице 'ComplianceTable' я выбираю текущую строку
 				Тогда открылось окно "Data sources"
 				И в таблице 'List' я выбираю текущую строку
 				Тогда открылось окно "Data source (create) *"
@@ -994,7 +994,7 @@
 	
 	* Записываем документ
 		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormWriteANDContinue'
+		И я нажимаю на кнопку с именем 'Write'
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Calculation in code" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' '' 
 
 	* Рассчитываем документ еще раз и сверяем изменившийся результат
@@ -1037,8 +1037,8 @@
 	И Я открываю вид отчета с именем "VA - Grouping by analytics"
 	И я устанавливаю флаг с именем 'ProjectSeparation'		
 	И я перехожу к закладке с именем 'DimensionsOfReport'
-	И из выпадающего списка с именем 'DimensionType1' я выбираю по строке "VA0CFItems"				
-	И я нажимаю на кнопку с именем 'FormButtonWrite'
+	И из выпадающего списка с именем 'DimensionKind1' я выбираю по строке "VA0CFItems"				
+	И я нажимаю на кнопку с именем 'RecordButtonForm'
 	Когда открылось окно "Data restructuring"
 	И я нажимаю на кнопку с именем 'FormOK'
 
@@ -1062,32 +1062,32 @@
 		* Сумма
 			И я в конструкторе отчета в ячейке 'R2C2' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
 			И я в конструкторе отчета в ячейке 'R3C2' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
-			И я в конструкторе отчета в ячейке 'R3C2' я меняю свойство показателя 'TotalType' на "Amount"
+			И я в конструкторе отчета в ячейке 'R3C2' я меняю свойство показателя 'TotalKind' на "Amount"
 			И я в конструкторе отчета в ячейке 'R4C2' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-			И я в конструкторе отчета в ячейке 'R4C2' я меняю свойство показателя 'TotalType' на "Amount"
+			И я в конструкторе отчета в ячейке 'R4C2' я меняю свойство показателя 'TotalKind' на "Amount"
 		* Максимум
 			И я в конструкторе отчета в ячейке 'R2C3' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
 			И я в конструкторе отчета в ячейке 'R3C3' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
-			И я в конструкторе отчета в ячейке 'R3C3' я меняю свойство показателя 'TotalType' на "Maximum"
+			И я в конструкторе отчета в ячейке 'R3C3' я меняю свойство показателя 'TotalKind' на "Maximum"
 			И я в конструкторе отчета в ячейке 'R4C3' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-			И я в конструкторе отчета в ячейке 'R4C3' я меняю свойство показателя 'TotalType' на "Maximum"
+			И я в конструкторе отчета в ячейке 'R4C3' я меняю свойство показателя 'TotalKind' на "Maximum"
 		* Минимум
 			И я в конструкторе отчета в ячейке 'R2C4' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
 			И я в конструкторе отчета в ячейке 'R3C4' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
-			И я в конструкторе отчета в ячейке 'R3C4' я меняю свойство показателя 'TotalType' на "Minimum"
+			И я в конструкторе отчета в ячейке 'R3C4' я меняю свойство показателя 'TotalKind' на "Minimum"
 			И я в конструкторе отчета в ячейке 'R4C4' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-			И я в конструкторе отчета в ячейке 'R3C4' я меняю свойство показателя 'TotalType' на "Minimum"
+			И я в конструкторе отчета в ячейке 'R3C4' я меняю свойство показателя 'TotalKind' на "Minimum"
 		* Среднее
 			И я в конструкторе отчета в ячейке 'R3C5' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
-			И я в конструкторе отчета в ячейке 'R3C5' я меняю свойство показателя 'TotalType' на "Average"
+			И я в конструкторе отчета в ячейке 'R3C5' я меняю свойство показателя 'TotalKind' на "Average"
 			И я в конструкторе отчета в ячейке 'R4C5' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-			И я в конструкторе отчета в ячейке 'R4C5' я меняю свойство показателя 'TotalType' на "Average"
+			И я в конструкторе отчета в ячейке 'R4C5' я меняю свойство показателя 'TotalKind' на "Average"
 		* БезИтога
 			И я в конструкторе отчета в ячейке 'R2C6' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
 			И я в конструкторе отчета в ячейке 'R3C6' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
-			И я в конструкторе отчета в ячейке 'R3C6' я меняю свойство показателя 'TotalType' на "Cannot calculate the total by group drilldown"
+			И я в конструкторе отчета в ячейке 'R3C6' я меняю свойство показателя 'TotalKind' на "Cannot calculate the total by group drilldown"
 			И я в конструкторе отчета в ячейке 'R4C6' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-			И я в конструкторе отчета в ячейке 'R4C6' я меняю свойство показателя 'TotalType' на "Cannot calculate the total by group drilldown"
+			И я в конструкторе отчета в ячейке 'R4C6' я меняю свойство показателя 'TotalKind' на "Cannot calculate the total by group drilldown"
 
 	* Устанавливаем аналитики отчета
 		И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R3C3'
@@ -1186,7 +1186,7 @@
 			| "GoodsNoTotal"                                                  | '6,030,000'      | '6,030,000' | '6,030,000' | '6,030,000' | '0'         | '6,633,000'       | '6,633,000' | '6,633,000' | '6,633,000' | '0'         | '6,633,000'    | '6,633,000' | '6,633,000' | '6,633,000' | '0'         | '0'          | '0'         | '0'         | '0'          | '0'        |
 
 	* Записываем документ
-		И я нажимаю на кнопку с именем 'FormWriteANDContinue'
+		И я нажимаю на кнопку с именем 'Write'
 
 	* Проверяем движения	
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Grouping by analytics" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики "3Software sale" '' '' '' '' '' 

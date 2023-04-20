@@ -131,8 +131,8 @@
 	
 	И Я открываю вид отчета с именем "VA - Filling empty analytics"
 	И я перехожу к закладке с именем 'DimensionsOfReport'
-	И из выпадающего списка с именем 'DimensionType1' я выбираю по строке "VA0CFItems"
-	И я нажимаю на кнопку с именем 'FormButtonWrite'	
+	И из выпадающего списка с именем 'DimensionKind1' я выбираю по строке "VA0CFItems"
+	И я нажимаю на кнопку с именем 'RecordButtonForm'	
 	Тогда открылось окно "Data restructuring"
 	И я нажимаю на кнопку с именем 'FormOK'
 
@@ -172,18 +172,18 @@
 			Тогда открылось окно "Data sources"
 			И я выбираю пункт контекстного меню с именем 'ListContextMenuChange' на элементе формы с именем 'List'
 			Тогда открылось окно "VA - Filling empty analytics_Source amount (Data source)"
-			И в таблице 'MappingTable' я перехожу к строке:
+			И в таблице 'ComplianceTable' я перехожу к строке:
 				| "Destination dimension"             | "Dimension kind"      | "Column name"                       | "Filling method" |
 				| "Dimension 2: Product categories" | "Product categories" | "[Dimension 2: Product categories]" | "Source field"    |
-			И в таблице 'MappingTable' я выбираю текущую строку
-			И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Fixed value"
-			И в таблице 'MappingTable' я завершаю редактирование строки
-			И в таблице 'MappingTable' я перехожу к строке:
+			И в таблице 'ComplianceTable' я выбираю текущую строку
+			И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Fixed value"
+			И в таблице 'ComplianceTable' я завершаю редактирование строки
+			И в таблице 'ComplianceTable' я перехожу к строке:
 				| "Destination dimension"       | "Dimension kind" | "Column name"                 | "Filling method" |
 				| "Dimension 3: Product range" | "Product range"  | "[Dimension 3: Product range]" | "Source field"    |
-			И в таблице 'MappingTable' я выбираю текущую строку
-			И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Fixed value"
-			И в таблице 'MappingTable' я завершаю редактирование строки
+			И в таблице 'ComplianceTable' я выбираю текущую строку
+			И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Fixed value"
+			И в таблице 'ComplianceTable' я завершаю редактирование строки
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "VA - Filling empty analytics_Source amount (Data source) *" в течение 20 секунд
 			Тогда открылось окно "Data sources"
@@ -207,18 +207,18 @@
 			Тогда открылось окно "Data sources"
 			И я выбираю пункт контекстного меню с именем 'ListContextMenuChange' на элементе формы с именем 'List'
 			Тогда открылось окно "VA - Filling empty analytics_Source date (Data source)"
-			И в таблице 'MappingTable' я перехожу к строке:
+			И в таблице 'ComplianceTable' я перехожу к строке:
 				| "Destination dimension"             | "Dimension kind"      | "Column name"                       | "Filling method" |
 				| "Dimension 2: Product categories" | "Product categories" | "[Dimension 2: Product categories]" | "Source field"    |
-			И в таблице 'MappingTable' я выбираю текущую строку
-			И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Fixed value"
-			И в таблице 'MappingTable' я завершаю редактирование строки
-			И в таблице 'MappingTable' я перехожу к строке:
+			И в таблице 'ComplianceTable' я выбираю текущую строку
+			И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Fixed value"
+			И в таблице 'ComplianceTable' я завершаю редактирование строки
+			И в таблице 'ComplianceTable' я перехожу к строке:
 				| "Destination dimension"       | "Dimension kind" | "Column name"                 | "Filling method" |
 				| "Dimension 3: Product range" | "Product range"  | "[Dimension 3: Product range]" | "Source field"    |
-			И в таблице 'MappingTable' я выбираю текущую строку
-			И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Fixed value"
-			И в таблице 'MappingTable' я завершаю редактирование строки
+			И в таблице 'ComplianceTable' я выбираю текущую строку
+			И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Fixed value"
+			И в таблице 'ComplianceTable' я завершаю редактирование строки
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "VA - Filling empty analytics_Source date (Data source) *" в течение 20 секунд
 			Тогда открылось окно "Data sources"
@@ -239,10 +239,10 @@
 	И Я создаю экземпляр отчета для вида отчета "VA - Filling empty analytics" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' ''
 
 	И Я добавляю значения с раскрытием показателей в ячейку 'R6C2'
-		| 'Value' |
-		| '1,000'    |
+		| 'Value1' |
+		| '1,000'     |
 	И Я добавляю значения с раскрытием показателей в ячейку 'R6C5'
-		| 'Value'   |
+		| 'Value1'  |
 		| '2/1/2021' |
 
 	* Сравниваем результат
@@ -275,22 +275,22 @@
 
 	* Заполняем значения показателей
 		И Я добавляю значения с раскрытием показателей в ячейку 'R6C2'
-			| 'Value' |
-			| '100'      |
+			| 'Value1' |
+			| '100'       |
 		И Я добавляю значения с раскрытием показателей в ячейку 'R6C3'
-			| 'Value'   |
+			| 'Value1'  |
 			| '1/1/2021' |
 		И Я добавляю значения с раскрытием показателей в ячейку 'R6C4'
-			| 'Value' |
-			| '200'      |
+			| 'Value1' |
+			| '200'       |
 		И Я добавляю значения с раскрытием показателей в ячейку 'R6C5'
-			| 'Value'   |
+			| 'Value1'  |
 			| '2/1/2021' |
 		И Я добавляю значения с раскрытием показателей в ячейку 'R6C6'
-			| 'Value' |
-			| '300'      |
+			| 'Value1' |
+			| '300'       |
 		И Я добавляю значения с раскрытием показателей в ячейку 'R6C7'
-			| 'Value'   |
+			| 'Value1'  |
 			| '3/1/2021' |
 
 	* Сравниваем результат
@@ -334,7 +334,7 @@
 			Тогда открылось окно "Data sources"
 			И я нажимаю на кнопку с именем 'FormCreate'
 			Тогда открылось окно "Data source (create)"
-			И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Arbitrary query to current infobase"	
+			И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Arbitrary query to current infobase"	
 			Когда открылось окно "Data source (create) *"
 			И в поле с именем 'QueryTextForm' я ввожу текст 
 				|'SELECT'|
@@ -345,16 +345,16 @@
 				|'WHERE'|
 				|' TimeIntervals.Ref IN (&PeriodsОтчета)'|
 			И я нажимаю на кнопку с именем 'EditQueryText'
-			И я перехожу к закладке с именем 'DimensionsMap'
+			И я перехожу к закладке с именем 'ComplianceAnalyst'
 			И я перехожу к закладке с именем 'FiltersPage'
 			И в таблице 'TreeOfFilterParametersDB' я активизирую поле с именем 'ParameterCalculationMethod'
 			И в таблице 'TreeOfFilterParametersDB' я выбираю текущую строку
 			И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "List of values (function in 1C:Enterprise script)"
 			И в таблице 'TreeOfFilterParametersDB' я активизирую поле с именем 'DefiningMethodClarification'
 			И в таблице 'TreeOfFilterParametersDB' я нажимаю кнопку выбора у реквизита с именем 'DefiningMethodClarification'
-			Тогда открылось окно "VA - Filling empty analytics: Parameter value calculation"
+			Тогда открылось окно "VA - Filling empty analytics: Calculate a parameter value"
 			И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
-				|'Result = SettlementObject.PeriodsArray; '|
+				|'Result = ObjectOfARAP.ArrayOfPeriods; '|
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			Тогда открылось окно "1C:Enterprise"
 			И я нажимаю на кнопку с именем 'Button0'
@@ -374,7 +374,7 @@
 			Тогда открылось окно "Data sources"
 			И я нажимаю на кнопку с именем 'FormCreate'
 			Тогда открылось окно "Data source (create)"
-			И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Arbitrary query to current infobase"	
+			И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Arbitrary query to current infobase"	
 			Когда открылось окно "Data source (create) *"
 			И в поле с именем 'QueryTextForm' я ввожу текст 
 				|'SELECT'|
@@ -384,16 +384,16 @@
 				|'WHERE'|
 				|' TimeIntervals.Ref IN (&PeriodsОтчета)'|
 			И я нажимаю на кнопку с именем 'EditQueryText'
-			И я перехожу к закладке с именем 'DimensionsMap'
+			И я перехожу к закладке с именем 'ComplianceAnalyst'
 			И я перехожу к закладке с именем 'FiltersPage'
 			И в таблице 'TreeOfFilterParametersDB' я активизирую поле с именем 'ParameterCalculationMethod'
 			И в таблице 'TreeOfFilterParametersDB' я выбираю текущую строку
 			И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "List of values (function in 1C:Enterprise script)"
 			И в таблице 'TreeOfFilterParametersDB' я активизирую поле с именем 'DefiningMethodClarification'
 			И в таблице 'TreeOfFilterParametersDB' я нажимаю кнопку выбора у реквизита с именем 'DefiningMethodClarification'
-			Тогда открылось окно "VA - Filling empty analytics: Parameter value calculation"
+			Тогда открылось окно "VA - Filling empty analytics: Calculate a parameter value"
 			И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
-				|'Result = SettlementObject.PeriodsArray; '|
+				|'Result = ObjectOfARAP.ArrayOfPeriods; '|
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			Тогда открылось окно "1C:Enterprise"
 			И я нажимаю на кнопку с именем 'Button0'

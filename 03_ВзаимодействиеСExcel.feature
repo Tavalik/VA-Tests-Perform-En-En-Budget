@@ -24,7 +24,7 @@
 Сценарий: 03.02 Создание отчета с группами и 6 аналитиками
 
 	И Я создаю вид отчета с именем "VA - ImportExcel" и родителем "VA - Report group"
-	
+
 	* Создаем строки отчета
 		И Я открываю контруктор отчета с именем "VA - ImportExcel"
 		И Я в конструкторе отчета добавляю строку с именем "Line_Synthetic_1"
@@ -205,22 +205,22 @@
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
 		Тогда открылось окно "Report structure"
-		И из выпадающего списка с именем 'ReportsTemplatesAppearanceTemplate' я выбираю по строке "Classic"
-		И я снимаю флаг с именем 'ShouldShowAttributes'
+		И из выпадающего списка с именем 'TemplateOfReportsTemplatesAppearance' я выбираю по строке "Classic"
+		И я снимаю флаг с именем 'DisplayBankingDetails'
 		И я нажимаю на кнопку с именем 'FormSelect'
 
 	* Записываем бланк
 		Тогда открылось окно '$WindowTitle$ *'
-		И я нажимаю на кнопку с именем 'FormButtonWrite'
+		И я нажимаю на кнопку с именем 'RecordButtonForm'
 
 	* Сохраняем бланк
 		Тогда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'StartExport'
 		Тогда открылось окно "Save report template"
 		И из выпадающего списка с именем 'ExternalIB' я выбираю по строке "VA - Import from Excel"
-		И в поле с именем 'ExportFileName' я ввожу текст '$КаталогПроекта$\Макеты\ВА_ИмпортExcel_Шаблон.xlsx'
+		И в поле с именем 'UploadFileName' я ввожу текст '$КаталогПроекта$\Макеты\ВА_ИмпортExcel_Шаблон.xlsx'
 		И из выпадающего списка с именем 'Periodicity' я выбираю точное значение "Month"
-		И в поле с именем 'PeriodCount' я ввожу текст '3'
+		И в поле с именем 'NumberOfPeriods' я ввожу текст '3'
 		И я нажимаю на кнопку с именем 'FormExport'
 		Тогда открылось окно '$WindowTitle$'
 		И Я закрываю окно '$WindowTitle$'
@@ -245,7 +245,6 @@
 Сценарий: 03.04 Создание экземпляра отчета - "VA - ImportExcel"	и загрузка из файла
 
 	И Я создаю экземпляр отчета для вида отчета "VA - ImportExcel" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' '' 
-	И я запоминаю текущее окно как 'WindowTitle'
 		
 	* Документ должен быть пуст
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
@@ -265,49 +264,191 @@
 			| "Group_Currency"             | ''            | ''                      | ''                   | ''             | ''           | ''                          | ''       | '0'              | '0'     | '0'               | '0'     | '0'            | '0'     |
 			| "Line_Dimensions_6_Currency" | ''            | ''                      | ''                   | ''             | ''           | ''                          | ''       | '0'              | '0'     | '0'               | '0'     | '0'            | '0'     |
 
-	* Загружаем из шаблона
+	* Загружаем без файла
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
-		Тогда открылось окно "Select a filling method"
-		И я перехожу к закладке с именем 'GroupPageImportFromFile'
+		Когда открылось окно "Select способа расчета indicators"
+		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Import"
+		И я нажимаю на кнопку с именем 'FormSelect'
+		Когда открылось окно '$WindowTitle$'
+		Затем я жду, что в сообщениях пользователю будет подстрока "Imported file path not specified. Operation canceled." в течение 30 секунд
+		И я очищаю окно сообщений пользователю		
+
+	* Загружаем с файлом
+		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'		
+		Когда открылось окно "Select способа расчета indicators"
+		Тогда у элемента формы с именем 'ReportGenerationMethod' текст редактирования стал равен "Import"
+		Тогда у элемента формы с именем 'ImportTemplate' текст редактирования стал равен "VA - ImportExcel"
 		И в поле с именем 'PathToFile' я ввожу текст "$КаталогПроекта$\Макеты\ВА_ИмпортExcel_Меркурий_En.xlsx"
-		Тогда открылось окно "Select a filling method"
-		И я нажимаю на кнопку с именем 'FillReport'
+		И я нажимаю на кнопку с именем 'FormSelect'				
 		Тогда открылось окно '$WindowTitle$'
-		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ИмпортExcel_Меркурий.mxl'	
+		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ИмпортExcel_Меркурий.mxl'
+
+	* Проверяем историю действий
+		Тогда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'CancelApplyDetailed'
+		Тогда открылось окно "Action history"
+		Тогда таблица "Transactions" стала равной:
+			| "Transaction presentation" |
+			| "Filling to регламенту" |
+			| "Import from MS Excel"     |
+		И я нажимаю на кнопку с именем 'FormCancel'
+
+	* Записываем документ	
+		Тогда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'WriteAndClose'
-		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд
+		И я жду закрытия окна '$WindowTitle$' в течение 30 секунд
 
 Сценарий: 03.05 Повторная загрузка данных из файла
 
 	И Я открываю первый экземпляр отчета для вида отчета "VA - ImportExcel"
 	Тогда Открылся экземпляр отчета для вида отчета "VA - ImportExcel" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
-	И я запоминаю текущее окно как 'WindowTitle'
 	
-	И я нажимаю на кнопку с именем 'EnableEdit'
-	И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
-	Тогда открылось окно "Select a filling method"
-	И я перехожу к закладке с именем 'GroupPageImportFromFile'
-	И в поле с именем 'PathToFile' я ввожу текст "$КаталогПроекта$\Макеты\ВА_ИмпортExcel_Меркурий_2_En.xlsx"
-	Тогда открылось окно "Select a filling method"
-	И я нажимаю на кнопку с именем 'FillReport'
-	Тогда открылось окно '$WindowTitle$ *'
-	Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ИмпортExcel_Меркурий_2.mxl'	
-	И я нажимаю на кнопку с именем 'WriteAndClose'
-	И я жду закрытия окна '$WindowTitle$ *' в течение 20 секунд
+	* Очищаем показатели
+		Тогда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'Edit'
+		И я нажимаю на кнопку с именем 'Clear'
+		Тогда открылось окно '1C:Предприятие'
+		И я нажимаю на кнопку с именем 'Button0'
+		Тогда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'Write'				
 
-	Тогда открылось окно "Report instances"
-	И в таблице 'List' я выбираю текущую строку
-	Тогда открылось окно '$WindowTitle$'
-	И я нажимаю на кнопку с именем 'EnableEdit'
-	И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
-	Тогда открылось окно "Select a filling method"
-	И я перехожу к закладке с именем 'GroupPageImportFromFile'
-	И в поле с именем 'PathToFile' я ввожу текст "$КаталогПроекта$\Макеты\ВА_ИмпортExcel_Меркурий_En.xlsx"
-	Тогда открылось окно "Select a filling method"
-	И я нажимаю на кнопку с именем 'FillReport'
-	Тогда открылось окно '$WindowTitle$ *'
-	Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ИмпортExcel_Меркурий.mxl'	
-	И я нажимаю на кнопку с именем 'WriteAndClose'
-	И я жду закрытия окна '$WindowTitle$ *' в течение 20 секунд
+	* Грузим файл повторно
+		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
+		Когда открылось окно "Select способа расчета indicators"
+		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Import"
+		И элемент формы с именем 'ImportApproach' стал равен 'FromCatalog'
+		И элемент формы с именем 'ImportFile3' стал равен 'DimenKind_ImportExcel_Mercury.xlsx'
+		И элемент формы с именем 'ImportTemplate' стал равен 'DimenKind - ImportExcel'
+		И я нажимаю на кнопку с именем 'FormSelect'
+		Когда открылось окно "Select file version"
+		И таблица "ListЛистов" стала равной:
+			| 'Лист документа' | 'Защищен паролем' |
+			| 'TDSheet'        | 'No'             |
+		И я нажимаю на кнопку с именем 'FormOK'
+
+	* Сверяем результат			
+		Тогда открылось окно '$WindowTitle$'
+		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ИмпортExcel_Меркурий.mxl'
+		И я нажимаю на кнопку с именем 'Write'
+
+	* Вибираем второй файл
+		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
+		Когда открылось окно "Select способа расчета indicators"	
+		И я меняю значение переключателя с именем 'ImportApproach' на 'to1 диске'						
+		И в поле с именем 'PathToFile' я ввожу текст "$DirectoryПроекта$\Templates\VA_ImportExcel_Mercury_2.xlsm"
+		И я нажимаю на кнопку с именем 'FormSelect'
+
+	* Сверяем результат	
+		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ИмпортExcel_Меркурий_2.mxl'	
+	
+	* Закрываем документ
+		И я нажимаю на кнопку с именем 'WriteAndClose'
+		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд
+
+Сценарий: 03.06 Создаем бланк сводной таблицы
+
+	И Я для вида отчета "VA - ImportExcel" я создаю бланк сводной таблицы по умолчанию с отборами
+
+	И Я Для вида отчета "VA - ImportExcel" открываю бланк сводной таблицы по умолчанию
+
+	* Настраиваем порядок аналитик
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'ShowTableSettingsByAxes'
+		И Я в сводной таблице перемещаю аналитику с именем "Additional currencies" вверх
+		И Я в сводной таблице перемещаю аналитику с именем "Income and expense items" вверх
+		И Я в сводной таблице перемещаю аналитику с именем "Cash flow items" вверх
+		И Я в сводной таблице перемещаю аналитику с именем "Product range" вверх
+		И Я в сводной таблице перемещаю аналитику с именем "Product categories" вверх
+		И Я в сводной таблице перемещаю аналитику с именем "Counterparty contracts" вверх
+		И Я в сводной таблице перемещаю аналитику с именем "Counterparties" вверх
+
+	* Настраиваем сортировку аналитики Номенклатура
+		Когда открылось окно "Set up field location"
+		И в таблице "TableLines" я перехожу к строке:
+			| "Horizontally (in rows)" |
+			| "Product range"               |
+		И в таблице "TableLines" я выбираю текущую строку
+		Тогда открылось окно "Dimension display parameters (Product range)"
+		И я нажимаю кнопку выбора у поля с именем 'DCSettingsOrderSettings'
+		Тогда открылось окно "Edit order"
+		И в таблице "Data" я выбираю текущую строку
+		И в таблице "Data" из выпадающего списка с именем "DataField" я выбираю точное значение "Product range.Product ID"
+		И в таблице "Data" я завершаю редактирование строки
+		И я нажимаю на кнопку с именем 'OK'
+		Когда открылось окно "Dimension display parameters (Product range)"
+		И элемент формы с именем "DCSettingsOrderSettings" стал равен 'Products.SKU'
+		И элемент формы с именем "ПоддерживатьИерархию1" стал равен 'No'
+		И я нажимаю на кнопку с именем 'FormApply'
+
+	* Настраиваем вывод аналитик
+		Когда открылось окно "Set up field location"
+		И я нажимаю на кнопку с именем 'DimensionsLayoutOption'
+		И в меню формы я выбираю "Adjacent dimensions"
+		И я изменяю флаг с именем 'TotalByColumns'
+		И я нажимаю на кнопку с именем 'ButtonApply'
+	
+	* Записываем бланк
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormWriteAndClose'
+		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд
+
+Сценарий: 03.07 Создаем сводную таблицу
+
+	* Открываем сводную таблицу
+		И Я октрываю сводную таблицу отчета с именем "VA - ImportExcel"
+		И Я устанавливаю отборы сводной таблицы: дата начала '1/1/2021', дата конца '3/31/2021', валюта 'RUB', сценарий "VA - Main scenario", организация "Mercury LLC"	
+
+	Когда открылось окно '$WindowTitle$'
+	Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ИмпортExcel_Меркурий_2_СТ.mxl'
+
+	* Загружаем без файла	
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'ShouldRecalculateOtherItems'
+		Тогда открылось окно 'Selection способа Calculation показателей'
+		И из выпадающего списка с именем "MethodФормированияОтчета" я выбираю точное значение 'Import'
+		И я нажимаю на кнопку с именем 'FormSelect'
+		Когда открылось окно '$WindowTitle$'
+		Затем я жду, что в сообщениях пользователю будет подстрока "Imported file path not specified. Operation canceled." в течение 30 секунд
+		И я очищаю окно сообщений пользователю
+
+	* Загружаем с файлом
+		И я нажимаю на кнопку с именем 'ShouldRecalculateOtherItems'		
+		Когда открылось окно "Select способа расчета indicators"
+		Тогда у элемента формы с именем 'ReportGenerationMethod' текст редактирования стал равен "Import"
+		Тогда у элемента формы с именем 'ImportTemplate' текст редактирования стал равен "VA - ImportExcel"
+		И в поле с именем 'PathToFile' я ввожу текст "$КаталогПроекта$\Макеты\ВА_ИмпортExcel_Меркурий_En.xlsx"
+		И я нажимаю на кнопку с именем 'FormSelect'				
 		
+	* Проверяем историю действий
+		И я жду открытия формы '$WindowTitle$' в течение 20 секунд
+		И я нажимаю на кнопку с именем 'CancelApplyDetailed'
+		Тогда открылось окно "Action history"
+		Тогда таблица "Transactions" стала равной:
+			| "Transaction presentation" |
+			| "Filling to регламенту" |
+			| "Import from MS Excel"     |
+		И я нажимаю на кнопку с именем 'FormCancel'
+
+	* Сверяем результат	
+		Тогда открылось окно '$WindowTitle$'
+		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ИмпортExcel_Меркурий_СТ.mxl'
+
+	* Загружаем файл еще раз
+		Тогда открылось окно '$WindowTitle$'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R10C9:R28C9"
+		И я нажимаю на кнопку с именем 'ClearRange'
+		И я нажимаю на кнопку с именем 'ShouldRecalculateOtherItems'
+		Тогда открылось окно "Select способа расчета indicators"
+		И я нажимаю на кнопку с именем 'FormSelect'
+		Тогда открылось окно "Select file version"
+		И я нажимаю на кнопку с именем 'FormOK'				
+
+	* Записываем
+		Тогда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'Apply'
+		И я нажимаю на кнопку с именем 'UpdateTabData'
+				
+	* Сверяем результат	
+		И я жду открытия формы '$WindowTitle$' в течение 20 секунд
+		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ИмпортExcel_Меркурий_СТ.mxl'

@@ -45,23 +45,23 @@
 		Тогда открылось окно "Data sources"
 		И я нажимаю на кнопку с именем 'FormCreate'			
 		Когда открылось окно "Data source (create)"
-		И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Current infobase report item indicator"
-		И элемент формы с именем 'ShouldUseMultiperiodContext' отсутствует на форме
+		И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase report item indicator"
+		И элемент формы с именем 'UseMultiperiodContext' отсутствует на форме
 		И элемент формы с именем 'Help' отсутствует на форме
-		И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Current infobase accumulation register"
-		И элемент формы с именем 'ShouldUseMultiperiodContext' отсутствует на форме
+		И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase accumulation register"
+		И элемент формы с именем 'UseMultiperiodContext' отсутствует на форме
 		И элемент формы с именем 'Help' отсутствует на форме
-		И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Current infobase accounting register"
-		И элемент формы с именем 'ShouldUseMultiperiodContext' отсутствует на форме
+		И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase accounting register"
+		И элемент формы с именем 'UseMultiperiodContext' отсутствует на форме
 		И элемент формы с именем 'Help' отсутствует на форме
-		И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Current infobase information register"
-		И элемент формы с именем 'ShouldUseMultiperiodContext' отсутствует на форме
+		И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase information register"
+		И элемент формы с именем 'UseMultiperiodContext' отсутствует на форме
 		И элемент формы с именем 'Help' отсутствует на форме
-		И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Current infobase catalog"
-		И элемент формы с именем 'ShouldUseMultiperiodContext' отсутствует на форме
+		И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase catalog"
+		И элемент формы с именем 'UseMultiperiodContext' отсутствует на форме
 		И элемент формы с именем 'Help' отсутствует на форме
-		И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Arbitrary query to current infobase"
-		И элемент формы с именем 'ShouldUseMultiperiodContext' присутствует на форме
+		И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Arbitrary query to current infobase"
+		И элемент формы с именем 'UseMultiperiodContext' присутствует на форме
 		И элемент формы с именем 'Help' присутствует на форме			
 		И я нажимаю на кнопку с именем 'Help'
 		Тогда открылось окно "Help"
@@ -72,55 +72,55 @@
 		Если '$$IsCPM$$' Тогда 
 			И в поле с именем 'QueryTextForm' я ввожу текст 
 				|'SELECT'|
-				|'	ProductPrices.Period AS Date,'|
-				|'	ProductPrices.Products AS Products,'|
-				|'	MAX(ProductPrices.Price) AS Price'|
-				|'INTO втРасчетная'|
+				|'	ItemsPrices.Period AS Date,'|
+				|'	ItemsPrices.Products AS Products,'|
+				|'	MAX(ItemsPrices.Price) AS Price'|
+				|'INTO втCalculated'|
 				|'FROM'|
-				|'	InformationRegister.ProductPrices AS ProductPrices'|
+				|'	InformationRegister.ItemsPrices AS ItemsPrices'|
 				|'WHERE'|
-				|'	ProductPrices.Period >= &ParameterStartDate'|
-				|'	AND ProductPrices.Period <= &ParameterEndDate'|
-				|'	AND ProductPrices.PricesType = &ParameterPricesType'|
+				|'	ItemsPrices.Period >= &ParameterStartDate'|
+				|'	AND ItemsPrices.Period <= &ParameterEndDate'|
+				|'	AND ItemsPrices.PriceType_ = &ParameterPriceType_'|
 				|''|
 				|'GROUP BY'|
-				|'	ProductPrices.Period,'|
-				|'	ProductPrices.Products'|
+				|'	ItemsPrices.Period,'|
+				|'	ItemsPrices.Products'|
 				|';'|
 				|''|
 				|'////////////////////////////////////////////////////////////////////////////////'|
 				|'SELECT'|
-				|'	втРасчетная.Date AS Date,'|
-				|'	втРасчетная.Products AS Products,'|
-				|'	втРасчетная.Price AS Price'|
+				|'	втCalculated.Date AS Date,'|
+				|'	втCalculated.Products AS Products,'|
+				|'	втCalculated.Price AS Price'|
 				|'FROM'|
-				|'	втРасчетная AS втРасчетная'|
+				|'	втCalculated AS втCalculated'|
 		Если '$$IsERPCPM$$' Тогда
 			И в поле с именем 'QueryTextForm' я ввожу текст 
 				|'SELECT'|
-				|'	ProductPrices.Period AS Date,'|
-				|'	ProductPrices.Products AS Products,'|
-				|'	MAX(ProductPrices.Price) AS Price'|
-				|'INTO втРасчетная'|
+				|'	ItemsPrices.Period AS Date,'|
+				|'	ItemsPrices.Products AS Products,'|
+				|'	MAX(ItemsPrices.Price) AS Price'|
+				|'INTO втCalculated'|
 				|'FROM'|
-				|'	InformationRegister.ProductPrices AS ProductPrices'|
+				|'	InformationRegister.ItemsPrices AS ItemsPrices'|
 				|'WHERE'|
-				|'	ProductPrices.Period >= &ParameterStartDate'|
-				|'	AND ProductPrices.Period <= &ParameterEndDate'|
-				|'	AND ProductPrices.KindЦены = &ParameterPricesType'|
+				|'	ItemsPrices.Period >= &ParameterStartDate'|
+				|'	AND ItemsPrices.Period <= &ParameterEndDate'|
+				|'	AND ItemsPrices.TypeЦены = &ParameterPriceType_'|
 				|''|
 				|'GROUP BY'|
-				|'	ProductPrices.Period,'|
-				|'	ProductPrices.Products'|
+				|'	ItemsPrices.Period,'|
+				|'	ItemsPrices.Products'|
 				|';'|
 				|''|
 				|'////////////////////////////////////////////////////////////////////////////////'|
 				|'SELECT'|
-				|'	втРасчетная.Date AS Date,'|
-				|'	втРасчетная.Products AS Products,'|
-				|'	втРасчетная.Price AS Price'|
+				|'	втCalculated.Date AS Date,'|
+				|'	втCalculated.Products AS Products,'|
+				|'	втCalculated.Price AS Price'|
 				|'FROM'|
-				|'	втРасчетная AS втРасчетная'|
+				|'	втCalculated AS втCalculated'|
 		И я нажимаю на кнопку с именем 'QueryWizard'
 		Тогда открылось окно "Query wizard"
 		И Я закрываю окно "Query wizard"
@@ -128,7 +128,7 @@
 			И я нажимаю на кнопку с именем 'Button0'
 		Тогда открылось окно "Data source (create) *"
 		И я нажимаю на кнопку с именем 'EditQueryText'
-		И я перехожу к закладке с именем 'DimensionsMap'
+		И я перехожу к закладке с именем 'ComplianceAnalyst'
 		
 	* Проверяем заполнение таблиц
 		Когда открылось окно "Data source (create) *"
@@ -143,12 +143,12 @@
 			| "Query parameters(3)"     |
 			| 'ParameterStartDate'       |
 			| 'ParameterEndDate'    |
-			| 'ParameterPricesType'           |
+			| 'ParameterPriceType_'           |
 			| "Data source fields(3)" |
 			| 'Date'                     |
 			| 'Products'             |
 			| 'Price'                     |
-		Тогда Таблица 'MappingTable' содержит '3' строк из списка:
+		Тогда Таблица 'ComplianceTable' содержит '3' строк из списка:
 			| "Destination dimension"       | "Filling method" | "Column name"    | "Dimension kind" |
 			| "Dimension 1: Product range" | "Source field"    | '[Products]' | "Product range"  |
 			| 'Value'                  | "Source field"    | '[Price]'         | ''              |
@@ -159,7 +159,7 @@
 			| "Field"                    | "Filter" | "Filter clarification" | "Value to check" |
 			| '[ParameterStartDate]'    | ''      | ''                 | ''                      |
 			| '[ParameterEndDate]' | ''      | ''                 | ''                      |
-			| '[ParameterPricesType]'        | ''      | ''                 | ''                      |
+			| '[ParameterPriceType_]'        | ''      | ''                 | ''                      |
 
 	* Заполняем параметры		
 		Когда открылось окно "Data source (create) *"	
@@ -176,7 +176,7 @@
 		И в таблице 'TreeOfFilterParametersDB' я завершаю редактирование строки
 		И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 			| "Field"             |
-			| '[ParameterPricesType]' |
+			| '[ParameterPriceType_]' |
 		И в таблице 'TreeOfFilterParametersDB' я выбираю текущую строку
 		И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "Fixed value"
 		И в таблице 'TreeOfFilterParametersDB' я активизирую поле с именем 'DefiningMethodClarification'
@@ -186,7 +186,7 @@
 			| "Field"                    | "Filter"                      | "Filter clarification"  | "Value to check" |
 			| '[ParameterStartDate]'    | "Report period start date" | ''                  | ''                      |
 			| '[ParameterEndDate]' | "Report period end date"  | ''                  | ''                      |
-			| '[ParameterPricesType]'        | "Fixed value"     | "VA - Products" | ''                      |
+			| '[ParameterPriceType_]'        | "Fixed value"     | "VA - Products" | ''                      |
 
 	* Записываем элемент
 		Когда открылось окно "Data source (create) *"
@@ -253,18 +253,18 @@
 		Тогда открылось окно "Data sources"
 		И я выбираю пункт контекстного меню с именем 'ListContextMenuChange' на элементе формы с именем 'List'
 		Тогда открылось окно '$WindowTitle$'
-		И элемент формы с именем 'ShouldUseMultiperiodContext' присутствует на форме
+		И элемент формы с именем 'UseMultiperiodContext' присутствует на форме
 		И элемент формы с именем 'Help' присутствует на форме
-		И я снимаю флаг с именем 'ShouldUseMultiperiodContext'
-		И я перехожу к закладке с именем 'DimensionsMap'
+		И я снимаю флаг с именем 'UseMultiperiodContext'
+		И я перехожу к закладке с именем 'ComplianceAnalyst'
 		И я перехожу к закладке с именем 'FiltersPage'
 		Тогда Таблица 'TreeOfFilterParametersDB' содержит '3' строк из списка:
 			| "Field"                    | "Filter"                      | "Filter clarification"  | "Value to check" |
 			| '[ParameterStartDate]'    | "Report period start date" | ''                  | ''                      |
 			| '[ParameterEndDate]' | "Report period end date"  | ''                  | ''                      |
-			| '[ParameterPricesType]'        | "Fixed value"     | "VA - Products" | ''                      |
+			| '[ParameterPriceType_]'        | "Fixed value"     | "VA - Products" | ''                      |
 		И я нажимаю на кнопку с именем 'FormWrite'
-		И флаг с именем 'ShouldUseMultiperiodContext' равен 'False'												
+		И флаг с именем 'UseMultiperiodContext' равен 'False'												
 								
 	* Проверяем заполнение таблиц
 		Когда открылось окно '$WindowTitle$'
@@ -281,12 +281,12 @@
 			| "Query parameters(3)"     |
 			| 'ParameterStartDate'       |
 			| 'ParameterEndDate'    |
-			| 'ParameterPricesType'           |
+			| 'ParameterPriceType_'           |
 			| "Data source fields(3)" |
 			| 'Date'                     |
 			| 'Products'             |
 			| 'Price'                     |
-		Тогда Таблица 'MappingTable' содержит '2' строк из списка:	
+		Тогда Таблица 'ComplianceTable' содержит '2' строк из списка:	
 			| "Destination dimension"       | "Filling method" | "Column name"    | "Dimension kind" |
 			| "Dimension 1: Product range" | "Source field"    | '[Products]' | "Product range"  |
 			| 'Value'                  | "Source field"    | '[Price]'         | ''              |
@@ -296,7 +296,7 @@
 			| "Field"                    | "Filter"                      | "Filter clarification"  | "Value to check" |
 			| '[ParameterStartDate]'    | "Report period start date" | ''                  | ''                      |
 			| '[ParameterEndDate]' | "Report period end date"  | ''                  | ''                      |
-			| '[ParameterPricesType]'        | "Fixed value"     | "VA - Products" | ''                      |
+			| '[ParameterPriceType_]'        | "Fixed value"     | "VA - Products" | ''                      |
 	 			
 	* Закрываем источник данных
 		Когда открылось окно '$WindowTitle$'

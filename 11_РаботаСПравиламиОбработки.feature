@@ -2,7 +2,7 @@
 
 @tree
 
-Функционал: 02. Проверка функционала работы с правилами расчета
+Функционал: 11. Проверка функционала работы с правилами расчета
 
 Как Администратор я хочу
 Проверить создание и работу видов отчетов
@@ -13,15 +13,15 @@
 	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''
 	И я закрыл все окна клиентского приложения	
 
-Сценарий: 02.00 Определение типа приложения
+Сценарий: 11.00 Определение типа приложения
 
 	Пусть Инициализация переменных
 
-Сценарий: 02.01 Создание группы отчетов "VA - Calculation rules (группа)"
+Сценарий: 11.01 Создание группы отчетов "VA - Calculation rules (группа)"
 
 	И Я создаю группу видов отчетов с именем "VA - Calculation rules (группа)" и родителем "VA - Report group"
 
-Сценарий: 02.02 Создание отчета с ручным вводом - "VA - Quantity"
+Сценарий: 11.02 Создание отчета с ручным вводом - "VA - Quantity"
 
 	И Я создаю вид отчета с именем "VA - Quantity" и родителем "VA - Calculation rules (группа)"
 	
@@ -35,35 +35,26 @@
 	И Я Для вида отчета "VA - Quantity" я создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Quantity" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
 
-Сценарий: 02.03 Создание экземпляра отчета - "VA - Quantity"
+Сценарий: 11.03 Создание экземпляра отчета - "VA - Quantity"
 
 	И Я создаю экземпляр отчета для вида отчета "VA - Quantity" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' '' 
 	И я запоминаю текущее окно как 'WindowTitle'
 
 	И Я добавляю значения с раскрытием показателей в ячейку 'R6C2'
-		| "VA0Product"                                                     | 'Value' |
-		| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '20.00000' |
-		| "3C:Enterprise 8 CORP. Client license for 100 users" | '40.00000' |
-		| "5C:Corporate performance management"                                      | '5.00000'  |
-		| "2C:Corporation"                                                  | '7.00000'  |
-		| "1C:ERP. Corporate performance management"                                   | '8.00000'  |
+		| "VA0Product"                                                     | 'Value1' |
+		| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '20.00000'  |
+		| "3C:Enterprise 8 CORP. Client license for 100 users" | '40.00000'  |
+		| "5C:Corporate performance management"                                      | '5.00000'   |
+		| "2C:Corporation"                                                  | '7.00000'   |
+		| "1C:ERP. Corporate performance management"                                   | '8.00000'   |
 
 	* Копируем и меняем значения показателей
 		Тогда открылось окно '$WindowTitle$'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C2:R11C2'
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateCopyDataOnRow'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C3:R11C3'
-		И я нажимаю на кнопку с именем 'ChangeIndicators'
-		Тогда открылось окно "Change values"
-		И в поле с именем 'ValueAdjustments' я ввожу текст '10.00000'
-		И я нажимаю на кнопку с именем 'Apply'
+		И Я изменяю значение на '10.00000' в ячейке 'R7C3:R11C3'		
 		Когда открылось окно '$WindowTitle$'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C4:R11C4'
-		И я нажимаю на кнопку с именем 'ChangeIndicators'
-		Тогда открылось окно "Change values"
-		И я меняю значение переключателя с именем 'AdjustmentType' на "Percentage"
-		И в поле с именем 'ValueAdjustments' я ввожу текст '100.00000'
-		И я нажимаю на кнопку с именем 'Apply'
+		И Я изменяю значение на '100.00000' процентов в ячейке 'R6C4:R11C4'
 
 	* Проверим результат
 		Когда открылось окно '$WindowTitle$'
@@ -81,7 +72,7 @@
 
 	* Закроем документ
 		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormWriteANDContinue'
+		И я нажимаю на кнопку с именем 'Write'
 
 	* Проверим, можно ли имзенить значение пустой ячейки
 		Когда Открылся экземпляр отчета для вида отчета "VA - Quantity" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
@@ -94,7 +85,7 @@
 		И я нажимаю на кнопку с именем 'WriteAndClose'
 		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд
 
-Сценарий: 02.04 Создание отчета с загрузкой из РС "VA - Price"
+Сценарий: 11.04 Создание отчета с загрузкой из РС "VA - Price"
 
 	И Я создаю вид отчета с именем "VA - Price" и родителем "VA - Calculation rules (группа)"
 
@@ -113,7 +104,7 @@
 		Тогда открылось окно "Data sources"
 		И я нажимаю на кнопку с именем 'FormCreate'
 		Тогда открылось окно "Data source (create)"
-		И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Current infobase information register"
+		И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase information register"
 		И я нажимаю кнопку выбора у поля с именем 'DBInformationRegister'
 		Тогда открылось окно "Infobase information registers"
 		И я нажимаю на кнопку с именем 'FormFind'
@@ -143,11 +134,11 @@
 		Если '$$IsERPCPM$$' Тогда
 			И в таблице 'FieldsTreeDB' я перехожу к строке:
 				| "Field"     |
-				| 'Kind цены' |
+				| 'Type цены' |
 			И я нажимаю на кнопку с именем 'AddConditionItem'
 			И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 			| "Field"    |
-			| 'KindЦены' |
+			| 'TypeЦены' |
 		И в таблице 'TreeOfFilterParametersDB' я выбираю текущую строку
 		И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "Fixed value"
 		И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'DefiningMethodClarification' я выбираю по строке "VA - Products"
@@ -161,13 +152,13 @@
 	И Я Для вида отчета "VA - Price" я создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Price" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
 
-Сценарий: 02.05 Создание экземпляра отчета - "VA - Price"
+Сценарий: 11.05 Создание экземпляра отчета - "VA - Price"
 
 	И Я создаю экземпляр отчета для вида отчета "VA - Price" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' ''
 
 	* Запишем документ
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
-		И я нажимаю на кнопку с именем 'FormWriteANDContinue'
+		И я нажимаю на кнопку с именем 'Write'
 
 	* Проверим результат
 		Когда Открылся экземпляр отчета для вида отчета "VA - Price" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' ''
@@ -183,7 +174,7 @@
 			| "1C:ERP. Corporate performance management "                                   | '1,950,000'      | '2,145,000'       | '2,423,900'    | '6,518,900'  |
 			| "3C:Enterprise 8 CORP. Client license for 100 users " | '600,000'        | '660,000'         | '745,800'      | '2,005,800'  |
 
-Сценарий: 02.06 Создание отчета с рассчитываемыми показателями - "VA - Sales"
+Сценарий: 11.06 Создание отчета с рассчитываемыми показателями - "VA - Sales"
 
 	И Я создаю вид отчета с именем "VA - Sales" и родителем "VA - Calculation rules (группа)"
 
@@ -193,7 +184,7 @@
 		И Я в конструкторе отчета добавляю колонку с именем "Quantity"
 		И Я в конструкторе отчета добавляю колонку с именем "Price"
 		И Я в конструкторе отчета добавляю колонку с именем "Amount"
-		И Я в конструкторе отчета в ячейке 'R2C2' я меняю свойство показателя 'IsNonFinancial' на 'True'
+		И Я в конструкторе отчета в ячейке 'R2C2' я меняю свойство показателя 'NonFinancial' на 'True'
 		И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C2' 
 
 	* Вводим формулы расчета
@@ -229,7 +220,7 @@
 	И Я Для вида отчета "VA - Sales" я создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Sales" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
 		
-Сценарий: 02.07 Создание экземпляра отчета - "VA - Sales"	- пишем черновые версии
+Сценарий: 11.07 Создание экземпляра отчета - "VA - Sales"	- пишем черновые версии
 
 	И Я создаю экземпляр отчета для вида отчета "VA - Sales" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' ''
 	И я запоминаю текущее окно как 'WindowTitle'
@@ -264,7 +255,7 @@
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button1'
 
-Сценарий: 02.08 Создание экземпляра отчета - "VA - Sales"
+Сценарий: 11.08 Создание экземпляра отчета - "VA - Sales"
 
 	И Я создаю экземпляр отчета для вида отчета "VA - Sales" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' ''
 
@@ -278,7 +269,7 @@
 
 	* Рассчитаем документ
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
-		И я нажимаю на кнопку с именем 'FormWriteANDContinue'
+		И я нажимаю на кнопку с именем 'Write'
 		И я запоминаю текущее окно как 'WindowTitle'
 		Когда открылось окно '$WindowTitle$'
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
@@ -298,7 +289,7 @@
 		И я нажимаю на кнопку с именем 'WriteAndClose'
 		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд
 
-Сценарий: 02.09 Проверка поведения формы редактирования процедур
+Сценарий: 11.09 Проверка поведения формы редактирования процедур
 
 	* Откроем правило обработки
 		И Я открываю контруктор отчета с именем "VA - Sales"
@@ -317,7 +308,7 @@
 		Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
 			И таблица 'Definitions' стала равной:
 				| "Method"                                        |
-				| 'SettlementObject'                                |
+				| 'ObjectOfARAP'                                |
 				| 'GetIndicatorsValue()'                |
 				| 'SetIndicatorValue()'               |
 				| 'DateBelongsToPeriod()'                     |
@@ -366,9 +357,9 @@
 		Когда открылось окно "VA - Sales, VA - Sales: Procedure before calculation *"
 		Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
 			Тогда элемент формы с именем 'TextDocumentFieldProcedure' стал равен 
-				|' IndicatorsArray = New Array;'|
-				|'IndicatorsArray.Add(\"DimenKindSales:Products_Count\");'|
-				|'tIndicatorsValues = GetIndicatorsValue(New Structure(\"ReportsIndicators\", IndicatorsArray));'|
+				|' ArrayOfIndicators = New Array;'|
+				|'ArrayOfIndicators.Add(\"DimenKindSales:Products_Count\");'|
+				|'tIndicatorsValues = GetIndicatorsValue(New Structure(\"ReportsIndicators\", ArrayOfIndicators));'|
 				|''|							
 		Иначе
 			Тогда элемент формы с именем 'TextDocumentFieldProcedure' стал равен 
@@ -384,9 +375,9 @@
 		И Я выбираю показатель с кодом "ProductRange_Price"
 		Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
 			Тогда элемент формы с именем 'TextDocumentFieldProcedure' стал равен 
-				|' IndicatorsArray = New Array;'|
-				|'IndicatorsArray.Add(\"DimenKindPrice:Products_Price\");'|
-				|'tIndicatorsValues = GetIndicatorsValue(New Structure(\"ReportsIndicators\", IndicatorsArray));'|
+				|' ArrayOfIndicators = New Array;'|
+				|'ArrayOfIndicators.Add(\"DimenKindPrice:Products_Price\");'|
+				|'tIndicatorsValues = GetIndicatorsValue(New Structure(\"ReportsIndicators\", ArrayOfIndicators));'|
 				|''|						
 		Иначе
 			Тогда элемент формы с именем 'TextDocumentFieldProcedure' стал равен 
@@ -401,10 +392,10 @@
 			* ОбъектРасчета
 				И в таблице 'Definitions' я перехожу к строке:
 						| "Method"         |
-						| 'SettlementObject' |
+						| 'ObjectOfARAP' |
 				И в таблице 'Definitions' я выбираю текущую строку
 				Тогда элемент формы с именем 'TextDocumentFieldProcedure' стал равен 
-					|' SettlementObject.'|
+					|' ObjectOfARAP.'|
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст ' '
 			* ПолучитьЗначениеПоказателей
 				И в таблице 'Definitions' я перехожу к строке:
@@ -620,7 +611,7 @@
 		Тогда открылось окно "Edit tree"
 		И Я закрываю окно "Edit tree"
 
-Сценарий: 02.10 Проверка работы произвольных функций расчета
+Сценарий: 11.10 Проверка работы произвольных функций расчета
 
 	* Откроем правило обработки
 		И Я открываю контруктор отчета с именем "VA - Sales"
@@ -634,30 +625,30 @@
 		Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
 			И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 				|'ReportData = New Structure("Organization,Scenario,Currency,ReportPeriod",'|
-				|' SettlementObject.Organization,SettlementObject.Scenario,SettlementObject.MainCurrency,SettlementObject.PeriodsArray);'|
+				|' ObjectOfARAP.Organization,ObjectOfARAP.Scenario,ObjectOfARAP.MainCurrency,ObjectOfARAP.ArrayOfPeriods);'|
 				|'DimensionsToDrillDown = New Structure("Dimension1");'|
-				|'AdditionalParameters = New Structure("GrandTotal",Enums.IndicatorTotalsTypes.Sum);'|
+				|'AdditionalParameters = New Structure("Overall",Enums.IndicatorTotalsTypes.Sum);'|
 				|''|
-				|'IndicatorsArray = New Array;'|
-				|'IndicatorsArray.Add("DimenKindSales:Products_Count");'|
-				|'ReportData.Insert("ReportsIndicators",IndicatorsArray);'|
+				|'ArrayOfIndicators = New Array;'|
+				|'ArrayOfIndicators.Add("DimenKindSales:Products_Count");'|
+				|'ReportData.Insert("ReportsIndicators",ArrayOfIndicators);'|
 				|'tIndicatorsValues_Count = GetIndicatorsValue('|
 				|' ReportData,DimensionsToDrillDown);'|
 				|'ReportData.Delete("ReportsIndicators"); '|
 				|''|
 				|'ReportData.Insert("ReportIndicator", '|
-				|' Справочники.ReportsIndicators.FindByCode("Products_Price",True,,SettlementObject.ReportKind));'|
+				|' Справочники.ReportsIndicators.FindByCode("Products_Price",True,,ObjectOfARAP.ReportKind));'|
 				|'tIndicatorsValues_Price = GetIndicatorsValue('|
 				|' ReportData,DimensionsToDrillDown,AdditionalParameters);'|
 				|'ReportData.Delete("ReportIndicator"); '|
 				|''|
 				|'ClearAll();'|
 				|''|
-				|'Для Each StringValue2 Из tIndicatorsValues_Count Do'|
+				|'For Каждого StringValue2 From tIndicatorsValues_Count Cycle'|
 				|''|
 				|' PeriodOffset = RelativePeriod(StringValue2.ReportPeriod, 1);'|
-				|' If DateBelongsToPeriod(PeriodOffset.StartDate,SettlementObject.PeriodsArray.Get(1)) OR'|
-				|'  DateBelongsToPeriod(PeriodOffset.StartDate,SettlementObject.PeriodsArray.Get(2)) Then'|
+				|' If DateBelongsToPeriod(PeriodOffset.StartDate,ObjectOfARAP.ArrayOfPeriods.Get(1)) OR'|
+				|'  DateBelongsToPeriod(PeriodOffset.StartDate,ObjectOfARAP.ArrayOfPeriods.Get(2)) Then'|
 				|''|
 				|'  SetIndicatorValue('|
 				|'   StringValue2.ReportIndicator,'|
@@ -669,15 +660,15 @@
 				|'  '|
 				|'EndOfTheCycle;'|
 				|''|
-				|'Для Each StringValue2 Из tIndicatorsValues_Price Do'|
+				|'For Каждого StringValue2 From tIndicatorsValues_Price Cycle'|
 				|''|
 				|' If NOT ValueIsFilled(StringValue2.ReportPeriod) Then'|
 				|'  Continue;'|
 				|' EndIf;'|
 				|''|
 				|' PeriodOffset = RelativePeriod(StringValue2.ReportPeriod, 1);'|
-				|' If DateBelongsToPeriod(PeriodOffset.StartDate,SettlementObject.PeriodsArray.Get(1)) OR'|
-				|'  DateBelongsToPeriod(PeriodOffset.StartDate,SettlementObject.PeriodsArray.Get(2)) Then'|
+				|' If DateBelongsToPeriod(PeriodOffset.StartDate,ObjectOfARAP.ArrayOfPeriods.Get(1)) OR'|
+				|'  DateBelongsToPeriod(PeriodOffset.StartDate,ObjectOfARAP.ArrayOfPeriods.Get(2)) Then'|
 				|''|
 				|'  SetIndicatorValue('|
 				|'   StringValue2.ReportIndicator,'|
@@ -693,7 +684,7 @@
 				|'ReportData = New Structure(\"Organization,Scenario,Currency,ReportPeriod\",'|
 				|'  CalcStructure.Organization, CalcStructure.Scenario, CalcStructure.MainCurrency, CalcStructure.PeriodsArray);'|
 				|'DisclosedAnalysts = New Structure(\"Dimension1\");'|
-				|'ExtraOptions = New Structure(\"GrandTotal\",Enums.IndicatorTotalsTypes.Sum);'|
+				|'ExtraOptions = New Structure(\"Overall\",Enums.IndicatorTotalsTypes.Sum);'|
 				|''|
 				|'ArrayIndicators = New Array;'|
 				|'ArrayIndicators.Add(\"VASales:ProductRange_Quantity\");'|
@@ -756,7 +747,7 @@
 
 	* Рассчитаем документ
 		Тогда открылось окно "Report kinds and templates"
-		И в таблице 'ListOfReportTypes' я нажимаю на кнопку с именем 'ListOfReportTypesOpenInstancesList'
+		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListOpenInstancesList'
 		Тогда открылось окно "Report instances"
 		И в таблице 'List' я выбираю текущую строку
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Sales" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
@@ -781,7 +772,7 @@
 		И я нажимаю на кнопку с именем 'WriteAndClose'
 		И я жду закрытия окна '$WindowTitle$ *' в течение 20 секунд
 
-Сценарий: 02.11 Отображение экземпляра в валюте после расчетов
+Сценарий: 11.11 Отображение экземпляра в валюте после расчетов
 
 	И Я открываю первый экземпляр отчета для вида отчета "VA - Sales"
 	Тогда Открылся экземпляр отчета для вида отчета "VA - Sales" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
@@ -811,7 +802,7 @@
 		И я нажимаю на кнопку с именем 'WriteAndClose'
 		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд
 
-Сценарий: 02.12 Удаление версий при автоматическом расчете
+Сценарий: 11.12 Удаление версий при автоматическом расчете
 
 	И Я открываю первый экземпляр отчета для вида отчета "VA - Sales"
 	Тогда Открылся экземпляр отчета для вида отчета "VA - Sales" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' ''

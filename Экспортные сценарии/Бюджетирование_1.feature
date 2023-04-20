@@ -9,18 +9,18 @@
 
 	И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report kinds and templates"
 	Тогда открылось окно "Report kinds and templates"
-	И в таблице 'ListOfReportTypes' я нажимаю на кнопку с именем 'ListOfReportTypesFind'
+	И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListFind'
 	Тогда открылась форма с именем 'UniversalListFindExtForm'
 	И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Report kind"
 	И я меняю значение переключателя с именем 'CompareType' на "Anywhere in the line"
 	И в поле с именем 'Pattern' я ввожу текст '[TheReportKindDescription]'
 	И я нажимаю на кнопку с именем 'Find'
-	Тогда в таблице 'ListOfReportTypes' количество строк 'равно' 1
+	Тогда в таблице 'ReportKindList' количество строк 'равно' 1
 
 Сценарий: Открылся экземпляр отчета для вида отчета 'TheReportKind' валюта 'TheCurrency' организация 'TheBusinessUnit' сценарий 'TheScenario' периодичность 'TheFrequency' проект 'TheProject' аналитики 'TheDimension1' 'TheDimension2' 'TheDimension3' 'TheDimension4' 'TheDimension5' 'TheDimension6' 
 
 	Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
-		И я запоминаю строку 'Instance report \"[TheReportKind]\": <[TheCurrency]> <[TheBusinessUnit]> <* - * (Periodicity: [TheFrequency]) <[TheScenario]>>' в переменную 'WindowTitle'
+		И я запоминаю строку 'Instance Report_ \"[TheReportKind]\": <[TheCurrency]> <[TheBusinessUnit]> <* - * (Periodicity: [TheFrequency]) <[TheScenario]>>' в переменную 'WindowTitle'
 	ИначеЕсли '$$LanguageИнтерфейса$$ = "En"' Тогда
 		И я запоминаю строку 'Report instance \"[TheReportKind]\": <[TheCurrency]> <[TheBusinessUnit]> <* - * (Frequency: [TheFrequency]) <[TheScenario]>>' в переменную 'WindowTitle'		
 

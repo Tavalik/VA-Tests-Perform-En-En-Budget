@@ -19,7 +19,7 @@
 Сценарий: Я открываю контруктор отчета с именем 'TheReportKindName'
 
 	И Я нахожу в списке вид отчета с именем '[TheReportKindName]'
-	И в таблице 'ListOfReportTypes' я нажимаю на кнопку с именем 'DoOpenDesigner'
+	И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'DoOpenDesigner'
 
 Сценарий: Я в конструкторе отчета добавляю строку с именем 'TheLineName' 
 
@@ -93,12 +93,7 @@
 	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCell]'
 	И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 	Тогда открылось окно "* (Report indicators)"
-	Если '"[TheValue]" = "True" OR "[TheValue]" = "True"' Тогда
-		И я устанавливаю флаг с именем '[TheProperty]'
-	ИначеЕсли '"[TheValue]" = "False" OR "[TheValue]" = "False"' Тогда
-		И я снимаю флаг с именем '[TheProperty]'
-	Иначе
-		И из выпадающего списка с именем '[TheProperty]' я выбираю точное значение "[TheValue]"										
+	И Я для реквизита '[TheProperty]' устанавливаю значение '[TheValue]'										
 	И я нажимаю на кнопку с именем 'FormWriteAndClose'
 	И я жду закрытия окна "* (Report indicators)" в течение 20 секунд
 
@@ -110,7 +105,7 @@
 	И я выбираю пункт контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuProperties' на элементе формы с именем 'SpreadsheetFieldTemlate'
 	Тогда открылось окно "Bulk edit indicators"
 	И я изменяю флаг с именем '[TheProperty]Change'
-	И из выпадающего списка с именем '[TheProperty]' я выбираю точное значение "[TheValue]"
+	И Я для реквизита '[TheProperty]' устанавливаю значение '[TheValue]'
 	И я нажимаю на кнопку с именем 'FormWriteAndClose'
 
 Сценарий: Я октрываю сводную таблицу отчета с именем 'TheReportKindName'
@@ -196,10 +191,10 @@
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
 		Тогда открылось окно "Report structure"
-		Если поле с именем 'ReportsTemplatesAppearanceTemplate' существует тогда
-			И из выпадающего списка с именем 'ReportsTemplatesAppearanceTemplate' я выбираю по строке "Classic"
-		Если поле с именем 'ShouldShowAttributes' существует тогда
-			И я изменяю флаг с именем 'ShouldShowAttributes'
+		Если поле с именем 'TemplateOfReportsTemplatesAppearance' существует тогда
+			И из выпадающего списка с именем 'TemplateOfReportsTemplatesAppearance' я выбираю по строке "Classic"
+		Если поле с именем 'DisplayBankingDetails' существует тогда
+			И я изменяю флаг с именем 'DisplayBankingDetails'
 		И я нажимаю на кнопку с именем 'FormSelect'	
 
 	* Записываем бланк	
@@ -275,7 +270,7 @@
 		И я нажимаю на кнопку с именем 'ShowListOfRows'
 		Тогда открылось окно "Set up line list"
 		И я нажимаю на кнопку с именем 'MoveLeftAll'
-		И я нажимаю на кнопку с именем 'ApplyChanges'
+		И я нажимаю на кнопку с именем 'ApplyTheChanges'
 		Тогда открылось окно '$WindowTitle$ *'
 		И я нажимаю на кнопку с именем 'ShowListOfColumns'
 		Тогда открылось окно "Set up column list"
@@ -352,7 +347,7 @@
 	Тогда открылось окно "Regulations for preparing reports"
 	И в таблице 'List' я выбираю текущую строку
 	Тогда Открылся регламент подготовки отчетности 'TheRegulationName'
-	И я перехожу к закладке с именем 'GroupTheMainPage'
+	И я перехожу к закладке с именем 'GroupMainPage'
 	И я изменяю флаг с именем '[TheFlagName]'
 	И я нажимаю на кнопку с именем 'FormWriteAndClose'
 	И я жду закрытия окна '$WindowTitle$' в течение 20 секунд
@@ -380,7 +375,7 @@
 
 	Тогда открылось окно "Drill down indicators: *"
 	И в таблице 'IndicatorsDrilldown' я выбираю текущую строку
-	И в таблице 'IndicatorsDrilldown' в поле с именем 'Value' я ввожу текст '[TheValue]'
+	И в таблице 'IndicatorsDrilldown' в поле с именем 'Value1' я ввожу текст '[TheValue]'
 	И я нажимаю на кнопку с именем 'FormOKButton1'
 
 	И я жду закрытия окна "Drill down indicators: *" в течение 20 секунд	
@@ -390,7 +385,7 @@
 	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCellAddress]'
 	И я нажимаю на кнопку с именем 'ChangeIndicators'
 	Тогда открылось окно "Change values"
-	И я меняю значение переключателя с именем 'AdjustmentType' на "Percentage"
+	И я меняю значение переключателя с именем 'AdjustmentKind' на "Percentage"
 	И в поле с именем 'ValueAdjustments' я ввожу текст '[TheValue]'
 	И я нажимаю на кнопку с именем 'Apply'
 
@@ -399,7 +394,7 @@
 	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCellAddress]'
 	И я нажимаю на кнопку с именем 'ChangeIndicators'
 	Тогда открылось окно "Change values"
-	И я меняю значение переключателя с именем 'AdjustmentType' на "Value"
+	И я меняю значение переключателя с именем 'AdjustmentKind' на "Value"
 	И в поле с именем 'ValueAdjustments' я ввожу текст '[TheValue]'
 	И я нажимаю на кнопку с именем 'Apply'
 
@@ -409,6 +404,9 @@
 	И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 	
 	Тогда открылось окно "Drill down indicators: *"
+	Если элемент 'IndicatorsDrilldownPeriodsInColumns' доступен для редактирования Тогда
+		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownPeriodsInColumns'
+
 	И я заполняю таблицу 'IndicatorsDrilldown' данными
 		| 'Table' |
 
@@ -472,6 +470,52 @@
 Сценарий: Я открываю первый экземпляр отчета для вида отчета 'TheReportKind'
 
 	И Я нахожу в списке вид отчета с именем '[TheReportKind]'
-	И в таблице 'ListOfReportTypes' я нажимаю на кнопку с именем 'ListOfReportTypesOpenInstancesList'
+	И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListOpenInstancesList'
 	Тогда открылось окно "Report instances"
 	И в таблице 'List' я выбираю текущую строку
+
+Сценарий: Я создаю документ управления периодом со сценарием 'TheScenario' регламентом 'TheRegulation' периодичностью 'TheFrequency' датой начала 'TheDateBegin' датой окончания 'TheDateEnd'
+
+	И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Reporting period management"
+	Тогда открылось окно "Reporting period management"
+	И я нажимаю на кнопку с именем 'FormCreate'
+	Тогда открылось окно "Reporting period management (create)"
+	И из выпадающего списка с именем 'Scenario' я выбираю по строке '[TheScenario]'
+	И из выпадающего списка с именем 'ScenarioFrequency' я выбираю точное значение '[TheFrequency]'
+	И я нажимаю на кнопку с именем 'ChangePeriod'
+	Тогда открылось окно "Select period"
+	И в поле с именем 'DateBegin' я ввожу текст '[TheDateBegin]'
+	И я перехожу к следующему реквизиту
+	И в поле с именем 'DateEnd' я ввожу текст '[TheDateEnd]'
+	И я нажимаю на кнопку с именем 'Select'
+	Тогда открылось окно "Reporting period management (create) *"
+	И из выпадающего списка с именем 'OrganizationalStructureVersion' я выбираю по строке '[TheRegulation]'
+	И я нажимаю на кнопку с именем 'FormGoForward'
+	Тогда открылось окно "1C:Enterprise"
+	И я нажимаю на кнопку с именем 'Button0'
+	И я запоминаю заголовок формы в переменную 'FormCaption'
+	Тогда открылось окно '$FormCaption$'
+	И в таблице 'RatesEditTable' я нажимаю на кнопку с именем 'RatesEditTableRatesTable_Update'
+	И я нажимаю на кнопку с именем 'FormGoForward'
+	Тогда открылось окно "1C:Enterprise"
+	И я нажимаю на кнопку с именем 'Button0'		
+	Когда открылось окно '$FormCaption$'
+	И я нажимаю на кнопку с именем 'FormGoForward'
+	Тогда открылось окно '$FormCaption$'
+	И я нажимаю на кнопку с именем 'FormClose'
+
+Сценарий: Я в сводной таблице перемещаю аналитику с именем 'TheDimensionName' вверх
+
+	Тогда открылось окно "Set up field location"
+	И Я запоминаю значение выражения '[TheDimensionName]' в переменную "DimensionName"
+	
+	И в таблице 'TableRows1' я перехожу к строке:
+		| "Horizontally (in rows)" |
+		| '$DimensionName$'      |
+	
+	И я нажимаю на кнопку с именем 'RowsMoveUp'
+	И я нажимаю на кнопку с именем 'RowsMoveUp'
+	И я нажимаю на кнопку с именем 'RowsMoveUp'
+	И я нажимаю на кнопку с именем 'RowsMoveUp'
+	И я нажимаю на кнопку с именем 'RowsMoveUp'
+	И я нажимаю на кнопку с именем 'RowsMoveUp'

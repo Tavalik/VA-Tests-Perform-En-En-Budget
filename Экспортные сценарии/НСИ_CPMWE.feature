@@ -5,7 +5,7 @@
 
 Функционал: Экспортные сценарии для создания НСИ в 1C:CPMWE
 
-Сценарий: Я создаю страну с кодом1 'CrntCodeCountries1' кодом2 'CrntCodeCountries2' кодом3 'CrntCodeCountries3' именем1 'CurNameCountries1' именем2 'CurNameCountries2' именем3 'CurNameCountries3' если ее нет в 1C:CPMWE
+Сценарий: Я создаю страну с кодом1 'CurCodeCountries1' кодом2 'CurCodeCountries2' кодом3 'CurCodeCountries3' именем1 'CurNameCountries1' именем2 'CurNameCountries2' именем3 'CurNameCountries3' если ее нет в 1C:CPMWE
 
 	* Открываем форму справочника
 		И я открываю основную форму списка справочника 'WorldCountries'
@@ -15,7 +15,7 @@
 		И я выбираю пункт контекстного меню с именем 'ListContextMenuFind' на элементе формы с именем 'List'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
-		И в поле с именем 'Pattern' я ввожу текст '[CrntCodeCountries1]'
+		И в поле с именем 'Pattern' я ввожу текст '[CurCodeCountries1]'
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Countries"
@@ -26,13 +26,13 @@
 	
 	* Создаем элементм
 		Тогда открылось окно "*Country*"		
-		И в поле с именем 'Code' я ввожу текст '[CrntCodeCountries1]'
-		И в поле с именем 'CodeAlpha2' я ввожу текст '[CrntCodeCountries2]'
-		И в поле с именем 'CodeAlpha3' я ввожу текст '[CrntCodeCountries3]'
+		И в поле с именем 'Code' я ввожу текст '[CurCodeCountries1]'
+		И в поле с именем 'CodeAlpha2' я ввожу текст '[CurCodeCountries2]'
+		И в поле с именем 'CodeAlpha3' я ввожу текст '[CurCodeCountries3]'
 		И в поле с именем 'Description' я ввожу текст '[CurNameCountries1]'
 		И в поле с именем 'DescriptionFull' я ввожу текст '[CurNameCountries2]'
 		И в поле с именем 'InternationalDescription' я ввожу текст '[CurNameCountries3]'
-		Если '[CrntCodeCountries1] = 643' Тогда
+		Если '[CurCodeCountries1] = 643' Тогда
 			И я устанавливаю флаг с именем 'EEUMember'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
 		И я жду закрытия окна "Country (create)" в течение 20 секунд
@@ -79,7 +79,7 @@
 	* Создаем позицию
 		Когда открылось окно "Product range prices*"
 		И в поле с именем 'Period' я ввожу текст '[CurDateКурса]'
-		И из выпадающего списка с именем 'PricesType' я выбираю по строке '[CurTypeЦены]'
+		И из выпадающего списка с именем 'PriceType_' я выбираю по строке '[CurTypeЦены]'
 		И из выпадающего списка с именем 'Products' я выбираю по строке '[CurNameНоменклатуры]'
 		И из выпадающего списка с именем 'Currency' я выбираю точное значение '[CrntCurrency]'
 		И в поле с именем 'Price' я ввожу текст '[CurValue]'

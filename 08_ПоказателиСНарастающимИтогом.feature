@@ -27,8 +27,8 @@
 	И Я открываю вид отчета с именем "VA - Cumulative total (source)"
 	И я устанавливаю флаг с именем 'ProjectSeparation'		
 	И я перехожу к закладке с именем 'DimensionsOfReport'
-	И из выпадающего списка с именем 'DimensionType1' я выбираю по строке "VA0CFItems"				
-	И я нажимаю на кнопку с именем 'FormButtonWrite'
+	И из выпадающего списка с именем 'DimensionKind1' я выбираю по строке "VA0CFItems"				
+	И я нажимаю на кнопку с именем 'RecordButtonForm'
 	Когда открылось окно "Data restructuring"
 	И я нажимаю на кнопку с именем 'FormOK'
 
@@ -56,12 +56,12 @@
 	* Вводим значения показателей
 		Когда открылось окно '$WindowTitle$'		
 		И Я добавляю значения с раскрытием показателей в ячейку 'R6C2'
-				| "VA0Product"                                                     | 'Value' |
-				| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '10.00000' |
-				| "3C:Enterprise 8 CORP. Client license for 100 users" | '10.00000' |
-				| "5C:Corporate performance management"                                      | '10.00000' |
-				| "2C:Corporation"                                                  | '10.00000' |
-				| "1C:ERP. Corporate performance management"                                   | '10.00000' |
+				| "VA0Product"                                                     | 'Value1' |
+				| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '10.00000'  |
+				| "3C:Enterprise 8 CORP. Client license for 100 users" | '10.00000'  |
+				| "5C:Corporate performance management"                                      | '10.00000'  |
+				| "2C:Corporation"                                                  | '10.00000'  |
+				| "1C:ERP. Corporate performance management"                                   | '10.00000'  |
 
 	* Копируем значения показателей
 		Когда открылось окно '$WindowTitle$'
@@ -100,8 +100,8 @@
 	И Я открываю вид отчета с именем "VA - Cumulative total (recipient)"
 	И я устанавливаю флаг с именем 'ProjectSeparation'		
 	И я перехожу к закладке с именем 'DimensionsOfReport'
-	И из выпадающего списка с именем 'DimensionType1' я выбираю по строке "VA0CFItems"				
-	И я нажимаю на кнопку с именем 'FormButtonWrite'
+	И из выпадающего списка с именем 'DimensionKind1' я выбираю по строке "VA0CFItems"				
+	И я нажимаю на кнопку с именем 'RecordButtonForm'
 	Когда открылось окно "Data restructuring"
 	И я нажимаю на кнопку с именем 'FormOK'
 
@@ -149,17 +149,17 @@
 			Тогда открылось окно "Data sources"
 			И я нажимаю на кнопку с именем 'FormCreate'
 			Тогда открылось окно "Data source (create)"
-			И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Arbitrary query to current infobase"
-			И я снимаю флаг с именем 'ShouldUseMultiperiodContext'
+			И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Arbitrary query to current infobase"
+			И я снимаю флаг с именем 'UseMultiperiodContext'
 			И в поле с именем 'QueryTextForm' я ввожу текст 'SELECT 2 AS Value'
 			И я нажимаю на кнопку с именем 'EditQueryText'
-			И я перехожу к закладке с именем 'DimensionsMap'
-			И в таблице 'MappingTable' я активизирую поле с именем 'MappingTableFillingMethod'
-			И в таблице 'MappingTable' я выбираю текущую строку
-			И в таблице 'MappingTable' из выпадающего списка с именем 'MappingTableFillingMethod' я выбираю точное значение "Another source field"
-			И в таблице 'MappingTable' я завершаю редактирование строки
-			И в таблице 'MappingTable' я активизирую поле с именем 'MapTableDBAlias'
-			И в таблице 'MappingTable' я выбираю текущую строку
+			И я перехожу к закладке с именем 'ComplianceAnalyst'
+			И в таблице 'ComplianceTable' я активизирую поле с именем 'ComplianceTableFillingMethod'
+			И в таблице 'ComplianceTable' я выбираю текущую строку
+			И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Another source field"
+			И в таблице 'ComplianceTable' я завершаю редактирование строки
+			И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
+			И в таблице 'ComplianceTable' я выбираю текущую строку
 			Тогда открылось окно "Data sources"
 			И в таблице 'List' я выбираю текущую строку
 			Тогда открылось окно "Data source (create) *"
@@ -178,7 +178,7 @@
 			Тогда открылось окно "Data sources"
 			И я нажимаю на кнопку с именем 'FormCreate'
 			Тогда открылось окно "Data source (create)"
-			И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Current infobase report item indicator"
+			И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase report item indicator"
 			И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Cumulative total (source)"
 			И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
 			И Я выбираю показатель с кодом "Goods_Quantity"
@@ -192,12 +192,12 @@
 			И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "List of values (function in 1C:Enterprise script)"
 			И в таблице 'TreeOfFilterParametersDB' я активизирую поле с именем 'DefiningMethodClarification'
 			И в таблице 'TreeOfFilterParametersDB' я нажимаю кнопку выбора у реквизита с именем 'DefiningMethodClarification'
-			Когда открылось окно "VA - Cumulative total (recipient): Parameter value calculation"
+			Когда открылось окно "VA - Cumulative total (recipient): Calculate a parameter value"
 			И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 				|'// Получаем все периоды Before текущего'|
 				|'Result = New ValueList;'|
-				|'For Cnt = 0 To SettlementObject.PeriodsArray.Find(SettlementObject.ReportPeriod) Do'|
-				|' Result.Add(SettlementObject.PeriodsArray.Get(Cnt));'|
+				|'For Cnt = 0 To ObjectOfARAP.ArrayOfPeriods.Find(ObjectOfARAP.ReportPeriod) Do'|
+				|' Result.Add(ObjectOfARAP.ArrayOfPeriods.Get(Cnt));'|
 				|'EndDo;'|
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			Тогда открылось окно "1C:Enterprise"
@@ -219,7 +219,7 @@
 			Тогда открылось окно "Data sources"
 			И я нажимаю на кнопку с именем 'FormCreate'
 			Тогда открылось окно "Data source (create)"
-			И из выпадающего списка с именем 'ReceiptOption' я выбираю точное значение "Current infobase report item indicator"
+			И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase report item indicator"
 			И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Cumulative total (recipient)"
 			И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
 			И Я выбираю показатель с кодом "SourceData_Quantity"
@@ -233,12 +233,12 @@
 			И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "List of values (function in 1C:Enterprise script)"
 			И в таблице 'TreeOfFilterParametersDB' я активизирую поле с именем 'DefiningMethodClarification'
 			И в таблице 'TreeOfFilterParametersDB' я нажимаю кнопку выбора у реквизита с именем 'DefiningMethodClarification'
-			Тогда открылось окно "VA - Cumulative total (recipient): Parameter value calculation"
+			Тогда открылось окно "VA - Cumulative total (recipient): Calculate a parameter value"
 			И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 				|'// Получаем все периоды Before текущего'|
 				|'Result = New ValueList;'|
-				|'For Cnt = 0 To SettlementObject.PeriodsArray.Find(SettlementObject.ReportPeriod) Do'|
-				|' Result.Add(SettlementObject.PeriodsArray.Get(Cnt));'|
+				|'For Cnt = 0 To ObjectOfARAP.ArrayOfPeriods.Find(ObjectOfARAP.ReportPeriod) Do'|
+				|' Result.Add(ObjectOfARAP.ArrayOfPeriods.Get(Cnt));'|
 				|'EndDo;'|
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			Тогда открылось окно "1C:Enterprise"
@@ -296,17 +296,17 @@
 				|'// Получим ссылки to1 нужные показатели'|
 				|'IndicatorSource = Справочники.ReportsIndicators.FindByCode("$CodeOfIndicator1$",,,Справочники.ReportsKinds.FindByCode("$ReportCode$"));'|
 				|''|
-				|'// Получаем массив periods'|
+				|'// Получаем массив Periods'|
 				|'тReportPeriods = New Array;'|
-				|'For Cnt = 0 To SettlementObject.PeriodsArray.Find(SettlementObject.ReportPeriod) Do'|
-				|' тReportPeriods.Add(SettlementObject.PeriodsArray.Get(Cnt));'|
+				|'For Cnt = 0 To ObjectOfARAP.ArrayOfPeriods.Find(ObjectOfARAP.ReportPeriod) Do'|
+				|' тReportPeriods.Add(ObjectOfARAP.ArrayOfPeriods.Get(Cnt));'|
 				|'EndDo;'|
 				|''|
-				|'FilterParameterStructure = New Structure("ReportIndicator,Currency,ReportPeriod,Scenario,Organization", IndicatorSource,SettlementObject.MainCurrency,тReportPeriods,SettlementObject.Scenario,SettlementObject.Organization);'|
-				|'AdditionalParameters = New Structure("GrandTotal",Enums.IndicatorTotalsTypes.Sum);'|
+				|'FilterParameterStructure = New Structure("ReportIndicator,Currency,ReportPeriod,Scenario,Organization", IndicatorSource,ObjectOfARAP.MainCurrency,тReportPeriods,ObjectOfARAP.Scenario,ObjectOfARAP.Organization);'|
+				|'AdditionalParameters = New Structure("Overall",Enums.IndicatorTotalsTypes.Sum);'|
 				|'tIndicatorsValues = GetIndicatorsValue(FilterParameterStructure,,AdditionalParameters);'|
 				|''|
-				|' // Получаем сумму значений показателей'|
+				|' // Получаем сумму Values_ показателей'|
 				|' If tIndicatorsValues.Count() Then'|
 				|'  Result = tIndicatorsValues.Get(0).Value;'|
 				|' Else'|
@@ -329,21 +329,21 @@
 			И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 				|'// Получим ссылки to1 нужные показатели'|
 				|'IndicatorSource = Справочники.ReportsIndicators.FindByCode("$CodeOfIndicator1$",,,Справочники.ReportsKinds.FindByCode("$ReportCode$"));'|
-				|'IndicatorDestination = Справочники.ReportsIndicators.FindByCode("$CodeOfIndicator2$",,,SettlementObject.ReportKind);'|
+				|'IndicatorDestination = Справочники.ReportsIndicators.FindByCode("$CodeOfIndicator2$",,,ObjectOfARAP.ReportKind);'|
 				|''|
-				|'// Do по периодам report'|
-				|'For CntShared = 0 To SettlementObject.PeriodsArray.Count()-1 Do'|
+				|'// Cycle по периодам Report_'|
+				|'For CntShared = 0 To ObjectOfARAP.ArrayOfPeriods.Count()-1 Do'|
 				|''|
-				|' // Получаем значение показателей всех предыдущих и текущего periods'|
+				|' // Получаем значение показателей AllOfThem предыдущих и текущего Periods'|
 				|' тReportPeriods = New Array;'|
 				|' For CntTimeIntervals = 0 To CntShared Do'|
-				|'  тReportPeriods.Add(SettlementObject.PeriodsArray.Get(CntTimeIntervals));'|
+				|'  тReportPeriods.Add(ObjectOfARAP.ArrayOfPeriods.Get(CntTimeIntervals));'|
 				|' EndDo;'|
 				|' '|
 				|' DimensionsToDrillDown = New Structure("Dimension2");'|
 				|''|
 				|' FilterParameterStructure = New Structure("ReportIndicator,Currency,ReportPeriod,Scenario,Organization",'|
-				|'  IndicatorSource,SettlementObject.MainCurrency,тReportPeriods,SettlementObject.Scenario,SettlementObject.Organization);'|
+				|'  IndicatorSource,ObjectOfARAP.MainCurrency,тReportPeriods,ObjectOfARAP.Scenario,ObjectOfARAP.Organization);'|
 				|''|
 				|' tIndicatorsValues = GetIndicatorsValue(FilterParameterStructure,DimensionsToDrillDown);'|
 				|' tIndicatorsValues.GroupBy("Dimension2","Value");'|
@@ -352,7 +352,7 @@
 				|'  SetIndicatorValue('|
 				|'   IndicatorDestination,  '|
 				|'   RowValuesПоказателей.Value,   '|
-				|'   SettlementObject.PeriodsArray.Get(CntShared),,'|
+				|'   ObjectOfARAP.ArrayOfPeriods.Get(CntShared),,'|
 				|'   RowValuesПоказателей.Dimension2);'|
 				|' EndDo;'|
 				|'  '|
@@ -368,25 +368,25 @@
 			И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 				|'// Получим ссылки to1 нужные показатели'|
 				|'IndicatorSource = Справочники.ReportsIndicators.FindByCode("$CodeOfIndicator1$",,,Справочники.ReportsKinds.FindByCode("$ReportCode$"));'|
-				|'IndicatorDestination = Справочники.ReportsIndicators.FindByCode("$CodeOfIndicator2$",,,SettlementObject.ReportKind);'|
+				|'IndicatorDestination = Справочники.ReportsIndicators.FindByCode("$CodeOfIndicator2$",,,ObjectOfARAP.ReportKind);'|
 				|''|
-				|'// Do по периодам report'|
-				|'For CntShared = 0 To SettlementObject.PeriodsArray.Count()-1 Do'|
+				|'// Cycle по периодам Report_'|
+				|'For CntShared = 0 To ObjectOfARAP.ArrayOfPeriods.Count()-1 Do'|
 				|''|
-				|' // Получаем значение показателей всех предыдущих и текущего periods'|
+				|' // Получаем значение показателей AllOfThem предыдущих и текущего Periods'|
 				|' тReportPeriods = New Array;'|
 				|' For CntTimeIntervals = 0 To CntShared Do'|
-				|'  тReportPeriods.Add(SettlementObject.PeriodsArray.Get(CntTimeIntervals));'|
+				|'  тReportPeriods.Add(ObjectOfARAP.ArrayOfPeriods.Get(CntTimeIntervals));'|
 				|' EndDo;'|
 				|''|
 				|' FilterParameterStructure = New Structure("ReportIndicator,Currency,ReportPeriod,Scenario,Organization",'|
-				|'  IndicatorSource,SettlementObject.MainCurrency,тReportPeriods,SettlementObject.Scenario,SettlementObject.Organization);'|
+				|'  IndicatorSource,ObjectOfARAP.MainCurrency,тReportPeriods,ObjectOfARAP.Scenario,ObjectOfARAP.Organization);'|
 				|'  '|
-				|' AdditionalParameters = New Structure("GrandTotal",Enums.IndicatorTotalsTypes.Sum); '|
+				|' AdditionalParameters = New Structure("Overall",Enums.IndicatorTotalsTypes.Sum); '|
 				|''|
 				|' tIndicatorsValues = GetIndicatorsValue(FilterParameterStructure,,AdditionalParameters);'|
 				|' '|
-				|' // Получаем сумму значений показателей'|
+				|' // Получаем сумму Values_ показателей'|
 				|' If tIndicatorsValues.Count() Then'|
 				|'  Value = tIndicatorsValues.Get(0).Value;'|
 				|' Else'|
@@ -397,7 +397,7 @@
 				|' SetIndicatorValue('|
 				|'  IndicatorDestination,  '|
 				|'  Value,   '|
-				|'  SettlementObject.PeriodsArray.Get(CntShared));'|
+				|'  ObjectOfARAP.ArrayOfPeriods.Get(CntShared));'|
 				|'  '|
 				|'EndDo;'|
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
@@ -428,7 +428,7 @@
 
 	* Еще раз расчитаем документ, убедимся, что ничего не поменялось
 		Когда открылось окно '$WindowTitle$'	
-		И я нажимаю на кнопку с именем 'FormWriteANDContinue'
+		И я нажимаю на кнопку с именем 'Write'
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Cumulative total (recipient)" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики "3Software sale" '' '' '' '' '' 
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету 'Макеты\ВА_НарастающийИтог.mxl'					

@@ -46,7 +46,7 @@
 
 	* Запишем документ
 		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormWriteANDContinue'				
+		И я нажимаю на кнопку с именем 'Write'				
 
 	* Расчитаем документ
 		И я нажимаю на кнопку с именем 'FormFillByDefault'		
@@ -72,7 +72,7 @@
 
 	* Запишем документ
 		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormWriteANDContinue'				
+		И я нажимаю на кнопку с именем 'Write'				
 
 	* Расчитаем документ
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
@@ -102,7 +102,7 @@
 Сценарий: 14.04 Выполняем расчет экземплятров отчетов из списка
 
 	И Я нахожу в списке вид отчета с именем "VA - Calculation protocol"
-	И в таблице 'ListOfReportTypes' я нажимаю на кнопку с именем 'ListOfReportTypesOpenInstancesList'
+	И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListOpenInstancesList'
 	
 	* Выполняем расчет
 		Тогда открылось окно "Report instances"
@@ -121,9 +121,8 @@
 	* Проверяем расчет для "Меркурий ООО"
 		Тогда открылось окно "Report instances"
 		И в таблице 'List' я перехожу к строке:
-			| "Report currency" | "Report kind"               | "Company"     | "Start period" | "End period" | "Scenario"           |
-			| 'RUB'             | "VA - Calculation protocol" | "Mercury LLC" | "January 2021" | "March 2021" | "VA - Main scenario" |
-
+			| "Primary currency" | "Report kind"            | "Company"  | "Report period"  | "End period" | "Scenario"               |
+			| 'RUB'             | "VA - Calculation protocol" | "Mercury LLC" | "January 2021" | "March 2021"     | "VA - Main scenario" |
 		И в таблице 'List' я выбираю текущую строку
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Calculation protocol" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
@@ -138,7 +137,7 @@
 	* Проверяем расчет для "Меркурий ООО"
 		Тогда открылось окно "Report instances"
 		И в таблице 'List' я перехожу к строке:
-			| "Report currency" | "Report kind"            | "Company" | "Start period"  | "End period" | "Scenario"               |
+			| "Primary currency" | "Report kind"            | "Company" | "Report period"  | "End period" | "Scenario"               |
 			| 'RUB'             | "VA - Calculation protocol" | "Earth LLC"   | "January 2021" | "March 2021"     | "VA - Main scenario" |
 		И в таблице 'List' я выбираю текущую строку
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Calculation protocol" валюта 'RUB' организация "Earth LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
@@ -159,9 +158,8 @@
 
 	* Выполняем расчет
 		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'RecalculateByRule'
-		Тогда открылось окно "Processing rule selection"
-		И в таблице 'ProcessingRulesList' я выбираю текущую строку
+		
+		И я нажимаю на кнопку с именем 'ShouldRecalculateOnРегламенту'
 
 	* Проверяем протокол
 		Тогда открылось окно "Protocol"
