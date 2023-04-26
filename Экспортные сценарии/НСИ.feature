@@ -429,13 +429,13 @@
 Сценарий: Я создаю группу видов отчетов с именем 'TheReportKindName' и родителем 'TheReportKindParentName'
 
 	* Открываем список
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report kinds and templates"
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report types and templates"
 
 	* Удаляем текущий элемент		
-		Тогда открылось окно "Report kinds and templates"
+		Тогда открылось окно "Report types and templates"
 		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
-		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Report kind"
+		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Report type"
 		И я меняю значение переключателя с именем 'CompareType' на "Anywhere in the line"
 		И в поле с именем 'Pattern' я ввожу текст '[TheReportKindName]'
 		И я нажимаю на кнопку с именем 'Find'
@@ -444,43 +444,43 @@
 				И я выбираю пункт контекстного меню с именем 'ReportKindListContextMenuSetDeletionMark' на элементе формы с именем 'ReportKindList'
 				Тогда открылось окно "1C:Enterprise"
 				И я нажимаю на кнопку с именем 'Button0'
-				И я жду открытия окна "Report kinds and templates" в течение 120 секунд				
+				И я жду открытия окна "Report types and templates" в течение 120 секунд				
 			* Перименовываем
 				И Я запоминаю значение выражения '"Delete_" + StrReplace(New UUID, "-", "")' в переменную 'UID'		
 				И в таблице 'ReportKindList' я выбираю текущую строку
-				Когда открылось окно "* (Report kinds)"		
+				Когда открылось окно "* (Report types)"		
 				И в поле с именем 'Description' я ввожу значение переменной 'UID'
 				И в поле с именем 'Code' я ввожу значение переменной 'UID'
 				И в поле с именем 'Parent' я ввожу текст ''						
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
-				И я жду закрытия окна "* (Report kinds)" в течение 20 секунд
+				И я жду закрытия окна "* (Report types)" в течение 20 секунд
 
 	* Создаем новую группу отчетов
-		Тогда открылось окно "Report kinds and templates"
+		Тогда открылось окно "Report types and templates"
 		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListCreateFolder'
-		Тогда открылось окно "Report kinds (create folder)"
+		Тогда открылось окно "Report types (create folder)"
 		И в поле с именем 'Description' я ввожу текст '[TheReportKindName]'
 		Если 'StrLen("[TheReportKindParentName]") = 0' Тогда
 			И в поле с именем 'Parent' я ввожу текст ''
 		Иначе
 			И из выпадающего списка с именем 'Parent' я выбираю по строке '[TheReportKindParentName]'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна "Report kinds (create folder) *" в течение 20 секунд
+		И я жду закрытия окна "Report types (create folder) *" в течение 20 секунд
 
 	* Закрываем список
-		Когда открылось окно "Report kinds and templates"
-		И Я закрываю окно "Report kinds and templates"	
+		Когда открылось окно "Report types and templates"
+		И Я закрываю окно "Report types and templates"	
 
 Сценарий: Я создаю вид отчета с именем 'TheReportKindName' и родителем 'TheReportKindParentName'
 
 	* Открываем список
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report kinds and templates"	
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report types and templates"	
 
 	* Удаляем текущий элемент	
-		Тогда открылось окно "Report kinds and templates"
+		Тогда открылось окно "Report types and templates"
 		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
-		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Report kind"
+		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Report type"
 		И я меняю значение переключателя с именем 'CompareType' на "Anywhere in the line"
 		И в поле с именем 'Pattern' я ввожу текст '[TheReportKindName]'
 		И я нажимаю на кнопку с именем 'Find'
@@ -492,29 +492,29 @@
 			* Перименовываем
 				И Я запоминаю значение выражения '"Delete_" + StrReplace(New UUID, "-", "")' в переменную 'UID'		
 				И в таблице 'ReportKindList' я выбираю текущую строку
-				Тогда открылось окно "* (Report kinds)"		
+				Тогда открылось окно "* (Report types)"		
 				И в поле с именем 'Description' я ввожу значение переменной 'UID'
 				И в поле с именем 'FullDescr' я ввожу значение переменной 'UID'
 				И в поле с именем 'Code' я ввожу значение переменной 'UID'
 				И в поле с именем 'Parent' я ввожу текст ''
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
-				И я жду закрытия окна "* (Report kinds)" в течение 20 секунд
+				И я жду закрытия окна "* (Report types)" в течение 20 секунд
 
 	* Создаем новый элемент
-		Тогда открылось окно "Report kinds and templates"
+		Тогда открылось окно "Report types and templates"
 		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListCreate'
-		Тогда открылось окно "Report kinds (create)"
+		Тогда открылось окно "Report types (create)"
 		И в поле с именем 'Description' я ввожу текст '[TheReportKindName]'
 		Если 'StrLen("[TheReportKindParentName]") = 0' Тогда
 			И в поле с именем 'Parent' я ввожу текст ''
 		Иначе
 			И из выпадающего списка с именем 'Parent' я выбираю по строке '[TheReportKindParentName]'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна "Report kinds (create folder) *" в течение 20 секунд
+		И я жду закрытия окна "Report types (create folder) *" в течение 20 секунд
 
 	* Закрываем список
-		Когда открылось окно "Report kinds and templates"
-		И Я закрываю окно "Report kinds and templates"
+		Когда открылось окно "Report types and templates"
+		И Я закрываю окно "Report types and templates"
 
 Сценарий: Я создаю проект с именем 'TheProjectName'
 
@@ -557,21 +557,21 @@
 Сценарий: Я создаю вид аналитики с кодом 'TheAnalyticsCode' именем 'TheAnalyticsName' и типом 'TheAnalyticsType'
 
 	* Открываем список
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Dimension kinds (corporate)"
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Dimension types (corporate)"
 		
 	* Удаляем элемент	
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И я нажимаю на кнопку с именем 'FormFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И в поле с именем 'Pattern' я ввожу текст '[TheAnalyticsCode]'
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И Пока в таблице 'List' количество строк 'больше' 0 Тогда
 			* Произвольный классификтор
 				И в таблице 'List' я выбираю текущую строку
-				Тогда открылось окно "* (Dimension kinds (corporate))"
+				Тогда открылось окно "* (Dimension types (corporate))"
 				И В текущем окне я нажимаю кнопку командного интерфейса "Arbitrary classifier"
 				Если в таблице 'List' количество строк 'больше' 0 Тогда
 					И я нажимаю на кнопку с именем 'FormListSettings'
@@ -590,8 +590,8 @@
 							И я жду закрытия окна "* (Arbitrary classifier)" в течение 20 секунд
 					И я нажимаю на кнопку с именем 'FormListSettings'
 					И Я снимаю все отборы в форме списка		
-				Когда открылось окно "* (Dimension kinds (corporate))"
-				И я закрываю окно "* (Dimension kinds (corporate))"																													
+				Когда открылось окно "* (Dimension types (corporate))"
+				И я закрываю окно "* (Dimension types (corporate))"																													
 			* Ставим пометку на удаление	
 				И я выбираю пункт контекстного меню с именем 'ListContextMenuSetDeletionMark' на элементе формы с именем 'List'
 				Тогда открылось окно "1C:Enterprise"
@@ -599,15 +599,15 @@
 			* Перименовываем	
 				И Я запоминаю значение выражения 'StrReplace(New UUID, "-", "")' в переменную 'UID'		
 				И в таблице 'List' я выбираю текущую строку
-				Тогда открылось окно "* (Dimension kinds (corporate))"
+				Тогда открылось окно "* (Dimension types (corporate))"
 				И в поле с именем 'Code' я ввожу текст 'Delete'
 				Тогда открылось окно "1C:Enterprise"
 				И я нажимаю на кнопку с именем 'Button0'
-				Тогда открылось окно "* (Dimension kinds (corporate))"
+				Тогда открылось окно "* (Dimension types (corporate))"
 				И в поле с именем 'Code' я ввожу текст ''
 				И в поле с именем 'Description' я ввожу значение переменной 'UID'
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
-				И я жду закрытия окна "* (Dimension kinds (corporate)) *" в течение 20 секунд
+				И я жду закрытия окна "* (Dimension types (corporate)) *" в течение 20 секунд
 
 	* Создаем элемент кодом
 		И я выполняю код встроенного языка на сервере без контекста	
@@ -620,18 +620,18 @@
 			| 'TypeАналитик.Write();' |
 
 	* Настраиваем вид аналитики
-		Когда открылось окно "Dimension kinds (corporate)"
+		Когда открылось окно "Dimension types (corporate)"
 		И я нажимаю на кнопку с именем 'FormRefresh'
-		Когда открылось окно "Dimension kinds (corporate)"
+		Когда открылось окно "Dimension types (corporate)"
 		И я нажимаю на кнопку с именем 'FormFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И в поле с именем 'Pattern' я ввожу текст '[TheAnalyticsCode]'
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И в таблице 'List' я выбираю текущую строку
-		Когда открылось окно "* (Dimension kinds (corporate))"
+		Когда открылось окно "* (Dimension types (corporate))"
 
 		Если в таблице 'TableBoxAttributes' есть строка Тогда
 			| "Attribute"     | "Key" | "Template" |
@@ -662,10 +662,10 @@
 			И в таблице 'TableBoxAttributes' я завершаю редактирование строки
 		
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна "Dimension kinds (corporate) (create) *" в течение 20 секунд
+		И я жду закрытия окна "Dimension types (corporate) (create) *" в течение 20 секунд
 
 	* Закрываем список	
-		И Я закрываю окно "Dimension kinds (corporate)"		
+		И Я закрываю окно "Dimension types (corporate)"		
 
 Сценарий: Я создаю субконто УХ с именем 'TheExtDimensionCPMName' и видом аналитики с кодом 'TheExtDimensionCPMKind'
 
@@ -1393,7 +1393,7 @@
 Сценарий: Я создаю номенклатурную группу с именем 'TheProductGroupName'
 
 	* Открываем список
-		И я открываю основную форму списка справочника 'ProductGroups_1'
+		И я открываю основную форму списка справочника 'ProductRangeGroups'
 		Тогда открылось окно "Product range groups"
 
 	* Удаляем элемент

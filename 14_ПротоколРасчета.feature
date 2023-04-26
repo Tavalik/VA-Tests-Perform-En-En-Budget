@@ -79,8 +79,8 @@
 		Когда открылось окно "Protocol"
 		Тогда табличный документ 'SpreadsheetDocumentField' равен:
 			| "Errors"                                                                                                                                                                                                       |
-			| "Locked period is excluded from calculation by the following parameters:\n	Period: \"January 2021\"\n	Regulation: \"VA - Main regulations\",\n	Scenario: \"VA - Main scenario\",\n	Company: \"Earth LLC\""  |
-			| "Locked period is excluded from calculation by the following parameters:\n	Period: \"February 2021\"\n	Regulation: \"VA - Main regulations\",\n	Scenario: \"VA - Main scenario\",\n	Company: \"Earth LLC\""  |
+			| "Locked period is excluded from calculation by the following parameters:\n	Period: \"January 2021\"\n	Regulation: \"VA - Main regulations\",\n	Scenario: \"VA - Main scenario\", \n	Company: \"Earth LLC\""  |
+			| "Locked period is excluded from calculation by the following parameters:\n	Period: \"February 2021\"\n	Regulation: \"VA - Main regulations\",\n	Scenario: \"VA - Main scenario\", \n	Company: \"Earth LLC\""  |
 		И я нажимаю на кнопку с именем 'FormTechnicalInformation'
 		И Я закрываю окно "Protocol"	
 
@@ -113,15 +113,15 @@
 		Тогда открылось окно "Protocol"
 		Тогда табличный документ 'SpreadsheetDocumentField' равен:
 			| "Errors"                                                                                                                                                                                                       |
-			| "Locked period is excluded from calculation by the following parameters:\n	Period: \"January 2021\"\n	Regulation: \"VA - Main regulations\",\n	Scenario: \"VA - Main scenario\",\n	Company: \"Earth LLC\""  |
-			| "Locked period is excluded from calculation by the following parameters:\n	Period: \"February 2021\"\n	Regulation: \"VA - Main regulations\",\n	Scenario: \"VA - Main scenario\",\n	Company: \"Earth LLC\""  |
+			| "Locked period is excluded from calculation by the following parameters:\n	Period: \"January 2021\"\n	Regulation: \"VA - Main regulations\",\n	Scenario: \"VA - Main scenario\", \n	Company: \"Earth LLC\""  |
+			| "Locked period is excluded from calculation by the following parameters:\n	Period: \"February 2021\"\n	Regulation: \"VA - Main regulations\",\n	Scenario: \"VA - Main scenario\", \n	Company: \"Earth LLC\""  |
 		И я нажимаю на кнопку с именем 'FormTechnicalInformation'
 		И Я закрываю окно "Protocol"
 
 	* Проверяем расчет для "Меркурий ООО"
 		Тогда открылось окно "Report instances"
 		И в таблице 'List' я перехожу к строке:
-			| "Primary currency" | "Report kind"            | "Company"  | "Report period"  | "End period" | "Scenario"               |
+			| "Primary currency" | "Report type"            | "Company"  | "Report period"  | "End period" | "Scenario"               |
 			| 'RUB'             | "VA - Calculation protocol" | "Mercury LLC" | "January 2021" | "March 2021"     | "VA - Main scenario" |
 		И в таблице 'List' я выбираю текущую строку
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Calculation protocol" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
@@ -137,7 +137,7 @@
 	* Проверяем расчет для "Меркурий ООО"
 		Тогда открылось окно "Report instances"
 		И в таблице 'List' я перехожу к строке:
-			| "Primary currency" | "Report kind"            | "Company" | "Report period"  | "End period" | "Scenario"               |
+			| "Primary currency" | "Report type"            | "Company" | "Report period"  | "End period" | "Scenario"               |
 			| 'RUB'             | "VA - Calculation protocol" | "Earth LLC"   | "January 2021" | "March 2021"     | "VA - Main scenario" |
 		И в таблице 'List' я выбираю текущую строку
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Calculation protocol" валюта 'RUB' организация "Earth LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
@@ -158,15 +158,14 @@
 
 	* Выполняем расчет
 		Когда открылось окно '$WindowTitle$'
-		
-		И я нажимаю на кнопку с именем 'ShouldRecalculateOnРегламенту'
+		И я нажимаю на кнопку с именем 'RecalculateAccordingToRegulations'
 
 	* Проверяем протокол
 		Тогда открылось окно "Protocol"
 		Тогда табличный документ 'SpreadsheetDocumentField' равен:
 			| "Errors"                                                                                                                                                                                                       |
-			| "Locked period is excluded from calculation by the following parameters:\n	Period: \"January 2021\"\n	Regulation: \"VA - Main regulations\",\n	Scenario: \"VA - Main scenario\",\n	Company: \"Earth LLC\""  |
-			| "Locked period is excluded from calculation by the following parameters:\n	Period: \"February 2021\"\n	Regulation: \"VA - Main regulations\",\n	Scenario: \"VA - Main scenario\",\n	Company: \"Earth LLC\""  |
+			| "Locked period is excluded from calculation by the following parameters:\n	Period: \"January 2021\"\n	Regulation: \"VA - Main regulations\",\n	Scenario: \"VA - Main scenario\", \n	Company: \"Earth LLC\""  |
+			| "Locked period is excluded from calculation by the following parameters:\n	Period: \"February 2021\"\n	Regulation: \"VA - Main regulations\",\n	Scenario: \"VA - Main scenario\", \n	Company: \"Earth LLC\""  |
 		И я нажимаю на кнопку с именем 'FormTechnicalInformation'
 		И Я закрываю окно "Protocol"
 

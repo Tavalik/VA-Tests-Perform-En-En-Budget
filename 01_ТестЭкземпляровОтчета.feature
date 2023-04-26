@@ -25,48 +25,48 @@
 Сценарий: 01.02 Тестируем кнопки формы списка и формы элемента вида отчета
 
 	* Находим вид отчета
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report kinds and templates"
-		Тогда открылось окно "Report kinds and templates"
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report types and templates"
+		Тогда открылось окно "Report types and templates"
 		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
-		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Report kind"
+		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Report type"
 		И я меняю значение переключателя с именем 'CompareType' на "Anywhere in the line"
 		И в поле с именем 'Pattern' я ввожу текст "VA - Manual entry for all analytics"
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда в таблице 'ReportKindList' количество строк 'равно' 1
 
 	* Контруктор
-		Когда открылось окно "Report kinds and templates"
+		Когда открылось окно "Report types and templates"
 		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'DoOpenDesigner'
 		Тогда открылось окно "Edit tree"
 		И Я закрываю окно "Edit tree"
 
 	* Экземпляры отчетов
-		Когда открылось окно "Report kinds and templates"
+		Когда открылось окно "Report types and templates"
 		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListOpenInstancesList'
 		Тогда открылось окно "Report instances"
 		И Я закрываю окно "Report instances"
 
 	* Копирование
-		Когда открылось окно "Report kinds and templates"
+		Когда открылось окно "Report types and templates"
 		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListCopy'
-		Тогда открылось окно "Copy report kind"
+		Тогда открылось окно "Copy report type"
 		И я нажимаю на кнопку с именем 'FormOK'
-		Тогда открылось окно "Report kinds (create)"
-		И Я закрываю окно "Report kinds (create)"
+		Тогда открылось окно "Report types (create)"
+		И Я закрываю окно "Report types (create)"
 
 	* Открываем форму
-		Когда открылось окно "Report kinds and templates"
+		Когда открылось окно "Report types and templates"
 		И в таблице 'ReportKindList' я выбираю текущую строку		
 
 	* Конструктор
-		Тогда открылось окно "VA - Manual entry for all analytics (Report kinds)"
+		Тогда открылось окно "VA - Manual entry for all analytics (Report types)"
 		И я нажимаю на кнопку с именем 'EditTree'
 		Тогда открылось окно "Edit tree"
 		И Я закрываю окно "Edit tree"
 
 	* Связи показателей графически
-		Тогда открылось окно "VA - Manual entry for all analytics (Report kinds)"
+		Тогда открылось окно "VA - Manual entry for all analytics (Report types)"
 		Если '$$IsCPM$$' Тогда
 			И я нажимаю на кнопку с именем 'FormReportGraphicReportOnReportLinksOpenReport'
 		ИначеЕсли '$$IsERPCPM$$' Тогда
@@ -75,24 +75,24 @@
 		И Я закрываю окно "Report links report"
 
 	* Связи показателей
-		Тогда открылось окно "VA - Manual entry for all analytics (Report kinds)"
+		Тогда открылось окно "VA - Manual entry for all analytics (Report types)"
 		И я нажимаю на кнопку с именем 'FormReportReportLinksReportOpenReport'
 		Тогда открылось окно "Report on report indicator links"
 		И Я закрываю окно "Report on report indicator links"
 
 	* Вкладки
-		Тогда открылось окно "VA - Manual entry for all analytics (Report kinds)"
+		Тогда открылось окно "VA - Manual entry for all analytics (Report types)"
 		И я перехожу к закладке с именем 'DimensionsOfReport'
 		И я перехожу к закладке с именем 'DefaultSettings'
 		И я перехожу к закладке с именем 'ReportParameters'
 		И я перехожу к закладке с именем 'GroupSetLimits'
 
 	* Закрываем форму
-		И Я закрываю окно "VA - Manual entry for all analytics (Report kinds)"
+		И Я закрываю окно "VA - Manual entry for all analytics (Report types)"
 
 	* Закрваем форму списка
-		Тогда открылось окно "Report kinds and templates"
-		И Я закрываю окно "Report kinds and templates"								
+		Тогда открылось окно "Report types and templates"
+		И Я закрываю окно "Report types and templates"								
 
 Сценарий: 01.03 Работа в контрукторе отчета - Настройка структуры отчета
 
@@ -313,14 +313,14 @@
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicator dimensions"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И я нажимаю на кнопку с именем 'FormFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 		И в поле с именем 'Pattern' я ввожу текст "VA0ProCate"
 		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И в таблице 'List' я выбираю текущую строку
 		Когда открылось окно "Edit tree"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C2'
@@ -331,14 +331,14 @@
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicator dimensions"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C3'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И я нажимаю на кнопку с именем 'FormFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 		И в поле с именем 'Pattern' я ввожу текст "VA0Product"
 		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И в таблице 'List' я выбираю текущую строку
 		Когда открылось окно "Edit tree"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C3'
@@ -349,14 +349,14 @@
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicator dimensions"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C4'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И я нажимаю на кнопку с именем 'FormFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 		И в поле с именем 'Pattern' я ввожу текст "VA0Counter"
 		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И в таблице 'List' я выбираю текущую строку
 		Когда открылось окно "Edit tree"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C4'
@@ -367,14 +367,14 @@
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicator dimensions"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C5'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И я нажимаю на кнопку с именем 'FormFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 		И в поле с именем 'Pattern' я ввожу текст "VA0Contrac"
 		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И в таблице 'List' я выбираю текущую строку
 		Когда открылось окно "Edit tree"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C5'
@@ -385,14 +385,14 @@
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicator dimensions"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R8C6'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И я нажимаю на кнопку с именем 'FormFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 		И в поле с именем 'Pattern' я ввожу текст "VA0CFItems"
 		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И в таблице 'List' я выбираю текущую строку
 		Когда открылось окно "Edit tree"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R8C6'
@@ -403,14 +403,14 @@
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicator dimensions"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C7'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И я нажимаю на кнопку с именем 'FormFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 		И в поле с именем 'Pattern' я ввожу текст "VA0IEItems"
 		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И в таблице 'List' я выбираю текущую строку
 		Когда открылось окно "Edit tree"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C7'
@@ -447,10 +447,10 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C9'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно "GR_LineDimension6 (Report indicator dimension groups)"
+		Тогда открылось окно "DG_LineDimension6 (Report indicator dimension groups)"
 		И я изменяю флаг с именем 'IsCurrency'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна "GR_LineDimension6 (Report indicator dimension groups) *" в течение 3 секунд
+		И я жду закрытия окна "DG_LineDimension6 (Report indicator dimension groups) *" в течение 3 секунд
 
 	* Сравним макет с эталоном
 		Тогда открылось окно "Edit tree"
@@ -497,44 +497,44 @@
 		И я нажимаю на кнопку с именем 'InsertDimension'	
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C9'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно "GR_LineDimension6Currency (Report indicator dimension groups)"
+		Тогда открылось окно "DG_LineDimension6Currency (Report indicator dimension groups)"
 		И в таблице 'TabFieldsDisplaySetting' я перехожу к строке:
 			| "Group dimension" | "Required" |
 			| "Dimension 5"      | "No"          |
 		И в таблице 'TabFieldsDisplaySetting' я активизирую поле с именем 'DimensionKind'
 		И в таблице 'TabFieldsDisplaySetting' я выбираю текущую строку
 		И в таблице 'TabFieldsDisplaySetting' я нажимаю кнопку выбора у реквизита с именем 'DimensionKind'
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И я нажимаю на кнопку с именем 'FormFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 		И в поле с именем 'Pattern' я ввожу текст "VA0CFItems"	
 		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И в таблице 'List' я активизирую поле с именем 'Description'
 		И в таблице 'List' я выбираю текущую строку
-		Тогда открылось окно "GR_LineDimension6Currency (Report indicator dimension groups)"
+		Тогда открылось окно "DG_LineDimension6Currency (Report indicator dimension groups)"
 		И в таблице 'TabFieldsDisplaySetting' я завершаю редактирование строки
 		И в таблице 'TabFieldsDisplaySetting' я перехожу к строке:
 			| "Group dimension" | "Required" |
 			| "Dimension 6"      | "No"          |
 		И в таблице 'TabFieldsDisplaySetting' я выбираю текущую строку
 		И в таблице 'TabFieldsDisplaySetting' я нажимаю кнопку выбора у реквизита с именем 'DimensionKind'
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И я нажимаю на кнопку с именем 'FormFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 		И в поле с именем 'Pattern' я ввожу текст "VA0IEItems"
 		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И в таблице 'List' я активизирую поле с именем 'Description'
 		И в таблице 'List' я выбираю текущую строку
-		Тогда открылось окно "GR_LineDimension6Currency (Report indicator dimension groups) *"
+		Тогда открылось окно "DG_LineDimension6Currency (Report indicator dimension groups) *"
 		И в таблице 'TabFieldsDisplaySetting' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'	
-		И я жду закрытия окна "GR_LineDimension6Currency (Report indicator dimension groups) *" в течение 5 секунд
+		И я жду закрытия окна "DG_LineDimension6Currency (Report indicator dimension groups) *" в течение 5 секунд
 		Тогда открылось окно "Edit tree"
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicator dimensions"
 
@@ -562,7 +562,7 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C1'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		Когда открылось окно "LineDimensionCurrency (Report lines)"
-		И элемент формы с именем 'DrillDownGroup' стал равен "GR_LineDimensionCurrency"
+		И элемент формы с именем 'DrillDownGroup' стал равен "DG_LineDimensionCurrency"
 		И Я закрываю окно "LineDimensionCurrency (Report lines)"						
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C8'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
@@ -1018,7 +1018,7 @@
 
 	* Открываем документ
 		И Я нахожу в списке вид отчета с именем "VA - Manual entry for all analytics"
-		Когда открылось окно "Report kinds and templates"
+		Когда открылось окно "Report types and templates"
 		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListOpenInstancesList'
 		Тогда открылось окно "Report instances"
 		И в таблице 'List' я выбираю текущую строку
@@ -1289,7 +1289,7 @@
 	
 	И в таблице 'Filter' я перехожу к строке:
 		| "Comparison type" | "Use" | "Left value"       | "Display mode" |
-		| "Equal to"         | "No"           | "Report kind" | "Quick access"    |
+		| "Equal to"         | "No"           | "Report type" | "Quick access"    |
 	И в таблице 'Filter' из выпадающего списка с именем 'FilterRightValue' я выбираю по строке "VA - Manual entry for all analytics"
 	
 	И в таблице 'Filter' я перехожу к строке:
@@ -1582,7 +1582,7 @@
 	И Я для вида отчета "VA - Manual entry for all analytics" я создаю бланк сводной таблицы по умолчанию с отборами "Project"
 
 	* Доработаем бланк
-		Когда открылось окно "VA - Manual entry for all analytics (Report kinds)"
+		Когда открылось окно "VA - Manual entry for all analytics (Report types)"
 		И я нажимаю на кнопку открытия поля с именем 'DefaultPivotTableTemplate'
 		Тогда Открылся бланк сводной таблицы для вида отчета "VA - Manual entry for all analytics"
 		И я запоминаю текущее окно как 'WindowTitle'

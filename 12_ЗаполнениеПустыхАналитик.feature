@@ -20,8 +20,8 @@
 Сценарий: 12.01 Настраиваем значения аналитик по умолчанию
 
 	* Открываем список
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Dimension kinds (corporate)"
-		Когда открылось окно "Dimension kinds (corporate)"
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Dimension types (corporate)"
+		Когда открылось окно "Dimension types (corporate)"
 
 	* Настраиваем Товарные категории
 		* Находим вид аналитики
@@ -31,9 +31,9 @@
 			И в поле с именем 'Pattern' я ввожу текст "VA0ProCate"
 			И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 			И я нажимаю на кнопку с именем 'Find'
-			Тогда открылось окно "Dimension kinds (corporate)"
+			Тогда открылось окно "Dimension types (corporate)"
 			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "Product categories (Dimension kinds (corporate))"
+			Тогда открылось окно "Product categories (Dimension types (corporate))"
 			И В текущем окне я нажимаю кнопку командного интерфейса "Default dimension values"
 		* Удаляем текущие позиции
 			И пока в таблице 'List' количество строк '>' 0 Тогда
@@ -41,7 +41,7 @@
 				Тогда открылось окно "1C:Enterprise"
 				И я нажимаю на кнопку с именем 'Button0'				
 		* Создаем значение на январь
-			Тогда открылось окно "Product categories (Dimension kinds (corporate))"
+			Тогда открылось окно "Product categories (Dimension types (corporate))"
 			И я нажимаю на кнопку с именем 'FormCreate'
 			Тогда открылось окно "Default dimension values (create)"
 			И в поле с именем 'Period' я ввожу текст '12/2/2020'
@@ -61,8 +61,8 @@
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "Default dimension values (create) *" в течение 20 секунд
 		* Закрываем окна
-			Тогда открылось окно "Product categories (Dimension kinds (corporate))"
-			И Я закрываю окно "Product categories (Dimension kinds (corporate))"
+			Тогда открылось окно "Product categories (Dimension types (corporate))"
+			И Я закрываю окно "Product categories (Dimension types (corporate))"
 
 	* Настраиваем Номенклатуру	
 		* Находим вид аналитики
@@ -72,9 +72,9 @@
 			И в поле с именем 'Pattern' я ввожу текст "VA0Product"
 			И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 			И я нажимаю на кнопку с именем 'Find'
-			Тогда открылось окно "Dimension kinds (corporate)"
+			Тогда открылось окно "Dimension types (corporate)"
 			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "Product range (Dimension kinds (corporate))"
+			Тогда открылось окно "Product range (Dimension types (corporate))"
 			И В текущем окне я нажимаю кнопку командного интерфейса "Default dimension values"
 		* Удаляем текущие позиции
 			И пока в таблице 'List' количество строк '>' 0 Тогда
@@ -82,7 +82,7 @@
 				Тогда открылось окно "1C:Enterprise"
 				И я нажимаю на кнопку с именем 'Button0'				
 		* Создаем значение на февраль
-			Тогда открылось окно "Product range (Dimension kinds (corporate))"
+			Тогда открылось окно "Product range (Dimension types (corporate))"
 			И я нажимаю на кнопку с именем 'FormCreate'
 			Тогда открылось окно "Default dimension values (create)"
 			И в поле с именем 'Period' я ввожу текст '1/2/2021'
@@ -102,7 +102,7 @@
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "Default dimension values (create) *" в течение 20 секунд
 		* Создаем значение на март
-			Тогда открылось окно "Product range (Dimension kinds (corporate))"
+			Тогда открылось окно "Product range (Dimension types (corporate))"
 			И я нажимаю на кнопку с именем 'FormCreate'
 			Тогда открылось окно "Default dimension values (create)"
 			И в поле с именем 'Period' я ввожу текст '2/2/2021'
@@ -122,8 +122,8 @@
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "Default dimension values (create) *" в течение 20 секунд
 		* Закрываем окна
-			Тогда открылось окно "Product range (Dimension kinds (corporate))"
-			И Я закрываю окно "Product range (Dimension kinds (corporate))"
+			Тогда открылось окно "Product range (Dimension types (corporate))"
+			И Я закрываю окно "Product range (Dimension types (corporate))"
 		
 Сценарий: 12.02 Создаем вид отчета и структуру отчета
 

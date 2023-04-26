@@ -190,7 +190,7 @@
 
 	* Найдем вид отчета
 		И Я нахожу в списке вид отчета с именем "VA - ImportExcel"
-		Тогда открылось окно "Report kinds and templates"
+		Тогда открылось окно "Report types and templates"
 		И в таблице 'List' я перехожу к строке:
 			| "Description"     |
 			| "VA - ImportExcel" |
@@ -224,8 +224,8 @@
 		И я нажимаю на кнопку с именем 'FormExport'
 		Тогда открылось окно '$WindowTitle$'
 		И Я закрываю окно '$WindowTitle$'
-		Когда открылось окно "Report kinds and templates"
-		И Я закрываю окно "Report kinds and templates"
+		Когда открылось окно "Report types and templates"
+		И Я закрываю окно "Report types and templates"
 
 	* Сравниваем файл
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Compare spreadsheet documents"
@@ -267,7 +267,7 @@
 	* Загружаем без файла
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
-		Когда открылось окно "Select способа расчета indicators"
+		Когда открылось окно "Select method to calculate indicators"
 		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Import"
 		И я нажимаю на кнопку с именем 'FormSelect'
 		Когда открылось окно '$WindowTitle$'
@@ -276,7 +276,7 @@
 
 	* Загружаем с файлом
 		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'		
-		Когда открылось окно "Select способа расчета indicators"
+		Когда открылось окно "Select method to calculate indicators"
 		Тогда у элемента формы с именем 'ReportGenerationMethod' текст редактирования стал равен "Import"
 		Тогда у элемента формы с именем 'ImportTemplate' текст редактирования стал равен "VA - ImportExcel"
 		И в поле с именем 'PathToFile' я ввожу текст "$КаталогПроекта$\Макеты\ВА_ИмпортExcel_Меркурий_En.xlsx"
@@ -288,9 +288,9 @@
 		Тогда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'CancelApplyDetailed'
 		Тогда открылось окно "Action history"
-		Тогда таблица "Transactions" стала равной:
+		Тогда таблица 'Transactions_' стала равной:
 			| "Transaction presentation" |
-			| "Filling to регламенту" |
+			| "Fill by regulation" |
 			| "Import from MS Excel"     |
 		И я нажимаю на кнопку с именем 'FormCancel'
 
@@ -308,23 +308,23 @@
 		Тогда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'Edit'
 		И я нажимаю на кнопку с именем 'Clear'
-		Тогда открылось окно '1C:Предприятие'
+		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
 		Тогда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'Write'				
 
 	* Грузим файл повторно
 		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
-		Когда открылось окно "Select способа расчета indicators"
+		Когда открылось окно "Select method to calculate indicators"
 		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Import"
 		И элемент формы с именем 'ImportApproach' стал равен 'FromCatalog'
-		И элемент формы с именем 'ImportFile3' стал равен 'DimenKind_ImportExcel_Mercury.xlsx'
-		И элемент формы с именем 'ImportTemplate' стал равен 'DimenKind - ImportExcel'
+		И элемент формы с именем 'ImportFile3' стал равен 'ВА_ИмпортExcel_Меркурий_En.xlsx'
+		И элемент формы с именем 'ImportTemplate' стал равен "VA - ImportExcel"
 		И я нажимаю на кнопку с именем 'FormSelect'
 		Когда открылось окно "Select file version"
-		И таблица "ListЛистов" стала равной:
-			| 'Лист документа' | 'Защищен паролем' |
-			| 'TDSheet'        | 'No'             |
+		И таблица 'SheetsList' стала равной:
+			| "Document sheet" | "Password protected" |
+			| 'TDSheet'        | "No"             |
 		И я нажимаю на кнопку с именем 'FormOK'
 
 	* Сверяем результат			
@@ -334,9 +334,9 @@
 
 	* Вибираем второй файл
 		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
-		Когда открылось окно "Select способа расчета indicators"	
-		И я меняю значение переключателя с именем 'ImportApproach' на 'to1 диске'						
-		И в поле с именем 'PathToFile' я ввожу текст "$DirectoryПроекта$\Templates\VA_ImportExcel_Mercury_2.xlsm"
+		Когда открылось окно "Select method to calculate indicators"	
+		И я меняю значение переключателя с именем 'ImportApproach' на "on hard drive"						
+		И в поле с именем 'PathToFile' я ввожу текст '$КаталогПроекта$\Макеты\ВА_ИмпортExcel_Меркурий_2_En.xlsm'
 		И я нажимаю на кнопку с именем 'FormSelect'
 
 	* Сверяем результат	
@@ -365,20 +365,20 @@
 
 	* Настраиваем сортировку аналитики Номенклатура
 		Когда открылось окно "Set up field location"
-		И в таблице "TableLines" я перехожу к строке:
+		И в таблице 'TableRows1' я перехожу к строке:
 			| "Horizontally (in rows)" |
 			| "Product range"               |
-		И в таблице "TableLines" я выбираю текущую строку
+		И в таблице 'TableRows1' я выбираю текущую строку
 		Тогда открылось окно "Dimension display parameters (Product range)"
 		И я нажимаю кнопку выбора у поля с именем 'DCSettingsOrderSettings'
 		Тогда открылось окно "Edit order"
-		И в таблице "Data" я выбираю текущую строку
-		И в таблице "Data" из выпадающего списка с именем "DataField" я выбираю точное значение "Product range.Product ID"
-		И в таблице "Data" я завершаю редактирование строки
+		И в таблице 'Data' я выбираю текущую строку
+		И в таблице 'Data' из выпадающего списка с именем 'DataField' я выбираю точное значение "Product range.Product ID"
+		И в таблице 'Data' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'OK'
 		Когда открылось окно "Dimension display parameters (Product range)"
-		И элемент формы с именем "DCSettingsOrderSettings" стал равен 'Products.SKU'
-		И элемент формы с именем "ПоддерживатьИерархию1" стал равен 'No'
+		И элемент формы с именем 'DCSettingsOrderSettings' стал равен "Product range.Product ID"
+		И элемент формы с именем 'ShouldSupportHierarchy1' стал равен 'No'
 		И я нажимаю на кнопку с именем 'FormApply'
 
 	* Настраиваем вывод аналитик
@@ -404,17 +404,17 @@
 
 	* Загружаем без файла	
 		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'ShouldRecalculateOtherItems'
-		Тогда открылось окно 'Selection способа Calculation показателей'
-		И из выпадающего списка с именем "MethodФормированияОтчета" я выбираю точное значение 'Import'
+		И я нажимаю на кнопку с именем 'RecalculateOther'
+		Тогда открылось окно "Select method to calculate indicators"
+		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Import"
 		И я нажимаю на кнопку с именем 'FormSelect'
 		Когда открылось окно '$WindowTitle$'
 		Затем я жду, что в сообщениях пользователю будет подстрока "Imported file path not specified. Operation canceled." в течение 30 секунд
 		И я очищаю окно сообщений пользователю
 
 	* Загружаем с файлом
-		И я нажимаю на кнопку с именем 'ShouldRecalculateOtherItems'		
-		Когда открылось окно "Select способа расчета indicators"
+		И я нажимаю на кнопку с именем 'RecalculateOther'		
+		Когда открылось окно "Select method to calculate indicators"
 		Тогда у элемента формы с именем 'ReportGenerationMethod' текст редактирования стал равен "Import"
 		Тогда у элемента формы с именем 'ImportTemplate' текст редактирования стал равен "VA - ImportExcel"
 		И в поле с именем 'PathToFile' я ввожу текст "$КаталогПроекта$\Макеты\ВА_ИмпортExcel_Меркурий_En.xlsx"
@@ -424,9 +424,9 @@
 		И я жду открытия формы '$WindowTitle$' в течение 20 секунд
 		И я нажимаю на кнопку с именем 'CancelApplyDetailed'
 		Тогда открылось окно "Action history"
-		Тогда таблица "Transactions" стала равной:
+		Тогда таблица 'Transactions_' стала равной:
 			| "Transaction presentation" |
-			| "Filling to регламенту" |
+			| "Fill by regulation" |
 			| "Import from MS Excel"     |
 		И я нажимаю на кнопку с именем 'FormCancel'
 
@@ -438,8 +438,8 @@
 		Тогда открылось окно '$WindowTitle$'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R10C9:R28C9"
 		И я нажимаю на кнопку с именем 'ClearRange'
-		И я нажимаю на кнопку с именем 'ShouldRecalculateOtherItems'
-		Тогда открылось окно "Select способа расчета indicators"
+		И я нажимаю на кнопку с именем 'RecalculateOther'
+		Тогда открылось окно "Select method to calculate indicators"
 		И я нажимаю на кнопку с именем 'FormSelect'
 		Тогда открылось окно "Select file version"
 		И я нажимаю на кнопку с именем 'FormOK'				

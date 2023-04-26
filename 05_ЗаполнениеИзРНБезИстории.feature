@@ -339,7 +339,7 @@
 		И Я нахожу в списке вид отчета с именем "VA - Filling from PH (no history)"
 						
 		* Создаем бланк сводной таблицы
-			Когда открылось окно "Report kinds and templates"
+			Когда открылось окно "Report types and templates"
 			И в таблице "List" я перехожу к строке:
 				| 'Description'                                          |
 				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' |
@@ -402,7 +402,7 @@
 				И я жду закрытия окна '$WindowTitle$ *' в течение 20 секунд
 
 		* Создаем сводную таблицу			
-			Когда открылось окно "Report kinds and templates"
+			Когда открылось окно "Report types and templates"
 			И я нажимаю на кнопку с именем 'SwitchToDataDisplayMode'
 			И Открылась сводная таблица для вида отчета "VA - Filling from PH (no history)"
 			И Я устанавливаю отборы сводной таблицы: дата начала '1/1/2021', дата конца '3/31/2021', валюта 'RUB', сценарий "VA - Main scenario", организация "Mercury LLC"
@@ -439,7 +439,7 @@
 		* Рассчитываем по правилу
 			Когда открылось окно '$WindowTitle$'
 			И я нажимаю на кнопку с именем 'ShouldRecalculateOtherItems'
-			Тогда открылось окно "Select способа расчета indicators"
+			Тогда открылось окно "Select method to calculate indicators"
 			И я нажимаю на кнопку с именем 'FormSelect'
 			И я жду открытия формы '$WindowTitle$' в течение 30 секунд
 			Тогда табличный документ 'SpreadsheetFieldTemlate' равен:

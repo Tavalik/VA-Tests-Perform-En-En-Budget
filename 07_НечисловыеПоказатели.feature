@@ -890,30 +890,21 @@
 				Когда открылось окно "Edit tree"
 				И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C2'
 				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-				И я нажимаю на кнопку с именем 'AddOperand1'
-				Тогда открылось окно "Data sources"
-				И я нажимаю на кнопку с именем 'FormCreate'
-				Тогда открылось окно "Data source (create)"
-				И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase report item indicator"
-				И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Calculation in code"
-				И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-				И Я выбираю показатель с кодом "Source_Number"
-				Тогда открылось окно "Data source (create) *"
-				И я нажимаю на кнопку с именем 'FormWriteAndClose'
-				И я жду закрытия окна "Data source (create) *" в течение 20 секунд
-				Тогда открылось окно "Data sources"
-				И в таблице 'List' я выбираю текущую строку
-				Тогда открылось окно "Edit tree *"
+				И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
+				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 				И я нажимаю на кнопку с именем 'ButtonMultiply'
+				И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C2'
+				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+				И я нажимаю на кнопку с именем 'ArbitraryCode'
+				И я нажимаю на кнопку с именем 'WriteFormula'
+				Тогда открылось окно "Edit tree"
 				И я нажимаю на кнопку с именем 'AddOperand1'
 				Тогда открылось окно "Data sources"
-				И я нажимаю на кнопку с именем 'FormCreate'
-				Тогда открылось окно "Data source (create)"
-				И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase report item indicator"
-				И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Calculation in code"
-				И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-				И Я выбираю показатель с кодом "FormulasCode_Number"
-				Тогда открылось окно "Data source (create) *"
+				И в таблице "List" я перехожу к строке:
+					| "Description"                        | "Indicator filter" | "Receipt method"                                 |
+					| "VA - Calculation in code_FormulasCode number" | "FormulasCode number" | "Current infobase report indicator (easy setup)" |
+				И я выбираю пункт контекстного меню с именем 'ListContextMenuChange' на элементе формы с именем 'List'
+				Тогда открылось окно "VA - Calculation in code_FormulasCode number (Data source)"
 				И в таблице 'ComplianceTable' я активизирую поле с именем 'ComplianceTableFillingMethod'
 				И в таблице 'ComplianceTable' я выбираю текущую строку
 				И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Another source field"
@@ -921,13 +912,16 @@
 				И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
 				И в таблице 'ComplianceTable' я выбираю текущую строку
 				Тогда открылось окно "Data sources"
+				И в таблице 'List' я перехожу к строке:
+					| "Description"                      | "Indicator filter" | "Receipt method"                                 |
+					| "VA - Calculation in code_Source number" | "Source number"   | "Current infobase report indicator (easy setup)" |
 				И в таблице 'List' я выбираю текущую строку
-				Тогда открылось окно "Data source (create) *"
+				Тогда открылось окно "VA - Calculation in code_FormulasCode number (Data source) *"
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
-				И я жду закрытия окна "Data source (create) *" в течение 20 секунд
+				И я жду закрытия окна "VA - Calculation in code_FormulasCode number (Data source) *" в течение 20 секунд
 				Тогда открылось окно "Data sources"
-				И в таблице 'List' я выбираю текущую строку
-				Тогда открылось окно "Edit tree *"
+				И Я закрываю окно "Data sources"								
+				Тогда открылось окно "Edit tree"
 				И я нажимаю на кнопку с именем 'WriteAndCollapse'
 			* Дата
 				Когда открылось окно "Edit tree"
@@ -936,9 +930,9 @@
 				И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C3'
 				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 				И я нажимаю на кнопку с именем 'WriteFormula'
-				Тогда открылось окно "Edit tree"
+				Тогда открылось окно "Edit tree"				
+				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст "Result = AddMonth([VACalculationInCode_Source_Date],1)"
 				И я нажимаю на кнопку с именем 'ArbitraryCode'
-				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст "Result = AddMonth([VACalculationInCode_Source_Date],1) "
 				И я нажимаю на кнопку с именем 'WriteAndCollapse'
 			* Булево
 				Когда открылось окно "Edit tree"
@@ -948,7 +942,7 @@
 				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 				И я нажимаю на кнопку с именем 'WriteFormula'
 				Тогда открылось окно "Edit tree"
-				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст "NOT [VACalculationInCode_Source_Boolean]"
+				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст "NOT {VACalculationInCode.Source_Boolean}"
 				И я нажимаю на кнопку с именем 'WriteAndCollapse'
 			* Строка
 				Когда открылось окно "Edit tree"
@@ -958,8 +952,11 @@
 				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 				И я нажимаю на кнопку с именем 'WriteFormula'
 				Тогда открылось окно "Edit tree"
-				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст "\"!!! \" + [VACalculationInCode_Source_Line]"
-				И я нажимаю на кнопку с именем 'WriteAndCollapse'
+				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст "\"!!! \""
+				И я нажимаю на кнопку с именем 'ButtonPlus'
+				И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C5'
+				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+				И я нажимаю на кнопку с именем 'WriteAndCollapse'														
 
 	И Я Для вида отчета "VA - Calculation in code" я создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Calculation in code" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"

@@ -11,10 +11,10 @@
 
 	И я изменяю флаг с именем '[TheFlagName]'
 	И я нажимаю на кнопку с именем 'FormWriteAndClose'
-	И я жду закрытия окна "[TheReportKindName] (Report kinds)" в течение 20 секунд	
+	И я жду закрытия окна "[TheReportKindName] (Report types)" в течение 20 секунд	
 
-	Тогда открылось окно "Report kinds and templates"
-	И я закрываю окно "Report kinds and templates"
+	Тогда открылось окно "Report types and templates"
+	И я закрываю окно "Report types and templates"
 
 Сценарий: Я открываю контруктор отчета с именем 'TheReportKindName'
 
@@ -49,14 +49,14 @@
 	И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicator dimensions"
 	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCellAddress]'
 	И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-	Тогда открылось окно "Dimension kinds (corporate)"
+	Тогда открылось окно "Dimension types (corporate)"
 	И я нажимаю на кнопку с именем 'FormFind'
 	Тогда открылась форма с именем 'UniversalListFindExtForm'
 	И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 	И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 	И в поле с именем 'Pattern' я ввожу текст '[TheDimensionCode]'
 	И я нажимаю на кнопку с именем 'Find'
-	Тогда открылось окно "Dimension kinds (corporate)"
+	Тогда открылось окно "Dimension types (corporate)"
 	И в таблице 'List' я выбираю текущую строку
 
 Сценарий: Я в конструкторе отчета добавляю аналитику с наименованием 'TheDimensionName' в ячейку 'TheCellAddress' 
@@ -65,14 +65,14 @@
 	И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicator dimensions"
 	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCellAddress]'
 	И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-	Тогда открылось окно "Dimension kinds (corporate)"
+	Тогда открылось окно "Dimension types (corporate)"
 	И я нажимаю на кнопку с именем 'FormFind'
 	Тогда открылась форма с именем 'UniversalListFindExtForm'
 	И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Description"
 	И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 	И в поле с именем 'Pattern' я ввожу текст '[TheDimensionCode]'
 	И я нажимаю на кнопку с именем 'Find'
-	Тогда открылось окно "Dimension kinds (corporate)"
+	Тогда открылось окно "Dimension types (corporate)"
 	И в таблице 'List' я выбираю текущую строку	
 
 Сценарий: Я в конструкторе отчета в ячейке 'TheCell' я меняю родителя у строки на 'TheParentName'
@@ -112,7 +112,7 @@
 
 	И Я нахожу в списке вид отчета с именем '[TheReportKindName]'
 
-	Когда открылось окно "Report kinds and templates"
+	Когда открылось окно "Report types and templates"
 	И я запоминаю строку '[TheReportKindName]' в переменную 'ReportKindName'
 	И в таблице 'List' я перехожу к строке по шаблону:
 		| "Description"                       |
@@ -155,38 +155,38 @@
 Сценарий: Я Для вида отчета 'TheReportKindName' я создаю бланк для импорта по умолчанию
 
 	* Откроем вид отчета
-		Если текущее окно имеет заголовок "[TheReportKindName] (Report kinds)" Тогда
+		Если текущее окно имеет заголовок "[TheReportKindName] (Report types)" Тогда
 			// Форма уже открыта
 		Иначе
 			И Я открываю вид отчета с именем '[TheReportKindName]'
 
 	* Создаем Бланк экземпляра отчета
-		Тогда открылось окно "[TheReportKindName] (Report kinds)"
+		Тогда открылось окно "[TheReportKindName] (Report types)"
 		И я перехожу к закладке с именем 'DefaultSettings'
-		Когда открылось окно "[TheReportKindName] (Report kinds)"
+		Когда открылось окно "[TheReportKindName] (Report types)"
 		И я нажимаю на кнопку открытия поля с именем 'DefaultTemplateToImport'
-		Тогда открылось окно "Template [TheReportKindName] report kind: [TheReportKindName]"
+		Тогда открылось окно "Template [TheReportKindName] report type: [TheReportKindName]"
 		И я нажимаю на кнопку с именем 'FormWand'
 		Тогда открылось окно "What to do?"
 		И я нажимаю на кнопку с именем 'CreateNewTemplate1'
 		И я нажимаю на кнопку с именем 'CommandRegenerateTemplate'
-		Тогда открылось окно "Template [TheReportKindName] report kind: [TheReportKindName] *"
+		Тогда открылось окно "Template [TheReportKindName] report type: [TheReportKindName] *"
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна "Template [TheReportKindName] report kind: [TheReportKindName] *" в течение 5 секунд
+		И я жду закрытия окна "Template [TheReportKindName] report type: [TheReportKindName] *" в течение 5 секунд
 
 Сценарий: Я Для вида отчета 'TheReportKindName' я создаю бланк по умолчанию
 
 	* Откроем вид отчета
-		Если текущее окно имеет заголовок "[TheReportKindName] (Report kinds)" Тогда
+		Если текущее окно имеет заголовок "[TheReportKindName] (Report types)" Тогда
 			// Форма уже открыта
 		Иначе
 			И Я открываю вид отчета с именем '[TheReportKindName]'
 	
 	* Формируем Бланк экземпляра отчета
-		Когда открылось окно "[TheReportKindName] (Report kinds)"
+		Когда открылось окно "[TheReportKindName] (Report types)"
 		И я перехожу к закладке с именем 'DefaultSettings'
 		И я нажимаю на кнопку открытия поля с именем 'DefaultTemplateToDisplayMultiperiod'
-		Тогда открылось окно "Template [TheReportKindName] report kind: [TheReportKindName]"
+		Тогда открылось окно "Template [TheReportKindName] report type: [TheReportKindName]"
 		И я нажимаю на кнопку с именем 'FormCreateImportTemplate'
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
@@ -198,23 +198,23 @@
 		И я нажимаю на кнопку с именем 'FormSelect'	
 
 	* Записываем бланк	
-		Тогда открылось окно "Template [TheReportKindName] report kind: [TheReportKindName] *"
+		Тогда открылось окно "Template [TheReportKindName] report type: [TheReportKindName] *"
 		И я нажимаю на кнопку с именем 'FormButtonWriteAndClose'
-		И я жду закрытия окна "Template [TheReportKindName] report kind: [TheReportKindName] *" в течение 20 секунд		
+		И я жду закрытия окна "Template [TheReportKindName] report type: [TheReportKindName] *" в течение 20 секунд		
 
 Сценарий: Я Для вида отчета 'TheReportKindName' в бланке для группы раскрытия с адресом 'TheCellAddress' задаю сортировку 'TheSortingObject' 'TheSortingProperty'
 
 	* Откроем вид отчета
-		Если текущее окно имеет заголовок "[TheReportKindName] (Report kinds)" Тогда
+		Если текущее окно имеет заголовок "[TheReportKindName] (Report types)" Тогда
 			// Форма уже открыта
 		Иначе
 			И Я открываю вид отчета с именем '[TheReportKindName]'
 	
 	* Открываем бланк по умолчанию
-		Когда открылось окно "[TheReportKindName] (Report kinds)"
+		Когда открылось окно "[TheReportKindName] (Report types)"
 		И я перехожу к закладке с именем 'DefaultSettings'
 		И я нажимаю на кнопку открытия поля с именем 'DefaultTemplateToDisplayMultiperiod'
-		Тогда открылось окно "Template [TheReportKindName] report kind: [TheReportKindName]"
+		Тогда открылось окно "Template [TheReportKindName] report type: [TheReportKindName]"
 
 	* Добавляем сортировку
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCellAddress]'
@@ -227,23 +227,23 @@
 		И я нажимаю на кнопку с именем 'Apply'
 				
 	* Записываем бланк	
-		Тогда открылось окно "Template [TheReportKindName] report kind: [TheReportKindName] *"
+		Тогда открылось окно "Template [TheReportKindName] report type: [TheReportKindName] *"
 		И я нажимаю на кнопку с именем 'FormButtonWriteAndClose'
-		И я жду закрытия окна "Template [TheReportKindName] report kind: [TheReportKindName] *" в течение 20 секунд
+		И я жду закрытия окна "Template [TheReportKindName] report type: [TheReportKindName] *" в течение 20 секунд
 
 Сценарий: Я Для вида отчета 'TheReportKindName' в бланке для группы раскрытия с адресом 'TheCellAddress' меняю сортировку 'TheSortingIinitialObject' 'TheSortingIinitialProperty' на сортировку 'TheSortingObject' 'TheSortingProperty'
 
 	* Откроем вид отчета
-		Если текущее окно имеет заголовок "[TheReportKindName] (Report kinds)" Тогда
+		Если текущее окно имеет заголовок "[TheReportKindName] (Report types)" Тогда
 			// Форма уже открыта
 		Иначе
 			И Я открываю вид отчета с именем '[TheReportKindName]'
 	
 	* Открываем бланк по умолчанию
-		Когда открылось окно "[TheReportKindName] (Report kinds)"
+		Когда открылось окно "[TheReportKindName] (Report types)"
 		И я перехожу к закладке с именем 'DefaultSettings'
 		И я нажимаю на кнопку открытия поля с именем 'DefaultTemplateToDisplayMultiperiod'
-		Тогда открылось окно "Template [TheReportKindName] report kind: [TheReportKindName]"
+		Тогда открылось окно "Template [TheReportKindName] report type: [TheReportKindName]"
 
 	* Меняем сортировку
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCellAddress]'
@@ -259,9 +259,9 @@
 		И я нажимаю на кнопку с именем 'Apply'
 				
 	* Записываем бланк	
-		Тогда открылось окно "Template [TheReportKindName] report kind: [TheReportKindName] *"
+		Тогда открылось окно "Template [TheReportKindName] report type: [TheReportKindName] *"
 		И я нажимаю на кнопку с именем 'FormButtonWriteAndClose'
-		И я жду закрытия окна "Template [TheReportKindName] report kind: [TheReportKindName] *" в течение 20 секунд		
+		И я жду закрытия окна "Template [TheReportKindName] report type: [TheReportKindName] *" в течение 20 секунд		
 
 Сценарий: Я Для вида отчета 'TheReportKindName' я создаю бланк сводной таблицы по умолчанию с отборами 'TheFilter1' 'TheFilter2' 'TheFilter3'
 

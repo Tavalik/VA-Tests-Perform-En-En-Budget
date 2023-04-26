@@ -41,7 +41,7 @@
 		И я нажимаю на кнопку с именем 'RecordButtonForm'
 
 	* Настроим соответствия имен файлов
-		Когда открылось окно "VA - Download test by ADO (Report kinds)"
+		Когда открылось окно "VA - Download test by ADO (Report types)"
 		И я перехожу к закладке с именем 'DefaultSettings'
 		И я нажимаю на кнопку открытия поля с именем 'DefaultProcessingRule'
 		Тогда Открылась правило расчета для вида отчета "VA - Download test by ADO"
@@ -69,7 +69,7 @@
 				И в таблице 'List_ReportType' я выбираю текущую строку								
 			Тогда открылось окно "Company file path items*"
 			И из выпадающего списка с именем 'Object' я выбираю по строке "VA - Download test by ADO"
-			И в поле с именем 'Name' я ввожу текст "VA_LoadingADO_En"
+			И в поле с именем 'Name' я ввожу текст "VA_LoadingADO"
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "Company file path items *" в течение 20 секунд
 		
@@ -96,18 +96,18 @@
 
 	* Перезапишем правила трансляции
 		* Номенклатура
-			Когда открылось окно "VA - Download test by ADO (Report kinds)"
+			Когда открылось окно "VA - Download test by ADO (Report types)"
 			И я нажимаю на кнопку открытия поля с именем 'DefaultProcessingRule'
 			Тогда открылось окно "VA - Download test by ADO (Calculation rules)"
 			И я нажимаю на кнопку открытия поля с именем 'DBType'
 			Тогда открылось окно "VA - ADO tables (Infobase type)"
 			И я нажимаю на кнопку с именем 'FormConfigureMappings'
 			Тогда открылось окно "Correspondence with external infobases"
-			И в таблице 'List' я перехожу к строке:
-				| "File name"           | "Description"                                  |
-				| "VA_LoadingADO_En.xlsx" | "ВидСубконто.Product range -> ADOTable.Sheet1$" |
+			И в таблице 'List' я перехожу к строке по шаблону:
+				| "File name"       | "Description"                                  |
+				| "VA_LoadingADO*" | "ExtDimensionType.Products -> ADOTable.Sheet1$" |
 			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "ВидСубконто.Product range -> ADOTable.Sheet1$ (Correspondence with external infobases)"
+			Тогда открылось окно "ExtDimensionType.Products -> ADOTable.Sheet1$ (Correspondence with external infobases)"
 			Если '$$IsCPM$$' Тогда
 				И я нажимаю кнопку выбора у поля с именем 'RootDirectory1'
 				Тогда открылось окно 'Catalog.Products'
@@ -115,7 +115,7 @@
 					| "Reference"            |
 					| "VA - Products" |
 				И в таблице 'List' я нажимаю на кнопку с именем 'ListChoose'
-				Тогда открылось окно "ВидСубконто.Product range -> ADOTable.Sheet1*"
+				Тогда открылось окно "ExtDimensionType.Products -> ADOTable.Sheet1*"
 			Если '$$ЭтоPerform$$' Тогда
 				И в таблице 'ComplianceTable' я перехожу к строке:
 					| "Field"                  |
@@ -141,7 +141,7 @@
 			И я нажимаю на кнопку с именем 'Find'
 			Тогда открылось окно "Enter a value"
 			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "ВидСубконто.Product range -> ADOTable.Sheet1*"
+			Тогда открылось окно "ExtDimensionType.Products -> ADOTable.Sheet1*"
 			Если '$$IsCPM$$' Тогда
 				И в таблице 'ComplianceTable' я перехожу к строке:
 					| "Field"    |
@@ -170,29 +170,29 @@
 			И я нажимаю на кнопку с именем 'Find'
 			Тогда открылось окно "Enter a value"
 			И в таблице 'List' я выбираю текущую строку	
-			Тогда открылось окно "ВидСубконто.Product range -> ADOTable.Sheet1*"	
+			Тогда открылось окно "ExtDimensionType.Products -> ADOTable.Sheet1*"	
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "ВидСубконто.Product range -> ADOTable.Sheet1*" в течение 20 секунд			
+			И я жду закрытия окна "ExtDimensionType.Products -> ADOTable.Sheet1*" в течение 20 секунд			
 		* Статьи ДДС
 			Тогда открылось окно "Correspondence with external infobases"
 			И в таблице 'List' я перехожу к строке:
-				| "File name"           | "Description"                                |
-				| "VA_LoadingADO_En.xlsx" | "ВидСубконто.Cash flow items -> ADOTable.Sheet1$" |
+				| "File name"       | "Description"                                |
+				| "VA_LoadingADO*" | "ExtDimensionType.Cash flow items -> ADOTable.Sheet1$" |
 			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "ВидСубконто.Cash flow items -> ADOTable.Sheet1$ (Correspondence with external infobases)"
+			Тогда открылось окно "ExtDimensionType.Cash flow items -> ADOTable.Sheet1$ (Correspondence with external infobases)"
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "ВидСубконто.Cash flow items -> ADOTable.Sheet1*" в течение 20 секунд
+			И я жду закрытия окна "ExtDimensionType.Cash flow items -> ADOTable.Sheet1*" в течение 20 секунд
 
 Сценарий: 10.02 Создаем экземпляр отчета
 
 	* Ищем существующий экземпляр отчета
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report kinds and templates"
-		Тогда открылось окно "Report kinds and templates"
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report types and templates"
+		Тогда открылось окно "Report types and templates"
 		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'Pattern' я выбираю по строке "VA - Download test by ADO"
 		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Report kinds and templates"
+		Тогда открылось окно "Report types and templates"
 		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListOpenInstancesList'
 		Когда открылось окно "Report instances"
 		* Отбора по сценарию
@@ -227,7 +227,7 @@
 		Тогда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'Write'
 		Тогда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormRefreshСУчетомВерсий'
+		И я нажимаю на кнопку с именем 'FormUpdateConsideringVersions'
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Download test by ADO" | ''               | ''           | ''     | ''      | ''                | ''           | ''     | ''      | ''             | ''           | ''     | ''      | ''        | ''           | ''     | ''      |
 			| ''                          | ''               | ''           | ''     | ''      | ''                | ''           | ''     | ''      | ''             | ''           | ''     | ''      | ''        | ''           | ''     | ''      |

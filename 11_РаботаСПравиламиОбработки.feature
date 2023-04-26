@@ -303,7 +303,7 @@
 			|''|
 			|''|
 		И таблица 'UsedReportTypes' стала равной:
-			| "Report kind"   |
+			| "Report type"   |
 			| "VA - Sales" |
 		Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
 			И таблица 'Definitions' стала равной:
@@ -746,7 +746,7 @@
 		И Я закрываю окно "Edit tree"
 
 	* Рассчитаем документ
-		Тогда открылось окно "Report kinds and templates"
+		Тогда открылось окно "Report types and templates"
 		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListOpenInstancesList'
 		Тогда открылось окно "Report instances"
 		И в таблице 'List' я выбираю текущую строку

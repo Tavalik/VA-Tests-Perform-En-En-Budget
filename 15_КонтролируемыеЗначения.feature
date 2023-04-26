@@ -234,7 +234,7 @@
 
 	* Создаем бланк сводной таблицы
 		И Я для вида отчета "VA - Controlled indicators" я создаю бланк сводной таблицы по умолчанию с отборами "Project"
-		Когда открылось окно "VA - Controlled indicators (Report kinds)"
+		Когда открылось окно "VA - Controlled indicators (Report types)"
 		И я нажимаю на кнопку открытия поля с именем 'DefaultPivotTableTemplate'
 		Тогда Открылся бланк сводной таблицы для вида отчета "VA - Controlled indicators"
 		И я нажимаю на кнопку с именем 'ShowTableSettingsByAxes'

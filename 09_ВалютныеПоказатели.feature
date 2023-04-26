@@ -63,7 +63,7 @@
 
 	* Открываем бланк
 		И Я нахожу в списке вид отчета с именем "VA - Currency indicators (source)"
-		Тогда открылось окно "Report kinds and templates"
+		Тогда открылось окно "Report types and templates"
 		И в таблице 'List' я перехожу к строке:
 			| "Description"                        |
 			| "VA - Currency indicators (source)" |
@@ -487,14 +487,14 @@
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicator dimensions"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И я нажимаю на кнопку с именем 'FormFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
 		И в поле с именем 'Pattern' я ввожу текст "VA0Counter"
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И в таблице 'List' я выбираю текущую строку
 		Когда открылось окно "Edit tree"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C8'
@@ -681,7 +681,7 @@
 
 	* Открываем бланк
 		И Я нахожу в списке вид отчета с именем "VA - Currency indicators (recipient)"
-		Тогда открылось окно "Report kinds and templates"
+		Тогда открылось окно "Report types and templates"
 		И в таблице 'List' я перехожу к строке:
 			| "Description"                        |
 			| "VA - Currency indicators (recipient)" |

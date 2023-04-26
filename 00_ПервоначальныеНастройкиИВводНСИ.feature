@@ -70,15 +70,15 @@
 		И Я создаю страну с кодом1 '643' кодом2 'RU' кодом3 'RUS' именем1 "Russia" именем2 "The Russian Federation" именем3 "The Russian Federation" если ее нет в 1C:CPMWE
 
 	* Настроим аналитику 'Валюта'	
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Dimension kinds (corporate)"
-		Тогда открылось окно "Dimension kinds (corporate)"
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Dimension types (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		И я нажимаю на кнопку с именем 'FormFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Description"
 		И в поле с именем 'Pattern' я ввожу текст 'Currencies'
 		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Dimension kinds (corporate)"
+		Тогда открылось окно "Dimension types (corporate)"
 		Если в таблице 'List' количество строк 'равно' 0 Тогда
 			И я нажимаю на кнопку с именем 'FormFind'
 			Тогда открылась форма с именем 'UniversalListFindExtForm'
@@ -86,12 +86,12 @@
 			И в поле с именем 'Pattern' я ввожу текст "Currencies"
 			И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 			И я нажимаю на кнопку с именем 'Find'
-			Тогда открылось окно "Dimension kinds (corporate)"
+			Тогда открылось окно "Dimension types (corporate)"
 		И в таблице 'List' я выбираю текущую строку
-		Когда открылось окно '* (Dimension kinds (corporate))'
+		Когда открылось окно '* (Dimension types (corporate))'
 		И в поле с именем 'Description' я ввожу текст "Currencies"
 		И я нажимаю на кнопку с именем 'FormWrite'
-		Тогда открылось окно "Currencies (Dimension kinds (corporate))"
+		Тогда открылось окно "Currencies (Dimension types (corporate))"
 		Если в таблице 'TableBoxAttributes' есть строка Тогда
 			| "Attribute"       | "Key" | "Template" |
 			| "Alphabetic code" | "No"  | "No"   |
@@ -100,7 +100,7 @@
 				| "Alphabetic code" | "No"  | "No"   |
 			И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableKey'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна 'Currencies (Dimension kinds (corporate)) *' в течение 20 секунд
+		И я жду закрытия окна 'Currencies (Dimension types (corporate)) *' в течение 20 секунд
 
 	* Отключаем работу с новостями
 		Если '$$IsERPCPM$$' Тогда
@@ -231,12 +231,12 @@
 	* Выбираем группу видов отчетов	
 		Тогда открылось окно '$WindowTitle$'
 		И я нажимаю кнопку выбора у поля с именем 'ReportKind'
-		Тогда открылось окно "Report kinds"
+		Тогда открылось окно "Report types"
 		И я выбираю пункт контекстного меню с именем 'ListContextMenuFind' на элементе формы с именем 'List'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
 		И в поле с именем 'Pattern' я ввожу текст "VA - Report group"
 		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Report kinds"
+		Тогда открылось окно "Report types"
 		И в таблице 'List' я активизирую поле с именем 'Description'
 		И в таблице 'List' я выбираю текущую строку
 	
@@ -308,17 +308,23 @@
 			И в таблице 'GroupStructure' я выбираю текущую строку
 			И в таблице 'GroupStructure' из выпадающего списка с именем 'GroupStructureCurrency' я выбираю точное значение 'RUB'
 
-	* Установим отношение к группе, если его нет
-		Если в таблице 'GroupStructure' есть строка Тогда
-			| "Company kind" | "Consolidating company\n/ Business unit" | "Intercompany transactions exclusion method" | "Primary currency" | "Company status for consolidation"   | "Effective share, %" |
-			| "VA - Package CFR"  | "Mercury LLC"                                           | ''                     | 'RUB'             | ''                     | '100.000'             |
-			И в таблице 'GroupStructure' я перехожу к строке:
-				| "Company kind" | "Consolidating company\n/ Business unit" | "Intercompany transactions exclusion method" | "Primary currency" | "Company status for consolidation"   | "Effective share, %" |
-				| "VA - Package CFR"  | "Mercury LLC"                                           | ''                     | 'RUB'             | ''                     | '100.000'             |
-			И в таблице 'GroupStructure' я активизирую поле с именем 'GroupStructureCounterpartyGroup'
-			И в таблице 'GroupStructure' я выбираю текущую строку
-			И в таблице 'GroupStructure' из выпадающего списка с именем 'GroupStructureCounterpartyGroup' я выбираю по строке "VA - Subsidiary"
-			И в таблице 'GroupStructure' я завершаю редактирование строки
+	* Настроим отношение к группе и долю владения 
+		Когда открылось окно '$WindowTitle$'
+		И в таблице 'GroupStructure' я перехожу к строке:
+			| "Company kind" | "Consolidating company\n/ Business unit" | "Primary currency" | "Effective share, %" |
+			| "VA - Package CFR"  | "Mercury LLC"                                           | 'RUB'             | '100.000'             |
+		И в таблице 'GroupStructure' я активизирую поле с именем 'GroupStructureEffectiveShare'
+		И в таблице 'GroupStructure' я выбираю текущую строку
+		И в таблице 'GroupStructure' в поле с именем 'GroupStructureEffectiveShare' я ввожу текст '50.000'
+		И в таблице 'GroupStructure' я завершаю редактирование строки
+		И в таблице 'GroupStructure' я активизирую поле с именем 'GroupStructureCounterpartyGroup'
+		И в таблице 'GroupStructure' я выбираю текущую строку
+		И в таблице 'GroupStructure' из выпадающего списка с именем 'GroupStructureCounterpartyGroup' я выбираю точное значение "VA - Subsidiary"
+		И в таблице 'GroupStructure' я завершаю редактирование строки
+		И в таблице 'GroupStructure' я активизирую поле с именем 'GroupStructureIntercompanyTransactionsExclusionMethod'
+		И в таблице 'GroupStructure' я выбираю текущую строку
+		И в таблице 'GroupStructure' из выпадающего списка с именем 'GroupStructureIntercompanyTransactionsExclusionMethod' я выбираю точное значение "Balance and turnovers"
+		И в таблице 'GroupStructure' я завершаю редактирование строки				
 				
 	* Протестируем кнопки 'Вверх' и 'Вниз'	
 		И в таблице 'GroupStructure' я перехожу к строке:
@@ -329,7 +335,7 @@
 		И в таблице 'GroupStructure' я нажимаю на кнопку с именем 'GroupStructureCommandBarMoveUp'
 		И в таблице 'GroupStructure' я перехожу к строке:
 			| "Company kind" | "Consolidating company\n/ Business unit" | "Intercompany transactions exclusion method" | "Primary currency" | "Company status for consolidation"        | "Effective share, %" |
-			| "VA - Package CFR"  | "Mercury LLC"                                           | ''                     | 'RUB'             | "VA - Subsidiary" | '100.000'             |
+			| "VA - Package CFR"  | "Mercury LLC"                                           | "Balance and turnovers"    | 'RUB'             | "VA - Subsidiary" | '50.000'              |
 		И в таблице 'GroupStructure' я нажимаю на кнопку с именем 'GroupStructureCommandBarMoveDown'
 		И в таблице 'GroupStructure' я нажимаю на кнопку с именем 'GroupStructureCommandBarMoveDown'
 	
@@ -388,7 +394,7 @@
 			И в таблице 'GroupStructure' я завершаю редактирование строки
 			И в таблице 'GroupStructure' я перехожу к строке:
 				| "Company kind" | "Consolidating company\n/ Business unit" | "Intercompany transactions exclusion method" | "Primary currency" | "Company status for consolidation"        | "Effective share, %" |
-				| "VA - Package CFR"  | "Mercury LLC"                                           | ''                     | 'RUB'             | "VA - Subsidiary" | '100.000'             |
+				| "VA - Package CFR"  | "Mercury LLC"                                           | "Balance and turnovers"    | 'RUB'             | "VA - Subsidiary" | '50.000'              |
 			И в таблице 'GroupStructure' я выбираю текущую строку
 			И в таблице 'GroupStructure' я нажимаю кнопку выбора у реквизита с именем 'GroupStructureAdditionalCurrencies'
 			Тогда открылось окно "Currency list"
@@ -431,7 +437,7 @@
 			Тогда открылось окно '$WindowTitle$'
 			И в таблице 'GroupStructure' я завершаю редактирование строки
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна '$WindowTitle$' в течение 20 секунд	
+			И я жду закрытия окна '$WindowTitle$' в течение 20 секунд
 	
 Сценарий: 00.09 Создание документа Управление отчетным периодом
 
@@ -453,8 +459,8 @@
 		И из выпадающего списка с именем 'OrganizationalStructureVersion' я выбираю по строке "VA - Main regulations"	
 		И я устанавливаю флаг с именем 'LimitsSet'
 		И я нажимаю на кнопку с именем 'OpenReportTypesToSetLimits'
-		Тогда открылось окно "Kinds of reports for limit setting"
-		И Я закрываю окно "Kinds of reports for limit setting"
+		Тогда открылось окно "Types of reports for limit setting"
+		И Я закрываю окно "Types of reports for limit setting"
 		Тогда открылось окно "Reporting period management (create) *"
 		И я снимаю флаг с именем 'LimitsSet'
 		И я нажимаю на кнопку с именем 'FormGoForward'
