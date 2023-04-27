@@ -69,20 +69,20 @@
 			И Я ввожу значение '1/1/2021' в ячейку 'R6C9'
 		* Аналитики
 			И Я добавляю значения с раскрытием показателей в ячейку 'R7C14'
-				| "Cash flow items"                       | "Product range"                 | 'Currencies' | 'Period_1_Value1' | 'Period_2_Value1' |
+				| "Cash flow items"                       | "Product range"                 | "Currencies" | 'Period_1_Value1' | 'Period_2_Value1' |
 				| "3Software sale" | "5C:Corporate performance management"    | 'RUB'    | '100'                | '200'                |
 				| "3Software sale" | "2C:Corporation"                | 'RUB'    | '100'                | '200'                |
 				| "3Software sale" | "1C:ERP. Corporate performance management" | 'RUB'    | '100'                | '200'                |
 			И Я добавляю значения с раскрытием показателей в ячейку 'R7C15'
-				| "Cash flow items"                       | "Product range"                 | 'Currencies' | 'Period_1_Value1' | 'Period_2_Value1' |
+				| "Cash flow items"                       | "Product range"                 | "Currencies" | 'Period_1_Value1' | 'Period_2_Value1' |
 				| "3Software sale" | "5C:Corporate performance management"    | 'RUB'    | '100'                | '200'                |
 				| "3Software sale" | "2C:Corporation"                | 'RUB'    | '100'                | '200'                |
 			И Я добавляю значения с раскрытием показателей в ячейку 'R7C16'
-				| "Cash flow items"                       | "Product range"                 | 'Currencies' | 'Period_1_Value1' | 'Period_2_Value1' |
+				| "Cash flow items"                       | "Product range"                 | "Currencies" | 'Period_1_Value1' | 'Period_2_Value1' |
 				| "3Software sale" | "5C:Corporate performance management"    | 'RUB'    | '100'                | '200'                |
 				| "3Software sale" | "2C:Corporation"                | 'RUB'    | '100'                | '200'                |
 			И Я добавляю значения с раскрытием показателей в ячейку 'R7C17'
-				| "Cash flow items"                       | "Product range"                 | 'Currencies' | 'Period_1_Value1' | 'Period_2_Value1' |
+				| "Cash flow items"                       | "Product range"                 | "Currencies" | 'Period_1_Value1' | 'Period_2_Value1' |
 				| "3Software sale" | "5C:Corporate performance management"    | 'RUB'    | '1/1/2021'         | '2/1/2021'         |
 				| "3Software sale" | "2C:Corporation"                | 'RUB'    | '1/1/2021'         | '2/1/2021'         |
 				| "3Software sale" | "1C:ERP. Corporate performance management" | 'RUB'    | '1/1/2021'         | '2/1/2021'         |
@@ -111,11 +111,11 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		Тогда открылось окно "Drill down indicators: *"
 		И в таблице 'IndicatorsDrilldown' я перехожу к строке:
-			| 'Currencies' | 'Value1' | 'ValueCurrency1' | "Product range"                 | 'ReportPeriod'    | "Cash flow items"                       |
+			| "Currencies" | 'Value1' | 'ValueCurrency1' | "Product range"                 | 'ReportPeriod'    | "Cash flow items"                       |
 			| 'RUB'    | '200'       | '200'             | "1C:ERP. Corporate performance management" | "February 2021" | "3Software sale" |
 		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'
 		И в таблице 'IndicatorsDrilldown' я перехожу к строке:
-			| 'Currencies' | 'Value1' | 'ValueCurrency1' | "Product range"                 | 'ReportPeriod'   | "Cash flow items"                       |
+			| "Currencies" | 'Value1' | 'ValueCurrency1' | "Product range"                 | 'ReportPeriod'   | "Cash flow items"                       |
 			| 'RUB'    | '100'       | '100'             | "1C:ERP. Corporate performance management" | "January 2021" | "3Software sale" |
 		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'
 		И я нажимаю на кнопку с именем 'FormOKButton1'
@@ -124,11 +124,11 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		Тогда открылось окно "Drill down indicators: *"
 		И в таблице 'IndicatorsDrilldown' я перехожу к строке:
-			| 'Currencies' | 'Value1'  | "Product range"                 | 'ReportPeriod'    | "Cash flow items"                       |
+			| "Currencies" | 'Value1'  | "Product range"                 | 'ReportPeriod'    | "Cash flow items"                       |
 			| 'RUB'    | '2/1/2021' | "1C:ERP. Corporate performance management" | "February 2021" | "3Software sale" |
 		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'
 		И в таблице 'IndicatorsDrilldown' я перехожу к строке:
-			| 'Currencies' | 'Value1'  | "Product range"                 | 'ReportPeriod'   | "Cash flow items"                       |
+			| "Currencies" | 'Value1'  | "Product range"                 | 'ReportPeriod'   | "Cash flow items"                       |
 			| 'RUB'    | '1/1/2021' | "1C:ERP. Corporate performance management" | "January 2021" | "3Software sale" |
 		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'
 		И я нажимаю на кнопку с именем 'FormOKButton1'
@@ -162,10 +162,10 @@
 
 Сценарий: 15.03 Создаем новый сценарий для контролируемых значений
 
-	И Я создаю сценарий с именем "VA - Scenario From контролем"
-	И Я для сценария "VA - Scenario From контролем" на закладке "Budgeting" для реквизита 'ControllingScenario' устанавливаю значение "VA - Main scenario"
+	И Я создаю сценарий с именем "VA - Scenario with control"
+	И Я для сценария "VA - Scenario with control" на закладке 'Budgeting' для реквизита 'ControllingScenario' устанавливаю значение "VA - Main scenario"
 
-	И Я создаю документ управления периодом со сценарием "VA - Scenario From контролем" регламентом "VA - Main regulations" периодичностью "Month" датой начала '1/1/2021' датой окончания '3/31/2021'
+	И Я создаю документ управления периодом со сценарием "VA - Scenario with control" регламентом "VA - Main regulations" периодичностью "Month" датой начала '1/1/2021' датой окончания '3/31/2021'
 
 Сценарий: 15.04 Создаем экземпляра отчета для контролируемых значений
 
@@ -174,16 +174,16 @@
 		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListOpenInstancesList'
 		Тогда открылось окно "Report instances"
 		И я нажимаю на кнопку с именем 'FormCopy'
-		Когда открылось окно "Specify document key attributes"
-		И из выпадающего списка с именем "Scenario" я выбираю по строке "VA - Scenario From контролем"
+		Когда открылось окно "Specify key document attributes"
+		И из выпадающего списка с именем 'Scenario' я выбираю по строке "VA - Scenario with control"
 		И я нажимаю кнопку выбора у поля с именем 'Organization'
 		Если '$$IsCPM$$' Тогда
 			И Я в списке "Business units" по полю "Name in the application" ищу элемент "Mercury LLC" "Exact match"
 		Если '$$IsERPCPM$$' Тогда
 			И Я в списке "Companies" по полю "Рабочее наименование" ищу элемент "Mercury LLC" "Exact match"
-		Когда открылось окно "Specify document key attributes"
+		Когда открылось окно "Specify key document attributes"
 		И я нажимаю на кнопку с именем 'OKButton'
-		Тогда Открылся экземпляр отчета для вида отчета "VA - Controlled indicators" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Scenario From контролем" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' '' 
+		Тогда Открылся экземпляр отчета для вида отчета "VA - Controlled indicators" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Scenario with control" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' '' 
 		
 	* Меняем значения
 		И Я ввожу значение '250' в ячейку 'R6C6'
@@ -259,7 +259,7 @@
 	* Открываем сводную таблицу
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'OpenPivotTable'				
-		И Я устанавливаю отборы сводной таблицы: дата начала '1/1/2021', дата конца '3/31/2021', валюта 'RUB', сценарий "VA - Scenario From контролем", организация "Mercury LLC"		
+		И Я устанавливаю отборы сводной таблицы: дата начала '1/1/2021', дата конца '3/31/2021', валюта 'RUB', сценарий "VA - Scenario with control", организация "Mercury LLC"		
 		И Я устанавливаю отбор сводной таблицы "Project" со значением "VA - Main project"	
 
 	* Вводим значения

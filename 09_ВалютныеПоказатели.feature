@@ -157,7 +157,7 @@
 			| "LLC \"Io\""      | 'USD'             | '180,000.00000' |                   |
 			| "LLC \"Io\""      | 'EUR'             | '220,000.00000' |                   |
 		Тогда таблица 'IndicatorsDrilldown' стала равной:
-			| 'Counterparties'     | 'Currencies' | 'Value1' | 'ValueCurrency1' |
+			| "Counterparties"     | "Currencies" | 'Value1' | 'ValueCurrency1' |
 			| "LLC \"Ganymede\"" | 'RUB'    | '100,000'   | '100,000'         |
 			| "LLC \"Ganymede\"" | 'USD'    | '90,000'    | '1,213'           |
 			| "LLC \"Ganymede\"" | 'EUR'    | '110,000'   | '1,216'           |
@@ -179,7 +179,7 @@
 		И в поле с именем 'Accuracy' я ввожу текст '4'
 		И из выпадающего списка с именем 'Divisor' я выбираю точное значение "thousand"
 		Тогда таблица 'IndicatorsDrilldown' стала равной:
-			| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+			| "Currencies" | 'Value1' | 'ValueCurrency1' |
 			| 'RUB'    | '300.0000'  | '300.0000'        |
 			| 'USD'    | '259.7714'  | '3.5000'          |
 			| 'EUR'    | '325.7896'  | '3.6000'          |
@@ -190,7 +190,7 @@
 			| 'USD'             | '270,000.00000' |
 			| 'EUR'             | '330,000.00000' |
 		Тогда таблица 'IndicatorsDrilldown' стала равной:
-			| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+			| "Currencies" | 'Value1' | 'ValueCurrency1' |
 			| 'RUB'    | '300.0000'  | '300.0000'        |
 			| 'USD'    | '270.0000'  | '3.6378'          |
 			| 'EUR'    | '330.0000'  | '3.6465'          |
@@ -931,12 +931,12 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Drill down indicators: *"
 			И я заполняю таблицу 'IndicatorsDrilldown' данными
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | ''                |
 				| 'USD'    | '270,000'   | ''                |
 				| 'EUR'    | '330,000'   | ''                |
 			Тогда таблица 'IndicatorsDrilldown' стала равной:
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | '300,000'         |
 				| 'USD'    | '270,000'   | '3,638'           |
 				| 'EUR'    | '330,000'   | '3,647'           |
@@ -947,12 +947,12 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Drill down indicators: *"
 			И я заполняю таблицу 'IndicatorsDrilldown' данными
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | ''                |
 				| 'USD'    | '270,000'   | ''                |
 				| 'EUR'    | '330,000'   | ''                |
 			Тогда таблица 'IndicatorsDrilldown' стала равной:
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | '300,000'         |
 				| 'USD'    | '270,000'   | '3,597'           |
 				| 'EUR'    | '330,000'   | '3,605'           |
@@ -963,12 +963,12 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Drill down indicators: *"
 			И я заполняю таблицу 'IndicatorsDrilldown' данными
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | ''                |
 				| 'USD'    | '270,000'   | ''                |
 				| 'EUR'    | '330,000'   | ''                |
 			Тогда таблица 'IndicatorsDrilldown' стала равной:
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | '300,000'         |
 				| 'USD'    | '270,000'   | '3,641'           |
 				| 'EUR'    | '330,000'   | '3,648'           |
@@ -979,12 +979,12 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Drill down indicators: *"
 			И я заполняю таблицу 'IndicatorsDrilldown' данными
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | ''                |
 				| 'USD'    | '270,000'   | ''                |
 				| 'EUR'    | '330,000'   | ''                |
 			Тогда таблица 'IndicatorsDrilldown' стала равной:
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | '300,000'         |
 				| 'USD'    | '270,000'   | '3,655'           |
 				| 'EUR'    | '330,000'   | '3,635'           |
@@ -995,12 +995,12 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Drill down indicators: *"
 			И я заполняю таблицу 'IndicatorsDrilldown' данными
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | ''                |
 				| 'USD'    | '270,000'   | ''                |
 				| 'EUR'    | '330,000'   | ''                |
 			Тогда таблица 'IndicatorsDrilldown' стала равной:
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | '300,000'         |
 				| 'USD'    | '270,000'   | '3,541'           |
 				| 'EUR'    | '330,000'   | '3,575'           |
@@ -1011,12 +1011,12 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Drill down indicators: *"
 			И я заполняю таблицу 'IndicatorsDrilldown' данными
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | ''                |
 				| 'USD'    | '270,000'   | ''                |
 				| 'EUR'    | '330,000'   | ''                |
 			Тогда таблица 'IndicatorsDrilldown' стала равной:
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | '300,000'         |
 				| 'USD'    | '270,000'   | '3,638'           |
 				| 'EUR'    | '330,000'   | '3,647'           |
@@ -1027,12 +1027,12 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Drill down indicators: *"
 			И я заполняю таблицу 'IndicatorsDrilldown' данными
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | ''                |
 				| 'USD'    | '270,000'   | ''                |
 				| 'EUR'    | '330,000'   | ''                |
 			Тогда таблица 'IndicatorsDrilldown' стала равной:
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | '300,000'         |
 				| 'USD'    | '270,000'   | '3,541'           |
 				| 'EUR'    | '330,000'   | '3,575'           |
@@ -1043,12 +1043,12 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Drill down indicators: *"
 			И я заполняю таблицу 'IndicatorsDrilldown' данными
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | ''                |
 				| 'USD'    | '270,000'   | ''                |
 				| 'EUR'    | '330,000'   | ''                |
 			Тогда таблица 'IndicatorsDrilldown' стала равной:
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | '300,000'         |
 				| 'USD'    | '270,000'   | '3,641'           |
 				| 'EUR'    | '330,000'   | '3,648'           |
@@ -1061,12 +1061,12 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Drill down indicators: *"
 			И я заполняю таблицу 'IndicatorsDrilldown' данными
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | ''                |
 				| 'USD'    | '270,000'   | ''                |
 				| 'EUR'    | '330,000'   | ''                |
 			Тогда таблица 'IndicatorsDrilldown' стала равной:
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | '300,000'         |
 				| 'USD'    | '270,000'   | '3,627'           |
 				| 'EUR'    | '330,000'   | '3,651'           |
@@ -1077,12 +1077,12 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Drill down indicators: *"
 			И я заполняю таблицу 'IndicatorsDrilldown' данными
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | ''                |
 				| 'USD'    | '270,000'   | ''                |
 				| 'EUR'    | '330,000'   | ''                |
 			Тогда таблица 'IndicatorsDrilldown' стала равной:
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | '300,000'         |
 				| 'USD'    | '270,000'   | '3,627'           |
 				| 'EUR'    | '330,000'   | '3,651'           |
@@ -1097,12 +1097,12 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Drill down indicators: *"
 			И я заполняю таблицу 'IndicatorsDrilldown' данными
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | ''                |
 				| 'USD'    | '270,000'   | ''                |
 				| 'EUR'    | '330,000'   | ''                 |
 			Тогда таблица 'IndicatorsDrilldown' стала равной:
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | '300,000'         |
 				| 'USD'    | '270,000'   | '3,699'           |
 				| 'EUR'    | '330,000'   | '3,667'           |
@@ -1113,12 +1113,12 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Drill down indicators: *"
 			И я заполняю таблицу 'IndicatorsDrilldown' данными
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | ''                |
 				| 'USD'    | '270,000'   | ''                |
 				| 'EUR'    | '330,000'   | ''                |
 			Тогда таблица 'IndicatorsDrilldown' стала равной:
-				| 'Currencies' | 'Value1' | 'ValueCurrency1' |
+				| "Currencies" | 'Value1' | 'ValueCurrency1' |
 				| 'RUB'    | '300,000'   | '300,000'         |
 				| 'USD'    | '270,000'   | '3,699'           |
 				| 'EUR'    | '330,000'   | '3,667'           |

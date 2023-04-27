@@ -229,9 +229,7 @@
 				И я нажимаю на кнопку с именем '[TheBusinessUnitKind]'
 				Если '"[TheBusinessUnitKind]"="SelectЮL"' Тогда
 					Когда открылось окно "Legal entity"
-					И я нажимаю на кнопку с именем '[TheTaxation]'
-				Иначе
-					// Нет примеров			
+					И я нажимаю на кнопку с именем '[TheTaxation]'	
 			ИначеЕсли '"[TheBusinessUnitType]"="SelectИн"' Тогда
 				// Нет примеров
 			ИначеЕсли '"[TheBusinessUnitType]"="SelectCenterForFinancialResponsibility"' Тогда

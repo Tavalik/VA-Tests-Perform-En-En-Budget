@@ -198,13 +198,17 @@
 		И В конструкторе отчета я нажимаю кнопку контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuCreateIndicators'
 	
 	* Редактируем свойства показателей
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2:R11C4'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C3:R11C3'
 		И В конструкторе отчета я нажимаю кнопку контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuProperties'
 		Тогда открылось окно "Bulk edit indicators"
 		И я изменяю флаг с именем 'ValueTypeChange'
 		И из выпадающего списка с именем 'ValueType' я выбираю точное значение "Number"
 		И я изменяю флаг с именем 'TotalKindChange'
-		И из выпадающего списка с именем 'TotalKind' я выбираю точное значение "Amount"
+		И из выпадающего списка с именем 'TotalKind' я выбираю точное значение "Average"
+		И я устанавливаю флаг с именем 'NotСуммируетсяChange'
+		И я устанавливаю флаг с именем 'NotСуммируется'
+		И я устанавливаю флаг с именем 'ControllableIndicatorChange'
+		И я устанавливаю флаг с именем 'ControllableIndicator'				
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
 
 	* Добавляем колонку, сразу удаляем
@@ -619,7 +623,7 @@
 		И элемент формы с именем 'ShouldRecalculateForeignCurrencyAmount' стал равен 'Yes'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
 
-Сценарий: 01.06 Работа в контрукторе отчета - Ввод формул
+Сценарий: 01.06 Ввод формул в контрукторе отчета 
 
 	И Я открываю контруктор отчета с именем "VA - Manual entry for all analytics"
 
@@ -638,7 +642,7 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C3'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст ' '
-		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст "({VAManualEntryForAllAnalytics.LineSynthetic_Price1}+{VAManualEntryForAllAnalytics.LineANLT1_Price1}+{VAManualEntryForAllAnalytics.LineANLT2_Price1}+{VAManualEntryForAllAnalytics.LineANLT3_Price1}+{VAManualEntryForAllAnalytics.LineANLT4_Price1}+{VAManualEntryForAllAnalytics.LineANLT5_Price1}+{VAManualEntryForAllAnalytics.LineANLT6_Price1}+{VAManualEntryForAllAnalytics.LineANLT6Currency_Price1}+{VAManualEntryForAllAnalytics.LineANLTCurrency_Price1})/9"
+		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст "({VAManualEntryForAllAnalytics.LineSynthetic_Price1}+{VAManualEntryForAllAnalytics.LineANLT1_Price1}+{VAManualEntryForAllAnalytics.LineANLT2_Price1}+{VAManualEntryForAllAnalytics.LineANLT3_Price1}+{VAManualEntryForAllAnalytics.LineANLT4_Price1}+{VAManualEntryForAllAnalytics.LineANLT5_Price1}+{VAManualEntryForAllAnalytics.LineANLT6_Price1}+{VAManualEntryForAllAnalytics.LineANLT6Currency_Price1}+{VAManualEntryForAllAnalytics.LineANLTCurrency_Price1})/13"
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
 
 	* Вводим формулу кнопками - 'ГруппаСтрок - Сумма'	
@@ -1131,22 +1135,31 @@
 	* Копирование экземпляра
 		Когда открылось окно "Report instances"
 		И я выбираю пункт контекстного меню с именем 'ListContextMenuCopy' на элементе формы с именем 'List'
-		Когда открылось окно "Specify document key attributes"
+		Когда открылось окно "Specify key document attributes"
 		И я нажимаю на кнопку с именем 'OKButton'
 		Тогда в логе сообщений TestClient есть строки:
-			|"A report instance with key attributes you specified already exists."|						
-		Когда открылось окно "Specify document key attributes"
+			|"A report instance with the specified key attributes already exists."|						
+		Когда открылось окно "Specify key document attributes"
 		И я нажимаю кнопку выбора у поля с именем 'Organization'
 		Если '$$IsCPM$$' Тогда
 			И Я в списке "Business units" по полю "Name in the application" ищу элемент "Earth LLC" "Exact match"
 		Если '$$IsERPCPM$$' Тогда
 			И Я в списке "Companies" по полю "Рабочее наименование" ищу элемент "Earth LLC" "Exact match"
-		Когда открылось окно "Specify document key attributes"
+		Когда открылось окно "Specify key document attributes"
 		И я нажимаю на кнопку с именем 'OKButton'
 
 	* Сверим результат	
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'RUB' организация "Earth LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
 		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ВидОтчетаСАналитиками_Меркурий.mxl'
+
+	* Смотрим варианты заполнения
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
+		Тогда открылось окно "Select method to calculate indicators"
+		И выпадающий список с именем 'ReportGenerationMethod' стал равен:
+			| "By processing rule" |
+			| "Collapse by period"  |
+		И я нажимаю на кнопку с именем 'FormClose'					
 
 	* Добавляем комментарий
 		Когда открылось окно '$WindowTitle$'
@@ -1250,8 +1263,129 @@
 	* Закрываем документ
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'WriteAndClose'
+
+Сценарий: 01.11 Консолидация периметра
+
+	* Создаем документ
+		И Я создаю экземпляр отчета для вида отчета "VA - Manual entry for all analytics" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "System LLC" проект "VA - Main project" аналитики '' '' '' '' '' ''
+
+	* Рассчитываем по правилу
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
+		Тогда открылось окно "Select method to calculate indicators"
+		И элемент формы с именем 'ReportGenerationMethod' стал равен "By processing rule"
+		И элемент формы с именем 'ProcessingRule' стал равен "VA - Manual entry for all analytics"
+		И элемент формы с именем 'ПравилоПроверки' стал равен "VA - Manual entry for all analytics"
+		И выпадающий список с именем 'ReportGenerationMethod' стал равен:
+			| "By processing rule"                       |
+			| "Consolidate perimeter (IFRS)"            |
+			| "Consolidate perimeter (Proportionally)" |
+			| "Collapse by period"                        |
+		И я нажимаю на кнопку с именем 'FormSelect'
+		Когда открылось окно '$WindowTitle$'
+		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ВидОтчетаСАналитиками_Пустой.mxl'
+
+	* Проверяем периодичность в "Свернуть по периоду"
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
+		Тогда открылось окно "Select method to calculate indicators"
+		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Collapse by period"
+		И элемент формы с именем 'PeriodicityСвертки' стал равен "Ten-day period"
+		И выпадающий список с именем 'PeriodicityСвертки' стал равен:
+			| "Day"   |
+			| "Week" |
+			| "Ten-day period" |
+		И я нажимаю на кнопку с именем 'FormSelect'
+		Когда открылось окно '$WindowTitle$'	
+		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ВидОтчетаСАналитиками_Пустой.mxl'		
+
+	* Рассчитываем по "Консолидировать периметр (МСФО)"
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
+		И элемент формы с именем 'ReportGenerationMethod' стал равен "Collapse by period"
+		Тогда открылось окно "Select method to calculate indicators"
+		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Consolidate perimeter (IFRS)"
+		И я нажимаю на кнопку с именем 'FormSelect'
+		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ВидОтчетаСАналитиками_Система_МСФО.mxl' по шаблону
+
+	* Вводим цену
+		Когда открылось окно '$WindowTitle$'
+		И Я ввожу значение '10.00000' в ячейку 'R7C3'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R7C3"
+		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateCopyDataOnColumn'
+		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateCopyDataOnRow'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R7C6"
+		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateCopyDataOnColumn'							
+				
+	* Рассчитываем по "Консолидировать периметр (Пропорционально)"
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
+		Тогда открылось окно "Select method to calculate indicators"
+		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Consolidate perimeter (Proportionally)"
+		И я нажимаю на кнопку с именем 'FormSelect'
+		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ВидОтчетаСАналитиками_Система_Пропорционально.mxl' по шаблону
+
+	* Проверяем историю действий
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'CancelApplyDetailed'
+		Тогда открылось окно "Action history"
+		Тогда таблица 'Transactions_' стала равной:
+			| "Transaction presentation"                |
+			| "Automatic indicator consolidation" |
+			| "Copy by column"                  |
+			| "Copy by line"                   |
+			| "Copy by column"                  |
+			| "Change indicator"                    |
+			| "Automatic indicator consolidation" |
+			| "Collapsed automatically by period"        |
+			| "Fill in by rule"                   |
+		И я нажимаю на кнопку с именем 'FormCancel'				
+
+	* Сохраняем экземпляр отчета
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormFillByDefault'
+		Когда открылось окно '$WindowTitle$'
+		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ВидОтчетаСАналитиками_Система_Пропорционально.mxl' по шаблону
+		И я нажимаю на кнопку с именем 'WriteAndClose'
+		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд						
 	
-Сценарий: 01.11 Сохранение настроек формы списка экземпляров отчетов
+Сценарий: 01.12 Эллиминация и форма выбора расчета показателей
+
+	* Создаем документ
+		И Я создаю экземпляр отчета для вида отчета "VA - Manual entry for all analytics" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mars LLC" проект "VA - Main project" аналитики '' '' '' '' '' ''
+
+	* Элиминация показателей
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
+		Тогда открылось окно "Select method to calculate indicators"
+		И элемент формы с именем 'ReportGenerationMethod' стал равен "By processing rule"
+		И выпадающий список с именем 'ReportGenerationMethod' стал равен:
+			| "By processing rule" |
+			| "Eliminate"        |
+			| "Collapse by period"  |
+		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Eliminate"	
+		И я нажимаю на кнопку с именем 'FormSelect'
+		Когда открылось окно '$WindowTitle$'
+		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_ВидОтчетаСАналитиками_Пустой.mxl'
+
+	* Элиминация показателей
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
+		Тогда открылось окно "Select method to calculate indicators"
+		И элемент формы с именем 'ReportGenerationMethod' стал равен "Eliminate"
+		И выпадающий список с именем 'ReportGenerationMethod' стал равен:
+			| "By processing rule" |
+			| "Eliminate"        |
+			| "Collapse by period"  |
+		И Я закрываю окно "Select method to calculate indicators"
+
+	* Закрываем документ не сохраняя	
+		Тогда открылось окно '$WindowTitle$'
+		И Я закрываю окно '$WindowTitle$'
+		Тогда открылось окно "1C:Enterprise"
+		И я нажимаю на кнопку с именем 'Button1'					
+
+Сценарий: 01.13 Сохранение настроек формы списка экземпляров отчетов
 
 	И Я запоминаю значение выражения '"Delete_" + StrReplace(New UUID, "-", "")' в переменную 'UID'
 
@@ -1319,7 +1453,7 @@
 	И в поле с именем 'Description' я ввожу текст "VA - Manual entry for all analytics - Venus LLC"
 	И я нажимаю на кнопку с именем 'FormSaveVariant'
 
-Сценарий: 01.12 Отображение в дополнительной валюте
+Сценарий: 01.14 Отображение в дополнительной валюте
 
 	* Открываем экземпляр отчета по сохраненной настройке
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report instances"
@@ -1363,7 +1497,7 @@
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button1'
 
-Сценарий: 01.13 Очистка показателей отчета
+Сценарий: 01.15 Очистка показателей отчета
 
 	* Открываем экземпляр отчета по сохраненной настройке
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report instances"
@@ -1388,7 +1522,7 @@
 		И я нажимаю на кнопку с именем 'WriteAndClose'
 		И я жду закрытия окна '$WindowTitle$ *' в течение 60 секунд
 
-Сценарий: 01.14 Открытие версии
+Сценарий: 01.16 Открытие версии
 
 	* Открываем экземпляр отчета по сохраненной настройке
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report instances"
@@ -1427,7 +1561,7 @@
 		Когда открылось окно "Indicator version management"
 		И Я закрываю окно "Indicator version management"
 
-Сценарий: 01.15 Удаление версии
+Сценарий: 01.17 Удаление версии
 
 	* Открываем экземпляр отчета по сохраненной настройке
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report instances"
@@ -1465,7 +1599,7 @@
 		Тогда открылось окно "Documents are identical: Compare spreadsheet documents"
 		И я нажимаю на кнопку с именем 'FormClose'	
 
-Сценарий: 01.16 Сравнение версий
+Сценарий: 01.18 Сравнение версий
 
 	* Открываем экземпляр отчета по сохраненной настройке
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report instances"
@@ -1504,7 +1638,7 @@
 		Когда открылось окно "Indicator version management"
 		И Я закрываю окно "Indicator version management"
 
-Сценарий: 01.17 Сворачивание до версии
+Сценарий: 01.19 Сворачивание до версии
 
 	* Открываем экземпляр отчета по сохраненной настройке
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report instances"
@@ -1534,7 +1668,7 @@
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'WriteAndClose'
 		
-Сценарий: 01.18 Изменение отчета при выводе в тысячах
+Сценарий: 01.20 Изменение отчета при выводе в тысячах
 
 	* Открываем экземпляр отчета по сохраненной настройке
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report instances"
@@ -1577,7 +1711,7 @@
 		И я нажимаю на кнопку с именем 'WriteAndClose'
 		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд
 			
-Сценарий: 01.19 Созадем бланк сводной таблицы
+Сценарий: 01.21 Созадем бланк сводной таблицы
 
 	И Я для вида отчета "VA - Manual entry for all analytics" я создаю бланк сводной таблицы по умолчанию с отборами "Project"
 
@@ -1664,7 +1798,7 @@
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
 		И я жду закрытия окна '$WindowTitle$ *' в течение 20 секунд			
 
-Сценарий: 01.20 Переходим в режим отображения данных
+Сценарий: 01.22 Переходим в режим отображения данных
 
 	И Я октрываю сводную таблицу отчета с именем "VA - Manual entry for all analytics"
 	И Я устанавливаю отборы сводной таблицы: дата начала '1/1/2021', дата конца '3/31/2021', валюта 'RUB', сценарий "VA - Main scenario", организация "Venus LLC"
@@ -1772,7 +1906,7 @@
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button1'
 
-Сценарий: 01.21 Тестируем кнопки пересчета показателей
+Сценарий: 01.23 Тестируем кнопки пересчета показателей
 
 	И Я октрываю сводную таблицу отчета с именем "VA - Manual entry for all analytics"
 

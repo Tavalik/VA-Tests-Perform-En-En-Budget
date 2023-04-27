@@ -197,8 +197,8 @@
 				И в таблице 'ComplianceTable' я выбираю текущую строку
 				Когда открылось окно "Data sources"
 				И в таблице 'List' я перехожу к строке:
-					| "Description"                                          | "Receipt method"                                 | "Infobase type"                      | "Indicator filter"  |
-					| "VA - Data to add analytics_Goods quantity" | "Current infobase report indicator (easy setup)" | "Current infobase" | "Goods quantity" |
+					| "Description"                                          | "Receipt method"                                 | "Indicator filter"  |
+					| "VA - Data to add analytics_Goods quantity" | "Current infobase report indicator (easy setup)" | "Goods quantity" |
 				И в таблице 'List' я выбираю текущую строку				
 				Тогда открылось окно "Data source (create)*"
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'

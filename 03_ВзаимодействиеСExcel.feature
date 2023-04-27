@@ -19,7 +19,7 @@
 
 Сценарий: 03.01 Создание внешней информационной базы
 
-	И Я создаю внешнюю информационную базу с именем "VA - Import from Excel" и типом "Microsoft Excel files"
+	И Я создаю внешнюю информационную базу с именем "VA - Import from Excel" и типом 'Файлы Microsoft Excel'
 
 Сценарий: 03.02 Создание отчета с группами и 6 аналитиками
 
@@ -318,7 +318,7 @@
 		Когда открылось окно "Select method to calculate indicators"
 		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Import"
 		И элемент формы с именем 'ImportApproach' стал равен 'FromCatalog'
-		И элемент формы с именем 'ImportFile3' стал равен 'ВА_ИмпортExcel_Меркурий_En.xlsx'
+		И элемент формы с именем 'ImportFile3' стал равен 'DimenKind_ImportExcel_Mercury*' по шаблону
 		И элемент формы с именем 'ImportTemplate' стал равен "VA - ImportExcel"
 		И я нажимаю на кнопку с именем 'FormSelect'
 		Когда открылось окно "Select file version"
@@ -336,7 +336,7 @@
 		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
 		Когда открылось окно "Select method to calculate indicators"	
 		И я меняю значение переключателя с именем 'ImportApproach' на "on hard drive"						
-		И в поле с именем 'PathToFile' я ввожу текст '$КаталогПроекта$\Макеты\ВА_ИмпортExcel_Меркурий_2_En.xlsm'
+		И в поле с именем 'PathToFile' я ввожу текст "$КаталогПроекта$\Макеты\ВА_ИмпортExcel_Меркурий_2_En.xlsm"
 		И я нажимаю на кнопку с именем 'FormSelect'
 
 	* Сверяем результат	

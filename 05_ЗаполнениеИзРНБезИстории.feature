@@ -417,7 +417,7 @@
 		
 		* Рассчитываем по регламенту
 			И Открылась сводная таблица для вида отчета "VA - Filling from PH (no history)"
-			И я нажимаю на кнопку с именем 'ShouldRecalculateOnРегламенту'
+			И я нажимаю на кнопку с именем 'RecalculateAccordingToRegulations'
 			И я жду открытия формы '$WindowTitle$' в течение 30 секунд
 			Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' | "January 2021" | "February 2021" | "March 2021" |
@@ -438,7 +438,7 @@
 
 		* Рассчитываем по правилу
 			Когда открылось окно '$WindowTitle$'
-			И я нажимаю на кнопку с именем 'ShouldRecalculateOtherItems'
+			И я нажимаю на кнопку с именем 'RecalculateOther'
 			Тогда открылось окно "Select method to calculate indicators"
 			И я нажимаю на кнопку с именем 'FormSelect'
 			И я жду открытия формы '$WindowTitle$' в течение 30 секунд

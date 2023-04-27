@@ -192,7 +192,7 @@
 		И я нажимаю на кнопку с именем 'Button0'
 		Тогда открылось окно "Report structure"
 		Если поле с именем 'TemplateOfReportsTemplatesAppearance' существует тогда
-			И из выпадающего списка с именем 'TemplateOfReportsTemplatesAppearance' я выбираю по строке "Classic"
+			И из выпадающего списка с именем 'TemplateOfReportsTemplatesAppearance' я выбираю по строке 'Классический'
 		Если поле с именем 'DisplayBankingDetails' существует тогда
 			И я изменяю флаг с именем 'DisplayBankingDetails'
 		И я нажимаю на кнопку с именем 'FormSelect'	
@@ -416,7 +416,7 @@
 Сценарий: Я создаю экземпляр отчета для вида отчета 'TheReportKind' сценарий 'TheScenario' период 'TheStartDate' 'TheEndDate' периодичность 'TheFrequency' организация 'TheBusinessUnit' проект 'TheProject' аналитики 'TheDimension1' 'TheDimension2' 'TheDimension3' 'TheDimension4' 'TheDimension5' 'TheDimension6' 
 
 	* Откроем форму ключевых реквизитов
-		Если текущее окно имеет заголовок "Specify document key attributes" Тогда
+		Если текущее окно имеет заголовок "Specify key document attributes" Тогда
 			// Форма уже открыта
 		Иначе
 			И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report instances"
@@ -424,7 +424,7 @@
 			И я нажимаю на кнопку с именем 'FormCreate'
 
 	* Заполняем ключевые реквизиты
-		Тогда открылось окно "Specify document key attributes"
+		Тогда открылось окно "Specify key document attributes"
 		И из выпадающего списка с именем 'ReportKind' я выбираю по строке '[TheReportKind]'				
 		И из выпадающего списка с именем 'Scenario' я выбираю по строке '[TheScenario]'
 		И из выпадающего списка с именем 'Periodicity' я выбираю точное значение '[TheFrequency]'
@@ -433,7 +433,7 @@
 		И в поле с именем 'DateBegin' я ввожу текст '[TheStartDate]'
 		И в поле с именем 'DateEnd' я ввожу текст '[TheEndDate]'
 		И я нажимаю на кнопку с именем 'Select'
-		Тогда открылось окно "Specify document key attributes"
+		Тогда открылось окно "Specify key document attributes"
 		И я нажимаю кнопку выбора у поля с именем 'Organization'
 		Когда открылось окно "Business unit*"
 		И я выбираю пункт контекстного меню с именем 'ListContextMenuFind' на элементе формы с именем 'List'
@@ -447,7 +447,7 @@
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Business unit*"
 		И в таблице 'List' я выбираю текущую строку
-		Тогда открылось окно "Specify document key attributes"
+		Тогда открылось окно "Specify key document attributes"
 		Если 'NOT IsBlankString("[TheProject]")' Тогда
 			И из выпадающего списка с именем 'Project' я выбираю по строке '[TheProject]'
 		Если 'NOT IsBlankString("[TheDimension1]")' Тогда
@@ -462,7 +462,7 @@
 			И из выпадающего списка с именем 'ReportDimension1' я выбираю по строке '[TheDimension5]'
 		Если 'NOT IsBlankString("[TheDimension6]")' Тогда
 			И из выпадающего списка с именем 'ReportDimension1' я выбираю по строке '[TheDimension6]'
-		Когда открылось окно "Specify document key attributes"
+		Когда открылось окно "Specify key document attributes"
 		И я нажимаю на кнопку с именем 'OKButton'
 		
 		И Открылся экземпляр отчета для вида отчета '[TheReportKind]' валюта '*' организация '[TheBusinessUnit]' сценарий '[TheScenario]' периодичность '[TheFrequency]' проект '[TheProject]' аналитики '[TheDimension1]' '[TheDimension2]' '[TheDimension3]' '[TheDimension4]' '[TheDimension5]' '[TheDimension6]' 	

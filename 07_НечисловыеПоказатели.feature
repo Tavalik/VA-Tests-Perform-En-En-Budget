@@ -406,7 +406,7 @@
 					| 'Date' |
 				И в таблице 'ComplianceTable' я перехожу к строке:
 					| "Destination dimension" | "Column name" | "Filling method" |
-					| 'Value'            | '[Period]'    | "Source field"    |
+					| "Value"            | '[Period]'    | "Source field"    |
 				И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
 				И я выбираю пункт контекстного меню с именем 'ButtonUnmap' на элементе формы с именем 'ComplianceTable'
 				И я выбираю пункт контекстного меню с именем 'ButtonMapDimensions' на элементе формы с именем 'ComplianceTable'
@@ -536,7 +536,7 @@
 						| 'SKU ' |			
 				И в таблице 'ComplianceTable' я перехожу к строке:
 					| "Destination dimension" | "Column name" | "Filling method" |
-					| 'Value'            | "[Code]"       | "Source field"    |
+					| "Value"            | "[Code]"       | "Source field"    |
 				И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
 				И я выбираю пункт контекстного меню с именем 'ButtonUnmap' на элементе формы с именем 'ComplianceTable'
 				И я выбираю пункт контекстного меню с именем 'ButtonMapDimensions' на элементе формы с именем 'ComplianceTable'
@@ -900,7 +900,7 @@
 				Тогда открылось окно "Edit tree"
 				И я нажимаю на кнопку с именем 'AddOperand1'
 				Тогда открылось окно "Data sources"
-				И в таблице "List" я перехожу к строке:
+				И в таблице 'List' я перехожу к строке:
 					| "Description"                        | "Indicator filter" | "Receipt method"                                 |
 					| "VA - Calculation in code_FormulasCode number" | "FormulasCode number" | "Current infobase report indicator (easy setup)" |
 				И я выбираю пункт контекстного меню с именем 'ListContextMenuChange' на элементе формы с именем 'List'
