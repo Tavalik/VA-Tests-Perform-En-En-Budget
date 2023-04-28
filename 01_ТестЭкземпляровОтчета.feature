@@ -205,8 +205,8 @@
 		И из выпадающего списка с именем 'ValueType' я выбираю точное значение "Number"
 		И я изменяю флаг с именем 'TotalKindChange'
 		И из выпадающего списка с именем 'TotalKind' я выбираю точное значение "Average"
-		И я устанавливаю флаг с именем 'NotСуммируетсяChange'
-		И я устанавливаю флаг с именем 'NotСуммируется'
+		И я устанавливаю флаг с именем 'DoNotSumUpChange'
+		И я устанавливаю флаг с именем 'DoNotSumUp'
 		И я устанавливаю флаг с именем 'ControllableIndicatorChange'
 		И я устанавливаю флаг с именем 'ControllableIndicator'				
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
@@ -1135,17 +1135,17 @@
 	* Копирование экземпляра
 		Когда открылось окно "Report instances"
 		И я выбираю пункт контекстного меню с именем 'ListContextMenuCopy' на элементе формы с именем 'List'
-		Когда открылось окно "Specify key document attributes"
+		Когда открылось окно "Specify document key attributes"
 		И я нажимаю на кнопку с именем 'OKButton'
 		Тогда в логе сообщений TestClient есть строки:
-			|"A report instance with the specified key attributes already exists."|						
-		Когда открылось окно "Specify key document attributes"
+			|"A report instance with key attributes you specified already exists"|						
+		Когда открылось окно "Specify document key attributes"
 		И я нажимаю кнопку выбора у поля с именем 'Organization'
 		Если '$$IsCPM$$' Тогда
 			И Я в списке "Business units" по полю "Name in the application" ищу элемент "Earth LLC" "Exact match"
 		Если '$$IsERPCPM$$' Тогда
 			И Я в списке "Companies" по полю "Рабочее наименование" ищу элемент "Earth LLC" "Exact match"
-		Когда открылось окно "Specify key document attributes"
+		Когда открылось окно "Specify document key attributes"
 		И я нажимаю на кнопку с именем 'OKButton'
 
 	* Сверим результат	
@@ -1275,7 +1275,7 @@
 		Тогда открылось окно "Select method to calculate indicators"
 		И элемент формы с именем 'ReportGenerationMethod' стал равен "By processing rule"
 		И элемент формы с именем 'ProcessingRule' стал равен "VA - Manual entry for all analytics"
-		И элемент формы с именем 'ПравилоПроверки' стал равен "VA - Manual entry for all analytics"
+		И элемент формы с именем 'CheckRule' стал равен "VA - Manual entry for all analytics"
 		И выпадающий список с именем 'ReportGenerationMethod' стал равен:
 			| "By processing rule"                       |
 			| "Consolidate perimeter (IFRS)"            |
@@ -1290,8 +1290,8 @@
 		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
 		Тогда открылось окно "Select method to calculate indicators"
 		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Collapse by period"
-		И элемент формы с именем 'PeriodicityСвертки' стал равен "Ten-day period"
-		И выпадающий список с именем 'PeriodicityСвертки' стал равен:
+		И элемент формы с именем 'ReconciliationFrequency' стал равен "Ten-day period"
+		И выпадающий список с именем 'ReconciliationFrequency' стал равен:
 			| "Day"   |
 			| "Week" |
 			| "Ten-day period" |

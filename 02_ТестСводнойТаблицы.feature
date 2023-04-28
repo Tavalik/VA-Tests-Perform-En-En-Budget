@@ -999,7 +999,7 @@
 	* Должен появиться лог с ошибкой
 		И я жду открытия окна "Protocol" в течение 60 секунд
 		Тогда табличный документ 'SpreadsheetDocumentField' равен:
-			| "Errors"                                                                                                                                                                                              |
+			| "Errors"                                                                                                                                                                    |
 			| "Cannot save indicator values. Block to change by parameters is set:\n	Scenario: \"VA - Script for indexing\",\n	Company: \"Mercury LLC\",\n	Period: \"January 2021\"" |
 		Тогда в логе сообщений TestClient есть строка "Copy successful"
 		И Я закрываю окно "Protocol"
