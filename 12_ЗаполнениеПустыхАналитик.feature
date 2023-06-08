@@ -143,7 +143,7 @@
 	И Я в конструкторе отчета добавляю колонку с именем "Amount"
 	И Я в конструкторе отчета добавляю колонку с именем "Date"
 
-	И Я в конструкторе отчета в ячейке 'R2C3:R4C3' я меняю свойства показателей 'ValueType' на "Date"
+	И Я в конструкторе отчета в ячейке 'R2C3:R4C3' меняю свойства показателей 'ValueType' на "Date"
 		
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0ProCate" в ячейку 'R2C3'
 	И я нажимаю на кнопку с именем 'CopyAndShiftDown1'
@@ -229,7 +229,7 @@
 			Тогда открылось окно "Edit tree"
 			И Я закрываю окно "Edit tree"
 					
-	И Я для вида отчета "VA - Filling empty analytics" я создаю бланк по умолчанию
+	И Я для вида отчета "VA - Filling empty analytics" создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Filling empty analytics" в бланке для группы раскрытия с адресом 'R9C1' меняю сортировку "Product range" "Description" на сортировку "Product range" "Product ID"
 	И Я Для вида отчета "VA - Filling empty analytics" в бланке для группы раскрытия с адресом 'R12C1' меняю сортировку "Product range" "Description" на сортировку "Product range" "Product ID"
 	И Я Для вида отчета "VA - Filling empty analytics" в бланке для группы раскрытия с адресом 'R15C1' меняю сортировку "Product range" "Description" на сортировку "Product range" "Product ID"

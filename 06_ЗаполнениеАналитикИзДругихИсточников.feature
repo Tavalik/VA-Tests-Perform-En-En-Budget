@@ -39,7 +39,7 @@
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0CFItems" в ячейку 'R2C3'
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R3C3'
 
-	И Я Для вида отчета "VA - Data to add analytics" я создаю бланк по умолчанию
+	И Я Для вида отчета "VA - Data to add analytics" создаю бланк по умолчанию
 
 Сценарий: 06.03 Создание экзмемпляра отчета "VA - Data to add analytics"
 
@@ -374,11 +374,11 @@
 					Если '$$IsERPCPM$$' Тогда
 						И в таблице 'FieldsTreeDB' я перехожу к строке:
 							| "Field"    |
-							| 'Type цены' |
+							| 'Kind цены' |
 						И я нажимаю на кнопку с именем 'AddConditionItem'
 						И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 							| "Field"   |
-							| 'TypeЦены' |
+							| 'KindЦены' |
 					И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "Fixed value"
 					И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'DefiningMethodClarification' я выбираю по строке "VA - Products"
 					И в таблице 'TreeOfFilterParametersDB' я завершаю редактирование строки
@@ -399,7 +399,7 @@
 					И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 'Result = Max([InformationRegister_ProRanPri_Price_], 1500000)' 
 				И я нажимаю на кнопку с именем 'WriteAndCollapse'
 	
-	И Я Для вида отчета "VA - Analysts from fields of other sources" я создаю бланк по умолчанию
+	И Я Для вида отчета "VA - Analysts from fields of other sources" создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Analysts from fields of other sources" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
 	И Я Для вида отчета "VA - Analysts from fields of other sources" в бланке для группы раскрытия с адресом 'R10C1' задаю сортировку "Product range" "Product ID"
 	И Я Для вида отчета "VA - Analysts from fields of other sources" в бланке для группы раскрытия с адресом 'R13C1' меняю сортировку "Product range" "Description" на сортировку "Product range" "Product ID"

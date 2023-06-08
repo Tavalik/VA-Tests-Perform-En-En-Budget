@@ -38,20 +38,20 @@
 		И Я в конструкторе отчета добавляю колонку с именем "Date"
 
 	* Настраиваем показатели
-		И Я в конструкторе отчета в ячейке 'R2C2:R3C5' я меняю свойства показателей 'ControllableIndicator' на "True"	
-		И Я в конструкторе отчета в ячейке 'R2C2' я меняю свойства показателей 'ControllableIndicator' на "False"
-		И я в конструкторе отчета в ячейке 'R3C2' я меняю свойство показателя 'ControllableIndicator' на "False"
-		И я в конструкторе отчета в ячейке 'R2C5' я меняю свойство показателя 'ValueType' на "Date"
-		И я в конструкторе отчета в ячейке 'R3C5' я меняю свойство показателя 'ValueType' на "Date"
+		И Я в конструкторе отчета в ячейке 'R2C2:R3C5' меняю свойства показателей 'ControllableIndicator' на "True"	
+		И Я в конструкторе отчета в ячейке 'R2C2' меняю свойства показателей 'ControllableIndicator' на "False"
+		И я в конструкторе отчета в ячейке 'R3C2' меняю свойство показателя 'ControllableIndicator' на "False"
+		И я в конструкторе отчета в ячейке 'R2C5' меняю свойство показателя 'ValueType' на "Date"
+		И я в конструкторе отчета в ячейке 'R3C5' меняю свойство показателя 'ValueType' на "Date"
 
 	* Настраиваем аналитики
 		И Я в конструкторе отчета добавляю аналитику с кодом "VA0CFItems" в ячейку 'R3C2'
 		И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R3C3'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R3C8"
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И Я в конструкторе отчета в ячейке 'R3C8' меняю аналитику валюта
+		И Я в конструкторе отчета в ячейке 'R3C2:R3C5' меняю свойства показателей 'ShouldRecalculateForeignCurrencyAmount' на "True"
 
 	* Бланк вида отчета
-		И Я Для вида отчета "VA - Controlled indicators" я создаю бланк по умолчанию		
+		И Я Для вида отчета "VA - Controlled indicators" создаю бланк по умолчанию		
 
 Сценарий: 15.02 Создание экземпляра отчета "VA - Controlled indicators"
 
@@ -174,14 +174,14 @@
 		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListOpenInstancesList'
 		Тогда открылось окно "Report instances"
 		И я нажимаю на кнопку с именем 'FormCopy'
-		Когда открылось окно "Specify document key attributes"
+		Когда открылось окно "Specify key document attributes"
 		И из выпадающего списка с именем 'Scenario' я выбираю по строке "VA - Scenario with control"
 		И я нажимаю кнопку выбора у поля с именем 'Organization'
 		Если '$$IsCPM$$' Тогда
-			И Я в списке "Business units" по полю "Name in the application" ищу элемент "Mercury LLC" "Exact match"
+			И Я в списке "Business units" по полю "Name in the application" ищу и выбираю элемент "Mercury LLC" "Exact match"
 		Если '$$IsERPCPM$$' Тогда
-			И Я в списке "Companies" по полю "Рабочее наименование" ищу элемент "Mercury LLC" "Exact match"
-		Когда открылось окно "Specify document key attributes"
+			И Я в списке "Companies" по полю "Рабочее наименование" ищу и выбираю элемент "Mercury LLC" "Exact match"
+		Когда открылось окно "Specify key document attributes"
 		И я нажимаю на кнопку с именем 'OKButton'
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Controlled indicators" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Scenario with control" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' '' 
 		
@@ -233,7 +233,7 @@
 Сценарий: 15.05 Создаем сводную таблицу для контролируемых значений 						
 
 	* Создаем бланк сводной таблицы
-		И Я для вида отчета "VA - Controlled indicators" я создаю бланк сводной таблицы по умолчанию с отборами "Project"
+		И Я для вида отчета "VA - Controlled indicators" создаю бланк сводной таблицы по умолчанию с отборами "Project"
 		Когда открылось окно "VA - Controlled indicators (Report types)"
 		И я нажимаю на кнопку открытия поля с именем 'DefaultPivotTableTemplate'
 		Тогда Открылся бланк сводной таблицы для вида отчета "VA - Controlled indicators"

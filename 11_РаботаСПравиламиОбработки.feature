@@ -32,7 +32,7 @@
 		И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C2' 
 		И Я закрываю окно "Edit tree"
 
-	И Я Для вида отчета "VA - Quantity" я создаю бланк по умолчанию
+	И Я Для вида отчета "VA - Quantity" создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Quantity" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
 
 Сценарий: 11.03 Создание экземпляра отчета - "VA - Quantity"
@@ -134,11 +134,11 @@
 		Если '$$IsERPCPM$$' Тогда
 			И в таблице 'FieldsTreeDB' я перехожу к строке:
 				| "Field"     |
-				| 'Type цены' |
+				| 'Kind цены' |
 			И я нажимаю на кнопку с именем 'AddConditionItem'
 			И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 			| "Field"    |
-			| 'TypeЦены' |
+			| 'KindЦены' |
 		И в таблице 'TreeOfFilterParametersDB' я выбираю текущую строку
 		И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "Fixed value"
 		И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'DefiningMethodClarification' я выбираю по строке "VA - Products"
@@ -149,7 +149,7 @@
 		Тогда открылось окно "Edit tree *"
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
 
-	И Я Для вида отчета "VA - Price" я создаю бланк по умолчанию
+	И Я Для вида отчета "VA - Price" создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Price" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
 
 Сценарий: 11.05 Создание экземпляра отчета - "VA - Price"
@@ -184,7 +184,7 @@
 		И Я в конструкторе отчета добавляю колонку с именем "Quantity"
 		И Я в конструкторе отчета добавляю колонку с именем "Price"
 		И Я в конструкторе отчета добавляю колонку с именем "Amount"
-		И Я в конструкторе отчета в ячейке 'R2C2' я меняю свойство показателя 'NonFinancial' на 'True'
+		И Я в конструкторе отчета в ячейке 'R2C2' меняю свойство показателя 'NonFinancial' на 'True'
 		И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C2' 
 
 	* Вводим формулы расчета
@@ -217,7 +217,7 @@
 		Когда открылось окно "Edit tree"
 		И Я закрываю окно "Edit tree"
 
-	И Я Для вида отчета "VA - Sales" я создаю бланк по умолчанию
+	И Я Для вида отчета "VA - Sales" создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Sales" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
 		
 Сценарий: 11.07 Создание экземпляра отчета - "VA - Sales"	- пишем черновые версии
@@ -637,7 +637,7 @@
 				|'ReportData.Delete("ReportsIndicators"); '|
 				|''|
 				|'ReportData.Insert("ReportIndicator", '|
-				|' Справочники.ReportsIndicators.FindByCode("Products_Price",True,,ObjectOfARAP.ReportKind));'|
+				|' Catalogs.ReportsIndicators.FindByCode("Products_Price",True,,ObjectOfARAP.ReportKind));'|
 				|'tIndicatorsValues_Price = GetIndicatorsValue('|
 				|' ReportData,DimensionsToDrillDown,AdditionalParameters);'|
 				|'ReportData.Delete("ReportIndicator"); '|
@@ -694,7 +694,7 @@
 				|'ReportData.Delete(\"ReportsIndicators\"); '|
 				|''|
 				|'ReportData.Insert(\"ReportIndicator\", '|
-				|'  Справочники.ReportsIndicators.FindByCode(\"ProductRange_Price\",True,,CalcStructure.ReportKind));'|
+				|'  Catalogs.ReportsIndicators.FindByCode(\"ProductRange_Price\",True,,CalcStructure.ReportKind));'|
 				|'tValuesIndicators_Price = UGetIndicatorsValue('|
 				|'  ReportData, DisclosedAnalysts, ExtraOptions);'|
 				|'ReportData.Delete(\"ReportIndicator\"); '|

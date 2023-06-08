@@ -42,19 +42,19 @@
 	И Я в конструкторе отчета добавляю колонку с именем "IncludeInPrice"
 	И Я в конструкторе отчета добавляю колонку с именем "Product ID"	
 
-	И я в конструкторе отчета в ячейке 'R2C2' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-	И я в конструкторе отчета в ячейке 'R2C2' я меняю свойство показателя 'TotalKind' на "Average"
-	И я в конструкторе отчета в ячейке 'R2C3' я меняю свойство показателя 'ValueType' на "Date"
-	И я в конструкторе отчета в ячейке 'R2C3' я меняю свойство показателя 'TotalKind' на "Minimum"
-	И я в конструкторе отчета в ячейке 'R2C4' я меняю свойство показателя 'ValueType' на "Boolean"
-	И я в конструкторе отчета в ячейке 'R2C4' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"		
-	И я в конструкторе отчета в ячейке 'R2C4' я меняю свойство показателя 'TotalKind' на "Cannot calculate the total by group drilldown"
-	И я в конструкторе отчета в ячейке 'R2C5' я меняю свойство показателя 'ValueType' на "Line"
-	И я в конструкторе отчета в ячейке 'R2C5' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
+	И я в конструкторе отчета в ячейке 'R2C2' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
+	И я в конструкторе отчета в ячейке 'R2C2' меняю свойство показателя 'TotalKind' на "Average"
+	И я в конструкторе отчета в ячейке 'R2C3' меняю свойство показателя 'ValueType' на "Date"
+	И я в конструкторе отчета в ячейке 'R2C3' меняю свойство показателя 'TotalKind' на "Minimum"
+	И я в конструкторе отчета в ячейке 'R2C4' меняю свойство показателя 'ValueType' на "Boolean"
+	И я в конструкторе отчета в ячейке 'R2C4' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"		
+	И я в конструкторе отчета в ячейке 'R2C4' меняю свойство показателя 'TotalKind' на "Cannot calculate the total by group drilldown"
+	И я в конструкторе отчета в ячейке 'R2C5' меняю свойство показателя 'ValueType' на "Line"
+	И я в конструкторе отчета в ячейке 'R2C5' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
 
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C3'
 
-	И Я Для вида отчета "VA - Non-Numbers (source)" я создаю бланк по умолчанию
+	И Я Для вида отчета "VA - Non-Numbers (source)" создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Non-Numbers (source)" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
 
 Сценарий: 07.03 Создание экземпляра отчета - "VA - Non-Numbers (source)" 
@@ -132,23 +132,171 @@
 	* Сравниваем итоговый документ
 		Когда открылось окно '$WindowTitle$'
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-			| "VA - Non-Numbers (source)"                           | ''               | ''                | ''               | ''        | ''                | ''                | ''               | ''        | ''             | ''                | ''               | ''        | ''      | ''                | ''               | ''        |
-			| ''                                                                | ''               | ''                | ''               | ''        | ''                | ''                | ''               | ''        | ''             | ''                | ''               | ''        | ''      | ''                | ''               | ''        |
-			| ''                                                                | "January 2021" | ''                | ''               | ''        | "February 2021" | ''                | ''               | ''        | "March 2021" | ''                | ''               | ''        | "TOTAL" | ''                | ''               | ''        |
-			| ''                                                                | "Price"           | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"            | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"         | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"  | "DateInflow" | "IncludeInPrice" | "Product ID" |
-			| "Goods"                                                          | '1,206,000'      | '1/1/2021'      | "No"            | ''        | '1,326,600'       | '1/2/2021'      | "No"            | ''        | '1,326,600'    | '1/2/2021'      | "No"            | ''        | '0'     | '1/1/2021'      | "No"            | ''        |
-			| "5C:Corporate performance management "                                      | '1,250,000'      | '1/1/2021'      | "Yes"             | '000001'  | '2,145,000'       | '5/2/2021'      | "Yes"             | '2000005' | '2,145,000'    | '5/2/2021'      | "Yes"             | '2000005' | '0'     | '1/1/2021'      | "No"            | ''        |
-			| "2C:Corporation "                                                  | '2,050,000'      | '2/1/2021'      | "Yes"             | '000002'  | '2,255,000'       | ''                | "No"            | ''        | '2,255,000'    | ''                | "No"            | ''        | '0'     | '2/1/2021'      | "No"            | ''        |
-			| "4C:Enterprise 8.3 CORP. Server License (x86-64) "           | '180,000'        | '3/1/2021'      | "Yes"             | '000003'  | '198,000'         | ''                | "No"            | ''        | '198,000'      | ''                | "No"            | ''        | '0'     | '3/1/2021'      | "No"            | ''        |
-			| "1C:ERP. Corporate performance management "                                   | '1,950,000'      | '4/1/2021'      | "Yes"             | '000004'  | '660,000'         | '1/2/2021'      | "Yes"             | '2000001' | '660,000'      | '1/2/2021'      | "Yes"             | '2000001' | '0'     | '1/2/2021'      | "No"            | ''        |
-			| "3C:Enterprise 8 CORP. Client license for 100 users " | '600,000'        | '5/1/2021'      | "Yes"             | '000005'  | '1,375,000'       | ''                | "No"            | ''        | '1,375,000'    | ''                | "No"            | ''        | '0'     | '5/1/2021'      | "No"            | ''        |
+			| "VA - Non-Numbers (source)"                           | ''             | ''           | ''               | ''           | ''              | ''           | ''               | ''           | ''           | ''           | ''               | ''           | ''      | ''           | ''               | ''           |
+			| ''                                                    | ''             | ''           | ''               | ''           | ''              | ''           | ''               | ''           | ''           | ''           | ''               | ''           | ''      | ''           | ''               | ''           |
+			| ''                                                    | "January 2021" | ''           | ''               | ''           | "February 2021" | ''           | ''               | ''           | "March 2021" | ''           | ''               | ''           | "TOTAL" | ''           | ''               | ''           |
+			| ''                                                    | "Price"        | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"         | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"      | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price" | "DateInflow" | "IncludeInPrice" | "Product ID" |
+			| "Goods"                                               | '1,206,000'    | '1/1/2021'   | "No"             | ''           | '1,326,600'     | '1/2/2021'   | "No"             | ''           | '1,326,600'  | '1/2/2021'   | "No"             | ''           | '0'     | '1/1/2021'   | "No"             | ''           |
+			| "5C:Corporate performance management "                | '1,250,000'    | '1/1/2021'   | "Yes"            | '000001'     | '2,145,000'     | '5/2/2021'   | "Yes"            | '2000005'    | '2,145,000'  | '5/2/2021'   | "Yes"            | '2000005'    | '0'     | '1/1/2021'   | "No"             | ''           |
+			| "2C:Corporation "                                     | '2,050,000'    | '2/1/2021'   | "Yes"            | '000002'     | '2,255,000'     | ''           | "No"             | ''           | '2,255,000'  | ''           | "No"             | ''           | '0'     | '2/1/2021'   | "No"             | ''           |
+			| "4C:Enterprise 8.3 CORP. Server License (x86-64) "    | '180,000'      | '3/1/2021'   | "Yes"            | '000003'     | '198,000'       | ''           | "No"             | ''           | '198,000'    | ''           | "No"             | ''           | '0'     | '3/1/2021'   | "No"             | ''           |
+			| "1C:ERP. Corporate performance management "           | '1,950,000'    | '4/1/2021'   | "Yes"            | '000004'     | '660,000'       | '1/2/2021'   | "Yes"            | '2000001'    | '660,000'    | '1/2/2021'   | "Yes"            | '2000001'    | '0'     | '1/2/2021'   | "No"             | ''           |
+			| "3C:Enterprise 8 CORP. Client license for 100 users " | '600,000'      | '5/1/2021'   | "Yes"            | '000005'     | '1,375,000'     | ''           | "No"             | ''           | '1,375,000'  | ''           | "No"             | ''           | '0'     | '5/1/2021'   | "No"             | ''           |
 
 	* Записываем документ	
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'WriteAndClose'
 		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд			
 
-Сценарий: 07.04 Создание вида отчета "VA - Non-Numbers (recipient)"
+Сценарий: 07.04 Интерактивное удаление показателей
+
+	И Я создаю экземпляр отчета для вида отчета "VA - Non-Numbers (source)" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Venus LLC" проект "VA - Main project" аналитики "3Software sale" '' '' '' '' '' 
+
+	* Документ должен быть пустой
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+			| "VA - Non-Numbers (source)" | ''               | ''                | ''               | ''        | ''                | ''                | ''               | ''        | ''             | ''                | ''               | ''        | ''      | ''                | ''               | ''        |
+			| ''                                      | ''               | ''                | ''               | ''        | ''                | ''                | ''               | ''        | ''             | ''                | ''               | ''        | ''      | ''                | ''               | ''        |
+			| ''                                      | "January 2021" | ''                | ''               | ''        | "February 2021" | ''                | ''               | ''        | "March 2021" | ''                | ''               | ''        | "TOTAL" | ''                | ''               | ''        |
+			| ''                                      | "Price"           | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"            | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"         | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"  | "DateInflow" | "IncludeInPrice" | "Product ID" |
+			| "Goods"                                | '0'              | ''                | "No"            | ''        | '0'               | ''                | "No"            | ''        | '0'            | ''                | "No"            | ''        | '0'     | ''                | "No"            | ''        |
+
+	* Вводим значения показателей
+		И Я добавляю значения с раскрытием показателей в ячейку 'R6C1'
+			| "Product range"                                                   | 'Period_3_Value3' | 'Period_1_Value1' | 'Period_1_Value2' | 'Period_2_Value1' | 'Period_1_Value3' | 'Period_1_Value4' | 'Period_2_Value2' | 'Period_2_Value3' | 'Period_2_Value4' | 'Period_3_Value1' | 'Period_3_Value2' | 'Period_3_Value4' |
+			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | "No"                | '180,000.00000'      | '3/1/2021'         | '198,000.00000'      | "Yes"                 | '000003'             | ''                   | "No"                | ''                   | '198,000.00000'      | ''                   | ''                   |
+			| "3C:Enterprise 8 CORP. Client license for 100 users" | "No"                | '600,000.00000'      | '5/1/2021'         | '1,375,000.00000'    | "Yes"                 | '000005'             | ''                   | "No"                | ''                   | '1,375,000.00000'    | ''                   | ''                   |
+			| "5C:Corporate performance management"                                      | "Yes"                 | '1,250,000.00000'    | '1/1/2021'         | '2,145,000.00000'    | "Yes"                 | '000001'             | '5/2/2021'         | "Yes"                 | '2000005'            | '2,145,000.00000'    | '5/2/2021'         | '2000005'            |
+			| "2C:Corporation"                                                  | "No"                | '2,050,000.00000'    | '2/1/2021'         | '2,255,000.00000'    | "Yes"                 | '000002'             | ''                   | "No"                | ''                   | '2,255,000.00000'    | ''                   | ''                   |
+			| "1C:ERP. Corporate performance management"                                   | "Yes"                 | '1,950,000.00000'    | '4/1/2021'         | '660,000.00000'      | "Yes"                 | '000004'             | '1/2/2021'         | "Yes"                 | '2000001'            | '660,000.00000'      | '1/2/2021'         | '2000001'            |
+
+	* Сверяем результат
+		Когда открылось окно '$WindowTitle$'
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+			| "VA - Non-Numbers (source)"                           | ''               | ''                | ''               | ''        | ''                | ''                | ''               | ''        | ''             | ''                | ''               | ''        | ''      | ''                | ''               | ''        |
+			| ''                                                                | ''               | ''                | ''               | ''        | ''                | ''                | ''               | ''        | ''             | ''                | ''               | ''        | ''      | ''                | ''               | ''        |
+			| ''                                                                | "January 2021" | ''                | ''               | ''        | "February 2021" | ''                | ''               | ''        | "March 2021" | ''                | ''               | ''        | "TOTAL" | ''                | ''               | ''        |
+			| ''                                                                | "Price"           | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"            | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"         | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"  | "DateInflow" | "IncludeInPrice" | "Product ID" |
+			| "Goods"                                                          | '1,206,000'      | '1/1/2021'      | "No"            | ''        | '1,326,600'       | ''                | "No"            | ''        | '1,326,600'    | ''                | "No"            | ''        | '0'     | ''                | "No"            | ''        |
+			| "5C:Corporate performance management "                                      | '1,250,000'      | '1/1/2021'      | "Yes"             | '000001'  | '2,145,000'       | '5/2/2021'      | "Yes"             | '2000005' | '2,145,000'    | '5/2/2021'      | "Yes"             | '2000005' | '0'     | '1/1/2021'      | "No"            | ''        |
+			| "2C:Corporation "                                                  | '2,050,000'      | '2/1/2021'      | "Yes"             | '000002'  | '2,255,000'       | ''                | "No"            | ''        | '2,255,000'    | ''                | "No"            | ''        | '0'     | ''                | "No"            | ''        |
+			| "4C:Enterprise 8.3 CORP. Server License (x86-64) "           | '180,000'        | '3/1/2021'      | "Yes"             | '000003'  | '198,000'         | ''                | "No"            | ''        | '198,000'      | ''                | "No"            | ''        | '0'     | ''                | "No"            | ''        |
+			| "1C:ERP. Corporate performance management "                                   | '1,950,000'      | '4/1/2021'      | "Yes"             | '000004'  | '660,000'         | '1/2/2021'      | "Yes"             | '2000001' | '660,000'      | '1/2/2021'      | "Yes"             | '2000001' | '0'     | '1/2/2021'      | "No"            | ''        |
+			| "3C:Enterprise 8 CORP. Client license for 100 users " | '600,000'        | '5/1/2021'      | "Yes"             | '000005'  | '1,375,000'       | ''                | "No"            | ''        | '1,375,000'    | ''                | "No"            | ''        | '0'     | ''                | "No"            | ''        |
+
+	* Вводим пустое значение вручную
+		И Я ввожу значение '0' в ячейку 'R7C2'
+		И Я ввожу значение ' ' в ячейку 'R7C3'
+		И Я ввожу значение "No" в ячейку 'R7C4'
+		И Я ввожу значение ' ' в ячейку 'R7C5'
+
+	* Очищаем выделенные показатели
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R8C2:R8C5"
+		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateClearRange'
+
+	* Смотрим расскрытие по цене
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R6C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		Тогда открылось окно "Drill down indicators*"
+		Тогда таблица 'IndicatorsDrilldown' стала равной:
+			| "Product range"                                                   | 'Value1' |
+			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '180,000'   |
+			| "3C:Enterprise 8 CORP. Client license for 100 users" | '600,000'   |
+			| "1C:ERP. Corporate performance management"                                   | '1,950,000' |
+		И я нажимаю на кнопку с именем 'FormCancel'				
+
+	* Смотрим расскрытие по дате
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R6C3"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		Тогда открылось окно "Drill down indicators*"
+		Тогда таблица 'IndicatorsDrilldown' стала равной:
+			| "Product range"                                                   | 'Value1'  |
+			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '3/1/2021' |
+			| "3C:Enterprise 8 CORP. Client license for 100 users" | '5/1/2021' |
+			| "1C:ERP. Corporate performance management"                                   | '4/1/2021' |				
+		И в таблице 'IndicatorsDrilldown' я перехожу к строке:
+			| 'Value1'  | "Product range"                 |
+			| '4/1/2021' | "1C:ERP. Corporate performance management" |
+		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'
+		И я нажимаю на кнопку с именем 'FormOKButton1'
+				
+	* Удаляем строку из формы документа
+		Когда открылось окно '$WindowTitle$'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R9C2:R9C13"
+		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateClearRange'
+									
+	* Удаляем строку из формы раскрытия
+		Когда открылось окно '$WindowTitle$'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R6C1"
+		И я нажимаю на кнопку с именем 'DisplayADrilldown'
+		Тогда открылось окно "Drill down indicators*"
+		И в таблице 'IndicatorsDrilldown' я перехожу к строке:
+			| "Product range"                                                   | 'Period_1_Value1' | 'Period_1_Value2' | 'Period_1_Value3' | 'Period_1_Value4' | 'Period_2_Value1' | 'Period_2_Value3' | 'Period_3_Value1' | 'Period_3_Value3' |
+			| "3C:Enterprise 8 CORP. Client license for 100 users" | '600,000.00000'      | '5/1/2021'         | "Yes"                 | '000005'             | '1,375,000.00000'    | "No"                | '1,375,000.00000'    | "No"                |
+		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownDelete'
+		И я нажимаю на кнопку с именем 'FormOKButton1'
+					
+	* Сверяем результат
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+			| "VA - Non-Numbers (source)" | ''               | ''                | ''               | ''        | ''                | ''                | ''               | ''        | ''             | ''                | ''               | ''        | ''      | ''                | ''               | ''        |
+			| ''                                      | ''               | ''                | ''               | ''        | ''                | ''                | ''               | ''        | ''             | ''                | ''               | ''        | ''      | ''                | ''               | ''        |
+			| ''                                      | "January 2021" | ''                | ''               | ''        | "February 2021" | ''                | ''               | ''        | "March 2021" | ''                | ''               | ''        | "TOTAL" | ''                | ''               | ''        |
+			| ''                                      | "Price"           | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"            | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"         | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"  | "DateInflow" | "IncludeInPrice" | "Product ID" |
+			| "Goods"                                | '1,950,000'      | ''                | "No"            | ''        | '1,686,667'       | ''                | "No"            | ''        | '1,686,667'    | ''                | "No"            | ''        | '0'     | ''                | "No"            | ''        |
+			| "5C:Corporate performance management "            | '0'              | ''                | "No"            | ' '       | '2,145,000'       | '5/2/2021'      | "Yes"             | '2000005' | '2,145,000'    | '5/2/2021'      | "Yes"             | '2000005' | '0'     | ''                | "No"            | ''        |
+			| "2C:Corporation "                        | '0'              | ''                | "No"            | ''        | '2,255,000'       | ''                | "No"            | ''        | '2,255,000'    | ''                | "No"            | ''        | '0'     | ''                | "No"            | ''        |
+			| "1C:ERP. Corporate performance management "         | '1,950,000'      | ''                | "Yes"             | '000004'  | '660,000'         | '1/2/2021'      | "Yes"             | '2000001' | '660,000'      | '1/2/2021'      | "Yes"             | '2000001' | '0'     | ''                | "No"            | ''        |
+		
+	* Записываем, обновляем таблицу
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'Write'
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormUpdateConsideringVersions'
+												
+	* Очищаем все показатели
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'Clear'
+		Тогда открылось окно "1C:Enterprise"
+		И я нажимаю на кнопку с именем 'Button0'
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'Write'
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormUpdateConsideringVersions'
+
+	* Документ должен быть пустой
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+			| "VA - Non-Numbers (source)" | ''               | ''                | ''               | ''        | ''                | ''                | ''               | ''        | ''             | ''                | ''               | ''        | ''      | ''                | ''               | ''        |
+			| ''                                      | ''               | ''                | ''               | ''        | ''                | ''                | ''               | ''        | ''             | ''                | ''               | ''        | ''      | ''                | ''               | ''        |
+			| ''                                      | "January 2021" | ''                | ''               | ''        | "February 2021" | ''                | ''               | ''        | "March 2021" | ''                | ''               | ''        | "TOTAL" | ''                | ''               | ''        |
+			| ''                                      | "Price"           | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"            | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"         | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"  | "DateInflow" | "IncludeInPrice" | "Product ID" |
+			| "Goods"                                | '0'              | ''                | "No"            | ''        | '0'               | ''                | "No"            | ''        | '0'            | ''                | "No"            | ''        | '0'     | ''                | "No"            | ''        |
+
+	* Откатываем версию
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormVersionsManagement'
+		Тогда открылось окно "Indicator version management"
+		И я нажимаю на кнопку с именем 'ListDeleteVersions'
+		Тогда открылось окно "1C:Enterprise"
+		И я нажимаю на кнопку с именем 'Button0'
+		Тогда открылось окно "Indicator version management *"
+		И Я закрываю окно "Indicator version management *"
+
+	* Сверяем результат
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+			| "VA - Non-Numbers (source)" | ''               | ''                | ''               | ''        | ''                | ''                | ''               | ''        | ''             | ''                | ''               | ''        | ''      | ''                | ''               | ''        |
+			| ''                                      | ''               | ''                | ''               | ''        | ''                | ''                | ''               | ''        | ''             | ''                | ''               | ''        | ''      | ''                | ''               | ''        |
+			| ''                                      | "January 2021" | ''                | ''               | ''        | "February 2021" | ''                | ''               | ''        | "March 2021" | ''                | ''               | ''        | "TOTAL" | ''                | ''               | ''        |
+			| ''                                      | "Price"           | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"            | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"         | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"  | "DateInflow" | "IncludeInPrice" | "Product ID" |
+			| "Goods"                                | '1,950,000'      | ''                | "No"            | ''        | '1,686,667'       | ''                | "No"            | ''        | '1,686,667'    | ''                | "No"            | ''        | '0'     | ''                | "No"            | ''        |
+			| "5C:Corporate performance management "            | '0'              | ''                | "No"            | ' '       | '2,145,000'       | '5/2/2021'      | "Yes"             | '2000005' | '2,145,000'    | '5/2/2021'      | "Yes"             | '2000005' | '0'     | ''                | "No"            | ''        |
+			| "2C:Corporation "                        | '0'              | ''                | "No"            | ''        | '2,255,000'       | ''                | "No"            | ''        | '2,255,000'    | ''                | "No"            | ''        | '0'     | ''                | "No"            | ''        |
+			| "1C:ERP. Corporate performance management "         | '1,950,000'      | ''                | "Yes"             | '000004'  | '660,000'         | '1/2/2021'      | "Yes"             | '2000001' | '660,000'      | '1/2/2021'      | "Yes"             | '2000001' | '0'     | ''                | "No"            | ''        |
+		
+	* Записываем и закрываем документ
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'WriteAndClose'
+		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд				
+
+Сценарий: 07.05 Создание вида отчета "VA - Non-Numbers (recipient)"
 
 	И Я создаю вид отчета с именем "VA - Non-Numbers (recipient)" и родителем "VA - Non-Numbers and Groupings (группа)"
 	
@@ -172,9 +320,9 @@
 	И Я в конструкторе отчета добавляю колонку с именем "IncludeInPrice"
 	И Я в конструкторе отчета добавляю колонку с именем "Product ID"
 
-	И я в конструкторе отчета в ячейке 'R2C3:R4C3' я меняю свойства показателей 'ValueType' на "Date"
-	И я в конструкторе отчета в ячейке 'R2C4:R4C4' я меняю свойства показателей 'ValueType' на "Boolean"
-	И я в конструкторе отчета в ячейке 'R2C5:R4C5' я меняю свойства показателей 'ValueType' на "Line"
+	И я в конструкторе отчета в ячейке 'R2C3:R4C3' меняю свойства показателей 'ValueType' на "Date"
+	И я в конструкторе отчета в ячейке 'R2C4:R4C4' меняю свойства показателей 'ValueType' на "Boolean"
+	И я в конструкторе отчета в ячейке 'R2C5:R4C5' меняю свойства показателей 'ValueType' на "Line"
 
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C3'
 	Когда открылось окно "Edit tree"
@@ -343,11 +491,11 @@
 				Если '$$IsERPCPM$$' Тогда
 					И в таблице 'FieldsTreeDB' я перехожу к строке:
 						| "Field"    |
-						| 'Type цены' |
+						| 'Kind цены' |
 					И я нажимаю на кнопку с именем 'AddConditionItem'
 					И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 						| "Field"   |
-						| 'TypeЦены' | 
+						| 'KindЦены' | 
 				И в таблице 'TreeOfFilterParametersDB' я активизирую поле с именем 'ParameterCalculationMethod'
 				И в таблице 'TreeOfFilterParametersDB' я выбираю текущую строку
 				И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "Fixed value"
@@ -391,7 +539,7 @@
 						|'FROM'|
 						|' InformationRegister.ItemsPrices AS ItemsPrices'|
 						|'WHERE'|
-						|' ItemsPrices.TypeЦены = &PriceType_'|
+						|' ItemsPrices.KindЦены = &PriceType_'|
 						|''|
 						|'GROUP BY'|
 						|' ItemsPrices.Products,'|
@@ -523,7 +671,7 @@
 				Тогда открылось окно "Data source (create)"
 				И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase catalog"
 				И я нажимаю кнопку выбора у поля с именем 'DBObjects'
-				И Я в списке "Infobase catalogs" по полю "Catalog" ищу элемент "Product range" "At beginning of line"
+				И Я в списке "Infobase catalogs" по полю "Catalog" ищу и выбираю элемент "Product range" "At beginning of line"
 				Если '$$IsCPM$$' Тогда
 					Если в таблице 'FieldsTreeDB' количество строк 'равно' 1 Тогда
 						И в таблице 'FieldsTreeDB' я разворачиваю текущую строку
@@ -559,7 +707,7 @@
 				Если '$$IsERPCPM$$' Тогда
 					И в таблице 'FieldsTreeDB' я перехожу к строке:
 						| "Field"             |
-						| 'Type номенклатуры' |
+						| 'Kind номенклатуры' |
 					И я нажимаю на кнопку с именем 'AddConditionItem'
 					И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 						| "Field"            |
@@ -578,74 +726,101 @@
 				Когда открылось окно "Edit tree"
 				И Я закрываю окно "Edit tree"																
 
-	И Я Для вида отчета "VA - Non-Numbers (recipient)" я создаю бланк по умолчанию
+	И Я Для вида отчета "VA - Non-Numbers (recipient)" создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Non-Numbers (recipient)" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
 	И Я Для вида отчета "VA - Non-Numbers (recipient)" в бланке для группы раскрытия с адресом 'R10C1' задаю сортировку "Product range" "Product ID"
 	И Я Для вида отчета "VA - Non-Numbers (recipient)" в бланке для группы раскрытия с адресом 'R12C1' задаю сортировку "Product range" "Product ID"
 
-Сценарий: 07.05 Создание экземпляра отчета - "VA - Non-Numbers (recipient)"  
+Сценарий: 07.06 Создание экземпляра отчета - "VA - Non-Numbers (recipient)"  
 
 	И Я создаю экземпляр отчета для вида отчета "VA - Non-Numbers (recipient)" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект "VA - Main project" аналитики "3Software sale" '' '' '' '' '' 
 
 	* Рассчитываем документ и сравниваем итоговый документ
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
-		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-			| "VA - Non-Numbers (recipient)"                           | ''               | ''                | ''               | ''              | ''                | ''                | ''               | ''              | ''             | ''                | ''               | ''              | ''           | ''                | ''               | ''        |
-			| ''                                                                | ''               | ''                | ''               | ''              | ''                | ''                | ''               | ''              | ''             | ''                | ''               | ''              | ''           | ''                | ''               | ''        |
-			| ''                                                                | "January 2021" | ''                | ''               | ''              | "February 2021" | ''                | ''               | ''              | "March 2021" | ''                | ''               | ''              | "TOTAL"      | ''                | ''               | ''        |
-			| ''                                                                | "Price"           | "DateInflow" | "IncludeInPrice" | "Product ID"       | "Price"            | "DateInflow" | "IncludeInPrice" | "Product ID"       | "Price"         | "DateInflow" | "IncludeInPrice" | "Product ID"       | "Price"       | "DateInflow" | "IncludeInPrice" | "Product ID" |
-			| "Goods"                                                          | '6,030,000'      | '5/1/2021'      | "Yes"             | ''              | '6,633,000'       | '5/2/2021'      | "Yes"             | ''              | '6,633,000'    | '5/2/2021'      | "Yes"             | ''              | '19,296,000' | '5/2/2021'      | "Yes"             | ''        |
-			| "5C:Corporate performance management "                                      | '1,250,000'      | '1/1/2021'      | "Yes"             | '000001'        | '2,145,000'       | '5/2/2021'      | "Yes"             | '2000005'       | '2,145,000'    | '5/2/2021'      | "Yes"             | '2000005'       | '5,540,000'  | '5/2/2021'      | "Yes"             | ''        |
-			| "2C:Corporation "                                                  | '2,050,000'      | '2/1/2021'      | "Yes"             | '000002'        | '2,255,000'       | ''                | "No"            | ''              | '2,255,000'    | ''                | "No"            | ''              | '6,560,000'  | '2/1/2021'      | "Yes"             | ''        |
-			| "4C:Enterprise 8.3 CORP. Server License (x86-64) "           | '180,000'        | '3/1/2021'      | "Yes"             | '000003'        | '198,000'         | ''                | "No"            | ''              | '198,000'      | ''                | "No"            | ''              | '576,000'    | '3/1/2021'      | "Yes"             | ''        |
-			| "1C:ERP. Corporate performance management "                                   | '1,950,000'      | '4/1/2021'      | "Yes"             | '000004'        | '660,000'         | '1/2/2021'      | "Yes"             | '2000001'       | '660,000'      | '1/2/2021'      | "Yes"             | '2000001'       | '3,270,000'  | '4/1/2021'      | "Yes"             | ''        |
-			| "3C:Enterprise 8 CORP. Client license for 100 users " | '600,000'        | '5/1/2021'      | "Yes"             | '000005'        | '1,375,000'       | ''                | "No"            | ''              | '1,375,000'    | ''                | "No"            | ''              | '3,350,000'  | '5/1/2021'      | "Yes"             | ''        |
-			| "Formulas"                                                         | '6,030,000'      | '5/2/2021'      | "No"            | ''              | '2,804,997'       | '5/3/2021'      | "Yes"             | ''              | '2,804,997'    | '5/3/2021'      | "No"            | ''              | '11,639,994' | '5/3/2021'      | "Yes"             | ''        |
-			| "5C:Corporate performance management "                                      | '1,250,000'      | '1/2/2021'      | "No"            | '100000'        | '2,145,000'       | '5/3/2021'      | "No"            | '5000002'       | '2,145,000'    | '5/3/2021'      | "No"            | '5000002'       | '5,540,000'  | '5/3/2021'      | "No"            | ''        |
-			| "2C:Corporation "                                                  | '2,050,000'      | '2/2/2021'      | "No"            | '200000'        | '-1'              | ''                | "Yes"             | ''              | '-1'           | ''                | "No"            | ''              | '2,049,998'  | '2/2/2021'      | "Yes"             | ''        |
-			| "4C:Enterprise 8.3 CORP. Server License (x86-64) "           | '180,000'        | '3/2/2021'      | "No"            | '300000'        | '-1'              | ''                | "No"            | ''              | '-1'           | ''                | "No"            | ''              | '179,998'    | '3/2/2021'      | "No"            | ''        |
-			| "1C:ERP. Corporate performance management "                                   | '1,950,000'      | '4/2/2021'      | "No"            | '400000'        | '660,000'         | '1/3/2021'      | "No"            | '1000002'       | '660,000'      | '1/3/2021'      | "No"            | '1000002'       | '3,270,000'  | '4/2/2021'      | "No"            | ''        |
-			| "3C:Enterprise 8 CORP. Client license for 100 users " | '600,000'        | '5/2/2021'      | "No"            | '500000'        | '-1'              | ''                | "No"            | ''              | '-1'           | ''                | "No"            | ''              | '599,998'    | '5/2/2021'      | "No"            | ''        |
-			| "Source"                                                        | '6,030,000'      | '1/4/2021'      | "Yes"             | ''              | '6,633,000'       | '2/4/2021'      | "Yes"             | ''              | '7,495,400'    | '3/4/2021'      | "Yes"             | ''              | '20,158,400' | '3/4/2021'      | "Yes"             | ''        |
-			| "5C:Corporate performance management "                                      | '1,250,000'      | '1/4/2021'      | "Yes"             | '2900001871389' | '1,375,000'       | '2/4/2021'      | "Yes"             | '2900001871389' | '1,553,800'    | '3/4/2021'      | "Yes"             | '2900001871389' | '4,178,800'  | '3/4/2021'      | "Yes"             | ''        |
-			| "2C:Corporation "                                                  | '2,050,000'      | '1/4/2021'      | "No"            | '2900001871419' | '2,255,000'       | '2/4/2021'      | "No"            | '2900001871419' | '2,548,200'    | '3/4/2021'      | "No"            | '2900001871419' | '6,853,200'  | '3/4/2021'      | "No"            | ''        |
-			| "4C:Enterprise 8.3 CORP. Server License (x86-64) "           | '180,000'        | '1/4/2021'      | "No"            | '2900001916059' | '198,000'         | '2/4/2021'      | "No"            | '2900001916059' | '223,700'      | '3/4/2021'      | "No"            | '2900001916059' | '601,700'    | '3/4/2021'      | "No"            | ''        |
-			| "1C:ERP. Corporate performance management "                                   | '1,950,000'      | '1/4/2021'      | "Yes"             | '2900001970198' | '2,145,000'       | '2/4/2021'      | "Yes"             | '2900001970198' | '2,423,900'    | '3/4/2021'      | "Yes"             | '2900001970198' | '6,518,900'  | '3/4/2021'      | "Yes"             | ''        |
-			| "3C:Enterprise 8 CORP. Client license for 100 users " | '600,000'        | '1/4/2021'      | "No"            | '4601546106674' | '660,000'         | '2/4/2021'      | "No"            | '4601546106674' | '745,800'      | '3/4/2021'      | "No"            | '4601546106674' | '2,005,800'  | '3/4/2021'      | "No"            | ''        |
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_НечисловыеПоказателиПриемник_Меркурий.mxl'
 	
 	* Еще раз рассчитываем и сравниваем документ, результат не должен поменяться
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
-		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-			| "VA - Non-Numbers (recipient)"                           | ''               | ''                | ''               | ''              | ''                | ''                | ''               | ''              | ''             | ''                | ''               | ''              | ''           | ''                | ''               | ''        |
-			| ''                                                                | ''               | ''                | ''               | ''              | ''                | ''                | ''               | ''              | ''             | ''                | ''               | ''              | ''           | ''                | ''               | ''        |
-			| ''                                                                | "January 2021" | ''                | ''               | ''              | "February 2021" | ''                | ''               | ''              | "March 2021" | ''                | ''               | ''              | "TOTAL"      | ''                | ''               | ''        |
-			| ''                                                                | "Price"           | "DateInflow" | "IncludeInPrice" | "Product ID"       | "Price"            | "DateInflow" | "IncludeInPrice" | "Product ID"       | "Price"         | "DateInflow" | "IncludeInPrice" | "Product ID"       | "Price"       | "DateInflow" | "IncludeInPrice" | "Product ID" |
-			| "Goods"                                                          | '6,030,000'      | '5/1/2021'      | "Yes"             | ''              | '6,633,000'       | '5/2/2021'      | "Yes"             | ''              | '6,633,000'    | '5/2/2021'      | "Yes"             | ''              | '19,296,000' | '5/2/2021'      | "Yes"             | ''        |
-			| "5C:Corporate performance management "                                      | '1,250,000'      | '1/1/2021'      | "Yes"             | '000001'        | '2,145,000'       | '5/2/2021'      | "Yes"             | '2000005'       | '2,145,000'    | '5/2/2021'      | "Yes"             | '2000005'       | '5,540,000'  | '5/2/2021'      | "Yes"             | ''        |
-			| "2C:Corporation "                                                  | '2,050,000'      | '2/1/2021'      | "Yes"             | '000002'        | '2,255,000'       | ''                | "No"            | ''              | '2,255,000'    | ''                | "No"            | ''              | '6,560,000'  | '2/1/2021'      | "Yes"             | ''        |
-			| "4C:Enterprise 8.3 CORP. Server License (x86-64) "           | '180,000'        | '3/1/2021'      | "Yes"             | '000003'        | '198,000'         | ''                | "No"            | ''              | '198,000'      | ''                | "No"            | ''              | '576,000'    | '3/1/2021'      | "Yes"             | ''        |
-			| "1C:ERP. Corporate performance management "                                   | '1,950,000'      | '4/1/2021'      | "Yes"             | '000004'        | '660,000'         | '1/2/2021'      | "Yes"             | '2000001'       | '660,000'      | '1/2/2021'      | "Yes"             | '2000001'       | '3,270,000'  | '4/1/2021'      | "Yes"             | ''        |
-			| "3C:Enterprise 8 CORP. Client license for 100 users " | '600,000'        | '5/1/2021'      | "Yes"             | '000005'        | '1,375,000'       | ''                | "No"            | ''              | '1,375,000'    | ''                | "No"            | ''              | '3,350,000'  | '5/1/2021'      | "Yes"             | ''        |
-			| "Formulas"                                                         | '6,030,000'      | '5/2/2021'      | "No"            | ''              | '2,804,997'       | '5/3/2021'      | "Yes"             | ''              | '2,804,997'    | '5/3/2021'      | "No"            | ''              | '11,639,994' | '5/3/2021'      | "Yes"             | ''        |
-			| "5C:Corporate performance management "                                      | '1,250,000'      | '1/2/2021'      | "No"            | '100000'        | '2,145,000'       | '5/3/2021'      | "No"            | '5000002'       | '2,145,000'    | '5/3/2021'      | "No"            | '5000002'       | '5,540,000'  | '5/3/2021'      | "No"            | ''        |
-			| "2C:Corporation "                                                  | '2,050,000'      | '2/2/2021'      | "No"            | '200000'        | '-1'              | ''                | "Yes"             | ''              | '-1'           | ''                | "No"            | ''              | '2,049,998'  | '2/2/2021'      | "Yes"             | ''        |
-			| "4C:Enterprise 8.3 CORP. Server License (x86-64) "           | '180,000'        | '3/2/2021'      | "No"            | '300000'        | '-1'              | ''                | "No"            | ''              | '-1'           | ''                | "No"            | ''              | '179,998'    | '3/2/2021'      | "No"            | ''        |
-			| "1C:ERP. Corporate performance management "                                   | '1,950,000'      | '4/2/2021'      | "No"            | '400000'        | '660,000'         | '1/3/2021'      | "No"            | '1000002'       | '660,000'      | '1/3/2021'      | "No"            | '1000002'       | '3,270,000'  | '4/2/2021'      | "No"            | ''        |
-			| "3C:Enterprise 8 CORP. Client license for 100 users " | '600,000'        | '5/2/2021'      | "No"            | '500000'        | '-1'              | ''                | "No"            | ''              | '-1'           | ''                | "No"            | ''              | '599,998'    | '5/2/2021'      | "No"            | ''        |
-			| "Source"                                                        | '6,030,000'      | '1/4/2021'      | "Yes"             | ''              | '6,633,000'       | '2/4/2021'      | "Yes"             | ''              | '7,495,400'    | '3/4/2021'      | "Yes"             | ''              | '20,158,400' | '3/4/2021'      | "Yes"             | ''        |
-			| "5C:Corporate performance management "                                      | '1,250,000'      | '1/4/2021'      | "Yes"             | '2900001871389' | '1,375,000'       | '2/4/2021'      | "Yes"             | '2900001871389' | '1,553,800'    | '3/4/2021'      | "Yes"             | '2900001871389' | '4,178,800'  | '3/4/2021'      | "Yes"             | ''        |
-			| "2C:Corporation "                                                  | '2,050,000'      | '1/4/2021'      | "No"            | '2900001871419' | '2,255,000'       | '2/4/2021'      | "No"            | '2900001871419' | '2,548,200'    | '3/4/2021'      | "No"            | '2900001871419' | '6,853,200'  | '3/4/2021'      | "No"            | ''        |
-			| "4C:Enterprise 8.3 CORP. Server License (x86-64) "           | '180,000'        | '1/4/2021'      | "No"            | '2900001916059' | '198,000'         | '2/4/2021'      | "No"            | '2900001916059' | '223,700'      | '3/4/2021'      | "No"            | '2900001916059' | '601,700'    | '3/4/2021'      | "No"            | ''        |
-			| "1C:ERP. Corporate performance management "                                   | '1,950,000'      | '1/4/2021'      | "Yes"             | '2900001970198' | '2,145,000'       | '2/4/2021'      | "Yes"             | '2900001970198' | '2,423,900'    | '3/4/2021'      | "Yes"             | '2900001970198' | '6,518,900'  | '3/4/2021'      | "Yes"             | ''        |
-			| "3C:Enterprise 8 CORP. Client license for 100 users " | '600,000'        | '1/4/2021'      | "No"            | '4601546106674' | '660,000'         | '2/4/2021'      | "No"            | '4601546106674' | '745,800'      | '3/4/2021'      | "No"            | '4601546106674' | '2,005,800'  | '3/4/2021'      | "No"            | ''        |
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_НечисловыеПоказателиПриемник_Меркурий.mxl'
 
 	* Записываем документ	
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'WriteAndClose'
 		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд			
 
-Сценарий: 07.06 Создание вида отчета "VA - Calculation in code"
+Сценарий: 07.07 Расчет с удалением показателей
+
+	* Копируем экземпляр отчета
+		И Я нахожу в списке вид отчета с именем "VA - Non-Numbers (recipient)"
+		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListOpenInstancesList'
+		Тогда открылось окно "Report instances"
+		И в таблице 'List' я нажимаю на кнопку с именем 'ListFind'
+		Тогда открылось окно 'Find'
+		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Company"
+		И из выпадающего списка с именем 'Pattern' я выбираю по строке "Mercury LLC"
+		И я нажимаю на кнопку с именем 'Find'
+		Тогда открылось окно "Report instances"
+		И я выбираю пункт контекстного меню с именем 'ListContextMenuCopy' на элементе формы с именем 'List'
+
+	* Проверяем форму
+		Тогда элемент формы с именем 'ReportDimension1' стал равен "3Software sale"
+		И элемент формы с именем 'ReportDimension2' стал равен ''
+		И элемент формы с именем 'ReportDimension3' стал равен ''
+		И элемент формы с именем 'ReportDimension4' стал равен ''
+		И элемент формы с именем 'ReportDimension5' стал равен ''
+		И элемент формы с именем 'ReportDimension6' стал равен ''
+		И элемент формы с именем 'ReportKind' стал равен "VA - Non-Numbers (recipient)"
+		И Таблица 'AdditionalCurrencies' содержит '2' строк из списка:
+			| "Value" |
+			| 'EUR'      |
+			| 'USD'      |		
+		И элемент формы с именем 'CopyingValue' стал равен по шаблону "Report instance *"
+		И элемент формы с именем 'Organization' стал равен "Mercury LLC"
+		Тогда в таблице 'ReportParameters' количество строк "равно" 0
+		И элемент формы с именем 'Periodicity' стал равен "Month"
+		И элемент формы с именем 'ReportEndPeriod' стал равен "March 2021"
+		И элемент формы с именем 'ReportPeriodFrom' стал равен "January 2021"
+		И элемент формы с именем 'ProcessingRule' стал равен "VA - Non-Numbers (recipient)"
+		И элемент формы с именем 'CheckRule' стал равен "VA - Non-Numbers (recipient)"
+		И элемент формы с именем 'Project' стал равен "VA - Main project"
+		И элемент формы с именем 'Regulation' стал равен "VA - Main regulations"
+		И элемент формы с именем 'OutputApproachForm' стал равен "VA - Non-Numbers (recipient)"
+		И элемент формы с именем 'Scenario' стал равен "VA - Main scenario"
+
+	* Меняем организацию
+		И Я для реквизита 'Organization' устанавливаю значение "Venus LLC"
+		И я нажимаю на кнопку с именем 'OKButton'
+		Тогда Открылся экземпляр отчета для вида отчета "VA - Non-Numbers (recipient)" валюта 'RUB' организация "Venus LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики "3Software sale" '' '' '' '' '' 
+
+	* Удаляем область расчитанных показтелей
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R6C2:R23C5"
+		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateClearRange'
+
+	* Проверяем содержимое таблицы
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_НечисловыеПоказателиПриемник_Меркурий.mxl'
+
+	* Рассчитываем документ и сравниваем итоговый документ
+		И я нажимаю на кнопку с именем 'FormFillByDefault'
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_НечисловыеПоказателиПриемник_Венера.mxl'					
+	
+	* Записываем документ	
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'Write'
+		И я жду открытия окна '$WindowTitle$' в течение 20 секунд
+
+	* Проверяем движения
+		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
+		Тогда открылось окно "Flat table of indicator values"
+		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
+		И из выпадающего списка с именем 'SettingsComposerUserSettingsItem0Value' я выбираю точное значение "Yes"
+		И я нажимаю на кнопку с именем 'GenerateReport'
+		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету '\\Макеты\ВА_НечисловыеПоказателиПриемник_Венера_Движения.mxl' по шаблону
+		И из выпадающего списка с именем 'SettingsComposerUserSettingsItem0Value' я выбираю точное значение "No"
+		И Я закрываю окно "Flat table of indicator values"
+
+Сценарий: 07.08 Создание вида отчета "VA - Calculation in code"
 
 	И Я создаю вид отчета с именем "VA - Calculation in code" и родителем "VA - Non-Numbers and Groupings (группа)"
 	И Я открываю вид отчета с именем "VA - Calculation in code"
@@ -664,9 +839,9 @@
 	И Я в конструкторе отчета добавляю колонку с именем "Boolean"
 	И Я в конструкторе отчета добавляю колонку с именем "Line"
 
-	И Я в конструкторе отчета в ячейке 'R2C3:R6C3' я меняю свойства показателей 'ValueType' на "Date"
-	И Я в конструкторе отчета в ячейке 'R2C4:R6C4' я меняю свойства показателей 'ValueType' на "Boolean"
-	И Я в конструкторе отчета в ячейке 'R2C5:R6C5' я меняю свойства показателей 'ValueType' на "Line"	
+	И Я в конструкторе отчета в ячейке 'R2C3:R6C3' меняю свойства показателей 'ValueType' на "Date"
+	И Я в конструкторе отчета в ячейке 'R2C4:R6C4' меняю свойства показателей 'ValueType' на "Boolean"
+	И Я в конструкторе отчета в ячейке 'R2C5:R6C5' меняю свойства показателей 'ValueType' на "Line"	
 
 	* Устанавливаем аналитики отчета
 		И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C2'
@@ -723,7 +898,7 @@
 					|'ArrayIndicators = New Array;'|
 					|"ArrayIndicators.Add(\"VANonNumbersSource:Goods_Price\");"|
 					|'AdditionalParameters = New Structure("Overall",Enums.IndicatorTotalsTypes.Sum);'|
-					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod),,AdditionalParameters);'|
+					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod,Organization",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod,ObjectOfARAP.Organization),,AdditionalParameters);'|
 					|''|
 					|'If tIndicatorsValues.Count() = 0 Then'|
 					|' Result = 0;'|
@@ -743,7 +918,7 @@
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 					|'ArrayIndicators = New Array;'|
 					|"ArrayIndicators.Add(\"VANonNumbersSource:Goods_DateInflow\");"|
-					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod));'|
+					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod,Organization",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod,ObjectOfARAP.Organization));'|
 					|''|
 					|'If tIndicatorsValues.Count() = 0 Then'|
 					|' Result = Undefined;'|
@@ -759,7 +934,7 @@
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст
 					|'ArrayIndicators = New Array;'|
 					|"ArrayIndicators.Add(\"VANonNumbersSource:Goods_IncludeInPrice\");"|
-					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod));'|
+					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod,Organization",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod,ObjectOfARAP.Organization));'|
 					|''|
 					|'If tIndicatorsValues.Count() = 0 Then'|
 					|' Result = Undefined;'|
@@ -775,7 +950,7 @@
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 					|'ArrayIndicators = New Array;'|
 					|"ArrayIndicators.Add(\"VANonNumbersSource:Goods_ProductID\");"|
-					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod));'|
+					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod,Organization",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod,ObjectOfARAP.Organization));'|
 					|''|
 					|'If tIndicatorsValues.Count() = 0 Then'|
 					|' Result = Undefined;'|
@@ -793,7 +968,7 @@
 					|'ArrayIndicators = New Array;'|
 					|"ArrayIndicators.Add(\"VACalculationInCode:Source_Number\");"|
 					|'AdditionalParameters = New Structure("Overall",Enums.IndicatorTotalsTypes.Sum);'|
-					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod),,AdditionalParameters);'|
+					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod,Organization",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod,ObjectOfARAP.Organization),,AdditionalParameters);'|
 					|''|
 					|'If tIndicatorsValues.Count() = 0 Then'|
 					|' Result = 0;'|
@@ -809,7 +984,7 @@
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст
 					|'ArrayIndicators = New Array;'|
 					|"ArrayIndicators.Add(\"VACalculationInCode:Source_Date\");"|
-					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod));'|
+					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod,Organization",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod,ObjectOfARAP.Organization));'|
 					|''|
 					|'If tIndicatorsValues.Count() = 0 Then'|
 					|' Result = Undefined;'|
@@ -825,7 +1000,7 @@
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 					|'ArrayIndicators = New Array;'|
 					|"ArrayIndicators.Add(\"VACalculationInCode:Source_Boolean\");"|
-					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod));'|
+					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod,Organization",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod,ObjectOfARAP.Organization));'|
 					|''|
 					|'If tIndicatorsValues.Count() = 0 Then'|
 					|' Result = Undefined;'|
@@ -841,7 +1016,7 @@
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 					|'ArrayIndicators = New Array;'|
 					|"ArrayIndicators.Add(\"VACalculationInCode:Source_Line\");"|
-					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod));'|
+					|'tIndicatorsValues = GetIndicatorsValue(New Structure("ReportsIndicators,Currency,ReportPeriod,Organization",ArrayIndicators,ObjectOfARAP.MainCurrency,ObjectOfARAP.ReportPeriod,ObjectOfARAP.Organization));'|
 					|''|
 					|'If tIndicatorsValues.Count() = 0 Then'|
 					|' Result = Undefined;'|
@@ -958,11 +1133,11 @@
 				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 				И я нажимаю на кнопку с именем 'WriteAndCollapse'														
 
-	И Я Для вида отчета "VA - Calculation in code" я создаю бланк по умолчанию
+	И Я Для вида отчета "VA - Calculation in code" создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Calculation in code" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
 	И Я Для вида отчета "VA - Calculation in code" в бланке для группы раскрытия с адресом 'R13C1' задаю сортировку "Product range" "Product ID"
 																												
-Сценарий: 07.07 Создание экземпляра отчета - "VA - Calculation in code" 
+Сценарий: 07.09 Создание экземпляра отчета - "VA - Calculation in code" 
 
 	И Я создаю экземпляр отчета для вида отчета "VA - Calculation in code" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект "VA - Main project" аналитики '' '' '' '' '' '' 
 
@@ -1027,7 +1202,7 @@
 		Когда Я задаю параметры чтения области макета 'R1C1:R800C20'
 		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Макеты\ВА_РасчетВКоде_Движения.mxl' по шаблону			
 
-Сценарий: 07.08 Создание вида отчета "VA - Grouping by analytics"
+Сценарий: 07.10 Создание вида отчета "VA - Grouping by analytics"
 
 	И Я создаю вид отчета с именем "VA - Grouping by analytics" и родителем "VA - Non-Numbers and Groupings (группа)"
 	
@@ -1052,39 +1227,39 @@
 	И Я в конструкторе отчета добавляю колонку с именем "Average"
 	И Я в конструкторе отчета добавляю колонку с именем "NoTotal"
 
-	И Я в конструкторе отчета в ячейке 'R3C1' я меняю родителя у строки на "Group"
-	И Я в конструкторе отчета в ячейке 'R4C1' я меняю родителя у строки на "Group"
+	И Я в конструкторе отчета в ячейке 'R3C1' меняю родителя у строки на "Group"
+	И Я в конструкторе отчета в ячейке 'R4C1' меняю родителя у строки на "Group"
 
 	* Меняем настройки показателей
 		* Сумма
-			И я в конструкторе отчета в ячейке 'R2C2' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
-			И я в конструкторе отчета в ячейке 'R3C2' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
-			И я в конструкторе отчета в ячейке 'R3C2' я меняю свойство показателя 'TotalKind' на "Amount"
-			И я в конструкторе отчета в ячейке 'R4C2' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-			И я в конструкторе отчета в ячейке 'R4C2' я меняю свойство показателя 'TotalKind' на "Amount"
+			И я в конструкторе отчета в ячейке 'R2C2' меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
+			И я в конструкторе отчета в ячейке 'R3C2' меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
+			И я в конструкторе отчета в ячейке 'R3C2' меняю свойство показателя 'TotalKind' на "Amount"
+			И я в конструкторе отчета в ячейке 'R4C2' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
+			И я в конструкторе отчета в ячейке 'R4C2' меняю свойство показателя 'TotalKind' на "Amount"
 		* Максимум
-			И я в конструкторе отчета в ячейке 'R2C3' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-			И я в конструкторе отчета в ячейке 'R3C3' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
-			И я в конструкторе отчета в ячейке 'R3C3' я меняю свойство показателя 'TotalKind' на "Maximum"
-			И я в конструкторе отчета в ячейке 'R4C3' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-			И я в конструкторе отчета в ячейке 'R4C3' я меняю свойство показателя 'TotalKind' на "Maximum"
+			И я в конструкторе отчета в ячейке 'R2C3' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
+			И я в конструкторе отчета в ячейке 'R3C3' меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
+			И я в конструкторе отчета в ячейке 'R3C3' меняю свойство показателя 'TotalKind' на "Maximum"
+			И я в конструкторе отчета в ячейке 'R4C3' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
+			И я в конструкторе отчета в ячейке 'R4C3' меняю свойство показателя 'TotalKind' на "Maximum"
 		* Минимум
-			И я в конструкторе отчета в ячейке 'R2C4' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-			И я в конструкторе отчета в ячейке 'R3C4' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
-			И я в конструкторе отчета в ячейке 'R3C4' я меняю свойство показателя 'TotalKind' на "Minimum"
-			И я в конструкторе отчета в ячейке 'R4C4' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-			И я в конструкторе отчета в ячейке 'R3C4' я меняю свойство показателя 'TotalKind' на "Minimum"
+			И я в конструкторе отчета в ячейке 'R2C4' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
+			И я в конструкторе отчета в ячейке 'R3C4' меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
+			И я в конструкторе отчета в ячейке 'R3C4' меняю свойство показателя 'TotalKind' на "Minimum"
+			И я в конструкторе отчета в ячейке 'R4C4' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
+			И я в конструкторе отчета в ячейке 'R3C4' меняю свойство показателя 'TotalKind' на "Minimum"
 		* Среднее
-			И я в конструкторе отчета в ячейке 'R3C5' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
-			И я в конструкторе отчета в ячейке 'R3C5' я меняю свойство показателя 'TotalKind' на "Average"
-			И я в конструкторе отчета в ячейке 'R4C5' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-			И я в конструкторе отчета в ячейке 'R4C5' я меняю свойство показателя 'TotalKind' на "Average"
+			И я в конструкторе отчета в ячейке 'R3C5' меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
+			И я в конструкторе отчета в ячейке 'R3C5' меняю свойство показателя 'TotalKind' на "Average"
+			И я в конструкторе отчета в ячейке 'R4C5' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
+			И я в конструкторе отчета в ячейке 'R4C5' меняю свойство показателя 'TotalKind' на "Average"
 		* БезИтога
-			И я в конструкторе отчета в ячейке 'R2C6' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-			И я в конструкторе отчета в ячейке 'R3C6' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
-			И я в конструкторе отчета в ячейке 'R3C6' я меняю свойство показателя 'TotalKind' на "Cannot calculate the total by group drilldown"
-			И я в конструкторе отчета в ячейке 'R4C6' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-			И я в конструкторе отчета в ячейке 'R4C6' я меняю свойство показателя 'TotalKind' на "Cannot calculate the total by group drilldown"
+			И я в конструкторе отчета в ячейке 'R2C6' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
+			И я в конструкторе отчета в ячейке 'R3C6' меняю свойство показателя 'PeriodTotalCalcMethod' на "Amount"
+			И я в конструкторе отчета в ячейке 'R3C6' меняю свойство показателя 'TotalKind' на "Cannot calculate the total by group drilldown"
+			И я в конструкторе отчета в ячейке 'R4C6' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
+			И я в конструкторе отчета в ячейке 'R4C6' меняю свойство показателя 'TotalKind' на "Cannot calculate the total by group drilldown"
 
 	* Устанавливаем аналитики отчета
 		И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R3C3'
@@ -1156,10 +1331,10 @@
 			Когда открылось окно "Edit tree"
 			И Я закрываю окно "Edit tree"							
 									
-	И Я Для вида отчета "VA - Grouping by analytics" я создаю бланк по умолчанию
+	И Я Для вида отчета "VA - Grouping by analytics" создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Grouping by analytics" в бланке для группы раскрытия с адресом 'R9C1' задаю сортировку "Product range" "Product ID"
 						
-Сценарий: 07.09 Создание экземпляра отчета - "VA - Grouping by analytics"
+Сценарий: 07.11 Создание экземпляра отчета - "VA - Grouping by analytics"
 
 	И Я создаю экземпляр отчета для вида отчета "VA - Grouping by analytics" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект "VA - Main project" аналитики "3Software sale" '' '' '' '' '' 
 	

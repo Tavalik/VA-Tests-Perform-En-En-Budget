@@ -26,7 +26,7 @@
 		И Я в конструкторе отчета добавляю колонку с именем "Price"
 		И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C2' 
 
-	И Я Для вида отчета "VA - Arbitrary request" я создаю бланк по умолчанию
+	И Я Для вида отчета "VA - Arbitrary request" создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Arbitrary request" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
 
 Сценарий: 04.02 Проверка поведения формы настройки показателей
@@ -79,8 +79,8 @@
 				|'FROM'|
 				|'	InformationRegister.ItemsPrices AS ItemsPrices'|
 				|'WHERE'|
-				|'	ItemsPrices.Period >= &ParameterStartDate'|
-				|'	AND ItemsPrices.Period <= &ParameterEndDate'|
+				|'	ItemsPrices.Period >= &StartDateParameter'|
+				|'	AND ItemsPrices.Period <= &EndDateParameter'|
 				|'	AND ItemsPrices.PriceType_ = &ParameterPriceType_'|
 				|''|
 				|'GROUP BY'|
@@ -105,9 +105,9 @@
 				|'FROM'|
 				|'	InformationRegister.ItemsPrices AS ItemsPrices'|
 				|'WHERE'|
-				|'	ItemsPrices.Period >= &ParameterStartDate'|
-				|'	AND ItemsPrices.Period <= &ParameterEndDate'|
-				|'	AND ItemsPrices.TypeЦены = &ParameterPriceType_'|
+				|'	ItemsPrices.Period >= &StartDateParameter'|
+				|'	AND ItemsPrices.Period <= &EndDateParameter'|
+				|'	AND ItemsPrices.KindЦены = &ParameterPriceType_'|
 				|''|
 				|'GROUP BY'|
 				|'	ItemsPrices.Period,'|
@@ -141,8 +141,8 @@
 		Тогда Таблица 'FieldsTreeDB' содержит '8' строк из списка:			
 			| "Field"                     |
 			| "Query parameters(3)"     |
-			| 'ParameterStartDate'       |
-			| 'ParameterEndDate'    |
+			| 'StartDateParameter'       |
+			| 'EndDateParameter'    |
 			| 'ParameterPriceType_'           |
 			| "Data source fields(3)" |
 			| 'Date'                     |
@@ -157,20 +157,20 @@
 		Когда открылось окно "Data source (create) *"
 		Тогда Таблица 'TreeOfFilterParametersDB' содержит '3' строк из списка:
 			| "Field"                    | "Filter" | "Filter clarification" | "Value to check" |
-			| '[ParameterStartDate]'    | ''      | ''                 | ''                      |
-			| '[ParameterEndDate]' | ''      | ''                 | ''                      |
+			| '[StartDateParameter]'    | ''      | ''                 | ''                      |
+			| '[EndDateParameter]' | ''      | ''                 | ''                      |
 			| '[ParameterPriceType_]'        | ''      | ''                 | ''                      |
 
 	* Заполняем параметры		
 		Когда открылось окно "Data source (create) *"	
 		И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 			| "Field"                 |
-			| '[ParameterStartDate]' |
+			| '[StartDateParameter]' |
 		И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "Report period start date"
 		И в таблице 'TreeOfFilterParametersDB' я завершаю редактирование строки
 		И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 			| "Field"                    |
-			| '[ParameterEndDate]' |
+			| '[EndDateParameter]' |
 		И в таблице 'TreeOfFilterParametersDB' я выбираю текущую строку
 		И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "Report period end date"
 		И в таблице 'TreeOfFilterParametersDB' я завершаю редактирование строки
@@ -184,8 +184,8 @@
 		И в таблице 'TreeOfFilterParametersDB' я завершаю редактирование строки
 		Тогда Таблица 'TreeOfFilterParametersDB' содержит '3' строк из списка:
 			| "Field"                    | "Filter"                      | "Filter clarification"  | "Value to check" |
-			| '[ParameterStartDate]'    | "Report period start date" | ''                  | ''                      |
-			| '[ParameterEndDate]' | "Report period end date"  | ''                  | ''                      |
+			| '[StartDateParameter]'    | "Report period start date" | ''                  | ''                      |
+			| '[EndDateParameter]' | "Report period end date"  | ''                  | ''                      |
 			| '[ParameterPriceType_]'        | "Fixed value"     | "VA - Products" | ''                      |
 
 	* Записываем элемент
@@ -260,8 +260,8 @@
 		И я перехожу к закладке с именем 'FiltersPage'
 		Тогда Таблица 'TreeOfFilterParametersDB' содержит '3' строк из списка:
 			| "Field"                    | "Filter"                      | "Filter clarification"  | "Value to check" |
-			| '[ParameterStartDate]'    | "Report period start date" | ''                  | ''                      |
-			| '[ParameterEndDate]' | "Report period end date"  | ''                  | ''                      |
+			| '[StartDateParameter]'    | "Report period start date" | ''                  | ''                      |
+			| '[EndDateParameter]' | "Report period end date"  | ''                  | ''                      |
 			| '[ParameterPriceType_]'        | "Fixed value"     | "VA - Products" | ''                      |
 		И я нажимаю на кнопку с именем 'FormWrite'
 		И флаг с именем 'UseMultiperiodContext' равен 'False'												
@@ -279,8 +279,8 @@
 		Тогда Таблица 'FieldsTreeDB' содержит '8' строк из списка:				
 			| "Field"                     |
 			| "Query parameters(3)"     |
-			| 'ParameterStartDate'       |
-			| 'ParameterEndDate'    |
+			| 'StartDateParameter'       |
+			| 'EndDateParameter'    |
 			| 'ParameterPriceType_'           |
 			| "Data source fields(3)" |
 			| 'Date'                     |
@@ -294,8 +294,8 @@
 		Когда открылось окно '$WindowTitle$'
 		Тогда Таблица 'TreeOfFilterParametersDB' содержит '3' строк из списка:
 			| "Field"                    | "Filter"                      | "Filter clarification"  | "Value to check" |
-			| '[ParameterStartDate]'    | "Report period start date" | ''                  | ''                      |
-			| '[ParameterEndDate]' | "Report period end date"  | ''                  | ''                      |
+			| '[StartDateParameter]'    | "Report period start date" | ''                  | ''                      |
+			| '[EndDateParameter]' | "Report period end date"  | ''                  | ''                      |
 			| '[ParameterPriceType_]'        | "Fixed value"     | "VA - Products" | ''                      |
 	 			
 	* Закрываем источник данных

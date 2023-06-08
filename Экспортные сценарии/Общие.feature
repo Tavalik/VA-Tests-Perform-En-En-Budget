@@ -10,7 +10,7 @@
 	И Я запоминаю значение выражения 'ProductIDCPMClientServer.IsCorpPerformanceManagement() AND NOT ProductIDCPMClientServer.IsERPCP()' в переменную '$$IsCPM$$'
 	
 	Если '$$IsCPM$$' Тогда
-		Если в панели разделов есть команда 'Справочники' Тогда
+		Если в панели разделов есть команда 'Catalogs' Тогда
 			И Я запоминаю значение выражения 'False' в переменную '$$ЭтоPerform$$'
 		Иначе
 			И Я запоминаю значение выражения 'True' в переменную '$$ЭтоPerform$$'
@@ -58,7 +58,24 @@
 Сценарий: Я в списке 'TheListName' по полю 'TheField' ищу элемент 'ThePattern' 'TheCompareType' 
 
 	Тогда открылось окно '[TheListName]'
-	И я выбираю пункт контекстного меню с именем 'ListContextMenuFind' на элементе формы с именем 'List'
+	Если кнопка с именем 'FormFind' существует Тогда
+		И я нажимаю на кнопку с именем 'FormFind'
+	Иначе
+		И я выбираю пункт контекстного меню с именем 'ListContextMenuFind' на элементе формы с именем 'List'
+	Тогда открылось окно "Find"
+	И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение '[TheField]'
+	И я меняю значение переключателя с именем 'CompareType' на '[TheCompareType]'				
+	И в поле с именем 'Pattern' я ввожу текст '[ThePattern]'
+	И я нажимаю на кнопку с именем 'Find'
+	Тогда открылось окно '[TheListName]'
+
+Сценарий: Я в списке 'TheListName' по полю 'TheField' ищу и выбираю элемент 'ThePattern' 'TheCompareType' 
+
+	Тогда открылось окно '[TheListName]'
+	Если кнопка с именем 'FormFind' существует Тогда
+		И я нажимаю на кнопку с именем 'FormFind'
+	Иначе
+		И я выбираю пункт контекстного меню с именем 'ListContextMenuFind' на элементе формы с именем 'List'
 	Тогда открылось окно "Find"
 	И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение '[TheField]'
 	И я меняю значение переключателя с именем 'CompareType' на '[TheCompareType]'				
@@ -70,7 +87,7 @@
 	И в таблице 'List' я перехожу к строке:
 		| '$VarField$'   |
 		| '$VarPattern$' |
-	И в таблице 'List' я выбираю текущую строку
+	И в таблице 'List' я выбираю текущую строку	
 
 Сценарий: Я для реквизита 'TheProperty' устанавливаю значение 'TheValue'
 
@@ -80,3 +97,38 @@
 		И я снимаю флаг с именем '[TheProperty]'
 	Иначе
 		И из выпадающего списка с именем '[TheProperty]' я выбираю точное значение "[TheValue]"
+
+Сценарий: Я удаляю текущую строку в списке 'TheList'
+
+	Если в таблице '[TheList]' текущая строка не помечена на удаление Тогда
+		И я выбираю пункт контекстного меню с именем '[TheList]ContextMenuSetDeletionMark' на элементе формы с именем '[TheList]'
+		Тогда открылось окно "1C:Enterprise"
+		И я нажимаю на кнопку с именем 'Button0'
+
+Сценарий: Я удаляю текущий элемент в окне 'TheWindowName' очищая 'TheFieldName1' 'TheFieldName2' 'TheFieldName3'
+
+	Когда открылось окно "[TheWindowName]"	
+
+	И я нажимаю на кнопку с именем 'FormSetDeletionMark'
+	Когда открылось окно "1C:Enterprise"
+	Если элемент формы с именем 'Message' стал равен "Clear * deletion mark?" по шаблону Тогда
+		И я нажимаю на кнопку с именем 'Button1'
+	Иначе
+		И я нажимаю на кнопку с именем 'Button0'
+
+	И Я запоминаю значение выражения 'StrReplace(New UUID, "-", "")' в переменную 'UID'	
+	Тогда в поле с именем 'Description' я ввожу значение переменной 'UID'
+	
+	Если 'NOT StrStartsWith("[TheFieldName1]", "[") AND NOT IsBlankString("[TheFieldName1]")' Тогда
+		Тогда в поле с именем '[TheFieldName1]' я ввожу текст ' '			
+	Если 'NOT StrStartsWith("[TheFieldName2]", "[") AND NOT IsBlankString("[TheFieldName2]")' Тогда
+		Тогда в поле с именем '[TheFieldName2]' я ввожу текст ' '
+	Если 'NOT StrStartsWith("[TheFieldName3]", "[") AND NOT IsBlankString("[TheFieldName3]")' Тогда
+		Тогда в поле с именем '[TheFieldName3]' я ввожу текст ' '
+
+	Тогда открылось окно "[TheWindowName]*"		
+	И я нажимаю на кнопку с именем 'FormWriteAndClose'
+	И я жду закрытия окна "[TheWindowName]*" в течение 20 секунд
+
+
+			

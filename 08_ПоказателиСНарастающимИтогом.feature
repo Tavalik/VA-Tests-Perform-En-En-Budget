@@ -38,7 +38,7 @@
 	И Я в конструкторе отчета добавляю колонку с именем "Quantity"		
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C3'
 		
-	И Я Для вида отчета "VA - Cumulative total (source)" я создаю бланк по умолчанию
+	И Я Для вида отчета "VA - Cumulative total (source)" создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Cumulative total (source)" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
 
 Сценарий: 08.03 Создание экземпляра отчета - "VA - Cumulative total (source)" 
@@ -294,7 +294,7 @@
 			И Я запоминаю в переменную 'CodeOfIndicator1' значение "Goods_Quantity"			
 			И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст
 				|'// Получим ссылки to1 нужные показатели'|
-				|'IndicatorSource = Справочники.ReportsIndicators.FindByCode("$CodeOfIndicator1$",,,Справочники.ReportsKinds.FindByCode("$ReportCode$"));'|
+				|'IndicatorSource = Catalogs.ReportsIndicators.FindByCode("$CodeOfIndicator1$",,,Catalogs.ReportsKinds.FindByCode("$ReportCode$"));'|
 				|''|
 				|'// Получаем массив Periods'|
 				|'тReportPeriods = New Array;'|
@@ -328,8 +328,8 @@
 			И Я запоминаю в переменную 'CodeOfIndicator2' значение "FromSourceBeforeCalc_Quantity"
 			И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 				|'// Получим ссылки to1 нужные показатели'|
-				|'IndicatorSource = Справочники.ReportsIndicators.FindByCode("$CodeOfIndicator1$",,,Справочники.ReportsKinds.FindByCode("$ReportCode$"));'|
-				|'IndicatorDestination = Справочники.ReportsIndicators.FindByCode("$CodeOfIndicator2$",,,ObjectOfARAP.ReportKind);'|
+				|'IndicatorSource = Catalogs.ReportsIndicators.FindByCode("$CodeOfIndicator1$",,,Catalogs.ReportsKinds.FindByCode("$ReportCode$"));'|
+				|'IndicatorDestination = Catalogs.ReportsIndicators.FindByCode("$CodeOfIndicator2$",,,ObjectOfARAP.ReportKind);'|
 				|''|
 				|'// Cycle по периодам Report_'|
 				|'For CntShared = 0 To ObjectOfARAP.ArrayOfPeriods.Count()-1 Do'|
@@ -367,8 +367,8 @@
 			И Я запоминаю в переменную 'CodeOfIndicator2' значение "FromSourceAfterCalcu_Quantity"
 			И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 				|'// Получим ссылки to1 нужные показатели'|
-				|'IndicatorSource = Справочники.ReportsIndicators.FindByCode("$CodeOfIndicator1$",,,Справочники.ReportsKinds.FindByCode("$ReportCode$"));'|
-				|'IndicatorDestination = Справочники.ReportsIndicators.FindByCode("$CodeOfIndicator2$",,,ObjectOfARAP.ReportKind);'|
+				|'IndicatorSource = Catalogs.ReportsIndicators.FindByCode("$CodeOfIndicator1$",,,Catalogs.ReportsKinds.FindByCode("$ReportCode$"));'|
+				|'IndicatorDestination = Catalogs.ReportsIndicators.FindByCode("$CodeOfIndicator2$",,,ObjectOfARAP.ReportKind);'|
 				|''|
 				|'// Cycle по периодам Report_'|
 				|'For CntShared = 0 To ObjectOfARAP.ArrayOfPeriods.Count()-1 Do'|
@@ -410,7 +410,7 @@
 			Когда открылось окно "Edit tree"
 			И Я закрываю окно "Edit tree"														
 	
-	И Я Для вида отчета "VA - Cumulative total (recipient)" я создаю бланк по умолчанию
+	И Я Для вида отчета "VA - Cumulative total (recipient)" создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Cumulative total (recipient)" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
 	И Я Для вида отчета "VA - Cumulative total (recipient)" в бланке для группы раскрытия с адресом 'R10C1' задаю сортировку "Product range" "Product ID"
 	И Я Для вида отчета "VA - Cumulative total (recipient)" в бланке для группы раскрытия с адресом 'R12C1' задаю сортировку "Product range" "Product ID"

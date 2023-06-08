@@ -28,7 +28,7 @@
 		И Я в конструкторе отчета добавляю колонку с именем "Amount"
 		И Я в конструкторе отчета добавляю аналитику с кодом "VA0CFItems" в ячейку 'R2C2'
 
-	И Я Для вида отчета "VA - Filling from PH (no history)" я создаю бланк по умолчанию
+	И Я Для вида отчета "VA - Filling from PH (no history)" создаю бланк по умолчанию
 
 Сценарий: 05.02 Создаем формулу расчета с заполнением из РН
 
@@ -51,10 +51,10 @@
 				И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase accumulation register"
 				И из выпадающего списка с именем 'DBAccumulationRegister' я выбираю по строке 'CashFlowCPM'
 				Тогда таблица 'ComplianceTable' стала равной:
-					| 'Dimension приемника'     | 'Method заполнения' | 'Name колонки'                        | 'Type аналитики' |
+					| 'Dimension приемника'     | 'Method заполнения' | 'Name колонки'                        | 'Kind аналитики' |
 					| "Dimension 1: Cash flow items" | 'Field источника'    | '[AssetRef движения денежных средств]' | "Cash flow items"    |
 				И у элемента с именем 'DBRegisterResource' я жду значения "Amount" в течение 10 секунд
-				И у элемента с именем 'TotalKindDB' я жду значения 'Оборот' в течение 10 секунд			
+				И у элемента с именем 'TotalKindDB' я жду значения 'Turnover' в течение 10 секунд			
 			* Заполняем отборы		
 				И я перехожу к закладке с именем 'FiltersPage'
 				И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
@@ -152,7 +152,7 @@
 				| ''                                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Factor'                              | ''                                                   | ''       | 'Value'                         | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Version'                                  | "Report period"                                      | 'Currency' | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| 'Статьи Cash_Flow сумма'                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
+				| 'ARTICLES__ Cash_Flow сумма'                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "January 2021"                                     | 'RUB'    | '3,120,000.00000'                  | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "January 2021"                                     | 'USD'    | '42,036.96019'                     | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "January 2021"                                     | 'EUR'    | '34,476.24288'                     | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
@@ -169,7 +169,7 @@
 				| ''                                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Factor'                              | ''                                                   | ''       | ''                                 | ''                 | 'Value'         | 'Value валюта'  | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Version'                                  | "Report period"                                      | 'Currency' | 'Dimension 1'                      | 'Dimension валюта' | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| 'Статьи Cash_Flow сумма'                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
+				| 'ARTICLES__ Cash_Flow сумма'                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "January 2021"                                     | 'RUB'    | "2Software implementation"  | ''                 | '2,340,000.00000'  | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "January 2021"                                     | 'RUB'    | "3Software sale" | ''                 | '780,000.00000'    | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "January 2021"                                     | 'USD'    | "2Software implementation"  | ''                 | '31,527.72014'     | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
@@ -245,11 +245,11 @@
 				И у элемента с именем 'DBRegisterResource' я жду значения "Amount" в течение 10 секунд
 				Тогда таблица 'FieldsTreeDB' стала равной по шаблону:
 					| 'Field'                   |
-					| 'Регистратор'            |
+					| 'Recorder'            |
 					| 'Dimensions регистра(13)' |
 					| 'Attributes регистра(0)'  |
 				Тогда таблица 'ComplianceTable' стала равной:
-					| 'Dimension приемника'     | 'Method заполнения' | 'Name колонки'                        | 'Type аналитики' |
+					| 'Dimension приемника'     | 'Method заполнения' | 'Name колонки'                        | 'Kind аналитики' |
 					| "Dimension 1: Cash flow items" | 'Field источника'    | '[AssetRef движения денежных средств]' | "Cash flow items"    |
 
 			* Добавляем отборы
@@ -272,7 +272,7 @@
 					Когда открылось окно "Data source (create) *"
 					И в таблице 'FieldsTreeDB' я перехожу к строке:
 						| 'Field'        |
-						| 'Регистратор' |
+						| 'Recorder' |
 					И в таблице 'FieldsTreeDB' я разворачиваю текущую строку
 					Если '$$IsERPCPM$$' Тогда
 						И в таблице 'FieldsTreeDB' я перехожу к строке:
@@ -301,19 +301,19 @@
 					И в таблице 'TreeOfFilterParametersDB' я завершаю редактирование строки
 					И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 						| 'Filter'                     | 'Field'                         |
-						| 'Date конца периода Report_' | 'Date окончания отбора data_' |
+						| 'Date end периода Report_' | 'Date окончания отбора data_' |
 					И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "Reporting period end date with a shift"
 					И в таблице 'TreeOfFilterParametersDB' в поле с именем 'DefiningMethodClarification' я ввожу текст '-1'
 					И в таблице 'TreeOfFilterParametersDB' я завершаю редактирование строки								
 					И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 						| 'Field'                     |
-						| '[Регистратор].[Scenario]' |
+						| '[Recorder].[Scenario]' |
 					И в таблице 'TreeOfFilterParametersDB' я активизирую поле с именем 'ParameterCalculationMethod'
 					И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "Report scenario"
 					И в таблице 'TreeOfFilterParametersDB' я завершаю редактирование строки				
 					И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 						| 'Field'                       |
-						| '[Регистратор].[Counterparty]' |
+						| '[Recorder].[Counterparty]' |
 					И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "Fixed value"
 					И в таблице 'TreeOfFilterParametersDB' я нажимаю кнопку выбора у реквизита с именем 'DefiningMethodClarification'
 					Когда открылось окно "Counterparties*"
@@ -342,15 +342,15 @@
 			Когда открылось окно "Report types and templates"
 			И в таблице "List" я перехожу к строке:
 				| 'Description'                                          |
-				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' |
+				| 'DimenKind - FillType From_SSLy RН (Without истории) (pivot table)' |
 			И в таблице 'List' я выбираю текущую строку
 			* Состав строк
 				Когда Открылся бланк сводной таблицы для вида отчета "VA - Filling from PH (no history)"
 				И я нажимаю на кнопку с именем 'ShowListOfRows'
 				Тогда открылось окно "Set up line list"
 				И в таблице 'SettingTree' я перехожу к строке:
-					| 'Type аналитики 1' | 'Group аналитик' | 'Code'       | 'IntendedPurpose'      | 'String Report_' |
-					| "Cash flow items"      | 'ГR_Статьи Cash_Flow'   | 'CFItems' | 'Произвольные данные' | "Cash flow items"    |
+					| 'Kind аналитики 1' | 'Group аналитик' | 'Code'       | 'IntendedPurpose'      | 'String Report_' |
+					| "Cash flow items"      | 'GR_ARTICLES__ Cash_Flow'   | 'CFItems' | 'Arbitrary_Parameters данные' | "Cash flow items"    |
 				И я нажимаю на кнопку с именем 'MoveLeft'
 				И я нажимаю на кнопку с именем 'ApplyTheChanges'
 			* Состав колонок	
@@ -408,8 +408,8 @@
 			И Я устанавливаю отборы сводной таблицы: дата начала '1/1/2021', дата конца '3/31/2021', валюта 'RUB', сценарий "VA - Main scenario", организация "Mercury LLC"
 			И Я устанавливаю отбор сводной таблицы 'Project' со значением "VA - Main project"	
 			Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' | "January 2021" | "February 2021" | "March 2021" |
-				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' | "Amount"          | "Amount"           | "Amount"        |
+				| 'DimenKind - FillType From_SSLy RН (Without истории) (pivot table)' | "January 2021" | "February 2021" | "March 2021" |
+				| 'DimenKind - FillType From_SSLy RН (Without истории) (pivot table)' | "Amount"          | "Amount"           | "Amount"        |
 				| "Cash flow items"                                            | '3,120,000'      | '16,000,000'      | '0'            |
 				| "1Software upgrade"                         | '0'              | '3,450,000'       | '0'            |
 				| "2Software implementation"                       | '2,340,000'      | '7,350,000'       | '0'            |
@@ -420,8 +420,8 @@
 			И я нажимаю на кнопку с именем 'RecalculateAccordingToRegulations'
 			И я жду открытия формы '$WindowTitle$' в течение 30 секунд
 			Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' | "January 2021" | "February 2021" | "March 2021" |
-				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' | "Amount"          | "Amount"           | "Amount"        |
+				| 'DimenKind - FillType From_SSLy RН (Without истории) (pivot table)' | "January 2021" | "February 2021" | "March 2021" |
+				| 'DimenKind - FillType From_SSLy RН (Without истории) (pivot table)' | "Amount"          | "Amount"           | "Amount"        |
 				| "Cash flow items"                                            | '0'              | '3,120,000'       | '0'            |
 				| "2Software implementation"                       | '0'              | '2,340,000'       | '0'            |
 				| "3Software sale"                      | '0'              | '780,000'         | '0'            |
@@ -429,8 +429,8 @@
 		* Отменим транзакцию
 			И я нажимаю на кнопку с именем 'CancelAction'
 			Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' | "January 2021" | "February 2021" | "March 2021" |
-				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' | "Amount"          | "Amount"           | "Amount"        |
+				| 'DimenKind - FillType From_SSLy RН (Without истории) (pivot table)' | "January 2021" | "February 2021" | "March 2021" |
+				| 'DimenKind - FillType From_SSLy RН (Without истории) (pivot table)' | "Amount"          | "Amount"           | "Amount"        |
 				| "Cash flow items"                                            | '3,120,000'      | '16,000,000'      | '0'            |
 				| "1Software upgrade"                         | '0'              | '3,450,000'       | '0'            |
 				| "2Software implementation"                       | '2,340,000'      | '7,350,000'       | '0'            |
@@ -443,8 +443,8 @@
 			И я нажимаю на кнопку с именем 'FormSelect'
 			И я жду открытия формы '$WindowTitle$' в течение 30 секунд
 			Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' | "January 2021" | "February 2021" | "March 2021" |
-				| 'DimenKind - Заполнение From RН (Without истории) (pivot table)' | "Amount"          | "Amount"           | "Amount"        |
+				| 'DimenKind - FillType From_SSLy RН (Without истории) (pivot table)' | "January 2021" | "February 2021" | "March 2021" |
+				| 'DimenKind - FillType From_SSLy RН (Without истории) (pivot table)' | "Amount"          | "Amount"           | "Amount"        |
 				| "Cash flow items"                                            | '0'              | '3,120,000'       | '0'            |
 				| "2Software implementation"                       | '0'              | '2,340,000'       | '0'            |
 				| "3Software sale"                      | '0'              | '780,000'         | '0'            |
@@ -455,7 +455,7 @@
 			Тогда открылось окно '1C:Предприятие'
 			И я нажимаю на кнопку с именем 'Button0'
 
-Сценарий: 05.07 Проверяем движения экземпляра отчета - 'Заполнение From RН (no history)'
+Сценарий: 05.07 Проверяем движения экземпляра отчета - 'FillType From_SSLy RН (no history)'
 
 	Если 'NOT $$ЭтоPerform$$' Тогда
 
@@ -482,7 +482,7 @@
 				| ''                                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Factor'                              | ''                                                   | ''       | 'Value'                         | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Version'                                  | "Report period"                                      | 'Currency' | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| 'Статьи Cash_Flow сумма'                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
+				| 'ARTICLES__ Cash_Flow сумма'                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'RUB'    | '3,120,000.00000'                  | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'USD'    | '41,949.7490*'                     | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'EUR'    | '34,692.84049'                     | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
@@ -496,7 +496,7 @@
 				| ''                                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Factor'                              | ''                                                   | ''       | ''                                 | ''                 | 'Value'         | 'Value валюта'  | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Version'                                  | "Report period"                                      | 'Currency' | 'Dimension 1'                      | 'Dimension валюта' | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| 'Статьи Cash_Flow сумма'                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
+				| 'ARTICLES__ Cash_Flow сумма'                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'RUB'    | "2Software implementation"  | ''                 | '2,340,000.00000'  | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'RUB'    | "3Software sale" | ''                 | '780,000.00000'    | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'USD'    | "2Software implementation"  | ''                 | '31,462.3117*'     | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
@@ -562,7 +562,7 @@
 				| ''                                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Factor'                              | ''                                                   | ''       | 'Value'                         | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Version'                                  | "Report period"                                      | 'Currency' | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| 'Статьи Cash_Flow сумма'                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
+				| 'ARTICLES__ Cash_Flow сумма'                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'RUB'    | '3,120,000.00000'                  | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'USD'    | '41,949.7490*'                     | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'EUR'    | '34,692.84049'                     | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
@@ -576,7 +576,7 @@
 				| ''                                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Factor'                              | ''                                                   | ''       | ''                                 | ''                 | 'Value'         | 'Value валюта'  | ''                 | ''                 | ''                 | ''                    | ''                |
 				| 'Version'                                  | "Report period"                                      | 'Currency' | 'Dimension 1'                      | 'Dimension валюта' | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
-				| 'Статьи Cash_Flow сумма'                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
+				| 'ARTICLES__ Cash_Flow сумма'                        | ''                                                   | ''       | ''                                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'RUB'    | "2Software implementation"  | ''                 | '2,340,000.00000'  | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'RUB'    | "3Software sale" | ''                 | '780,000.00000'    | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |
 				| '*'                                       | "February 2021"                                    | 'USD'    | "2Software implementation"  | ''                 | '31,462.3117*'     | ''                 | ''                 | ''                 | ''                 | ''                    | ''                |

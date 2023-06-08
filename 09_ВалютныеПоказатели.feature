@@ -31,35 +31,44 @@
 	И я нажимаю на кнопку с именем 'EditTree'
 	Когда открылось окно "Edit tree"
 
-	И Я в конструкторе отчета добавляю строку с именем "Revenue"
-	И Я в конструкторе отчета добавляю строку с именем "Revenue in currency"
-	И Я в конструкторе отчета добавляю строку с именем "Revenue by currency"
-	И Я в конструкторе отчета добавляю строку с именем "Effective on"
-	И Я в конструкторе отчета добавляю строку с именем "Rate [EUR]"
-	И Я в конструкторе отчета добавляю строку с именем "Rate [USD]"
+	И Я в конструкторе отчета добавляю строки
+		| "Description"      |
+		| "Revenue"           |
+		| "Revenue in currency"  |
+		| "Revenue by currency" |
+		| "Effective on"        |
+		| "Rate [EUR]"        |
+		| "Rate [USD]"        |
 		
 	И Я в конструкторе отчета добавляю колонку с именем "Value"
 
-	И я в конструкторе отчета в ячейке 'R5C2' я меняю свойство показателя 'ValueType' на "Date"
-	И я в конструкторе отчета в ячейке 'R5C2' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-	И я в конструкторе отчета в ячейке 'R6C2' я меняю свойство показателя 'NonFinancial' на "True"
-	И я в конструкторе отчета в ячейке 'R6C2' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
-	И я в конструкторе отчета в ячейке 'R7C2' я меняю свойство показателя 'NonFinancial' на "True"
-	И я в конструкторе отчета в ячейке 'R7C2' я меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
+	И Я в конструкторе отчета в ячейке 'R5C2' меняю свойство показателя 'ValueType' на "Date"
+	И Я в конструкторе отчета в ячейке 'R5C2' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
+	И Я в конструкторе отчета в ячейке 'R6C2' меняю свойство показателя 'NonFinancial' на "True"
+	И Я в конструкторе отчета в ячейке 'R6C2' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
+	И Я в конструкторе отчета в ячейке 'R7C2' меняю свойство показателя 'NonFinancial' на "True"
+	И Я в конструкторе отчета в ячейке 'R7C2' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
 	
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0Counter" в ячейку 'R2C2'
 	Когда открылось окно "Edit tree"
 	И я нажимаю на кнопку с именем 'CopyDimension'
 	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C2'
 	И я нажимаю на кнопку с именем 'InsertDimension'
-	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C8'
-	И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C8'
-	И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке						
+
+	И Я в конструкторе отчета в ячейке 'R2C8' меняю аналитику валюта
+	И Я в конструкторе отчета в ячейке 'R3C8' меняю аналитику валюта
+	И Я в конструкторе отчета в ячейке 'R4C8' меняю аналитику валюта
+
+	И Я в конструкторе отчета в ячейке 'R2C2' проверяю свойство показателя 'ShouldRecalculateForeignCurrencyAmount' на "False"
+	И Я в конструкторе отчета в ячейке 'R2C2:R4C2' меняю свойства показателей 'ShouldRecalculateForeignCurrencyAmount' на "True"
+	И Я в конструкторе отчета в ячейке 'R2C2' проверяю свойство показателя 'ShouldRecalculateForeignCurrencyAmount' на "True"
+
+	И Я в конструкторе отчета в ячейке 'R2C8' меняю аналитику валюта
+	И Я в конструкторе отчета в ячейке 'R2C2' проверяю свойство показателя 'ShouldRecalculateForeignCurrencyAmount' на "False"
 
 Сценарий: 09.03 Создание многопериодного бланка для вида отчета "VA - Currency indicators (source)"
 
-	И Я Для вида отчета "VA - Currency indicators (source)" я создаю бланк по умолчанию
+	И Я Для вида отчета "VA - Currency indicators (source)" создаю бланк по умолчанию
 
 	* Открываем бланк
 		И Я нахожу в списке вид отчета с именем "VA - Currency indicators (source)"
@@ -141,29 +150,26 @@
 				| "LLC \"Ganymede\"" | '100,000.00000' |
 				| "LLC \"Io\""      | '200,000.00000' |
 
-	// ДОДЕЛАТЬ
-	// Добавить тест на пересчет валюты в многопериодном режиме формы редактирования показателей			
-
 	* Вводим значения с аналитиками, проверяем пересчет в валюту
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C2'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C1'
+		И я нажимаю на кнопку с именем 'DisplayADrilldown'
 		Тогда открылось окно "Drill down indicators: *"
 		И я заполняю таблицу 'IndicatorsDrilldown' данными
-			| "VA0Counter"      | 'DimensionCurrency' | 'Value1'     | 'ValueCurrency1' |
-			| "LLC \"Ganymede\"" | 'RUB'             | ''              | '100,000.00000'   |
-			| "LLC \"Ganymede\"" | 'USD'             | '90,000.00000'  | ''                |
-			| "LLC \"Ganymede\"" | 'EUR'             | '110,000.00000' | ''                |
-			| "LLC \"Io\""      | 'RUB'             | ''              | '200,000.00000'   |
-			| "LLC \"Io\""      | 'USD'             | '180,000.00000' |                   |
-			| "LLC \"Io\""      | 'EUR'             | '220,000.00000' |                   |
+			| "Counterparties"     | 'Currencies' | 'Period_1_Value1' | 'Period_1_ValueCurrency1' |
+			| "LLC \"Ganymede\"" | 'RUB'    | ''                   | '100,000.00000'            |
+			| "LLC \"Ganymede\"" | 'USD'    | '90,000.00000'       | ''                         |
+			| "LLC \"Ganymede\"" | 'EUR'    | '110,000.00000'      | ''                         |
+			| "LLC \"Io\""      | 'RUB'    | ''                   | '200,000.00000'            |
+			| "LLC \"Io\""      | 'USD'    | '180,000.00000'      |                            |
+			| "LLC \"Io\""      | 'EUR'    | '220,000.00000'      |                            |
 		Тогда таблица 'IndicatorsDrilldown' стала равной:
-			| "Counterparties"     | "Currencies" | 'Value1' | 'ValueCurrency1' |
-			| "LLC \"Ganymede\"" | 'RUB'    | '100,000'   | '100,000'         |
-			| "LLC \"Ganymede\"" | 'USD'    | '90,000'    | '1,213'           |
-			| "LLC \"Ganymede\"" | 'EUR'    | '110,000'   | '1,216'           |
-			| "LLC \"Io\""      | 'RUB'    | '200,000'   | '200,000'         |
-			| "LLC \"Io\""      | 'USD'    | '180,000'   | '2,425'           |
-			| "LLC \"Io\""      | 'EUR'    | '220,000'   | '2,431'           |
+			| "Counterparties"     | 'Currencies' | 'Period_1_Value1' | 'Period_1_ValueCurrency1' | 'Period_2_Value1' | 'Period_2_ValueCurrency1' | 'Period_3_Value1' | 'Period_3_ValueCurrency1' |
+			| "LLC \"Ganymede\"" | 'RUB'    | '100,000.00000'      | '100,000.00000'            | ''                   | ''                         | ''                   | ''                         |
+			| "LLC \"Ganymede\"" | 'USD'    | '90,000.00000'       | '1,212.60462'              | ''                   | ''                         | ''                   | ''                         |
+			| "LLC \"Ganymede\"" | 'EUR'    | '110,000.00000'      | '1,215.50856'              | ''                   | ''                         | ''                   | ''                         |
+			| "LLC \"Io\""      | 'RUB'    | '200,000.00000'      | '200,000.00000'            | ''                   | ''                         | ''                   | ''                         |
+			| "LLC \"Io\""      | 'USD'    | '180,000.00000'      | '2,425.20924'              | ''                   | ''                         | ''                   | ''                         |
+			| "LLC \"Io\""      | 'EUR'    | '220,000.00000'      | '2,431.01713'              | ''                   | ''                         | ''                   | ''                         |
 		И я нажимаю на кнопку с именем 'FormOKButton1'
 		И я жду закрытия окна "Drill down indicators: *" в течение 20 секунд	
 
@@ -263,42 +269,24 @@
 	Когда открылось окно "Edit tree"
 
 	* Добавляем строки
-		Тогда открылось окно "Edit tree"
-		И я нажимаю на кнопку с именем 'RowsTreeAddRows'
-		Тогда открылось окно "Adding new lines"
-		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Revenue by currency"
-		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Revenue by currency [Average rate for period]"
-		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Revenue by currency [Average rate for IFRS period]"
-		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Revenue by currency [Average rate for period CB]"
-		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Revenue by currency [Exchange rate at the beginning of the period]"
-		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Revenue by currency [Exchange rate at the end of the period]"
-		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Revenue by currency [Average rate for the previous period]"
-		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Revenue by currency [Exchange rate at the end of the previous period]"
-		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Revenue by currency [Average rate for the previous period CB]"
-		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Effective on"
-		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Revenue by currency [Exchange rate as of the date specified in the indicator]"
-		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Revenue by currency [Exchange rate as of the date specified in the indicator another report]"
-		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Rate [EUR]"
-		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Rate [USD]"
-		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Revenue by currency [Rate specified in the indicator]"
-		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Revenue by currency [Rate specified in the indicator another report]"
-		И я нажимаю на кнопку с именем 'OK'
+		И Я в конструкторе отчета добавляю строки
+			| "Description"                                                           |
+			| "Revenue by currency"                                                      |
+			| "Revenue by currency [Average rate for period]"                             |
+			| "Revenue by currency [Average rate for IFRS period]"                        |
+			| "Revenue by currency [Average rate for period CB]"                          |
+			| "Revenue by currency [Exchange rate at the beginning of the period]"                             |
+			| "Revenue by currency [Exchange rate at the end of the period]"                              |
+			| "Revenue by currency [Average rate for the previous period]"                  |
+			| "Revenue by currency [Exchange rate at the end of the previous period]"                  |
+			| "Revenue by currency [Average rate for the previous period CB]"               |
+			| "Effective on"                                                             |
+			| "Revenue by currency [Exchange rate as of the date specified in the indicator]"                |
+			| "Revenue by currency [Exchange rate as of the date specified in the indicator another report]" |
+			| "Rate [EUR]"                                                             |
+			| "Rate [USD]"                                                             |
+			| "Revenue by currency [Rate specified in the indicator]"                        |
+			| "Revenue by currency [Rate specified in the indicator another report]"         |
 		
 	* Добавляем колонки
 		И Я в конструкторе отчета добавляю колонку с именем "Value"
@@ -483,19 +471,7 @@
 			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
 
 	* Устанавливаем аналитики отчета
-		Тогда открылось окно "Edit tree"
-		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicator dimensions"
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно "Dimension types (corporate)"
-		И я нажимаю на кнопку с именем 'FormFind'
-		Тогда открылась форма с именем 'UniversalListFindExtForm'
-		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
-		И в поле с именем 'Pattern' я ввожу текст "VA0Counter"
-		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Dimension types (corporate)"
-		И в таблице 'List' я выбираю текущую строку
+		И Я в конструкторе отчета добавляю аналитику с кодом "VA0Counter" в ячейку 'R2C2'
 		Когда открылось окно "Edit tree"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C8'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
@@ -522,27 +498,14 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R16C8'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R17C8'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке						
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И Я в конструкторе отчета в ячейке 'R2C2:R17C2' меняю свойства показателей 'ShouldRecalculateForeignCurrencyAmount' на 'True'						
 
 	* Вводим источники данных
-		Когда открылось окно "Edit tree"
-		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"
 		* Выручка по валюте
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			И я нажимаю на кнопку с именем 'RefToIndicator1'
-			И Я выбираю показатель с кодом "RevenueInCurrency_Value" вида отчета "VA - Currency indicators (source)"
-			Тогда открылось окно "Edit tree *"
-			И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		* Выручка по валюте [Средний курс за период]	
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			И я нажимаю на кнопку с именем 'RefToIndicator1'
-			И Я выбираю показатель с кодом "RevenueByCurrency_Value" вида отчета "VA - Currency indicators (source)"
-			Тогда открылось окно "Edit tree *"
-			И я нажимаю на кнопку с именем 'WriteAndCollapse'
+			И Я в конструкторе отчета для ячейки 'R2C2' настраиваю связь с покзателем с кодом "RevenueInCurrency_Value" вида отчета "VA - Currency indicators (source)"
+		* Выручка по валюте [Средний курс за период]
+			И Я в конструкторе отчета для ячейки 'R3C2' настраиваю связь с покзателем с кодом "RevenueByCurrency_Value" вида отчета "VA - Currency indicators (source)"	
 		* Выручка по валюте [Средний курс за период МСФО]	
 			Тогда открылось окно "Edit tree"
 			И я нажимаю на кнопку с именем 'CopyFormula'
@@ -588,29 +551,12 @@
 			И я нажимаю на кнопку с именем 'CopyFormula'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R17C2'
 			И я нажимаю на кнопку с именем 'InsertFormula'
-		* Дата курса	
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			И я нажимаю на кнопку с именем 'RefToIndicator1'
-			И Я выбираю показатель с кодом "EffectiveOn_Value" вида отчета "VA - Currency indicators (source)"
-			Тогда открылось окно "Edit tree *"
-			И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		* Курс (EUR)	
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R14C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			И я нажимаю на кнопку с именем 'RefToIndicator1'
-			И Я выбираю показатель с кодом "RateEUR_Value" вида отчета "VA - Currency indicators (source)"
-			Тогда открылось окно "Edit tree *"
-			И я нажимаю на кнопку с именем 'WriteAndCollapse'
-			Тогда открылось окно "Edit tree"
-		* Курс (USD)	
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R15C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			И я нажимаю на кнопку с именем 'RefToIndicator1'
-			И Я выбираю показатель с кодом "RateUSD_Value" вида отчета "VA - Currency indicators (source)"
-			Тогда открылось окно "Edit tree *"
-			И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		* Дата курса
+			И Я в конструкторе отчета для ячейки 'R11C2' настраиваю связь с покзателем с кодом "EffectiveOn_Value" вида отчета "VA - Currency indicators (source)"	
+		* Курс (EUR)
+			И Я в конструкторе отчета для ячейки 'R14C2' настраиваю связь с покзателем с кодом "RateEUR_Value" вида отчета "VA - Currency indicators (source)"	
+		* Курс (USD)
+			И Я в конструкторе отчета для ячейки 'R15C2' настраиваю связь с покзателем с кодом "RateUSD_Value" вида отчета "VA - Currency indicators (source)"	
 
 	* Включим возможность редактирования показателей
 		Когда открылось окно "Edit tree"
@@ -677,7 +623,7 @@
 
 Сценарий: 09.06 Создание многопериодного бланка для вида отчета "VA - Currency indicators (recipient)"
 
-	И Я Для вида отчета "VA - Currency indicators (recipient)" я создаю бланк по умолчанию
+	И Я Для вида отчета "VA - Currency indicators (recipient)" создаю бланк по умолчанию
 
 	* Открываем бланк
 		И Я нахожу в списке вид отчета с именем "VA - Currency indicators (recipient)"

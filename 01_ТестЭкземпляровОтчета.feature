@@ -587,41 +587,14 @@
 		И Я закрываю окно "LineDimensionCurrency quantity (Report indicators)"
 
 	* Снова установим раскрытие по валютам
-		Когда открылось окно "Edit tree"
-		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicator dimensions"
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C8'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И Я в конструкторе отчета в ячейке 'R11C8' меняю аналитику валюта
 
 	* Настроим валютные показатели
-		Когда открылось окно "Edit tree"
-		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Report structure"	
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C2'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно "LineDimensionCurrency quantity (Report indicators)"
-		И элемент формы с именем 'ShouldRecalculateForeignCurrencyAmount' стал равен 'Yes'
-		И я изменяю флаг с именем 'ShouldRecalculateForeignCurrencyAmount'
-		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна "LineDimensionCurrency quantity (Report indicators) *" в течение 20 секунд
-		Тогда открылось окно "Edit tree"
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C3'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно "LineDimensionCurrency price (Report indicators)"
-		И элемент формы с именем 'ShouldRecalculateForeignCurrencyAmount' стал равен 'Yes'
-		И Я закрываю окно "LineDimensionCurrency price (Report indicators)"
-		Тогда открылось окно "Edit tree"
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C2'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно "LineDimension6Currency quantity (Report indicators)"
-		И элемент формы с именем 'ShouldRecalculateForeignCurrencyAmount' стал равен 'Yes'
-		И я изменяю флаг с именем 'ShouldRecalculateForeignCurrencyAmount'
-		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна "LineDimension6Currency quantity (Report indicators) *" в течение 20 секунд
-		Тогда открылось окно "Edit tree"
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C3'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		Тогда открылось окно "LineDimension6Currency price (Report indicators)"
-		И элемент формы с именем 'ShouldRecalculateForeignCurrencyAmount' стал равен 'Yes'
-		И я нажимаю на кнопку с именем 'FormWriteAndClose'
+		И Я в конструкторе отчета в ячейке 'R11C2' проверяю свойство показателя 'ShouldRecalculateForeignCurrencyAmount' на "False"
+		И Я в конструкторе отчета в ячейке 'R11C3' меняю свойство показателя 'ShouldRecalculateForeignCurrencyAmount' на "True"
+		И Я в конструкторе отчета в ячейке 'R10C3' меняю свойство показателя 'ShouldRecalculateForeignCurrencyAmount' на "True"
+		И Я в конструкторе отчета в ячейке 'R10C4:R11C4' меняю свойства показателей 'ShouldRecalculateForeignCurrencyAmount' на "True"
+		И Я в конструкторе отчета в ячейке 'R11C4' проверяю свойство показателя 'ShouldRecalculateForeignCurrencyAmount' на "True"
 
 Сценарий: 01.06 Ввод формул в контрукторе отчета 
 
@@ -778,7 +751,7 @@
 
 Сценарий: 01.07 Создание бланка вида отчета
 
-	И Я для вида отчета "VA - Manual entry for all analytics" я создаю бланк по умолчанию
+	И Я для вида отчета "VA - Manual entry for all analytics" создаю бланк по умолчанию
 
 Сценарий: 01.08 Создание экземпляра отчета
 
@@ -913,76 +886,40 @@
 
 	* Добавляем Комментарии ячеек
 		Когда открылось окно '$WindowTitle$'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C2'
-		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
-		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст "Comment Group"
-		И я нажимаю на кнопку с именем 'WriteComment'
+		И Я ввожу комментарий "Comment Group" в ячейку 'R6C2'
 		Тогда открылось окно '$WindowTitle$'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C3'
-		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
-		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст "Comment Synthetic"
-		И я нажимаю на кнопку с именем 'WriteComment'
+		И Я ввожу комментарий "Comment Synthetic" в ячейку 'R7C3'
 		Тогда открылось окно '$WindowTitle$'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C4'
-		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
-		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 1"
-		И я нажимаю на кнопку с именем 'WriteComment'
+		И Я ввожу комментарий "Comment Dimension 1" в ячейку 'R9C4'
 		Тогда открылось окно '$WindowTitle$'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C5'
-		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
-		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 2"
-		И я нажимаю на кнопку с именем 'WriteComment'
+		И Я ввожу комментарий "Comment Dimension 2" в ячейку 'R12C5'
 		Тогда открылось окно '$WindowTitle$'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R16C6'
-		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
-		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 3"
-		И я нажимаю на кнопку с именем 'WriteComment'
+		И Я ввожу комментарий "Comment Dimension 3" в ячейку 'R16C6'
 		Тогда открылось окно '$WindowTitle$'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R21C7'
-		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
-		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 4"
-		И я нажимаю на кнопку с именем 'WriteComment'
+		И Я ввожу комментарий "Comment Dimension 4" в ячейку 'R21C7'
 		Тогда открылось окно '$WindowTitle$'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R27C8'
-		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
-		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 5"
-		И я нажимаю на кнопку с именем 'WriteComment'
+		И Я ввожу комментарий "Comment Dimension 5" в ячейку 'R27C8'
 		Тогда открылось окно '$WindowTitle$'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R34C9'
-		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
-		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 6"
-		И я нажимаю на кнопку с именем 'WriteComment'
+		И Я ввожу комментарий "Comment Dimension 6" в ячейку 'R34C9'
 		Тогда открылось окно '$WindowTitle$'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R42C10'
-		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
-		Тогда открылось окно "Comments"
-		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 6 Currency"
-		И я нажимаю на кнопку с именем 'WriteComment'
-		Тогда открылось окно '$WindowTitle$'
+		И Я ввожу комментарий "Comment Dimension 6 Currency" в ячейку 'R42C10'
 	
 	* Проверяем работу формы комментариев
 		* Комментарий группы
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R45C2'
-			И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
 			Тогда открылось окно '$WindowTitle$'
-		* Отмена комментария	
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R45C2'
+			И я нажимаю на кнопку с именем 'LeaveCommentToIndicator'			
+		* Отмена комментария
+			Тогда открылось окно '$WindowTitle$'	
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R47C2'
-			И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
+			И я нажимаю на кнопку с именем 'LeaveCommentToIndicator'
 			Тогда открылось окно "Comments"
 			И в поле с именем 'NewComment' я ввожу текст "Comment"
 			И Я закрываю окно "Comments"
 		* Ввод комментария	
 			Тогда открылось окно '$WindowTitle$'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R47C2'
-			И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
+			И я нажимаю на кнопку с именем 'LeaveCommentToIndicator'
 			Тогда открылось окно "Comments"
 			Тогда элемент формы с именем 'CommentsHistory' стал равен ''
 			Тогда элемент формы с именем 'NewComment' стал равен ''
@@ -991,7 +928,7 @@
 		* История комментария	
 			Тогда открылось окно '$WindowTitle$'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R47C2'
-			И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
+			И я нажимаю на кнопку с именем 'LeaveCommentToIndicator'
 			Тогда открылось окно "Comments"
 			Тогда элемент формы с именем 'CommentsHistory' стал равен по шаблону
 				|'* (*): '|
@@ -1002,7 +939,7 @@
 		* История двух комментариев
 			Тогда открылось окно '$WindowTitle$'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R47C2'
-			И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
+			И я нажимаю на кнопку с именем 'LeaveCommentToIndicator'
 			Тогда открылось окно "Comments"
 			Тогда элемент формы с именем 'CommentsHistory' стал равен по шаблону
 				|'* (*): '|
@@ -1074,7 +1011,7 @@
 			И я выбираю пункт контекстного меню с именем 'ValueListContextMenuDelete' на элементе формы с именем 'ValueList'	
 		Когда открылось окно "Value list"
 		И я нажимаю на кнопку с именем 'Add'
-		И в таблице 'ValueList' из выпадающего списка с именем 'Value' я выбираю по строке "VA - Main scenario"
+		И в таблице 'ValueList' из выпадающего списка с именем 'value' я выбираю по строке "VA - Main scenario"
 		И в таблице 'ValueList' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'OK'			
 
@@ -1135,17 +1072,14 @@
 	* Копирование экземпляра
 		Когда открылось окно "Report instances"
 		И я выбираю пункт контекстного меню с именем 'ListContextMenuCopy' на элементе формы с именем 'List'
-		Когда открылось окно "Specify document key attributes"
+		Когда открылось окно "Specify key document attributes"
 		И я нажимаю на кнопку с именем 'OKButton'
 		Тогда в логе сообщений TestClient есть строки:
-			|"A report instance with key attributes you specified already exists"|						
-		Когда открылось окно "Specify document key attributes"
+			|"A report instance with the specified key attributes already exists."|						
+		Когда открылось окно "Specify key document attributes"
 		И я нажимаю кнопку выбора у поля с именем 'Organization'
-		Если '$$IsCPM$$' Тогда
-			И Я в списке "Business units" по полю "Name in the application" ищу элемент "Earth LLC" "Exact match"
-		Если '$$IsERPCPM$$' Тогда
-			И Я в списке "Companies" по полю "Рабочее наименование" ищу элемент "Earth LLC" "Exact match"
-		Когда открылось окно "Specify document key attributes"
+		И Я выбираю организацию "Earth LLC"
+		Когда открылось окно "Specify key document attributes"
 		И я нажимаю на кнопку с именем 'OKButton'
 
 	* Сверим результат	
@@ -1164,7 +1098,7 @@
 	* Добавляем комментарий
 		Когда открылось окно '$WindowTitle$'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R34C2'
-		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
+		И я нажимаю на кнопку с именем 'LeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
 		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 6"
 		И я нажимаю на кнопку с именем 'WriteComment'
@@ -1194,13 +1128,13 @@
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'EnableEdit'				
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R43C3'
-		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
+		И я нажимаю на кнопку с именем 'LeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
 		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 6 Currency"
 		И я нажимаю на кнопку с именем 'WriteComment'		
 		Тогда открылось окно '$WindowTitle$'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R46C4'
-		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
+		И я нажимаю на кнопку с именем 'LeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
 		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension Currency"
 		И я нажимаю на кнопку с именем 'WriteComment'
@@ -1479,13 +1413,13 @@
 		Тогда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'EnableEdit'				
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C2'
-		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
+		И я нажимаю на кнопку с именем 'LeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
 		И в поле с именем 'NewComment' я ввожу текст "Comment Group"
 		И я нажимаю на кнопку с именем 'WriteComment'
 		Когда открылось окно '$WindowTitle$'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R47C2'
-		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateLeaveCommentToIndicator'
+		И я нажимаю на кнопку с именем 'LeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
 		И в поле с именем 'NewComment' я ввожу текст "Comment Dimension 6 Currency"
 		И я нажимаю на кнопку с именем 'WriteComment'					
@@ -1713,7 +1647,7 @@
 			
 Сценарий: 01.21 Созадем бланк сводной таблицы
 
-	И Я для вида отчета "VA - Manual entry for all analytics" я создаю бланк сводной таблицы по умолчанию с отборами "Project"
+	И Я для вида отчета "VA - Manual entry for all analytics" создаю бланк сводной таблицы по умолчанию с отборами "Project"
 
 	* Доработаем бланк
 		Когда открылось окно "VA - Manual entry for all analytics (Report types)"
@@ -1965,18 +1899,18 @@
 	* Комментарий
 		Когда открылось окно '$WindowTitle$ *'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R19C2:R25C4'
-		И я нажимаю на кнопку с именем 'InsertNote'
+		И я нажимаю на кнопку с именем 'LeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
 		И в поле с именем 'NewComment' я ввожу текст "Comment 1"
 		И я нажимаю на кнопку с именем 'WriteComment'
 		Когда открылось окно '$WindowTitle$ *'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R19C2'
-		И я нажимаю на кнопку с именем 'InsertNote'
+		И я нажимаю на кнопку с именем 'LeaveCommentToIndicator'
 		Тогда открылось окно "Comments"
 		И в поле с именем 'NewComment' я ввожу текст "Comment 2"
 		И я нажимаю на кнопку с именем 'WriteComment'
 		Тогда открылось окно '$WindowTitle$ *'
-		И я нажимаю на кнопку с именем 'InsertNote'
+		И я нажимаю на кнопку с именем 'LeaveCommentToIndicator'
 		Тогда элемент формы с именем 'CommentsHistory' стал равен по шаблону
 			|'* (*): '|
 			|"Comment 1"|
@@ -2052,7 +1986,6 @@
 		И в таблице 'List' я выбираю текущую строку
 		Тогда Открылась сводная таблица для варианта "VA - Main variant"
 		И я запоминаю текущее окно как 'WindowTitleВарианта'
-		И Пауза 1
 		И в поле с именем 'Accuracy' я ввожу текст '5'
 		И из выпадающего списка с именем 'Divisor' я выбираю точное значение "thousand"
 		И я нажимаю на кнопку с именем 'UpdateTabData'

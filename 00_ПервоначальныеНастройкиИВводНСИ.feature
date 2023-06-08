@@ -120,16 +120,21 @@
 Сценарий: 00.04 Создание организаций и ЦФО
 	
 	* Создаем организацию Система
-		И Я создаю организацию с именем "System LLC" типом 'SelectRФ' видом 'SelectЮL' налогооблажением 'СистемаНалогообложенияShared3ЮL'
+		И Я создаю организацию с именем "System LLC" типом 'SelectRF' видом 'SelectЮL' налогооблажением 'СистемаНалогообложенияShared3ЮL'
 		Если '$$IsCPM$$' Тогда
 			И Я для организации "System LLC" для реквизита 'CompanyType' выбираю значение "VA - Package CFR"	
 			И Я для организации "System LLC" создаю подразделение с именем "Administration"
 			И Я для организации "System LLC" создаю подразделение с именем "Accounting"
 		Если '$$IsERPCPM$$' Тогда
-			И Я для организации "System LLC" для реквизита 'CompanyType1' выбираю значение "VA - Package CFR"		
+			И Я для организации "System LLC" для реквизита 'CompanyType1' выбираю значение "VA - Package CFR"	
+
+		Если '$$ЭтоPerform$$' Тогда
+			И Я для организации "System LLC" для реквизита 'GroupCounterparty' выбираю значение "VA - Subsidiary"
+		Иначе
+			И Я для организации "System LLC" для реквизита 'GroupКонтрагентов' выбираю значение "VA - Subsidiary"		
 
 	* Создаем организацию Меркурий
-		И Я создаю организацию с именем "Mercury LLC" типом 'SelectRФ' видом 'SelectЮL' налогооблажением 'СистемаНалогообложенияShared3ЮL'
+		И Я создаю организацию с именем "Mercury LLC" типом 'SelectRF' видом 'SelectЮL' налогооблажением 'СистемаНалогообложенияShared3ЮL'
 		И Я для организации "Mercury LLC" для реквизита 'Parent' выбираю значение "System LLC"	
 		
 		Если '$$IsCPM$$' Тогда
@@ -147,38 +152,25 @@
 		И Я для организации "Venus LLC" для реквизита 'Parent' выбираю значение "System LLC"
 		
 		Если '$$IsCPM$$' Тогда
-			Если 'NOT $$ЭтоPerform$$' Тогда
-				И Я для организации "Venus LLC" для реквизита 'CompanyType' выбираю значение "VA - Package CFR"
+			И Я для организации "Venus LLC" для реквизита 'CompanyType' выбираю значение "VA - Package CFR"
 		ИначеЕсли '$$IsERPCPM$$' Тогда
 			И Я для организации "Venus LLC" для реквизита 'CompanyType1' выбираю значение "VA - Package CFR"
-
-		Если '$$ЭтоPerform$$' Тогда
-			И Я для организации "Venus LLC" для реквизита 'GroupCounterparty' выбираю значение "VA - Subsidiary"
-		Иначе			
-			И Я для организации "Venus LLC" для реквизита 'GroupКонтрагентов' выбираю значение "VA - Subsidiary"
 
 	* Создаем организацию Земля
 		И Я создаю организацию с именем "Earth LLC" типом 'SelectCenterForFinancialResponsibility' видом '' налогооблажением ''
 		И Я для организации "Earth LLC" для реквизита 'Parent' выбираю значение "System LLC"
 		
 		Если '$$IsCPM$$' Тогда
-			Если 'NOT $$ЭтоPerform$$' Тогда
-				И Я для организации "Earth LLC" для реквизита 'CompanyType' выбираю значение "VA - Package CFR"
+			И Я для организации "Earth LLC" для реквизита 'CompanyType' выбираю значение "VA - Package CFR"
 		ИначеЕсли '$$IsERPCPM$$' Тогда
 			И Я для организации "Earth LLC" для реквизита 'CompanyType1' выбираю значение "VA - Package CFR"
-
-		Если '$$ЭтоPerform$$' Тогда	
-			И Я для организации "Earth LLC" для реквизита 'GroupCounterparty' выбираю значение "VA - Subsidiary"
-		Иначе			
-			И Я для организации "Earth LLC" для реквизита 'GroupКонтрагентов' выбираю значение "VA - Subsidiary"
 		
 	* Создаем организацию Марс
 		И Я создаю организацию с именем "Mars LLC" типом 'SelectCenterForFinancialResponsibility' видом 'SelectЭл' налогооблажением ''
 		И Я для организации "Mars LLC" для реквизита 'Parent' выбираю значение "System LLC"
 		
 		Если '$$IsCPM$$' Тогда
-			Если 'NOT $$ЭтоPerform$$' Тогда
-				И Я для организации "Mars LLC" для реквизита 'CompanyType' выбираю значение "VA - Package CFR"
+			И Я для организации "Mars LLC" для реквизита 'CompanyType' выбираю значение "VA - Package CFR"
 		ИначеЕсли '$$IsERPCPM$$' Тогда
 			И Я для организации "Mars LLC" для реквизита 'CompanyType1' выбираю значение "VA - Package CFR"
 
@@ -454,7 +446,7 @@
 		Тогда открылось окно "Select period"
 		И в поле с именем 'DateBegin' я ввожу текст '1/1/2021'
 		И в поле с именем 'DateEnd' я ввожу текст '3/31/2021'
-		И я нажимаю на кнопку с именем 'Select'	
+		И я нажимаю на кнопку с именем 'select'	
 		Тогда открылось окно "Reporting period management (create) *"
 		И из выпадающего списка с именем 'OrganizationalStructureVersion' я выбираю по строке "VA - Main regulations"	
 		И я устанавливаю флаг с именем 'LimitsSet'
@@ -623,8 +615,8 @@
 			И Я создаю вид номенклатуры с именем "VA - Other"
 
 	Если '$$IsERPCPM$$' Тогда
-		И Я создаю вид номенклатуры с именем "VA - Products" тип 'Товар' группа доступа 'Other' в 1C:ERPУХ
-		И Я создаю вид номенклатуры с именем "VA - Other" тип 'Товар' группа доступа 'Other' в 1C:ERPУХ
+		И Я создаю вид номенклатуры с именем "VA - Products" тип 'OwnGoods' группа доступа 'Other' в 1C:ERPУХ
+		И Я создаю вид номенклатуры с именем "VA - Other" тип 'OwnGoods' группа доступа 'Other' в 1C:ERPУХ
 
 Сценарий: 00.12 Создание Товарной категории
 
@@ -654,18 +646,18 @@
 		И Я Для номенклатуры с именем "1C:ERP. Corporate performance management" для реквизита 'Product_Category' выбираю значение "VA - Product range group" в группе ''
 		
 		Если 'NOT $$ЭтоPerform$$' Тогда
-			И Я Для номенклатуры с именем "4C:Enterprise 8.3 CORP. Server License (x86-64)" для реквизита 'ТоварнаяКатегория' выбираю значение "Software products" в группе 'GroupPurchasesCPM'
-			И Я Для номенклатуры с именем "3C:Enterprise 8 CORP. Client license for 100 users" для реквизита 'ТоварнаяКатегория' выбираю значение "Software products" в группе 'GroupPurchasesCPM'
-			И Я Для номенклатуры с именем "5C:Corporate performance management" для реквизита 'ТоварнаяКатегория' выбираю значение "Software products" в группе 'GroupPurchasesCPM'
-			И Я Для номенклатуры с именем "2C:Corporation" для реквизита 'ТоварнаяКатегория' выбираю значение "Software products" в группе 'GroupPurchasesCPM'
-			И Я Для номенклатуры с именем "1C:ERP. Corporate performance management" для реквизита 'ТоварнаяКатегория' выбираю значение "Software products" в группе 'GroupPurchasesCPM'
+			И Я Для номенклатуры с именем "4C:Enterprise 8.3 CORP. Server License (x86-64)" для реквизита 'ТоварнаяCategory' выбираю значение "Software products" в группе 'GroupPurchasesCPM'
+			И Я Для номенклатуры с именем "3C:Enterprise 8 CORP. Client license for 100 users" для реквизита 'ТоварнаяCategory' выбираю значение "Software products" в группе 'GroupPurchasesCPM'
+			И Я Для номенклатуры с именем "5C:Corporate performance management" для реквизита 'ТоварнаяCategory' выбираю значение "Software products" в группе 'GroupPurchasesCPM'
+			И Я Для номенклатуры с именем "2C:Corporation" для реквизита 'ТоварнаяCategory' выбираю значение "Software products" в группе 'GroupPurchasesCPM'
+			И Я Для номенклатуры с именем "1C:ERP. Corporate performance management" для реквизита 'ТоварнаяCategory' выбираю значение "Software products" в группе 'GroupPurchasesCPM'
 
 	ИначеЕсли '$$IsERPCPM$$' Тогда
-		И Я Для номенклатуры с именем "4C:Enterprise 8.3 CORP. Server License (x86-64)" для реквизита 'ТоварнаяКатегория' выбираю значение "Software products" в группе 'СворачиваемаяGroupПланированиеANDМаркетинг'
-		И Я Для номенклатуры с именем "3C:Enterprise 8 CORP. Client license for 100 users" для реквизита 'ТоварнаяКатегория' выбираю значение "Software products" в группе 'СворачиваемаяGroupПланированиеANDМаркетинг'
-		И Я Для номенклатуры с именем "5C:Corporate performance management" для реквизита 'ТоварнаяКатегория' выбираю значение "Software products" в группе 'СворачиваемаяGroupПланированиеANDМаркетинг'
-		И Я Для номенклатуры с именем "2C:Corporation" для реквизита 'ТоварнаяКатегория' выбираю значение "Software products" в группе 'СворачиваемаяGroupПланированиеANDМаркетинг'
-		И Я Для номенклатуры с именем "1C:ERP. Corporate performance management" для реквизита 'ТоварнаяКатегория' выбираю значение "Software products" в группе 'СворачиваемаяGroupПланированиеANDМаркетинг'	
+		И Я Для номенклатуры с именем "4C:Enterprise 8.3 CORP. Server License (x86-64)" для реквизита 'ТоварнаяCategory' выбираю значение "Software products" в группе 'СворачиваемаяGroupПланированиеANDМаркетинг'
+		И Я Для номенклатуры с именем "3C:Enterprise 8 CORP. Client license for 100 users" для реквизита 'ТоварнаяCategory' выбираю значение "Software products" в группе 'СворачиваемаяGroupПланированиеANDМаркетинг'
+		И Я Для номенклатуры с именем "5C:Corporate performance management" для реквизита 'ТоварнаяCategory' выбираю значение "Software products" в группе 'СворачиваемаяGroupПланированиеANDМаркетинг'
+		И Я Для номенклатуры с именем "2C:Corporation" для реквизита 'ТоварнаяCategory' выбираю значение "Software products" в группе 'СворачиваемаяGroupПланированиеANDМаркетинг'
+		И Я Для номенклатуры с именем "1C:ERP. Corporate performance management" для реквизита 'ТоварнаяCategory' выбираю значение "Software products" в группе 'СворачиваемаяGroupПланированиеANDМаркетинг'	
 
 Сценарий: 00.14 Установка цен номенклатуры
 
@@ -742,7 +734,7 @@
 				И из выпадающего списка с именем 'CurrentAction1' я выбираю точное значение "Edit цены for процент"
 				И в поле с именем 'VariantValuesNumberPercent' я ввожу текст '10.00'
 				И я нажимаю на кнопку с именем 'Execute'
-				И я нажимаю на кнопку с именем 'FormMoveToDocument'
+				И я нажимаю на кнопку с именем 'FormMoveTo_INDocument'
 				Тогда открылось окно "Install цен номенклатуры (create) *"
 				И я нажимаю на кнопку с именем 'FormPostAndClose'
 				И я жду закрытия окна "Install цен номенклатуры (create) *" в течение 20 секунд
@@ -759,7 +751,7 @@
 				И из выпадающего списка с именем 'CurrentAction1' я выбираю точное значение "Round off цены до"
 				И из выпадающего списка с именем 'VariantValuesOrderОкругления' я выбираю точное значение "100"
 				И я нажимаю на кнопку с именем 'Execute'
-				И я нажимаю на кнопку с именем 'FormMoveToDocument'
+				И я нажимаю на кнопку с именем 'FormMoveTo_INDocument'
 				Тогда открылось окно "Install цен номенклатуры (create) *"
 				И я нажимаю на кнопку с именем 'FormPostAndClose'
 				И я жду закрытия окна "Install цен номенклатуры (create) *" в течение 20 секунд
@@ -769,7 +761,7 @@
 				И в таблице 'List' я выбираю текущую строку
 				Тогда открылось окно "Install цен номенклатуры * from *"
 				Тогда таблица 'Goods' стала равной:
-				| 'N' | "Product range"                                                   | "Price"         | "Currency" | "Indent" |
+				| 'n' | "Product range"                                                   | "Price"         | "Currency" | "Indent" |
 				| '1' | "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '223,700.00'   | 'RUB'    | ''       |
 				| '2' | "3C:Enterprise 8 CORP. Client license for 100 users" | '745,800.00'   | 'RUB'    | ''       |
 				| '3' | "5C:Corporate performance management"                                      | '1,553,800.00' | 'RUB'    | ''       |
@@ -836,19 +828,19 @@
 			И в поле с именем 'Date' я ввожу текст '1/1/2021'
 			И в таблице 'TreeЦен' я нажимаю на кнопку с именем 'TreeЦенAddНоменклатуру'
 			И в таблице 'TreeЦен' из выпадающего списка с именем 'TreeЦенProducts' я выбираю по строке "4C:Enterprise 8.3 CORP. Server License (x86-64)"
-			И в таблице 'TreeЦен' в поле с именем 'TreeЦенTypeЦены*' я ввожу текст '180000.00'
+			И в таблице 'TreeЦен' в поле с именем 'TreeЦенKindЦены*' я ввожу текст '180000.00'
 			И в таблице 'TreeЦен' я нажимаю на кнопку с именем 'TreeЦенAddНоменклатуру'
 			И в таблице 'TreeЦен' из выпадающего списка с именем 'TreeЦенProducts' я выбираю по строке "3C:Enterprise 8 CORP. Client license for 100 users"
-			И в таблице 'TreeЦен' в поле с именем 'TreeЦенTypeЦены*' я ввожу текст '600000.00'
+			И в таблице 'TreeЦен' в поле с именем 'TreeЦенKindЦены*' я ввожу текст '600000.00'
 			И в таблице 'TreeЦен' я нажимаю на кнопку с именем 'TreeЦенAddНоменклатуру'
 			И в таблице 'TreeЦен' из выпадающего списка с именем 'TreeЦенProducts' я выбираю по строке "5C:Corporate performance management"
-			И в таблице 'TreeЦен' в поле с именем 'TreeЦенTypeЦены*' я ввожу текст '1250000.00'
+			И в таблице 'TreeЦен' в поле с именем 'TreeЦенKindЦены*' я ввожу текст '1250000.00'
 			И в таблице 'TreeЦен' я нажимаю на кнопку с именем 'TreeЦенAddНоменклатуру'
 			И в таблице 'TreeЦен' из выпадающего списка с именем 'TreeЦенProducts' я выбираю по строке "2C:Corporation"
-			И в таблице 'TreeЦен' в поле с именем 'TreeЦенTypeЦены*' я ввожу текст '2050000.00'
+			И в таблице 'TreeЦен' в поле с именем 'TreeЦенKindЦены*' я ввожу текст '2050000.00'
 			И в таблице 'TreeЦен' я нажимаю на кнопку с именем 'TreeЦенAddНоменклатуру'
 			И в таблице 'TreeЦен' из выпадающего списка с именем 'TreeЦенProducts' я выбираю по строке "1C:ERP. Corporate performance management"
-			И в таблице 'TreeЦен' в поле с именем 'TreeЦенTypeЦены*' я ввожу текст '1950000.00'
+			И в таблице 'TreeЦен' в поле с именем 'TreeЦенKindЦены*' я ввожу текст '1950000.00'
 			Если элемент формы "№ in пределах day" присутствует на форме Тогда	
 				И в поле с именем 'NumberINПределахДня' я ввожу текст '1'
 			И я нажимаю на кнопку с именем 'FormPostAndClose'
@@ -872,11 +864,11 @@
 			Тогда открылось окно "Pick товаров to отбору"
 			И в таблице 'SettingsComposerSettingsFilter' я перехожу к строке:
 				| "Comparison type" | "Value"          | "Use" | "Field"                          | "Application" | "Display mode" |
-				| 'IN List'      | '<Пустое значение>' | "No"           | 'Products.Type номенклатуры' | 'Ordinary'    | 'Быстрый доступ'    |
+				| 'IN List_SSLy'      | '<Пустое значение>' | "No"           | 'Products.Kind номенклатуры' | 'Ordinary'    | 'Быстрый доступ'    |
 			И в таблице 'SettingsComposerSettingsFilter' я нажимаю кнопку выбора у реквизита с именем 'SettingsComposerSettingsFilterRightValue'
 			Тогда открылось окно "Value list"
 			И в таблице 'ValueList' я выбираю текущую строку
-			И в таблице 'ValueList' из выпадающего списка с именем 'Value' я выбираю по строке "VA - Products"
+			И в таблице 'ValueList' из выпадающего списка с именем 'value' я выбираю по строке "VA - Products"
 			И я нажимаю на кнопку с именем 'OK'
 			Тогда открылось окно "Pick товаров to отбору"
 			И в таблице 'SettingsComposerSettingsFilter' я завершаю редактирование строки
@@ -923,11 +915,11 @@
 			Тогда открылось окно "Install цен номенклатуры * from *"
 			Тогда таблица 'TreeЦен' стала равной:
 			| "Product range"                                                   | "Характеристика"                   | "Price"         | "Indent" |
-			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '<характеристики не используются>' | '223,700.00'   | ''       |
-			| "3C:Enterprise 8 CORP. Client license for 100 users" | '<характеристики не используются>' | '745,800.00'   | ''       |
-			| "5C:Corporate performance management"                                      | '<характеристики не используются>' | '1,553,800.00' | ''       |
-			| "2C:Corporation"                                                  | '<характеристики не используются>' | '2,548,200.00' | ''       |
-			| "1C:ERP. Corporate performance management"                                   | '<характеристики не используются>' | '2,423,900.00' | ''       |
+			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '<характеристики Not используются>' | '223,700.00'   | ''       |
+			| "3C:Enterprise 8 CORP. Client license for 100 users" | '<характеристики Not используются>' | '745,800.00'   | ''       |
+			| "5C:Corporate performance management"                                      | '<характеристики Not используются>' | '1,553,800.00' | ''       |
+			| "2C:Corporation"                                                  | '<характеристики Not используются>' | '2,548,200.00' | ''       |
+			| "1C:ERP. Corporate performance management"                                   | '<характеристики Not используются>' | '2,423,900.00' | ''       |
 			И Я закрываю окно "Install цен номенклатуры * from *"
 
 Сценарий: 00.15 Создание Контрагентов и Договоров контрагентов
@@ -935,7 +927,7 @@
 	Если '$$IsCPM$$' Тогда
 		Если 'NOT $$ЭтоPerform$$' Тогда
 			И Я создаю условие оплаты с именем "VA - Agreement with the client"
-			И я перезаполняю константу 'UseНумерациюДоговоровСПокупателями' значением 'FALSE'			
+			И я перезаполняю константу 'UseНумерациюДоговоровFrom1Покупателями' значением 'FALSE'			
 
 		И Я создаю группу контрагентов с именем "VA - Counterparties"
 
@@ -1053,12 +1045,12 @@
 				Если '$$IsCPM$$' Тогда
 					И я перехожу к закладке с именем 'GroupMovementsДенежныхСредствCPM'
 					Тогда таблица 'CashFlowCPM' стала равной:
-						| 'N' | "Cash flow item" | "Bank account / касса" | "Income expense" | "Kind денежных средств" | "Counterparty, подотчетник, касса ККМ" | 'Dimension2' | "Counterparty contract"       | 'Dimension1' | 'Dimension3' | 'Dimension4' | 'Dimension5' | 'Dimension6' | "Amount упр. учета" | 'Sum'        |
+						| 'n' | "Cash flow item" | "Bank account / касса" | "Income expense" | "Kind денежных средств" | "Counterparty, подотчетник, касса ККМ" | 'Dimension2' | "Counterparty contract"       | 'Dimension1' | 'Dimension3' | 'Dimension4' | 'Dimension5' | 'Dimension6' | "Amount упр. учета" | 'Sum'        |
 						| '1' | "3Software sale" | ''                        | 'Receipt'        | 'BankAccountPayment'          | 'LLC "Ганимед"'                      | ''           | 'Ганимед-001 dated 01.01.2021' | ''           | ''           | ''           | ''           | ''           | '780,000.00'       | '780,000.00'   |
 						| '2' | "2Software implementation"  | ''                        | 'Receipt'        | 'BankAccountPayment'          | 'LLC "Ганимед"'                      | ''           | 'Ганимед-002 dated 01.01.2021' | ''           | ''           | ''           | ''           | ''           | '2,340,000.00'     | '2,340,000.00' |
 				Если '$$IsERPCPM$$' Тогда
 					Тогда таблица 'BudgetsActualValues' стала равной:
-						| 'Document планирования' | 'N' | 'Dimension2' | 'IntendedPurpose'                   | "Financial responsibility center"          | 'Dimension4' | 'AssetRef бюджета'                   | 'Dimension1' | 'Dimension3' | 'Dimension5' | 'Dimension6' | 'Project'               | "Document регистратор" | 'Currency' | "Income expense" | 'Sum'        | "Amount упр"    | 'Count' |
+						| 'Document планирования' | 'n' | 'Dimension2' | 'IntendedPurpose'                   | "Financial responsibility center"          | 'Dimension4' | 'AssetRef бюджета'                   | 'Dimension1' | 'Dimension3' | 'Dimension5' | 'Dimension6' | 'Project'               | "Document регистратор" | 'Currency' | "Income expense" | 'Sum'        | "Amount упр"    | 'Count' |
 						| ''                      | '1' | ''           | 'Бюджет движения денежных средств' | "Mercury LLC" | ''           | "3Software sale" | ''           | ''           | ''           | ''           | "VA - Main project" | ''                     | 'RUB'    | ''              | '780,000.00'   | '780,000.00'   | ''           |
 						| ''                      | '2' | ''           | 'Бюджет движения денежных средств' | "Mercury LLC" | ''           | "2Software implementation"  | ''           | ''           | ''           | ''           | "VA - Main project" | ''                     | 'RUB'    | ''              | '2,340,000.00' | '2,340,000.00' | ''           |
 

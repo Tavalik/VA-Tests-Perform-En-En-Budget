@@ -2,6 +2,7 @@
 
 @tree
 
+
 Функционал: 10. Расчет показателей с заполнением по ADO
 
 Как Администратор я хочу
@@ -16,303 +17,374 @@
 
 	Пусть Инициализация переменных
 
-Сценарий: 10.01 Загрузка методической модели
+Сценарий: 10.01 Создание информационных баз
 
-	* Загрузка модели
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Export and import instructional models"
-		Тогда открылось окно "Instructional model exchange"
-		И я перехожу к закладке с именем 'GroupImport'
-		Если '$$ЭтоPerform$$' Тогда
-			Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
-				И в поле с именем 'ImportFileName' я ввожу текст '$КаталогПроекта$\Макеты\ADO\Model_ADO_Perform.xml'
-			Иначе
-				И в поле с именем 'ImportFileName' я ввожу текст '$КаталогПроекта$\Макеты\ADO_En\Model_ADO_Perform_En_En.xml'
-		ИначеЕсли '$$IsCPM$$' Тогда
-			И в поле с именем 'ImportFileName' я ввожу текст '$КаталогПроекта$\Макеты\ADO\Model_ADO_УХ32.xml'	
-		ИначеЕсли '$$IsERPCPM$$' Тогда
-			И в поле с именем 'ImportFileName' я ввожу текст '$КаталогПроекта$\Макеты\ADO\Model_ADO_ERP.xml'
-		И я нажимаю на кнопку с именем 'ImportData'
-		Затем я жду, что в сообщениях пользователю будет подстрока "Data is imported successfully" в течение 60 секунд
-		И Я закрываю окно "Instructional model exchange"
+	И Я создаю тип информационной базы с именем "VA - ADO Import (Excel)" с версией "Connect via ADO"
 
-	* Устанавливаем группу отчетов
-		И Я открываю вид отчета с именем "VA - Download test by ADO"
-		И из выпадающего списка с именем 'Parent' я выбираю по строке "VA - Report group"
-		И я нажимаю на кнопку с именем 'RecordButtonForm'
+	И Я создаю внешнюю информационную базу "VA - ADO Import (Excel)" тип "VA - ADO Import (Excel)" каталог "$КаталогПроекта$\Макеты\ADO_En" тип хранилища 'Excel'
 
-	* Настроим соответствия имен файлов
-		Когда открылось окно "VA - Download test by ADO (Report types)"
-		И я перехожу к закладке с именем 'DefaultSettings'
-		И я нажимаю на кнопку открытия поля с именем 'DefaultProcessingRule'
-		Тогда Открылась правило расчета для вида отчета "VA - Download test by ADO"
-		И я нажимаю на кнопку открытия поля с именем 'DBType'
-		Тогда открылось окно "VA - ADO tables (Infobase type)"
-		И я нажимаю на кнопку открытия поля с именем 'DefaultEIB'
-		Тогда открылось окно "VA - ADO tables (External infobases)"
-		И в поле с именем 'ReferenceDirectory' я ввожу текст "$КаталогПроекта$\Макеты\ADO_En"
-		И в поле с именем 'NameBeginning' я ввожу текст "$КаталогПроекта$\Макеты\ADO_En"
+Сценарий: 10.02 Настройка информационных баз
+
+	И В командном интерфейсе я выбираю "Integration and master data management" "Infobase types"
+	И Я в списке "Infobase types" по полю "Description" ищу и выбираю элемент "VA - ADO Import (Excel)" "At beginning of line"
+	Тогда открылось окно "VA - ADO Import (Excel) (Infobase type)"
+	И из выпадающего списка с именем 'DefaultEIB' я выбираю по строке "VA - ADO Import (Excel)"
+	И я нажимаю на кнопку с именем 'FormWrite'
+	Тогда открылось окно "VA - ADO Import (Excel) (Infobase type)"
+	И В текущем окне я нажимаю кнопку командного интерфейса "ADO tables"
+	И в таблице 'List' я нажимаю на кнопку с именем 'UpdateListOfTables'
+	Когда открылось окно "VA - ADO Import (Excel) (Infobase type)"
+	И В текущем окне я нажимаю кнопку командного интерфейса "Correspondence with external infobases"
 	
-		* Добавляем или обновляем запись в РС
-			И я нажимаю на кнопку с именем 'OpenCompaniesFilesExchangeSettings'
-			Тогда открылось окно "Company file path items: List form"
-			И я перехожу к закладке с именем 'Page_ReportType'
-			Когда открылось окно "Company file path items: List form"
-			И в таблице 'List_ReportType' я нажимаю на кнопку с именем 'List_ReportTypeFind'
-			Тогда открылась форма с именем 'UniversalListFindExtForm'
-			И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Object"						
-			И в поле с именем 'Pattern' я ввожу текст "VA - Download test by ADO"
-			И я нажимаю на кнопку с именем 'Find'
-			Тогда открылось окно "Company file path items: List form"
-			Если в таблице 'List_ReportType' количество строк 'равно' 0 Тогда
-				И в таблице 'List_ReportType' я нажимаю на кнопку с именем 'List_ReportTypeCreate'
-			Иначе
-				И в таблице 'List_ReportType' я выбираю текущую строку								
-			Тогда открылось окно "Company file path items*"
-			И из выпадающего списка с именем 'Object' я выбираю по строке "VA - Download test by ADO"
-			И в поле с именем 'Name' я ввожу текст "VA_LoadingADO"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "Company file path items *" в течение 20 секунд
-		
-		* Проверяем подключение
-			Когда открылось окно "Company file path items: List form"
-			И Я закрываю окно "Company file path items: List form"
-			Тогда открылось окно "VA - ADO tables (External infobases) *"
-			И я нажимаю на кнопку с именем 'Write'
-			Тогда открылось окно "VA - ADO tables (External infobases)"
-			И я нажимаю на кнопку с именем 'TestConnection'
-			Тогда открылось окно "1C:Enterprise"
-			И я нажимаю на кнопку с именем 'Button0'
-			Тогда открылось окно "VA - ADO tables (External infobases)"
-			И я нажимаю на кнопку с именем 'WriteAndClose'
-			И я жду закрытия окна "VA - ADO tables (External infobases)" в течение 20 секунд
-		
-		* Закрываем формы
-			Когда открылось окно "VA - ADO tables (Infobase type)"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "VA - ADO tables (Infobase type)" в течение 20 секунд
-			Тогда открылось окно "VA - Download test by ADO (Calculation rules)"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "VA - Download test by ADO (Calculation rules)" в течение 20 секунд
-
-	* Перезапишем правила трансляции
-		* Номенклатура
-			Когда открылось окно "VA - Download test by ADO (Report types)"
-			И я нажимаю на кнопку открытия поля с именем 'DefaultProcessingRule'
-			Тогда открылось окно "VA - Download test by ADO (Calculation rules)"
-			И я нажимаю на кнопку открытия поля с именем 'DBType'
-			Тогда открылось окно "VA - ADO tables (Infobase type)"
-			И я нажимаю на кнопку с именем 'FormConfigureMappings'
-			Тогда открылось окно "Correspondence with external infobases"
-			И в таблице 'List' я перехожу к строке по шаблону:
-				| "File name"       | "Description"                                  |
-				| "VA_LoadingADO*" | "ExtDimensionType.Products -> ADOTable.Sheet1$" |
-			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "ExtDimensionType.Products -> ADOTable.Sheet1$ (Correspondence with external infobases)"
-			Если '$$IsCPM$$' Тогда
-				И я нажимаю кнопку выбора у поля с именем 'RootDirectory1'
-				Тогда открылось окно 'Catalog.Products'
-				И в таблице 'List' я перехожу к строке:
-					| "Reference"            |
-					| "VA - Products" |
-				И в таблице 'List' я нажимаю на кнопку с именем 'ListChoose'
-				Тогда открылось окно "ExtDimensionType.Products -> ADOTable.Sheet1*"
-			Если '$$ЭтоPerform$$' Тогда
-				И в таблице 'ComplianceTable' я перехожу к строке:
-					| "Field"                  |
-					| "Product range group" |	
-			Иначе						
+	* Номенклатура
+		И я нажимаю на кнопку с именем 'FormCreate'
+		Тогда открылось окно "Correspondence with external infobases (create)"
+		И я нажимаю кнопку выбора у поля с именем 'ObjectDetailsEIB'
+		Тогда открылось окно "ADO tables"
+		И в таблице 'List' я выбираю текущую строку
+		Тогда открылось окно "Correspondence with external infobases (create) *"
+		И из выпадающего списка с именем 'ConsolidationObjectType' я выбираю точное значение "Catalog"
+		И я нажимаю кнопку выбора у поля с именем 'CrntObjectDetails'
+		Тогда открылось окно "Infobase catalogs"
+		И в таблице 'List' я перехожу к строке:
+			| "Controlled" | "Not in the configuration" | "Under approval" | "Catalog"   |
+			| "No"            | "No"                        | "No"         | "Product range" |
+		И в таблице 'List' я выбираю текущую строку
+		* Наименование
+			Тогда открылось окно "Correspondence with external infobases (create) *"
+			И в таблице 'ComplianceTable' я перехожу к строке:
+				| "Field"         |
+				| "Description" |
+			И в таблице 'ComplianceTable' я активизирую поле с именем 'ComplianceTableFillingMethod'
+			И в таблице 'DBDimensionsTableBox' я перехожу к строке:
+				| "Used in mapping" | "Field"         |
+				| "No"                          | "Product range" |
+			И я выбираю пункт контекстного меню с именем 'ComplianceTableContextMenuCommandBarMapsButtonMapDimensions' на элементе формы с именем 'ComplianceTable'
+		* Артикул
+			И в таблице 'ComplianceTable' я перехожу к строке:
+				| "Field"    |
+				| "Product ID" |
+			И в таблице 'ComplianceTable' я активизирую поле с именем 'ComplianceTableFillingMethod'
+			И в таблице 'DBDimensionsTableBox' я перехожу к строке:
+				| "Used in mapping" | "Field"    |
+				| "No"                          | "Product ID" |
+			И я выбираю пункт контекстного меню с именем 'ComplianceTableContextMenuCommandBarMapsButtonMapDimensions' на элементе формы с именем 'ComplianceTable'	
+			И в таблице 'ComplianceTable' я перехожу к строке:
+				| "Source" | "Key" | "Field"    | "Filling method" |
+				| "Product ID"  | "No"      | "Product ID" | "Source field"    |
+			И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableOfKeyOne'
+			И в таблице 'ComplianceTable' я изменяю флаг с именем 'MapTableOfKeyOne'
+			И в таблице 'ComplianceTable' я завершаю редактирование строки
+		* Вид номенклатуры
+			Если 'NOT $$ЭтоPerform$$' Тогда
+				Когда открылось окно "Correspondence with external infobases (create) *"
 				И в таблице 'ComplianceTable' я перехожу к строке:
 					| "Field"             |
 					| "Kind номенклатуры" |
+				И в таблице 'ComplianceTable' я активизирую поле с именем 'ComplianceTableFillingMethod'
+				И в таблице 'ComplianceTable' я выбираю текущую строку
+				И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Fixed value"
+				И в таблице 'ComplianceTable' я завершаю редактирование строки
+				И в таблице 'ComplianceTable' я активизирую поле с именем 'MappingTableEIBAlias'
+				И в таблице 'ComplianceTable' я выбираю текущую строку
+				И Я в списке "Enter a value" по полю "Description" ищу и выбираю элемент "VA - Products" "At beginning of line"
+		* Номенклатурная группа
+			Когда открылось окно "Correspondence with external infobases (create) *"
+			И в таблице 'ComplianceTable' я перехожу к строке:
+				| "Field"                  |
+				| "Product range group" |
 			И в таблице 'ComplianceTable' я активизирую поле с именем 'ComplianceTableFillingMethod'
 			И в таблице 'ComplianceTable' я выбираю текущую строку
 			И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Fixed value"
 			И в таблице 'ComplianceTable' я завершаю редактирование строки
 			И в таблице 'ComplianceTable' я активизирую поле с именем 'MappingTableEIBAlias'
 			И в таблице 'ComplianceTable' я выбираю текущую строку
-			Тогда открылось окно "Enter a value"
-			И я нажимаю на кнопку с именем 'FormFind'
-			Тогда открылась форма с именем 'UniversalListFindExtForm'
-			Если '$$ЭтоPerform$$' Тогда
-				И в поле с именем 'Pattern' я ввожу текст "VA - Product range group"
-			Иначе
-				И в поле с именем 'Pattern' я ввожу текст "VA - Products"
-			И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-			И я нажимаю на кнопку с именем 'Find'
-			Тогда открылось окно "Enter a value"
-			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "ExtDimensionType.Products -> ADOTable.Sheet1*"
-			Если '$$IsCPM$$' Тогда
-				И в таблице 'ComplianceTable' я перехожу к строке:
-					| "Field"    |
-					| "Unit" |
-			Если '$$IsERPCPM$$' Тогда
-				И в таблице 'ComplianceTable' я перехожу к строке:
-					| "Field"             |
-					| "Unit хранения" |		
+			И Я в списке "Enter a value" по полю "Description" ищу и выбираю элемент "VA - Product range group" "At beginning of line"	
+		* Единица измерения
+			Когда открылось окно "Correspondence with external infobases (create) *"
+			И в таблице 'ComplianceTable' я перехожу к строке:
+				| "Field"    |
+				| "Unit" |
 			И в таблице 'ComplianceTable' я активизирую поле с именем 'ComplianceTableFillingMethod'
 			И в таблице 'ComplianceTable' я выбираю текущую строку
 			И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Fixed value"
 			И в таблице 'ComplianceTable' я завершаю редактирование строки
 			И в таблице 'ComplianceTable' я активизирую поле с именем 'MappingTableEIBAlias'
 			И в таблице 'ComplianceTable' я выбираю текущую строку
-			Тогда открылось окно "Enter a value"
-			И я нажимаю на кнопку с именем 'FormFind'
-			Тогда открылась форма с именем 'UniversalListFindExtForm'
-			Если '$$IsCPM$$' Тогда
-				И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
-				И в поле с именем 'Pattern' я ввожу текст '796'
-				И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-			Если '$$IsERPCPM$$' Тогда
-				И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Международное сокращение"
-				И в поле с именем 'Pattern' я ввожу текст 'PCE'
-				И я меняю значение переключателя с именем 'CompareType' на "Exact match"	
-			И я нажимаю на кнопку с именем 'Find'
-			Тогда открылось окно "Enter a value"
-			И в таблице 'List' я выбираю текущую строку	
-			Тогда открылось окно "ExtDimensionType.Products -> ADOTable.Sheet1*"	
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "ExtDimensionType.Products -> ADOTable.Sheet1*" в течение 20 секунд			
-		* Статьи ДДС
-			Тогда открылось окно "Correspondence with external infobases"
-			И в таблице 'List' я перехожу к строке по шаблону:
-				| "File name"       | "Description"                                |
-				| "VA_LoadingADO*" | "ExtDimensionType.Cash flow items -> ADOTable.Sheet1$" |
-			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "ExtDimensionType.Cash flow items -> ADOTable.Sheet1$ (Correspondence with external infobases)"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "ExtDimensionType.Cash flow items -> ADOTable.Sheet1*" в течение 20 секунд
+			И Я в списке "Enter a value" по полю "Description" ищу и выбираю элемент "Piece" "At beginning of line"	
+		* Корневой каталог				
+			И я нажимаю кнопку выбора у поля с именем 'RootDirectory1'
+			И Я в списке 'Catalog.Products' по полю "Reference" ищу элемент "VA - Products" "At beginning of line"
+			И в таблице 'List' я нажимаю на кнопку с именем 'ListChoose'
+			Тогда элемент формы с именем 'RootDirectory1' стал равен "VA - Products"			
+		И я нажимаю на кнопку с именем 	'FormWriteAndClose'
+		И я жду закрытия окна "Correspondence with external infobases (create) *" в течение 20 секунд
 
-Сценарий: 10.02 Создаем экземпляр отчета
-
-	* Ищем существующий экземпляр отчета
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Report types and templates"
-		Тогда открылось окно "Report types and templates"
-		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListFind'
-		Тогда открылась форма с именем 'UniversalListFindExtForm'
-		И из выпадающего списка с именем 'Pattern' я выбираю по строке "VA - Download test by ADO"
-		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Report types and templates"
-		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListOpenInstancesList'
-		Когда открылось окно "Report instances"
-		* Отбора по сценарию
-			И я устанавливаю флаг с именем 'UseScenario'
-			И я нажимаю кнопку выбора у поля с именем 'FilteringByScenario'
-			Тогда открылось окно "Value list"
-			И в таблице 'ValueList' я выбираю текущую строку
-			И в таблице 'ValueList' из выпадающего списка с именем 'Value' я выбираю по строке "VA - Main scenario"
-			И в таблице 'ValueList' я завершаю редактирование строки
-			И я нажимаю на кнопку с именем 'OK'
-		* Отбор по организации
-			И я устанавливаю флаг с именем 'UseCompanies'
-			И в таблице 'Companies' я перехожу к строке:
-				| "Value"    | "Use" |
-				| "System LLC" | "No"          |
-			И в таблице 'Companies' я разворачиваю текущую строку
-			И в таблице 'Companies' я перехожу к строке:
-				| "Value"     | "Use" |
-				| "Mercury LLC" | "No"          |
-			И в таблице 'Companies' я устанавливаю флаг с именем 'CompaniesUse'
-			И в таблице 'Companies' я завершаю редактирование строки
-		
-		Если в таблице 'List' количество строк 'равно' 0 Тогда
-			И Я создаю экземпляр отчета для вида отчета "VA - Download test by ADO" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' '' 
-		Иначе
-			И в таблице 'List' я выбираю текущую строку
-			И Открылся экземпляр отчета для вида отчета "VA - Download test by ADO" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
-			И я нажимаю на кнопку с именем 'EnableEdit'		
-		И я нажимаю на кнопку с именем 'Clear'
-		Тогда открылось окно '1C:Предприятие'
-		И я нажимаю на кнопку с именем 'Button0'
-		Тогда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'Write'
-		Тогда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormUpdateConsideringVersions'
-		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-			| "VA - Download test by ADO" | ''               | ''           | ''     | ''      | ''                | ''           | ''     | ''      | ''             | ''           | ''     | ''      | ''        | ''           | ''     | ''      |
-			| ''                          | ''               | ''           | ''     | ''      | ''                | ''           | ''     | ''      | ''             | ''           | ''     | ''      | ''        | ''           | ''     | ''      |
-			| ''                          | "January 2021" | ''           | ''     | ''      | "February 2021" | ''           | ''     | ''      | "March 2021" | ''           | ''     | ''      | "TOTAL"   | ''           | ''     | ''      |
-			| ''                          | "Product ID"        | "Quantity" | "Price" | "Amount" | "Product ID"         | "Quantity" | "Price" | "Amount" | "Product ID"      | "Quantity" | "Price" | "Amount" | "Product ID" | "Quantity" | "Price" | "Amount" |
-			| "Line1"                   | ''               | '0'          | '0'    | '0'     | ''                | '0'          | '0'    | '0'     | ''             | '0'          | '0'    | '0'     | ''        | '0'          | '0'    | '0'     |
-		* Сверим движения
-			Когда открылось окно '$WindowTitle$'
-			И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
-			И я жду открытия формы "Flat table of indicator values" в течение 30 секунд
-			И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 60 секунд
-			Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Templates\RegisterRecords_Empty1.mxl' по шаблону
-			И Я закрываю окно "Flat table of indicator values"
+	Когда открылось окно "VA - ADO Import (Excel) (Infobase type)"
+	И я нажимаю на кнопку с именем 'FormCreate'
+	Тогда открылось окно "Correspondence with external infobases (create)"
+	И из выпадающего списка с именем 'ObjectDetailsEIB' я выбираю точное значение "Sheet1$"
+	И из выпадающего списка с именем 'ConsolidationObjectType' я выбираю точное значение "Catalog"
+	И я нажимаю кнопку выбора у поля с именем 'CrntObjectDetails'
+	Тогда открылось окно "Infobase catalogs"
+	И в таблице 'List' я перехожу к строке:
+		| "Controlled" | "Not in the configuration" | "Under approval" | "Catalog"                |
+		| "No"            | "No"                        | 'Yes'          | 'Income and expense items' |
+	И в таблице 'List' я выбираю текущую строку
+	Тогда открылось окно "Correspondence with external infobases (create) *"
+	И в таблице 'DBDimensionsTableBox' я перехожу к строке:
+		| "Used in mapping" | "Field"         |
+		| "No"                          | "Activity" |
+	И в таблице 'ComplianceTable' я перехожу к строке:
+		| "Field"         |
+		| "Description" |
+	И в таблице 'ComplianceTable' я активизирую поле с именем 'ComplianceTableFillingMethod'
+	И я выбираю пункт контекстного меню с именем 'ComplianceTableContextMenuCommandBarMapsButtonMapDimensions' на элементе формы с именем 'ComplianceTable'
+	И в таблице 'ComplianceTable' я перехожу к строке:
+		| "Field" |
+		| "Code"  |
+	И в таблице 'ComplianceTable' я перехожу к строке:
+		| "Source"     | "Key" | "Field"         | "Filling method" |
+		| "Activity" | "No"      | "Description" | "Source field"    |
+	И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableOfKeyOne'
+	И в таблице 'ComplianceTable' я изменяю флаг с именем 'MapTableOfKeyOne'
+	И в таблице 'ComplianceTable' я завершаю редактирование строки
+	* Корневой каталог
+		И я нажимаю кнопку выбора у поля с именем 'RootDirectory1'
+		И Я в списке 'Catalog.IncomeAndExpenseItems' по полю "Reference" ищу элемент "VA - Income and expense items" "At beginning of line"
+		И в таблице 'List' я нажимаю на кнопку с именем 'ListChoose'
+		Тогда элемент формы с именем 'RootDirectory1' стал равен "VA - Income and expense items"
+	И я нажимаю на кнопку с именем 'FormWriteAndClose'
+	И я жду закрытия окна "Correspondence with external infobases (create) *" в течение 20 секунд
+	
+	Тогда открылось окно "VA - ADO Import (Excel) (Infobase type)"
+	И В текущем окне я нажимаю кнопку командного интерфейса "Main"
+	И В текущем окне я нажимаю кнопку командного интерфейса "ADO tables"
+	И в таблице 'List' я нажимаю на кнопку с именем 'ListDataView'
+	Тогда открылось окно "ADO table view form"
+	И Я закрываю окно "ADO table view form"
+	Тогда открылось окно "VA - ADO Import (Excel) (Infobase type)"
+	И Я закрываю окно "VA - ADO Import (Excel) (Infobase type)"
+	Тогда открылось окно "Infobase types"
+	И Я закрываю окно "Infobase types"
 			
-	* Рассчитываем документ по правилу
-		И я нажимаю на кнопку с именем 'FormFillByDefault'
+Сценарий: 10.03 Создание вида отчета
 
-	* Сверяем результат
-		Тогда открылось окно '$WindowTitle$'
-		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-			| "VA - Download test by ADO"                                       | ''               | ''           | ''          | ''           | ''                | ''           | ''          | ''           | ''              | ''           | ''          | ''           | ''        | ''           | ''     | ''            |
-			| ''                                                                | ''               | ''           | ''          | ''           | ''                | ''           | ''          | ''           | ''              | ''           | ''          | ''           | ''        | ''           | ''     | ''            |
-			| ''                                                                | "January 2021" | ''           | ''          | ''           | "February 2021" | ''           | ''          | ''           | "March 2021"  | ''           | ''          | ''           | "TOTAL"   | ''           | ''     | ''            |
-			| ''                                                                | "Product ID"        | "Quantity" | "Price"      | "Amount"      | "Product ID"         | "Quantity" | "Price"      | "Amount"      | "Product ID"       | "Quantity" | "Price"      | "Amount"      | "Product ID" | "Quantity" | "Price" | "Amount"       |
-			| "Line1"                                                         | ''               | '36'         | '839,627'   | '15,965,000' | ''                | '61'         | '958,752'   | '34,723,000' | ''              | '86'         | '1,072,802' | '58,228,400' | ''        | '183'        | '0'    | '108,916,400' |
-			| "3Software sale "                               | '4601546106674'  | '15'         | '1,206,000' | '15,340,000' | '4601546106674'   | '30'         | '1,326,600' | '33,748,000' | '4601546106674' | '45'         | '1,499,080' | '57,203,400' | ''        | '90'         | '0'    | '106,291,400' |
-			| "5C:Corporate performance management "                                      | '2900001871389'  | '1'          | '1,250,000' | '1,250,000'  | '2900001871389'   | '2'          | '1,375,000' | '2,750,000'  | '2900001871389' | '3'          | '1,553,800' | '4,661,400'  | ''        | '6'          | '0'    | '8,661,400'   |
-			| "2C:Corporation "                                                  | '2900001871419'  | '2'          | '2,050,000' | '4,100,000'  | '2900001871419'   | '4'          | '2,255,000' | '9,020,000'  | '2900001871419' | '6'          | '2,548,200' | '15,289,200' | ''        | '12'         | '0'    | '28,409,200'  |
-			| "4C:Enterprise 8.3 CORP. Server License (x86-64) "           | '2900001916059'  | '3'          | '180,000'   | '540,000'    | '2900001916059'   | '6'          | '198,000'   | '1,188,000'  | '2900001916059' | '9'          | '223,700'   | '2,013,300'  | ''        | '18'         | '0'    | '3,741,300'   |
-			| "1C:ERP. Corporate performance management "                                   | '2900001970198'  | '3'          | '1,950,000' | '5,850,000'  | '2900001970198'   | '6'          | '2,145,000' | '12,870,000' | '2900001970198' | '9'          | '2,423,900' | '21,815,100' | ''        | '18'         | '0'    | '40,535,100'  |
-			| "3C:Enterprise 8 CORP. Client license for 100 users " | '4601546106674'  | '6'          | '600,000'   | '3,600,000'  | '4601546106674'   | '12'         | '660,000'   | '7,920,000'  | '4601546106674' | '18'         | '745,800'   | '13,424,400' | ''        | '36'         | '0'    | '24,944,400'  |
-			| "2Software implementation "                                | "KPGUProf6"      | '20'         | '31,006'    | '0'          | "KPGUProf6"       | '30'         | '31,006'    | '0'          | "KPGUProf6"     | '40'         | '31,006'    | '0'          | ''        | '90'         | '0'    | '0'           |
-			| "1C:KP GU PROF for 12 months "                                    | "KPGUProf12"     | '10'         | '40,572'    | '0'          | "KPGUProf12"      | '15'         | '40,572'    | '0'          | "KPGUProf12"    | '20'         | '40,572'    | '0'          | ''        | '45'         | '0'    | '0'           |
-			| "1C:KP GU PROF for 6 months "                                     | "KPGUProf6"      | '10'         | '21,440'    | '0'          | "KPGUProf6"       | '15'         | '21,440'    | '0'          | "KPGUProf6"     | '20'         | '21,440'    | '0'          | ''        | '45'         | '0'    | '0'           |
-			| "1Software upgrade "                                  | '2900001871389'  | '1'          | '625,000'   | '625,000'    | '2900001970198'   | '1'          | '975,000'   | '975,000'    | '2900001871419' | '1'          | '1,025,000' | '1,025,000'  | ''        | '3'          | '0'    | '2,625,000'   |
-			| "5C:Corporate performance management "                                      | '2900001871389'  | '1'          | '625,000'   | '625,000'    | ''                | '0'          | '0'         | '0'          | ''              | '0'          | '0'         | '0'          | ''        | '1'          | '0'    | '625,000'     |
-			| "2C:Corporation "                                                  | ''               | '0'          | '0'         | '0'          | ''                | '0'          | '0'         | '0'          | '2900001871419' | '1'          | '1,025,000' | '1,025,000'  | ''        | '1'          | '0'    | '1,025,000'   |
-			| "1C:ERP. Corporate performance management "                                   | ''               | '0'          | '0'         | '0'          | '2900001970198'   | '1'          | '975,000'   | '975,000'    | ''              | '0'          | '0'         | '0'          | ''        | '1'          | '0'    | '975,000'     |
+	И Я создаю вид отчета с именем "VA - ADO Import (Excel)" и родителем "VA - Report group"
 
-	* Сверим движения
-		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
+	* Настройка структуры отчета
+		И Я открываю контруктор отчета с именем "VA - ADO Import (Excel)"
+		И Я в конструкторе отчета добавляю строку с именем "Sales" 
+		И Я в конструкторе отчета добавляю колонку с именем "Price" 
+		И Я в конструкторе отчета добавляю колонку с именем "Quantity"
+		И Я в конструкторе отчета добавляю колонку с именем "Product ID"
+		И Я в конструкторе отчета в ячейке 'R2C4' меняю свойство показателя 'ValueType' на "Line"
+		И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C2'
+		И Я в конструкторе отчета добавляю аналитику с кодом "VA0IEItems" в ячейку 'R2C3'
+
+	* Настройки обмена файлами
+		Тогда открылось окно "Edit tree"
+		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"
+		И я нажимаю на кнопку открытия поля с именем 'ProcessingRule'
+		Тогда открылось окно "VA - ADO Import (Excel) (Calculation rules)"
+		И из выпадающего списка с именем 'DBType' я выбираю по строке "VA - ADO Import (Excel)"
+		И я нажимаю на кнопку открытия поля с именем 'DBType'
+		Тогда открылось окно "VA - ADO Import (Excel) (Infobase type)"
+		И я нажимаю на кнопку открытия поля с именем 'DefaultEIB'
+		Тогда открылось окно "VA - ADO Import (Excel) (External infobases)"
+		И я нажимаю на кнопку с именем 'OpenCompaniesFilesExchangeSettings'
+		И Я добавляю элемент пути к файлам организаций для типа 'ReportKind' объект "VA - ADO Import (Excel)" значение "VA_LoadingADO"
+		Тогда открылось окно "Company file path items: List form"
+		И Я закрываю окно "Company file path items: List form"		
+		Тогда открылось окно "VA - ADO Import (Excel) (External infobases)"
+		И Я закрываю окно "VA - ADO Import (Excel) (External infobases)"
+		Тогда открылось окно "VA - ADO Import (Excel) (Infobase type)"
+		И я нажимаю на кнопку с именем 'FormWriteAndClose'
+		И я жду закрытия окна "VA - ADO Import (Excel) (Infobase type)" в течение 20 секунд
+		Тогда открылось окно "VA - ADO Import (Excel) (Calculation rules) *"
+		И я нажимаю на кнопку с именем 'FormWriteAndClose'
+		И я жду закрытия окна "VA - ADO Import (Excel) (Calculation rules) *" в течение 20 секунд
+
+	* Настройка формул
+		* Цена
+			Тогда открылось окно "Edit tree"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			И я нажимаю на кнопку с именем 'AddOperand1'
+			Тогда открылось окно "Data sources"
+			И я нажимаю на кнопку с именем 'FormCreate'
+			Тогда открылось окно "Data source (create)"
+			И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Tables from ADO connection"
+			И я нажимаю кнопку выбора у поля с именем 'ADOTable'
+			Тогда открылось окно "ADO tables"
+			И в таблице 'List' я выбираю текущую строку
+			Тогда открылось окно "Data source (create) *"
+			И в таблице 'FieldsTreeDB' я разворачиваю текущую строку
+			И в таблице 'FieldsTreeDB' я перехожу к строке:
+				| "Field" |
+				| "Price" |
+			И в таблице 'ComplianceTable' я перехожу к строке:
+				| "Destination dimension" | "Column name"  | "Filling method" |
+				| "Value"            | "[Quantity]" | "Source field"    |
+			И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
+			И я выбираю пункт контекстного меню с именем 'ButtonMapDimensions' на элементе формы с именем 'ComplianceTable'
+			И я перехожу к закладке с именем 'FiltersPage'
+			И в таблице 'FieldsTreeDB' я перехожу к строке:
+				| "Field"   |
+				| "Period" |
+			И я нажимаю на кнопку с именем 'AddConditionItem'
+			И в таблице 'TreeOfFilterParametersDB' я активизирую поле с именем 'ParameterCalculationMethod'
+			И в таблице 'TreeOfFilterParametersDB' я выбираю текущую строку
+			И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "In interval"
+			И в таблице 'TreeOfFilterParametersDB' я активизирую поле с именем 'DefiningMethodClarification'
+			И в таблице 'TreeOfFilterParametersDB' я нажимаю кнопку выбора у реквизита с именем 'DefiningMethodClarification'
+			Тогда открылось окно "Specify interval limit calculation methods"
+			И я нажимаю на кнопку с именем 'FormWrite'
+			Тогда открылось окно "Data source (create) *"
+			И в таблице 'TreeOfFilterParametersDB' я завершаю редактирование строки
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "Data source (create) *" в течение 20 секунд
+			Тогда открылось окно "Data sources"
+			И я нажимаю на кнопку с именем 'FormSelect'
+			Тогда открылось окно "Edit tree *"
+			И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		* Количества
+			Тогда открылось окно "Edit tree"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C3'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			И я нажимаю на кнопку с именем 'AddOperand1'
+			Тогда открылось окно "Data sources"
+			И я нажимаю на кнопку с именем 'FormCreate'
+			Тогда открылось окно "Data source (create)"
+			И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Tables from ADO connection"
+			И из выпадающего списка с именем 'ADOTable' я выбираю точное значение "Sheet1$"
+			И я перехожу к закладке с именем 'FiltersPage'
+			И в таблице 'FieldsTreeDB' я разворачиваю текущую строку
+			И в таблице 'FieldsTreeDB' я перехожу к строке:
+				| "Field"   |
+				| "Period" |
+			И я нажимаю на кнопку с именем 'AddConditionItem'
+			И в таблице 'TreeOfFilterParametersDB' я активизирую поле с именем 'ParameterCalculationMethod'
+			И в таблице 'TreeOfFilterParametersDB' я выбираю текущую строку
+			И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "In interval"
+			И в таблице 'TreeOfFilterParametersDB' я активизирую поле с именем 'DefiningMethodClarification'
+			И в таблице 'TreeOfFilterParametersDB' я нажимаю кнопку выбора у реквизита с именем 'DefiningMethodClarification'
+			Тогда открылось окно "Specify interval limit calculation methods"
+			И я нажимаю на кнопку с именем 'FormWrite'
+			Тогда открылось окно "Data source (create) *"
+			И в таблице 'TreeOfFilterParametersDB' я завершаю редактирование строки
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "Data source (create) *" в течение 20 секунд
+			Тогда открылось окно "Data sources"
+			И я нажимаю на кнопку с именем 'FormSelect'
+			Тогда открылось окно "Edit tree *"
+			И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		* Артикул
+			Тогда открылось окно "Edit tree"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C4'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			И я нажимаю на кнопку с именем 'AddOperand1'
+			Тогда открылось окно "Data sources"
+			И я нажимаю на кнопку с именем 'FormCreate'
+			Тогда открылось окно "Data source (create)"
+			И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Tables from ADO connection"
+			И из выпадающего списка с именем 'ADOTable' я выбираю точное значение "Sheet1$"
+			И я перехожу к закладке с именем 'FiltersPage'
+			И в таблице 'FieldsTreeDB' я разворачиваю текущую строку
+			И в таблице 'FieldsTreeDB' я перехожу к строке:
+				| "Field"   |
+				| "Period" |
+			И я нажимаю на кнопку с именем 'AddConditionItem'
+			И в таблице 'TreeOfFilterParametersDB' я активизирую поле с именем 'ParameterCalculationMethod'
+			И в таблице 'TreeOfFilterParametersDB' я выбираю текущую строку
+			И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "In interval"
+			И в таблице 'TreeOfFilterParametersDB' я активизирую поле с именем 'DefiningMethodClarification'
+			И в таблице 'TreeOfFilterParametersDB' я нажимаю кнопку выбора у реквизита с именем 'DefiningMethodClarification'
+			Тогда открылось окно "Specify interval limit calculation methods"
+			И я нажимаю на кнопку с именем 'FormWrite'
+			Тогда открылось окно "Data source (create) *"
+			И в таблице 'TreeOfFilterParametersDB' я завершаю редактирование строки
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "Data source (create) *" в течение 20 секунд
+			Тогда открылось окно "Data sources"
+			И я нажимаю на кнопку с именем 'FormSelect'
+			Тогда открылось окно "Edit tree *"
+			И я нажимаю на кнопку с именем 'WriteAndCollapse'
+			Тогда открылось окно "Edit tree"
+			И Я закрываю окно "Edit tree"
+
+	* Создаем бланк		
+		Тогда открылось окно "Report types and templates"
+		И в таблице 'List' я перехожу к строке:
+			| "Description"          |
+			| "VA - ADO Import (Excel)" |
+		И в таблице 'List' я активизирую поле с именем "Description"
+		И в таблице 'List' я выбираю текущую строку
+		Тогда открылось окно "Template VA - Import ADO (Excel) report type: VA - Import ADO (Excel)"
+		И в табличном документе 'Template1' я перехожу к ячейке 'R1C1'
+		И в табличном документе 'Template2' я перехожу к ячейке 'R1C1'
+		И я нажимаю на кнопку с именем 'FormCreateImportTemplate'
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
-		И я жду открытия формы "Flat table of indicator values" в течение 30 секунд
+		Тогда открылось окно "Report structure"
+		И я нажимаю на кнопку с именем 'FormSelect'
+		Тогда открылось окно "Template VA - Import ADO (Excel) report type: VA - Import ADO (Excel) *"
+		И я нажимаю на кнопку с именем 'FormButtonWriteAndClose'
+
+Сценарий: 10.04 Настройка справочников ИБ
+
+	И В командном интерфейсе я выбираю "General catalogs and settings" "Catalogs"
+	Тогда открылось окно "Current infobase catalogs"
+	И в таблице 'List' я перехожу к строке:
+		| "Current infobase catalog" |
+		| "Product range"          |
+	И в таблице 'List' я выбираю текущую строку
+	Тогда открылось окно "Product range (Infobase catalogs)"
+	И Для каждой строки таблицы 'Attributes' я выполняю
+		И в таблице 'Attributes' я активизирую поле с именем 'AttributesIsRequired'
+		И в таблице 'Attributes' я снимаю флаг с именем 'AttributesIsRequired'	
+	И я нажимаю на кнопку с именем 'FormWriteAndClose'
+	И я жду закрытия окна "Product range (Infobase catalogs) *" в течение 20 секунд
+	Тогда открылось окно "Current infobase catalogs"
+	И в таблице 'List' я перехожу к строке:
+		| "Current infobase catalog"     |
+		| 'Income and expense items' |
+	И в таблице 'List' я выбираю текущую строку
+	Тогда открылось окно "Income and expense items (Infobase catalogs)"
+	И Для каждой строки таблицы 'Attributes' я выполняю
+		И в таблице 'Attributes' я активизирую поле с именем 'AttributesIsRequired'
+		И в таблице 'Attributes' я снимаю флаг с именем 'AttributesIsRequired'	
+	И я нажимаю на кнопку с именем 'FormWriteAndClose'
+	И Я закрываю окно "Current infobase catalogs"
+
+Сценарий: 10.05 Создание экземпляра отчета
+
+	И Я создаю экземпляр отчета для вида отчета "VA - ADO Import (Excel)" сценарий 'DimenKind - Main сценарий' период '1/1/2021' '3/31/2021' периодичность 'Month' организация 'Mercury LLC' проект '' аналитики '' '' '' '' '' '' 		
+	
+	* Устанавливаем ИБ
+		Тогда открылось окно "$TitleОкна$"
+		И я нажимаю на кнопку с именем 'FormOpenSettings'
+		Тогда открылось окно "Edit report settings"
+		И я перехожу к закладке с именем 'GroupPageReportSettings'
+		И из выпадающего списка с именем 'ИспользуемаяIB' я выбираю точное значение "VA - ADO Import (Excel)"
+		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+	
+	* Делаем расчет
+		Тогда открылось окно "$TitleОкна$"
+		И я нажимаю на кнопку с именем 'FormFillByDefault'
+		Тогда открылось окно "$TitleОкна$"
+		Дано табличный документ 'SpreadsheetFieldTemlate' равен макету "Templates\ADO\VA_InstanceОтчетаADO.mxl"
+		И я нажимаю на кнопку с именем 'Write'
+		Тогда открылось окно "$TitleОкна$"
+		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
+		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 60 секунд
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Макеты\ВА_ТестЗагрузкиПоADO_Движения.mxl' по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Templates\ADO\VA_ДвиженияДокументаADO.mxl" по шаблону
 		И Я закрываю окно "Flat table of indicator values"
+		Тогда открылось окно "$TitleОкна$"
+		И Я закрываю окно "$TitleОкна$"
 
-	* Рассчитываем документ по правилу еще раз
-		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormFillByDefault'
-
-	* Сверяем результат еще раз
-		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-			| "VA - Download test by ADO"                                       | ''               | ''           | ''          | ''           | ''                | ''           | ''          | ''           | ''              | ''           | ''          | ''           | ''        | ''           | ''     | ''            |
-			| ''                                                                | ''               | ''           | ''          | ''           | ''                | ''           | ''          | ''           | ''              | ''           | ''          | ''           | ''        | ''           | ''     | ''            |
-			| ''                                                                | "January 2021" | ''           | ''          | ''           | "February 2021" | ''           | ''          | ''           | "March 2021"  | ''           | ''          | ''           | "TOTAL"   | ''           | ''     | ''            |
-			| ''                                                                | "Product ID"        | "Quantity" | "Price"      | "Amount"      | "Product ID"         | "Quantity" | "Price"      | "Amount"      | "Product ID"       | "Quantity" | "Price"      | "Amount"      | "Product ID" | "Quantity" | "Price" | "Amount"       |
-			| "Line1"                                                         | ''               | '36'         | '839,627'   | '15,965,000' | ''                | '61'         | '958,752'   | '34,723,000' | ''              | '86'         | '1,072,802' | '58,228,400' | ''        | '183'        | '0'    | '108,916,400' |
-			| "3Software sale "                               | '4601546106674'  | '15'         | '1,206,000' | '15,340,000' | '4601546106674'   | '30'         | '1,326,600' | '33,748,000' | '4601546106674' | '45'         | '1,499,080' | '57,203,400' | ''        | '90'         | '0'    | '106,291,400' |
-			| "5C:Corporate performance management "                                      | '2900001871389'  | '1'          | '1,250,000' | '1,250,000'  | '2900001871389'   | '2'          | '1,375,000' | '2,750,000'  | '2900001871389' | '3'          | '1,553,800' | '4,661,400'  | ''        | '6'          | '0'    | '8,661,400'   |
-			| "2C:Corporation "                                                  | '2900001871419'  | '2'          | '2,050,000' | '4,100,000'  | '2900001871419'   | '4'          | '2,255,000' | '9,020,000'  | '2900001871419' | '6'          | '2,548,200' | '15,289,200' | ''        | '12'         | '0'    | '28,409,200'  |
-			| "4C:Enterprise 8.3 CORP. Server License (x86-64) "           | '2900001916059'  | '3'          | '180,000'   | '540,000'    | '2900001916059'   | '6'          | '198,000'   | '1,188,000'  | '2900001916059' | '9'          | '223,700'   | '2,013,300'  | ''        | '18'         | '0'    | '3,741,300'   |
-			| "1C:ERP. Corporate performance management "                                   | '2900001970198'  | '3'          | '1,950,000' | '5,850,000'  | '2900001970198'   | '6'          | '2,145,000' | '12,870,000' | '2900001970198' | '9'          | '2,423,900' | '21,815,100' | ''        | '18'         | '0'    | '40,535,100'  |
-			| "3C:Enterprise 8 CORP. Client license for 100 users " | '4601546106674'  | '6'          | '600,000'   | '3,600,000'  | '4601546106674'   | '12'         | '660,000'   | '7,920,000'  | '4601546106674' | '18'         | '745,800'   | '13,424,400' | ''        | '36'         | '0'    | '24,944,400'  |
-			| "2Software implementation "                                | "KPGUProf6"      | '20'         | '31,006'    | '0'          | "KPGUProf6"       | '30'         | '31,006'    | '0'          | "KPGUProf6"     | '40'         | '31,006'    | '0'          | ''        | '90'         | '0'    | '0'           |
-			| "1C:KP GU PROF for 12 months "                                    | "KPGUProf12"     | '10'         | '40,572'    | '0'          | "KPGUProf12"      | '15'         | '40,572'    | '0'          | "KPGUProf12"    | '20'         | '40,572'    | '0'          | ''        | '45'         | '0'    | '0'           |
-			| "1C:KP GU PROF for 6 months "                                     | "KPGUProf6"      | '10'         | '21,440'    | '0'          | "KPGUProf6"       | '15'         | '21,440'    | '0'          | "KPGUProf6"     | '20'         | '21,440'    | '0'          | ''        | '45'         | '0'    | '0'           |
-			| "1Software upgrade "                                  | '2900001871389'  | '1'          | '625,000'   | '625,000'    | '2900001970198'   | '1'          | '975,000'   | '975,000'    | '2900001871419' | '1'          | '1,025,000' | '1,025,000'  | ''        | '3'          | '0'    | '2,625,000'   |
-			| "5C:Corporate performance management "                                      | '2900001871389'  | '1'          | '625,000'   | '625,000'    | ''                | '0'          | '0'         | '0'          | ''              | '0'          | '0'         | '0'          | ''        | '1'          | '0'    | '625,000'     |
-			| "2C:Corporation "                                                  | ''               | '0'          | '0'         | '0'          | ''                | '0'          | '0'         | '0'          | '2900001871419' | '1'          | '1,025,000' | '1,025,000'  | ''        | '1'          | '0'    | '1,025,000'   |
-			| "1C:ERP. Corporate performance management "                                   | ''               | '0'          | '0'         | '0'          | '2900001970198'   | '1'          | '975,000'   | '975,000'    | ''              | '0'          | '0'         | '0'          | ''        | '1'          | '0'    | '975,000'     |
-
-	* Сверим движения еще раз
-		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
-		Тогда открылось окно "1C:Enterprise"
-		И я нажимаю на кнопку с именем 'Button0'
-		И я жду открытия формы "Flat table of indicator values" в течение 30 секунд
-		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Макеты\ВА_ТестЗагрузкиПоADO_Движения.mxl' по шаблону
-		И Я закрываю окно "Flat table of indicator values"		
-
-Сценарий: 10.03 Изменим вид номенклатуры
+Сценарий: 10.06 Изменим вид номенклатуры
 
 	Если '$$ЭтоPerform$$' Тогда
 		И Я Для номенклатуры с именем "1C:KP GU PROF for 12 months" для реквизита 'Product_Category' выбираю значение '' в группе ''
@@ -328,27 +400,27 @@
 
 		* 1С:КП ГУ ПРОФ на 12 месяцев
 			Если в таблице 'List' есть строка Тогда
-				| "Product ID"    | "Unit" | "Description"                |
-				| "KPGUProf12" | "PCs"      | "1C:KP GU PROF for 12 months" |			
+				| "Product ID"    | 'Единица' | "Description"                |
+				| "KPGUProf12" | 'шт'      | "1C:KP GU PROF for 12 months" |			
 				И в таблице 'List' я перехожу к строке:
-					| "Product ID"    | "Unit" | "Description"                |
-					| "KPGUProf12" | "PCs"      | "1C:KP GU PROF for 12 months" |
+					| "Product ID"    | 'Единица' | "Description"                |
+					| "KPGUProf12" | 'шт'      | "1C:KP GU PROF for 12 months" |
 				И в таблице 'List' я выбираю текущую строку
 				Тогда открылось окно "1C:KP GU PROF for 12 months (Product range)"
-				И из выпадающего списка с именем 'ProductKind' я выбираю по строке "VA - Other"
+				И из выпадающего списка с именем 'ProductKind' я выбираю по строке 'DimenKind - Other'
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
 				И я жду закрытия окна "1C:KP GU PROF for 12 months (Product range) *" в течение 20 секунд
 
 		* 1С:КП ГУ ПРОФ на 6 месяцев
 			Если в таблице 'List' есть строка Тогда
-				| "Product ID"   | "Unit" | "Description"               |
-				| "KPGUProf6" | "PCs"      | "1C:KP GU PROF for 6 months" |
+				| "Product ID"   | 'Единица' | "Description"               |
+				| "KPGUProf6" | 'шт'      | "1C:KP GU PROF for 6 months" |
 				И в таблице 'List' я перехожу к строке:
-					| "Product ID"   | "Unit" | "Description"               |
-					| "KPGUProf6" | "PCs"      | "1C:KP GU PROF for 6 months" |
+					| "Product ID"   | 'Единица' | "Description"               |
+					| "KPGUProf6" | 'шт'      | "1C:KP GU PROF for 6 months" |
 				И в таблице 'List' я выбираю текущую строку
 				Тогда открылось окно "1C:KP GU PROF for 6 months (Product range)"
-				И из выпадающего списка с именем 'ProductKind' я выбираю по строке "VA - Other"
+				И из выпадающего списка с именем 'ProductKind' я выбираю по строке 'DimenKind - Other'
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
 				И я жду закрытия окна "1C:KP GU PROF for 6 months (Product range) *" в течение 20 секунд	
 		
@@ -373,7 +445,7 @@
 					И я нажимаю на кнопку с именем 'Button0'
 				Тогда открылось окно "1C:KP GU PROF for 6 months (Product range)"
 				И я разворачиваю группу с именем 'СворачиваемаяMainParametersGroupУчета'
-				И из выпадающего списка с именем 'ProductKind' я выбираю по строке "VA - Other"
+				И из выпадающего списка с именем 'ProductKind' я выбираю по строке 'DimenKind - Other'
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'				
 				Если открылось окно 'Rate1 VAT применZ2етFrom1Z2 From1:' Тогда
 					И в поле с именем 'InputFld' я ввожу текст '1/1/2021'
@@ -397,7 +469,7 @@
 				И я перехожу к закладке с именем 'PageProductAttributes'
 				Тогда открылось окно "1C:KP GU PROF for 12 months (Product range)"
 				И я разворачиваю группу с именем 'СворачиваемаяMainParametersGroupУчета'
-				И из выпадающего списка с именем 'ProductKind' я выбираю по строке "VA - Other"
+				И из выпадающего списка с именем 'ProductKind' я выбираю по строке 'DimenKind - Other'
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
 				Если открылось окно 'Rate1 VAT применZ2етFrom1Z2 From1:' Тогда
 					И в поле с именем 'InputFld' я ввожу текст '1/1/2021'

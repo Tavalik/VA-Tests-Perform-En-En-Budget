@@ -40,7 +40,7 @@
 		И я запоминаю строку '$WindowTitle$ <[TheDimension6]>' в переменную 'WindowTitle'
 
 	И я запоминаю строку '$WindowTitle$*' в переменную 'WindowTitle'
-	И открылось окно '$WindowTitle$'
+	И я жду открытия окна '$WindowTitle$' в течение 30 секунд
 
 Сценарий: Открылся документ управления периодом для сценария 'TheScenario' периодичность 'TheFrequency' 
 
@@ -68,7 +68,8 @@
 
 Сценарий: Открылся бланк для вида отчета 'TheReportKind'
 
-	И открылось окно "Template [TheReportKind] report type: [TheReportKind]*"
+	И я запоминаю строку "Template [TheReportKind] report type: [TheReportKind]*" в переменную 'WindowTitle'
+	И открылось окно '$WindowTitle$'
 
 Сценарий: Открылся бланк сводной таблицы для вида отчета 'TheReportKind'
 
@@ -78,11 +79,11 @@
 Сценарий: Открылась сводная таблица для вида отчета 'TheReportKind'
 
 	И я запоминаю строку "Pivot table: [TheReportKind] (pivot table)*" в переменную 'WindowTitle'
-	И открылось окно '$WindowTitle$'
+	И я жду открытия окна '$WindowTitle$' в течение 20 секунд	
 
 Сценарий: Открылась сводная таблица для варианта 'TheVariant'
 
-	И открылось окно "Pivot table: [TheVariant]*"
+	И я жду открытия окна "Pivot table: [TheVariant]*" в течение 20 секунд
 
 Сценарий: Открылась правило расчета для вида отчета 'TheReportKind'
 
@@ -117,3 +118,12 @@
 		И я нажимаю на кнопку с именем '[TheName]'
 	Иначе
 		И я выбираю пункт контекстного меню с именем '[TheName]' на элементе формы с именем 'SpreadsheetFieldTemlate'
+
+Сценарий: Я выбираю организацию 'TheName'
+
+	Если '$$ЭтоPerform$$' Тогда
+		И Я в списке "Business units" по полю "Description" ищу и выбираю элемент '[TheName]' "At beginning of line"
+	ИначеЕсли '$$IsCPM$$' Тогда
+		И Я в списке "Business units" по полю "Name in the application" ищу и выбираю элемент '[TheName]' "Exact match"
+	ИначеЕсли '$$IsERPCPM$$' Тогда
+		И Я в списке "Companies" по полю "Рабочее наименование" ищу и выбираю элемент '[TheName]' "Exact match"
