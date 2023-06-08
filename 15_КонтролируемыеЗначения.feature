@@ -177,10 +177,7 @@
 		Когда открылось окно "Specify key document attributes"
 		И из выпадающего списка с именем 'Scenario' я выбираю по строке "VA - Scenario with control"
 		И я нажимаю кнопку выбора у поля с именем 'Organization'
-		Если '$$IsCPM$$' Тогда
-			И Я в списке "Business units" по полю "Name in the application" ищу и выбираю элемент "Mercury LLC" "Exact match"
-		Если '$$IsERPCPM$$' Тогда
-			И Я в списке "Companies" по полю "Рабочее наименование" ищу и выбираю элемент "Mercury LLC" "Exact match"
+		И Я выбираю организацию "Mercury LLC"
 		Когда открылось окно "Specify key document attributes"
 		И я нажимаю на кнопку с именем 'OKButton'
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Controlled indicators" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Scenario with control" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' '' 

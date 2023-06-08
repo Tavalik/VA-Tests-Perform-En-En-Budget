@@ -225,7 +225,7 @@
 				| "Price" |
 			И в таблице 'ComplianceTable' я перехожу к строке:
 				| "Destination dimension" | "Column name"  | "Filling method" |
-				| "Value"            | "[Quantity]" | "Source field"    |
+				| "Value"            | "[Count]" | "Source field"    |
 			И в таблице 'ComplianceTable' я активизирую поле с именем 'MapTableDBAlias'
 			И я выбираю пункт контекстного меню с именем 'ButtonMapDimensions' на элементе формы с именем 'ComplianceTable'
 			И я перехожу к закладке с именем 'FiltersPage'
@@ -245,7 +245,7 @@
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "Data source (create) *" в течение 20 секунд
 			Тогда открылось окно "Data sources"
-			И я нажимаю на кнопку с именем 'FormSelect'
+			И я нажимаю на кнопку с именем 'FormChoose'
 			Тогда открылось окно "Edit tree *"
 			И я нажимаю на кнопку с именем 'WriteAndCollapse'
 		* Количества
@@ -276,7 +276,7 @@
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "Data source (create) *" в течение 20 секунд
 			Тогда открылось окно "Data sources"
-			И я нажимаю на кнопку с именем 'FormSelect'
+			И я нажимаю на кнопку с именем 'FormChoose'
 			Тогда открылось окно "Edit tree *"
 			И я нажимаю на кнопку с именем 'WriteAndCollapse'
 		* Артикул
@@ -307,29 +307,14 @@
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "Data source (create) *" в течение 20 секунд
 			Тогда открылось окно "Data sources"
-			И я нажимаю на кнопку с именем 'FormSelect'
+			И я нажимаю на кнопку с именем 'FormChoose'
 			Тогда открылось окно "Edit tree *"
 			И я нажимаю на кнопку с именем 'WriteAndCollapse'
 			Тогда открылось окно "Edit tree"
 			И Я закрываю окно "Edit tree"
 
-	* Создаем бланк		
-		Тогда открылось окно "Report types and templates"
-		И в таблице 'List' я перехожу к строке:
-			| "Description"          |
-			| "VA - ADO Import (Excel)" |
-		И в таблице 'List' я активизирую поле с именем "Description"
-		И в таблице 'List' я выбираю текущую строку
-		Тогда открылось окно "Template VA - Import ADO (Excel) report type: VA - Import ADO (Excel)"
-		И в табличном документе 'Template1' я перехожу к ячейке 'R1C1'
-		И в табличном документе 'Template2' я перехожу к ячейке 'R1C1'
-		И я нажимаю на кнопку с именем 'FormCreateImportTemplate'
-		Тогда открылось окно "1C:Enterprise"
-		И я нажимаю на кнопку с именем 'Button0'
-		Тогда открылось окно "Report structure"
-		И я нажимаю на кнопку с именем 'FormSelect'
-		Тогда открылось окно "Template VA - Import ADO (Excel) report type: VA - Import ADO (Excel) *"
-		И я нажимаю на кнопку с именем 'FormButtonWriteAndClose'
+	* Создаем бланк
+		И Я Для вида отчета "VA - ADO Import (Excel)" создаю бланк по умолчанию		
 
 Сценарий: 10.04 Настройка справочников ИБ
 
@@ -359,30 +344,30 @@
 
 Сценарий: 10.05 Создание экземпляра отчета
 
-	И Я создаю экземпляр отчета для вида отчета "VA - ADO Import (Excel)" сценарий 'DimenKind - Main сценарий' период '1/1/2021' '3/31/2021' периодичность 'Month' организация 'Mercury LLC' проект '' аналитики '' '' '' '' '' '' 		
+	И Я создаю экземпляр отчета для вида отчета "VA - ADO Import (Excel)" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' '' 		
 	
 	* Устанавливаем ИБ
-		Тогда открылось окно "$TitleОкна$"
+		Тогда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
 		Тогда открылось окно "Edit report settings"
 		И я перехожу к закладке с именем 'GroupPageReportSettings'
-		И из выпадающего списка с именем 'ИспользуемаяIB' я выбираю точное значение "VA - ADO Import (Excel)"
+		И из выпадающего списка с именем 'UsedIB' я выбираю точное значение "VA - ADO Import (Excel)"
 		И я нажимаю на кнопку с именем 'FormApplyANDClose'
 	
 	* Делаем расчет
-		Тогда открылось окно "$TitleОкна$"
+		Тогда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
-		Тогда открылось окно "$TitleОкна$"
-		Дано табличный документ 'SpreadsheetFieldTemlate' равен макету "Templates\ADO\VA_InstanceОтчетаADO.mxl"
+		Тогда открылось окно '$WindowTitle$'
+		Дано табличный документ 'SpreadsheetFieldTemlate' равен макету "Макеты\ADO\ВА_ЭкземплярОтчетаADO.mxl"
 		И я нажимаю на кнопку с именем 'Write'
-		Тогда открылось окно "$TitleОкна$"
+		Тогда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 60 секунд
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Templates\ADO\VA_ДвиженияДокументаADO.mxl" по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Макеты\ADO\ВА_ДвиженияДокументаADO.mxl" по шаблону
 		И Я закрываю окно "Flat table of indicator values"
-		Тогда открылось окно "$TitleОкна$"
-		И Я закрываю окно "$TitleОкна$"
+		Тогда открылось окно '$WindowTitle$'
+		И Я закрываю окно '$WindowTitle$'
 
 Сценарий: 10.06 Изменим вид номенклатуры
 
