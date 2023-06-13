@@ -16,13 +16,13 @@
 
 	Пусть Инициализация переменных
 
-Сценарий: 08.01 Создание группы отчетов "VA - Cumulative total (группа)"
+Сценарий: 08.01 Создание группы отчетов "VA - Cumulative total (group)"
 
-	И Я создаю группу видов отчетов с именем "VA - Cumulative total (группа)" и родителем "VA - Report group"
+	И Я создаю группу видов отчетов с именем "VA - Cumulative total (group)" и родителем "VA - Report group"
 
 Сценарий: 08.02 Создание вида отчета "VA - Cumulative total (source)"
 
-	И Я создаю вид отчета с именем "VA - Cumulative total (source)" и родителем "VA - Cumulative total (группа)"
+	И Я создаю вид отчета с именем "VA - Cumulative total (source)" и родителем "VA - Cumulative total (group)"
 
 	И Я открываю вид отчета с именем "VA - Cumulative total (source)"
 	И я устанавливаю флаг с именем 'ProjectSeparation'		
@@ -95,7 +95,7 @@
 
 Сценарий: 08.04 Создание вида отчета "VA - Cumulative total (recipient)"
 
-	И Я создаю вид отчета с именем "VA - Cumulative total (recipient)" и родителем "VA - Cumulative total (группа)"
+	И Я создаю вид отчета с именем "VA - Cumulative total (recipient)" и родителем "VA - Cumulative total (group)"
 
 	И Я открываю вид отчета с именем "VA - Cumulative total (recipient)"
 	И я устанавливаю флаг с именем 'ProjectSeparation'		
@@ -424,14 +424,14 @@
 
 	* Рассчитываем и сверяем документ
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
-		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету 'Макеты\ВА_НарастающийИтог.mxl'
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету "Макеты\ВА_НарастающийИтог.mxl"
 
 	* Еще раз расчитаем документ, убедимся, что ничего не поменялось
 		Когда открылось окно '$WindowTitle$'	
 		И я нажимаю на кнопку с именем 'Write'
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Cumulative total (recipient)" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики "3Software sale" '' '' '' '' '' 
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
-		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету 'Макеты\ВА_НарастающийИтог.mxl'					
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету "Макеты\ВА_НарастающийИтог.mxl"					
 
 	* Смотрим движения
 		Когда открылось окно '$WindowTitle$ *'
@@ -441,7 +441,7 @@
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
 		Когда Я задаю параметры чтения области макета 'R1C1:R452C20'
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Макеты\ВА_НарастающийИтог_Движения.mxl' по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Макеты\ВА_НарастающийИтог_Движения.mxl" по шаблону
 
 	* Закроем отчет и документ
 		Когда открылось окно "Flat table of indicator values"

@@ -19,8 +19,8 @@
 Сценарий: 13.01 Создаем вид отчета с рекурсией расчета показателей
 
 	* Создаем вид отчета
-		И Я создаю группу видов отчетов с именем "VA - Transformations period (группа)" и родителем "VA - Report group"
-		И Я создаю вид отчета с именем "VA - Transformation period" и родителем "VA - Transformations period (группа)"
+		И Я создаю группу видов отчетов с именем "VA - Transformations period (group)" и родителем "VA - Report group"
+		И Я создаю вид отчета с именем "VA - Transformation period" и родителем "VA - Transformations period (group)"
 		
 	* Настраиваем структуру вида отчета
 		И Я открываю контруктор отчета с именем "VA - Transformation period"

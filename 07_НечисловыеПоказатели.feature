@@ -16,13 +16,13 @@
 
 	Пусть Инициализация переменных
 
-Сценарий: 07.01 Создание группы отчетов "VA - Non-Numbers and Groupings (группа)"
+Сценарий: 07.01 Создание группы отчетов "VA - Non-Numbers and Groupings (group)"
 
-	И Я создаю группу видов отчетов с именем "VA - Non-Numbers and Groupings (группа)" и родителем "VA - Report group"
+	И Я создаю группу видов отчетов с именем "VA - Non-Numbers and Groupings (group)" и родителем "VA - Report group"
 
 Сценарий: 07.02 Создание вида отчета "VA - Non-Numbers (source)"
 
-	И Я создаю вид отчета с именем "VA - Non-Numbers (source)" и родителем "VA - Non-Numbers and Groupings (группа)"
+	И Я создаю вид отчета с именем "VA - Non-Numbers (source)" и родителем "VA - Non-Numbers and Groupings (group)"
 	
 	И Я открываю вид отчета с именем "VA - Non-Numbers (source)"
 	И я устанавливаю флаг с именем 'ProjectSeparation'		
@@ -132,16 +132,16 @@
 	* Сравниваем итоговый документ
 		Когда открылось окно '$WindowTitle$'
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-			| "VA - Non-Numbers (source)"                           | ''             | ''           | ''               | ''           | ''              | ''           | ''               | ''           | ''           | ''           | ''               | ''           | ''      | ''           | ''               | ''           |
-			| ''                                                    | ''             | ''           | ''               | ''           | ''              | ''           | ''               | ''           | ''           | ''           | ''               | ''           | ''      | ''           | ''               | ''           |
-			| ''                                                    | "January 2021" | ''           | ''               | ''           | "February 2021" | ''           | ''               | ''           | "March 2021" | ''           | ''               | ''           | "TOTAL" | ''           | ''               | ''           |
-			| ''                                                    | "Price"        | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"         | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"      | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price" | "DateInflow" | "IncludeInPrice" | "Product ID" |
-			| "Goods"                                               | '1,206,000'    | '1/1/2021'   | "No"             | ''           | '1,326,600'     | '1/2/2021'   | "No"             | ''           | '1,326,600'  | '1/2/2021'   | "No"             | ''           | '0'     | '1/1/2021'   | "No"             | ''           |
-			| "5C:Corporate performance management "                | '1,250,000'    | '1/1/2021'   | "Yes"            | '000001'     | '2,145,000'     | '5/2/2021'   | "Yes"            | '2000005'    | '2,145,000'  | '5/2/2021'   | "Yes"            | '2000005'    | '0'     | '1/1/2021'   | "No"             | ''           |
-			| "2C:Corporation "                                     | '2,050,000'    | '2/1/2021'   | "Yes"            | '000002'     | '2,255,000'     | ''           | "No"             | ''           | '2,255,000'  | ''           | "No"             | ''           | '0'     | '2/1/2021'   | "No"             | ''           |
-			| "4C:Enterprise 8.3 CORP. Server License (x86-64) "    | '180,000'      | '3/1/2021'   | "Yes"            | '000003'     | '198,000'       | ''           | "No"             | ''           | '198,000'    | ''           | "No"             | ''           | '0'     | '3/1/2021'   | "No"             | ''           |
-			| "1C:ERP. Corporate performance management "           | '1,950,000'    | '4/1/2021'   | "Yes"            | '000004'     | '660,000'       | '1/2/2021'   | "Yes"            | '2000001'    | '660,000'    | '1/2/2021'   | "Yes"            | '2000001'    | '0'     | '1/2/2021'   | "No"             | ''           |
-			| "3C:Enterprise 8 CORP. Client license for 100 users " | '600,000'      | '5/1/2021'   | "Yes"            | '000005'     | '1,375,000'     | ''           | "No"             | ''           | '1,375,000'  | ''           | "No"             | ''           | '0'     | '5/1/2021'   | "No"             | ''           |
+			| "VA - Non-Numbers (source)"                           | ''               | ''                | ''               | ''        | ''                | ''                | ''               | ''        | ''             | ''                | ''               | ''        | ''      | ''                | ''               | ''        |
+			| ''                                                                | ''               | ''                | ''               | ''        | ''                | ''                | ''               | ''        | ''             | ''                | ''               | ''        | ''      | ''                | ''               | ''        |
+			| ''                                                                | "January 2021" | ''                | ''               | ''        | "February 2021" | ''                | ''               | ''        | "March 2021" | ''                | ''               | ''        | "TOTAL" | ''                | ''               | ''        |
+			| ''                                                                | "Price"           | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"            | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"         | "DateInflow" | "IncludeInPrice" | "Product ID" | "Price"  | "DateInflow" | "IncludeInPrice" | "Product ID" |
+			| "Goods"                                                          | '1,206,000'      | '1/1/2021'      | "No"            | ''        | '1,326,600'       | '1/2/2021'      | "No"            | ''        | '1,326,600'    | '1/2/2021'      | "No"            | ''        | '0'     | '1/1/2021'      | "No"            | ''        |
+			| "5C:Corporate performance management "                                      | '1,250,000'      | '1/1/2021'      | "Yes"             | '000001'  | '2,145,000'       | '5/2/2021'      | "Yes"             | '2000005' | '2,145,000'    | '5/2/2021'      | "Yes"             | '2000005' | '0'     | '1/1/2021'      | "No"            | ''        |
+			| "2C:Corporation "                                                  | '2,050,000'      | '2/1/2021'      | "Yes"             | '000002'  | '2,255,000'       | ''                | "No"            | ''        | '2,255,000'    | ''                | "No"            | ''        | '0'     | '2/1/2021'      | "No"            | ''        |
+			| "4C:Enterprise 8.3 CORP. Server License (x86-64) "           | '180,000'        | '3/1/2021'      | "Yes"             | '000003'  | '198,000'         | ''                | "No"            | ''        | '198,000'      | ''                | "No"            | ''        | '0'     | '3/1/2021'      | "No"            | ''        |
+			| "1C:ERP. Corporate performance management "                                   | '1,950,000'      | '4/1/2021'      | "Yes"             | '000004'  | '660,000'         | '1/2/2021'      | "Yes"             | '2000001' | '660,000'      | '1/2/2021'      | "Yes"             | '2000001' | '0'     | '1/2/2021'      | "No"            | ''        |
+			| "3C:Enterprise 8 CORP. Client license for 100 users " | '600,000'        | '5/1/2021'      | "Yes"             | '000005'  | '1,375,000'       | ''                | "No"            | ''        | '1,375,000'    | ''                | "No"            | ''        | '0'     | '5/1/2021'      | "No"            | ''        |
 
 	* Записываем документ	
 		Когда открылось окно '$WindowTitle$'
@@ -298,7 +298,7 @@
 
 Сценарий: 07.05 Создание вида отчета "VA - Non-Numbers (recipient)"
 
-	И Я создаю вид отчета с именем "VA - Non-Numbers (recipient)" и родителем "VA - Non-Numbers and Groupings (группа)"
+	И Я создаю вид отчета с именем "VA - Non-Numbers (recipient)" и родителем "VA - Non-Numbers and Groupings (group)"
 	
 	И Я открываю вид отчета с именем "VA - Non-Numbers (recipient)"
 	И я устанавливаю флаг с именем 'ProjectSeparation'		
@@ -737,12 +737,12 @@
 
 	* Рассчитываем документ и сравниваем итоговый документ
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
-		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_НечисловыеПоказателиПриемник_Меркурий.mxl'
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету "Макеты\ВА_НечисловыеПоказателиПриемник_Меркурий.mxl"
 	
 	* Еще раз рассчитываем и сравниваем документ, результат не должен поменяться
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
-		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_НечисловыеПоказателиПриемник_Меркурий.mxl'
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету "Макеты\ВА_НечисловыеПоказателиПриемник_Меркурий.mxl"
 
 	* Записываем документ	
 		Когда открылось окно '$WindowTitle$'
@@ -798,11 +798,11 @@
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateClearRange'
 
 	* Проверяем содержимое таблицы
-		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_НечисловыеПоказателиПриемник_Меркурий.mxl'
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету "Макеты\ВА_НечисловыеПоказателиПриемник_Меркурий.mxl"
 
 	* Рассчитываем документ и сравниваем итоговый документ
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
-		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\ВА_НечисловыеПоказателиПриемник_Венера.mxl'					
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету "Макеты\ВА_НечисловыеПоказателиПриемник_Венера.mxl"					
 	
 	* Записываем документ	
 		Когда открылось окно '$WindowTitle$'
@@ -816,13 +816,14 @@
 		И из выпадающего списка с именем 'SettingsComposerUserSettingsItem0Value' я выбираю точное значение "Yes"
 		И я нажимаю на кнопку с именем 'GenerateReport'
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету '\\Макеты\ВА_НечисловыеПоказателиПриемник_Венера_Движения.mxl' по шаблону
+		И Я задаю параметры чтения области макета "R1C1:R610C20"
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Макеты\ВА_НечисловыеПоказателиПриемник_Венера_Движения.mxl" по шаблону
 		И из выпадающего списка с именем 'SettingsComposerUserSettingsItem0Value' я выбираю точное значение "No"
 		И Я закрываю окно "Flat table of indicator values"
 
 Сценарий: 07.08 Создание вида отчета "VA - Calculation in code"
 
-	И Я создаю вид отчета с именем "VA - Calculation in code" и родителем "VA - Non-Numbers and Groupings (группа)"
+	И Я создаю вид отчета с именем "VA - Calculation in code" и родителем "VA - Non-Numbers and Groupings (group)"
 	И Я открываю вид отчета с именем "VA - Calculation in code"
 	И я устанавливаю флаг с именем 'ProjectSeparation'		
 	И я нажимаю на кнопку с именем 'RecordButtonForm'
@@ -1200,11 +1201,11 @@
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
 		Когда Я задаю параметры чтения области макета 'R1C1:R800C20'
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Макеты\ВА_РасчетВКоде_Движения.mxl' по шаблону			
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Макеты\ВА_РасчетВКоде_Движения.mxl" по шаблону			
 
 Сценарий: 07.10 Создание вида отчета "VA - Grouping by analytics"
 
-	И Я создаю вид отчета с именем "VA - Grouping by analytics" и родителем "VA - Non-Numbers and Groupings (группа)"
+	И Я создаю вид отчета с именем "VA - Grouping by analytics" и родителем "VA - Non-Numbers and Groupings (group)"
 	
 	И Я открываю вид отчета с именем "VA - Grouping by analytics"
 	И я устанавливаю флаг с именем 'ProjectSeparation'		
@@ -1366,5 +1367,5 @@
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
 		Когда Я задаю параметры чтения области макета 'R1C1:R450C20'
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Макеты\ВА_ГруппировкаПоАналитикам_Движения.mxl' по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Макеты\ВА_ГруппировкаПоАналитикам_Движения.mxl" по шаблону
 													

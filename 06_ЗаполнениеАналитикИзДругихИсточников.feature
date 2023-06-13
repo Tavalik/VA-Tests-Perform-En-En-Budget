@@ -17,13 +17,13 @@
 
 	Пусть Инициализация переменных
 
-Сценарий: 06.01 Создание группы отчетов "VA - Analysts from other sources (группа)"
+Сценарий: 06.01 Создание группы отчетов "VA - Analysts from other sources (group)"
 
-	И Я создаю группу видов отчетов с именем "VA - Analysts from other sources (группа)" и родителем "VA - Report group"
+	И Я создаю группу видов отчетов с именем "VA - Analysts from other sources (group)" и родителем "VA - Report group"
 
 Сценарий: 06.02 Создание вида отчета "VA - Data to add analytics"	
 
-	И Я создаю вид отчета с именем "VA - Data to add analytics" и родителем "VA - Analysts from other sources (группа)"
+	И Я создаю вид отчета с именем "VA - Data to add analytics" и родителем "VA - Analysts from other sources (group)"
 	И Я открываю вид отчета с именем "VA - Data to add analytics"
 	И я перехожу к закладке с именем 'DimensionsOfReport'
 	И из выпадающего списка с именем 'DimensionKind1' я выбираю по строке "VA0ProCate"				
@@ -81,7 +81,7 @@
 
 Сценарий: 06.04 Создание вида отчета "VA - Analysts from fields of other sources"
 
-	И Я создаю вид отчета с именем "VA - Analysts from fields of other sources" и родителем "VA - Analysts from other sources (группа)"
+	И Я создаю вид отчета с именем "VA - Analysts from fields of other sources" и родителем "VA - Analysts from other sources (group)"
 	И Я открываю вид отчета с именем "VA - Analysts from fields of other sources"
 	И я перехожу к закладке с именем 'DimensionsOfReport'
 	И из выпадающего списка с именем 'DimensionKind1' я выбираю по строке "VA0ProCate"				

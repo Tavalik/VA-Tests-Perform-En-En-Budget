@@ -16,13 +16,13 @@
 
 	Пусть Инициализация переменных
 
-Сценарий: 09.01 Создание группы отчетов "VA - Currency indicators (группа)"
+Сценарий: 09.01 Создание группы отчетов "VA - Currency indicators (group)"
 
-	И Я создаю группу видов отчетов с именем "VA - Currency indicators (группа)" и родителем "VA - Report group"
+	И Я создаю группу видов отчетов с именем "VA - Currency indicators (group)" и родителем "VA - Report group"
 
 Сценарий: 09.02 Создание вида отчета "VA - Currency indicators (source)"
 
-	И Я создаю вид отчета с именем "VA - Currency indicators (source)" и родителем "VA - Currency indicators (группа)"
+	И Я создаю вид отчета с именем "VA - Currency indicators (source)" и родителем "VA - Currency indicators (group)"
 	
 	И Я открываю вид отчета с именем "VA - Currency indicators (source)"
 	И я устанавливаю флаг с именем 'ProjectSeparation'	
@@ -255,7 +255,7 @@
 		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Макеты\ВА_ВалютныеПоказатели_Источник_Движения.mxl' по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Макеты\ВА_ВалютныеПоказатели_Источник_Движения.mxl" по шаблону
 
 Сценарий: 09.05 Создание вида отчета "VA - Currency indicators (recipient)"
 
@@ -1277,5 +1277,5 @@
 		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету 'Макеты\ВА_ВалютныеПоказатели_Приемник_Движения.mxl' по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Макеты\ВА_ВалютныеПоказатели_Приемник_Движения.mxl" по шаблону
 		И Я закрываю окно "Flat table of indicator values"

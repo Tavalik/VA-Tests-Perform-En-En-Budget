@@ -245,7 +245,7 @@
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "Data source (create) *" в течение 20 секунд
 			Тогда открылось окно "Data sources"
-			И я нажимаю на кнопку с именем 'FormChoose'
+			И в таблице 'List' я выбираю текущую строку
 			Тогда открылось окно "Edit tree *"
 			И я нажимаю на кнопку с именем 'WriteAndCollapse'
 		* Количества
@@ -276,7 +276,7 @@
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "Data source (create) *" в течение 20 секунд
 			Тогда открылось окно "Data sources"
-			И я нажимаю на кнопку с именем 'FormChoose'
+			И в таблице 'List' я выбираю текущую строку
 			Тогда открылось окно "Edit tree *"
 			И я нажимаю на кнопку с именем 'WriteAndCollapse'
 		* Артикул
@@ -289,6 +289,14 @@
 			Тогда открылось окно "Data source (create)"
 			И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Tables from ADO connection"
 			И из выпадающего списка с именем 'ADOTable' я выбираю точное значение "Sheet1$"
+			И в таблице 'FieldsTreeDB' я разворачиваю текущую строку
+			И в таблице 'FieldsTreeDB' я перехожу к строке:
+				| "Field"    |
+				| "Product ID" |
+			И в таблице 'ComplianceTable' я перехожу к строке:
+				| "Destination dimension" | "Filling method" |
+				| "Value"            | "Source field"    |
+			И я выбираю пункт контекстного меню с именем 'ButtonMapDimensions' на элементе формы с именем 'ComplianceTable'
 			И я перехожу к закладке с именем 'FiltersPage'
 			И в таблице 'FieldsTreeDB' я разворачиваю текущую строку
 			И в таблице 'FieldsTreeDB' я перехожу к строке:
@@ -307,7 +315,7 @@
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "Data source (create) *" в течение 20 секунд
 			Тогда открылось окно "Data sources"
-			И я нажимаю на кнопку с именем 'FormChoose'
+			И в таблице 'List' я выбираю текущую строку
 			Тогда открылось окно "Edit tree *"
 			И я нажимаю на кнопку с именем 'WriteAndCollapse'
 			Тогда открылось окно "Edit tree"
@@ -358,13 +366,13 @@
 		Тогда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
 		Тогда открылось окно '$WindowTitle$'
-		Дано табличный документ 'SpreadsheetFieldTemlate' равен макету "Макеты\ADO\ВА_ЭкземплярОтчетаADO.mxl"
+		Дано табличный документ 'SpreadsheetFieldTemlate' равен макету "Макеты\ВА_ИмпортADO.mxl"
 		И я нажимаю на кнопку с именем 'Write'
 		Тогда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 60 секунд
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Макеты\ADO\ВА_ДвиженияДокументаADO.mxl" по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Макеты\ВА_ИмпортADO_Движения.mxl" по шаблону
 		И Я закрываю окно "Flat table of indicator values"
 		Тогда открылось окно '$WindowTitle$'
 		И Я закрываю окно '$WindowTitle$'
@@ -372,8 +380,8 @@
 Сценарий: 10.06 Изменим вид номенклатуры
 
 	Если '$$ЭтоPerform$$' Тогда
-		И Я Для номенклатуры с именем "1C:KP GU PROF for 12 months" для реквизита 'Product_Category' выбираю значение '' в группе ''
-		И Я Для номенклатуры с именем "1C:KP GU PROF for 6 months" для реквизита 'Product_Category' выбираю значение '' в группе ''
+		И Я Для номенклатуры с именем "2C:KP GU PROF for 12 months" для реквизита 'Product_Category' выбираю значение '' в группе ''
+		И Я Для номенклатуры с именем "2C:KP GU PROF for 6 months" для реквизита 'Product_Category' выбираю значение '' в группе ''
 
 	ИначеЕсли '$$IsCPM$$' Тогда 
 		И В командном интерфейсе я выбираю "Catalogs" "Product range"
@@ -385,29 +393,29 @@
 
 		* 1С:КП ГУ ПРОФ на 12 месяцев
 			Если в таблице 'List' есть строка Тогда
-				| "Product ID"    | 'Единица' | "Description"                |
-				| "KPGUProf12" | 'шт'      | "1C:KP GU PROF for 12 months" |			
+				| "Product ID"  | 'Unit' | "Description"                |
+				| "30000012" | 'PCs'      | "2C:KP GU PROF for 12 months" |
 				И в таблице 'List' я перехожу к строке:
-					| "Product ID"    | 'Единица' | "Description"                |
-					| "KPGUProf12" | 'шт'      | "1C:KP GU PROF for 12 months" |
+					| "Product ID"  | 'Unit' | "Description"                |
+					| "30000012" | 'PCs'      | "2C:KP GU PROF for 12 months" |
 				И в таблице 'List' я выбираю текущую строку
-				Тогда открылось окно "1C:KP GU PROF for 12 months (Product range)"
+				Тогда открылось окно "2C:KP GU PROF for 12 months (Product range)"
 				И из выпадающего списка с именем 'ProductKind' я выбираю по строке 'DimenKind - Other'
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
-				И я жду закрытия окна "1C:KP GU PROF for 12 months (Product range) *" в течение 20 секунд
+				И я жду закрытия окна "2C:KP GU PROF for 12 months (Product range) *" в течение 20 секунд
 
 		* 1С:КП ГУ ПРОФ на 6 месяцев
 			Если в таблице 'List' есть строка Тогда
-				| "Product ID"   | 'Единица' | "Description"               |
-				| "KPGUProf6" | 'шт'      | "1C:KP GU PROF for 6 months" |
+				| "Product ID" | 'Unit' | "Description"               |
+				| "3000006" | 'PCs'      | "2C:KP GU PROF for 6 months" |
 				И в таблице 'List' я перехожу к строке:
-					| "Product ID"   | 'Единица' | "Description"               |
-					| "KPGUProf6" | 'шт'      | "1C:KP GU PROF for 6 months" |
+					| "Product ID" | 'Unit' | "Description"               |
+					| "3000006" | 'PCs'      | "2C:KP GU PROF for 6 months" |
 				И в таблице 'List' я выбираю текущую строку
-				Тогда открылось окно "1C:KP GU PROF for 6 months (Product range)"
+				Тогда открылось окно "2C:KP GU PROF for 6 months (Product range)"
 				И из выпадающего списка с именем 'ProductKind' я выбираю по строке 'DimenKind - Other'
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
-				И я жду закрытия окна "1C:KP GU PROF for 6 months (Product range) *" в течение 20 секунд	
+				И я жду закрытия окна "2C:KP GU PROF for 6 months (Product range) *" в течение 20 секунд	
 		
 	ИначеЕсли '$$IsERPCPM$$' Тогда
 		И В командном интерфейсе я выбираю "Quick menu" "Product range"
@@ -418,17 +426,17 @@
 				| "Description"      |
 				| "VA - Products" |
 			Если в таблице 'ListAdvancedSearchProducts' есть строка Тогда
-				| "Product ID "  | "Description"               |
-				| "KPGUProf6" | "1C:KP GU PROF for 6 months" |
+				| "Product ID" | "Description"               |
+				| "3000006" | "2C:KP GU PROF for 6 months" |
 				И в таблице 'ListAdvancedSearchProducts' я перехожу к строке:
-					| "Product ID "  | "Description"               |
-					| "KPGUProf6" | "1C:KP GU PROF for 6 months" |
+					| "Product ID" | "Description"               |
+					| "3000006" | "2C:KP GU PROF for 6 months" |
 				И в таблице 'ListAdvancedSearchProducts' я выбираю текущую строку
-				Тогда открылось окно "1C:KP GU PROF for 6 months (Product range)"
+				Тогда открылось окно "2C:KP GU PROF for 6 months (Product range)"
 				И я перехожу к закладке с именем 'PageProductAttributes'
 				Если открылось окно 'Полезный совет' Тогда
 					И я нажимаю на кнопку с именем 'Button0'
-				Тогда открылось окно "1C:KP GU PROF for 6 months (Product range)"
+				Тогда открылось окно "2C:KP GU PROF for 6 months (Product range)"
 				И я разворачиваю группу с именем 'СворачиваемаяMainParametersGroupУчета'
 				И из выпадающего списка с именем 'ProductKind' я выбираю по строке 'DimenKind - Other'
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'				
@@ -437,22 +445,22 @@
 					И я нажимаю на кнопку с именем 'OK'
 					Тогда открылось окно "1С:FN ГУ PРОФ for * месяцев (Product range)"
 					И я нажимаю на кнопку с именем 'FormWriteAndClose'
-				И я жду закрытия окна "1C:KP GU PROF for 6 months (Product range) *" в течение 20 секунд
+				И я жду закрытия окна "2C:KP GU PROF for 6 months (Product range) *" в течение 20 секунд
 		
 		* 1С:КП ГУ ПРОФ на 12 месяцев
 			И в таблице 'KindsНоменклатуры' я перехожу к строке:
 				| "Description"      |
 				| "VA - Products" |
 			Если в таблице 'ListAdvancedSearchProducts' есть строка Тогда
-				| "Product ID "   | "Description"                |
-				| "KPGUProf12" | "1C:KP GU PROF for 12 months" |
+				| "Product ID"  | "Description"                |
+				| "30000012" | "2C:KP GU PROF for 12 months" |
 				И в таблице 'ListAdvancedSearchProducts' я перехожу к строке:
-					| "Product ID "   | "Description"                |
-					| "KPGUProf12" | "1C:KP GU PROF for 12 months" |
+					| "Product ID"  | "Description"                |
+					| "30000012" | "2C:KP GU PROF for 12 months" |
 				И в таблице 'ListAdvancedSearchProducts' я выбираю текущую строку
-				Тогда открылось окно "1C:KP GU PROF for 12 months (Product range)"
+				Тогда открылось окно "2C:KP GU PROF for 12 months (Product range)"
 				И я перехожу к закладке с именем 'PageProductAttributes'
-				Тогда открылось окно "1C:KP GU PROF for 12 months (Product range)"
+				Тогда открылось окно "2C:KP GU PROF for 12 months (Product range)"
 				И я разворачиваю группу с именем 'СворачиваемаяMainParametersGroupУчета'
 				И из выпадающего списка с именем 'ProductKind' я выбираю по строке 'DimenKind - Other'
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
@@ -461,4 +469,4 @@
 					И я нажимаю на кнопку с именем 'OK'
 					Тогда открылось окно "1С:FN ГУ PРОФ for * месяцев (Product range)"
 					И я нажимаю на кнопку с именем 'FormWriteAndClose'
-				И я жду закрытия окна "1C:KP GU PROF for 12 months (Product range) *" в течение 20 секунд
+				И я жду закрытия окна "2C:KP GU PROF for 12 months (Product range) *" в течение 20 секунд
