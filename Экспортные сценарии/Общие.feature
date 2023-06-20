@@ -26,7 +26,7 @@
 		
 Сценарий: Я устанавливаю отбор в форме списка 'TheField' 'TheComparisonType' 'TheValue' 
 
-	Тогда открылось окно "List Options"
+	Тогда открылось окно "List settings"
 	И я удаляю все строки таблицы 'SettingsComposerUserSettingsItem0Filter'		
 	И в таблице 'SettingsComposerUserSettingsItem0Filter' я нажимаю на кнопку с именем 'SettingsComposerUserSettingsItem0FilterAddFilterItem'
 	И в таблице 'SettingsComposerUserSettingsItem0Filter' я перехожу к последней строке
@@ -43,7 +43,7 @@
 
 Сценарий: Я снимаю все отборы в форме списка
 
-	Тогда открылось окно "List Options"
+	Тогда открылось окно "List settings"
 	И я перехожу к закладке с именем 'SettingsComposerUserSettingsItem0'
 	И я удаляю все строки таблицы 'SettingsComposerUserSettingsItem0Filter'
 	И я нажимаю на кнопку с именем 'FormEndEdit'

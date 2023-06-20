@@ -80,7 +80,7 @@
 				Когда открылось окно "Correspondence with external infobases (create) *"
 				И в таблице 'ComplianceTable' я перехожу к строке:
 					| "Field"             |
-					| "Kind номенклатуры" |
+					| "Type номенклатуры" |
 				И в таблице 'ComplianceTable' я активизирую поле с именем 'ComplianceTableFillingMethod'
 				И в таблице 'ComplianceTable' я выбираю текущую строку
 				И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Fixed value"

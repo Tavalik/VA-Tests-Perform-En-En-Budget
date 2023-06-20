@@ -787,16 +787,16 @@
 			И Пока в таблице 'List' количество строк 'больше' 0 Тогда
 				И Я запоминаю значение выражения '"Delete_" + StrReplace(New UUID, "-", "")' в переменную 'UID'
 				И в таблице 'List' я выбираю текущую строку
-				Тогда открылось окно "VA - Products (Kind цены)"
+				Тогда открылось окно "VA - Products (Type цены)"
 				И я нажимаю на кнопку с именем 'AllowObjectAttributeEdit'
-				Тогда открылось окно "Attribute unlocking"
+				Тогда открылось окно "Unlock attribute"
 				И я нажимаю на кнопку с именем 'EnableEdit'
-				Тогда открылось окно "VA - Products (Kind цены) *"
+				Тогда открылось окно "VA - Products (Type цены) *"
 				И в поле с именем 'Description' я ввожу значение переменной 'UID'
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
-				И я жду закрытия окна "VA - Products (Kind цены) *" в течение 20 секунд
+				И я жду закрытия окна "VA - Products (Type цены) *" в течение 20 секунд
 			И я нажимаю на кнопку с именем 'FormCreate'
-			Тогда открылось окно "Kind цены (create)"
+			Тогда открылось окно "Type цены (create)"
 			И в поле с именем 'Description' я ввожу текст "VA - Products"
 			И из выпадающего списка с именем 'CurrencyЦены' я выбираю точное значение 'RUB'
 			И я изменяю флаг с именем 'PriceВключаетVAT'
@@ -807,7 +807,7 @@
 			И я устанавливаю флаг с именем 'Округлять'
 			И из выпадающего списка с именем 'AccuracyОкругления' я выбираю точное значение "100"				
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "Kind цены (create) *" в течение 20 секунд
+			И я жду закрытия окна "Type цены (create) *" в течение 20 секунд
 
 		* Вводим документ за Январь
 			Когда В командном интерфейсе я выбираю "CRM и маркетинг" "Цены (прайс-лист)"
@@ -1045,7 +1045,7 @@
 				Если '$$IsCPM$$' Тогда
 					И я перехожу к закладке с именем 'GroupMovementsДенежныхСредствCPM'
 					Тогда таблица 'CashFlowCPM' стала равной:
-						| 'n' | "Cash flow item" | "Bank account / касса" | "Income expense" | "Kind денежных средств" | "Counterparty, подотчетник, касса ККМ" | 'Dimension2' | "Counterparty contract"       | 'Dimension1' | 'Dimension3' | 'Dimension4' | 'Dimension5' | 'Dimension6' | "Amount упр. учета" | 'Sum'        |
+						| 'n' | "Cash flow item" | "Bank account / касса" | "Income expense" | "Type денежных средств" | "Counterparty, подотчетник, касса ККМ" | 'Dimension2' | "Counterparty contract"       | 'Dimension1' | 'Dimension3' | 'Dimension4' | 'Dimension5' | 'Dimension6' | "Amount упр. учета" | 'Sum'        |
 						| '1' | "3Software sale" | ''                        | 'Receipt'        | 'BankAccountPayment'          | 'LLC "Ганимед"'                      | ''           | 'Ганимед-001 dated 01.01.2021' | ''           | ''           | ''           | ''           | ''           | '780,000.00'       | '780,000.00'   |
 						| '2' | "2Software implementation"  | ''                        | 'Receipt'        | 'BankAccountPayment'          | 'LLC "Ганимед"'                      | ''           | 'Ганимед-002 dated 01.01.2021' | ''           | ''           | ''           | ''           | ''           | '2,340,000.00'     | '2,340,000.00' |
 				Если '$$IsERPCPM$$' Тогда

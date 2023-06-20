@@ -197,10 +197,10 @@
 	* Проверяем, что документ пустой
 		Когда открылось окно "Editing process stages: VA - Report preparation process"
 		И я нажимаю на кнопку с именем 'Edit'
-		Тогда открылось окно "Выберите stage"
+		Тогда открылось окно "Select step"
 		И в таблице 'List' количество строк 'равно' 0
 		И элемент формы с именем 'ProcessTemplate' стал равен "VA - Report preparation process"
-		И я закрываю окно "Выберите stage"
+		И я закрываю окно "Select step"
 
 	* Добавляем процесс для удаления
 		Когда открылось окно "Editing process stages: VA - Report preparation process"
@@ -213,7 +213,7 @@
 	* Копируем процесс
 		Когда открылось окно "Editing process stages: VA - Report preparation process"
 		И я нажимаю на кнопку с именем 'Copy'
-		И Я в списке "Выберите stage" по полю "Description" ищу и выбираю элемент "Для удаления" "Exact match"		
+		И Я в списке "Select step" по полю "Description" ищу и выбираю элемент "Для удаления" "Exact match"		
 		Тогда открылось окно "Universal process step (Create)"
 		И в поле с именем "Description" я ввожу текст "Копия для удаления"
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
@@ -222,7 +222,7 @@
 	* Изменяем процесс
 		Когда открылось окно "Editing process stages: VA - Report preparation process"
 		И я нажимаю на кнопку с именем 'Edit'
-		И Я в списке "Выберите stage" по полю "Description" ищу и выбираю элемент "Копия для удаления" "Exact match"		
+		И Я в списке "Select step" по полю "Description" ищу и выбираю элемент "Копия для удаления" "Exact match"		
 		Когда открылось окно "Копия для удаления (Universal process step)"
 		И в поле с именем "Description" я ввожу текст "Отредактированная copy для удаления"
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
@@ -231,36 +231,36 @@
 	* Настраиваем связь
 		Когда открылось окно "Editing process stages: VA - Report preparation process"
 		И я нажимаю на кнопку с именем 'AddLink'
-		И Я в списке "Выберите initial_1 stage links" по полю "Description" ищу и выбираю элемент "Для удаления" "Exact match"
-		И Я в списке "Выберите final stage links" по полю "Description" ищу и выбираю элемент "Отредактированная copy для удаления" "Exact match"		
+		И Я в списке "Select initial link step" по полю "Description" ищу и выбираю элемент "Для удаления" "Exact match"
+		И Я в списке "Select end link step" по полю "Description" ищу и выбираю элемент "Отредактированная copy для удаления" "Exact match"		
 
 	* Удаляем связь
 		Когда открылось окно "Editing process stages: VA - Report preparation process"
 		И я нажимаю на кнопку с именем 'DeleteLink'
-		И Я в списке "Выберите initial_1 stage links" по полю "Description" ищу и выбираю элемент "Для удаления" "Exact match"
-		И Я в списке "Выберите final stage links" по полю "Description" ищу и выбираю элемент "Отредактированная copy для удаления" "Exact match"
+		И Я в списке "Select initial link step" по полю "Description" ищу и выбираю элемент "Для удаления" "Exact match"
+		И Я в списке "Select end link step" по полю "Description" ищу и выбираю элемент "Отредактированная copy для удаления" "Exact match"
 
 	* Удаляем процесс
 		Тогда открылось окно "Editing process stages: VA - Report preparation process"
 		И я нажимаю на кнопку с именем 'MarkToDelete'
-		И Я в списке "Выберите stage" по полю "Description" ищу и выбираю элемент "Отредактированная copy для удаления" "Exact match"					
+		И Я в списке "Select step" по полю "Description" ищу и выбираю элемент "Отредактированная copy для удаления" "Exact match"					
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
 
 	* Удаляем процесс
 		Тогда открылось окно "Editing process stages: VA - Report preparation process"
 		И я нажимаю на кнопку с именем 'MarkToDelete'
-		И Я в списке "Выберите stage" по полю "Description" ищу и выбираю элемент "Для удаления" "Exact match"
+		И Я в списке "Select step" по полю "Description" ищу и выбираю элемент "Для удаления" "Exact match"
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
 
 	* Проверяем, что документ пустой
 		Когда открылось окно "Editing process stages: VA - Report preparation process"
 		И я нажимаю на кнопку с именем 'MarkToDelete'
-		Тогда открылось окно "Выберите stage"
+		Тогда открылось окно "Select step"
 		И в таблице 'List' количество строк 'равно' 0
 		И элемент формы с именем 'ProcessTemplate' стал равен "VA - Report preparation process"
-		И я закрываю окно "Выберите stage"		
+		И я закрываю окно "Select step"		
 
 Сценарий: 17.08 Настройка процесса
 
@@ -475,14 +475,14 @@
 	* Настраиваем связи
 		Когда открылось окно "Editing process stages: VA - Report preparation process"
 		И я нажимаю на кнопку с именем 'AddLink'
-		И Я в списке "Выберите initial_1 stage links" по полю "Description" ищу и выбираю элемент "Manual filling - \"VA - ProcessQuantity\"" "Exact match"
-		И Я в списке "Выберите final stage links" по полю "Description" ищу и выбираю элемент "Calculation by rule - \"VA - ProcessAmount\"" "Exact match"
+		И Я в списке "Select initial link step" по полю "Description" ищу и выбираю элемент "Manual filling - \"VA - ProcessQuantity\"" "Exact match"
+		И Я в списке "Select end link step" по полю "Description" ищу и выбираю элемент "Calculation by rule - \"VA - ProcessAmount\"" "Exact match"
 		И я нажимаю на кнопку с именем 'AddLink'
-		И Я в списке "Выберите initial_1 stage links" по полю "Description" ищу и выбираю элемент "Import - \"VA - ProcessPrice\"" "Exact match"
-		И Я в списке "Выберите final stage links" по полю "Description" ищу и выбираю элемент "Calculation by rule - \"VA - ProcessAmount\"" "Exact match"
+		И Я в списке "Select initial link step" по полю "Description" ищу и выбираю элемент "Import - \"VA - ProcessPrice\"" "Exact match"
+		И Я в списке "Select end link step" по полю "Description" ищу и выбираю элемент "Calculation by rule - \"VA - ProcessAmount\"" "Exact match"
 		И я нажимаю на кнопку с именем 'AddLink'
-		И Я в списке "Выберите initial_1 stage links" по полю "Description" ищу и выбираю элемент "Calculation by rule - \"VA - ProcessAmount\"" "Exact match"
-		И Я в списке "Выберите final stage links" по полю "Description" ищу и выбираю элемент "Consolidation - \"VA - ProcessAmount\"" "Exact match"		
+		И Я в списке "Select initial link step" по полю "Description" ищу и выбираю элемент "Calculation by rule - \"VA - ProcessAmount\"" "Exact match"
+		И Я в списке "Select end link step" по полю "Description" ищу и выбираю элемент "Consolidation - \"VA - ProcessAmount\"" "Exact match"		
 
 Сценарий: 17.09 Созданеие сценария и документа управления отчетным периодом
 
@@ -547,7 +547,7 @@
 			И Я закрываю окно "Set up object filling rules for regulation VA - Report preparation process"			
 			Тогда открылось окно '$WindowTitle$'
 			И я нажимаю на кнопку с именем 'ReportReconciliationByDefaultIndividual'
-			Тогда открылось окно "Set up object filling rules for regulation VA - Report preparation process by scenario VA - Report preparation process for the period January *"
+			Тогда открылось окно "Set up object filling rules for regulation VA - Report preparation process by scenario VA - Report preparation process for period January *"
 			Тогда табличный документ 'CustomField' равен:
 				| "Company / Object" | ''                    | "VA - ProcessAmount"                          | "VA - ProcessQuantity"        | "VA - ProcessPrice"                                                    |
 				| "System LLC"           | "Display report"  | "VA - ProcessAmount"                          | ''                              | ''                                                                    |
@@ -571,7 +571,7 @@
 				| ''                      | "Import rule"     | ''                                           | ''                              | ''                                                                    |
 				| ''                      | "Object currency"      | "From regulation: RUB (EUR, USD)"              | "From regulation: RUB (EUR, USD)" | "From regulation: RUB (EUR, USD)"                                       |
 				| ''                      | "Translation template"   | ''                                           | ''                              | ''                                                                    |
-			И Я закрываю окно "Set up object filling rules for regulation VA - Report preparation process by scenario VA - Report preparation process for the period January *"
+			И Я закрываю окно "Set up object filling rules for regulation VA - Report preparation process by scenario VA - Report preparation process for period January *"
 		* Процесс
 			Когда открылось окно '$WindowTitle$'
 			И я нажимаю на кнопку с именем 'FormGoForward'

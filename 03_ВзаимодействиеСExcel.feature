@@ -237,6 +237,11 @@
 
 	И Я Для вида отчета "VA - ImportExcel" создаю бланк для импорта по умолчанию
 
+	* Заполняем имя листа
+		Тогда открылось окно '$WindowTitle$'
+		И в поле с именем 'SheetName' я ввожу текст 'TDSheet'
+		И я нажимаю на кнопку с именем 'RecordButtonForm'
+
 	* Сохраняем бланк
 		Тогда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'StartExport'
@@ -305,7 +310,16 @@
 		И я меняю значение переключателя с именем 'ImportApproach' на "File on hard drive"
 		Тогда у элемента формы с именем 'PathToFile' текст редактирования стал равен "$КаталогПроекта$\Макеты\ВА_ИмпортExcel+Error.xlsx"
 		И в поле с именем 'PathToFile' я ввожу текст "$КаталогПроекта$\Макеты\ВА_ИмпортExcel+Mercury.xlsx"
-		И я нажимаю на кнопку с именем 'FormSelect'				
+		И я нажимаю на кнопку с именем 'FormSelect'
+		Когда открылось окно "Spreadsheet document import parameters"
+		И таблица 'SheetsList' стала равной:
+			| "Sheet name" | "Password protected" |
+			| 'TDSheet'   | "No"             |
+			| '2Sheet'    | "No"             |
+		И в таблице 'SheetsList' я перехожу к строке:
+			| "Sheet name" | "Password protected" |
+			| 'TDSheet'   | "No"             |
+		И я нажимаю на кнопку с именем 'OkCommand'
 		Тогда открылось окно '$WindowTitle$'
 		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету "$КаталогПроекта$\Макеты\ВА_ИмпортExcel_Меркурий.mxl"
 
@@ -381,6 +395,10 @@
 		И я нажимаю на кнопку с именем 'FormSelect'
 		Когда открылось окно "Select file version"
 		И таблица 'SheetsList' стала равной:
+			| "Document sheet" | "Password protected" |
+			| 'TDSheet'        | "No"             |
+			| '2Sheet'         | "No"             |
+		И в таблице 'SheetsList' я перехожу к строке:
 			| "Document sheet" | "Password protected" |
 			| 'TDSheet'        | "No"             |
 		И я нажимаю на кнопку с именем 'FormOK'
