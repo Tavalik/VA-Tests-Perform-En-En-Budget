@@ -1295,7 +1295,8 @@
 		И я нажимаю на кнопку с именем 'FormCreate'
 		Тогда открылось окно "External infobases (create)"
 		И в поле с именем 'Description' я ввожу текст '[TheName]'
-		И из выпадающего списка с именем 'ExternalSourceType' я выбираю по строке '[TheType]'
+		И я нажимаю кнопку выбора у поля с именем 'ExternalSourceType'
+		И Я в списке "Infobase types" по полю "Description" ищу и выбираю элемент '[TheType]' "At beginning of line"
 		И в поле с именем 'NameBeginning' я ввожу текст '[TheCatalog]'
 		Если '"[TheTypeOfStorage]" = "Excel"' Тогда 
 			И я меняю значение переключателя с именем 'ADOStorageType' на "MS Excel (.xls) files"
@@ -1320,14 +1321,14 @@
 
 	* Удаляем старый элемент
 		И в таблице 'List_[TheType]' я нажимаю на кнопку с именем 'List_[TheType]Find'
-		Тогда открылось окно 'Find'
+		Тогда открылось окно "Find"
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Object"
 		И я меняю значение переключателя с именем 'CompareType' на "Anywhere in the line"
 		И в поле с именем 'Pattern' я ввожу текст '[TheObject]'
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Company file path items: List form"
 		И Пока в таблице 'List_[TheType]' количество строк 'больше' 0 Тогда 
-			И я выбираю пункт контекстного меню с именем 'List_[TheType]ContextMenuDelete' на элементе формы с именем "List_[TheType]"
+			И я выбираю пункт контекстного меню с именем 'List_[TheType]ContextMenuDelete' на элементе формы с именем 'List_[TheType]'
 			Тогда открылось окно "1C:Enterprise"
 			И я нажимаю на кнопку с именем 'Button0'
 				

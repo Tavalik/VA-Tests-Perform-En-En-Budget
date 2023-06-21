@@ -83,7 +83,7 @@
 		И я открываю контруктор отчета с именем "VA - ProcessAmount"
 		И Я в конструкторе отчета добавляю строку с именем "Goods"
 		И Я в конструкторе отчета добавляю колонки
-			| "Description" |
+			| 'Description' |
 			| "Quantity"   |
 			| "Price"         |
 			| "Amount"        |
@@ -124,7 +124,7 @@
 				Тогда открылось окно "Editing process stages: VA - Report preparation process"
 				И я нажимаю на кнопку с именем 'FormOpenProcessProperties'
 				Тогда открылось окно "VA - Report preparation process (Universal process template)"
-				И в поле с именем "Description" я ввожу значение переменной 'UID'
+				И в поле с именем 'Description' я ввожу значение переменной 'UID'
 				И я нажимаю на кнопку с именем 'FormSetDeletionMark'
 				Тогда открылось окно "1C:Enterprise"
 				И я нажимаю на кнопку с именем 'Button0'
@@ -133,7 +133,7 @@
 				Тогда открылось окно "Editing process stages: VA - Report preparation process"
 				И Я закрываю окно "Editing process stages: VA - Report preparation process"
 			Когда открылось окно '$WindowTitle$'
-			И в поле с именем "Description" я ввожу значение переменной 'UID'
+			И в поле с именем 'Description' я ввожу значение переменной 'UID'
 			И я нажимаю на кнопку с именем 'FormSetDeletionMark'
 			Тогда открылось окно "1C:Enterprise"
 			И я нажимаю на кнопку с именем 'Button0'
@@ -151,7 +151,7 @@
 		И в таблице 'List' количество строк 'равно' 1
 		И я нажимаю на кнопку с именем 'FormCopy'
 		Тогда открылось окно "VA - Main regulations from *"
-		И в поле с именем "Description" я ввожу текст "VA - Report preparation process"
+		И в поле с именем 'Description' я ввожу текст "VA - Report preparation process"
 		И из выпадающего списка с именем 'ReportKind' я выбираю по строке "VA - Report preparation process (group)"
 		* Создаем процесс
 			И я устанавливаю флаг с именем 'UseProcess'
@@ -165,11 +165,11 @@
 			И я нажимаю на кнопку с именем 'FormOpenProcessProperties'
 			* Проверяем заполнение
 				Тогда элемент формы с именем 'ProcessPurpose' стал равен "Report preparation process"
-				И элемент формы с именем "Description" стал равен "VA - Report preparation process"
+				И элемент формы с именем 'Description' стал равен "VA - Report preparation process"
 				И таблица 'ProcessParameters' стала равной:
 					| "Predefined" | "Key" | "Parameter code"              | "Parameter name"                | "Parameter type"                | "Default value" |
-					| "Yes"               | "Yes"       | "AccountingPeriodManagement" | "Reporting period management" | "Reporting period management" | ""                      |
-					| "Yes"               | "No"      | "ProcessInitiator"          | "Process initiator"           | "User"                 | ""                      |
+					| "Yes"               | "Yes"       | 'УправлениеОтчетнымПериодом' | "Reporting period management" | "Reporting period management" | ""                      |
+					| "Yes"               | "No"      | 'ИнициаторПроцесса'          | "Process initiator"           | "User"                 | ""                      |
 				И элемент формы с именем 'Parent' стал равен ''
 				И элемент формы с именем 'LinkedRegulation' стал равен "VA - Report preparation process"
 				Когда открылось окно "VA - Report preparation process (Universal process template)"
@@ -206,7 +206,7 @@
 		Когда открылось окно "Editing process stages: VA - Report preparation process"
 		И я нажимаю на кнопку с именем 'AddStage_ReportPreparationProcessStep'
 		Тогда открылось окно "Step of report preparation process (Universal process step)"
-		И в поле с именем "Description" я ввожу текст "Для удаления"
+		И в поле с именем 'Description' я ввожу текст "Для удаления"
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
 		И я жду закрытия окна "Step of report preparation process (Universal process step) *" в течение 20 секунд
 
@@ -215,7 +215,7 @@
 		И я нажимаю на кнопку с именем 'Copy'
 		И Я в списке "Select step" по полю "Description" ищу и выбираю элемент "Для удаления" "Exact match"		
 		Тогда открылось окно "Universal process step (Create)"
-		И в поле с именем "Description" я ввожу текст "Копия для удаления"
+		И в поле с именем 'Description' я ввожу текст "Копия для удаления"
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
 		И я жду закрытия окна "Universal process step (Create) *" в течение 20 секунд	
 
@@ -224,7 +224,7 @@
 		И я нажимаю на кнопку с именем 'Edit'
 		И Я в списке "Select step" по полю "Description" ищу и выбираю элемент "Копия для удаления" "Exact match"		
 		Когда открылось окно "Копия для удаления (Universal process step)"
-		И в поле с именем "Description" я ввожу текст "Отредактированная copy для удаления"
+		И в поле с именем 'Description' я ввожу текст "Отредактированная copy для удаления"
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
 		И я жду закрытия окна "Копия для удаления (Universal process step) *" в течение 20 секунд	
 
@@ -280,11 +280,11 @@
 		Когда открылось окно "Editing process stages: VA - Report preparation process"
 		И я нажимаю на кнопку с именем 'AddStage_ReportPreparationProcessStep'
 		Тогда открылось окно "Step of report preparation process (Universal process step)"
-		И в поле с именем "Description" я ввожу текст "Manual filling - \"VA - ProcessQuantity\""
+		И в поле с именем 'Description' я ввожу текст "Manual filling - \"VA - ProcessQuantity\""
 		* Документы
 			И в таблице 'GeneratedDocuments_' я нажимаю на кнопку с именем 'GeneratedDocuments_Add'
 			И в таблице 'GeneratedDocuments_' я нажимаю кнопку выбора у реквизита с именем 'DocumentsToGenerateDBDocument'
-			И Я в списке "Infobase documents" по полю 'Document' ищу и выбираю элемент "Report instance" "At beginning of line"
+			И Я в списке "Infobase documents" по полю "Document" ищу и выбираю элемент "Report instance" "At beginning of line"
 			И в таблице 'GeneratedDocuments_' из выпадающего списка с именем 'GeneratedDocumentsDocumentTemplate' я выбираю по строке "VA - ProcessQuantity"
 		* Организации
 			И я перехожу к закладке с именем 'Page_BusinessUnitsFilter'
@@ -329,11 +329,11 @@
 		Когда открылось окно "Editing process stages: VA - Report preparation process"
 		И я нажимаю на кнопку с именем 'AddStage_ReportPreparationProcessStep'
 		Тогда открылось окно "Step of report preparation process (Universal process step)"
-		И в поле с именем "Description" я ввожу текст "Import - \"VA - ProcessPrice\""				
+		И в поле с именем 'Description' я ввожу текст "Import - \"VA - ProcessPrice\""				
 		* Документы
 			И в таблице 'GeneratedDocuments_' я нажимаю на кнопку с именем 'GeneratedDocuments_Add'
 			И в таблице 'GeneratedDocuments_' я нажимаю кнопку выбора у реквизита с именем 'DocumentsToGenerateDBDocument'
-			И Я в списке "Infobase documents" по полю 'Document' ищу и выбираю элемент "Report instance" "At beginning of line"
+			И Я в списке "Infobase documents" по полю "Document" ищу и выбираю элемент "Report instance" "At beginning of line"
 			И в таблице 'GeneratedDocuments_' из выпадающего списка с именем 'GeneratedDocumentsDocumentTemplate' я выбираю по строке "VA - ProcessPrice"
 		* Организации
 			И я перехожу к закладке с именем 'Page_BusinessUnitsFilter'
@@ -390,11 +390,11 @@
 		Когда открылось окно "Editing process stages: VA - Report preparation process"
 		И я нажимаю на кнопку с именем 'AddStage_ReportPreparationProcessStep'
 		Тогда открылось окно "Step of report preparation process (Universal process step)"
-		И в поле с именем "Description" я ввожу текст "Calculation by rule - \"VA - ProcessAmount\""
+		И в поле с именем 'Description' я ввожу текст "Calculation by rule - \"VA - ProcessAmount\""
 		* Документы
 			И в таблице 'GeneratedDocuments_' я нажимаю на кнопку с именем 'GeneratedDocuments_Add'
 			И в таблице 'GeneratedDocuments_' я нажимаю кнопку выбора у реквизита с именем 'DocumentsToGenerateDBDocument'
-			И Я в списке "Infobase documents" по полю 'Document' ищу и выбираю элемент "Report instance" "At beginning of line"
+			И Я в списке "Infobase documents" по полю "Document" ищу и выбираю элемент "Report instance" "At beginning of line"
 			И в таблице 'GeneratedDocuments_' из выпадающего списка с именем 'GeneratedDocumentsDocumentTemplate' я выбираю по строке "VA - ProcessAmount"
 		* Организации
 			И я перехожу к закладке с именем 'Page_BusinessUnitsFilter'
@@ -432,12 +432,12 @@
 		Когда открылось окно "Editing process stages: VA - Report preparation process"
 		И я нажимаю на кнопку с именем 'AddStage_ReportPreparationProcessStep'
 		Тогда открылось окно "Step of report preparation process (Universal process step)"
-		И в поле с именем "Description" я ввожу текст "Consolidation - \"VA - ProcessAmount\""
+		И в поле с именем 'Description' я ввожу текст "Consolidation - \"VA - ProcessAmount\""
 		И из выпадающего списка с именем 'BusinessUnitType' я выбираю точное значение "Consolidating"
 		* Документы
 			И в таблице 'GeneratedDocuments_' я нажимаю на кнопку с именем 'GeneratedDocuments_Add'
 			И в таблице 'GeneratedDocuments_' я нажимаю кнопку выбора у реквизита с именем 'DocumentsToGenerateDBDocument'
-			И Я в списке "Infobase documents" по полю 'Document' ищу и выбираю элемент "Report instance" "At beginning of line"
+			И Я в списке "Infobase documents" по полю "Document" ищу и выбираю элемент "Report instance" "At beginning of line"
 			И в таблице 'GeneratedDocuments_' из выпадающего списка с именем 'GeneratedDocumentsDocumentTemplate' я выбираю по строке "VA - ProcessAmount"
 		* Организации
 			И я перехожу к закладке с именем 'Page_BusinessUnitsFilter'
@@ -600,7 +600,7 @@
 		И в таблице 'TransactionsTree' я активизирую поле с именем 'OperationTreeCompanyReportKind'
 		И в таблице 'TransactionsTree' я выбираю текущую строку
 		
-		И Открылся экземпляр отчета для вида отчета "VA - ProcessQuantity" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Report preparation process" периодичность 'Month' проект '' аналитики '' '' '' '' '' '' 
+		И Открылся экземпляр отчета для вида отчета "VA - ProcessQuantity" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Report preparation process" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
 		И В экземпляре отчета я удалю все существующие версии
 		И я нажимаю на кнопку с именем 'EnableEdit'		
 		И Я добавляю значения с раскрытием показателей в ячейку 'R6C1'
@@ -716,7 +716,7 @@
 			И в таблице 'TransactionsTree' я активизирую поле с именем 'OperationTreeCompanyReportKind'
 			И в таблице 'TransactionsTree' я выбираю текущую строку
 		* Заполняем и записываем отчет
-			И Открылся экземпляр отчета для вида отчета "VA - ProcessPrice" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Report preparation process" периодичность 'Month' проект '' аналитики '' '' '' '' '' '' 
+			И Открылся экземпляр отчета для вида отчета "VA - ProcessPrice" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Report preparation process" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
 			И я нажимаю на кнопку с именем 'FormFillByDefault'
 			Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 				| "VA - ProcessPrice" | ''                             | ''               | ''                | ''             |
@@ -752,7 +752,7 @@
 					| "Mercury LLC"           |
 				И в таблице 'TransactionsTree' я активизирую поле с именем 'OperationTreeCompanyReportKind'
 				И в таблице 'TransactionsTree' я выбираю текущую строку	
-				И Открылся экземпляр отчета для вида отчета "VA - ProcessPrice" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Report preparation process" периодичность 'Month' проект '' аналитики '' '' '' '' '' ''
+				И Открылся экземпляр отчета для вида отчета "VA - ProcessPrice" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Report preparation process" периодичность "Month" проект '' аналитики '' '' '' '' '' ''
 				Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 					| "VA - ProcessPrice" | ''                             | ''               | ''                | ''             |
 					| ''                 | ''                             | ''               | ''                | ''             |
@@ -775,7 +775,7 @@
 					| "Venus LLC"             |
 				И в таблице 'TransactionsTree' я активизирую поле с именем 'OperationTreeCompanyReportKind'
 				И в таблице 'TransactionsTree' я выбираю текущую строку	
-				И Открылся экземпляр отчета для вида отчета "VA - ProcessPrice" валюта 'RUB' организация "Venus LLC" сценарий "VA - Report preparation process" периодичность 'Month' проект '' аналитики '' '' '' '' '' ''
+				И Открылся экземпляр отчета для вида отчета "VA - ProcessPrice" валюта 'RUB' организация "Venus LLC" сценарий "VA - Report preparation process" периодичность "Month" проект '' аналитики '' '' '' '' '' ''
 				Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 					| "VA - ProcessPrice" | ''                                                               | ''               | ''                | ''             |
 					| ''                 | ''                                                               | ''               | ''                | ''             |
@@ -841,7 +841,7 @@
 		И в таблице 'TransactionsTree' я выбираю текущую строку
 		
 	* Сверяем итоговый отчет
-		И Открылся экземпляр отчета для вида отчета "VA - ProcessAmount" валюта 'RUB' организация "System LLC" сценарий "VA - Report preparation process" периодичность 'Month' проект '' аналитики '' '' '' '' '' ''									
+		И Открылся экземпляр отчета для вида отчета "VA - ProcessAmount" валюта 'RUB' организация "System LLC" сценарий "VA - Report preparation process" периодичность "Month" проект '' аналитики '' '' '' '' '' ''									
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - ProcessAmount"                                               | ''               | ''          | ''           | ''                | ''          | ''           | ''             | ''          | ''            | ''           | ''           | ''            |
 			| ''                                                                | ''               | ''          | ''           | ''                | ''          | ''           | ''             | ''          | ''            | ''           | ''           | ''            |
@@ -859,12 +859,12 @@
 	* Ищем нужный документ
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Reporting period management"
 		Тогда открылось окно "Reporting period management"
-		И Я в списке "Reporting period management" по полю 'Scenario' ищу и выбираю элемент "VA - Report preparation process" "Exact match" 
+		И Я в списке "Reporting period management" по полю "Scenario" ищу и выбираю элемент "VA - Report preparation process" "Exact match" 
 		Тогда Открылся документ управления периодом для сценария "VA - Report preparation process" периодичность "Month"
 		
 	* Останавливаем процесс	
 		И в таблице 'Contents' я перехожу к строке:
-			| "Description"             |
+			| 'Description'             |
 			| "Process, reports, and limits" |
 		И я перехожу к закладке с именем 'ProcessSetup'
 		И я нажимаю на кнопку с именем 'ProcessManagement_StopProcess1'

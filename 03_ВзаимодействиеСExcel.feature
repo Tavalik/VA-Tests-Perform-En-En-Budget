@@ -186,13 +186,14 @@
 		Когда открылось окно "Edit tree"
 		И я нажимаю на кнопку открытия поля с именем 'ProcessingRule'
 		Тогда открылось окно "VA - ImportExcel (Calculation rules)"
-		И из выпадающего списка с именем 'DBType' я выбираю по строке "Microsoft Excel files"
+		И я нажимаю кнопку выбора у поля с именем 'DBType'
+		И Я в списке "Infobase types" по полю "Description" ищу и выбираю элемент "Microsoft Excel files" "At beginning of line"
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
 		И я жду закрытия окна "VA - ImportExcel (Calculation rules) *" в течение 20 секунд
 
 Сценарий: 03.02 Создание внешней информационной базы "VA - Import from Excel"
 
-	И Я создаю внешнюю информационную базу "VA - Import from Excel" тип 'Microsoft Excel files' каталог "$КаталогПроекта$\Макеты" тип хранилища ''
+	И Я создаю внешнюю информационную базу "VA - Import from Excel" тип "Microsoft Excel files" каталог "$КаталогПроекта$\Макеты" тип хранилища ''
 
 	* Тестируем механизм маски имени
 		Тогда элемент формы с именем 'FullNameMask' стал равен "$КаталогПроекта$\Макеты\*.xls?"

@@ -756,7 +756,7 @@
 		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListOpenInstancesList'
 		Тогда открылось окно "Report instances"
 		И в таблице 'List' я нажимаю на кнопку с именем 'ListFind'
-		Тогда открылось окно 'Find'
+		Тогда открылось окно "Find"
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Company"
 		И из выпадающего списка с именем 'Pattern' я выбираю по строке "Mercury LLC"
 		И я нажимаю на кнопку с именем 'Find'
@@ -772,7 +772,7 @@
 		И элемент формы с именем 'ReportDimension6' стал равен ''
 		И элемент формы с именем 'ReportKind' стал равен "VA - Non-Numbers (recipient)"
 		И Таблица 'AdditionalCurrencies' содержит '2' строк из списка:
-			| "Value" |
+			| 'Value' |
 			| 'EUR'      |
 			| 'USD'      |		
 		И элемент формы с именем 'CopyingValue' стал равен по шаблону "Report instance *"

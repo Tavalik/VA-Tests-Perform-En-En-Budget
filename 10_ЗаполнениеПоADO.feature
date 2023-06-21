@@ -129,7 +129,7 @@
 	Тогда открылось окно "Infobase catalogs"
 	И в таблице 'List' я перехожу к строке:
 		| "Controlled" | "Not in the configuration" | "Under approval" | "Catalog"                |
-		| "No"            | "No"                        | 'Yes'          | 'Income and expense items' |
+		| "No"            | "No"                        | "Yes"          | "Income and expense items" |
 	И в таблице 'List' я выбираю текущую строку
 	Тогда открылось окно "Correspondence with external infobases (create) *"
 	И в таблице 'DBDimensionsTableBox' я перехожу к строке:
@@ -341,7 +341,7 @@
 	Тогда открылось окно "Current infobase catalogs"
 	И в таблице 'List' я перехожу к строке:
 		| "Current infobase catalog"     |
-		| 'Income and expense items' |
+		| "Income and expense items" |
 	И в таблице 'List' я выбираю текущую строку
 	Тогда открылось окно "Income and expense items (Infobase catalogs)"
 	И Для каждой строки таблицы 'Attributes' я выполняю

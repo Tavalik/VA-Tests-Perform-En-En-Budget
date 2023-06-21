@@ -16,11 +16,11 @@
 
 	Пусть Инициализация переменных
 
-Сценарий: 16.01 Создание вида отчета "VA - Пустые аналитики"
+Сценарий: 16.01 Создание вида отчета "VA - Empty analytics"
 
 	* Создаем вид отчета
-		И Я создаю вид отчета с именем "VA - Пустые аналитики" и родителем "VA - Report group"
-		И Я открываю вид отчета с именем "VA - Пустые аналитики"
+		И Я создаю вид отчета с именем "VA - Empty analytics" и родителем "VA - Report group"
+		И Я открываю вид отчета с именем "VA - Empty analytics"
 	
 	* Доработаем вид отчета	
 		И я перехожу к закладке с именем 'DimensionsOfReport'
@@ -84,31 +84,31 @@
 		И Я закрываю окно "Edit tree"
 		
 	* Бланк вида отчета
-		И Я Для вида отчета "VA - Пустые аналитики" создаю бланк по умолчанию
+		И Я Для вида отчета "VA - Empty analytics" создаю бланк по умолчанию
 
 Сценарий: 16.02 Настраиваем формулы через 
 
-	И Я открываю контруктор отчета с именем "VA - Пустые аналитики"
+	И Я открываю контруктор отчета с именем "VA - Empty analytics"
 
 	* Ввод формул
 		Когда открылось окно "Edit tree"
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"				
 		И я нажимаю на кнопку с именем 'FormShowSourceData'
-		И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Пустые аналитики"
+		И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Empty analytics"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C2'
-		И в табличном документе 'SpreadsheetDocSelectIndicator' я перехожу к ячейке 'Source_Number'
+		И в табличном документе 'SpreadsheetDocSelectIndicator' я перехожу к ячейке "Source_Number"
 		// ДОРАБОТАТЬ
 		// Сделать ввод формулы по двойному клику
 		Тогда открылось окно "Edit tree"
 		И я нажимаю на кнопку с именем 'AddDataToCell1'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C3'
-		И в табличном документе 'SpreadsheetDocSelectIndicator' я перехожу к ячейке 'Source_Date'
+		И в табличном документе 'SpreadsheetDocSelectIndicator' я перехожу к ячейке "Source_Date"
 		И я нажимаю на кнопку с именем 'AddDataToCell1'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C2'
-		И в табличном документе 'SpreadsheetDocSelectIndicator' я перехожу к ячейке 'Source_Number'
+		И в табличном документе 'SpreadsheetDocSelectIndicator' я перехожу к ячейке "Source_Number"
 		И я нажимаю на кнопку с именем 'AddDataToCell1'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C3'
-		И в табличном документе 'SpreadsheetDocSelectIndicator' я перехожу к ячейке 'Source_Date'
+		И в табличном документе 'SpreadsheetDocSelectIndicator' я перехожу к ячейке "Source_Date"
 		И я нажимаю на кнопку с именем 'AddDataToCell1'
 		И я нажимаю на кнопку с именем 'FormShowSourceData'
 
@@ -120,7 +120,7 @@
 			И я нажимаю на кнопку с именем 'AddOperand1'
 			Тогда открылось окно "Data sources"
 			И я выбираю пункт контекстного меню с именем 'ListContextMenuChange' на элементе формы с именем 'List'
-			Тогда открылось окно "VA - Пустые аналитики_Source number (Data source)"
+			Тогда открылось окно "VA - Empty analytics_Source number (Data source)"
 			И в таблице 'ComplianceTable' я перехожу к строке:
 				| "Destination dimension"             | "Dimension kind"      | "Column name"                       | "Filling method" |
 				| "Dimension 3: Product categories" | "Product categories" | "[Dimension 3: Product categories]" | "Source field"    |
@@ -129,7 +129,7 @@
 			И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Fixed value"
 			И в таблице 'ComplianceTable' я завершаю редактирование строки
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "VA - Пустые аналитики_Source number (Data source) *" в течение 20 секунд
+			И я жду закрытия окна "VA - Empty analytics_Source number (Data source) *" в течение 20 секунд
 			Тогда открылось окно "Data sources"
 			И Я закрываю окно "Data sources"
 			Тогда открылось окно "Edit tree"
@@ -139,8 +139,8 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			И я нажимаю на кнопку с именем 'AddOperand1'
 			Тогда открылось окно "Data sources"
-			И я выбираю пункт контекстного меню с именем 'ListContextMenuChange' на элементе формы с именем "List"
-			Тогда открылось окно "VA - Пустые аналитики_Source date (Data source)"
+			И я выбираю пункт контекстного меню с именем 'ListContextMenuChange' на элементе формы с именем 'List'
+			Тогда открылось окно "VA - Empty analytics_Source date (Data source)"
 			И в таблице 'ComplianceTable' я перехожу к строке:
 				| "Destination dimension"             | "Dimension kind"      | "Column name"                       | "Filling method" |
 				| "Dimension 3: Product categories" | "Product categories" | "[Dimension 3: Product categories]" | "Source field"    |
@@ -149,7 +149,7 @@
 			И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Fixed value"
 			И в таблице 'ComplianceTable' я завершаю редактирование строки
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "VA - Пустые аналитики_Source date (Data source) *" в течение 20 секунд
+			И я жду закрытия окна "VA - Empty analytics_Source date (Data source) *" в течение 20 секунд
 			Тогда открылось окно "Data sources"
 			И Я закрываю окно "Data sources"
 			Тогда открылось окно "Edit tree"
@@ -160,7 +160,7 @@
 			И я нажимаю на кнопку с именем 'AddOperand1'
 			Тогда открылось окно "Data sources"
 			И я выбираю пункт контекстного меню с именем 'ListContextMenuChange' на элементе формы с именем 'List'
-			Тогда открылось окно "VA - Пустые аналитики_Source number (Data source)"
+			Тогда открылось окно "VA - Empty analytics_Source number (Data source)"
 			И в таблице 'ComplianceTable' я перехожу к строке:
 				| "Destination dimension"             | "Dimension kind"      | "Column name"                       | "Filling method" |
 				| "Dimension 3: Product categories" | "Product categories" | "[Dimension 3: Product categories]" | "Source field"    |
@@ -169,7 +169,7 @@
 			И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Fixed value"
 			И в таблице 'ComplianceTable' я завершаю редактирование строки
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "VA - Пустые аналитики_Source number (Data source) *" в течение 20 секунд
+			И я жду закрытия окна "VA - Empty analytics_Source number (Data source) *" в течение 20 секунд
 			Тогда открылось окно "Data sources"
 			И Я закрываю окно "Data sources"
 			Тогда открылось окно "Edit tree"
@@ -180,7 +180,7 @@
 			И я нажимаю на кнопку с именем 'AddOperand1'
 			Тогда открылось окно "Data sources"
 			И я выбираю пункт контекстного меню с именем 'ListContextMenuChange' на элементе формы с именем 'List'
-			Тогда открылось окно "VA - Пустые аналитики_Source date (Data source)"
+			Тогда открылось окно "VA - Empty analytics_Source date (Data source)"
 			И в таблице 'ComplianceTable' я перехожу к строке:
 				| "Destination dimension"             | "Dimension kind"      | "Column name"                       | "Filling method" |
 				| "Dimension 3: Product categories" | "Product categories" | "[Dimension 3: Product categories]" | "Source field"    |
@@ -189,7 +189,7 @@
 			И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Fixed value"
 			И в таблице 'ComplianceTable' я завершаю редактирование строки
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "VA - Пустые аналитики_Source date (Data source) *" в течение 20 секунд
+			И я жду закрытия окна "VA - Empty analytics_Source date (Data source) *" в течение 20 секунд
 			Тогда открылось окно "Data sources"
 			И Я закрываю окно "Data sources"
 			Тогда открылось окно "Edit tree"
@@ -199,9 +199,9 @@
 		Когда открылось окно "Edit tree"
 		И Я закрываю окно "Edit tree"		
 
-Сценарий: 16.03 Создание экземпляра отчета "VA - Пустые аналитики"
+Сценарий: 16.03 Создание экземпляра отчета "VA - Empty analytics"
 
-	И Я создаю экземпляр отчета для вида отчета "VA - Пустые аналитики" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики "3Software sale" '' '' '' '' ''
+	И Я создаю экземпляр отчета для вида отчета "VA - Empty analytics" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики "3Software sale" '' '' '' '' ''
 	И я нажимаю на кнопку с именем 'Write'
 
 	И Я добавляю значения с раскрытием показателей в ячейку 'R6C8'
@@ -218,7 +218,7 @@
 	И Я ввожу комментарий "Date" в ячейку 'R10C5'
 
 	Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-		| "VA - Пустые аналитики"         | ''               | ''           | ''                | ''           | ''             | ''     | ''      | ''           |
+		| "VA - Empty analytics"         | ''               | ''           | ''                | ''           | ''             | ''     | ''      | ''           |
 		| ''                              | ''               | ''           | ''                | ''           | ''             | ''     | ''      | ''           |
 		| ''                              | "January 2021" | ''           | "February 2021" | ''           | "March 2021" | ''     | "TOTAL" | ''           |
 		| ''                              | "Number"          | "Date"       | "Number"           | "Date"       | "Number"        | "Date" | "Number" | "Date"       |
@@ -252,11 +252,11 @@
 	Тогда открылось окно "1C:Enterprise"
 	И я нажимаю на кнопку с именем 'Button1'		
 		
-Сценарий: 16.04 Создание сводной таблицы "VA - Пустые аналитики"		
+Сценарий: 16.04 Создание сводной таблицы "VA - Empty analytics"		
 
-	И Я для вида отчета "VA - Пустые аналитики" создаю бланк сводной таблицы по умолчанию с отборами ""
+	И Я для вида отчета "VA - Empty analytics" создаю бланк сводной таблицы по умолчанию с отборами ""
 		
-	И Я октрываю сводную таблицу отчета с именем "VA - Пустые аналитики"
+	И Я октрываю сводную таблицу отчета с именем "VA - Empty analytics"
 	И Я устанавливаю отборы сводной таблицы: дата начала '1/1/2021', дата конца '3/31/2021', валюта 'RUB', сценарий "VA - Main scenario", организация "Mercury LLC"		
 
 	* Настраиваем порядок аналитик
@@ -282,8 +282,8 @@
 
 	* Сверяем результат
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-			| "VA - Пустые аналитики (pivot table)" | "January 2021" | ''           | "February 2021" | ''           | "March 2021" | ''     | "TOTAL" | ''           |
-			| "VA - Пустые аналитики (pivot table)" | "Number"          | "Date"       | "Number"           | "Date"       | "Number"        | "Date" | "Number" | "Date"       |
+			| "VA - Empty analytics (pivot table)" | "January 2021" | ''           | "February 2021" | ''           | "March 2021" | ''     | "TOTAL" | ''           |
+			| "VA - Empty analytics (pivot table)" | "Number"          | "Date"       | "Number"           | "Date"       | "Number"        | "Date" | "Number" | "Date"       |
 			| "Source"                                | '200'            | '1/1/2021' | '400'             | '2/2/2021' | '0'            | ''     | '600'   | '2/2/2021' |
 			| "2Software implementation"         | '100'            | '1/1/2021' | '200'             | '2/2/2021' | '0'            | ''     | '300'   | '2/2/2021' |
 			| "1C:ERP. Corporate performance management"            | '100'            | '1/1/2021' | '200'             | '2/2/2021' | '0'            | ''     | '300'   | '2/2/2021' |
@@ -310,7 +310,7 @@
 		Когда открылось окно "Pivot table: *"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R10C3"
 		И я выбираю пункт контекстного меню с именем 'SpreadsheetFieldTemlateContextMenuOpenReportInstance' на элементе формы с именем 'SpreadsheetFieldTemlate'
-		И Открылся экземпляр отчета для вида отчета "VA - Пустые аналитики" валюта "RUB" организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month"  проект '' аналитики "3Software sale" '' '' '' '' ''
+		И Открылся экземпляр отчета для вида отчета "VA - Empty analytics" валюта "RUB" организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month"  проект '' аналитики "3Software sale" '' '' '' '' ''
 		И Я закрываю окно '$WindowTitle$'
 
 	* Открываем несуществующий экземпляр отчета

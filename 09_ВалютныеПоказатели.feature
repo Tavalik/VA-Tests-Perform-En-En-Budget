@@ -32,7 +32,7 @@
 	Когда открылось окно "Edit tree"
 
 	И Я в конструкторе отчета добавляю строки
-		| "Description"      |
+		| 'Description'      |
 		| "Revenue"           |
 		| "Revenue in currency"  |
 		| "Revenue by currency" |
@@ -155,7 +155,7 @@
 		И я нажимаю на кнопку с именем 'DisplayADrilldown'
 		Тогда открылось окно "Drill down indicators: *"
 		И я заполняю таблицу 'IndicatorsDrilldown' данными
-			| "Counterparties"     | 'Currencies' | 'Period_1_Value1' | 'Period_1_ValueCurrency1' |
+			| "Counterparties"     | "Currencies" | 'Period_1_Value1' | 'Period_1_ValueCurrency1' |
 			| "LLC \"Ganymede\"" | 'RUB'    | ''                   | '100,000.00000'            |
 			| "LLC \"Ganymede\"" | 'USD'    | '90,000.00000'       | ''                         |
 			| "LLC \"Ganymede\"" | 'EUR'    | '110,000.00000'      | ''                         |
@@ -163,7 +163,7 @@
 			| "LLC \"Io\""      | 'USD'    | '180,000.00000'      |                            |
 			| "LLC \"Io\""      | 'EUR'    | '220,000.00000'      |                            |
 		Тогда таблица 'IndicatorsDrilldown' стала равной:
-			| "Counterparties"     | 'Currencies' | 'Period_1_Value1' | 'Period_1_ValueCurrency1' | 'Period_2_Value1' | 'Period_2_ValueCurrency1' | 'Period_3_Value1' | 'Period_3_ValueCurrency1' |
+			| "Counterparties"     | "Currencies" | 'Period_1_Value1' | 'Period_1_ValueCurrency1' | 'Period_2_Value1' | 'Period_2_ValueCurrency1' | 'Period_3_Value1' | 'Period_3_ValueCurrency1' |
 			| "LLC \"Ganymede\"" | 'RUB'    | '100,000.00000'      | '100,000.00000'            | ''                   | ''                         | ''                   | ''                         |
 			| "LLC \"Ganymede\"" | 'USD'    | '90,000.00000'       | '1,212.60462'              | ''                   | ''                         | ''                   | ''                         |
 			| "LLC \"Ganymede\"" | 'EUR'    | '110,000.00000'      | '1,215.50856'              | ''                   | ''                         | ''                   | ''                         |
@@ -270,7 +270,7 @@
 
 	* Добавляем строки
 		И Я в конструкторе отчета добавляю строки
-			| "Description"                                                           |
+			| 'Description'                                                           |
 			| "Revenue by currency"                                                      |
 			| "Revenue by currency [Average rate for period]"                             |
 			| "Revenue by currency [Average rate for IFRS period]"                        |
