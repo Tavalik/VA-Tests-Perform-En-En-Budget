@@ -1,19 +1,19 @@
 ﻿#language: ru
-
 @tree
 
 Функционал: 13. Рекурсия в расчетах
 
-Как Администратор я хочу
-Проверить что рекурсия в расчетах отлавливается
+	Как Администратор я хочу
+	Проверить что рекурсия в расчетах отлавливается
 
 Контекст: 
 
-	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''
 	И я закрыл все окна клиентского приложения	
 
 Сценарий: 13.00 Определеняем тип приложения
 
+	И я закрываю TestClient "CPM - Budget"
+	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''
 	Пусть Инициализация переменных
 
 Сценарий: 13.01 Создаем вид отчета с рекурсией расчета показателей
@@ -31,7 +31,7 @@
 		И Я в конструкторе отчета добавляю колонку с именем "Amount"
 
 	* Настраиваем формулы расчета
-		Когда открылось окно "Edit tree"
+		Когда открылось окно "Report wizard"
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
@@ -41,13 +41,13 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		Тогда открылось окно "Edit tree"
+		Тогда открылось окно "Report wizard"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		Тогда открылось окно "Edit tree"
+		Тогда открылось окно "Report wizard"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C2'
@@ -61,7 +61,7 @@
 
 	* Открываем сводную таблицу
 		И Я октрываю сводную таблицу отчета с именем "VA - Transformation period"
-		И Я устанавливаю отборы сводной таблицы: дата начала '1/1/2021', дата конца '3/31/2021', валюта 'RUB', сценарий "VA - Main scenario", организация "Mercury LLC"	
+		И Я устанавливаю отборы сводной таблицы: дата начала '1/1/2024', дата конца '3/31/2024', валюта 'RUB', сценарий "VA - Main scenario", организация "Mercury LLC"	
 		И я запоминаю заголовок формы в переменную 'WindowTitle'	
 
 	* Вводим значение
@@ -89,14 +89,14 @@
 		И Я открываю контруктор отчета с именем "VA - Transformation period"
 
 	* Приемник
-		Когда открылось окно "Edit tree"
+		Когда открылось окно "Report wizard"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст "[VATransformationPeriod_Source_Amount]"
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'				
 
 	* Накопление
-		Когда открылось окно "Edit tree"	
+		Когда открылось окно "Report wizard"	
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И я нажимаю на кнопку с именем 'AddOperand1'
@@ -119,12 +119,12 @@
 		И я жду закрытия окна "Data source (create) *" в течение 20 секунд
 		Тогда открылось окно "Data sources"
 		И в таблице 'List' я выбираю текущую строку
-		Тогда открылось окно "Edit tree *"
+		Тогда открылось окно "Report wizard *"
 		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст "[VATransformationPeriod_Accumulation_Amount01] + [VATransformationPeriod_Destination_Amount]"
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
 
 	* Итог
-		Когда открылось окно "Edit tree"
+		Когда открылось окно "Report wizard"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И я нажимаю на кнопку с именем 'AddOperand1'
@@ -144,7 +144,7 @@
 		И я жду закрытия окна "VA - Transformation period_Accumulation Amount (Data source) *" в течение 20 секунд
 		Тогда открылось окно "Data sources"
 		И Я закрываю окно "Data sources"
-		Тогда открылось окно "Edit tree"
+		Тогда открылось окно "Report wizard"
 		И я нажимаю на кнопку с именем 'UndoFormulaEdit'
 				
 Сценарий: 13.04 Проверяем расчет в сводной таблице
@@ -158,7 +158,7 @@
 		И в табличный документ 'SpreadsheetFieldTemlate' я ввожу текст '100.00000'
 		Когда открылось окно '$WindowTitle$ *'
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-			| "VA - Transformation period (pivot table)" | "January 2021" | "February 2021" | "March 2021" | "TOTAL" |
+			| "VA - Transformation period (pivot table)" | "January 2024" | "February 2024" | "March 2024" | "TOTAL" |
 			| "VA - Transformation period (pivot table)" | "Amount"          | "Amount"           | "Amount"        | "Amount" |
 			| "Source"                                      | '100'            | '0'               | '0'            | '100'   |
 			| "Destination"                                      | '100'            | '0'               | '0'            | '100'   |
@@ -174,7 +174,7 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И в табличный документ 'SpreadsheetFieldTemlate' я ввожу текст '300.00000'
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-			| "VA - Transformation period (pivot table)" | "January 2021" | "February 2021" | "March 2021" | "TOTAL" |
+			| "VA - Transformation period (pivot table)" | "January 2024" | "February 2024" | "March 2024" | "TOTAL" |
 			| "VA - Transformation period (pivot table)" | "Amount"          | "Amount"           | "Amount"        | "Amount" |
 			| "Source"                                      | '100'            | '200'             | '300'          | '600'   |
 			| "Destination"                                      | '100'            | '200'             | '300'          | '600'   |

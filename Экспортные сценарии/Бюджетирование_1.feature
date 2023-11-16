@@ -17,11 +17,11 @@
 	И я нажимаю на кнопку с именем 'Find'
 	Тогда в таблице 'ReportKindList' количество строк 'равно' 1
 
-Сценарий: Открылся экземпляр отчета для вида отчета 'TheReportKind' валюта 'TheCurrency' организация 'TheBusinessUnit' сценарий 'TheScenario' периодичность 'TheFrequency' проект 'TheProject' аналитики 'TheDimension1' 'TheDimension2' 'TheDimension3' 'TheDimension4' 'TheDimension5' 'TheDimension6' 
+Сценарий: Открылся экземпляр отчета для вида отчета "TheReportKind" валюта "TheCurrency" организация "TheBusinessUnit" сценарий 'TheScenario' периодичность 'TheFrequency' проект 'TheProject' аналитики 'TheDimension1' 'TheDimension2' 'TheDimension3' 'TheDimension4' 'TheDimension5' 'TheDimension6' 
 
-	Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
+	Если '$$InterfaceLanguage$$ = "Ru"' Тогда
 		И я запоминаю строку 'Instance Report_ \"[TheReportKind]\": <[TheCurrency]> <[TheBusinessUnit]> <* - * (Periodicity: [TheFrequency]) <[TheScenario]>>' в переменную 'WindowTitle'
-	ИначеЕсли '$$LanguageИнтерфейса$$ = "En"' Тогда
+	ИначеЕсли '$$InterfaceLanguage$$ = "En"' Тогда
 		И я запоминаю строку 'Report instance \"[TheReportKind]\": <[TheCurrency]> <[TheBusinessUnit]> <* - * (Frequency: [TheFrequency]) <[TheScenario]>>' в переменную 'WindowTitle'		
 
 	Если 'NOT IsBlankString("[TheProject]")' Тогда
@@ -44,21 +44,21 @@
 
 Сценарий: Открылся документ управления периодом для сценария 'TheScenario' периодичность 'TheFrequency' 
 
-	Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
+	Если '$$InterfaceLanguage$$ = "Ru"' Тогда
 		И я запоминаю строку '* - * (Periodicity: [TheFrequency]) <[TheScenario]>' в переменную 'WindowTitle'
-	ИначеЕсли '$$LanguageИнтерфейса$$ = "En"' Тогда
+	ИначеЕсли '$$InterfaceLanguage$$ = "En"' Тогда
 		И я запоминаю строку '* - * (Frequency: [TheFrequency]) <[TheScenario]>' в переменную 'WindowTitle'
 
 	И открылось окно '$WindowTitle$'
 
 Сценарий: Открылся регламент подготовки отчетности 'TheDescription' 
 
-	Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
+	Если '$$InterfaceLanguage$$ = "Ru"' Тогда
 		Если 'IsBlankString("[TheDescription]")' Тогда
 			И я запоминаю строку 'Regulation dated * (Creating)*' в переменную 'WindowTitle'
 		Иначе
 			И я запоминаю строку '[TheDescription] dated * (Regulation подгdatedовки datedчетности)*' в переменную 'WindowTitle'
-	ИначеЕсли '$$LanguageИнтерфейса$$ = "En"' Тогда
+	ИначеЕсли '$$InterfaceLanguage$$ = "En"' Тогда
 		Если 'IsBlankString("[TheDescription]")' Тогда
 			И я запоминаю строку 'Regulation from * (Create)*' в переменную 'WindowTitle'
 		Иначе
@@ -95,7 +95,7 @@
 
 Сценарий: Я выбираю показатель с кодом 'TheIndicatorCode'
 
-	Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
+	Если '$$InterfaceLanguage$$ = "Ru"' Тогда
 		Тогда открылось окно "Report indicators"
 		И я меняю значение переключателя с именем 'IndicatorChoiceMode' на "Structure layout"
 		И в табличном документе 'SpreadsheetDocSelectIndicator' я перехожу к ячейке '[TheIndicatorCode]'

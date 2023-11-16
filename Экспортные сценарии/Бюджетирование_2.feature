@@ -42,3 +42,20 @@
 
 	* Формируем Бланк сводной таблиц
 		Тогда Открылся бланк сводной таблицы для вида отчета '[TheReportKindName]'
+
+Сценарий: Я открываю новую корректировку значений показателей сценарий "TheScenario" период "TheStartDate" периодичность "TheFrequency" организация "TheBusinessUnit"
+
+	И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Корректировка значений показателей"
+	Тогда открылось окно "Корректировка значений показателей"
+
+	И я нажимаю на кнопку с именем 'FormCreate'
+	Тогда открылось окно "Корректировка значений показателей (create)"
+
+	И я нажимаю кнопку выбора у поля с именем 'PeriodManagement'
+	И Я в списке "Reporting period management" по полю "Scenario" ищу элемент "[TheScenario]" "Exact match"
+	И Я в списке "Reporting period management" по полю "Frequency" ищу элемент "[TheFrequency]" "Exact match" 
+	И Я в списке "Reporting period management" по полю "Start period" ищу и выбираю элемент "[TheStartDate]" "At beginning of line"
+
+	Когда открылось окно "Корректировка значений показателей (create) *"
+	И я нажимаю кнопку выбора у поля с именем 'Organization'
+	И Я выбираю организацию "[TheBusinessUnit]"

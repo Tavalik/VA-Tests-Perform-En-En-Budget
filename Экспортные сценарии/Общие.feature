@@ -7,29 +7,25 @@
 
 Сценарий: Инициализация переменных
 
-	И Я запоминаю значение выражения 'ProductIDCPMClientServer.IsCorpPerformanceManagement() AND NOT ProductIDCPMClientServer.IsERPCP()' в переменную '$$IsCPM$$'
-	
-	Если '$$IsCPM$$' Тогда
-		Если в панели разделов есть команда 'Catalogs' Тогда
-			И Я запоминаю значение выражения 'False' в переменную '$$ЭтоPerform$$'
-		Иначе
-			И Я запоминаю значение выражения 'True' в переменную '$$ЭтоPerform$$'
-	Иначе
-		И Я запоминаю значение выражения 'False' в переменную '$$ЭтоPerform$$'
-		
-	И Я запоминаю значение выражения 'ProductIDCPMClientServer.IsCorpPerformanceManagement() AND ProductIDCPMClientServer.IsERPCP()' в переменную '$$IsERPCPM$$'
+	И Я запоминаю значение выражения 'CommonClientServerCPM.ConfigurationName() = "Perform"' в переменную '$$ЭтоPerform$$'
+
+	И Я запоминаю значение выражения 'CommonClientServerCPM.ConfigurationName() = "CorporatePerformanceManagement" OR $$ЭтоPerform$$' в переменную '$$IsCPM$$'
+			
+	И Я запоминаю значение выражения 'CommonClientServerCPM.ConfigurationName() = "CorporatePerformanceManagementERP"' в переменную '$$IsERPCPM$$'
 
 	Если в панели разделов есть команда 'Budgeting, отчетность и анализ' Тогда
-		И Я запоминаю значение выражения 'Ru' в переменную '$$LanguageИнтерфейса$$'
+		И Я запоминаю значение выражения 'Ru' в переменную '$$InterfaceLanguage$$'
 	ИначеЕсли в панели разделов есть команда 'Budgeting, reporting, and analysis' Тогда
-		И Я запоминаю значение выражения 'En' в переменную '$$LanguageИнтерфейса$$'
+		И Я запоминаю значение выражения 'En' в переменную '$$InterfaceLanguage$$'
 		
 Сценарий: Я устанавливаю отбор в форме списка 'TheField' 'TheComparisonType' 'TheValue' 
 
-	Тогда открылось окно "List settings"
+	Тогда открылось окно "List Options"
 	И я удаляю все строки таблицы 'SettingsComposerUserSettingsItem0Filter'		
 	И в таблице 'SettingsComposerUserSettingsItem0Filter' я нажимаю на кнопку с именем 'SettingsComposerUserSettingsItem0FilterAddFilterItem'
 	И в таблице 'SettingsComposerUserSettingsItem0Filter' я перехожу к последней строке
+	Если 'Page1Find("[TheField]", ".") > 0' Тогда
+		И в таблице 'SettingsComposerUserSettingsItem0Filter' в поле с именем 'SettingsComposerUserSettingsItem0FilterLeftValue' я ввожу текст '[TheField]'
 	И в таблице 'SettingsComposerUserSettingsItem0Filter' из выпадающего списка с именем 'SettingsComposerUserSettingsItem0FilterLeftValue' я выбираю точное значение '[TheField]'
 	И в таблице 'SettingsComposerUserSettingsItem0Filter' я активизирую поле с именем 'SettingsComposerUserSettingsItem0FilterComparisonType'
 	И в таблице 'SettingsComposerUserSettingsItem0Filter' из выпадающего списка с именем 'SettingsComposerUserSettingsItem0FilterComparisonType' я выбираю точное значение '[TheComparisonType]'
@@ -41,9 +37,26 @@
 	И в таблице 'SettingsComposerUserSettingsItem0Filter' я завершаю редактирование строки
 	И я нажимаю на кнопку с именем 'FormEndEdit'
 
+Сценарий: Я добавляю отбор в форме списка 'TheField' 'TheComparisonType' 'TheValue' 
+
+	Тогда открылось окно "List Options"
+	И в таблице 'SettingsComposerUserSettingsItem0Filter' я нажимаю на кнопку с именем 'SettingsComposerUserSettingsItem0FilterAddFilterItem'
+	Если 'Page1Find("[TheField]", ".") > 0' Тогда
+		И в таблице 'SettingsComposerUserSettingsItem0Filter' в поле с именем 'SettingsComposerUserSettingsItem0FilterLeftValue' я ввожу текст '[TheField]'
+	И в таблице 'SettingsComposerUserSettingsItem0Filter' из выпадающего списка с именем 'SettingsComposerUserSettingsItem0FilterLeftValue' я выбираю точное значение '[TheField]'
+	И в таблице 'SettingsComposerUserSettingsItem0Filter' я активизирую поле с именем 'SettingsComposerUserSettingsItem0FilterComparisonType'
+	И в таблице 'SettingsComposerUserSettingsItem0Filter' из выпадающего списка с именем 'SettingsComposerUserSettingsItem0FilterComparisonType' я выбираю точное значение '[TheComparisonType]'
+	И в таблице 'SettingsComposerUserSettingsItem0Filter' я активизирую поле с именем 'SettingsComposerUserSettingsItem0FilterRightValue'
+	Если 'StrFind(Lower("[TheComparisonType]"),"From1одержит")>0 OR StrFind(Lower("[TheComparisonType]"),"начинаетFrom1Z2 From1")>0 OR StrFind(Lower("[TheComparisonType]"),"contain")>0 OR StrFind(Lower("[TheComparisonType]"),"begin with")>0' Тогда 
+		И в таблице 'SettingsComposerUserSettingsItem0Filter' в поле с именем 'SettingsComposerUserSettingsItem0FilterRightValue' я ввожу текст '[TheValue]'
+	Иначе
+		И в таблице 'SettingsComposerUserSettingsItem0Filter' из выпадающего списка с именем 'SettingsComposerUserSettingsItem0FilterRightValue' я выбираю точное значение '[TheValue]'
+	И в таблице 'SettingsComposerUserSettingsItem0Filter' я завершаю редактирование строки
+	И я нажимаю на кнопку с именем 'FormEndEdit'	
+
 Сценарий: Я снимаю все отборы в форме списка
 
-	Тогда открылось окно "List settings"
+	Тогда открылось окно "List Options"
 	И я перехожу к закладке с именем 'SettingsComposerUserSettingsItem0'
 	И я удаляю все строки таблицы 'SettingsComposerUserSettingsItem0Filter'
 	И я нажимаю на кнопку с именем 'FormEndEdit'
@@ -55,7 +68,7 @@
 	Тогда таблица '[TheTable]' содержит строки:
 		| 'Table' |	
 
-Сценарий: Я в списке 'TheListName' по полю 'TheField' ищу элемент 'ThePattern' 'TheCompareType' 
+Сценарий: Я в списке "TheListName" по полю "TheField" ищу элемент "ThePattern" "TheCompareType" 
 
 	Тогда открылось окно '[TheListName]'
 	Если кнопка с именем 'FormFind' существует Тогда
@@ -64,12 +77,13 @@
 		И я выбираю пункт контекстного меню с именем 'ListContextMenuFind' на элементе формы с именем 'List'
 	Тогда открылось окно "Find"
 	И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение '[TheField]'
-	И я меняю значение переключателя с именем 'CompareType' на '[TheCompareType]'				
+	И я меняю значение переключателя с именем 'CompareType' на '[TheCompareType]'	
+	И я жду открытия окна "Find" в течение 10 секунд				
 	И в поле с именем 'Pattern' я ввожу текст '[ThePattern]'
 	И я нажимаю на кнопку с именем 'Find'
-	Тогда открылось окно '[TheListName]'
+	И я жду открытия окна '[TheListName]' в течение 10 секунд
 
-Сценарий: Я в списке 'TheListName' по полю 'TheField' ищу и выбираю элемент 'ThePattern' 'TheCompareType' 
+Сценарий: Я в списке "TheListName" по полю "TheField" ищу и выбираю элемент "ThePattern" "TheCompareType" 
 
 	Тогда открылось окно '[TheListName]'
 	Если кнопка с именем 'FormFind' существует Тогда
@@ -78,10 +92,11 @@
 		И я выбираю пункт контекстного меню с именем 'ListContextMenuFind' на элементе формы с именем 'List'
 	Тогда открылось окно "Find"
 	И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение '[TheField]'
-	И я меняю значение переключателя с именем 'CompareType' на '[TheCompareType]'				
+	И я меняю значение переключателя с именем 'CompareType' на '[TheCompareType]'
+	И я жду открытия окна "Find" в течение 10 секунд				
 	И в поле с именем 'Pattern' я ввожу текст '[ThePattern]'
 	И я нажимаю на кнопку с именем 'Find'
-	Тогда открылось окно '[TheListName]'
+	И я жду открытия окна '[TheListName]' в течение 10 секунд
 	И Я запоминаю в переменную 'VarField' значение '[TheField]'
 	И Я запоминаю в переменную 'VarPattern' значение '[ThePattern]'	
 	И в таблице 'List' я перехожу к строке:
@@ -132,6 +147,4 @@
 	Тогда открылось окно "[TheWindowName]*"		
 	И я нажимаю на кнопку с именем 'FormWriteAndClose'
 	И я жду закрытия окна "[TheWindowName]*" в течение 20 секунд
-
-
 			

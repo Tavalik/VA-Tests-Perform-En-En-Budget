@@ -1,20 +1,20 @@
 ﻿#language: ru
-
 @tree
 
 Функционал: 06. Проверка заполнения аналитик из других источников
 
-Как Администратор я хочу
-Проверить что коорректно отрабатывало заполнение аналитик из других источников
-чтобы показатели отчетов рассчитывались без ошибок
+	Как Администратор я хочу
+	Проверить что коорректно отрабатывало заполнение аналитик из других источников
+	чтобы показатели отчетов рассчитывались без ошибок
 
 Контекст: 
 
-	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''	
 	И я закрыл все окна клиентского приложения
 
 Сценарий: 06.00 Определение типа приложения
 
+	И я закрываю TestClient "CPM - Budget"
+	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''
 	Пусть Инициализация переменных
 
 Сценарий: 06.01 Создание группы отчетов "VA - Analysts from other sources (group)"
@@ -32,7 +32,7 @@
 	И я нажимаю на кнопку с именем 'FormOK'		
 
 	И я нажимаю на кнопку с именем 'EditTree'
-	Когда открылось окно "Edit tree"
+	Когда открылось окно "Report wizard"
 	И Я в конструкторе отчета добавляю строку с именем "Cash flow items"
 	И Я в конструкторе отчета добавляю строку с именем "Goods"
 	И Я в конструкторе отчета добавляю колонку с именем "Quantity"
@@ -41,16 +41,16 @@
 
 	И Я Для вида отчета "VA - Data to add analytics" создаю бланк по умолчанию
 
-Сценарий: 06.03 Создание экзмемпляра отчета "VA - Data to add analytics"
+Сценарий: 06.03 Создание экземпляра отчета "VA - Data to add analytics"
 
-	И Я создаю экземпляр отчета для вида отчета "VA - Data to add analytics" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики "Software products" '' '' '' '' '' 
+	И Я создаю экземпляр отчета для вида отчета "VA - Data to add analytics" сценарий "VA - Main scenario" период '1/1/2024' '3/31/2024' периодичность "Month" организация "Mercury LLC" проект '' аналитики "Software products" '' '' '' '' '' 
 	И я запоминаю текущее окно как 'WindowTitle'
 
 	* Документ должен быть пустой
 		И табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Data to add analytics" | ''               | ''                | ''             | ''           |
 			| ''                                    | ''               | ''                | ''             | ''           |
-			| ''                                    | "January 2021" | "February 2021" | "March 2021" | "TOTAL"      |
+			| ''                                    | "January 2024" | "February 2024" | "March 2024" | "TOTAL"      |
 			| ''                                    | "Quantity"     | "Quantity"      | "Quantity"   | "Quantity" |
 			| "Cash flow items"                          | '0'              | '0'               | '0'            | '0'          |
 			| "Goods"                              | '0'              | '0'               | '0'            | '0'          |
@@ -90,7 +90,7 @@
 	И я нажимаю на кнопку с именем 'FormOK'	
 
 	И я нажимаю на кнопку с именем 'EditTree'
-	Тогда открылось окно "Edit tree"
+	Тогда открылось окно "Report wizard"
 	И Я в конструкторе отчета добавляю строку с именем "Current formula"
 	И Я в конструкторе отчета добавляю строку с именем "Other source"
 	И Я в конструкторе отчета добавляю строку с именем "Analyst transformation"
@@ -107,7 +107,7 @@
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R6C4'
 
 	* Устанавливаем формулы расчета
-		Когда открылось окно "Edit tree*"
+		Когда открылось окно "Report wizard*"
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"
 		* Текущая формула
 			* Основной источник
@@ -115,10 +115,10 @@
 				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 				И я нажимаю на кнопку с именем 'RefToIndicator1'
 				И Я выбираю показатель с кодом "Goods_Quantity" вида отчета "VA - Data to add analytics"
-				Когда открылось окно "Edit tree*"
+				Когда открылось окно "Report wizard*"
 				И я нажимаю на кнопку с именем 'WriteAndCollapse'
 				* Источник с доп. аналитиками
-					Когда открылось окно "Edit tree"
+					Когда открылось окно "Report wizard"
 					И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
 					И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 					И я нажимаю на кнопку с именем 'AddOperand1'
@@ -140,12 +140,12 @@
 					И я жду закрытия окна "Data source (create)*" в течение 20 секунд
 				Тогда открылось окно "Data sources"
 				И в таблице 'List' я выбираю текущую строку
-				Тогда открылось окно "Edit tree*"
+				Тогда открылось окно "Report wizard*"
 				И я нажимаю на кнопку с именем 'ButtonMultiply'
 				И я нажимаю на кнопку с именем 'WriteAndCollapse'
 		* Другой источник
 			* Источник с прозвольным запросом №1
-				Когда открылось окно "Edit tree"
+				Когда открылось окно "Report wizard"
 				И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C2'
 				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 				И я нажимаю на кнопку с именем 'AddOperand1'
@@ -176,10 +176,10 @@
 				И я жду закрытия окна "Data source (create)*" в течение 20 секунд
 				Тогда открылось окно "Data sources"
 				И в таблице 'List' я выбираю текущую строку
-				Тогда открылось окно "Edit tree*"
+				Тогда открылось окно "Report wizard*"
 				И я нажимаю на кнопку с именем 'ButtonPlus'
 			* Источник с прозвольным запросом №1
-				Когда открылось окно "Edit tree*"
+				Когда открылось окно "Report wizard*"
 				И я нажимаю на кнопку с именем 'AddOperand1'
 				Тогда открылось окно "Data sources"
 				И я нажимаю на кнопку с именем 'FormCreate'
@@ -205,11 +205,11 @@
 				И я жду закрытия окна "Data source (create)*" в течение 20 секунд
 				Тогда открылось окно "Data sources"
 				И в таблице 'List' я выбираю текущую строку
-				Тогда открылось окно "Edit tree*"
+				Тогда открылось окно "Report wizard*"
 				И я нажимаю на кнопку с именем 'WriteAndCollapse'
 		* Трансформация аналитик
 			* Источник данных для трансформации
-				Когда открылось окно "Edit tree"
+				Когда открылось окно "Report wizard"
 				И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C2'
 				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 				И я нажимаю на кнопку с именем 'AddOperand1'
@@ -239,11 +239,11 @@
 				И я жду закрытия окна "Data source (create) *" в течение 20 секунд
 				Тогда открылось окно "Data sources"
 				И в таблице 'List' я выбираю текущую строку
-				Тогда открылось окно "Edit tree *"
+				Тогда открылось окно "Report wizard *"
 				И я нажимаю на кнопку с именем 'WriteAndCollapse'											
 		* Рассчитываемый источник
 			* Произвольный запрос к БД с многопериодным контекстом
-				Когда открылось окно "Edit tree"
+				Когда открылось окно "Report wizard"
 				И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C2'
 				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 				И я нажимаю на кнопку с именем 'AddOperand1'
@@ -301,11 +301,11 @@
 				И я жду закрытия окна "Data source (create)*" в течение 20 секунд
 				Тогда открылось окно "Data sources"
 				И в таблице 'List' я выбираю текущую строку
-				Тогда открылось окно "Edit tree*"
+				Тогда открылось окно "Report wizard*"
 				И я нажимаю на кнопку с именем 'WriteAndCollapse'
 		* Пересчет в коде
 			* Основной источник
-				Когда открылось окно "Edit tree"
+				Когда открылось окно "Report wizard"
 				И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C2'
 				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 				И я нажимаю на кнопку с именем 'AddOperand1'
@@ -313,7 +313,10 @@
 				И я нажимаю на кнопку с именем 'FormCreate'
 				Тогда открылось окно "Data source (create)"
 				И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase information register"
-				И из выпадающего списка с именем 'DBInformationRegister' я выбираю по строке 'ItemsPrices'
+				Если '$$IsERPCPM$$' Тогда
+					И из выпадающего списка с именем 'DBInformationRegister' я выбираю по строке 'ItemsPrices25'
+				Иначе
+					И из выпадающего списка с именем 'DBInformationRegister' я выбираю по строке 'ItemsPrices'
 				И из выпадающего списка с именем 'SliceType' я выбираю точное значение "Slice of the last ones"
 				И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Another source field"
 				И в таблице 'ComplianceTable' я завершаю редактирование строки
@@ -377,8 +380,8 @@
 							| 'Kind цены' |
 						И я нажимаю на кнопку с именем 'AddConditionItem'
 						И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
-							| "Field"   |
-							| 'KindЦены' |
+							| "Field"       |
+							| "[Type цены]" |
 					И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "Fixed value"
 					И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'DefiningMethodClarification' я выбираю по строке "VA - Products"
 					И в таблице 'TreeOfFilterParametersDB' я завершаю редактирование строки
@@ -387,12 +390,14 @@
 				Тогда открылось окно "Data sources"
 				И в таблице 'List' я выбираю текущую строку
 			* Вводим формулу расчета
-				Когда открылось окно "Edit tree*"
+				Когда открылось окно "Report wizard*"
 				И я нажимаю на кнопку с именем 'ArbitraryCode'
 				И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст ' '
-				Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда					
+				Если '$$InterfaceLanguage$$ = "Ru"' Тогда					
 					Если '$$ЭтоPerform$$' Тогда
 						И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 'Result = Max([IR_ЦеныНомен_Price_], 1500000)'
+					ИначеЕсли '$$IsERPCPM$$' Тогда	
+						И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 'Result = Max([BA_ЦенНоме25_Price_], 1500000)'
 					Иначе
 						И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 'Result = Max([BA_ЦеныНомен_Price_], 1500000)'
 				Иначе
@@ -406,16 +411,16 @@
 	И Я Для вида отчета "VA - Analysts from fields of other sources" в бланке для группы раскрытия с адресом 'R16C1' меняю сортировку "Product range" "Description" на сортировку "Product range" "Product ID"
 	И Я Для вида отчета "VA - Analysts from fields of other sources" в бланке для группы раскрытия с адресом 'R19C1' меняю сортировку "Product range" "Description" на сортировку "Product range" "Product ID"
 
-Сценарий: 06.05 Создание экзмемпляра отчета "VA - Analysts from fields of other sources"
+Сценарий: 06.05 Создание экземпляра отчета "VA - Analysts from fields of other sources"
 
-	И Я создаю экземпляр отчета для вида отчета "VA - Analysts from fields of other sources" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики "Software products" '' '' '' '' ''
+	И Я создаю экземпляр отчета для вида отчета "VA - Analysts from fields of other sources" сценарий "VA - Main scenario" период '1/1/2024' '3/31/2024' периодичность "Month" организация "Mercury LLC" проект '' аналитики "Software products" '' '' '' '' ''
 	И я запоминаю текущее окно как 'WindowTitle' 
 
 	* Документ должен быть пустой
 		И табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Analysts from fields of other sources" | ''               | ''                | ''             | ''           |
 			| ''                                          | ''               | ''                | ''             | ''           |
-			| ''                                          | "January 2021" | "February 2021" | "March 2021" | "TOTAL"      |
+			| ''                                          | "January 2024" | "February 2024" | "March 2024" | "TOTAL"      |
 			| ''                                          | "Quantity"     | "Quantity"      | "Quantity"   | "Quantity" |
 			| "Current formula"                           | '0'              | '0'               | '0'            | '0'          |
 			| "Other source"                           | '0'              | '0'               | '0'            | '0'          |
@@ -431,7 +436,7 @@
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Analysts from fields of other sources"                       | ''               | ''                | ''             | ''           |
 			| ''                                                                | ''               | ''                | ''             | ''           |
-			| ''                                                                | "January 2021" | "February 2021" | "March 2021" | "TOTAL"      |
+			| ''                                                                | "January 2024" | "February 2024" | "March 2024" | "TOTAL"      |
 			| ''                                                                | "Quantity"     | "Quantity"      | "Quantity"   | "Quantity" |
 			| "Current formula"                                                 | '12'             | '24'              | '36'           | '72'         |
 			| "5C:Corporate performance management "                                      | '4'              | '8'               | '12'           | '24'         |
@@ -477,7 +482,7 @@
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R7C3'
 
 	* Вводим источники данных	
-		Тогда открылось окно "Edit tree"
+		Тогда открылось окно "Report wizard"
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
@@ -536,6 +541,6 @@
 		И я нажимаю на кнопку с именем 'Button1'
 		Тогда открылось окно "Data sources"
 		И Я закрываю окно "Data sources"
-		Тогда открылось окно "Edit tree"
+		Тогда открылось окно "Report wizard"
 		И я нажимаю на кнопку с именем 'UndoFormulaEdit'
 	

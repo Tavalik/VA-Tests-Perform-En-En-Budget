@@ -1,19 +1,19 @@
 ﻿#language: ru
-
 @tree
 
 Функционал: 09. Валютные показатели
 
-Как Администратор я хочу
-Проверить что виды отчетов с валютными показателями расчитываются и записываются
+	Как Администратор я хочу
+	Проверить что виды отчетов с валютными показателями расчитываются и записываются
 
 Контекст: 
-
-	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''
+	
 	И я закрыл все окна клиентского приложения
 
 Сценарий: 09.00 Определение типа приложения
 
+	И я закрываю TestClient "CPM - Budget"
+	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''
 	Пусть Инициализация переменных
 
 Сценарий: 09.01 Создание группы отчетов "VA - Currency indicators (group)"
@@ -29,7 +29,7 @@
 	И я нажимаю на кнопку с именем 'RecordButtonForm'
 
 	И я нажимаю на кнопку с именем 'EditTree'
-	Когда открылось окно "Edit tree"
+	Когда открылось окно "Report wizard"
 
 	И Я в конструкторе отчета добавляю строки
 		| 'Description'      |
@@ -50,7 +50,7 @@
 	И Я в конструкторе отчета в ячейке 'R7C2' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
 	
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0Counter" в ячейку 'R2C2'
-	Когда открылось окно "Edit tree"
+	Когда открылось окно "Report wizard"
 	И я нажимаю на кнопку с именем 'CopyDimension'
 	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C2'
 	И я нажимаю на кнопку с именем 'InsertDimension'
@@ -80,68 +80,683 @@
 		И я запоминаю заголовок формы в переменную 'WindowTitle'		
 	
 	* Добавляем колонку с значением валюта
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'C3'
-		И я выбираю пункт контекстного меню с именем 'SpreadsheetFieldTemplateContextMenuAddRowsRight' на элементе формы с именем 'SpreadsheetFieldTemlate'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C3:R16C3'
-		И я нажимаю на кнопку с именем 'CopyToClipboard'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'C4'
+		И я нажимаю на кнопку с именем 'AddAreaToColumnInGroupingRight'				
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C4:R16C4'
+		И я нажимаю на кнопку с именем 'CopyToClipboard'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C5:R16C5'
 		И я нажимаю на кнопку с именем 'PasteFromClipboard'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C3:R5C4'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C4:R5C5'
 		И я нажимаю на кнопку с именем 'Union'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C4'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C5'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И в табличный документ 'SpreadsheetFieldTemlate' я ввожу текст 'Sum (вал)'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C4:R10C4'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C5:R10C5'
 		И я нажимаю на кнопку с именем 'ClearUpContent'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C4'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C5'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		Тогда открылось окно "Indicator value filter settings"
 		И я изменяю флаг с именем 'AmountInAddlCurrency'
 		И я нажимаю на кнопку с именем 'FormApply'
 		Тогда открылось окно '$WindowTitle$ *'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C4'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C5'
 		И я нажимаю на кнопку с именем 'ClearUpContent'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C4'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C5'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		Тогда открылось окно "Indicator value filter settings"
 		И я изменяю флаг с именем 'AmountInAddlCurrency'
 		И я нажимаю на кнопку с именем 'FormApply'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R14C4:R16C4'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R14C5:R16C5'
 		И я нажимаю на кнопку с именем 'ClearUpContent'
 	
 	* Добавляем колонку с значением валюта для итога
 		Когда открылось окно '$WindowTitle$ *'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'C5'
-		И я выбираю пункт контекстного меню с именем 'SpreadsheetFieldTemplateContextMenuAddRowsRight' на элементе формы с именем 'SpreadsheetFieldTemlate'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C5:R16C5'
-		И я нажимаю на кнопку с именем 'CopyToClipboard'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'C6'
+		И я нажимаю на кнопку с именем 'AddAreaToColumnInGroupingRight'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C6:R16C6'
+		И я нажимаю на кнопку с именем 'CopyToClipboard'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C7:R16C7'
 		И я нажимаю на кнопку с именем 'PasteFromClipboard'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C6:R10C6'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C7:R10C7'
 		И я нажимаю на кнопку с именем 'ClearUpContent'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C6'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C7'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		Тогда открылось окно "Indicator value filter settings"
 		И я изменяю флаг с именем 'AmountInAddlCurrency'
 		И я нажимаю на кнопку с именем 'FormApply'
 		Тогда открылось окно '$WindowTitle$ *'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C6'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C7'
 		И я нажимаю на кнопку с именем 'ClearUpContent'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C6'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C7'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		Тогда открылось окно "Indicator value filter settings"
 		И я изменяю флаг с именем 'AmountInAddlCurrency'
 		И я нажимаю на кнопку с именем 'FormApply'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R14C6:R16C6'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R14C7:R16C7'
 		И я нажимаю на кнопку с именем 'ClearUpContent'
 	
 	* Записываем макет
 		Тогда открылось окно '$WindowTitle$ *'
 		И я нажимаю на кнопку с именем 'FormButtonWriteAndClose'
 
-Сценарий: 09.04 Создание экземпляра отчета - "VA - Currency indicators (source)" 
+Сценарий: 09.04 Создание вида отчета "VA - Currency indicators (recipient)"
 
-	И Я создаю экземпляр отчета для вида отчета "VA - Currency indicators (source)" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект "VA - Main project" аналитики '' '' '' '' '' '' 
+	И Я создаю вид отчета с именем "VA - Currency indicators (recipient)" и родителем 'DimenKind - Currency показатели (group)'
+
+	И Я открываю вид отчета с именем "VA - Currency indicators (recipient)"
+	И я устанавливаю флаг с именем 'ProjectSeparation'	
+	И я нажимаю на кнопку с именем 'RecordButtonForm'
+
+	И я нажимаю на кнопку с именем 'EditTree'
+	Когда открылось окно "Report wizard"
+
+	* Добавляем строки
+		И Я в конструкторе отчета добавляю строки
+			| 'Description'                                                           |
+			| "Revenue by currency"                                                      |
+			| "Revenue by currency [Average rate for period]"                             |
+			| "Revenue by currency [Average rate for IFRS period]"                        |
+			| "Revenue by currency [Average rate for period CB]"                          |
+			| "Revenue by currency [Exchange rate at the beginning of the period]"                             |
+			| "Revenue by currency [Exchange rate at the end of the period]"                              |
+			| "Revenue by currency [Average rate for the previous period]"                  |
+			| "Revenue by currency [Exchange rate at the end of the previous period]"                  |
+			| "Revenue by currency [Average rate for the previous period CB]"               |
+			| "Effective on"                                                             |
+			| "Revenue by currency [Exchange rate as of the date specified in the indicator]"                |
+			| "Revenue by currency [Exchange rate as of the date specified in the indicator another report]" |
+			| "Rate [EUR]"                                                             |
+			| "Rate [USD]"                                                             |
+			| "Revenue by currency [Rate specified in the indicator]"                        |
+			| "Revenue by currency [Rate specified in the indicator another report]"         |
+		
+	* Добавляем колонки
+		И Я в конструкторе отчета добавляю колонку с именем "Value"
+
+	* Настраиваем показатели
+		* Выручка по валюте [Средний курс за период]
+			Тогда открылось окно "Report wizard"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "* (Report indicators)"
+			И я перехожу к закладке с именем 'CurrenciesConversion'
+			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Average rate for period"
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
+		* Выручка по валюте [Средний курс за период МСФО]
+			Тогда открылось окно "Report wizard"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "* (Report indicators)"
+			И я перехожу к закладке с именем 'CurrenciesConversion'
+			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Average rate for IFRS period"
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
+		* Выручка по валюте [Средний курс за период ЦБ]
+			Тогда открылось окно "Report wizard"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "* (Report indicators)"
+			И я перехожу к закладке с именем 'CurrenciesConversion'
+			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Average rate for period CB"
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
+		* Выручка по валюте [Курс на начало периода]	
+			Тогда открылось окно "Report wizard"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "* (Report indicators)"
+			И я перехожу к закладке с именем 'CurrenciesConversion'
+			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Exchange rate at the beginning of the period"
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
+		* Выручка по валюте [Курс на конец периода]	
+			Тогда открылось окно "Report wizard"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "* (Report indicators)"
+			И я перехожу к закладке с именем 'CurrenciesConversion'
+			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Exchange rate at the end of the period"
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна '"* (Report indicators) *" в течение 20 секунд
+		* Выручка по валюте [Средний курс за предыдущий период]	
+			Тогда открылось окно "Report wizard"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R8C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "* (Report indicators)"
+			И я перехожу к закладке с именем 'CurrenciesConversion'
+			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Average rate for the previous period"
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
+		* Выручка по валюте [Курс на конец предыдущего периода]	
+			Тогда открылось окно "Report wizard"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "* (Report indicators)"
+			И я перехожу к закладке с именем 'CurrenciesConversion'
+			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Exchange rate at the end of the previous period"
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
+		* Выручка по валюте [Средний курс за предыдущий период ЦБ]	
+			Тогда открылось окно "Report wizard"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "* (Report indicators)"
+			И я перехожу к закладке с именем 'CurrenciesConversion'
+			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Average rate for the previous period CB"
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
+		* Дата курса	
+			Тогда открылось окно "Report wizard"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "* (Report indicators)"
+			И из выпадающего списка с именем 'ValueType' я выбираю точное значение "Date"
+			И из выпадающего списка с именем 'PeriodTotalCalcMethod' я выбираю точное значение "Total by period is not calculated"
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
+		* Выручка по валюте [Курс на дату указанную в показателе]	
+			Тогда открылось окно "Report wizard"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "* (Report indicators)"
+			И я перехожу к закладке с именем 'CurrenciesConversion'
+			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Exchange rate as of the date specified in the indicator"
+			И я нажимаю кнопку выбора у поля с именем 'LinkedIndicator'
+			И Я выбираю показатель с кодом "EffectiveOn_Value"
+			Тогда открылось окно "* (Report indicators) *"
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
+		* Выручка по валюте [Курс на дату указанную в показателе другого отчета]	
+			Тогда открылось окно "Report wizard"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "* (Report indicators)"
+			И я перехожу к закладке с именем 'CurrenciesConversion'
+			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Exchange rate as of the date specified in the indicator"
+			И я нажимаю кнопку выбора у поля с именем 'LinkedIndicator'
+			И Я выбираю показатель с кодом "EffectiveOn_Value" вида отчета "VA - Currency indicators (source)"
+			Тогда открылось окно "* (Report indicators) *"
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
+		* Курс (EUR)	
+			Тогда открылось окно "Report wizard"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R14C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "* (Report indicators)"
+			И из выпадающего списка с именем 'PeriodTotalCalcMethod' я выбираю точное значение "Total by period is not calculated"
+			И я изменяю флаг с именем 'NonFinancial'
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
+		* Курс (USD)	
+			Тогда открылось окно "Report wizard"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R15C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "* (Report indicators)"
+			И из выпадающего списка с именем 'PeriodTotalCalcMethod' я выбираю точное значение "Total by period is not calculated"
+			И я изменяю флаг с именем 'NonFinancial'
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
+		* Выручка по валюте [Курс указанный в показателе]	
+			Тогда открылось окно "Report wizard"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R16C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "* (Report indicators)"
+			И я перехожу к закладке с именем 'CurrenciesConversion'
+			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Rate specified in the indicator"
+			* EUR
+				И в таблице 'IndicatorsForExchangeRates' я нажимаю на кнопку с именем 'IndicatorsForExchangeRatesAdd'
+				И в таблице 'IndicatorsForExchangeRates' из выпадающего списка с именем 'IndicatorsForExchangeRatesCurrency' я выбираю точное значение "EUR"
+				И я перехожу к следующему реквизиту
+				И в таблице 'IndicatorsForExchangeRates' я нажимаю кнопку выбора у реквизита с именем 'IndicatorsForExchangeRatesRateIndicator'
+				И Я выбираю показатель с кодом "RateEUR_Value" вида отчета "VA - Currency indicators (recipient)"
+				Тогда открылось окно "* (Report indicators) *"
+				И в таблице 'IndicatorsForExchangeRates' в поле с именем 'IndicatorsForExchangeRatesRepetition' я ввожу текст '1'
+				И в таблице 'IndicatorsForExchangeRates' я завершаю редактирование строки
+			* USD
+				И в таблице 'IndicatorsForExchangeRates' я нажимаю на кнопку с именем 'IndicatorsForExchangeRatesAdd'
+				И в таблице 'IndicatorsForExchangeRates' из выпадающего списка с именем 'IndicatorsForExchangeRatesCurrency' я выбираю точное значение "USD"
+				И я перехожу к следующему реквизиту
+				И в таблице 'IndicatorsForExchangeRates' я нажимаю кнопку выбора у реквизита с именем 'IndicatorsForExchangeRatesRateIndicator'
+				И Я выбираю показатель с кодом "RateUSD_Value" вида отчета "VA - Currency indicators (recipient)"
+				Тогда открылось окно "* (Report indicators) *"
+				И в таблице 'IndicatorsForExchangeRates' в поле с именем 'IndicatorsForExchangeRatesRepetition' я ввожу текст '1'
+				И в таблице 'IndicatorsForExchangeRates' я завершаю редактирование строки	
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
+		* Выручка по валюте [Курс указанный в показателе другого отчета]
+			Тогда открылось окно "Report wizard"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R17C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "* (Report indicators)"
+			И я перехожу к закладке с именем 'CurrenciesConversion'
+			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Rate specified in the indicator"
+			* EUR
+				И в таблице 'IndicatorsForExchangeRates' я нажимаю на кнопку с именем 'IndicatorsForExchangeRatesAdd'
+				И в таблице 'IndicatorsForExchangeRates' из выпадающего списка с именем 'IndicatorsForExchangeRatesCurrency' я выбираю точное значение "EUR"
+				И я перехожу к следующему реквизиту
+				И в таблице 'IndicatorsForExchangeRates' я нажимаю кнопку выбора у реквизита с именем 'IndicatorsForExchangeRatesRateIndicator'
+				И Я выбираю показатель с кодом "RateEUR_Value" вида отчета "VA - Currency indicators (source)"
+				Тогда открылось окно "* (Report indicators) *"
+				И в таблице 'IndicatorsForExchangeRates' в поле с именем 'IndicatorsForExchangeRatesRepetition' я ввожу текст '1'
+				И в таблице 'IndicatorsForExchangeRates' я завершаю редактирование строки
+			* USD
+				И в таблице 'IndicatorsForExchangeRates' я нажимаю на кнопку с именем 'IndicatorsForExchangeRatesAdd'
+				И в таблице 'IndicatorsForExchangeRates' из выпадающего списка с именем 'IndicatorsForExchangeRatesCurrency' я выбираю точное значение "USD"
+				И я перехожу к следующему реквизиту
+				И в таблице 'IndicatorsForExchangeRates' я нажимаю кнопку выбора у реквизита с именем 'IndicatorsForExchangeRatesRateIndicator'
+				И Я выбираю показатель с кодом "RateUSD_Value" вида отчета "VA - Currency indicators (source)"
+				Тогда открылось окно "* (Report indicators) *"
+				И в таблице 'IndicatorsForExchangeRates' в поле с именем 'IndicatorsForExchangeRatesRepetition' я ввожу текст '1'
+				И в таблице 'IndicatorsForExchangeRates' я завершаю редактирование строки	
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
+
+	* Устанавливаем аналитики отчета
+		И Я в конструкторе отчета добавляю аналитику с кодом "VA0Counter" в ячейку 'R2C2'
+		Когда открылось окно "Report wizard"
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C8'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C8'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C8'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C8'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C8'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C8'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R8C8'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C8'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C8'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C8'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C8'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R16C8'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R17C8'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И Я в конструкторе отчета в ячейке 'R2C2:R17C2' меняю свойства показателей 'ShouldRecalculateForeignCurrencyAmount' на 'True'						
+
+	* Вводим источники данных
+		* Выручка по валюте
+			И Я в конструкторе отчета для ячейки 'R2C2' настраиваю связь с покзателем с кодом "RevenueInCurrency_Value" вида отчета "VA - Currency indicators (source)"
+		* Выручка по валюте [Средний курс за период]
+			И Я в конструкторе отчета для ячейки 'R3C2' настраиваю связь с покзателем с кодом "RevenueByCurrency_Value" вида отчета "VA - Currency indicators (source)"	
+		* Выручка по валюте [Средний курс за период МСФО]	
+			Тогда открылось окно "Report wizard"
+			И я нажимаю на кнопку с именем 'CopyFormula'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C2'
+			И я нажимаю на кнопку с именем 'InsertFormula'
+		* Выручка по валюте [Средний курс за период ЦБ]	
+			И я нажимаю на кнопку с именем 'CopyFormula'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C2'
+			И я нажимаю на кнопку с именем 'InsertFormula'
+		* Выручка по валюте [Курс на начало периода]	
+			И я нажимаю на кнопку с именем 'CopyFormula'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C2'
+			И я нажимаю на кнопку с именем 'InsertFormula'
+		* Выручка по валюте [Курс на конец периода]	
+			И я нажимаю на кнопку с именем 'CopyFormula'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C2'
+			И я нажимаю на кнопку с именем 'InsertFormula'
+		* Выручка по валюте [Средний курс за предыдущий период]	
+			И я нажимаю на кнопку с именем 'CopyFormula'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R8C2'
+			И я нажимаю на кнопку с именем 'InsertFormula'
+		* Выручка по валюте [Курс на конец предыдущего периода]	
+			И я нажимаю на кнопку с именем 'CopyFormula'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C2'
+			И я нажимаю на кнопку с именем 'InsertFormula'
+		* Выручка по валюте [Средний курс за предыдущий период ЦБ]	
+			И я нажимаю на кнопку с именем 'CopyFormula'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C2'
+			И я нажимаю на кнопку с именем 'InsertFormula'
+		* Выручка по валюте [Курс на дату указанную в показателе]	
+			И я нажимаю на кнопку с именем 'CopyFormula'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C2'
+			И я нажимаю на кнопку с именем 'InsertFormula'
+		* Выручка по валюте [Курс на дату указанную в показателе другого отчета]	
+			И я нажимаю на кнопку с именем 'CopyFormula'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C2'
+			И я нажимаю на кнопку с именем 'InsertFormula'
+		* Выручка по валюте [Курс указанный в показателе]	
+			И я нажимаю на кнопку с именем 'CopyFormula'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R16C2'
+			И я нажимаю на кнопку с именем 'InsertFormula'
+		* Выручка по валюте [Курс указанный в показателе другого отчета]	
+			И я нажимаю на кнопку с именем 'CopyFormula'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R17C2'
+			И я нажимаю на кнопку с именем 'InsertFormula'
+		* Дата курса
+			И Я в конструкторе отчета для ячейки 'R11C2' настраиваю связь с покзателем с кодом "EffectiveOn_Value" вида отчета "VA - Currency indicators (source)"	
+		* Курс (EUR)
+			И Я в конструкторе отчета для ячейки 'R14C2' настраиваю связь с покзателем с кодом "RateEUR_Value" вида отчета "VA - Currency indicators (source)"	
+		* Курс (USD)
+			И Я в конструкторе отчета для ячейки 'R15C2' настраиваю связь с покзателем с кодом "RateUSD_Value" вида отчета "VA - Currency indicators (source)"	
+
+	* Включим возможность редактирования показателей
+		Когда открылось окно "Report wizard"
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R3C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R4C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R5C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R6C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R7C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R8C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R9C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R10C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R11C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R12C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R13C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R14C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R15C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R16C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R17C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
+		И я нажимаю на кнопку с именем 'WriteAndCollapse'				
+
+Сценарий: 09.05 Создание многопериодного бланка для вида отчета "VA - Currency indicators (recipient)"
+
+	И Я Для вида отчета "VA - Currency indicators (recipient)" создаю бланк по умолчанию
+
+	* Открываем бланк
+		И Я нахожу в списке вид отчета с именем "VA - Currency indicators (recipient)"
+		Тогда открылось окно "Report types and templates"
+		И в таблице 'List' я перехожу к строке:
+			| "Description"                        |
+			| "VA - Currency indicators (recipient)" |
+		И в таблице 'List' я выбираю текущую строку
+		И я запоминаю заголовок формы в переменную 'WindowTitle'
+
+	* Добавляем колонку с значением валюта
+		* Период отчета
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R1C4'
+			И я нажимаю на кнопку с именем 'AddAreaToColumnInGroupingRight'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C4:R36C4'
+			И я нажимаю на кнопку с именем 'CopyToClipboard'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C5:R36C5'
+			И я нажимаю на кнопку с именем 'PasteFromClipboard'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C4:R5C5'
+			И я нажимаю на кнопку с именем 'Union'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C5:R8C5'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C5'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C5'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C5'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C5'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C5'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R14C5'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R15C5'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R16C5'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R17C5'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R18C5'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R19C5'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R20C5'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R21C5'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R22C5'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R23C5'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R24C5'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R25C5'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R26C5:R27C5'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R28C5'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R29C5'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R30C5'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R31C5:R33C5'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R34C5'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R35C5'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R36C5'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+		* Итог	
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R1C6'
+			И я нажимаю на кнопку с именем 'AddAreaToColumnInGroupingRight'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C6:R36C6'
+			И я нажимаю на кнопку с именем 'CopyToClipboard'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C7:R36C7'
+			И я нажимаю на кнопку с именем 'PasteFromClipboard'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C6:R5C7'
+			И я нажимаю на кнопку с именем 'Union'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C7:R8C7'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C7'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C7'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C7'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C7'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C7'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R14C7'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R15C7'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R16C7'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R17C7'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R18C7'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R19C7'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R20C7'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R21C7'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R22C7'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R23C7'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R24C7'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R25C7'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R26C7:R27C7'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R28C7'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R29C7'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R30C7'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R31C7:R33C7'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R34C7'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'
+			Тогда открылось окно '$WindowTitle$ *'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R35C7'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R36C7'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "Indicator value filter settings"
+			И я изменяю флаг с именем 'AmountInAddlCurrency'
+			И я нажимаю на кнопку с именем 'FormApply'	
+				
+	* Записываем бланк
+		Когда открылось окно '$WindowTitle$ *'
+		И я нажимаю на кнопку с именем 'FormButtonWriteAndClose'
+
+Сценарий: 09.06 Настройка прав для пользователя "Budgeting1"
+
+	И Я добавляю право "Read, write" для вида отчета "VA - Currency indicators (source)" пользователя "Budgeting1" по всем организациям
+	И Я добавляю право "Read, write" для вида отчета "VA - Currency indicators (recipient)" пользователя "Budgeting1" по всем организациям
+	И я закрываю TestClient "CPM - Budget"
+	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
+
+Сценарий: 09.07 Создание экземпляра отчета - "VA - Currency indicators (source)" 
+
+	И Я создаю экземпляр отчета для вида отчета "VA - Currency indicators (source)" сценарий "VA - Main scenario" период '1/1/2024' '3/31/2024' периодичность "Month" организация "Mercury LLC" проект "VA - Main project" аналитики '' '' '' '' '' '' 
 
 	* Вводим значения невалютных показателей
 		Когда открылось окно '$WindowTitle$'		
@@ -210,9 +825,9 @@
 
 	* Вводим значения для расчета курсов
 		Когда открылось окно '$WindowTitle$'
-		И Я ввожу значение '3/1/2021' в ячейку 'R22C2'
-		И Я ввожу значение '2/1/2021' в ячейку 'R22C4'
-		И Я ввожу значение '1/1/2021' в ячейку 'R22C6'
+		И Я ввожу значение '3/1/2024' в ячейку 'R22C2'
+		И Я ввожу значение '2/1/2024' в ячейку 'R22C4'
+		И Я ввожу значение '1/1/2024' в ячейку 'R22C6'
 		И Я ввожу значение '90.00000' в ячейку 'R23C2'
 		И Я ввожу значение '91.00000' в ячейку 'R23C4'
 		И Я ввожу значение '92.00000' в ячейку 'R23C6'
@@ -224,7 +839,7 @@
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Currency indicators (source)" | ''               | ''            | ''                | ''            | ''             | ''            | ''          | ''         |
 			| ''                                    | ''               | ''            | ''                | ''            | ''             | ''            | ''          | ''         |
-			| ''                                    | "January 2021" | ''            | "February 2021" | ''            | "March 2021" | ''            | "TOTAL"     | "TOTAL"    |
+			| ''                                    | "January 2024" | ''            | "February 2024" | ''            | "March 2024" | ''            | "TOTAL"     | "TOTAL"    |
 			| ''                                    | "Value"       | 'Sum (вал)' | "Value"        | 'Sum (вал)' | "Value"     | 'Sum (вал)' | "Value"  | "Value" |
 			| "Revenue"                             | '300,000'        | ''            | '300,000'         | ''            | '300,000'      | ''            | '900,000'   | ''         |
 			| "LLC \"Ganymede\" "                    | '100,000'        | ''            | '100,000'         | ''            | '100,000'      | ''            | '300,000'   | ''         |
@@ -242,7 +857,7 @@
 			| 'EUR '                                | '330,000'        | '3,647'       | '330,000'         | '3,669'       | '330,000'      | '3,721'       | '990,000'   | '11,037'   |
 			| 'RUB '                                | '300,000'        | '300,000'     | '300,000'         | '300,000'     | '300,000'      | '300,000'     | '900,000'   | '900,000'  |
 			| 'USD '                                | '270,000'        | '3,638'       | '270,000'         | '3,630'       | '270,000'      | '3,629'       | '810,000'   | '10,897'   |
-			| "Effective on"                          | '3/1/2021'     | ''            | '2/1/2021'      | ''            | '1/1/2021'   | ''            | ''          | ''         |
+			| "Effective on"                          | '3/1/2024'     | ''            | '2/1/2024'      | ''            | '1/1/2024'   | ''            | ''          | ''         |
 			| "Rate [EUR]"                          | '90'             | ''            | '91'              | ''            | '92'           | ''            | '0'         | ''         |
 			| "Rate [USD]"                          | '73'             | ''            | '74'              | ''            | '75'           | ''            | '0'         | ''         |
 
@@ -255,621 +870,11 @@
 		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Макеты\ВА_ВалютныеПоказатели_Источник_Движения.mxl" по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Макеты\09\ВА_ВалютныеПоказатели_Источник_Движения.mxl" по шаблону
 
-Сценарий: 09.05 Создание вида отчета "VA - Currency indicators (recipient)"
+Сценарий: 09.08 Ручное заполнение экземпляра отчета - "VA - Currency indicators (recipient)" 
 
-	И Я создаю вид отчета с именем "VA - Currency indicators (recipient)" и родителем 'DimenKind - Currency_1 показатели (group)'
-
-	И Я открываю вид отчета с именем "VA - Currency indicators (recipient)"
-	И я устанавливаю флаг с именем 'ProjectSeparation'	
-	И я нажимаю на кнопку с именем 'RecordButtonForm'
-
-	И я нажимаю на кнопку с именем 'EditTree'
-	Когда открылось окно "Edit tree"
-
-	* Добавляем строки
-		И Я в конструкторе отчета добавляю строки
-			| 'Description'                                                           |
-			| "Revenue by currency"                                                      |
-			| "Revenue by currency [Average rate for period]"                             |
-			| "Revenue by currency [Average rate for IFRS period]"                        |
-			| "Revenue by currency [Average rate for period CB]"                          |
-			| "Revenue by currency [Exchange rate at the beginning of the period]"                             |
-			| "Revenue by currency [Exchange rate at the end of the period]"                              |
-			| "Revenue by currency [Average rate for the previous period]"                  |
-			| "Revenue by currency [Exchange rate at the end of the previous period]"                  |
-			| "Revenue by currency [Average rate for the previous period CB]"               |
-			| "Effective on"                                                             |
-			| "Revenue by currency [Exchange rate as of the date specified in the indicator]"                |
-			| "Revenue by currency [Exchange rate as of the date specified in the indicator another report]" |
-			| "Rate [EUR]"                                                             |
-			| "Rate [USD]"                                                             |
-			| "Revenue by currency [Rate specified in the indicator]"                        |
-			| "Revenue by currency [Rate specified in the indicator another report]"         |
-		
-	* Добавляем колонки
-		И Я в конструкторе отчета добавляю колонку с именем "Value"
-
-	* Настраиваем показатели
-		* Выручка по валюте [Средний курс за период]
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "* (Report indicators)"
-			И я перехожу к закладке с именем 'CurrenciesConversion'
-			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Average rate for period"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
-		* Выручка по валюте [Средний курс за период МСФО]
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "* (Report indicators)"
-			И я перехожу к закладке с именем 'CurrenciesConversion'
-			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Average rate for IFRS period"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
-		* Выручка по валюте [Средний курс за период ЦБ]
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "* (Report indicators)"
-			И я перехожу к закладке с именем 'CurrenciesConversion'
-			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Average rate for period CB"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
-		* Выручка по валюте [Курс на начало периода]	
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "* (Report indicators)"
-			И я перехожу к закладке с именем 'CurrenciesConversion'
-			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Exchange rate at the beginning of the period"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
-		* Выручка по валюте [Курс на конец периода]	
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "* (Report indicators)"
-			И я перехожу к закладке с именем 'CurrenciesConversion'
-			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Exchange rate at the end of the period"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна '"* (Report indicators) *" в течение 20 секунд
-		* Выручка по валюте [Средний курс за предыдущий период]	
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R8C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "* (Report indicators)"
-			И я перехожу к закладке с именем 'CurrenciesConversion'
-			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Average rate for the previous period"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
-		* Выручка по валюте [Курс на конец предыдущего периода]	
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "* (Report indicators)"
-			И я перехожу к закладке с именем 'CurrenciesConversion'
-			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Exchange rate at the end of the previous period"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
-		* Выручка по валюте [Средний курс за предыдущий период ЦБ]	
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "* (Report indicators)"
-			И я перехожу к закладке с именем 'CurrenciesConversion'
-			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Average rate for the previous period CB"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
-		* Дата курса	
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "* (Report indicators)"
-			И из выпадающего списка с именем 'ValueType' я выбираю точное значение "Date"
-			И из выпадающего списка с именем 'PeriodTotalCalcMethod' я выбираю точное значение "Total by period is not calculated"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
-		* Выручка по валюте [Курс на дату указанную в показателе]	
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "* (Report indicators)"
-			И я перехожу к закладке с именем 'CurrenciesConversion'
-			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Exchange rate as of the date specified in the indicator"
-			И я нажимаю кнопку выбора у поля с именем 'LinkedIndicator'
-			И Я выбираю показатель с кодом "EffectiveOn_Value"
-			Тогда открылось окно "* (Report indicators) *"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
-		* Выручка по валюте [Курс на дату указанную в показателе другого отчета]	
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "* (Report indicators)"
-			И я перехожу к закладке с именем 'CurrenciesConversion'
-			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Exchange rate as of the date specified in the indicator"
-			И я нажимаю кнопку выбора у поля с именем 'LinkedIndicator'
-			И Я выбираю показатель с кодом "EffectiveOn_Value" вида отчета "VA - Currency indicators (source)"
-			Тогда открылось окно "* (Report indicators) *"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
-		* Курс (EUR)	
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R14C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "* (Report indicators)"
-			И из выпадающего списка с именем 'PeriodTotalCalcMethod' я выбираю точное значение "Total by period is not calculated"
-			И я изменяю флаг с именем 'NonFinancial'
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
-		* Курс (USD)	
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R15C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "* (Report indicators)"
-			И из выпадающего списка с именем 'PeriodTotalCalcMethod' я выбираю точное значение "Total by period is not calculated"
-			И я изменяю флаг с именем 'NonFinancial'
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
-		* Выручка по валюте [Курс указанный в показателе]	
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R16C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "* (Report indicators)"
-			И я перехожу к закладке с именем 'CurrenciesConversion'
-			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Rate specified in the indicator"
-			* EUR
-				И в таблице 'IndicatorsForExchangeRates' я нажимаю на кнопку с именем 'IndicatorsForExchangeRatesAdd'
-				И в таблице 'IndicatorsForExchangeRates' из выпадающего списка с именем 'IndicatorsForExchangeRatesCurrency' я выбираю точное значение "EUR"
-				И я перехожу к следующему реквизиту
-				И в таблице 'IndicatorsForExchangeRates' я нажимаю кнопку выбора у реквизита с именем 'IndicatorsForExchangeRatesRateIndicator'
-				И Я выбираю показатель с кодом "RateEUR_Value" вида отчета "VA - Currency indicators (recipient)"
-				Тогда открылось окно "* (Report indicators) *"
-				И в таблице 'IndicatorsForExchangeRates' в поле с именем 'IndicatorsForExchangeRatesRepetition' я ввожу текст '1'
-				И в таблице 'IndicatorsForExchangeRates' я завершаю редактирование строки
-			* USD
-				И в таблице 'IndicatorsForExchangeRates' я нажимаю на кнопку с именем 'IndicatorsForExchangeRatesAdd'
-				И в таблице 'IndicatorsForExchangeRates' из выпадающего списка с именем 'IndicatorsForExchangeRatesCurrency' я выбираю точное значение "USD"
-				И я перехожу к следующему реквизиту
-				И в таблице 'IndicatorsForExchangeRates' я нажимаю кнопку выбора у реквизита с именем 'IndicatorsForExchangeRatesRateIndicator'
-				И Я выбираю показатель с кодом "RateUSD_Value" вида отчета "VA - Currency indicators (recipient)"
-				Тогда открылось окно "* (Report indicators) *"
-				И в таблице 'IndicatorsForExchangeRates' в поле с именем 'IndicatorsForExchangeRatesRepetition' я ввожу текст '1'
-				И в таблице 'IndicatorsForExchangeRates' я завершаю редактирование строки	
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
-		* Выручка по валюте [Курс указанный в показателе другого отчета]
-			Тогда открылось окно "Edit tree"
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R17C2'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "* (Report indicators)"
-			И я перехожу к закладке с именем 'CurrenciesConversion'
-			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Rate specified in the indicator"
-			* EUR
-				И в таблице 'IndicatorsForExchangeRates' я нажимаю на кнопку с именем 'IndicatorsForExchangeRatesAdd'
-				И в таблице 'IndicatorsForExchangeRates' из выпадающего списка с именем 'IndicatorsForExchangeRatesCurrency' я выбираю точное значение "EUR"
-				И я перехожу к следующему реквизиту
-				И в таблице 'IndicatorsForExchangeRates' я нажимаю кнопку выбора у реквизита с именем 'IndicatorsForExchangeRatesRateIndicator'
-				И Я выбираю показатель с кодом "RateEUR_Value" вида отчета "VA - Currency indicators (source)"
-				Тогда открылось окно "* (Report indicators) *"
-				И в таблице 'IndicatorsForExchangeRates' в поле с именем 'IndicatorsForExchangeRatesRepetition' я ввожу текст '1'
-				И в таблице 'IndicatorsForExchangeRates' я завершаю редактирование строки
-			* USD
-				И в таблице 'IndicatorsForExchangeRates' я нажимаю на кнопку с именем 'IndicatorsForExchangeRatesAdd'
-				И в таблице 'IndicatorsForExchangeRates' из выпадающего списка с именем 'IndicatorsForExchangeRatesCurrency' я выбираю точное значение "USD"
-				И я перехожу к следующему реквизиту
-				И в таблице 'IndicatorsForExchangeRates' я нажимаю кнопку выбора у реквизита с именем 'IndicatorsForExchangeRatesRateIndicator'
-				И Я выбираю показатель с кодом "RateUSD_Value" вида отчета "VA - Currency indicators (source)"
-				Тогда открылось окно "* (Report indicators) *"
-				И в таблице 'IndicatorsForExchangeRates' в поле с именем 'IndicatorsForExchangeRatesRepetition' я ввожу текст '1'
-				И в таблице 'IndicatorsForExchangeRates' я завершаю редактирование строки	
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
-
-	* Устанавливаем аналитики отчета
-		И Я в конструкторе отчета добавляю аналитику с кодом "VA0Counter" в ячейку 'R2C2'
-		Когда открылось окно "Edit tree"
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C8'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C8'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C8'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C8'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C8'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C8'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R8C8'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C8'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C8'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C8'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C8'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R16C8'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R17C8'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И Я в конструкторе отчета в ячейке 'R2C2:R17C2' меняю свойства показателей 'ShouldRecalculateForeignCurrencyAmount' на 'True'						
-
-	* Вводим источники данных
-		* Выручка по валюте
-			И Я в конструкторе отчета для ячейки 'R2C2' настраиваю связь с покзателем с кодом "RevenueInCurrency_Value" вида отчета "VA - Currency indicators (source)"
-		* Выручка по валюте [Средний курс за период]
-			И Я в конструкторе отчета для ячейки 'R3C2' настраиваю связь с покзателем с кодом "RevenueByCurrency_Value" вида отчета "VA - Currency indicators (source)"	
-		* Выручка по валюте [Средний курс за период МСФО]	
-			Тогда открылось окно "Edit tree"
-			И я нажимаю на кнопку с именем 'CopyFormula'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C2'
-			И я нажимаю на кнопку с именем 'InsertFormula'
-		* Выручка по валюте [Средний курс за период ЦБ]	
-			И я нажимаю на кнопку с именем 'CopyFormula'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C2'
-			И я нажимаю на кнопку с именем 'InsertFormula'
-		* Выручка по валюте [Курс на начало периода]	
-			И я нажимаю на кнопку с именем 'CopyFormula'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C2'
-			И я нажимаю на кнопку с именем 'InsertFormula'
-		* Выручка по валюте [Курс на конец периода]	
-			И я нажимаю на кнопку с именем 'CopyFormula'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C2'
-			И я нажимаю на кнопку с именем 'InsertFormula'
-		* Выручка по валюте [Средний курс за предыдущий период]	
-			И я нажимаю на кнопку с именем 'CopyFormula'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R8C2'
-			И я нажимаю на кнопку с именем 'InsertFormula'
-		* Выручка по валюте [Курс на конец предыдущего периода]	
-			И я нажимаю на кнопку с именем 'CopyFormula'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C2'
-			И я нажимаю на кнопку с именем 'InsertFormula'
-		* Выручка по валюте [Средний курс за предыдущий период ЦБ]	
-			И я нажимаю на кнопку с именем 'CopyFormula'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C2'
-			И я нажимаю на кнопку с именем 'InsertFormula'
-		* Выручка по валюте [Курс на дату указанную в показателе]	
-			И я нажимаю на кнопку с именем 'CopyFormula'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C2'
-			И я нажимаю на кнопку с именем 'InsertFormula'
-		* Выручка по валюте [Курс на дату указанную в показателе другого отчета]	
-			И я нажимаю на кнопку с именем 'CopyFormula'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C2'
-			И я нажимаю на кнопку с именем 'InsertFormula'
-		* Выручка по валюте [Курс указанный в показателе]	
-			И я нажимаю на кнопку с именем 'CopyFormula'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R16C2'
-			И я нажимаю на кнопку с именем 'InsertFormula'
-		* Выручка по валюте [Курс указанный в показателе другого отчета]	
-			И я нажимаю на кнопку с именем 'CopyFormula'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R17C2'
-			И я нажимаю на кнопку с именем 'InsertFormula'
-		* Дата курса
-			И Я в конструкторе отчета для ячейки 'R11C2' настраиваю связь с покзателем с кодом "EffectiveOn_Value" вида отчета "VA - Currency indicators (source)"	
-		* Курс (EUR)
-			И Я в конструкторе отчета для ячейки 'R14C2' настраиваю связь с покзателем с кодом "RateEUR_Value" вида отчета "VA - Currency indicators (source)"	
-		* Курс (USD)
-			И Я в конструкторе отчета для ячейки 'R15C2' настраиваю связь с покзателем с кодом "RateUSD_Value" вида отчета "VA - Currency indicators (source)"	
-
-	* Включим возможность редактирования показателей
-		Когда открылось окно "Edit tree"
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R3C2"
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R4C2"
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R5C2"
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R6C2"
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R7C2"
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R8C2"
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R9C2"
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R10C2"
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R11C2"
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R12C2"
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R13C2"
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R14C2"
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R15C2"
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R16C2"
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R17C2"
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я устанавливаю флаг с именем 'FormulaEditorEditingImpossible'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'				
-
-Сценарий: 09.06 Создание многопериодного бланка для вида отчета "VA - Currency indicators (recipient)"
-
-	И Я Для вида отчета "VA - Currency indicators (recipient)" создаю бланк по умолчанию
-
-	* Открываем бланк
-		И Я нахожу в списке вид отчета с именем "VA - Currency indicators (recipient)"
-		Тогда открылось окно "Report types and templates"
-		И в таблице 'List' я перехожу к строке:
-			| "Description"                        |
-			| "VA - Currency indicators (recipient)" |
-		И в таблице 'List' я выбираю текущую строку
-		И я запоминаю заголовок формы в переменную 'WindowTitle'
-
-	* Добавляем колонку с значением валюта
-		* Период отчета
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R1C3'
-			И я выбираю пункт контекстного меню с именем 'SpreadsheetFieldTemplateContextMenuAddRowsRight' на элементе формы с именем 'SpreadsheetFieldTemlate'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C3:R36C3'
-			И я нажимаю на кнопку с именем 'CopyToClipboard'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C4:R36C4'
-			И я нажимаю на кнопку с именем 'PasteFromClipboard'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C3:R5C4'
-			И я нажимаю на кнопку с именем 'Union'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C4:R8C4'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C4'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C4'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C4'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C4'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C4'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R14C4'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R15C4'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R16C4'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R17C4'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R18C4'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R19C4'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R20C4'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R21C4'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R22C4'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R23C4'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R24C4'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R25C4'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R26C4:R27C4'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R28C4'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R29C4'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R30C4'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R31C4:R33C4'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R34C4'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R35C4'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R36C4'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-		* Итог	
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R1C5'
-			// ДОДЕЛАТЬ: Почему-то не работает
-			Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда				
-				И я выбираю пункт контекстного меню с именем 'SpreadsheetFieldTemplateContextMenuAddRowsRight' на элементе формы с именем 'SpreadsheetFieldTemlate'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C5:R36C5'
-			И я нажимаю на кнопку с именем 'CopyToClipboard'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C6:R36C6'
-			И я нажимаю на кнопку с именем 'PasteFromClipboard'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C5:R5C6'
-			И я нажимаю на кнопку с именем 'Union'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C6:R8C6'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C6'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C6'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C6'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C6'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C6'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R14C6'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R15C6'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R16C6'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R17C6'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R18C6'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R19C6'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R20C6'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R21C6'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R22C6'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R23C6'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R24C6'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R25C6'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R26C6:R27C6'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R28C6'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R29C6'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R30C6'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R31C6:R33C6'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R34C6'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'
-			Тогда открылось окно '$WindowTitle$ *'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R35C6'
-			И я нажимаю на кнопку с именем 'ClearUpContent'
-			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R36C6'
-			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-			Тогда открылось окно "Indicator value filter settings"
-			И я изменяю флаг с именем 'AmountInAddlCurrency'
-			И я нажимаю на кнопку с именем 'FormApply'	
-				
-	* Записываем бланк
-		Когда открылось окно '$WindowTitle$ *'
-		И я нажимаю на кнопку с именем 'FormButtonWriteAndClose'
-				
-Сценарий: 09.07 Ручное заполнение экземпляра отчета - "VA - Currency indicators (recipient)" 
-
-	И Я создаю экземпляр отчета для вида отчета "VA - Currency indicators (recipient)" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект "VA - Main project" аналитики '' '' '' '' '' '' 
+	И Я создаю экземпляр отчета для вида отчета "VA - Currency indicators (recipient)" сценарий "VA - Main scenario" период '1/1/2024' '3/31/2024' периодичность "Month" организация "Mercury LLC" проект "VA - Main project" аналитики '' '' '' '' '' '' 
 
 	* Проверяем значения в форме редактирования показателей
 		* Выручка по валюте [Средний курс за период]
@@ -1001,7 +1006,7 @@
 			И я нажимаю на кнопку с именем 'FormOKButton1'
 			И я жду закрытия окна "Drill down indicators: *" в течение 20 секунд
 		* Дата курса
-			И Я ввожу значение '3/1/2021' в ячейку 'R39C2'
+			И Я ввожу значение '3/1/2024' в ячейку 'R39C2'
 		* Выручка по валюте [Курс на дату указанную в показателе]
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R40C2'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
@@ -1075,7 +1080,7 @@
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Currency indicators (recipient)"                                    | ''               | ''         | ''                | ''         | ''             | ''         | ''         | ''         |
 			| ''                                                                       | ''               | ''         | ''                | ''         | ''             | ''         | ''         | ''         |
-			| ''                                                                       | "January 2021" | ''         | "February 2021" | ''         | "March 2021" | ''         | "TOTAL"    | ''         |
+			| ''                                                                       | "January 2024" | ''         | "February 2024" | ''         | "March 2024" | ''         | "TOTAL"    | ''         |
 			| ''                                                                       | "Value"       | "Value" | "Value"        | "Value" | "Value"     | "Value" | "Value" | "Value" |
 			| "Revenue by currency"                                                      | '0'              | ''         | '0'               | ''         | '0'            | ''         | '0'        | ''         |
 			| "Revenue by currency [Average rate for period]"                             | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
@@ -1110,7 +1115,7 @@
 			| 'EUR '                                                                   | '0'              | '0'        | '330,000'         | '3,648'    | '0'            | '0'        | '330,000'  | '3,648'    |
 			| 'RUB '                                                                   | '0'              | '0'        | '300,000'         | '300,000'  | '0'            | '0'        | '300,000'  | '300,000'  |
 			| 'USD '                                                                   | '0'              | '0'        | '270,000'         | '3,641'    | '0'            | '0'        | '270,000'  | '3,641'    |
-			| "Effective on"                                                             | '3/1/2021'     | ''         | ''                | ''         | ''             | ''         | ''         | ''         |
+			| "Effective on"                                                             | '3/1/2024'     | ''         | ''                | ''         | ''             | ''         | ''         | ''         |
 			| "Revenue by currency [Exchange rate as of the date specified in the indicator]"                | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
 			| 'EUR '                                                                   | '330,000'        | '3,651'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,651'    |
 			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
@@ -1135,7 +1140,7 @@
 		И я нажимаю на кнопку с именем 'WriteAndClose'
 		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд
 
-Сценарий: 09.08 Расчет по правилу экземпляра отчета - "VA - Currency indicators (recipient)" 
+Сценарий: 09.09 Расчет по правилу экземпляра отчета - "VA - Currency indicators (recipient)" 
 
 	И Я открываю первый экземпляр отчета для вида отчета "VA - Currency indicators (recipient)"
 	Тогда Открылся экземпляр отчета для вида отчета "VA - Currency indicators (recipient)" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' '' 
@@ -1144,7 +1149,7 @@
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Currency indicators (recipient)"                                    | ''               | ''         | ''                | ''         | ''             | ''         | ''         | ''         |
 			| ''                                                                       | ''               | ''         | ''                | ''         | ''             | ''         | ''         | ''         |
-			| ''                                                                       | "January 2021" | ''         | "February 2021" | ''         | "March 2021" | ''         | "TOTAL"    | ''         |
+			| ''                                                                       | "January 2024" | ''         | "February 2024" | ''         | "March 2024" | ''         | "TOTAL"    | ''         |
 			| ''                                                                       | "Value"       | "Value" | "Value"        | "Value" | "Value"     | "Value" | "Value" | "Value" |
 			| "Revenue by currency"                                                      | '0'              | ''         | '0'               | ''         | '0'            | ''         | '0'        | ''         |
 			| "Revenue by currency [Average rate for period]"                             | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
@@ -1179,7 +1184,7 @@
 			| 'EUR '                                                                   | '0'              | '0'        | '330,000'         | '3,648'    | '0'            | '0'        | '330,000'  | '3,648'    |
 			| 'RUB '                                                                   | '0'              | '0'        | '300,000'         | '300,000'  | '0'            | '0'        | '300,000'  | '300,000'  |
 			| 'USD '                                                                   | '0'              | '0'        | '270,000'         | '3,641'    | '0'            | '0'        | '270,000'  | '3,641'    |
-			| "Effective on"                                                             | '3/1/2021'     | ''         | ''                | ''         | ''             | ''         | ''         | ''         |
+			| "Effective on"                                                             | '3/1/2024'     | ''         | ''                | ''         | ''             | ''         | ''         | ''         |
 			| "Revenue by currency [Exchange rate as of the date specified in the indicator]"                | '900,000'        | ''         | '0'               | ''         | '0'            | ''         | '900,000'  | ''         |
 			| 'EUR '                                                                   | '330,000'        | '3,651'    | '0'               | '0'        | '0'            | '0'        | '330,000'  | '3,651'    |
 			| 'RUB '                                                                   | '300,000'        | '300,000'  | '0'               | '0'        | '0'            | '0'        | '300,000'  | '300,000'  |
@@ -1205,7 +1210,7 @@
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Currency indicators (recipient)"                                    | ''               | ''         | ''                | ''         | ''             | ''         | ''          | ''         |
 			| ''                                                                       | ''               | ''         | ''                | ''         | ''             | ''         | ''          | ''         |
-			| ''                                                                       | "January 2021" | ''         | "February 2021" | ''         | "March 2021" | ''         | "TOTAL"     | ''         |
+			| ''                                                                       | "January 2024" | ''         | "February 2024" | ''         | "March 2024" | ''         | "TOTAL"     | ''         |
 			| ''                                                                       | "Value"       | "Value" | "Value"        | "Value" | "Value"     | "Value" | "Value"  | "Value" |
 			| "Revenue by currency"                                                      | '900,000'        | ''         | '900,000'         | ''         | '900,000'      | ''         | '2,700,000' | ''         |
 			| "LLC \"Ganymede\" "                                                       | '300,000'        | ''         | '300,000'         | ''         | '300,000'      | ''         | '900,000'   | ''         |
@@ -1248,7 +1253,7 @@
 			| 'EUR '                                                                   | '0'              | '0'        | '330,000'         | '3,648'    | '330,000'      | '3,667'    | '660,000'   | '7,315'    |
 			| 'RUB '                                                                   | '0'              | '0'        | '300,000'         | '300,000'  | '300,000'      | '300,000'  | '600,000'   | '600,000'  |
 			| 'USD '                                                                   | '0'              | '0'        | '270,000'         | '3,641'    | '270,000'      | '3,627'    | '540,000'   | '7,268'    |
-			| "Effective on"                                                             | '3/1/2021'     | ''         | '2/1/2021'      | ''         | '1/1/2021'   | ''         | ''          | ''         |
+			| "Effective on"                                                             | '3/1/2024'     | ''         | '2/1/2024'      | ''         | '1/1/2024'   | ''         | ''          | ''         |
 			| "Revenue by currency [Exchange rate as of the date specified in the indicator]"                | '900,000'        | ''         | '900,000'         | ''         | '900,000'      | ''         | '2,700,000' | ''         |
 			| 'EUR '                                                                   | '330,000'        | '3,651'    | '330,000'         | '3,575'    | '330,000'      | '3,635'    | '990,000'   | '10,862'   |
 			| 'RUB '                                                                   | '300,000'        | '300,000'  | '300,000'         | '300,000'  | '300,000'      | '300,000'  | '900,000'   | '900,000'  |
@@ -1277,5 +1282,5 @@
 		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Макеты\ВА_ВалютныеПоказатели_Приемник_Движения.mxl" по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Макеты\09\ВА_ВалютныеПоказатели_Приемник_Движения.mxl" по шаблону
 		И Я закрываю окно "Flat table of indicator values"

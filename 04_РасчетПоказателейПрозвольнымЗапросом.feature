@@ -9,11 +9,12 @@
 
 Контекст: 
 
-	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''	
 	И я закрыл все окна клиентского приложения
 
 Сценарий: 04.00 Определение типа приложения
 
+	И я закрываю TestClient "CPM - Budget"
+	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''
 	Пусть Инициализация переменных
 
 Сценарий: 04.01 Создание вида отчета "VA - Arbitrary request"
@@ -34,7 +35,7 @@
 	И Я открываю контруктор отчета с именем "VA - Arbitrary request"
 				
 	* Вводим формулу расчета	
-		Тогда открылось окно "Edit tree"
+		Тогда открылось окно "Report wizard"
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
@@ -103,7 +104,7 @@
 				|'	MAX(ItemsPrices.Price) AS Price'|
 				|'INTO втCalculated'|
 				|'FROM'|
-				|'	InformationRegister.ItemsPrices AS ItemsPrices'|
+				|'	InformationRegister.ItemsPrices25 AS ItemsPrices'|
 				|'WHERE'|
 				|'	ItemsPrices.Period >= &StartDateParameter'|
 				|'	AND ItemsPrices.Period <= &EndDateParameter'|
@@ -194,18 +195,18 @@
 		И я жду закрытия окна "Data source (create) *" в течение 20 секунд
 		Тогда открылось окно "Data sources"
 		И в таблице 'List' я выбираю текущую строку
-		Тогда открылось окно "Edit tree *"
+		Тогда открылось окно "Report wizard *"
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
 
 Сценарий: 04.03 Создание экземпляра отчета - "VA - Arbitrary request" с использованием многопериодного контекста
 
-	И Я создаю экземпляр отчета для вида отчета "VA - Arbitrary request" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' ''
+	И Я создаю экземпляр отчета для вида отчета "VA - Arbitrary request" сценарий "VA - Main scenario" период '1/1/2024' '3/31/2024' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' ''
 
 	* Документ должен быть пустой
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Arbitrary request" | ''               | ''                | ''             | ''      |
 			| ''                         | ''               | ''                | ''             | ''      |
-			| ''                         | "January 2021" | "February 2021" | "March 2021" | "TOTAL" |
+			| ''                         | "January 2024" | "February 2024" | "March 2024" | "TOTAL" |
 			| ''                         | "Price"           | "Price"            | "Price"         | "Price"  |
 			| "Product range"             | '0'              | '0'               | '0'            | '0'     |
 
@@ -215,7 +216,7 @@
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Arbitrary request"                                        | ''               | ''                | ''             | ''           |
 			| ''                                                                | ''               | ''                | ''             | ''           |
-			| ''                                                                | "January 2021" | "February 2021" | "March 2021" | "TOTAL"      |
+			| ''                                                                | "January 2024" | "February 2024" | "March 2024" | "TOTAL"      |
 			| ''                                                                | "Price"           | "Price"            | "Price"         | "Price"       |
 			| "Product range"                                                    | '6,030,000'      | '6,633,000'       | '7,495,400'    | '20,158,400' |
 			| "5C:Corporate performance management "                                      | '1,250,000'      | '1,375,000'       | '1,553,800'    | '4,178,800'  |
@@ -234,7 +235,7 @@
 	И Я открываю контруктор отчета с именем "VA - Arbitrary request"
 
 	* Снимаем флаг многопериодного контекста у источника данных	
-		Тогда открылось окно "Edit tree"
+		Тогда открылось окно "Report wizard"
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
@@ -303,18 +304,18 @@
 		И Я закрываю окно '$WindowTitle$'
 		Тогда открылось окно "Data sources"
 		И Я закрываю окно "Data sources"
-		Тогда открылось окно "Edit tree"
+		Тогда открылось окно "Report wizard"
 		И я нажимаю на кнопку с именем 'UndoFormulaEdit'
 
 Сценарий: 04.05 Создание экземпляра отчета - "VA - Arbitrary request" без использования многопериодного контекста
 
-	И Я создаю экземпляр отчета для вида отчета "VA - Arbitrary request" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Venus LLC" проект '' аналитики '' '' '' '' '' ''
+	И Я создаю экземпляр отчета для вида отчета "VA - Arbitrary request" сценарий "VA - Main scenario" период '1/1/2024' '3/31/2024' периодичность "Month" организация "Venus LLC" проект '' аналитики '' '' '' '' '' ''
 
 	* Документ должен быть пустой
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Arbitrary request" | ''               | ''                | ''             | ''      |
 			| ''                         | ''               | ''                | ''             | ''      |
-			| ''                         | "January 2021" | "February 2021" | "March 2021" | "TOTAL" |
+			| ''                         | "January 2024" | "February 2024" | "March 2024" | "TOTAL" |
 			| ''                         | "Price"           | "Price"            | "Price"         | "Price"  |
 			| "Product range"             | '0'              | '0'               | '0'            | '0'     |
 
@@ -324,7 +325,7 @@
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Arbitrary request"                                        | ''               | ''                | ''             | ''           |
 			| ''                                                                | ''               | ''                | ''             | ''           |
-			| ''                                                                | "January 2021" | "February 2021" | "March 2021" | "TOTAL"      |
+			| ''                                                                | "January 2024" | "February 2024" | "March 2024" | "TOTAL"      |
 			| ''                                                                | "Price"           | "Price"            | "Price"         | "Price"       |
 			| "Product range"                                                    | '6,030,000'      | '6,633,000'       | '7,495,400'    | '20,158,400' |
 			| "5C:Corporate performance management "                                      | '1,250,000'      | '1,375,000'       | '1,553,800'    | '4,178,800'  |

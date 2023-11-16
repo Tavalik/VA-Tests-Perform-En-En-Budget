@@ -1,19 +1,19 @@
 ﻿#language: ru
-
 @tree
 
 Функционал: 08. Расчет показателей нарастающим итогом
 
-Как Администратор я хочу
-Проверить различные способы расчета показателей нарастающим итогом 
+	Как Администратор я хочу
+	Проверить различные способы расчета показателей нарастающим итогом 
 
 Контекст: 
 
-	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''
 	И я закрыл все окна клиентского приложения
 
 Сценарий: 08.00 Определение типа приложения
-
+	
+	И я закрываю TestClient "CPM - Budget"
+	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''
 	Пусть Инициализация переменных
 
 Сценарий: 08.01 Создание группы отчетов "VA - Cumulative total (group)"
@@ -33,7 +33,7 @@
 	И я нажимаю на кнопку с именем 'FormOK'
 
 	И я нажимаю на кнопку с именем 'EditTree'
-	Когда открылось окно "Edit tree"
+	Когда открылось окно "Report wizard"
 	И Я в конструкторе отчета добавляю строку с именем "Goods"	
 	И Я в конструкторе отчета добавляю колонку с именем "Quantity"		
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C3'
@@ -43,13 +43,13 @@
 
 Сценарий: 08.03 Создание экземпляра отчета - "VA - Cumulative total (source)" 
 
-	И Я создаю экземпляр отчета для вида отчета "VA - Cumulative total (source)" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект "VA - Main project" аналитики "3Software sale" '' '' '' '' '' 
+	И Я создаю экземпляр отчета для вида отчета "VA - Cumulative total (source)" сценарий "VA - Main scenario" период '1/1/2024' '3/31/2024' периодичность "Month" организация "Mercury LLC" проект "VA - Main project" аналитики "3Software sale" '' '' '' '' '' 
 
 	* Документ должен быть пустой
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Cumulative total (source)" | ''               | ''                | ''             | ''           |
 			| ''                                 | ''               | ''                | ''             | ''           |
-			| ''                                 | "January 2021" | "February 2021" | "March 2021" | "TOTAL"      |
+			| ''                                 | "January 2024" | "February 2024" | "March 2024" | "TOTAL"      |
 			| ''                                 | "Quantity"     | "Quantity"      | "Quantity"   | "Quantity" |
 			| "Goods"                           | '0'              | '0'               | '0'            | '0'          |
 
@@ -79,7 +79,7 @@
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Cumulative total (source)"                                | ''               | ''                | ''             | ''           |
 			| ''                                                                | ''               | ''                | ''             | ''           |
-			| ''                                                                | "January 2021" | "February 2021" | "March 2021" | "TOTAL"      |
+			| ''                                                                | "January 2024" | "February 2024" | "March 2024" | "TOTAL"      |
 			| ''                                                                | "Quantity"     | "Quantity"      | "Quantity"   | "Quantity" |
 			| "Goods"                                                          | '50'             | '100'             | '150'          | '300'        |
 			| "5C:Corporate performance management "                                      | '10'             | '20'              | '30'           | '60'         |
@@ -106,7 +106,7 @@
 	И я нажимаю на кнопку с именем 'FormOK'
 
 	И я нажимаю на кнопку с именем 'EditTree'
-	Когда открылось окно "Edit tree"
+	Когда открылось окно "Report wizard"
 	
 	И Я в конструкторе отчета добавляю строку с именем "SourceData"	
 	И Я в конструкторе отчета добавляю строку с именем "FromSourceBeforeCalculation"
@@ -120,7 +120,7 @@
 	И Я в конструкторе отчета добавляю колонку с именем "Quantity"		
 	
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C3'
-	Когда открылось окно "Edit tree"
+	Когда открылось окно "Report wizard"
 	И я нажимаю на кнопку с именем 'CopyAndShiftDown1'
 	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C3'
 	И я нажимаю на кнопку с именем 'DeleteDimension'
@@ -129,22 +129,22 @@
 
 	* Добавляем формулы расчета
 		* ДанныеИсточника
-			Когда открылось окно "Edit tree"
+			Когда открылось окно "Report wizard"
 			И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			И я нажимаю на кнопку с именем 'RefToIndicator1'
 			И Я выбираю показатель с кодом "Goods_Quantity" вида отчета "VA - Cumulative total (source)"
-			Тогда открылось окно "Edit tree *"
+			Тогда открылось окно "Report wizard *"
 			И я нажимаю на кнопку с именем 'WriteAndCollapse'
 		* ИзИсточникаДоВычисленияХ2	
-			Тогда открылось окно "Edit tree"
+			Тогда открылось окно "Report wizard"
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C2'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C2'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			И я нажимаю на кнопку с именем 'WriteFormula'
-			Тогда открылось окно "Edit tree"			
+			Тогда открылось окно "Report wizard"			
 			И я нажимаю на кнопку с именем 'AddOperand1'
 			Тогда открылось окно "Data sources"
 			И я нажимаю на кнопку с именем 'FormCreate'
@@ -167,11 +167,11 @@
 			И я жду закрытия окна "Data source (create) *" в течение 20 секунд
 			Тогда открылось окно "Data sources"
 			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "Edit tree *"
+			Тогда открылось окно "Report wizard *"
 			И я нажимаю на кнопку с именем 'ButtonMultiply'
 			И я нажимаю на кнопку с именем 'WriteAndCollapse'
 		* ИзИсточникаОтборПоПериоду
-			Когда открылось окно "Edit tree"
+			Когда открылось окно "Report wizard"
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C2'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			И я нажимаю на кнопку с именем 'AddOperand1'
@@ -209,10 +209,10 @@
 			И я жду закрытия окна "Data source (create) *" в течение 20 секунд
 			Тогда открылось окно "Data sources"
 			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "Edit tree *"
+			Тогда открылось окно "Report wizard *"
 			И я нажимаю на кнопку с именем 'WriteAndCollapse'
 		* ИзПриемникаОтборПоПериоду
-			Когда открылось окно "Edit tree"
+			Когда открылось окно "Report wizard"
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C2'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			И я нажимаю на кнопку с именем 'AddOperand1'
@@ -250,10 +250,10 @@
 			И я жду закрытия окна "Data source (create) *" в течение 20 секунд
 			Тогда открылось окно "Data sources"
 			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "Edit tree *"
+			Тогда открылось окно "Report wizard *"
 			И я нажимаю на кнопку с именем 'WriteAndCollapse'
 		* ИзПриемникаСдвигПериода
-			Когда открылось окно "Edit tree"
+			Когда открылось окно "Report wizard"
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R8C2'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			И я нажимаю на кнопку с именем 'AddOperand1'
@@ -278,13 +278,13 @@
 			И я жду закрытия окна "Data source (create) *" в течение 20 секунд
 			Тогда открылось окно "Data sources"
 			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "Edit tree *"
+			Тогда открылось окно "Report wizard *"
 			И я нажимаю на кнопку с именем 'ButtonPlus'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			И я нажимаю на кнопку с именем 'WriteAndCollapse'
 		* ИзИсточникаПроизвольныйКод
-			Когда открылось окно "Edit tree"
+			Когда открылось окно "Report wizard"
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C2'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			И я нажимаю на кнопку с именем 'ArbitraryCode'
@@ -315,12 +315,12 @@
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			Тогда открылось окно "1C:Enterprise"
 			И я нажимаю на кнопку с именем 'Button0'
-			Тогда открылось окно "Edit tree"
+			Тогда открылось окно "Report wizard"
 			И я нажимаю на кнопку с именем 'WriteAndCollapse'						
 
 	* Добавляем процедуры в правило обработки		
 		* Процедура До вычисления
-			Когда открылось окно "Edit tree"
+			Когда открылось окно "Report wizard"
 			И я нажимаю на кнопку открытия поля с именем 'ProcessingRule'
 			Когда Открылась правило расчета для вида отчета "VA - Cumulative total (recipient)"
 			И я нажимаю на кнопку с именем 'FormProcedureOfCalculation'
@@ -407,8 +407,8 @@
 			И я запоминаю заголовок формы в переменную "TitleОкна"			
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна '$WindowTitle$' в течение 20 секунд
-			Когда открылось окно "Edit tree"
-			И Я закрываю окно "Edit tree"														
+			Когда открылось окно "Report wizard"
+			И Я закрываю окно "Report wizard"														
 	
 	И Я Для вида отчета "VA - Cumulative total (recipient)" создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Cumulative total (recipient)" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
@@ -420,18 +420,18 @@
 
 Сценарий: 08.05 Создание экземпляра отчета - "VA - Cumulative total (recipient)" 
 
-	И Я создаю экземпляр отчета для вида отчета "VA - Cumulative total (recipient)" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект "VA - Main project" аналитики "3Software sale" '' '' '' '' '' 
+	И Я создаю экземпляр отчета для вида отчета "VA - Cumulative total (recipient)" сценарий "VA - Main scenario" период '1/1/2024' '3/31/2024' периодичность "Month" организация "Mercury LLC" проект "VA - Main project" аналитики "3Software sale" '' '' '' '' '' 
 
 	* Рассчитываем и сверяем документ
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
-		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету "Макеты\ВА_НарастающийИтог.mxl"
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету "Макеты\08\ВА_НарастающийИтог.mxl"
 
 	* Еще раз расчитаем документ, убедимся, что ничего не поменялось
 		Когда открылось окно '$WindowTitle$'	
 		И я нажимаю на кнопку с именем 'Write'
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Cumulative total (recipient)" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики "3Software sale" '' '' '' '' '' 
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
-		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету "Макеты\ВА_НарастающийИтог.mxl"					
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен макету "Макеты\08\ВА_НарастающийИтог.mxl"					
 
 	* Смотрим движения
 		Когда открылось окно '$WindowTitle$ *'
@@ -441,7 +441,7 @@
 		Тогда открылось окно "Flat table of indicator values"
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
 		Когда Я задаю параметры чтения области макета 'R1C1:R452C20'
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Макеты\ВА_НарастающийИтог_Движения.mxl" по шаблону
+		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Макеты\08\ВА_НарастающийИтог_Движения.mxl" по шаблону
 
 	* Закроем отчет и документ
 		Когда открылось окно "Flat table of indicator values"

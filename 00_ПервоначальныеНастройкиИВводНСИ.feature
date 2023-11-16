@@ -1,5 +1,4 @@
 ﻿#language: ru
-
 @tree
 
 Функционал: 00. Первоначальные настройки и ввод НСИ
@@ -10,35 +9,96 @@
 
 Контекст: 
 
-	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''
 	И я закрыл все окна клиентского приложения	
 
-Сценарий: 00.01 Установка значений констант, определение типа приложения
+Сценарий: 00.01 Запуск нужного клиента тестирования
 
 	И я закрываю TestClient "CPM - MasterData"
 	И я закрываю TestClient "CPM - Treasury"
 	И я закрываю TestClient "CPM - Purchases"
 	И я закрываю TestClient "CPM - Smoke"
 
+	И Я подключаю клиент тестирования "Этот клиент" из таблицы клиентов тестирования
+
 	И Инициализация переменных
+
+Сценарий: 00.02 Настройка информационной базы
+
+	* Настройка прав доступа
+		Если '$$IsERPCPM$$' Тогда
+			И В командном интерфейсе я выбираю "Master data и администрирование" "Users and rights settings"
+			Тогда открылось окно "Users and rights settings"
+		Иначе			
+			И В командном интерфейсе я выбираю "Administration" "Users and rights settings"
+			Тогда открылось окно "Users and rights settings"
+			Если 'NOT $$ЭтоPerform$$' Тогда
+				И я устанавливаю флаг с именем 'UseНесколькоОтветственных'
+		И я устанавливаю флаг с именем 'UseUserGroups'
+		И я устанавливаю флаг с именем 'LimitAccessAtRecordLevel'
+		Если открылось окно "1C:Enterprise" Тогда
+			И я нажимаю на кнопку с именем 'Button0'
+		Тогда открылось окно "Users and rights settings"
+		Если элемент 'LimitAccessAtRecordLevelUniversally' присутствует на форме Тогда
+			И из выпадающего списка с именем 'LimitAccessAtRecordLevelUniversally' я выбираю точное значение "Стандартный"
+			Если открылось окно "1C:Enterprise" Тогда
+				И я нажимаю на кнопку с именем 'Button0'
+
+	* Настройка даты запрета редактирования
+		Тогда открылось окно "Users and rights settings"
+		И я разворачиваю группу с именем 'UsersPersonalSettingsGroup'
+		И я разворачиваю группу с именем 'PeriodClosingDatesGroup'
+		И я устанавливаю флаг с именем 'UsePeriodClosingDates'
+		И я нажимаю на кнопку с именем 'ConfigurePeriodClosingDates'
+		Тогда открылось окно "Period-end closing dates"
+		И в поле с именем 'PeriodEndClosingDateSimpleMode' я ввожу текст '12/31/2000'
+		И я перехожу к закладке с именем 'AdvancedOptionsGroup'
+		И из выпадающего списка с именем 'PeriodEndClosingDateSettingMethod' я выбираю точное значение "Single date for all sections and objects"
+		И Я закрываю окно "Period-end closing dates"
+		И я закрываю окно "Users and rights settings"
+
+	* Настройка программы
+		Если '$$IsERPCPM$$' Тогда
+			* Предприятие
+				И В командном интерфейсе я выбираю "Master data и администрирование" "Предприятие"
+				Тогда открылось окно "Предприятие"
+				И я устанавливаю флаг с именем 'UseMultipleCompanies'
+				И я разворачиваю группу с именем 'SettingsGroup1Валют'
+				И я устанавливаю флаг с именем 'UseНесколькоВалют'
+				Тогда открылось окно "Предприятие"
+				И Я закрываю окно "Предприятие"
+			* CRM и маркетинг
+				И В командном интерфейсе я выбираю "Master data и администрирование" "CRM и маркетинг"
+				Тогда открылось окно "CRM и маркетинг"
+				И я разворачиваю группу с именем "GroupSettingsCRM"
+				И я устанавливаю флаг с именем 'UseПартнеровANDКонтрагентов'								
+				И я разворачиваю группу с именем 'GroupМаркетинг'
+				И я устанавливаю флаг с именем 'UseНесколькоВидовЦен'
+				Тогда открылось окно "CRM и маркетинг"	
+				И Я закрываю окно "CRM и маркетинг"	
+			* Склад и доставка
+				И В командном интерфейсе я выбираю "Master data и администрирование" "Warehouse и доставка"
+				Тогда открылось окно "Warehouse и доставка"
+				И я устанавливаю флаг с именем 'UseНесколькоСкладов'
+				Тогда открылось окно "Warehouse и доставка"
+				И Я закрываю окно "Warehouse и доставка"																
 
 	И Я создаю единицу измерения с кодом '796' если ее нет, наименование "PCs", наименование полное "Piece"
 
-	И Я устанавливаю в константу 'UseIndicatorRecalculationTraceMode' значение 'True'
+	И Я устанавливаю в константу 'UseIndicatorRecalculationTraceMode' значение 'True'	
 
 	* Добавим валюты, если их нет
 		* RUB
 			И Я создаю валюту с цифровым кодом '643' символьным кодом 'RUB' и наименованием "Russian ruble" если ее нет
 		* EUR
 			И Я создаю валюту с цифровым кодом '978' символьным кодом 'EUR' и наименованием "Euro" если ее нет
-			И Я устанавливаю курс валюты 'EUR' на дату '1/1/2021' в значение '90.7932' кратность '1' базовая валюта 'RUB'
-			И Я устанавливаю курс валюты 'EUR' на дату '2/1/2021' в значение '92.2963' кратность '1' базовая валюта 'RUB'
-			И Я устанавливаю курс валюты 'EUR' на дату '3/1/2021' в значение '90.3743' кратность '1' базовая валюта 'RUB'
+			И Я устанавливаю курс валюты 'EUR' на дату '1/1/2024' в значение '90.7932' кратность '1' базовая валюта 'RUB'
+			И Я устанавливаю курс валюты 'EUR' на дату '2/1/2024' в значение '92.2963' кратность '1' базовая валюта 'RUB'
+			И Я устанавливаю курс валюты 'EUR' на дату '3/1/2024' в значение '90.3743' кратность '1' базовая валюта 'RUB'
 		* USD
 			И Я создаю валюту с цифровым кодом '840' символьным кодом 'USD' и наименованием "US dollar" если ее нет
-			И Я устанавливаю курс валюты 'USD' на дату '1/1/2021' в значение '73.8757' кратность '1' базовая валюта 'RUB'
-			И Я устанавливаю курс валюты 'USD' на дату '2/1/2021' в значение '76.2527' кратность '1' базовая валюта 'RUB'
-			И Я устанавливаю курс валюты 'USD' на дату '3/1/2021' в значение '74.4373' кратность '1' базовая валюта 'RUB'
+			И Я устанавливаю курс валюты 'USD' на дату '1/1/2024' в значение '73.8757' кратность '1' базовая валюта 'RUB'
+			И Я устанавливаю курс валюты 'USD' на дату '2/1/2024' в значение '76.2527' кратность '1' базовая валюта 'RUB'
+			И Я устанавливаю курс валюты 'USD' на дату '3/1/2024' в значение '74.4373' кратность '1' базовая валюта 'RUB'
 		* KZT
 			И Я создаю валюту с цифровым кодом '398' символьным кодом 'KZT' и наименованием "Tenge" если ее нет
 
@@ -69,55 +129,48 @@
 	Если '$$ЭтоPerform$$' Тогда
 		И Я создаю страну с кодом1 '643' кодом2 'RU' кодом3 'RUS' именем1 "Russia" именем2 "The Russian Federation" именем3 "The Russian Federation" если ее нет в 1C:CPMWE
 
-	* Настроим аналитику 'Валюта'	
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Dimension types (corporate)"
-		Тогда открылось окно "Dimension types (corporate)"
-		И я нажимаю на кнопку с именем 'FormFind'
-		Тогда открылась форма с именем 'UniversalListFindExtForm'
-		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Description"
-		И в поле с именем 'Pattern' я ввожу текст 'Currencies'
-		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Dimension types (corporate)"
-		Если в таблице 'List' количество строк 'равно' 0 Тогда
-			И я нажимаю на кнопку с именем 'FormFind'
-			Тогда открылась форма с именем 'UniversalListFindExtForm'
-			И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Description"
-			И в поле с именем 'Pattern' я ввожу текст "Currencies"
-			И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-			И я нажимаю на кнопку с именем 'Find'
-			Тогда открылось окно "Dimension types (corporate)"
-		И в таблице 'List' я выбираю текущую строку
-		Когда открылось окно '* (Dimension types (corporate))'
-		И в поле с именем 'Description' я ввожу текст "Currencies"
-		И я нажимаю на кнопку с именем 'FormWrite'
-		Тогда открылось окно "Currencies (Dimension types (corporate))"
-		Если в таблице 'TableBoxAttributes' есть строка Тогда
-			| "Attribute"       | "Key" | "Template" |
-			| "Alphabetic code" | "No"  | "No"   |
-			И в таблице 'TableBoxAttributes' я перехожу к строке:
-				| "Attribute"       | "Key" | "Template" |
-				| "Alphabetic code" | "No"  | "No"   |
-			И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableKey'
-		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна 'Currencies (Dimension types (corporate)) *' в течение 20 секунд
-
 	* Отключаем работу с новостями
 		Если '$$IsERPCPM$$' Тогда
 			И я устанавливаю в константу 'NewsManagementEnabled' значение 'False'
 			И я устанавливаю в константу 'NewsManagementEnabledЧерезInternet' значение 'False'
 
-	И я закрываю сеанс текущего клиента тестирования			
+Сценарий: 00.03 Создание профилей и групп доступа
 
-Сценарий: 00.02 Создание вида организационной единицы
+	И Я создаю группу доступа с именем "Open external reports and data processors" по профилю "Open external reports and data processors"
+
+	И Я создаю профиль с именем "VA - Budgeting (Edit)" на основании профиля "Operations with customizable reporting (report instances, adjustments, and pivot table)"	
+	И Я создаю группу доступа с именем "VA - Budgeting (Edit)" по профилю "VA - Budgeting (Edit)"
+
+	И Я создаю профиль с именем "VA - Budgeting (View)" на основании профиля "View customizable reporting (report instances, adjustments, and pivot table)"	
+	И Я создаю группу доступа с именем "VA - Budgeting (View)" по профилю "VA - Budgeting (View)"
+
+Сценарий: 00.04 Создание пользователей
+
+	И Я нахожу или создаю пользователя "Administrator" группа доступа "Administrators" группа ""	
+
+	И Я нахожу или создаю группу пользователей с именем "VA - Budgeting"
+
+	И Я нахожу или создаю пользователя "Budgeting1" группа доступа "VA - Budgeting (Edit)" группа "VA - Budgeting"
+	И Я нахожу или создаю пользователя "Budgeting2" группа доступа "VA - Budgeting (Edit)" группа "VA - Budgeting"
+	И Я нахожу или создаю пользователя "Budgeting3" группа доступа "VA - Budgeting (View)" группа "VA - Budgeting"
+	И Я нахожу или создаю пользователя "Budgeting4" группа доступа "VA - Budgeting (View)" группа "VA - Budgeting"
+
+	И я закрываю сеанс текущего клиента тестирования	
+	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''			
+
+Сценарий: 00.05 Создание группы Видов отчетов
+
+	И Я создаю группу видов отчетов с именем "VA - Report group" и родителем ''
+
+Сценарий: 00.06 Создание вида организационной единицы
 
 	И Я создаю вид организационной единицы с именем "VA - Package CFR"
 
-Сценарий: 00.03 Создание отношения к группе
+Сценарий: 00.07 Создание отношения к группе
 
 	И Я создаю отношение к группе с именем "VA - Subsidiary" и видом "Subsidiary"
 
-Сценарий: 00.04 Создание организаций и ЦФО
+Сценарий: 00.08 Создание организаций и ЦФО
 	
 	* Создаем организацию Система
 		И Я создаю организацию с именем "System LLC" типом 'SelectRF' видом 'SelectЮL' налогооблажением 'СистемаНалогообложенияShared3ЮL'
@@ -127,6 +180,8 @@
 			И Я для организации "System LLC" создаю подразделение с именем "Accounting"
 		Если '$$IsERPCPM$$' Тогда
 			И Я для организации "System LLC" для реквизита 'CompanyType1' выбираю значение "VA - Package CFR"	
+			И Я для организации "System LLC" создаю подразделение с именем "Administration" в 1C:ERPУХ
+			И Я для организации "System LLC" создаю подразделение с именем "Accounting" в 1C:ERPУХ
 
 		Если '$$ЭтоPerform$$' Тогда
 			И Я для организации "System LLC" для реквизита 'GroupCounterparty' выбираю значение "VA - Subsidiary"
@@ -174,19 +229,28 @@
 		ИначеЕсли '$$IsERPCPM$$' Тогда
 			И Я для организации "Mars LLC" для реквизита 'CompanyType1' выбираю значение "VA - Package CFR"
 
-Сценарий: 00.05 Создание группы Видов отчетов
+Сценарий: 00.09 Настройка ограничений доступа по организациям
 
-	И Я создаю группу видов отчетов с именем "VA - Report group" и родителем ''
+	И Я добавляю в профиль "VA - Budgeting (Edit)" ограничение доступа с видом "Companies" значением "All denied, configure exceptions in access groups"
+	И Я добавляю в группу доступа "VA - Budgeting (Edit)" значения доступа с видом "Companies" из таблицы
+		| "Access Value" | "Include subordinate items" |
+		| "System LLC"      | "Yes"                  |
 
-Сценарий: 00.06 Создание Сценария
+	И Я добавляю в профиль "VA - Budgeting (View)" ограничение доступа с видом "Companies" значением "All denied, configure exceptions in access groups"
+	И Я добавляю в группу доступа "VA - Budgeting (View)" значения доступа с видом "Companies" из таблицы
+		| "Access Value" | "Include subordinate items" |
+		| "Mercury LLC"     | "No"                 |
+		| "Venus LLC"       | "No"                 |
+
+Сценарий: 00.10 Создание Сценария
 
 	И Я создаю сценарий с именем "VA - Main scenario"
 
-Сценарий: 00.07 Создание Проекта
+Сценарий: 00.11 Создание Проекта
 
 	И Я создаю проект с именем "VA - Main project"
 				
-Сценарий: 00.08 Создание Регламента подготовки отчетности
+Сценарий: 00.12 Создание Регламента подготовки отчетности
 
 	* Открываем регламент
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Regulations for preparing reports"
@@ -335,32 +399,6 @@
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormWrite'
 
-	* Тестируем отчеты и связанные ссылки
-		Тогда Открылся регламент подготовки отчетности "VA - Main regulations"
-		И в таблице 'GroupStructure' я нажимаю на кнопку с именем 'FormInvestorsComposition'
-		Тогда открылось окно "Ownership structure"
-		И Я закрываю окно "Ownership structure"
-		Тогда открылось окно '$WindowTitle$'
-		И в таблице 'GroupStructure' я нажимаю на кнопку с именем 'GroupStructureReportRegulationOrganizationalStructuresOrganizationalStructureChart'
-		Тогда открылось окно "Organizational structure briefly"
-		И Я закрываю окно "Organizational structure briefly"
-		Тогда открылось окно '$WindowTitle$'
-		И в таблице 'GroupStructure' я нажимаю на кнопку с именем 'GroupStructureReportRegulationOrganizationalStructuresOrganizationalStructureTable'
-		Тогда открылось окно "Organizational structure briefly"
-		И Я закрываю окно "Organizational structure briefly"
-		Тогда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormDocumentScenarioPeriodManagementAccountingPeriodManagementDocuments'
-		Тогда открылось окно "Reporting period management"
-		И Я закрываю окно "Reporting period management"
-		Тогда открылось окно '$WindowTitle$'
-		И я перехожу к закладке с именем 'GroupMainPage'
-	
-	* Запишем и закроем элемент
-		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд
-		Тогда открылось окно "Regulations for preparing reports"
-		И в таблице 'List' я выбираю текущую строку
-
 	* Установим дополнительные валюты
 		Тогда Открылся регламент подготовки отчетности "VA - Main regulations"
 		И я перехожу к закладке с именем 'PerimeterSetting'
@@ -426,12 +464,34 @@
 			И в таблице 'AdditionalCurrencies' из выпадающего списка с именем 'AdditionalCurrenciesCurrency' я выбираю точное значение "USD"
 			И в таблице 'AdditionalCurrencies' я завершаю редактирование строки
 			И я нажимаю на кнопку с именем 'FormOkCommand'
-			Тогда открылось окно '$WindowTitle$'
-			И в таблице 'GroupStructure' я завершаю редактирование строки
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна '$WindowTitle$' в течение 20 секунд
+
+	* Тестируем отчеты и связанные ссылки
+		Тогда Открылся регламент подготовки отчетности "VA - Main regulations"
+		И в таблице 'GroupStructure' я нажимаю на кнопку с именем 'FormInvestorsComposition'
+		Тогда открылось окно "Ownership structure"
+		И Я закрываю окно "Ownership structure"
+		Тогда открылось окно '$WindowTitle$'
+		И в таблице 'GroupStructure' я нажимаю на кнопку с именем 'GroupStructureReportRegulationOrganizationalStructuresOrganizationalStructureChart'
+		Тогда открылось окно "Organizational structure briefly"
+		И Я закрываю окно "Organizational structure briefly"
+		Тогда открылось окно '$WindowTitle$'
+		И в таблице 'GroupStructure' я нажимаю на кнопку с именем 'GroupStructureReportRegulationOrganizationalStructuresOrganizationalStructureTable'
+		Тогда открылось окно "Organizational structure briefly"
+		И Я закрываю окно "Organizational structure briefly"
+		Тогда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormDocumentScenarioPeriodManagementAccountingPeriodManagementDocuments'
+		Тогда открылось окно "Reporting period management"
+		И Я закрываю окно "Reporting period management"
+		Тогда открылось окно '$WindowTitle$'
+		И я перехожу к закладке с именем 'GroupMainPage'
 	
-Сценарий: 00.09 Создание документа Управление отчетным периодом
+	* Запишем и закроем элемент
+		И я нажимаю на кнопку с именем 'FormWriteAndClose'
+		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд
+		Тогда открылось окно "Regulations for preparing reports"
+		И в таблице 'List' я выбираю текущую строку
+	
+Сценарий: 00.13 Создание документа Управление отчетным периодом
 
 	* Откроем форму нового документа
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Reporting period management"
@@ -444,17 +504,17 @@
 		И из выпадающего списка с именем 'ScenarioFrequency' я выбираю точное значение "Month"
 		И я нажимаю на кнопку с именем 'ChangePeriod'
 		Тогда открылось окно "Select period"
-		И в поле с именем 'DateBegin' я ввожу текст '1/1/2021'
-		И в поле с именем 'DateEnd' я ввожу текст '3/31/2021'
+		И в поле с именем 'DateBegin' я ввожу текст '1/1/2024'
+		И в поле с именем 'DateEnd' я ввожу текст '3/31/2024'
 		И я нажимаю на кнопку с именем 'select'	
 		Тогда открылось окно "Reporting period management (create) *"
 		И из выпадающего списка с именем 'OrganizationalStructureVersion' я выбираю по строке "VA - Main regulations"	
-		И я устанавливаю флаг с именем 'LimitsSet'
-		И я нажимаю на кнопку с именем 'OpenReportTypesToSetLimits'
-		Тогда открылось окно "Types of reports for limit setting"
-		И Я закрываю окно "Types of reports for limit setting"
-		Тогда открылось окно "Reporting period management (create) *"
-		И я снимаю флаг с именем 'LimitsSet'
+//		И я устанавливаю флаг с именем 'LimitsSet'
+//		И я нажимаю на кнопку с именем 'OpenReportTypesToSetLimits'
+//		Тогда открылось окно "Types of reports for limit setting"
+//		И Я закрываю окно "Types of reports for limit setting"
+//		Тогда открылось окно "Reporting period management (create) *"
+//		И я снимаю флаг с именем 'LimitsSet'
 		И я нажимаю на кнопку с именем 'FormGoForward'
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
@@ -467,8 +527,8 @@
 		* EUR
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplier" | "Rate period"   |
-				| 'EUR'    | '90.7932'          | '1.0000'    | "January 2021" |
+				| "Currency" | "Current value" | "Multiplying factor" | "Rate period"   |
+				| 'EUR'    | '90.7932'          | '1.0000'    | "January 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '90.7932'
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '92.2963'
@@ -480,8 +540,8 @@
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '0'
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplier" | "Rate period"    |
-				| 'EUR'    | '92.2963'          | '1.0000'    | "February 2021" |
+				| "Currency" | "Current value" | "Multiplying factor" | "Rate period"    |
+				| 'EUR'    | '92.2963'          | '1.0000'    | "February 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '92.2963'
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '90.3743'
@@ -493,8 +553,8 @@
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '90.4537'	
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplier" | "Rate period" |
-				| 'EUR'    | '90.3743'          | '1.0000'    | "March 2021" |
+				| "Currency" | "Current value" | "Multiplying factor" | "Rate period" |
+				| 'EUR'    | '90.3743'          | '1.0000'    | "March 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '90.3743'
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '88.8821'
@@ -507,8 +567,8 @@
 		* USD
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplier" | "Rate period"   |
-				| 'USD'    | '73.8757'          | '1.0000'    | "January 2021" |
+				| "Currency" | "Current value" | "Multiplying factor" | "Rate period"   |
+				| 'USD'    | '73.8757'          | '1.0000'    | "January 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '73.8757'
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '76.2527'
@@ -520,8 +580,8 @@
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '0'
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplier" | "Rate period"    |
-				| 'USD'    | '76.2527'          | '1.0000'    | "February 2021" |
+				| "Currency" | "Current value" | "Multiplying factor" | "Rate period"    |
+				| 'USD'    | '76.2527'          | '1.0000'    | "February 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '76.2527'
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '74.4373'
@@ -533,8 +593,8 @@
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '74.1489'	
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplier" | "Rate period" |
-				| 'USD'    | '74.4373'          | '1.0000'    | "March 2021" |
+				| "Currency" | "Current value" | "Multiplying factor" | "Rate period" |
+				| 'USD'    | '74.4373'          | '1.0000'    | "March 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '74.4373'
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '75.7023'
@@ -552,15 +612,7 @@
 
 	* Тестируем кнопки 
 		Тогда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'ProcessManagement_Document3'
-		Тогда открылось окно "Report preparation management (table)"
-		И я нажимаю на кнопку с именем 'GenerateReport'
-		И Я закрываю окно "Report preparation management (table)"
-		Тогда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'ProcessManagement_Document2'
-		Тогда открылось окно "Progress of report preparation process"
-		И Я закрываю окно "Progress of report preparation process"
-		Тогда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormGoForward'				
 		* Блокируем период
 			И я нажимаю на кнопку с именем 'PeriodsManagement1'
 			Когда открылось окно "Manage period lock duration and indicator updates"
@@ -571,7 +623,6 @@
 			И я нажимаю на кнопку с именем 'ClosePeriod'
 			И Я закрываю окно "Manage period lock duration and indicator updates"
 		Тогда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormGoForward'
 		И я нажимаю на кнопку с именем 'ButtonDeleteVersions'
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
@@ -594,7 +645,26 @@
 		И я нажимаю на кнопку с именем 'FormBack'
 		И я нажимаю на кнопку с именем 'FormClose'
 
-Сценарий: 00.10 Создание Видов аналитики (корпоративные)
+Сценарий: 00.14 Создание Видов аналитики (корпоративные)
+	
+	* Настроим аналитику 'Валюта'	
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Dimension types (corporate)"
+		И Я в списке "Dimension types (corporate)" по полю "Description" ищу и выбираю элемент 'Currencies' "Exact match" 
+		Когда открылось окно '* (Dimension types (corporate))'
+		И в поле с именем 'Description' я ввожу текст "Currencies"
+		И я нажимаю на кнопку с именем 'FormWrite'
+		Тогда открылось окно "Currencies (Dimension types (corporate))"
+		Если в таблице 'TableBoxAttributes' есть строка Тогда
+			| "Attribute"       | "Key" | "Template" |
+			| "Alphabetic code" | "No"  | "No"   |
+			И в таблице 'TableBoxAttributes' я перехожу к строке:
+				| "Attribute"       | "Key" | "Template" |
+				| "Alphabetic code" | "No"  | "No"   |
+			И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableKey'
+		И я нажимаю на кнопку с именем 'FormWriteAndClose'
+		И я жду закрытия окна "Currencies (Dimension types (corporate)) *" в течение 20 секунд
+		Когда открылось окно "Dimension types (corporate)"
+		И я выбираю пункт контекстного меню с именем 'ListContextMenuCancelSearch' на элементе формы с именем 'List'
 
 	Если '$$ЭтоPerform$$' Тогда
 		И Я создаю вид аналитики с кодом "VA0ProCate" именем "Product categories" и типом 'CatalogRef.ArbitraryClassifierCPM'
@@ -606,7 +676,7 @@
 	И Я создаю вид аналитики с кодом "VA0CFItems" именем "Cash flow items" и типом 'CatalogRef.CashFlowReportItems'
 	И Я создаю вид аналитики с кодом "VA0IEItems" именем "Income and expense items" и типом 'CatalogRef.IncomeAndExpenseItems'
 
-Сценарий: 00.11 Создание Вида номенклатуры
+Сценарий: 00.15 Создание Вида номенклатуры
 
 	Если '$$IsCPM$$' Тогда
 		И Я создаю группу номенклатуры с именем "VA - Products"
@@ -615,22 +685,22 @@
 			И Я создаю вид номенклатуры с именем "VA - Other"
 
 	Если '$$IsERPCPM$$' Тогда
-		И Я создаю вид номенклатуры с именем "VA - Products" тип 'OwnGoods' группа доступа 'Other' в 1C:ERPУХ
-		И Я создаю вид номенклатуры с именем "VA - Other" тип 'OwnGoods' группа доступа 'Other' в 1C:ERPУХ
+		И Я создаю вид номенклатуры с именем "VA - Products" тип 'OwnGoods' в 1C:ERPУХ
+		И Я создаю вид номенклатуры с именем "VA - Other" тип 'OwnGoods' в 1C:ERPУХ
 
-Сценарий: 00.12 Создание Товарной категории
+Сценарий: 00.16 Создание Товарной категории
 
 	Если '$$ЭтоPerform$$' Тогда
 		И Я создаю субконто УХ с именем "Software products" и видом аналитики с кодом "VA0ProCate"
 	Иначе
 		И Я создаю товарную категорию с именем "Software products" видом номенклатуры "VA - Products"
 
-Сценарий: 00.13 Создание номенклатурной группы
+Сценарий: 00.17 Создание номенклатурной группы
 
 	Если 'NOT $$IsERPCPM$$' Тогда
 		И Я создаю номенклатурную группу с именем "VA - Product range group"
 
-Сценарий: 00.14 Создание Номенклатуры
+Сценарий: 00.18 Создание Номенклатуры
 
 	И Я создаю номенклатуру с именем "4C:Enterprise 8.3 CORP. Server License (x86-64)" родителем "VA - Products" видом номенклатуры "VA - Products" артикулом '2900001916059'
 	И Я создаю номенклатуру с именем "3C:Enterprise 8 CORP. Client license for 100 users" родителем "VA - Products" видом номенклатуры "VA - Products" артикулом '4601546106674'
@@ -659,26 +729,26 @@
 		И Я Для номенклатуры с именем "2C:Corporation" для реквизита 'ТоварнаяCategory' выбираю значение "Software products" в группе 'СворачиваемаяGroupПланированиеANDМаркетинг'
 		И Я Для номенклатуры с именем "1C:ERP. Corporate performance management" для реквизита 'ТоварнаяCategory' выбираю значение "Software products" в группе 'СворачиваемаяGroupПланированиеANDМаркетинг'	
 
-Сценарий: 00.15 Установка цен номенклатуры
+Сценарий: 00.19 Установка цен номенклатуры
 
 	Если '$$IsCPM$$' Тогда
 		И Я создаю тип цен с именем "VA - Products" валютой 'RUB'
 		Если '$$ЭтоPerform$$' Тогда
-			И Я устанавливаю цену с типом "VA - Products" номенклатуры "4C:Enterprise 8.3 CORP. Server License (x86-64)" на дату '1/1/2021' в значение '180000.00' 'RUB' в 1C:CPMWE
-			И Я устанавливаю цену с типом "VA - Products" номенклатуры "3C:Enterprise 8 CORP. Client license for 100 users" на дату '1/1/2021' в значение '600000.00' 'RUB' в 1C:CPMWE
-			И Я устанавливаю цену с типом "VA - Products" номенклатуры "5C:Corporate performance management" на дату '1/1/2021' в значение '1250000.00' 'RUB' в 1C:CPMWE
-			И Я устанавливаю цену с типом "VA - Products" номенклатуры "2C:Corporation" на дату '1/1/2021' в значение '2050000.00' 'RUB' в 1C:CPMWE
-			И Я устанавливаю цену с типом "VA - Products" номенклатуры "1C:ERP. Corporate performance management" на дату '1/1/2021' в значение '1950000.00' 'RUB' в 1C:CPMWE
-			И Я устанавливаю цену с типом "VA - Products" номенклатуры "4C:Enterprise 8.3 CORP. Server License (x86-64)" на дату '2/1/2021' в значение '198000.00' 'RUB' в 1C:CPMWE
-			И Я устанавливаю цену с типом "VA - Products" номенклатуры "3C:Enterprise 8 CORP. Client license for 100 users" на дату '2/1/2021' в значение '660000.00' 'RUB' в 1C:CPMWE
-			И Я устанавливаю цену с типом "VA - Products" номенклатуры "5C:Corporate performance management" на дату '2/1/2021' в значение '1375000.00' 'RUB' в 1C:CPMWE
-			И Я устанавливаю цену с типом "VA - Products" номенклатуры "2C:Corporation" на дату '2/1/2021' в значение '2255000.00' 'RUB' в 1C:CPMWE
-			И Я устанавливаю цену с типом "VA - Products" номенклатуры "1C:ERP. Corporate performance management" на дату '2/1/2021' в значение '2145000.00' 'RUB' в 1C:CPMWE
-			И Я устанавливаю цену с типом "VA - Products" номенклатуры "4C:Enterprise 8.3 CORP. Server License (x86-64)" на дату '3/1/2021' в значение '223700.00' 'RUB' в 1C:CPMWE
-			И Я устанавливаю цену с типом "VA - Products" номенклатуры "3C:Enterprise 8 CORP. Client license for 100 users" на дату '3/1/2021' в значение '745800.00' 'RUB' в 1C:CPMWE
-			И Я устанавливаю цену с типом "VA - Products" номенклатуры "5C:Corporate performance management" на дату '3/1/2021' в значение '1553800.00' 'RUB' в 1C:CPMWE
-			И Я устанавливаю цену с типом "VA - Products" номенклатуры "2C:Corporation" на дату '3/1/2021' в значение '2548200.00' 'RUB' в 1C:CPMWE
-			И Я устанавливаю цену с типом "VA - Products" номенклатуры "1C:ERP. Corporate performance management" на дату '3/1/2021' в значение '2423900.00' 'RUB' в 1C:CPMWE
+			И Я устанавливаю цену с типом "VA - Products" номенклатуры "4C:Enterprise 8.3 CORP. Server License (x86-64)" на дату '1/1/2024' в значение '180000.00' 'RUB' в 1C:CPMWE
+			И Я устанавливаю цену с типом "VA - Products" номенклатуры "3C:Enterprise 8 CORP. Client license for 100 users" на дату '1/1/2024' в значение '600000.00' 'RUB' в 1C:CPMWE
+			И Я устанавливаю цену с типом "VA - Products" номенклатуры "5C:Corporate performance management" на дату '1/1/2024' в значение '1250000.00' 'RUB' в 1C:CPMWE
+			И Я устанавливаю цену с типом "VA - Products" номенклатуры "2C:Corporation" на дату '1/1/2024' в значение '2050000.00' 'RUB' в 1C:CPMWE
+			И Я устанавливаю цену с типом "VA - Products" номенклатуры "1C:ERP. Corporate performance management" на дату '1/1/2024' в значение '1950000.00' 'RUB' в 1C:CPMWE
+			И Я устанавливаю цену с типом "VA - Products" номенклатуры "4C:Enterprise 8.3 CORP. Server License (x86-64)" на дату '2/1/2024' в значение '198000.00' 'RUB' в 1C:CPMWE
+			И Я устанавливаю цену с типом "VA - Products" номенклатуры "3C:Enterprise 8 CORP. Client license for 100 users" на дату '2/1/2024' в значение '660000.00' 'RUB' в 1C:CPMWE
+			И Я устанавливаю цену с типом "VA - Products" номенклатуры "5C:Corporate performance management" на дату '2/1/2024' в значение '1375000.00' 'RUB' в 1C:CPMWE
+			И Я устанавливаю цену с типом "VA - Products" номенклатуры "2C:Corporation" на дату '2/1/2024' в значение '2255000.00' 'RUB' в 1C:CPMWE
+			И Я устанавливаю цену с типом "VA - Products" номенклатуры "1C:ERP. Corporate performance management" на дату '2/1/2024' в значение '2145000.00' 'RUB' в 1C:CPMWE
+			И Я устанавливаю цену с типом "VA - Products" номенклатуры "4C:Enterprise 8.3 CORP. Server License (x86-64)" на дату '3/1/2024' в значение '223700.00' 'RUB' в 1C:CPMWE
+			И Я устанавливаю цену с типом "VA - Products" номенклатуры "3C:Enterprise 8 CORP. Client license for 100 users" на дату '3/1/2024' в значение '745800.00' 'RUB' в 1C:CPMWE
+			И Я устанавливаю цену с типом "VA - Products" номенклатуры "5C:Corporate performance management" на дату '3/1/2024' в значение '1553800.00' 'RUB' в 1C:CPMWE
+			И Я устанавливаю цену с типом "VA - Products" номенклатуры "2C:Corporation" на дату '3/1/2024' в значение '2548200.00' 'RUB' в 1C:CPMWE
+			И Я устанавливаю цену с типом "VA - Products" номенклатуры "1C:ERP. Corporate performance management" на дату '3/1/2024' в значение '2423900.00' 'RUB' в 1C:CPMWE
 		Иначе
 			* 1С:УХ	
 
@@ -689,7 +759,7 @@
 				// Создаем новый документ
 				И я нажимаю на кнопку с именем 'FormCreate'
 				Тогда открылось окно "Install цен номенклатуры (create)"
-				И в поле с именем 'Date' я ввожу текст '01.01.2021  12:00:00 AM'
+				И в поле с именем 'Date' я ввожу текст '01.01.2024  12:00:00 AM'
 				И из выпадающего списка с именем 'PriceType_' я выбираю по строке "VA - Products"
 
 				// Товары
@@ -718,7 +788,7 @@
 				Когда открылось окно "Install цен номенклатуры"
 				И я нажимаю на кнопку с именем 'FormCreate'
 				Тогда открылось окно "Install цен номенклатуры (create)"
-				И в поле с именем 'Date' я ввожу текст '01.02.2021  12:00:00 AM'
+				И в поле с именем 'Date' я ввожу текст '01.02.2024  12:00:00 AM'
 				И из выпадающего списка с именем 'PriceType_' я выбираю по строке "VA - Products"
 				И в таблице 'Goods' я нажимаю на кнопку с именем 'FillByGroupНоменклатуры'
 				Тогда открылось окно "Product range"
@@ -743,7 +813,7 @@
 				Когда открылось окно "Install цен номенклатуры"
 				И я выбираю пункт контекстного меню с именем 'ListContextMenuCopy' на элементе формы с именем 'List'
 				Тогда открылось окно "Install цен номенклатуры (create)"
-				И в поле с именем 'Date' я ввожу текст '01.03.2021  12:00:00 AM'
+				И в поле с именем 'Date' я ввожу текст '01.03.2024  12:00:00 AM'
 				И в таблице 'Goods' я нажимаю на кнопку с именем 'GoodsChangeGoods'
 				Тогда открылось окно "Modify таблицы товаров"
 				И в поле с именем 'VariantValuesNumberPercent' я ввожу текст '13.00'
@@ -777,13 +847,18 @@
 			И я нажимаю на кнопку с именем 'OpenKindsЦен'
 			Тогда открылось окно "Виды цен "
 			И я меняю значение переключателя с именем 'GroupWarehousesViewOptionВидовЦен' на 'All'
+			И я жду открытия формы "Виды цен " в течение 10 секунд
+			Если в таблице 'List' количество строк 'равно' 0 Тогда
+				И Я запоминаю значение выражения 'False' в переменную 'HasSelectionВидовЦен'
+			Иначе
+				И Я запоминаю значение выражения 'True' в переменную 'HasSelectionВидовЦен'			
 			И я нажимаю на кнопку с именем 'FormFind'
 			Тогда открылась форма с именем 'UniversalListFindExtForm'
 			И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Description"				
 			И в поле с именем 'Pattern' я ввожу текст "VA - Products"
 			И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 			И я нажимаю на кнопку с именем 'Find'		
-			Тогда открылось окно "Виды цен "
+			Тогда открылось окно "Виды цен "							
 			И Пока в таблице 'List' количество строк 'больше' 0 Тогда
 				И Я запоминаю значение выражения '"Delete_" + StrReplace(New UUID, "-", "")' в переменную 'UID'
 				И в таблице 'List' я выбираю текущую строку
@@ -802,7 +877,6 @@
 			И я изменяю флаг с именем 'PriceВключаетVAT'
 			И я изменяю флаг с именем 'UseWhen_ОптовойПродаже'
 			И я изменяю флаг с именем 'UseWhen_РозничнойПродаже'
-			И я изменяю флаг с именем 'UseWhen_ПередачеПродукцииДавальцу'
 			И я изменяю флаг с именем 'UseWhen_ВыпускеПродукции'
 			И я устанавливаю флаг с именем 'Округлять'
 			И из выпадающего списка с именем 'AccuracyОкругления' я выбираю точное значение "100"				
@@ -815,17 +889,18 @@
 			И я нажимаю на кнопку с именем 'HistoryChangesЦен'
 			Тогда открылось окно "History изменения цен"
 			И в таблице 'List' я нажимаю на кнопку с именем 'ListCreate'
-			Тогда открылось окно "Install цен номенклатуры (create)"
-			И в таблице 'SelectedItemsЦены' я активизирую поле с именем 'SelectedItemsЦеныRef'
-			И я выбираю пункт контекстного меню с именем 'SelectedItemsЦеныFind' на элементе формы с именем 'SelectedItemsЦены'
-			Тогда открылась форма с именем 'UniversalListFindExtForm'
-			И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Виды цен"
-			И из выпадающего списка с именем 'Pattern' я выбираю по строке "VA - Products"
-			И я нажимаю на кнопку с именем 'Find'
-			Тогда открылось окно "Install цен номенклатуры (create)"
-			И в таблице 'SelectedItemsЦены' я изменяю флаг с именем 'SelectedItemsЦеныEdit'
-			И я нажимаю на кнопку с именем 'KindsЦенNextCommand'
-			И в поле с именем 'Date' я ввожу текст '1/1/2021'
+			И я жду открытия формы  "Install цен номенклатуры (create)" в течение 10 секунд
+			Если '$HasSelectionВидовЦен$' Тогда
+				И в таблице 'SelectedItemsЦены' я активизирую поле с именем 'SelectedItemsЦеныRef'
+				И я выбираю пункт контекстного меню с именем 'SelectedItemsЦеныFind' на элементе формы с именем 'SelectedItemsЦены'
+				Тогда открылась форма с именем 'UniversalListFindExtForm'
+				И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Виды цен"
+				И из выпадающего списка с именем 'Pattern' я выбираю по строке "VA - Products"
+				И я нажимаю на кнопку с именем 'Find'
+				Тогда открылось окно "Install цен номенклатуры (create)"
+				И в таблице 'SelectedItemsЦены' я изменяю флаг с именем 'SelectedItemsЦеныEdit'
+				И я нажимаю на кнопку с именем 'KindsЦенNextCommand'
+			И в поле с именем 'Date' я ввожу текст '1/1/2024'
 			И в таблице 'TreeЦен' я нажимаю на кнопку с именем 'TreeЦенAddНоменклатуру'
 			И в таблице 'TreeЦен' из выпадающего списка с именем 'TreeЦенProducts' я выбираю по строке "4C:Enterprise 8.3 CORP. Server License (x86-64)"
 			И в таблице 'TreeЦен' в поле с именем 'TreeЦенKindЦены*' я ввожу текст '180000.00'
@@ -841,7 +916,7 @@
 			И в таблице 'TreeЦен' я нажимаю на кнопку с именем 'TreeЦенAddНоменклатуру'
 			И в таблице 'TreeЦен' из выпадающего списка с именем 'TreeЦенProducts' я выбираю по строке "1C:ERP. Corporate performance management"
 			И в таблице 'TreeЦен' в поле с именем 'TreeЦенKindЦены*' я ввожу текст '1950000.00'
-			Если элемент формы "№ in пределах day" присутствует на форме Тогда	
+			Если элемент 'NumberINПределахДня' присутствует на форме Тогда
 				И в поле с именем 'NumberINПределахДня' я ввожу текст '1'
 			И я нажимаю на кнопку с именем 'FormPostAndClose'
 			И я жду закрытия окна "Install цен номенклатуры (create) *" в течение 20 секунд
@@ -849,22 +924,23 @@
 		* Вводим документ за Февраль
 			Когда открылось окно "History изменения цен"
 			И в таблице 'List' я нажимаю на кнопку с именем 'ListCreate'
-			Тогда открылось окно "Install цен номенклатуры (create)"
-			И в таблице 'SelectedItemsЦены' я активизирую поле с именем 'SelectedItemsЦеныRef'
-			И я выбираю пункт контекстного меню с именем 'SelectedItemsЦеныFind' на элементе формы с именем 'SelectedItemsЦены'
-			Тогда открылась форма с именем 'UniversalListFindExtForm'
-			И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Виды цен"
-			И из выпадающего списка с именем 'Pattern' я выбираю по строке "VA - Products"
-			И я нажимаю на кнопку с именем 'Find'
-			Тогда открылось окно "Install цен номенклатуры (create)"
-			И в таблице 'SelectedItemsЦены' я изменяю флаг с именем 'SelectedItemsЦеныEdit'
-			И я нажимаю на кнопку с именем 'KindsЦенNextCommand'
-			И в поле с именем 'Date' я ввожу текст '2/1/2021'
+			И я жду открытия формы  "Install цен номенклатуры (create)" в течение 10 секунд
+			Если '$HasSelectionВидовЦен$' Тогда
+				И в таблице 'SelectedItemsЦены' я активизирую поле с именем 'SelectedItemsЦеныRef'
+				И я выбираю пункт контекстного меню с именем 'SelectedItemsЦеныFind' на элементе формы с именем 'SelectedItemsЦены'
+				Тогда открылась форма с именем 'UniversalListFindExtForm'
+				И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Виды цен"
+				И из выпадающего списка с именем 'Pattern' я выбираю по строке "VA - Products"
+				И я нажимаю на кнопку с именем 'Find'
+				Тогда открылось окно "Install цен номенклатуры (create)"
+				И в таблице 'SelectedItemsЦены' я изменяю флаг с именем 'SelectedItemsЦеныEdit'
+				И я нажимаю на кнопку с именем 'KindsЦенNextCommand'
+			И в поле с именем 'Date' я ввожу текст '2/1/2024'
 			И в таблице 'TreeЦен' я нажимаю на кнопку с именем 'TreeЦенAddGoodsOnОтбору'
 			Тогда открылось окно "Pick товаров to отбору"
 			И в таблице 'SettingsComposerSettingsFilter' я перехожу к строке:
-				| "Comparison type" | "Value"          | "Use" | "Field"                          | "Application" | "Display mode" |
-				| 'IN List_SSLy'      | '<Пустое значение>' | "No"           | 'Products.Kind номенклатуры' | 'Ordinary'    | 'Быстрый доступ'    |
+				| 'Kind сравнения' | 'Value'          | 'Use' | 'Field'             | 'Application' | 'Mode отображения' |
+				| 'IN List_SSLy'      | '<Пустое значение>' | 'No'           | 'Kind номенклатуры' | 'Ordinary'    | 'Быстрый доступ'    |
 			И в таблице 'SettingsComposerSettingsFilter' я нажимаю кнопку выбора у реквизита с именем 'SettingsComposerSettingsFilterRightValue'
 			Тогда открылось окно "Value list"
 			И в таблице 'ValueList' я выбираю текущую строку
@@ -887,7 +963,7 @@
 			И в таблице 'KindsЦен' я завершаю редактирование строки
 			И я нажимаю на кнопку с именем 'OK'
 			Тогда открылось окно "Install цен номенклатуры (create) *"
-			Если элемент формы '№ в пределах дня' присутствует на форме Тогда	
+			Если элемент 'NumberINПределахДня' присутствует на форме Тогда	
 				И в поле с именем 'NumberINПределахДня' я ввожу текст '1'
 			И я нажимаю на кнопку с именем 'FormPostAndClose'
 			И я жду закрытия окна "Install цен номенклатуры (create) *" в течение 20 секунд
@@ -896,7 +972,7 @@
 			Когда открылось окно "History изменения цен"
 			И я выбираю пункт контекстного меню с именем 'ListContextMenuCopy' на элементе формы с именем 'List'
 			Тогда открылось окно "Install цен номенклатуры (create)"
-			И в поле с именем 'Date' я ввожу текст '3/1/2021'
+			И в поле с именем 'Date' я ввожу текст '3/1/2024'
 			И в таблице 'TreeЦен' я нажимаю на кнопку с именем 'TreeЦенChangeЦены'
 			Тогда открылось окно "Edit for процент"
 			И в таблице 'KindsЦен' я изменяю флаг с именем 'KindsЦенShouldRecalculate'
@@ -904,7 +980,7 @@
 			Когда открылось окно "Edit for процент"
 			И я нажимаю на кнопку с именем 'OK'
 			Тогда открылось окно "Install цен номенклатуры (create) *"
-			Если элемент формы '№ в пределах дня' присутствует на форме Тогда	
+			Если элемент 'NumberINПределахДня' присутствует на форме Тогда	
 				И в поле с именем 'NumberINПределахДня' я ввожу текст '1'		
 			И я нажимаю на кнопку с именем 'FormPostAndClose'
 			И я жду закрытия окна "Install цен номенклатуры (create) *" в течение 20 секунд
@@ -914,15 +990,15 @@
 			И в таблице 'List' я выбираю текущую строку
 			Тогда открылось окно "Install цен номенклатуры * from *"
 			Тогда таблица 'TreeЦен' стала равной:
-			| "Product range"                                                   | "Характеристика"                   | "Price"         | "Indent" |
-			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '<характеристики Not используются>' | '223,700.00'   | ''       |
-			| "3C:Enterprise 8 CORP. Client license for 100 users" | '<характеристики Not используются>' | '745,800.00'   | ''       |
-			| "5C:Corporate performance management"                                      | '<характеристики Not используются>' | '1,553,800.00' | ''       |
-			| "2C:Corporation"                                                  | '<характеристики Not используются>' | '2,548,200.00' | ''       |
-			| "1C:ERP. Corporate performance management"                                   | '<характеристики Not используются>' | '2,423,900.00' | ''       |
+			| "Product range"                                                   | "Price"         |
+			| "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '223,700.00'   |
+			| "3C:Enterprise 8 CORP. Client license for 100 users" | '745,800.00'   |
+			| "5C:Corporate performance management"                                      | '1,553,800.00' |
+			| "2C:Corporation"                                                  | '2,548,200.00' |
+			| "1C:ERP. Corporate performance management"                                   | '2,423,900.00' |
 			И Я закрываю окно "Install цен номенклатуры * from *"
 
-Сценарий: 00.16 Создание Контрагентов и Договоров контрагентов
+Сценарий: 00.20 Создание Контрагентов и Договоров контрагентов
 
 	Если '$$IsCPM$$' Тогда
 		Если 'NOT $$ЭтоPerform$$' Тогда
@@ -932,41 +1008,45 @@
 		И Я создаю группу контрагентов с именем "VA - Counterparties"
 
 		И Я создаю контрагента с именем "LLC \"Ganymede\"" родителем "VA - Counterparties" страной регистрации '643'
-		И Я создаю договор для контрагента "LLC \"Ganymede\"" номер "Ganymede-001" дата '1/1/2021' валюта 'RUB' организация "Mercury LLC" вид "With customer" сумма '10000.00' условие оплаты "VA - Agreement with the client"
-		И Я создаю договор для контрагента "LLC \"Ganymede\"" номер "Ganymede-002" дата '1/1/2021' валюта 'RUB' организация "Mercury LLC" вид "With supplier" сумма '20000.00' условие оплаты "VA - Agreement with the client"
+		И Я создаю договор для контрагента "LLC \"Ganymede\"" номер "Ganymede-001" дата '1/1/2024' валюта 'RUB' организация "Mercury LLC" вид "With customer" сумма '10000.00' условие оплаты "VA - Agreement with the client"
+		И Я создаю договор для контрагента "LLC \"Ganymede\"" номер "Ganymede-002" дата '1/1/2024' валюта 'RUB' организация "Mercury LLC" вид "With supplier" сумма '20000.00' условие оплаты "VA - Agreement with the client"
 		
 		И Я создаю контрагента с именем "LLC \"Io\"" родителем "VA - Counterparties" страной регистрации '643'
-		И Я создаю договор для контрагента "LLC \"Io\"" номер "Io-001" дата '1/1/2021' валюта 'RUB' организация "Mercury LLC" вид "With customer" сумма '10000.00' условие оплаты "VA - Agreement with the client"
-		И Я создаю договор для контрагента "LLC \"Io\"" номер "Io-002" дата '1/1/2021' валюта 'RUB' организация "Mercury LLC" вид "With customer" сумма '20000.00' условие оплаты "VA - Agreement with the client"
+		И Я создаю договор для контрагента "LLC \"Io\"" номер "Io-001" дата '1/1/2024' валюта 'RUB' организация "Mercury LLC" вид "With customer" сумма '10000.00' условие оплаты "VA - Agreement with the client"
+		И Я создаю договор для контрагента "LLC \"Io\"" номер "Io-002" дата '1/1/2024' валюта 'RUB' организация "Mercury LLC" вид "With customer" сумма '20000.00' условие оплаты "VA - Agreement with the client"
 		
-	Если '$$IsERPCPM$$' Тогда
+	Если '$$IsERPCPM$$' Тогда					
 
-		И Я создаю соглашение с клиентом с именем "VA - Agreement with the client" валютой 'RUB' в 1C:ERPУХ				
+		И Я создаю партнера с именем "LLC \"Ganymede\"" тип 'Client' в 1C:ERPУХ
 
-		И Я создаю партнера с именем "LLC \"Ganymede\"" тип 'Client' группа доступа 'OtherItems' в 1C:ERPУХ
+		И Я создаю соглашение с клиентом с именем "VA - Agreement with the client" валютой 'RUB' в 1C:ERPУХ	
+
 		И Для партнера "LLC \"Ganymede\"" я создаю контрагента с именем "LLC \"Ganymede\"" вид 'Юридическое лицо' в 1C:ERPУХ
-		И Для партнера "LLC \"Ganymede\"" контрагента "LLC \"Ganymede\"" я создаю договор с видом "With customer" номер "Ganymede-001" от '1/1/2021' организация "Mercury LLC" валюта 'RUB' сумма '10000.00' соглашение "VA - Agreement with the client" в 1C:ERPУХ		
-		И Для партнера "LLC \"Ganymede\"" контрагента "LLC \"Ganymede\"" я создаю договор с видом "With customer" номер "Ganymede-002" от '1/1/2021' организация "Mercury LLC" валюта 'RUB' сумма '10000.00' соглашение "VA - Agreement with the client" в 1C:ERPУХ		
+		И Для партнера "LLC \"Ganymede\"" контрагента "LLC \"Ganymede\"" я создаю договор с видом "With customer" номер "Ganymede-001" от '1/1/2024' организация "Mercury LLC" валюта 'RUB' сумма '10000.00' соглашение "VA - Agreement with the client" в 1C:ERPУХ		
+		И Для партнера "LLC \"Ganymede\"" контрагента "LLC \"Ganymede\"" я создаю договор с видом "With customer" номер "Ganymede-002" от '1/1/2024' организация "Mercury LLC" валюта 'RUB' сумма '20000.00' соглашение "VA - Agreement with the client" в 1C:ERPУХ		
 
-		И Я создаю партнера с именем "LLC \"Io\"" тип 'Client' группа доступа 'OtherItems' в 1C:ERPУХ
+		И Я создаю партнера с именем "LLC \"Io\"" тип 'Vendor' в 1C:ERPУХ
+
+		И Я создаю соглашение с поставщиком "LLC \"Io\"" с именем "VA - Соглашение From toFromтавщиком" валютой 'RUB' в 1C:ERPУХ
+
 		И Для партнера "LLC \"Io\"" я создаю контрагента с именем "LLC \"Io\"" вид 'Юридическое лицо' в 1C:ERPУХ
-		И Для партнера "LLC \"Io\"" контрагента "LLC \"Io\"" я создаю договор с видом "With customer" номер "Io-002" от '1/1/2021' организация "Mercury LLC" валюта 'RUB' сумма '10000.00' соглашение "VA - Agreement with the client" в 1C:ERPУХ		
-		И Для партнера "LLC \"Io\"" контрагента "LLC \"Io\"" я создаю договор с видом "With customer" номер 'Ио-002' от '1/1/2021' организация "Mercury LLC" валюта 'RUB' сумма '10000.00' соглашение "VA - Agreement with the client" в 1C:ERPУХ		
+		И Для партнера "LLC \"Io\"" контрагента "LLC \"Io\"" я создаю договор с видом "With supplier" номер "Io-001" от '1/1/2024' организация "Mercury LLC" валюта 'RUB' сумма '10000.00' соглашение "VA - Соглашение From toFromтавщиком" в 1C:ERPУХ		
+		И Для партнера "LLC \"Io\"" контрагента "LLC \"Io\"" я создаю договор с видом "With supplier" номер 'Ио-002' от '1/1/2024' организация "Mercury LLC" валюта 'RUB' сумма '20000.00' соглашение "VA - Соглашение From toFromтавщиком" в 1C:ERPУХ		
 
-Сценарий: 00.17 Создание Статей движения денежных средств
+Сценарий: 00.21 Создание Статей движения денежных средств
 
 	И Я создаю группу статей ДДС с именем "VA - Cash flow items"
 	И Я создаю статью ДДС с именем "3Software sale" родителем "VA - Cash flow items"
 	И Я создаю статью ДДС с именем "2Software implementation" родителем "VA - Cash flow items"
 	И Я создаю статью ДДС с именем "1Software upgrade" родителем "VA - Cash flow items"
 
-Сценарий: 00.18 Создание Статьей доходов и расходов
+Сценарий: 00.22 Создание Статьей доходов и расходов
 
 	И Я создаю группу статей ДиР с именем "VA - Income and expense items"
 	И Я создаю статью ДиР с именем "3Software sale" родителем "VA - Income and expense items"
 	И Я создаю статью ДиР с именем "2Software implementation" родителем "VA - Income and expense items"
 
-Сценарий: 00.19 Создание документа "Отражение фактических данных"
+Сценарий: 00.23 Создание документа "Отражение фактических данных"
 
 	Если 'NOT $$ЭтоPerform$$' Тогда
 
@@ -977,7 +1057,7 @@
 
 			* Страница 'Основное'	
 				Тогда открылось окно "Отражение фактических данных (create)"
-				И в поле с именем 'Date' я ввожу текст '01.01.2021  12:00:00 AM'
+				И в поле с именем 'Date' я ввожу текст '01.01.2024  12:00:00 AM'
 				И из выпадающего списка с именем 'DBDocument' я выбираю по строке 'CustomerInvoice'		
 				И из выпадающего списка с именем 'Scenario' я выбираю по строке "VA - Main scenario"
 				И из выпадающего списка с именем 'Organization' я выбираю по строке "Mercury LLC"
@@ -1005,7 +1085,7 @@
 			* Бюджет движения денежных средств
 				Когда открылось окно "Отражение фактических данных (create) *"
 				И я перехожу к закладке с именем 'GroupCFB'
-				И из выпадающего списка с именем 'PeriodCFB' я выбираю по строке '1 неделя. January 2021 G.'
+				И из выпадающего списка с именем 'PeriodCFB' я выбираю по строке '1 неделя. January 2024 G.'
 				И в таблице 'TabCashFlowsBudget' я нажимаю на кнопку с именем 'TabCashFlowsBudgetAdd'
 				Если '$$IsERPCPM$$' Тогда
 					И в таблице 'TabCashFlowsBudget' я нажимаю кнопку выбора у реквизита с именем 'TabCashFlowsBudgetCounterpartyContract'
@@ -1017,11 +1097,11 @@
 					Тогда открылось окно "Contracts From контрагентами"
 					И Я закрываю окно "Contracts From контрагентами"
 					И в таблице 'TabCashFlowsBudget' я нажимаю кнопку выбора у реквизита с именем 'TabCashFlowsBudgetCashFlowItem'
-					Тогда открылось окно "Select data type"
-					И в таблице '' я перехожу к строке:
-						| ''                                 |
-						| "Cash flow item" |
-					И в таблице '' я выбираю текущую строку
+					Если открылось окно "Select data type" Тогда
+						И в таблице '' я перехожу к строке:
+							| ''                                 |
+							| "Cash flow item" |
+						И в таблице '' я выбираю текущую строку
 					Тогда открылось окно "Cash flow items"
 					И Я закрываю окно "Cash flow items"
 				И в таблице 'TabCashFlowsBudget' из выпадающего списка с именем 'TabCashFlowsBudgetCounterpartyContract' я выбираю по строке "Ganymede-001"
@@ -1039,38 +1119,38 @@
 			* Запишем документ, проверим движения
 				Когда открылось окно "Отражение фактических данных (create) *"
 				И я нажимаю на кнопку с именем 'FormPost'
-				Тогда открылось окно "Отражение фактических данных * from *"
+				Тогда открылось окно "Reflection of actual data * from *"
 				И я нажимаю на кнопку с именем 'FormProcessingDocumentRegisterRecordsDocumentRegisterRecordsReport'
 				Тогда открылось окно "Document register records: Отражение фактических данных * from *"
 				Если '$$IsCPM$$' Тогда
-					И я перехожу к закладке с именем 'GroupMovementsДенежныхСредствCPM'
+					И я перехожу к закладке с именем 'GroupRegisteredRecordsДенежныхСредствCPM'
 					Тогда таблица 'CashFlowCPM' стала равной:
 						| 'n' | "Cash flow item" | "Bank account / касса" | "Income expense" | "Type денежных средств" | "Counterparty, подотчетник, касса ККМ" | 'Dimension2' | "Counterparty contract"       | 'Dimension1' | 'Dimension3' | 'Dimension4' | 'Dimension5' | 'Dimension6' | "Amount упр. учета" | 'Sum'        |
-						| '1' | "3Software sale" | ''                        | 'Receipt'        | 'BankAccountPayment'          | 'LLC "Ганимед"'                      | ''           | 'Ганимед-001 dated 01.01.2021' | ''           | ''           | ''           | ''           | ''           | '780,000.00'       | '780,000.00'   |
-						| '2' | "2Software implementation"  | ''                        | 'Receipt'        | 'BankAccountPayment'          | 'LLC "Ганимед"'                      | ''           | 'Ганимед-002 dated 01.01.2021' | ''           | ''           | ''           | ''           | ''           | '2,340,000.00'     | '2,340,000.00' |
+						| '1' | "3Software sale" | ''                        | 'Receipt'        | 'BankAccountPayment'          | 'LLC "Ганимед"'                      | ''           | 'Ганимед-001 dated 01.01.2024' | ''           | ''           | ''           | ''           | ''           | '780,000.00'       | '780,000.00'   |
+						| '2' | "2Software implementation"  | ''                        | 'Receipt'        | 'BankAccountPayment'          | 'LLC "Ганимед"'                      | ''           | 'Ганимед-002 dated 01.01.2024' | ''           | ''           | ''           | ''           | ''           | '2,340,000.00'     | '2,340,000.00' |
 				Если '$$IsERPCPM$$' Тогда
-					Тогда таблица 'BudgetsActualValues' стала равной:
-						| 'Document планирования' | 'n' | 'Dimension2' | 'IntendedPurpose'                   | "Financial responsibility center"          | 'Dimension4' | 'AssetRef бюджета'                   | 'Dimension1' | 'Dimension3' | 'Dimension5' | 'Dimension6' | 'Project'               | "Document регистратор" | 'Currency' | "Income expense" | 'Sum'        | "Amount упр"    | 'Count' |
-						| ''                      | '1' | ''           | 'Бюджет движения денежных средств' | "Mercury LLC" | ''           | "3Software sale" | ''           | ''           | ''           | ''           | "VA - Main project" | ''                     | 'RUB'    | ''              | '780,000.00'   | '780,000.00'   | ''           |
-						| ''                      | '2' | ''           | 'Бюджет движения денежных средств' | "Mercury LLC" | ''           | "2Software implementation"  | ''           | ''           | ''           | ''           | "VA - Main project" | ''                     | 'RUB'    | ''              | '2,340,000.00' | '2,340,000.00' | ''           |
+					Тогда таблица "ОперацииБюджетов" стала равной:
+						| 'n' | 'Kind бюджета'                      | 'Receipt расход' | 'Sum' | 'Dimension партнеров'                                    | 'Rate планирования' | 'Sum исполнено' | 'Dimension структуры'                              | 'Count' | 'Currency' | 'Dimension статей бюджетов'               |
+						| '1' | 'Бюджет движения денежных средств' | 'Receipt'        | ''      | 'Mercury LLC; LLC "Ганимед"; Ганимед-001 dated 01.01.2024' | '1.0000'            | '780,000.00'      | 'Mercury LLC; DimenKind - Main проект; Mercury LLC' | ''           | 'RUB'    | 'Реализация программных продуктов Receipt' |
+						| '2' | 'Бюджет движения денежных средств' | 'Receipt'        | ''      | 'Mercury LLC; LLC "Ганимед"; Ганимед-002 dated 01.01.2024' | '1.0000'            | '2,340,000.00'    | 'Mercury LLC; DimenKind - Main проект; Mercury LLC' | ''           | 'RUB'    | 'Integrate программных продуктов Receipt'  |
 
 			* Закроем документ	
 				Когда открылось окно "Document register records: Отражение фактических данных * from *"
 				И Я закрываю окно "Document register records: Отражение фактических данных * from *"
-				Тогда открылось окно "Отражение фактических данных * from *"
+				Тогда открылось окно "Reflection of actual data * from *"
 				И я нажимаю на кнопку с именем 'FormPostAndClose'
-				И я жду закрытия окна "Отражение фактических данных * from *" в течение 20 секунд
+				И я жду закрытия окна "Reflection of actual data * from *" в течение 20 секунд
 
 		* Создаем новый документ №2
 			Когда открылось окно "Отражения фактических данных"
 			И я выбираю пункт контекстного меню с именем 'ListContextMenuCopy' на элементе формы с именем 'List'
 			Тогда открылось окно "Отражение фактических данных (create)"
-			И в поле с именем 'Date' я ввожу текст '01.02.2021  12:00:00 AM'
+			И в поле с именем 'Date' я ввожу текст '01.02.2024  12:00:00 AM'
 			И из выпадающего списка с именем 'Counterparty' я выбираю по строке "LLC \"Io\""				
 
 			* Бюджет движения денежных средств
 				И я перехожу к закладке с именем 'GroupCFB'
-				И из выпадающего списка с именем 'PeriodCFB' я выбираю по строке '1 неделя. February 2021 G.'
+				И из выпадающего списка с именем 'PeriodCFB' я выбираю по строке '1 неделя. February 2024 G.'
 				И в таблице 'TabCashFlowsBudget' я выбираю текущую строку
 				Если '$$IsERPCPM$$' Тогда
 					И в таблице 'TabCashFlowsBudget' я нажимаю кнопку выбора у реквизита с именем 'TabCashFlowsBudgetCounterpartyContract'
@@ -1110,11 +1190,11 @@
 					Тогда открылось окно "Contracts From контрагентами"
 					И Я закрываю окно "Contracts From контрагентами"
 					И в таблице 'TabCashFlowsBudget' я нажимаю кнопку выбора у реквизита с именем 'TabCashFlowsBudgetCashFlowItem'
-					Тогда открылось окно "Select data type"
-					И в таблице '' я перехожу к строке:
+					Если открылось окно "Select data type" Тогда
+						И в таблице '' я перехожу к строке:
 						| ''                                 |
 						| "Cash flow item" |
-					И в таблице '' я выбираю текущую строку
+						И в таблице '' я выбираю текущую строку
 					Тогда открылось окно "Cash flow items"
 					И Я закрываю окно "Cash flow items"
 				И в таблице 'TabCashFlowsBudget' из выпадающего списка с именем 'TabCashFlowsBudgetCounterpartyContract' я выбираю по строке "Io-002"

@@ -47,7 +47,7 @@
 Сценарий: Я создаю валюту с цифровым кодом 'TheCodeDigital' символьным кодом 'TheCodeSymbol' и наименованием 'TheCurrencyName' если ее нет
 
 	* Открываем форму списка
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Currencies"
+		И В командном интерфейсе я выбираю "General catalogs and settings" "Currencies"
 		Тогда открылось окно "Currencies"
 
 	* Создадим валюту, если ее нет		
@@ -59,11 +59,15 @@
 		Если в таблице 'Currencies' количество строк 'равно' 0 Тогда
 			И я нажимаю на кнопку с именем 'CreateCurrency'
 			Тогда открылось окно "Currency (create)"
-			И в поле с именем 'DescriptionFull' я ввожу текст '[TheCurrencyName]'
-			И в поле с именем 'Code' я ввожу текст '[TheCodeDigital]'
-			И в поле с именем 'Description' я ввожу текст '[TheCodeSymbol]'
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "Currency (create) *" в течение 20 секунд
+			И я запоминаю заголовок текущего окна как 'WindowTitle'			
+		Иначе
+			И в таблице 'Currencies' я выбираю текущую строку
+			И я запоминаю заголовок текущего окна как 'WindowTitle'
+		И в поле с именем 'DescriptionFull' я ввожу текст '[TheCurrencyName]'
+		И в поле с именем 'Code' я ввожу текст '[TheCodeDigital]'
+		И в поле с именем 'Description' я ввожу текст '[TheCodeSymbol]'
+		И я нажимаю на кнопку с именем 'FormWriteAndClose'
+		И я жду закрытия окна "$TitleОкна$ *" в течение 20 секунд
 
 	* Закрываем список
 		Когда открылось окно "Currencies"
@@ -72,7 +76,7 @@
 Сценарий: Я устанавливаю курс валюты 'TheCodeSymbol' на дату 'TheCourseDate' в значение 'TheCourseValue' кратность 'TheCourseRepetition' базовая валюта 'TheBaseCurrencyCodeSymbol'
 
 	* Откроем валюту
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Currencies"
+		И В командном интерфейсе я выбираю "General catalogs and settings" "Currencies"
 		Тогда открылось окно "Currencies"
 		И я нажимаю на кнопку с именем 'FormFind'
 		Тогда открылась форма с именем 'UniversalListFindExtForm'
@@ -212,10 +216,17 @@
 					И я нажимаю на кнопку с именем 'BusinessEntity'
 				Иначе
 					И я нажимаю на кнопку с именем 'IndividualEntrepreneur'
-			ИначеЕсли '"[TheBusinessUnitType]"="SelectIn_"' Тогда
-				// Нет примеров
+				Если элемент формы с именем 'RegistrationCountry' присутствует на форме Тогда
+					И из выпадающего списка с именем 'RegistrationCountry' я выбираю по строке "643"										
 			ИначеЕсли '"[TheBusinessUnitType]"="SelectCenterForFinancialResponsibility"' Тогда
-				И я нажимаю на кнопку с именем 'FormCreateКонсолидируюшую'										
+				Если '"[TheBusinessUnitKind]"="SelectЭл"' Тогда
+					И я нажимаю на кнопку с именем 'FormCreateЭлиминирующую'
+				Иначе
+					И я нажимаю на кнопку с именем 'FormCreateКонсолидируюшую'
+				Если элемент формы с именем 'RegistrationCountry' присутствует на форме Тогда
+					И из выпадающего списка с именем 'RegistrationCountry' я выбираю по строке "643"	
+			ИначеЕсли '"[TheBusinessUnitType]"="SelectIn_"' Тогда
+				// Нет примеров											
 		ИначеЕсли '$$IsCPM$$' Тогда
 			И я нажимаю на кнопку с именем 'FormCreate'
 			Тогда открылось окно "Company type"
@@ -543,15 +554,8 @@
 	* Открываем список
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Dimension types (corporate)"
 		
-	* Удаляем элемент	
-		Тогда открылось окно "Dimension types (corporate)"
-		И я нажимаю на кнопку с именем 'FormFind'
-		Тогда открылась форма с именем 'UniversalListFindExtForm'
-		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
-		И в поле с именем 'Pattern' я ввожу текст '[TheAnalyticsCode]'
-		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Dimension types (corporate)"
+	* Удаляем элемент
+		И Я в списке "Dimension types (corporate)" по полю "Code" ищу элемент '[TheAnalyticsCode]' "Exact match"	
 		И Пока в таблице 'List' количество строк 'больше' 0 Тогда
 			* Произвольный классификтор
 				И в таблице 'List' я выбираю текущую строку
@@ -600,16 +604,7 @@
 			| 'KindАналитик.Write();' |
 
 	* Настраиваем вид аналитики
-		Когда открылось окно "Dimension types (corporate)"
-		И я нажимаю на кнопку с именем 'FormRefresh'
-		Когда открылось окно "Dimension types (corporate)"
-		И я нажимаю на кнопку с именем 'FormFind'
-		Тогда открылась форма с именем 'UniversalListFindExtForm'
-		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Code"
-		И в поле с именем 'Pattern' я ввожу текст '[TheAnalyticsCode]'
-		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И я нажимаю на кнопку с именем 'Find'
-		Тогда открылось окно "Dimension types (corporate)"
+		И Я в списке "Dimension types (corporate)" по полю "Code" ищу элемент '[TheAnalyticsCode]' "Exact match"
 		И в таблице 'List' я выбираю текущую строку
 		Когда открылось окно "* (Dimension types (corporate))"
 
@@ -619,27 +614,27 @@
 			И в таблице 'TableBoxAttributes' я перехожу к строке по шаблону:
 				| "Attribute"     | "Key" | "Template" |
 				| "Description" | "No"  | "No"   |
-			И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableTemplate'
-			И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableKey'
-			И в таблице 'TableBoxAttributes' я завершаю редактирование строки
 		ИначеЕсли в таблице 'TableBoxAttributes' есть строка Тогда
 			| "Attribute"                 | "Key" | "Template" |
 			| "Name in the application" | "No"  | "No"   |
 			И в таблице 'TableBoxAttributes' я перехожу к строке по шаблону:
 				| "Attribute"                 | "Key" | "Template" |
 				| "Name in the application" | "No"  | "No"   |
-			И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableTemplate'
-			И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableKey'
-			И в таблице 'TableBoxAttributes' я завершаю редактирование строки	
+		ИначеЕсли в таблице 'TableBoxAttributes' есть строка Тогда
+			| "Attribute"                 | "Key" | "Template" |
+			| "Рабочее наименование" | "No"  | "No"   |
+			И в таблице 'TableBoxAttributes' я перехожу к строке по шаблону:
+				| "Attribute"             | "Key" | "Template" |
+				| "Рабочее наименование" | "No"  | "No"   |
 		ИначеЕсли в таблице 'TableBoxAttributes' есть строка Тогда
 			| "Attribute" | "Key" | "Template" |
 			| "Code"      | "No"  | "No"   |
 			И в таблице 'TableBoxAttributes' я перехожу к строке:
 				| "Attribute" | "Key" | "Template" |
 				| "Code"      | "No"  | "No"   |
-			И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableTemplate'
-			И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableKey'
-			И в таблице 'TableBoxAttributes' я завершаю редактирование строки
+		И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableTemplate'
+		И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableKey'
+		И в таблице 'TableBoxAttributes' я завершаю редактирование строки
 		
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
 		И я жду закрытия окна "Dimension types (corporate) (create) *" в течение 20 секунд

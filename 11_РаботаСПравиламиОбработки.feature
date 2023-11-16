@@ -1,27 +1,27 @@
 ﻿#language: ru
-
 @tree
 
 Функционал: 11. Проверка функционала работы с правилами расчета
 
-Как Администратор я хочу
-Проверить создание и работу видов отчетов
-чтобы Виды отчетов вводились без ошибок
+	Как Администратор я хочу
+	Проверить создание и работу видов отчетов
+	чтобы Виды отчетов вводились без ошибок
 
 Контекст: 
 
-	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''
 	И я закрыл все окна клиентского приложения	
 
 Сценарий: 11.00 Определение типа приложения
 
+	И я закрываю TestClient "CPM - Budget"
+	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''
 	Пусть Инициализация переменных
 
-Сценарий: 11.01 Создание группы отчетов "VA - Calculation rules (group)"
+Сценарий: 11.01 Создание группы видов отчетов "VA - Calculation rules (group)"
 
 	И Я создаю группу видов отчетов с именем "VA - Calculation rules (group)" и родителем "VA - Report group"
 
-Сценарий: 11.02 Создание отчета с ручным вводом - "VA - Quantity"
+Сценарий: 11.02 Создание вида отчета с ручным вводом - "VA - Quantity"
 
 	И Я создаю вид отчета с именем "VA - Quantity" и родителем "VA - Calculation rules (group)"
 	
@@ -30,15 +30,14 @@
 		И Я в конструкторе отчета добавляю строку с именем "Product range"
 		И Я в конструкторе отчета добавляю колонку с именем "Quantity"
 		И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C2' 
-		И Я закрываю окно "Edit tree"
+		И Я закрываю окно "Report wizard"
 
 	И Я Для вида отчета "VA - Quantity" создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Quantity" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
 
 Сценарий: 11.03 Создание экземпляра отчета - "VA - Quantity"
 
-	И Я создаю экземпляр отчета для вида отчета "VA - Quantity" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' '' 
-	И я запоминаю текущее окно как 'WindowTitle'
+	И Я создаю экземпляр отчета для вида отчета "VA - Quantity" сценарий "VA - Main scenario" период '1/1/2024' '3/31/2024' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' '' 
 
 	И Я добавляю значения с раскрытием показателей в ячейку 'R6C2'
 		| "VA0Product"                                                     | 'Value1' |
@@ -61,7 +60,7 @@
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Quantity"                                                 | ''               | ''                | ''             | ''           |
 			| ''                                                                | ''               | ''                | ''             | ''           |
-			| ''                                                                | "January 2021" | "February 2021" | "March 2021" | "TOTAL"      |
+			| ''                                                                | "January 2024" | "February 2024" | "March 2024" | "TOTAL"      |
 			| ''                                                                | "Quantity"     | "Quantity"      | "Quantity"   | "Quantity" |
 			| "Product range"                                                    | '80'             | '130'             | '160'          | '370'        |
 			| "5C:Corporate performance management "                                      | '5'              | '15'              | '10'           | '30'         |
@@ -70,7 +69,7 @@
 			| "1C:ERP. Corporate performance management "                                   | '8'              | '18'              | '16'           | '42'         |
 			| "3C:Enterprise 8 CORP. Client license for 100 users " | '40'             | '50'              | '80'           | '170'        |
 
-	* Закроем документ
+	* Запишем документ
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'Write'
 
@@ -85,7 +84,7 @@
 		И я нажимаю на кнопку с именем 'WriteAndClose'
 		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд
 
-Сценарий: 11.04 Создание отчета с загрузкой из РС "VA - Price"
+Сценарий: 11.04 Создание вида отчета с загрузкой из РС "VA - Price"
 
 	И Я создаю вид отчета с именем "VA - Price" и родителем "VA - Calculation rules (group)"
 
@@ -96,7 +95,7 @@
 		И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C2' 
 
 	* Вводим формулы расчета
-		Тогда открылось окно "Edit tree"
+		Тогда открылось окно "Report wizard"
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
@@ -111,7 +110,10 @@
 		Тогда открылось окно "Find"
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Register"
 		И я меняю значение переключателя с именем 'CompareType' на "At beginning of line"
-		И в поле с именем 'Pattern' я ввожу текст "Product range prices"		
+		Если '$$IsERPCPM$$' Тогда
+			И в поле с именем 'Pattern' я ввожу текст "Product range prices 2.5"	
+		Иначе
+			И в поле с именем 'Pattern' я ввожу текст "Product range prices"		
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Infobase information registers"
 		И в таблице 'List' я выбираю текущую строку			
@@ -137,8 +139,8 @@
 				| 'Kind цены' |
 			И я нажимаю на кнопку с именем 'AddConditionItem'
 			И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
-			| "Field"    |
-			| 'KindЦены' |
+			| "Field"       |
+			| '[Kind цены]' |
 		И в таблице 'TreeOfFilterParametersDB' я выбираю текущую строку
 		И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "Fixed value"
 		И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'DefiningMethodClarification' я выбираю по строке "VA - Products"
@@ -146,7 +148,7 @@
 		И я жду закрытия окна "Data source (create) *" в течение 20 секунд
 		Тогда открылось окно "Data sources"
 		И в таблице 'List' я выбираю текущую строку	
-		Тогда открылось окно "Edit tree *"
+		Тогда открылось окно "Report wizard *"
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
 
 	И Я Для вида отчета "VA - Price" создаю бланк по умолчанию
@@ -154,7 +156,7 @@
 
 Сценарий: 11.05 Создание экземпляра отчета - "VA - Price"
 
-	И Я создаю экземпляр отчета для вида отчета "VA - Price" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' ''
+	И Я создаю экземпляр отчета для вида отчета "VA - Price" сценарий "VA - Main scenario" период '1/1/2024' '3/31/2024' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' ''
 
 	* Запишем документ
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
@@ -165,7 +167,7 @@
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Price"                                                       | ''               | ''                | ''             | ''           |
 			| ''                                                                | ''               | ''                | ''             | ''           |
-			| ''                                                                | "January 2021" | "February 2021" | "March 2021" | "TOTAL"      |
+			| ''                                                                | "January 2024" | "February 2024" | "March 2024" | "TOTAL"      |
 			| ''                                                                | "Price"           | "Price"            | "Price"         | "Price"       |
 			| "Product range"                                                    | '6,030,000'      | '6,633,000'       | '7,495,400'    | '20,158,400' |
 			| "5C:Corporate performance management "                                      | '1,250,000'      | '1,375,000'       | '1,553,800'    | '4,178,800'  |
@@ -174,7 +176,7 @@
 			| "1C:ERP. Corporate performance management "                                   | '1,950,000'      | '2,145,000'       | '2,423,900'    | '6,518,900'  |
 			| "3C:Enterprise 8 CORP. Client license for 100 users " | '600,000'        | '660,000'         | '745,800'      | '2,005,800'  |
 
-Сценарий: 11.06 Создание отчета с рассчитываемыми показателями - "VA - Sales"
+Сценарий: 11.06 Создание вида отчета с рассчитываемыми показателями - "VA - Sales"
 
 	И Я создаю вид отчета с именем "VA - Sales" и родителем "VA - Calculation rules (group)"
 
@@ -188,49 +190,48 @@
 		И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C2' 
 
 	* Вводим формулы расчета
-		Тогда открылось окно "Edit tree"
+		Тогда открылось окно "Report wizard"
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И я нажимаю на кнопку с именем 'RefToIndicator1'
 		И Я выбираю показатель с кодом "ProductRange_Quantity" вида отчета  "VA - Quantity"
-		Тогда открылось окно "Edit tree *"
+		Тогда открылось окно "Report wizard *"
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		Тогда открылось окно "Edit tree"
+		Тогда открылось окно "Report wizard"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C3'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И я нажимаю на кнопку с именем 'RefToIndicator1'
 		И Я выбираю показатель с кодом "ProductRange_Price" вида отчета "VA - Price"
-		Тогда открылось окно "Edit tree *"
+		Тогда открылось окно "Report wizard *"
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		Тогда открылось окно "Edit tree"
+		Тогда открылось окно "Report wizard"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C4'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И я нажимаю на кнопку с именем 'RefToIndicator1'
 		И Я выбираю показатель с кодом "ProductRange_Quantity"
-		Тогда открылось окно "Edit tree *"
+		Тогда открылось окно "Report wizard *"
 		И я нажимаю на кнопку с именем 'ButtonMultiply'
 		И я нажимаю на кнопку с именем 'RefToIndicator1'
 		И Я выбираю показатель с кодом "ProductRange_Price"
-		Тогда открылось окно "Edit tree *"
+		Тогда открылось окно "Report wizard *"
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'	
-		Когда открылось окно "Edit tree"
-		И Я закрываю окно "Edit tree"
+		Когда открылось окно "Report wizard"
+		И Я закрываю окно "Report wizard"
 
 	И Я Для вида отчета "VA - Sales" создаю бланк по умолчанию
 	И Я Для вида отчета "VA - Sales" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
 		
-Сценарий: 11.07 Создание экземпляра отчета - "VA - Sales"	- пишем черновые версии
+Сценарий: 11.07 Создание экземпляра отчета - "VA - Sales" без записи
 
-	И Я создаю экземпляр отчета для вида отчета "VA - Sales" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' ''
-	И я запоминаю текущее окно как 'WindowTitle'
+	И Я создаю экземпляр отчета для вида отчета "VA - Sales" сценарий "VA - Main scenario" период '1/1/2024' '3/31/2024' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' ''
 
 	* Документ должен быть пустой
 		Когда открылось окно '$WindowTitle$'
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Sales" | ''               | ''     | ''      | ''                | ''     | ''      | ''             | ''     | ''      | ''           | ''     | ''      |
 			| ''             | ''               | ''     | ''      | ''                | ''     | ''      | ''             | ''     | ''      | ''           | ''     | ''      |
-			| ''             | "January 2021" | ''     | ''      | "February 2021" | ''     | ''      | "March 2021" | ''     | ''      | "TOTAL"      | ''     | ''      |
+			| ''             | "January 2024" | ''     | ''      | "February 2024" | ''     | ''      | "March 2024" | ''     | ''      | "TOTAL"      | ''     | ''      |
 			| ''             | "Quantity"     | "Price" | "Amount" | "Quantity"      | "Price" | "Amount" | "Quantity"   | "Price" | "Amount" | "Quantity" | "Price" | "Amount" |
 			| "Product range" | '0'              | '0'    | '0'     | '0'               | '0'    | '0'     | '0'            | '0'    | '0'     | '0'          | '0'    | '0'     |
 
@@ -240,7 +241,7 @@
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Sales"                                                    | ''               | ''          | ''           | ''                | ''          | ''            | ''             | ''          | ''            | ''           | ''           | ''            |
 			| ''                                                                | ''               | ''          | ''           | ''                | ''          | ''            | ''             | ''          | ''            | ''           | ''           | ''            |
-			| ''                                                                | "January 2021" | ''          | ''           | "February 2021" | ''          | ''            | "March 2021" | ''          | ''            | "TOTAL"      | ''           | ''            |
+			| ''                                                                | "January 2024" | ''          | ''           | "February 2024" | ''          | ''            | "March 2024" | ''          | ''            | "TOTAL"      | ''           | ''            |
 			| ''                                                                | "Quantity"     | "Price"      | "Amount"      | "Quantity"      | "Price"      | "Amount"       | "Quantity"   | "Price"      | "Amount"       | "Quantity" | "Price"       | "Amount"       |
 			| "Product range"                                                    | '80'             | '6,030,000' | '63,800,000' | '130'             | '6,633,000' | '136,510,000' | '160'          | '7,495,400' | '158,607,200' | '370'        | '20,158,400' | '358,917,200' |
 			| "5C:Corporate performance management "                                      | '5'              | '1,250,000' | '6,250,000'  | '15'              | '1,375,000' | '20,625,000'  | '10'           | '1,553,800' | '15,538,000'  | '30'         | '4,178,800'  | '42,413,000'  |
@@ -257,13 +258,13 @@
 
 Сценарий: 11.08 Создание экземпляра отчета - "VA - Sales"
 
-	И Я создаю экземпляр отчета для вида отчета "VA - Sales" сценарий "VA - Main scenario" период '1/1/2021' '3/31/2021' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' ''
+	И Я создаю экземпляр отчета для вида отчета "VA - Sales" сценарий "VA - Main scenario" период '1/1/2024' '3/31/2024' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' ''
 
 	* Документ должен быть пустой
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Sales" | ''               | ''     | ''      | ''                | ''     | ''      | ''             | ''     | ''      | ''           | ''     | ''      |
 			| ''             | ''               | ''     | ''      | ''                | ''     | ''      | ''             | ''     | ''      | ''           | ''     | ''      |
-			| ''             | "January 2021" | ''     | ''      | "February 2021" | ''     | ''      | "March 2021" | ''     | ''      | "TOTAL"      | ''     | ''      |
+			| ''             | "January 2024" | ''     | ''      | "February 2024" | ''     | ''      | "March 2024" | ''     | ''      | "TOTAL"      | ''     | ''      |
 			| ''             | "Quantity"     | "Price" | "Amount" | "Quantity"      | "Price" | "Amount" | "Quantity"   | "Price" | "Amount" | "Quantity" | "Price" | "Amount" |
 			| "Product range" | '0'              | '0'    | '0'     | '0'               | '0'    | '0'     | '0'            | '0'    | '0'     | '0'          | '0'    | '0'     |
 
@@ -275,7 +276,7 @@
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Sales"                                                    | ''               | ''          | ''           | ''                | ''          | ''            | ''             | ''          | ''            | ''           | ''           | ''            |
 			| ''                                                                | ''               | ''          | ''           | ''                | ''          | ''            | ''             | ''          | ''            | ''           | ''           | ''            |
-			| ''                                                                | "January 2021" | ''          | ''           | "February 2021" | ''          | ''            | "March 2021" | ''          | ''            | "TOTAL"      | ''           | ''            |
+			| ''                                                                | "January 2024" | ''          | ''           | "February 2024" | ''          | ''            | "March 2024" | ''          | ''            | "TOTAL"      | ''           | ''            |
 			| ''                                                                | "Quantity"     | "Price"      | "Amount"      | "Quantity"      | "Price"      | "Amount"       | "Quantity"   | "Price"      | "Amount"       | "Quantity" | "Price"       | "Amount"       |
 			| "Product range"                                                    | '80'             | '6,030,000' | '63,800,000' | '130'             | '6,633,000' | '136,510,000' | '160'          | '7,495,400' | '158,607,200' | '370'        | '20,158,400' | '358,917,200' |
 			| "5C:Corporate performance management "                                      | '5'              | '1,250,000' | '6,250,000'  | '15'              | '1,375,000' | '20,625,000'  | '10'           | '1,553,800' | '15,538,000'  | '30'         | '4,178,800'  | '42,413,000'  |
@@ -305,7 +306,7 @@
 		И таблица 'UsedReportTypes' стала равной:
 			| "Report type"   |
 			| "VA - Sales" |
-		Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
+		Если '$$InterfaceLanguage$$ = "Ru"' Тогда
 			И таблица 'Definitions' стала равной:
 				| "Method"                                        |
 				| 'ObjectOfARAP'                                |
@@ -355,7 +356,7 @@
 		И в таблице 'UsedReportTypes' я нажимаю на кнопку с именем 'UsedReportTypesInsertIndicators'
 		И Я выбираю показатель с кодом "ProductRange_Quantity"
 		Когда открылось окно "VA - Sales, VA - Sales: Procedure before calculation *"
-		Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
+		Если '$$InterfaceLanguage$$ = "Ru"' Тогда
 			Тогда элемент формы с именем 'TextDocumentFieldProcedure' стал равен 
 				|' ArrayOfIndicators = New Array;'|
 				|'ArrayOfIndicators.Add(\"DimenKindSales:Products_Count\");'|
@@ -373,7 +374,7 @@
 		И в таблице 'UsedReportTypes' я завершаю редактирование строки
 		И в таблице 'UsedReportTypes' я нажимаю на кнопку с именем 'UsedReportTypesInsertIndicators'
 		И Я выбираю показатель с кодом "ProductRange_Price"
-		Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
+		Если '$$InterfaceLanguage$$ = "Ru"' Тогда
 			Тогда элемент формы с именем 'TextDocumentFieldProcedure' стал равен 
 				|' ArrayOfIndicators = New Array;'|
 				|'ArrayOfIndicators.Add(\"DimenKindPrice:Products_Price\");'|
@@ -388,7 +389,7 @@
 		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст ' '	
 
 	* Ввод функций
-		Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
+		Если '$$InterfaceLanguage$$ = "Ru"' Тогда
 			* ОбъектРасчета
 				И в таблице 'Definitions' я перехожу к строке:
 						| "Method"         |
@@ -593,7 +594,7 @@
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormProcedureOfCalculation'
 		Когда открылось окно "VA - Sales, VA - Sales: Procedure before calculation"
-		Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
+		Если '$$InterfaceLanguage$$ = "Ru"' Тогда
 			Тогда элемент формы с именем 'TextDocumentFieldProcedure' стал равен 
 				|' ClearAll();'|
 				|''|
@@ -608,8 +609,8 @@
 	* Закрытие форм
 		Когда открылось окно '$WindowTitle$'
 		И Я закрываю окно '$WindowTitle$'
-		Тогда открылось окно "Edit tree"
-		И Я закрываю окно "Edit tree"
+		Тогда открылось окно "Report wizard"
+		И Я закрываю окно "Report wizard"
 
 Сценарий: 11.10 Проверка работы произвольных функций расчета
 
@@ -622,7 +623,7 @@
 	* Вводим текст процедуры
 		И я нажимаю на кнопку с именем 'FormProcedureAfterCalculation'
 		Когда открылось окно "VA - Sales, VA - Sales: Procedure after calculation"
-		Если '$$LanguageИнтерфейса$$ = "Ru"' Тогда
+		Если '$$InterfaceLanguage$$ = "Ru"' Тогда
 			И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 				|'ReportData = New Structure("Organization,Scenario,Currency,ReportPeriod",'|
 				|' ObjectOfARAP.Organization,ObjectOfARAP.Scenario,ObjectOfARAP.MainCurrency,ObjectOfARAP.ArrayOfPeriods);'|
@@ -742,8 +743,8 @@
 		Тогда открылось окно '$WindowTitle$ *'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
 		И я жду закрытия окна '$WindowTitle$ *' в течение 20 секунд
-		Тогда открылось окно "Edit tree"
-		И Я закрываю окно "Edit tree"
+		Тогда открылось окно "Report wizard"
+		И Я закрываю окно "Report wizard"
 
 	* Рассчитаем документ
 		Тогда открылось окно "Report types and templates"
@@ -758,7 +759,7 @@
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Sales"                                                    | ''               | ''     | ''      | ''                | ''           | ''      | ''             | ''           | ''      | ''           | ''           | ''      |
 			| ''                                                                | ''               | ''     | ''      | ''                | ''           | ''      | ''             | ''           | ''      | ''           | ''           | ''      |
-			| ''                                                                | "January 2021" | ''     | ''      | "February 2021" | ''           | ''      | "March 2021" | ''           | ''      | "TOTAL"      | ''           | ''      |
+			| ''                                                                | "January 2024" | ''     | ''      | "February 2024" | ''           | ''      | "March 2024" | ''           | ''      | "TOTAL"      | ''           | ''      |
 			| ''                                                                | "Quantity"     | "Price" | "Amount" | "Quantity"      | "Price"       | "Amount" | "Quantity"   | "Price"       | "Amount" | "Quantity" | "Price"       | "Amount" |
 			| "Product range"                                                    | '0'              | '0'    | '0'     | '130'             | '12,060,000' | '0'     | '180'          | '13,266,000' | '0'     | '310'        | '25,326,000' | '0'     |
 			| "5C:Corporate performance management "                                      | '0'              | '0'    | '0'     | '15'              | '2,500,000'  | '0'     | '25'           | '2,750,000'  | '0'     | '40'         | '5,250,000'  | '0'     |
@@ -788,7 +789,7 @@
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Sales"                                                    | ''               | ''     | ''      | ''                | ''        | ''      | ''             | ''        | ''      | ''           | ''        | ''      |
 			| ''                                                                | ''               | ''     | ''      | ''                | ''        | ''      | ''             | ''        | ''      | ''           | ''        | ''      |
-			| ''                                                                | "January 2021" | ''     | ''      | "February 2021" | ''        | ''      | "March 2021" | ''        | ''      | "TOTAL"      | ''        | ''      |
+			| ''                                                                | "January 2024" | ''     | ''      | "February 2024" | ''        | ''      | "March 2024" | ''        | ''      | "TOTAL"      | ''        | ''      |
 			| ''                                                                | "Quantity"     | "Price" | "Amount" | "Quantity"      | "Price"    | "Amount" | "Quantity"   | "Price"    | "Amount" | "Quantity" | "Price"    | "Amount" |
 			| "Product range"                                                    | '0'              | '0'    | '0'     | '130'             | '134,101' | '0'     | '180'          | '149,591' | '0'     | '310'        | '283,692' | '0'     |
 			| "5C:Corporate performance management "                                      | '0'              | '0'    | '0'     | '15'              | '27,799'  | '0'     | '25'           | '31,010'  | '0'     | '40'         | '58,808'  | '0'     |
@@ -828,7 +829,7 @@
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - Sales"                                                    | ''               | ''          | ''           | ''                | ''          | ''            | ''             | ''          | ''            | ''           | ''           | ''            |
 			| ''                                                                | ''               | ''          | ''           | ''                | ''          | ''            | ''             | ''          | ''            | ''           | ''           | ''            |
-			| ''                                                                | "January 2021" | ''          | ''           | "February 2021" | ''          | ''            | "March 2021" | ''          | ''            | "TOTAL"      | ''           | ''            |
+			| ''                                                                | "January 2024" | ''          | ''           | "February 2024" | ''          | ''            | "March 2024" | ''          | ''            | "TOTAL"      | ''           | ''            |
 			| ''                                                                | "Quantity"     | "Price"      | "Amount"      | "Quantity"      | "Price"      | "Amount"       | "Quantity"   | "Price"      | "Amount"       | "Quantity" | "Price"       | "Amount"       |
 			| "Product range"                                                    | '80'             | '6,030,000' | '63,800,000' | '130'             | '6,633,000' | '136,510,000' | '160'          | '7,495,400' | '158,607,200' | '370'        | '20,158,400' | '358,917,200' |
 			| "5C:Corporate performance management "                                      | '5'              | '1,250,000' | '6,250,000'  | '15'              | '1,375,000' | '20,625,000'  | '10'           | '1,553,800' | '15,538,000'  | '30'         | '4,178,800'  | '42,413,000'  |
