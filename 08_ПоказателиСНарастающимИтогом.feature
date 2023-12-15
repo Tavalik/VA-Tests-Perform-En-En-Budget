@@ -35,7 +35,7 @@
 	И я нажимаю на кнопку с именем 'EditTree'
 	Когда открылось окно "Report wizard"
 	И Я в конструкторе отчета добавляю строку с именем "Goods"	
-	И Я в конструкторе отчета добавляю колонку с именем "Quantity"		
+	И Я в конструкторе отчета добавляю колонку с именем "Count"		
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C3'
 		
 	И Я Для вида отчета "VA - Cumulative total (source)" создаю бланк по умолчанию
@@ -50,7 +50,7 @@
 			| "VA - Cumulative total (source)" | ''               | ''                | ''             | ''           |
 			| ''                                 | ''               | ''                | ''             | ''           |
 			| ''                                 | "January 2024" | "February 2024" | "March 2024" | "TOTAL"      |
-			| ''                                 | "Quantity"     | "Quantity"      | "Quantity"   | "Quantity" |
+			| ''                                 | "Count"     | "Count"      | "Count"   | "Count" |
 			| "Goods"                           | '0'              | '0'               | '0'            | '0'          |
 
 	* Вводим значения показателей
@@ -80,7 +80,7 @@
 			| "VA - Cumulative total (source)"                                | ''               | ''                | ''             | ''           |
 			| ''                                                                | ''               | ''                | ''             | ''           |
 			| ''                                                                | "January 2024" | "February 2024" | "March 2024" | "TOTAL"      |
-			| ''                                                                | "Quantity"     | "Quantity"      | "Quantity"   | "Quantity" |
+			| ''                                                                | "Count"     | "Count"      | "Count"   | "Count" |
 			| "Goods"                                                          | '50'             | '100'             | '150'          | '300'        |
 			| "5C:Corporate performance management "                                      | '10'             | '20'              | '30'           | '60'         |
 			| "2C:Corporation "                                                  | '10'             | '20'              | '30'           | '60'         |
@@ -117,7 +117,7 @@
 	И Я в конструкторе отчета добавляю строку с именем "FromReceiverShiftPeriod"
 	И Я в конструкторе отчета добавляю строку с именем "FromSourceArbitraryCode"
 		
-	И Я в конструкторе отчета добавляю колонку с именем "Quantity"		
+	И Я в конструкторе отчета добавляю колонку с именем "Count"		
 	
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C3'
 	Когда открылось окно "Report wizard"
@@ -134,7 +134,7 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			И я нажимаю на кнопку с именем 'RefToIndicator1'
-			И Я выбираю показатель с кодом "Goods_Quantity" вида отчета "VA - Cumulative total (source)"
+			И Я выбираю показатель с кодом "Goods_Count" вида отчета "VA - Cumulative total (source)"
 			Тогда открылось окно "Report wizard *"
 			И я нажимаю на кнопку с именем 'WriteAndCollapse'
 		* ИзИсточникаДоВычисленияХ2	
@@ -181,7 +181,7 @@
 			И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase report item indicator"
 			И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Cumulative total (source)"
 			И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-			И Я выбираю показатель с кодом "Goods_Quantity"
+			И Я выбираю показатель с кодом "Goods_Count"
 			Тогда открылось окно "Data source (create) *"
 			И я перехожу к закладке с именем 'FiltersPage'
 			И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
@@ -222,7 +222,7 @@
 			И из выпадающего списка с именем 'MethodOfObtaining' я выбираю точное значение "Current infobase report item indicator"
 			И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Cumulative total (recipient)"
 			И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-			И Я выбираю показатель с кодом "SourceData_Quantity"
+			И Я выбираю показатель с кодом "SourceData_Count"
 			Тогда открылось окно "Data source (create) *"
 			И я перехожу к закладке с именем 'FiltersPage'
 			И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
@@ -262,7 +262,7 @@
 			Тогда открылось окно "Data source (create)"
 			И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Cumulative total (recipient)"
 			И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-			И Я выбираю показатель с кодом "FromReceiverSelectio_Quantity"
+			И Я выбираю показатель с кодом "FromReceiverSelectio_Count"
 			Тогда открылось окно "Data source (create) *"
 			И я перехожу к закладке с именем 'FiltersPage'
 			И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
@@ -291,7 +291,7 @@
 			И я нажимаю на кнопку с именем 'EditProcedure'
 			Тогда открылось окно "VA - Cumulative total (recipient): Calculation formula"
 			И Я запоминаю в переменную 'ReportCode' значение "VACumulativeTotalSource"
-			И Я запоминаю в переменную 'CodeOfIndicator1' значение "Goods_Quantity"			
+			И Я запоминаю в переменную 'CodeOfIndicator1' значение "Goods_Count"			
 			И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст
 				|'// Получим ссылки to1 нужные показатели'|
 				|'IndicatorSource = Catalogs.ReportsIndicators.FindByCode("$CodeOfIndicator1$",,,Catalogs.ReportsKinds.FindByCode("$ReportCode$"));'|
@@ -325,7 +325,7 @@
 			Когда Открылась правило расчета для вида отчета "VA - Cumulative total (recipient)"
 			И я нажимаю на кнопку с именем 'FormProcedureOfCalculation'
 			Когда открылось окно "VA - Cumulative total (recipient), VA - Cumulative total (recipient): Procedure before calculation"
-			И Я запоминаю в переменную 'CodeOfIndicator2' значение "FromSourceBeforeCalc_Quantity"
+			И Я запоминаю в переменную 'CodeOfIndicator2' значение "FromSourceBeforeCalc_Count"
 			И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 				|'// Получим ссылки to1 нужные показатели'|
 				|'IndicatorSource = Catalogs.ReportsIndicators.FindByCode("$CodeOfIndicator1$",,,Catalogs.ReportsKinds.FindByCode("$ReportCode$"));'|
@@ -364,7 +364,7 @@
 			Когда Открылась правило расчета для вида отчета "VA - Cumulative total (recipient)"
 			И я нажимаю на кнопку с именем 'FormProcedureAfterCalculation'
 			Когда открылось окно "VA - Cumulative total (recipient), VA - Cumulative total (recipient): Procedure after calculation"
-			И Я запоминаю в переменную 'CodeOfIndicator2' значение "FromSourceAfterCalcu_Quantity"
+			И Я запоминаю в переменную 'CodeOfIndicator2' значение "FromSourceAfterCalcu_Count"
 			И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст 
 				|'// Получим ссылки to1 нужные показатели'|
 				|'IndicatorSource = Catalogs.ReportsIndicators.FindByCode("$CodeOfIndicator1$",,,Catalogs.ReportsKinds.FindByCode("$ReportCode$"));'|

@@ -9,7 +9,7 @@
 
 	* Открываем список
 		Если '$$IsERPCPM$$' Тогда
-			И В командном интерфейсе я выбираю "Master data и администрирование" "Users and rights settings"
+			И В командном интерфейсе я выбираю "Master data and адмandнandстрandрованandе" "Users and rights settings"
 		Иначе			
 			И В командном интерфейсе я выбираю "Administration" "Users and rights settings"
 		Тогда открылось окно "Users and rights settings"
@@ -54,7 +54,7 @@
 
 	* Открываем список
 		Если '$$IsERPCPM$$' Тогда
-			И В командном интерфейсе я выбираю "Master data и администрирование" "Users and rights settings"
+			И В командном интерфейсе я выбираю "Master data and адмandнandстрandрованandе" "Users and rights settings"
 		Иначе			
 			И В командном интерфейсе я выбираю "Administration" "Users and rights settings"
 		Тогда открылось окно "Users and rights settings"
@@ -99,7 +99,7 @@
 
 	* Открываем список
 		Если '$$IsERPCPM$$' Тогда
-			И В командном интерфейсе я выбираю "Master data и администрирование" "Users and rights settings"
+			И В командном интерфейсе я выбираю "Master data and адмandнandстрandрованandе" "Users and rights settings"
 		Иначе			
 			И В командном интерфейсе я выбираю "Administration" "Users and rights settings"
 		Тогда открылось окно "Users and rights settings"
@@ -139,7 +139,7 @@
 
 	* Открываем список
 		Если '$$IsERPCPM$$' Тогда
-			И В командном интерфейсе я выбираю "Master data и администрирование" "Users and rights settings"
+			И В командном интерфейсе я выбираю "Master data and адмandнandстрandрованandе" "Users and rights settings"
 		Иначе			
 			И В командном интерфейсе я выбираю "Administration" "Users and rights settings"
 		Тогда открылось окно "Users and rights settings"
@@ -179,7 +179,7 @@
 
 	* Открываем список
 		Если '$$IsERPCPM$$' Тогда
-			И В командном интерфейсе я выбираю "Master data и администрирование" "Users and rights settings"
+			И В командном интерфейсе я выбираю "Master data and адмandнandстрandрованandе" "Users and rights settings"
 		Иначе			
 			И В командном интерфейсе я выбираю "Administration" "Users and rights settings"
 		Тогда открылось окно "Users and rights settings"
@@ -228,7 +228,7 @@
 
 	* Открываем список
 		Если '$$IsERPCPM$$' Тогда
-			И В командном интерфейсе я выбираю "Master data и администрирование" "Users and rights settings"
+			И В командном интерфейсе я выбираю "Master data and адмandнandстрandрованandе" "Users and rights settings"
 		Иначе			
 			И В командном интерфейсе я выбираю "Administration" "Users and rights settings"
 		Тогда открылось окно "Users and rights settings"
@@ -256,7 +256,7 @@
 
 	* Открываем список
 		Если '$$IsERPCPM$$' Тогда
-			И В командном интерфейсе я выбираю "Master data и администрирование" "Users and rights settings"
+			И В командном интерфейсе я выбираю "Master data and адмandнandстрandрованandе" "Users and rights settings"
 		Иначе			
 			И В командном интерфейсе я выбираю "Administration" "Users and rights settings"
 		Тогда открылось окно "Users and rights settings"
@@ -285,7 +285,7 @@
 
 	* Открываем список
 		Если '$$IsERPCPM$$' Тогда
-			И В командном интерфейсе я выбираю "Master data и администрирование" "Users and rights settings"
+			И В командном интерфейсе я выбираю "Master data and адмandнandстрandрованandе" "Users and rights settings"
 		Иначе			
 			И В командном интерфейсе я выбираю "Administration" "Users and rights settings"
 		Тогда открылось окно "Users and rights settings"
@@ -313,7 +313,7 @@
 		И я устанавливаю флаг с именем 'IBUserStandardAuthentication'
 		И я устанавливаю флаг с именем 'IBUserShowInList'
 		И я нажимаю на кнопку с именем 'FormWrite'		
-		Если открылось окно "Обсуждения (система взаимодействий)" Тогда
+		Если открылось окно "Conversations (система взаимодействий)" Тогда
 			И я устанавливаю флаг с именем 'NeverAskAgain'
 			И я нажимаю на кнопку с именем 'Command2'
 		Тогда открылось окно "[TheUser] (User)"

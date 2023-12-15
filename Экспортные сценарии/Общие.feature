@@ -24,7 +24,7 @@
 	И я удаляю все строки таблицы 'SettingsComposerUserSettingsItem0Filter'		
 	И в таблице 'SettingsComposerUserSettingsItem0Filter' я нажимаю на кнопку с именем 'SettingsComposerUserSettingsItem0FilterAddFilterItem'
 	И в таблице 'SettingsComposerUserSettingsItem0Filter' я перехожу к последней строке
-	Если 'Page1Find("[TheField]", ".") > 0' Тогда
+	Если 'StrFind("[TheField]", ".") > 0' Тогда
 		И в таблице 'SettingsComposerUserSettingsItem0Filter' в поле с именем 'SettingsComposerUserSettingsItem0FilterLeftValue' я ввожу текст '[TheField]'
 	И в таблице 'SettingsComposerUserSettingsItem0Filter' из выпадающего списка с именем 'SettingsComposerUserSettingsItem0FilterLeftValue' я выбираю точное значение '[TheField]'
 	И в таблице 'SettingsComposerUserSettingsItem0Filter' я активизирую поле с именем 'SettingsComposerUserSettingsItem0FilterComparisonType'
@@ -41,7 +41,7 @@
 
 	Тогда открылось окно "List Options"
 	И в таблице 'SettingsComposerUserSettingsItem0Filter' я нажимаю на кнопку с именем 'SettingsComposerUserSettingsItem0FilterAddFilterItem'
-	Если 'Page1Find("[TheField]", ".") > 0' Тогда
+	Если 'StrFind("[TheField]", ".") > 0' Тогда
 		И в таблице 'SettingsComposerUserSettingsItem0Filter' в поле с именем 'SettingsComposerUserSettingsItem0FilterLeftValue' я ввожу текст '[TheField]'
 	И в таблице 'SettingsComposerUserSettingsItem0Filter' из выпадающего списка с именем 'SettingsComposerUserSettingsItem0FilterLeftValue' я выбираю точное значение '[TheField]'
 	И в таблице 'SettingsComposerUserSettingsItem0Filter' я активизирую поле с именем 'SettingsComposerUserSettingsItem0FilterComparisonType'

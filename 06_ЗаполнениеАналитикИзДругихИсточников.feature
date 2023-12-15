@@ -35,7 +35,7 @@
 	Когда открылось окно "Report wizard"
 	И Я в конструкторе отчета добавляю строку с именем "Cash flow items"
 	И Я в конструкторе отчета добавляю строку с именем "Goods"
-	И Я в конструкторе отчета добавляю колонку с именем "Quantity"
+	И Я в конструкторе отчета добавляю колонку с именем "Count"
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0CFItems" в ячейку 'R2C3'
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R3C3'
 
@@ -51,7 +51,7 @@
 			| "VA - Data to add analytics" | ''               | ''                | ''             | ''           |
 			| ''                                    | ''               | ''                | ''             | ''           |
 			| ''                                    | "January 2024" | "February 2024" | "March 2024" | "TOTAL"      |
-			| ''                                    | "Quantity"     | "Quantity"      | "Quantity"   | "Quantity" |
+			| ''                                    | "Count"     | "Count"      | "Count"   | "Count" |
 			| "Cash flow items"                          | '0'              | '0'               | '0'            | '0'          |
 			| "Goods"                              | '0'              | '0'               | '0'            | '0'          |
 
@@ -96,7 +96,7 @@
 	И Я в конструкторе отчета добавляю строку с именем "Analyst transformation"
 	И Я в конструкторе отчета добавляю строку с именем "Calculated Source"
 	И Я в конструкторе отчета добавляю строку с именем "Recalculation in code"
-	И Я в конструкторе отчета добавляю колонку с именем "Quantity"
+	И Я в конструкторе отчета добавляю колонку с именем "Count"
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C3'
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R3C3'
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0CFItems" в ячейку 'R4C3'
@@ -114,7 +114,7 @@
 				И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
 				И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 				И я нажимаю на кнопку с именем 'RefToIndicator1'
-				И Я выбираю показатель с кодом "Goods_Quantity" вида отчета "VA - Data to add analytics"
+				И Я выбираю показатель с кодом "Goods_Count" вида отчета "VA - Data to add analytics"
 				Когда открылось окно "Report wizard*"
 				И я нажимаю на кнопку с именем 'WriteAndCollapse'
 				* Источник с доп. аналитиками
@@ -166,7 +166,7 @@
 					Тогда открылось окно "Data source (create)"
 					И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Data to add analytics"
 					И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-					И Я выбираю показатель с кодом "Goods_Quantity"
+					И Я выбираю показатель с кодом "Goods_Count"
 					Тогда открылось окно "Data source (create)*"
 					И я нажимаю на кнопку с именем 'FormWriteAndClose'
 				Тогда открылось окно "Data sources"
@@ -198,7 +198,7 @@
 				Когда открылось окно "Data sources"
 				И в таблице 'List' я перехожу к строке:
 					| "Description"                                          | "Receipt method"                                 | "Indicator filter"  |
-					| "VA - Data to add analytics_Goods quantity" | "Current infobase report indicator (easy setup)" | "Goods quantity" |
+					| "VA - Data to add analytics_Goods count" | "Current infobase report indicator (easy setup)" | "Goods count" |
 				И в таблице 'List' я выбираю текущую строку				
 				Тогда открылось окно "Data source (create)*"
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
@@ -218,7 +218,7 @@
 				Тогда открылось окно "Data source (create)"
 				И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Data to add analytics"
 				И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-				И Я выбираю показатель с кодом "Goods_Quantity"
+				И Я выбираю показатель с кодом "Goods_Count"
 				Тогда открылось окно "Data source (create) *"
 				И в таблице 'ComplianceTable' я выбираю текущую строку
 				И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Fixed value"
@@ -272,7 +272,7 @@
 					Тогда открылось окно "Data source (create)"
 					И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Data to add analytics"
 					И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-					И Я выбираю показатель с кодом "CashFlowItems_Quantity"
+					И Я выбираю показатель с кодом "CashFlowItems_Count"
 					Тогда открылось окно "Data source (create)*"
 					И я нажимаю на кнопку с именем 'FormWriteAndClose'
 					Тогда открылось окно "Data sources"
@@ -291,7 +291,7 @@
 					Тогда открылось окно "Data source (create)"
 					И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Analysts from fields of other sources"
 					И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-					И Я выбираю показатель с кодом "AnalystTransformatio_Quantity"
+					И Я выбираю показатель с кодом "AnalystTransformatio_Count"
 					Тогда открылось окно "Data source (create)*"
 					И я нажимаю на кнопку с именем 'FormWriteAndClose'
 					Тогда открылось окно "Data sources"
@@ -328,7 +328,7 @@
 					Тогда открылось окно "Data source (create)"
 					И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Analysts from fields of other sources"
 					И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-					И Я выбираю показатель с кодом "AnalystTransformatio_Quantity"
+					И Я выбираю показатель с кодом "AnalystTransformatio_Count"
 					Тогда открылось окно "Data source (create) *"
 					И я нажимаю на кнопку с именем 'FormWriteAndClose'
 					Тогда открылось окно "Data sources"
@@ -347,7 +347,7 @@
 					Тогда открылось окно "Data source (create)"
 					И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Analysts from fields of other sources"
 					И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-					И Я выбираю показатель с кодом "CurrentFormula_Quantity"
+					И Я выбираю показатель с кодом "CurrentFormula_Count"
 					Тогда открылось окно "Data source (create) *"
 					И я нажимаю на кнопку с именем 'FormWriteAndClose'
 					Тогда открылось окно "Data sources"
@@ -381,7 +381,7 @@
 						И я нажимаю на кнопку с именем 'AddConditionItem'
 						И в таблице 'TreeOfFilterParametersDB' я перехожу к строке:
 							| "Field"       |
-							| "[Type цены]" |
+							| "[Вид цены]" |
 					И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'ParameterCalculationMethod' я выбираю точное значение "Fixed value"
 					И в таблице 'TreeOfFilterParametersDB' из выпадающего списка с именем 'DefiningMethodClarification' я выбираю по строке "VA - Products"
 					И в таблице 'TreeOfFilterParametersDB' я завершаю редактирование строки
@@ -421,7 +421,7 @@
 			| "VA - Analysts from fields of other sources" | ''               | ''                | ''             | ''           |
 			| ''                                          | ''               | ''                | ''             | ''           |
 			| ''                                          | "January 2024" | "February 2024" | "March 2024" | "TOTAL"      |
-			| ''                                          | "Quantity"     | "Quantity"      | "Quantity"   | "Quantity" |
+			| ''                                          | "Count"     | "Count"      | "Count"   | "Count" |
 			| "Current formula"                           | '0'              | '0'               | '0'            | '0'          |
 			| "Other source"                           | '0'              | '0'               | '0'            | '0'          |
 			| "Analyst transformation"                    | '0'              | '0'               | '0'            | '0'          |
@@ -437,7 +437,7 @@
 			| "VA - Analysts from fields of other sources"                       | ''               | ''                | ''             | ''           |
 			| ''                                                                | ''               | ''                | ''             | ''           |
 			| ''                                                                | "January 2024" | "February 2024" | "March 2024" | "TOTAL"      |
-			| ''                                                                | "Quantity"     | "Quantity"      | "Quantity"   | "Quantity" |
+			| ''                                                                | "Count"     | "Count"      | "Count"   | "Count" |
 			| "Current formula"                                                 | '12'             | '24'              | '36'           | '72'         |
 			| "5C:Corporate performance management "                                      | '4'              | '8'               | '12'           | '24'         |
 			| "4C:Enterprise 8.3 CORP. Server License (x86-64) "           | '2'              | '4'               | '6'            | '12'         |
@@ -492,7 +492,7 @@
 		Тогда открылось окно "Data source (create)"
 		И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Analysts from fields of other sources"
 		И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-		И Я выбираю показатель с кодом "CurrentFormula_Quantity"
+		И Я выбираю показатель с кодом "CurrentFormula_Count"
 		Тогда открылось окно "Data source (create)*"
 		И в таблице 'ComplianceTable' я выбираю текущую строку
 		И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Another source field"
@@ -505,7 +505,7 @@
 			Тогда открылось окно "Data source (create)"
 			И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Data to add analytics"
 			И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-			И Я выбираю показатель с кодом "Goods_Quantity"
+			И Я выбираю показатель с кодом "Goods_Count"
 			Тогда открылось окно "Data source (create) *"
 			И в таблице 'ComplianceTable' я выбираю текущую строку
 			И в таблице 'ComplianceTable' из выпадающего списка с именем 'ComplianceTableFillingMethod' я выбираю точное значение "Another source field"
@@ -518,7 +518,7 @@
 				Тогда открылось окно "Data source (create)"
 				И из выпадающего списка с именем 'ReportTypeFilter' я выбираю по строке "VA - Data to add analytics"
 				И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-				И Я выбираю показатель с кодом "Goods_Quantity"
+				И Я выбираю показатель с кодом "Goods_Count"
 				Тогда открылось окно "Data source (create)*"
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			Тогда открылось окно "Data sources"

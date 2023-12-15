@@ -176,6 +176,20 @@
 	* Настраиваем показатели
 		* Выручка по валюте [Средний курс за период]
 			Тогда открылось окно "Report wizard"
+			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
+			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+			Тогда открылось окно "* (Report indicators)"
+			И я перехожу к закладке с именем 'CurrenciesConversion'
+			Тогда элемент формы с именем 'CurrExchangeType' стал равен "Average rate for period"
+			И я нажимаю кнопку очистить у поля с именем 'CurrExchangeType'
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			Тогда в логе сообщений TestClient есть строки:
+				|"\"Exchange rate kind\" is a required field."|
+			И из выпадающего списка с именем 'CurrExchangeType' я выбираю точное значение "Average rate for period"
+			И я нажимаю на кнопку с именем 'FormWriteAndClose'
+			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд												
+		* Выручка по валюте [Средний курс за период]
+			Тогда открылось окно "Report wizard"
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C2'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "* (Report indicators)"
@@ -1284,3 +1298,67 @@
 		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
 		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "Макеты\09\ВА_ВалютныеПоказатели_Приемник_Движения.mxl" по шаблону
 		И Я закрываю окно "Flat table of indicator values"
+
+Сценарий: 09.10 Изменение курса через Периодические курсы валют
+
+	И я закрываю TestClient "CPM - Budget"
+	И я подключаю TestClient "CPM - Budget" логин "Administrator" пароль ''
+
+	* Октрываем обработку
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Periodic exchange rates"
+		Тогда открылось окно "Periodic exchange rates"
+		И из выпадающего списка с именем 'Scenario' я выбираю по строке "VA - Main scenario"
+		И из выпадающего списка с именем 'Periodicity' я выбираю точное значение "Month"
+		И я нажимаю на кнопку с именем 'ChangePeriod'
+		Тогда открылось окно "Select period"
+		И в поле с именем 'DateBegin' я ввожу текст "1/1/2024"
+		И я перехожу к следующему реквизиту
+		И в поле с именем 'DateEnd' я ввожу текст "3/31/2024"
+		И я нажимаю на кнопку с именем 'select'
+		Тогда открылось окно "Periodic exchange rates"
+		И из выпадающего списка с именем 'Currency' я выбираю точное значение "EUR"
+		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
+			| "Currency"          | "Exchange rate at the beginning of the period" | "Exchange rate at the end of the period" | "Average rate" | "Average rate IFRS" | "Average rate (CB)" | "Multiplier" |
+			| "EUR"             | ''                       | ''                      | ''             | ''                  | ''                  | ''          |
+			| "January 2024"  | '90.7932'                | '92.2963'               | '90.4971'      | '91.5448'           | '90.4537'           | '1.0000'    |
+			| "February 2024" | '92.2963'                | '90.3743'               | '89.9321'      | '91.3353'           | '90.0038'           | '1.0000'    |
+			| "March 2024"    | '90.3743'                | '88.8821'               | '88.6820'      | '89.6282'           | '88.7338'           | '1.0000'    |
+	
+	* Редактируем курс	
+		// ДОДЕЛАТЬ		
+				
+Сценарий: 09.11 Изменение курса в документе Управления периодом сценария
+
+	* Находим и открываем нужный документ
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Reporting period management"
+
+		И Я в списке "Reporting period management" по полю "Scenario" ищу элемент "VA - Main scenario" "Exact match"
+		И Я в списке "Reporting period management" по полю "Frequency" ищу элемент "Month" "Exact match" 
+		И Я в списке "Reporting period management" по полю "Start period" ищу элемент "January 2024" "At beginning of line"
+
+		Тогда в таблице 'List' количество строк "равно" 1
+		И в таблице 'List' я выбираю текущую строку
+
+		Тогда Открылся документ управления периодом для сценария "VA - Main scenario" периодичность "Month"
+
+	* Редактируем курс
+	// ДОДЕЛАТЬ
+//		И я нажимаю на кнопку с именем 'FormGoForward'
+//		И в таблице 'RatesViewTable' я нажимаю на кнопку с именем 'RatesTable_ChangeModeWithoutSave'
+//		Когда открылось окно '$WindowTitle$'
+//		И в таблице 'RatesEditTable' я перехожу к строке:
+//			| "Currency" | "Current value" | "Multiplier" | "Rate period"   |
+//			| 'EUR'    | '90.7932'          | '1.0000'    | "January 2024" |
+//		И в таблице 'RatesEditTable' я выбираю текущую строку
+//		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '90.7932'
+//		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '92.2963'
+//		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriod_CurrentValue' я ввожу текст '90.4971'
+//		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodCentralBank_CurrentValue' я ввожу текст '90.4537'
+//		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodIFRS_CurrentValue' я ввожу текст '91.5448'
+//		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPreviousPeriodEnd_CurrentValue' я ввожу текст '0'
+//		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriod_CurrentValue' я ввожу текст '0'
+//		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '0'
+//		И в таблице 'RatesEditTable' я завершаю редактирование строки
+//		И в таблице 'RatesEditTable' я нажимаю на кнопку с именем 'RatesEditTableRatesTable_Write'
+		
+

@@ -26,7 +26,7 @@
 
 	* Настройка прав доступа
 		Если '$$IsERPCPM$$' Тогда
-			И В командном интерфейсе я выбираю "Master data и администрирование" "Users and rights settings"
+			И В командном интерфейсе я выбираю "Master data and адмandнandстрandрованandе" "Users and rights settings"
 			Тогда открылось окно "Users and rights settings"
 		Иначе			
 			И В командном интерфейсе я выбираю "Administration" "Users and rights settings"
@@ -38,10 +38,14 @@
 		Если открылось окно "1C:Enterprise" Тогда
 			И я нажимаю на кнопку с именем 'Button0'
 		Тогда открылось окно "Users and rights settings"
-		Если элемент 'LimitAccessAtRecordLevelUniversally' присутствует на форме Тогда
-			И из выпадающего списка с именем 'LimitAccessAtRecordLevelUniversally' я выбираю точное значение "Стандартный"
-			Если открылось окно "1C:Enterprise" Тогда
-				И я нажимаю на кнопку с именем 'Button0'
+		Если '$$ЭтоPerform$$' Тогда
+			* Включаем производительный режим работы
+				И Я включаю производительный режим работы ограничений на уровне записей
+		Иначе
+			* Включаем стандартный режим работы
+				И из выпадающего списка с именем 'LimitAccessAtRecordLevelUniversally' я выбираю точное значение "Regular"
+				Если открылось окно "1C:Enterprise" Тогда
+					И я нажимаю на кнопку с именем 'Button0'
 
 	* Настройка даты запрета редактирования
 		Тогда открылось окно "Users and rights settings"
@@ -59,7 +63,7 @@
 	* Настройка программы
 		Если '$$IsERPCPM$$' Тогда
 			* Предприятие
-				И В командном интерфейсе я выбираю "Master data и администрирование" "Предприятие"
+				И В командном интерфейсе я выбираю "Master data and адмandнandстрandрованandе" "Предприятие"
 				Тогда открылось окно "Предприятие"
 				И я устанавливаю флаг с именем 'UseMultipleCompanies'
 				И я разворачиваю группу с именем 'SettingsGroup1Валют'
@@ -67,24 +71,27 @@
 				Тогда открылось окно "Предприятие"
 				И Я закрываю окно "Предприятие"
 			* CRM и маркетинг
-				И В командном интерфейсе я выбираю "Master data и администрирование" "CRM и маркетинг"
-				Тогда открылось окно "CRM и маркетинг"
+				И В командном интерфейсе я выбираю "Master data and адмandнandстрandрованandе" "CRM and маркетandнг"
+				Тогда открылось окно "CRM and маркетandнг"
 				И я разворачиваю группу с именем "GroupSettingsCRM"
 				И я устанавливаю флаг с именем 'UseПартнеровANDКонтрагентов'								
 				И я разворачиваю группу с именем 'GroupМаркетинг'
 				И я устанавливаю флаг с именем 'UseНесколькоВидовЦен'
-				Тогда открылось окно "CRM и маркетинг"	
-				И Я закрываю окно "CRM и маркетинг"	
+				Тогда открылось окно "CRM and маркетandнг"	
+				И Я закрываю окно "CRM and маркетandнг"	
 			* Склад и доставка
-				И В командном интерфейсе я выбираю "Master data и администрирование" "Warehouse и доставка"
-				Тогда открылось окно "Warehouse и доставка"
+				И В командном интерфейсе я выбираю "Master data and адмandнandстрandрованandе" "Warehouse and доставка"
+				Тогда открылось окно "Warehouse and доставка"
 				И я устанавливаю флаг с именем 'UseНесколькоСкладов'
-				Тогда открылось окно "Warehouse и доставка"
-				И Я закрываю окно "Warehouse и доставка"																
+				Тогда открылось окно "Warehouse and доставка"
+				И Я закрываю окно "Warehouse and доставка"																
 
 	И Я создаю единицу измерения с кодом '796' если ее нет, наименование "PCs", наименование полное "Piece"
 
-	И Я устанавливаю в константу 'UseIndicatorRecalculationTraceMode' значение 'True'	
+	* Установка констант и ФО
+		И Я устанавливаю в константу 'UseIndicatorRecalculationTraceMode' значение 'True'
+		Если '$$IsERPCPM$$' Тогда
+			И Я устанавливаю в константу 'UseProductCategories' значение 'True'	
 
 	* Добавим валюты, если их нет
 		* RUB
@@ -117,7 +124,7 @@
 					Константы.ВалютаУправленческогоУчета.Установить(Справочники.Валюты.НайтиПоКоду("643"));
 				"""	
 		Если '$$IsERPCPM$$' Тогда
-			И В командном интерфейсе я выбираю "Master data и администрирование" "Предприятие"
+			И В командном интерфейсе я выбираю "Master data and адмandнandстрandрованandе" "Предприятие"
 			Тогда открылось окно "Предприятие"
 			И я разворачиваю группу с именем 'SettingsGroup1Валют'
 			И из выпадающего списка с именем 'ManagementAccountingCurrency' я выбираю точное значение 'RUB'
@@ -527,7 +534,7 @@
 		* EUR
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period"   |
+				| "Currency" | "Current value" | "Multiplier" | "Rate period"   |
 				| 'EUR'    | '90.7932'          | '1.0000'    | "January 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '90.7932'
@@ -540,7 +547,7 @@
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '0'
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period"    |
+				| "Currency" | "Current value" | "Multiplier" | "Rate period"    |
 				| 'EUR'    | '92.2963'          | '1.0000'    | "February 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '92.2963'
@@ -553,7 +560,7 @@
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '90.4537'	
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period" |
+				| "Currency" | "Current value" | "Multiplier" | "Rate period" |
 				| 'EUR'    | '90.3743'          | '1.0000'    | "March 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '90.3743'
@@ -567,7 +574,7 @@
 		* USD
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period"   |
+				| "Currency" | "Current value" | "Multiplier" | "Rate period"   |
 				| 'USD'    | '73.8757'          | '1.0000'    | "January 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '73.8757'
@@ -580,7 +587,7 @@
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '0'
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period"    |
+				| "Currency" | "Current value" | "Multiplier" | "Rate period"    |
 				| 'USD'    | '76.2527'          | '1.0000'    | "February 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '76.2527'
@@ -593,7 +600,7 @@
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '74.1489'	
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period" |
+				| "Currency" | "Current value" | "Multiplier" | "Rate period" |
 				| 'USD'    | '74.4373'          | '1.0000'    | "March 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '74.4373'
@@ -652,29 +659,38 @@
 		И Я в списке "Dimension types (corporate)" по полю "Description" ищу и выбираю элемент 'Currencies' "Exact match" 
 		Когда открылось окно '* (Dimension types (corporate))'
 		И в поле с именем 'Description' я ввожу текст "Currencies"
-		И я нажимаю на кнопку с именем 'FormWrite'
-		Тогда открылось окно "Currencies (Dimension types (corporate))"
-		Если в таблице 'TableBoxAttributes' есть строка Тогда
-			| "Attribute"       | "Key" | "Template" |
-			| "Alphabetic code" | "No"  | "No"   |
-			И в таблице 'TableBoxAttributes' я перехожу к строке:
-				| "Attribute"       | "Key" | "Template" |
-				| "Alphabetic code" | "No"  | "No"   |
-			И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableKey'
+		И я запоминаю значение поля с именем 'Code' как 'CodeCurrency'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна "Currencies (Dimension types (corporate)) *" в течение 20 секунд
-		Когда открылось окно "Dimension types (corporate)"
-		И я выбираю пункт контекстного меню с именем 'ListContextMenuCancelSearch' на элементе формы с именем 'List'
+		И я жду закрытия окна "* (Dimension types (corporate)) *" в течение 20 секунд
+		И Я для вида аналитики с кодом "$CodeCurrency$" делаю ключом реквизит "Alphabetic code"
 
 	Если '$$ЭтоPerform$$' Тогда
-		И Я создаю вид аналитики с кодом "VA0ProCate" именем "Product categories" и типом 'CatalogRef.ArbitraryClassifierCPM'
+		И Я создаю вид аналитики с кодом "VA0ProCate" именем "Product categories" типом 'CatalogRef.ArbitraryClassifierCPM'
 	Иначе
-		И Я создаю вид аналитики с кодом "VA0ProCate" именем "Product categories" и типом 'CatalogRef.ProductCategories'
-	И Я создаю вид аналитики с кодом "VA0Product" именем "Product range" и типом 'CatalogRef.Products'
-	И Я создаю вид аналитики с кодом "VA0Counter" именем "Counterparties" и типом 'CatalogRef.Counterparties'
-	И Я создаю вид аналитики с кодом "VA0Contrac" именем "Counterparty contracts" и типом 'CatalogRef.CounterpartyContracts'
-	И Я создаю вид аналитики с кодом "VA0CFItems" именем "Cash flow items" и типом 'CatalogRef.CashFlowReportItems'
-	И Я создаю вид аналитики с кодом "VA0IEItems" именем "Income and expense items" и типом 'CatalogRef.IncomeAndExpenseItems'
+		И Я создаю вид аналитики с кодом "VA0ProCate" именем "Product categories" типом 'CatalogRef.ProductCategories'
+	И Я для вида аналитики с кодом "VA0ProCate" делаю ключом реквизит "Description"
+
+	И Я создаю вид аналитики с кодом "VA0Product" именем "Product range" типом 'CatalogRef.Products'
+	И Я для вида аналитики с кодом "VA0Product" делаю ключом реквизит "Description"
+	И Я для вида аналитики с кодом "VA0Product" делаю ключом реквизит "Product ID"
+
+	И Я создаю вид аналитики с кодом "VA0Counter" именем "Counterparties" типом 'CatalogRef.Counterparties'
+	Если '$$IsERPCPM$$' Тогда
+		И Я для вида аналитики с кодом "VA0Counter" делаю ключом реквизит "Рабочее наименование"
+	Иначе
+		И Я для вида аналитики с кодом "VA0Counter" делаю ключом реквизит "Name in the application"
+
+	И Я создаю вид аналитики с кодом "VA0Contrac" именем "Counterparty contracts" типом 'CatalogRef.CounterpartyContracts'
+	Если '$$IsERPCPM$$' Тогда
+		И Я для вида аналитики с кодом "VA0Contrac" делаю ключом реквизит "Full name"
+	Иначе
+		И Я для вида аналитики с кодом "VA0Contrac" делаю ключом реквизит "Description"
+
+	И Я создаю вид аналитики с кодом "VA0CFItems" именем "Cash flow items" типом 'CatalogRef.CashFlowReportItems'
+	И Я для вида аналитики с кодом "VA0CFItems" делаю ключом реквизит "Description"
+
+	И Я создаю вид аналитики с кодом "VA0IEItems" именем "Income and expense items" типом 'CatalogRef.IncomeAndExpenseItems'
+	И Я для вида аналитики с кодом "VA0IEItems" делаю ключом реквизит "Description"
 
 Сценарий: 00.15 Создание Вида номенклатуры
 
@@ -801,7 +817,7 @@
 				Тогда открылось окно "Install цен номенклатуры (create) *"
 				И в таблице 'Goods' я нажимаю на кнопку с именем 'GoodsChangeGoods'
 				Тогда открылось окно "Modify таблицы товаров"
-				И из выпадающего списка с именем 'CurrentAction1' я выбираю точное значение "Edit цены for процент"
+				И из выпадающего списка с именем 'CurrentAction1' я выбираю точное значение "Change цены for процент"
 				И в поле с именем 'VariantValuesNumberPercent' я ввожу текст '10.00'
 				И я нажимаю на кнопку с именем 'Execute'
 				И я нажимаю на кнопку с именем 'FormMoveTo_INDocument'
@@ -842,8 +858,8 @@
 	Если '$$IsERPCPM$$' Тогда	
 
 		* Создаем новый вид цен
-			И В командном интерфейсе я выбираю "CRM и маркетинг" "Settings и справочники"
-			Тогда открылось окно "Settings и справочники to CRM и маркетингу"
+			И В командном интерфейсе я выбираю "CRM and маркетandнг" "Settings and справочнandkand"
+			Тогда открылось окно "Settings and справочнandkand to CRM and маркетandнгу"
 			И я нажимаю на кнопку с именем 'OpenKindsЦен'
 			Тогда открылось окно "Виды цен "
 			И я меняю значение переключателя с именем 'GroupWarehousesViewOptionВидовЦен' на 'All'
@@ -851,27 +867,22 @@
 			Если в таблице 'List' количество строк 'равно' 0 Тогда
 				И Я запоминаю значение выражения 'False' в переменную 'HasSelectionВидовЦен'
 			Иначе
-				И Я запоминаю значение выражения 'True' в переменную 'HasSelectionВидовЦен'			
-			И я нажимаю на кнопку с именем 'FormFind'
-			Тогда открылась форма с именем 'UniversalListFindExtForm'
-			И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Description"				
-			И в поле с именем 'Pattern' я ввожу текст "VA - Products"
-			И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-			И я нажимаю на кнопку с именем 'Find'		
-			Тогда открылось окно "Виды цен "							
+				И Я запоминаю значение выражения 'True' в переменную 'HasSelectionВидовЦен'
+			И Пауза 1			
+			И Я в списке "Виды цен " по полю "Description" ищу элемент "VA - Products" "Exact match" 
 			И Пока в таблице 'List' количество строк 'больше' 0 Тогда
 				И Я запоминаю значение выражения '"Delete_" + StrReplace(New UUID, "-", "")' в переменную 'UID'
 				И в таблице 'List' я выбираю текущую строку
-				Тогда открылось окно "VA - Products (Type цены)"
+				Тогда открылось окно "VA - Products (Вид цены)"
 				И я нажимаю на кнопку с именем 'AllowObjectAttributeEdit'
 				Тогда открылось окно "Unlock attribute"
 				И я нажимаю на кнопку с именем 'EnableEdit'
-				Тогда открылось окно "VA - Products (Type цены) *"
+				Тогда открылось окно "VA - Products (Вид цены) *"
 				И в поле с именем 'Description' я ввожу значение переменной 'UID'
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
-				И я жду закрытия окна "VA - Products (Type цены) *" в течение 20 секунд
+				И я жду закрытия окна "VA - Products (Вид цены) *" в течение 20 секунд
 			И я нажимаю на кнопку с именем 'FormCreate'
-			Тогда открылось окно "Type цены (create)"
+			Тогда открылось окно "Вид цены (create)"
 			И в поле с именем 'Description' я ввожу текст "VA - Products"
 			И из выпадающего списка с именем 'CurrencyЦены' я выбираю точное значение 'RUB'
 			И я изменяю флаг с именем 'PriceВключаетVAT'
@@ -881,10 +892,10 @@
 			И я устанавливаю флаг с именем 'Округлять'
 			И из выпадающего списка с именем 'AccuracyОкругления' я выбираю точное значение "100"				
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "Type цены (create) *" в течение 20 секунд
+			И я жду закрытия окна "Вид цены (create) *" в течение 20 секунд
 
 		* Вводим документ за Январь
-			Когда В командном интерфейсе я выбираю "CRM и маркетинг" "Цены (прайс-лист)"
+			Когда В командном интерфейсе я выбираю "CRM and маркетandнг" "Цены (прайс-лист)"
 			Тогда открылось окно "Прайс-лист for *"
 			И я нажимаю на кнопку с именем 'HistoryChangesЦен'
 			Тогда открылось окно "History изменения цен"
@@ -956,7 +967,7 @@
 			И я нажимаю на кнопку с именем 'OK'
 			Тогда открылось окно "Install цен номенклатуры (create) *"
 			И в таблице 'TreeЦен' я нажимаю на кнопку с именем 'TreeЦенChangeЦены'
-			Тогда открылось окно "Edit for процент"
+			Тогда открылось окно "Change for процент"
 			И в таблице 'KindsЦен' я активизирую поле с именем 'KindsЦенPercentChanges'
 			И в таблице 'KindsЦен' я выбираю текущую строку
 			И в таблице 'KindsЦен' в поле с именем 'KindsЦенPercentChanges' я ввожу текст '10.00'
@@ -974,10 +985,10 @@
 			Тогда открылось окно "Install цен номенклатуры (create)"
 			И в поле с именем 'Date' я ввожу текст '3/1/2024'
 			И в таблице 'TreeЦен' я нажимаю на кнопку с именем 'TreeЦенChangeЦены'
-			Тогда открылось окно "Edit for процент"
+			Тогда открылось окно "Change for процент"
 			И в таблице 'KindsЦен' я изменяю флаг с именем 'KindsЦенShouldRecalculate'
 			И в таблице 'KindsЦен' в поле с именем 'KindsЦенPercentChanges' я ввожу текст '13.00'
-			Когда открылось окно "Edit for процент"
+			Когда открылось окно "Change for процент"
 			И я нажимаю на кнопку с именем 'OK'
 			Тогда открылось окно "Install цен номенклатуры (create) *"
 			Если элемент 'NumberINПределахДня' присутствует на форме Тогда	
@@ -1125,11 +1136,11 @@
 				Если '$$IsCPM$$' Тогда
 					И я перехожу к закладке с именем 'GroupRegisteredRecordsДенежныхСредствCPM'
 					Тогда таблица 'CashFlowCPM' стала равной:
-						| 'n' | "Cash flow item" | "Bank account / касса" | "Income expense" | "Type денежных средств" | "Counterparty, подотчетник, касса ККМ" | 'Dimension2' | "Counterparty contract"       | 'Dimension1' | 'Dimension3' | 'Dimension4' | 'Dimension5' | 'Dimension6' | "Amount упр. учета" | 'Sum'        |
+						| 'n' | "Cash flow item" | "Bank account / касса" | "Income expense" | "Вид денежных средств" | "Counterparty, подотчетник, касса ККМ" | 'Dimension2' | "Counterparty contract"       | 'Dimension1' | 'Dimension3' | 'Dimension4' | 'Dimension5' | 'Dimension6' | "Amount упр. учета" | 'Sum'        |
 						| '1' | "3Software sale" | ''                        | 'Receipt'        | 'BankAccountPayment'          | 'LLC "Ганимед"'                      | ''           | 'Ганимед-001 dated 01.01.2024' | ''           | ''           | ''           | ''           | ''           | '780,000.00'       | '780,000.00'   |
 						| '2' | "2Software implementation"  | ''                        | 'Receipt'        | 'BankAccountPayment'          | 'LLC "Ганимед"'                      | ''           | 'Ганимед-002 dated 01.01.2024' | ''           | ''           | ''           | ''           | ''           | '2,340,000.00'     | '2,340,000.00' |
 				Если '$$IsERPCPM$$' Тогда
-					Тогда таблица "ОперацииБюджетов" стала равной:
+					Тогда таблица "OperationsБюджетов" стала равной:
 						| 'n' | 'Kind бюджета'                      | 'Receipt расход' | 'Sum' | 'Dimension партнеров'                                    | 'Rate планирования' | 'Sum исполнено' | 'Dimension структуры'                              | 'Count' | 'Currency' | 'Dimension статей бюджетов'               |
 						| '1' | 'Бюджет движения денежных средств' | 'Receipt'        | ''      | 'Mercury LLC; LLC "Ганимед"; Ганимед-001 dated 01.01.2024' | '1.0000'            | '780,000.00'      | 'Mercury LLC; DimenKind - Main проект; Mercury LLC' | ''           | 'RUB'    | 'Реализация программных продуктов Receipt' |
 						| '2' | 'Бюджет движения денежных средств' | 'Receipt'        | ''      | 'Mercury LLC; LLC "Ганимед"; Ганимед-002 dated 01.01.2024' | '1.0000'            | '2,340,000.00'    | 'Mercury LLC; DimenKind - Main проект; Mercury LLC' | ''           | 'RUB'    | 'Integrate программных продуктов Receipt'  |

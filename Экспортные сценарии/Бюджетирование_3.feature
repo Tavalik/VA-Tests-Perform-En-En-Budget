@@ -705,28 +705,28 @@
 Сценарий: Я создаю группу аналитических отчетов с кодом 'TheCode' именем 'TheName' родителем 'TheParent'
 
 	* Открываем форму справочника
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Аналитические отчеты"
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Analytical reports"
 
 	* Удаляем элемент
-		И Я в списке "Аналитические отчеты" по полю "Description" ищу элемент '[TheName]' "Exact match" 
+		И Я в списке "Analytical reports" по полю "Description" ищу элемент '[TheName]' "Exact match" 
 		И Пока в таблице 'List' количество строк 'больше' 0 Тогда
 			* Ставим пометку на удаление	
 				И Я удаляю текущую строку в списке 'List'
 			* Переименовываем
 				И Я запоминаю значение выражения 'StrReplace(New UUID, "-", "")' в переменную 'UID'
 				И в таблице 'List' я выбираю текущую строку
-				Тогда открылось окно "* (Аналитические отчеты)"
+				Тогда открылось окно "* (Analytical reports)"
 				И в поле с именем 'Description' я ввожу значение переменной 'UID'
 				И я нажимаю кнопку очистить у поля с именем 'Code'
 				Тогда открылось окно "1C:Enterprise"
 				И я нажимаю на кнопку с именем 'Button0'				
 				И в поле с именем 'Code' я ввожу значение переменной 'UID'
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
-				И я жду закрытия окна "* (Аналитические отчеты) *" в течение 20 секунд
+				И я жду закрытия окна "* (Analytical reports) *" в течение 20 секунд
 		И я выбираю пункт контекстного меню с именем 'ListContextMenuCancelSearch' на элементе формы с именем "List"
 
 	* Создаем элемент
-		Когда открылось окно "Аналитические отчеты"
+		Когда открылось окно "Analytical reports"
 		И я нажимаю на кнопку с именем 'FormCreateFolder'
 		Тогда открылось окно 'Аналитические отчеты (create folder)'
 		И в поле с именем 'Description' я ввожу текст '[TheName]'
@@ -744,29 +744,29 @@
 Сценарий: Я создаю аналитический отчет с кодом 'TheCode' вид отчета 'TheReportKind' период 'ThePeriod' организация 'TheBusinessUnit' родитель 'TheParent'
 
 	* Открываем форму справочника
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Аналитические отчеты"
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Analytical reports"
 
 	* Удаляем элемент
-		И Я в списке "Аналитические отчеты" по полю "Description" ищу элемент '[TheReportKind] ([TheBusinessUnit])' "Exact match" 
+		И Я в списке "Analytical reports" по полю "Description" ищу элемент '[TheReportKind] ([TheBusinessUnit])' "Exact match" 
 		И Пока в таблице 'List' количество строк 'больше' 0 Тогда
 			* Ставим пометку на удаление	
 				И Я удаляю текущую строку в списке 'List'
 			* Переименовываем
 				И Я запоминаю значение выражения 'StrReplace(New UUID, "-", "")' в переменную 'UID'
 				И в таблице 'List' я выбираю текущую строку
-				Тогда открылось окно "* (Аналитический отчет)"
+				Тогда открылось окно "* (Analytical report)"
 				И в поле с именем 'Description' я ввожу значение переменной 'UID'
 				И я нажимаю кнопку очистить у поля с именем 'Code'
 				Тогда открылось окно "1C:Enterprise"
 				И я нажимаю на кнопку с именем 'Button0'				
 				И в поле с именем 'Code' я ввожу значение переменной 'UID'							
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
-				И я жду закрытия окна "* (Аналитический отчет) *" в течение 20 секунд
+				И я жду закрытия окна "* (Analytical report) *" в течение 20 секунд
 
 	* Создаем элемент
-		Когда открылось окно "Аналитические отчеты"
+		Когда открылось окно "Analytical reports"
 		И я нажимаю на кнопку с именем 'FormCreate'
-		Тогда открылось окно "Аналитический отчет (create)"
+		Тогда открылось окно "Analytical report (create)"
 		И в поле с именем 'Description' я ввожу текст '[TheReportKind] ([TheBusinessUnit])'
 		И я нажимаю кнопку очистить у поля с именем 'Code'
 		Тогда открылось окно "1C:Enterprise"
@@ -779,29 +779,29 @@
 		И я нажимаю на кнопку с именем 'FormWrite'
 
 	* Настраиваем элемент	
-		Когда открылось окно "[TheReportKind] ([TheBusinessUnit]) (Аналитический отчет)"
+		Когда открылось окно "[TheReportKind] ([TheBusinessUnit]) (Analytical report)"
 		* Источник данных
 			И я нажимаю кнопку выбора у поля с именем 'ReportDataSource'
 			Тогда открылось окно "Select data type"
 			И в таблице "" я выбираю текущую строку		
-			Тогда открылось окно "Запросы к информационной базе"
+			Тогда открылось окно "Queries to infobase"
 			И я нажимаю на кнопку с именем 'FormCreate'
-			Тогда открылось окно "Запрос к информационной базе (create)"
+			Тогда открылось окно "Query to infobase (create)"
 			И в поле с именем 'Description' я ввожу текст '[TheReportKind] ([TheBusinessUnit])'
 			И я нажимаю на кнопку с именем 'Write'
-			Тогда открылось окно "[TheReportKind] ([TheBusinessUnit]) (Запрос к информационной базе)"
+			Тогда открылось окно "[TheReportKind] ([TheBusinessUnit]) (Query to infobase)"
 			И я перехожу к закладке с именем 'CaclSetup'
 			И я нажимаю на кнопку с именем 'FormGetIndicatorsValues'
 			И я нажимаю на кнопку с именем 'WriteAndClose'
-			И я жду закрытия окна "[TheReportKind] ([TheBusinessUnit]) (Запрос к информационной базе)" в течение 20 секунд
-			Тогда открылось окно "Запросы к информационной базе"
+			И я жду закрытия окна "[TheReportKind] ([TheBusinessUnit]) (Query to infobase)" в течение 20 секунд
+			Тогда открылось окно "Queries to infobase"
 			И в таблице 'List' я выбираю текущую строку
-		Тогда открылось окно "[TheReportKind] ([TheBusinessUnit]) (Аналитический отчет) *"
+		Тогда открылось окно "[TheReportKind] ([TheBusinessUnit]) (Analytical report) *"
 		И я нажимаю на кнопку с именем 'FormWrite'
 
 	* Редактирование схемы	
 		И я нажимаю на кнопку с именем 'EditSchemaOption'
-		Тогда открылось окно "Настройка структуры аналитического отчета ([TheReportKind] ([TheBusinessUnit]))"
+		Тогда открылось окно "Analytical report structure settings ([TheReportKind] ([TheBusinessUnit]))"
 		
 		И в таблице 'RowsGroupingTableBoxPageTable' я нажимаю на кнопку с именем 'RowsGroupingTableBoxPageTableAddGroupField'
 		И в таблице 'RowsGroupingTableBoxPageTable' из выпадающего списка с именем 'RowsGroupingTableBoxPageTableField' я выбираю точное значение "Company"
@@ -822,19 +822,19 @@
 		И в таблице 'TableBoxFilterPageWithoutParameters' из выпадающего списка с именем 'TableBoxFilterPageWithoutParametersComparisonType' я выбираю точное значение "Equal to"
 		И в таблице 'TableBoxFilterPageWithoutParameters' я нажимаю кнопку выбора у реквизита с именем 'TableBoxFilterPageWithoutParametersRightValue'
 		И Я выбираю организацию '[TheBusinessUnit]'
-		Тогда открылось окно "Настройка структуры аналитического отчета ([TheReportKind] ([TheBusinessUnit]))"
+		Тогда открылось окно "Analytical report structure settings ([TheReportKind] ([TheBusinessUnit]))"
 		И в таблице 'TableBoxFilterPageWithoutParameters' я нажимаю на кнопку с именем 'TableBoxFilterPageWithoutParametersAddFilterItem'
 		И в таблице 'TableBoxFilterPageWithoutParameters' из выпадающего списка с именем 'TableBoxFilterPageWithoutParametersLeftValue' я выбираю точное значение "Report period"
 		И в таблице 'TableBoxFilterPageWithoutParameters' из выпадающего списка с именем 'TableBoxFilterPageWithoutParametersComparisonType' я выбираю точное значение "Equal to"
 		И в таблице 'TableBoxFilterPageWithoutParameters' я нажимаю кнопку выбора у реквизита с именем 'TableBoxFilterPageWithoutParametersRightValue'
 		И Я в списке "Periods" по полю "Description" ищу и выбираю элемент '[ThePeriod]' "At beginning of line"
-		Когда открылось окно "Настройка структуры аналитического отчета ([TheReportKind] ([TheBusinessUnit]))"
+		Когда открылось окно "Analytical report structure settings ([TheReportKind] ([TheBusinessUnit]))"
 		И в таблице 'TableBoxFilterPageWithoutParameters' я нажимаю на кнопку с именем 'TableBoxFilterPageWithoutParametersAddFilterItem'
 		И в таблице 'TableBoxFilterPageWithoutParameters' из выпадающего списка с именем 'TableBoxFilterPageWithoutParametersLeftValue' я выбираю точное значение "Currency"
 		И в таблице 'TableBoxFilterPageWithoutParameters' из выпадающего списка с именем 'TableBoxFilterPageWithoutParametersComparisonType' я выбираю точное значение "Equal to"
 		И в таблице 'TableBoxFilterPageWithoutParameters' из выпадающего списка с именем 'TableBoxFilterPageWithoutParametersRightValue' я выбираю точное значение "RUB"
 		И в таблице 'TableBoxFilterPageWithoutParameters' я завершаю редактирование строки
-		Когда открылось окно "Настройка структуры аналитического отчета ([TheReportKind] ([TheBusinessUnit]))"
+		Когда открылось окно "Analytical report structure settings ([TheReportKind] ([TheBusinessUnit]))"
 		И в таблице "Filter" я нажимаю на кнопку с именем 'FilterAddFilterItem'
 		И в таблице "Filter" из выпадающего списка с именем "FilterЛевоеValue" я выбираю по строке "Indicator.Report type"
 		И в таблице "Filter" я активизирую поле с именем "FilterПравоеValue"
@@ -843,85 +843,85 @@
 		И в таблице "" я выбираю текущую строку
 		И Я в списке "Report types" по полю "Description" ищу и выбираю элемент '[TheReportKind]' "At beginning of line"
 		
-		Когда открылось окно "Настройка структуры аналитического отчета ([TheReportKind] ([TheBusinessUnit]))"
+		Когда открылось окно "Analytical report structure settings ([TheReportKind] ([TheBusinessUnit]))"
 		И я перехожу к закладке с именем 'OrderPage'
 		И в таблице 'Table_SortFields' я нажимаю на кнопку с именем 'Table_SortFieldsAddItemПорядка'
-		И в таблице 'Table_SortFields' из выпадающего списка с именем 'Table_SortFieldsField' я выбираю по строке "Indicator.Line.Порядковый номер"
+		И в таблице 'Table_SortFields' из выпадающего списка с именем 'Table_SortFieldsField' я выбираю по строке "Indicator.Line.Sequence number"
 		И в таблице 'Table_SortFields' я завершаю редактирование строки
 		И в таблице 'Table_SortFields' я нажимаю на кнопку с именем 'Table_SortFieldsAddItemПорядка'
-		И в таблице 'Table_SortFields' из выпадающего списка с именем 'Table_SortFieldsField' я выбираю по строке "Indicator.Колонка.Порядковый номер"
+		И в таблице 'Table_SortFields' из выпадающего списка с именем 'Table_SortFieldsField' я выбираю по строке "Indicator.Column.Sequence number"
 		И в таблице 'Table_SortFields' я завершаю редактирование строки				
 		
 		И я нажимаю на кнопку с именем 'FormOK'
 
-	Тогда открылось окно "[TheReportKind] ([TheBusinessUnit]) (Аналитический отчет)"
+	Тогда открылось окно "[TheReportKind] ([TheBusinessUnit]) (Analytical report)"
 	И я нажимаю на кнопку с именем 'FormWrite'
 	И я устанавливаю флаг с именем 'CustomSettings'
 	И я нажимаю на кнопку с именем 'FormWrite'
 
-	Тогда открылось окно "[TheReportKind] ([TheBusinessUnit]) (Аналитический отчет)"
+	Тогда открылось окно "[TheReportKind] ([TheBusinessUnit]) (Analytical report)"
 	И я нажимаю на кнопку с именем 'EditSchemaOption'
-	Тогда открылось окно "Настройка структуры аналитического отчета ([TheReportKind] ([TheBusinessUnit]))"
+	Тогда открылось окно "Analytical report structure settings ([TheReportKind] ([TheBusinessUnit]))"
 	И я перехожу к закладке с именем 'OutputParametersPage'
-	И в таблице "Таблица_ПараметрыВывода" я перехожу к строке:
-		| "Value" | "Use" | "Параметр"                               |
-		| "Авто"     | "No"           | "Расtoложение общих итогов to вертикали" |
+	И в таблице "Table_ParametersВывода" я перехожу к строке:
+		| "Value" | "Use" | "Parameter"                               |
+		| "Auto"     | "No"           | "Arrangement общих итогов to вертикали" |
 	И в таблице 'Table_OutputParameters' я активизирую поле с именем 'Table_OutputParametersValue'
 	И в таблице 'Table_OutputParameters' я выбираю текущую строку
 	И в таблице 'Table_OutputParameters' из выпадающего списка с именем 'Table_OutputParametersValue' я выбираю точное значение "No"
 	И в таблице 'Table_OutputParameters' я завершаю редактирование строки
 	И я нажимаю на кнопку с именем 'FormOK'
 
-	Тогда открылось окно "[TheReportKind] ([TheBusinessUnit]) (Аналитический отчет)"
+	Тогда открылось окно "[TheReportKind] ([TheBusinessUnit]) (Analytical report)"
 	И я нажимаю на кнопку с именем 'FormWriteAndClose'
-	И я жду закрытия окна "[TheReportKind] ([TheBusinessUnit]) (Аналитический отчет)" в течении 20 секунд
+	И я жду закрытия окна "[TheReportKind] ([TheBusinessUnit]) (Analytical report)" в течении 20 секунд
 
 Сценарий: Я создаю шаблон корректировки значений показателей с имененм "TheName" и видами отчетов
 
 	* Открываем форму справочника
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Шаблоны корректировок значений indicators"
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Indicator value adjustments templates"
 
 	* Удаляем элемент
-		И Я в списке "Шаблоны корректировок значений indicators" по полю "Description" ищу элемент '[TheName]' "Exact match" 
+		И Я в списке "Indicator value adjustments templates" по полю "Description" ищу элемент '[TheName]' "Exact match" 
 		И Пока в таблице 'List' количество строк 'больше' 0 Тогда
 			* Ставим пометку на удаление	
 				И Я удаляю текущую строку в списке 'List'
 			* Переименовываем
 				И Я запоминаю значение выражения 'StrReplace(New UUID, "-", "")' в переменную 'UID'
 				И в таблице 'List' я выбираю текущую строку
-				Тогда открылось окно "* (Шаблоны корректировок значений indicators)"
+				Тогда открылось окно "* (Indicator value adjustments templates)"
 				И в поле с именем 'Description' я ввожу значение переменной 'UID'
 				И я удаляю все строки таблицы 'UsedReportTypes'				
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
-				И я жду закрытия окна "* (Шаблоны корректировок значений indicators) *" в течение 20 секунд
+				И я жду закрытия окна "* (Indicator value adjustments templates) *" в течение 20 секунд
 
 	* Создаем элемент
-		Когда открылось окно "Шаблоны корректировок значений indicators"
+		Когда открылось окно "Indicator value adjustments templates"
 		И я нажимаю на кнопку с именем 'FormCreate'
-		Тогда открылось окно "Шаблоны корректировок значений indicators (create)"		
+		Тогда открылось окно "Indicator value adjustments templates (create)"		
 		И я заполняю таблицу 'UsedReportTypes' данными
 			|'Table'|
 		И в поле с именем 'Description' я ввожу текст '[TheName]'
-		Когда открылось окно "Шаблоны корректировок значений indicators (create) *"
+		Когда открылось окно "Indicator value adjustments templates (create) *"
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна "Шаблоны корректировок значений indicators (create) *" в течение 20 секунд
+		И я жду закрытия окна "Indicator value adjustments templates (create) *" в течение 20 секунд
 				
 Сценарий: Для шаблона корректировки значений показателей с имененм "TheName" я заполняю таблицу корректировок значениями
 
 	* Открываем форму справочника
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Шаблоны корректировок значений indicators"
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Indicator value adjustments templates"
 
 	* Ищем элемент
-		И Я в списке "Шаблоны корректировок значений indicators" по полю "Description" ищу и выбираю элемент '[TheName]' "Exact match" 
+		И Я в списке "Indicator value adjustments templates" по полю "Description" ищу и выбираю элемент '[TheName]' "Exact match" 
 
 	* Заполнение
 		И я заполняю таблицу 'TableOfAdjustments' данными
 			|'Table'|
 
 	* Сохраняем элемент
-		Когда открылось окно "[TheName] (Шаблоны корректировок значений indicators) *"
+		Когда открылось окно "[TheName] (Indicator value adjustments templates) *"
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна "[TheName] (Шаблоны корректировок значений indicators) *" в течение 20 секунд
+		И я жду закрытия окна "[TheName] (Indicator value adjustments templates) *" в течение 20 секунд
 
 Сценарий: Я создаю корректировку значений показателей сценарий "TheScenario" период "TheStartDate" периодичность "TheFrequency" организация "TheBusinessUnit" значения
 
@@ -930,9 +930,30 @@
 	И я заполняю таблицу 'TableOfAdjustments' данными
 		|'Table'|
 	
-	Когда открылось окно "Корректировка значений показателей (create) *"
+	Когда открылось окно "Indicator value adjustment (create) *"
 	И я нажимаю на кнопку с именем 'FormPostAndClose'
-	И я жду закрытия окна "Корректировка значений показателей (create) *" в течение 20 секунд
+	И я жду закрытия окна "Indicator value adjustment (create) *" в течение 20 секунд
 
+Сценарий: Движения документа ставли равны "ThePath"
 
+	И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
+	Тогда открылось окно "Flat table of indicator values"
+	И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 60 секунд
+	Если элемент формы с именем 'CheckBox1' имеет значение 'Yes' Тогда
+		И я снимаю флаг с именем 'CheckBox1'
+		И я нажимаю на кнопку с именем 'GenerateReport'
+		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 60 секунд
+	Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "[ThePath]" по шаблону
+	И Я закрываю окно "Flat table of indicator values"
 
+Сценарий: Движения документа с реквизитами ставли равны "ThePath"
+
+	И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
+	Тогда открылось окно "Flat table of indicator values"
+	И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 60 секунд
+	И я устанавливаю флаг с именем 'CheckBox1'
+	И я нажимаю на кнопку с именем 'GenerateReport'
+	И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 60 секунд
+	Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "[ThePath]" по шаблону
+	И я снимаю флаг с именем 'CheckBox1'				
+	И Я закрываю окно "Flat table of indicator values"

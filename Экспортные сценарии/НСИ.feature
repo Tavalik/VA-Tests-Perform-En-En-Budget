@@ -98,7 +98,7 @@
 			И я нажимаю на кнопку с именем 'FormCreate'
 		Иначе
 			И в таблице 'List' я выбираю текущую строку
-		Тогда открылось окно "The currency exchange rate.*"
+		Тогда открылось окно "The currency exchange*"
 		И в поле с именем 'Period' я ввожу текст '[TheCourseDate]'
 		Если '$$IsCPM$$' Тогда
 			И в поле с именем 'Rate' я ввожу текст '[TheCourseValue]'
@@ -109,7 +109,7 @@
 			И в поле с именем 'RateЧислитель' я ввожу текст '[TheCourseValue]'
 			И из выпадающего списка с именем 'BaseCurrency' я выбираю точное значение '[TheBaseCurrencyCodeSymbol]'						
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна "The currency exchange rate.*" в течение 20 секунд		
+		И я жду закрытия окна "The currency exchange*" в течение 20 секунд		
 
 	* Закрываем окна
 		Тогда открылось окно "* (Currency)"
@@ -549,7 +549,7 @@
 		Когда открылось окно "Projects*"
 		И Я закрываю окно "Projects*"
 
-Сценарий: Я создаю вид аналитики с кодом 'TheAnalyticsCode' именем 'TheAnalyticsName' и типом 'TheAnalyticsType'
+Сценарий: Я создаю вид аналитики с кодом 'TheAnalyticsCode' именем 'TheAnalyticsName' типом 'TheAnalyticsType'
 
 	* Открываем список
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Dimension types (corporate)"
@@ -592,6 +592,7 @@
 				И в поле с именем 'Description' я ввожу значение переменной 'UID'
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
 				И я жду закрытия окна "* (Dimension types (corporate)) *" в течение 20 секунд
+		И Я закрываю окно "Dimension types (corporate)"
 
 	* Создаем элемент кодом
 		И я выполняю код встроенного языка на сервере без контекста	
@@ -603,44 +604,21 @@
 			| 'KindАналитик.Description = "[TheAnalyticsName]";' |
 			| 'KindАналитик.Write();' |
 
-	* Настраиваем вид аналитики
-		И Я в списке "Dimension types (corporate)" по полю "Code" ищу элемент '[TheAnalyticsCode]' "Exact match"
-		И в таблице 'List' я выбираю текущую строку
+Сценарий: Я для вида аналитики с кодом "TheAnalyticsCode" делаю ключом реквизит "ThePropertyName"
+
+	* Открываем список и элемент
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Dimension types (corporate)"
+		И Я в списке "Dimension types (corporate)" по полю "Code" ищу и выбираю элемент '[TheAnalyticsCode]' "Exact match"	
 		Когда открылось окно "* (Dimension types (corporate))"
-
-		Если в таблице 'TableBoxAttributes' есть строка Тогда
-			| "Attribute"     | "Key" | "Template" |
-			| "Description" | "No"  | "No"   |
-			И в таблице 'TableBoxAttributes' я перехожу к строке по шаблону:
-				| "Attribute"     | "Key" | "Template" |
-				| "Description" | "No"  | "No"   |
-		ИначеЕсли в таблице 'TableBoxAttributes' есть строка Тогда
-			| "Attribute"                 | "Key" | "Template" |
-			| "Name in the application" | "No"  | "No"   |
-			И в таблице 'TableBoxAttributes' я перехожу к строке по шаблону:
-				| "Attribute"                 | "Key" | "Template" |
-				| "Name in the application" | "No"  | "No"   |
-		ИначеЕсли в таблице 'TableBoxAttributes' есть строка Тогда
-			| "Attribute"                 | "Key" | "Template" |
-			| "Рабочее наименование" | "No"  | "No"   |
-			И в таблице 'TableBoxAttributes' я перехожу к строке по шаблону:
-				| "Attribute"             | "Key" | "Template" |
-				| "Рабочее наименование" | "No"  | "No"   |
-		ИначеЕсли в таблице 'TableBoxAttributes' есть строка Тогда
-			| "Attribute" | "Key" | "Template" |
-			| "Code"      | "No"  | "No"   |
-			И в таблице 'TableBoxAttributes' я перехожу к строке:
-				| "Attribute" | "Key" | "Template" |
-				| "Code"      | "No"  | "No"   |
-		И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableTemplate'
-		И в таблице 'TableBoxAttributes' я изменяю флаг с именем 'AttributesTableKey'
-		И в таблице 'TableBoxAttributes' я завершаю редактирование строки
-		
+		И в таблице 'TableBoxAttributes' я перехожу к строке:
+			| "Attribute"          |
+			| '[ThePropertyName]' |
+		И в таблице 'TableBoxAttributes' я устанавливаю флаг с именем 'AttributesTableKey'
+		И в таблице 'TableBoxAttributes' я устанавливаю флаг с именем 'AttributesTableTemplate'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна "Dimension types (corporate) (create) *" в течение 20 секунд
-
-	* Закрываем список	
-		И Я закрываю окно "Dimension types (corporate)"		
+		И я жду закрытия окна "* (Dimension types (corporate)) *" в течение 20 секунд
+		Когда открылось окно "Dimension types (corporate)"
+		И я выбираю пункт контекстного меню с именем 'ListContextMenuCancelSearch' на элементе формы с именем 'List'
 
 Сценарий: Я создаю субконто УХ с именем 'TheExtDimensionCPMName' и видом аналитики с кодом 'TheExtDimensionCPMKind'
 
@@ -752,12 +730,12 @@
 		И Я в списке "Conditions оплаты" по полю "Description" ищу элемент '[TheName]' "At beginning of line"		
 		И Пока в таблице 'List' количество строк 'больше' 0 Тогда
 			И в таблице 'List' я выбираю текущую строку
-			И Я удаляю текущий элемент в окне "* (Condition оплаты)" очищая
+			И Я удаляю текущий элемент в окне "* (Criteria оплаты)" очищая
 
 	* Создаем элемент
 		Тогда открылось окно "Conditions оплаты"	
 		И я нажимаю на кнопку с именем 'FormCreate'
-		Тогда открылось окно "Condition оплаты (create)"
+		Тогда открылось окно "Criteria оплаты (create)"
 		И в таблице 'StagesОплаты' я нажимаю на кнопку с именем 'StagesОплатыAdd'
 		И в таблице 'StagesОплаты' из выпадающего списка с именем 'StagesОплатыVariantОплаты' я выбираю точное значение "Постоплата (после базовой даты)"
 		И в таблице 'StagesОплаты' из выпадающего списка с именем 'StagesОплатыDueDate' я выбираю точное значение "60"
@@ -766,7 +744,7 @@
 		И я изменяю флаг с именем 'Автонаименование'
 		И в поле с именем 'Description' я ввожу текст '[TheName]'
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
-		И я жду закрытия окна "Condition оплаты (create) *" в течение 20 секунд	
+		И я жду закрытия окна "Criteria оплаты (create) *" в течение 20 секунд	
 
 	* Закрываем список	
 		Тогда открылось окно "Conditions оплаты"
@@ -888,7 +866,7 @@
 		Когда открылось окно "* (Counterparty)"
 		И я нажимаю на кнопку с именем 'FormCreate'
 		Если '$$ЭтоPerform$$' Тогда
-			Когда открылось окно "Contract (Create)*"
+			Когда открылось окно "Contract (create)*"
 			И из выпадающего списка с именем 'TypeOfAgreement' я выбираю точное значение "TheContractKind"
 		Иначе	
 			Тогда открылось окно "Выберите вид договора"
@@ -896,7 +874,7 @@
 				| "Contract kind"     |
 				| '[TheContractKind]' |
 			И в таблице 'KindsДоговоров' я выбираю текущую строку
-		Тогда открылось окно "* (Create)*"
+		Тогда открылось окно "* (create)*"
 		И в поле с именем 'Number' я ввожу текст '[TheNumber]'
 		И в поле с именем 'Date' я ввожу текст '[TheDate]'
 		И в поле с именем 'Description' я ввожу текст "[TheNumber] from [TheDate]"
@@ -912,7 +890,7 @@
 			И я перехожу к закладке с именем 'GroupCalculations'
 			И из выпадающего списка с именем 'ConditionОплаты' я выбираю по строке '[TheTermsOfPayment]'			
 			И я нажимаю на кнопку с именем 'FormPostAndClose'	
-		И я жду закрытия окна "* (Create) *" в течение 20 секунд
+		И я жду закрытия окна "* (create) *" в течение 20 секунд
 
 	* Закрываем формы
 		Когда открылось окно "* (Counterparty)"
@@ -926,7 +904,7 @@
 		Если '$$ЭтоPerform$$' Тогда
 			И я открываю основную форму списка справочника 'CashFlowReportItems'
 		Иначе
-			И В командном интерфейсе я выбираю "Планирование и контроль" "Cash flow items"
+			И В командном интерфейсе я выбираю "Planandрованandе and контроль" "Cash flow items"
 
 	* Удаляем элемент	
 		И Я в списке "Cash flow items" по полю "Description" ищу элемент '[TheName]' "At beginning of line"		
@@ -952,7 +930,7 @@
 		Если '$$ЭтоPerform$$' Тогда
 			И я открываю основную форму списка справочника 'CashFlowReportItems'
 		Иначе
-			И В командном интерфейсе я выбираю "Планирование и контроль" "Cash flow items"
+			И В командном интерфейсе я выбираю "Planandрованandе and контроль" "Cash flow items"
 	
 	* Удаляем элемент
 		И Я в списке "Cash flow items" по полю "Description" ищу элемент '[TheName]' "At beginning of line"		
@@ -979,7 +957,7 @@
 		Если '$$ЭтоPerform$$' Тогда
 			И я открываю основную форму списка справочника 'IncomeAndExpenseItems'
 		Иначе
-			И В командном интерфейсе я выбираю "Планирование и контроль" "Income and expense items"
+			И В командном интерфейсе я выбираю "Planandрованandе and контроль" "Income and expense items"
 	
 	* Удаляем элемент
 		И Я в списке "Income and expense items" по полю "Description" ищу элемент '[TheName]' "At beginning of line"		
@@ -1005,7 +983,7 @@
 		Если '$$ЭтоPerform$$' Тогда
 			И я открываю основную форму списка справочника 'IncomeAndExpenseItems'
 		Иначе
-			И В командном интерфейсе я выбираю "Планирование и контроль" "Income and expense items"
+			И В командном интерфейсе я выбираю "Planandрованandе and контроль" "Income and expense items"
 	
 	* Удаляем элемент
 		И Я в списке "Income and expense items" по полю "Description" ищу элемент '[TheName]' "At beginning of line"		
@@ -1129,19 +1107,21 @@
 
 Сценарий: Я создаю товарную категорию с именем 'TheProductCategoryName' видом номенклатуры 'TheProductKind'
 
-	* Открываем список
-		И В командном интерфейсе я выбираю "Корпоративные закупки" "Product categories"
-		Тогда открылось окно "Product categories"
-
 	* Найдем вид номенклатуры
 		Если '$$IsCPM$$' Тогда
+			И В командном интерфейсе я выбираю "Корпоративные закупки" "Product categories"
+			Тогда открылось окно "Product categories"
 			И я нажимаю на кнопку с именем 'FormFind'
 			Тогда открылась форма с именем 'UniversalListFindExtForm'
 			И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Description"
 		Если '$$IsERPCPM$$' Тогда
+			И В командном интерфейсе я выбираю "CRM and маркетandнг" "Settings and справочнandkand"
+			Тогда открылось окно "Settings and справочнandkand to CRM and маркетandнгу"
+			И я нажимаю на кнопку с именем 'OpenProductCategories'
+			Когда открылось окно "Product categories"
 			И я выбираю пункт контекстного меню с именем 'ListOfSpeciesНоменклатурыContextMenuFind' на элементе формы с именем 'ListOfSpeciesНоменклатуры'
 			Тогда открылась форма с именем 'UniversalListFindExtForm'
-			И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Type номенклатуры"
+			И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Вид номенклатуры"
 			И в поле с именем 'Pattern' я ввожу текст '[TheProductKind]'
 			И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 			И я нажимаю на кнопку с именем 'Find'
@@ -1335,4 +1315,29 @@
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
 		И я жду закрытия окна "Company file path items (create) *" в течение 20 секунд
 
-			
+Сценарий: Я включаю производительный режим работы ограничений на уровне записей
+
+	И В командном интерфейсе я выбираю "Administration" "Users and rights settings"
+	Тогда открылось окно "Users and rights settings"
+	И я разворачиваю группу с именем 'AccessGroupsGroup'
+	Если элемент формы с именем 'LimitAccessAtRecordLevelUniversally' присутствует на форме Тогда
+		И из выпадающего списка с именем 'LimitAccessAtRecordLevelUniversally' я выбираю точное значение "High performance"
+		Тогда открылось окно "1C:Enterprise"
+		И я нажимаю на кнопку с именем 'Button0'
+		
+	Тогда открылось окно "Users and rights settings"
+	И я нажимаю на кнопку с именем 'AccessUpdateOnRecordsLevel'
+	Тогда открылось окно "Update record-level access"
+	И Пауза 1
+
+	И я разворачиваю группу с именем 'BriefDetailed'
+	Если элемент формы с именем 'StartAccessUpdateImmediately' доступен Тогда
+		И я нажимаю на кнопку с именем 'StartAccessUpdateImmediately'
+		Если открылось окно "1C:Enterprise" Тогда
+			И я нажимаю на кнопку с именем 'Button0'
+	И у элемента с именем 'LastAccessUpdateCompletion' я жду значения "(completed *)" в течение 600 секунд по шаблону
+	И я жду, что в таблице 'Lists' количество строк будет "равно" 0 в течение 60 секунд
+	Когда в таблице 'Lists' количество строк "равно" 0
+
+	Когда открылось окно "Update record-level access"
+	И Я закрываю окно "Update record-level access"

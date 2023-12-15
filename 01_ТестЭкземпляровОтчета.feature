@@ -174,7 +174,7 @@
 		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Amount"
 		И в таблице 'NewLines' я завершаю редактирование строки
 		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
-		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Quantity"
+		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Count"
 		И в таблице 'NewLines' я завершаю редактирование строки
 		И в таблице 'NewLines' я нажимаю на кнопку с именем 'NewLinesAdd'
 		И в таблице 'NewLines' в поле с именем 'NewLinesDescription' я ввожу текст "Price"
@@ -253,27 +253,27 @@
 
 	* Сравниваем с эталоном
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен по шаблону:
-			| 'String'                 | 'Code'              | "Indicator attributes" | "Quantity"                   | "Price"                   | "Amount"                   | "ColumnDelete" |
+			| 'String'                 | 'Code'              | "Indicator attributes" | "Count"                   | "Price"                   | "Amount"                   | "ColumnDelete" |
 			| "LinesGroup"            | "LinesGroup*"     | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LinesGroup_Quantity1*"     | "LinesGroup_Price1*"     | "LinesGroup_Amount1*"     | ''               |
+			| ''                       | ''                 | 'Code'                   | "LinesGroup_Count1*"     | "LinesGroup_Price1*"     | "LinesGroup_Amount1*"     | ''               |
 			| "LineSynthetic"        | "LineSynthetic*"   | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LineSynthetic_Quantity1*"   | "LineSynthetic_Price1*"   | "LineSynthetic_Amount1*"   | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineSynthetic_Count1*"   | "LineSynthetic_Price1*"   | "LineSynthetic_Amount1*"   | ''               |
 			| "LineDimension1"       | "LineANLT1*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LineANLT1_Quantity1*"       | "LineANLT1_Price1*"       | "LineANLT1_Amount1*"       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineANLT1_Count1*"       | "LineANLT1_Price1*"       | "LineANLT1_Amount1*"       | ''               |
 			| "LineDimension2"       | "LineANLT2*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LineANLT2_Quantity1*"       | "LineANLT2_Price1*"       | "LineANLT2_Amount1*"       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineANLT2_Count1*"       | "LineANLT2_Price1*"       | "LineANLT2_Amount1*"       | ''               |
 			| "LineDimension3"       | "LineANLT3*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LineANLT3_Quantity1*"       | "LineANLT3_Price1*"       | "LineANLT3_Amount1*"       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineANLT3_Count1*"       | "LineANLT3_Price1*"       | "LineANLT3_Amount1*"       | ''               |
 			| "LineDimension4"       | "LineANLT4*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LineANLT4_Quantity1*"       | "LineANLT4_Price1*"       | "LineANLT4_Amount1*"       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineANLT4_Count1*"       | "LineANLT4_Price1*"       | "LineANLT4_Amount1*"       | ''               |
 			| "LineDimension5"       | "LineANLT5*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LineANLT5_Quantity1*"       | "LineANLT5_Price1*"       | "LineANLT5_Amount1*"       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineANLT5_Count1*"       | "LineANLT5_Price1*"       | "LineANLT5_Amount1*"       | ''               |
 			| "LineDimension6"       | "LineANLT6*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LineANLT6_Quantity1*"       | "LineANLT6_Price1*"       | "LineANLT6_Amount1*"       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineANLT6_Count1*"       | "LineANLT6_Price1*"       | "LineANLT6_Amount1*"       | ''               |
 			| "LineDimension6Currency" | "LineANLT6Currency*" | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LineANLT6Currency_Quantity1*" | "LineANLT6Currency_Price1*" | "LineANLT6Currency_Amount1*" | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineANLT6Currency_Count1*" | "LineANLT6Currency_Price1*" | "LineANLT6Currency_Amount1*" | ''               |
 			| "LineDimensionCurrency"  | "LineANLTCurrency*"  | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LineANLTCurrency_Quantity1*"  | "LineANLTCurrency_Price1*"  | "LineANLTCurrency_Amount1*"  | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineANLTCurrency_Count1*"  | "LineANLTCurrency_Price1*"  | "LineANLTCurrency_Amount1*"  | ''               |
 			| "LineDelete"          | "LineDelete*"     | ''                      | ''                             | ''                       | ''                        | ''               |
 			| ''                       | ''                 | 'Code'                   | ''                             | ''                       | ''                        | ''               |
 
@@ -296,7 +296,7 @@
 
 	* Сравниваем с эталоном
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-			| 'String'                 | "Quantity" | "Price" | "Amount" |
+			| 'String'                 | "Count" | "Price" | "Amount" |
 			| "LinesGroup"            | '■'          | '■'    | '■'     |
 			| "LineSynthetic"        | '■'          | '■'    | '■'     |
 			| "LineDimension1"       | '■'          | '■'    | '■'     |
@@ -581,10 +581,10 @@
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Report structure"
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке				
-		Когда открылось окно "LineDimensionCurrency quantity (Report indicators)"
+		Когда открылось окно "LineDimensionCurrency count (Report indicators)"
 		И элемент формы с именем 'DrillDownGroup' стал равен ''
 		И элемент формы с именем 'ShouldRecalculateForeignCurrencyAmount' стал равен 'No'
-		И Я закрываю окно "LineDimensionCurrency quantity (Report indicators)"
+		И Я закрываю окно "LineDimensionCurrency count (Report indicators)"
 
 	* Снова установим раскрытие по валютам
 		И Я в конструкторе отчета в ячейке 'R11C8' меняю аналитику валюта
@@ -646,7 +646,7 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C4'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И я нажимаю на кнопку с именем 'RefToIndicator1'
-		И Я выбираю показатель с кодом "LineSynthetic_Quantity1" вида отчета "VA - Manual entry for all analytics"
+		И Я выбираю показатель с кодом "LineSynthetic_Count1" вида отчета "VA - Manual entry for all analytics"
 		Тогда открылось окно "Report wizard*"
 		И я нажимаю на кнопку с именем 'ButtonMultiply'
 		И я нажимаю на кнопку с именем 'RefToIndicator1'
@@ -682,17 +682,17 @@
 			Когда открылось окно "Data sources"
 			И я нажимаю на кнопку с именем 'FormFind'
 			Тогда открылась форма с именем 'UniversalListFindExtForm'
-			И в поле с именем 'Pattern' я ввожу текст "VA - Manual entry for all analytics_LineDimension1 quantity"
+			И в поле с именем 'Pattern' я ввожу текст "VA - Manual entry for all analytics_LineDimension1 count"
 			И я меняю значение переключателя с именем 'CompareType' на "Exact match"
 			И я нажимаю на кнопку с именем 'Find'
 			Тогда открылось окно "Data sources"
 			И я выбираю пункт контекстного меню с именем 'ListContextMenuChange' на элементе формы с именем 'List'
-			Тогда открылось окно "VA - Manual entry for all analytics_LineDimension1 quantity (Data source)"
+			Тогда открылось окно "VA - Manual entry for all analytics_LineDimension1 count (Data source)"
 			И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-			И Я выбираю показатель с кодом "LineANLT6Currency_Quantity1"
-			Тогда открылось окно "VA - Manual entry for all analytics_LineDimension1 quantity (Data source) *"
+			И Я выбираю показатель с кодом "LineANLT6Currency_Count1"
+			Тогда открылось окно "VA - Manual entry for all analytics_LineDimension1 count (Data source) *"
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "VA - Manual entry for all analytics_LineDimension1 quantity *" в течение 5 секунд
+			И я жду закрытия окна "VA - Manual entry for all analytics_LineDimension1 count *" в течение 5 секунд
 		* Добавляем операнд "Цена"
 			Когда открылось окно "Data sources"
 			И я нажимаю на кнопку с именем 'FormFind'
@@ -1081,11 +1081,7 @@
 
 	* Проверяем движения документа
 		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
-		Тогда открылось окно "Flat table of indicator values"
-		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Меркурий_Движения.mxl' по шаблону
-		И Я закрываю окно "Flat table of indicator values"
+		И Движения документа ставли равны '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Меркурий_Движения.mxl'
 
 	* Запишем и закроем документ
 		Тогда открылось окно '$WindowTitle$'
@@ -1141,23 +1137,19 @@
 		Когда открылось окно "Report instances"
 		И я устанавливаю флаг с именем 'UseReportTypes'
 		Если в таблице 'ReportsKinds' есть строка Тогда
-			| "Value"            | "Use" |
-			| "VA - Report group" | "Yes"           |
+			| "Value"            |
+			| "VA - Report group" |
 			И в таблице 'ReportsKinds' я перехожу к строке:
-				| "Value"            | "Use" |
-				| "VA - Report group" | "Yes"           |
-			И в таблице 'ReportsKinds' я снимаю флаг с именем 'CompaniesUse'
-			И в таблице 'ReportsKinds' я завершаю редактирование строки
-		И в таблице 'ReportsKinds' я перехожу к строке:
-			| "Value"            | "Use" |
-			| "VA - Report group" | "No"          |
-		И в таблице 'ReportsKinds' я разворачиваю текущую строку
+				| "Value"            |
+				| "VA - Report group" |
+			И в таблице 'ReportsKinds' я снимаю флаг с именем 'ReportsKindsUse'
+			И в таблице 'ReportsKinds' я разворачиваю текущую строку
 		Если в таблице 'ReportsKinds' есть строка Тогда
-			| "Value"                            | "Use" |
-			| "VA - Manual entry for all analytics" | "No"          |
+			| "Value"                            |
+			| "VA - Manual entry for all analytics" |
 			И в таблице 'ReportsKinds' я перехожу к строке:
-				| "Value"                            | "Use" |
-				| "VA - Manual entry for all analytics" | "No"          |
+				| "Value"                            |
+				| "VA - Manual entry for all analytics" |
 			И в таблице 'ReportsKinds' я устанавливаю флаг с именем 'ReportsKindsUse'
 			И в таблице 'ReportsKinds' я завершаю редактирование строки
 		И в таблице 'ReportsKinds' я перехожу к строке:
@@ -1273,11 +1265,7 @@
 
 	* Проверяем движения документа
 		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
-		Тогда открылось окно "Flat table of indicator values"
-		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 30 секунд
-		Дано Табличный документ 'ReportSpreadsheetDocument' равен макету '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Венера_Движения.mxl' по шаблону
-		И Я закрываю окно "Flat table of indicator values"
+		И Движения документа ставли равны '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Венера_Движения.mxl'
 
 	* Свернем все версии
 		Когда открылось окно '$WindowTitle$'
@@ -1335,7 +1323,19 @@
 		Тогда открылось окно "Select method to calculate indicators"
 		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Consolidate perimeter (IFRS)"
 		И я нажимаю на кнопку с именем 'FormSelect'
+		Когда открылось окно '$WindowTitle$'
 		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Система_МСФО.mxl' по шаблону
+
+	* Вводим количество		
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R11C2"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		Тогда открылось окно "Drill down indicators: *"
+		И в таблице 'IndicatorsDrilldown' я нажимаю на кнопку с именем 'IndicatorsDrilldownAdd'
+		И в таблице 'IndicatorsDrilldown' из выпадающего списка с именем "VA0Product" я выбираю по строке "1C:ERP. Corporate performance management"
+		И в таблице 'IndicatorsDrilldown' в поле с именем 'Value1' я ввожу текст "2,000.00000"
+		И я нажимаю на кнопку с именем 'FormOKButton1'
+		Когда открылось окно '$WindowTitle$'
+		И в табличном документе 'SpreadsheetFieldTemlate' ячейка с адресом "R12C2" равна "2,000"
 
 	* Вводим цену
 		Когда открылось окно '$WindowTitle$'
@@ -1343,8 +1343,6 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R7C3"
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateCopyDataOnColumn'
 		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateCopyDataOnRow'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R7C6"
-		И я нажимаю на кнопку с именем 'SpreadsheetFieldTemplateCopyDataOnColumn'							
 				
 	* Рассчитываем по "Консолидировать периметр (Пропорционально)"
 		Когда открылось окно '$WindowTitle$'
@@ -1352,7 +1350,14 @@
 		Тогда открылось окно "Select method to calculate indicators"
 		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Consolidate perimeter (Proportionally)"
 		И я нажимаю на кнопку с именем 'FormSelect'
-		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Система_Пропорционально.mxl' по шаблону
+
+	* Вводим значение количества
+		Когда открылось окно '$WindowTitle$'
+		И в табличном документе 'SpreadsheetFieldTemlate' ячейка с адресом "R12C2" равна "0"
+		И Я ввожу значение '2000.00000' в ячейку 'R12C2'
+
+	* Сверяем результат
+		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Система_Пропорционально.mxl'
 
 	* Проверяем историю действий
 		Когда открылось окно '$WindowTitle$'
@@ -1360,10 +1365,11 @@
 		Тогда открылось окно "Action history"
 		Тогда таблица 'Transactions_' стала равной:
 			| "Transaction presentation"                |
+			| "Change indicator"                    |
 			| "Automatic indicator consolidation" |
-			| "Copy by column"                  |
 			| "Copy by line"                   |
 			| "Copy by column"                  |
+			| "Change indicator"                    |
 			| "Change indicator"                    |
 			| "Automatic indicator consolidation" |
 			| "Collapsed automatically by period"        |
@@ -1375,8 +1381,10 @@
 		И я нажимаю на кнопку с именем 'FormFillByDefault'
 		Когда открылось окно '$WindowTitle$'
 		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Система_Пропорционально.mxl' по шаблону
-		И я нажимаю на кнопку с именем 'WriteAndClose'
-		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд						
+		И я нажимаю на кнопку с именем 'Write'
+
+	* Сверяем движения
+		И Движения документа с реквизитами ставли равны '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Система_Пропорционально_Движения.mxl'		
 	
 Сценарий: 01.14 Эллиминация и форма выбора расчета показателей
 

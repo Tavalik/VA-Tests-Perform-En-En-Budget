@@ -21,23 +21,23 @@
 
 	И Я создаю группу видов отчетов с именем "VA - Calculation rules (group)" и родителем "VA - Report group"
 
-Сценарий: 11.02 Создание вида отчета с ручным вводом - "VA - Quantity"
+Сценарий: 11.02 Создание вида отчета с ручным вводом - "VA - Count"
 
-	И Я создаю вид отчета с именем "VA - Quantity" и родителем "VA - Calculation rules (group)"
+	И Я создаю вид отчета с именем "VA - Count" и родителем "VA - Calculation rules (group)"
 	
 	* Редактируем структуру отчета
-		И Я открываю контруктор отчета с именем "VA - Quantity"
+		И Я открываю контруктор отчета с именем "VA - Count"
 		И Я в конструкторе отчета добавляю строку с именем "Product range"
-		И Я в конструкторе отчета добавляю колонку с именем "Quantity"
+		И Я в конструкторе отчета добавляю колонку с именем "Count"
 		И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C2' 
 		И Я закрываю окно "Report wizard"
 
-	И Я Для вида отчета "VA - Quantity" создаю бланк по умолчанию
-	И Я Для вида отчета "VA - Quantity" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
+	И Я Для вида отчета "VA - Count" создаю бланк по умолчанию
+	И Я Для вида отчета "VA - Count" в бланке для группы раскрытия с адресом 'R8C1' задаю сортировку "Product range" "Product ID"
 
-Сценарий: 11.03 Создание экземпляра отчета - "VA - Quantity"
+Сценарий: 11.03 Создание экземпляра отчета - "VA - Count"
 
-	И Я создаю экземпляр отчета для вида отчета "VA - Quantity" сценарий "VA - Main scenario" период '1/1/2024' '3/31/2024' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' '' 
+	И Я создаю экземпляр отчета для вида отчета "VA - Count" сценарий "VA - Main scenario" период '1/1/2024' '3/31/2024' периодичность "Month" организация "Mercury LLC" проект '' аналитики '' '' '' '' '' '' 
 
 	И Я добавляю значения с раскрытием показателей в ячейку 'R6C2'
 		| "VA0Product"                                                     | 'Value1' |
@@ -58,10 +58,10 @@
 	* Проверим результат
 		Когда открылось окно '$WindowTitle$'
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-			| "VA - Quantity"                                                 | ''               | ''                | ''             | ''           |
+			| "VA - Count"                                                 | ''               | ''                | ''             | ''           |
 			| ''                                                                | ''               | ''                | ''             | ''           |
 			| ''                                                                | "January 2024" | "February 2024" | "March 2024" | "TOTAL"      |
-			| ''                                                                | "Quantity"     | "Quantity"      | "Quantity"   | "Quantity" |
+			| ''                                                                | "Count"     | "Count"      | "Count"   | "Count" |
 			| "Product range"                                                    | '80'             | '130'             | '160'          | '370'        |
 			| "5C:Corporate performance management "                                      | '5'              | '15'              | '10'           | '30'         |
 			| "2C:Corporation "                                                  | '7'              | '17'              | '14'           | '38'         |
@@ -74,7 +74,7 @@
 		И я нажимаю на кнопку с именем 'Write'
 
 	* Проверим, можно ли имзенить значение пустой ячейки
-		Когда Открылся экземпляр отчета для вида отчета "VA - Quantity" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
+		Когда Открылся экземпляр отчета для вида отчета "VA - Count" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
 		И я запоминаю текущее окно как 'WindowTitle'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C2:R12C4'
 		И я нажимаю на кнопку с именем 'ChangeIndicators'
@@ -183,7 +183,7 @@
 	* Редактируем структуру отчета
 		И Я открываю контруктор отчета с именем "VA - Sales"
 		И Я в конструкторе отчета добавляю строку с именем "Product range"
-		И Я в конструкторе отчета добавляю колонку с именем "Quantity"
+		И Я в конструкторе отчета добавляю колонку с именем "Count"
 		И Я в конструкторе отчета добавляю колонку с именем "Price"
 		И Я в конструкторе отчета добавляю колонку с именем "Amount"
 		И Я в конструкторе отчета в ячейке 'R2C2' меняю свойство показателя 'NonFinancial' на 'True'
@@ -195,7 +195,7 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C2'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И я нажимаю на кнопку с именем 'RefToIndicator1'
-		И Я выбираю показатель с кодом "ProductRange_Quantity" вида отчета  "VA - Quantity"
+		И Я выбираю показатель с кодом "ProductRange_count" вида отчета  "VA - Count"
 		Тогда открылось окно "Report wizard *"
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
 		Тогда открылось окно "Report wizard"
@@ -209,7 +209,7 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C4'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И я нажимаю на кнопку с именем 'RefToIndicator1'
-		И Я выбираю показатель с кодом "ProductRange_Quantity"
+		И Я выбираю показатель с кодом "ProductRange_count"
 		Тогда открылось окно "Report wizard *"
 		И я нажимаю на кнопку с именем 'ButtonMultiply'
 		И я нажимаю на кнопку с именем 'RefToIndicator1'
@@ -232,7 +232,7 @@
 			| "VA - Sales" | ''               | ''     | ''      | ''                | ''     | ''      | ''             | ''     | ''      | ''           | ''     | ''      |
 			| ''             | ''               | ''     | ''      | ''                | ''     | ''      | ''             | ''     | ''      | ''           | ''     | ''      |
 			| ''             | "January 2024" | ''     | ''      | "February 2024" | ''     | ''      | "March 2024" | ''     | ''      | "TOTAL"      | ''     | ''      |
-			| ''             | "Quantity"     | "Price" | "Amount" | "Quantity"      | "Price" | "Amount" | "Quantity"   | "Price" | "Amount" | "Quantity" | "Price" | "Amount" |
+			| ''             | "Count"     | "Price" | "Amount" | "Count"      | "Price" | "Amount" | "Count"   | "Price" | "Amount" | "Count" | "Price" | "Amount" |
 			| "Product range" | '0'              | '0'    | '0'     | '0'               | '0'    | '0'     | '0'            | '0'    | '0'     | '0'          | '0'    | '0'     |
 
 	* Расчитаем документ
@@ -242,7 +242,7 @@
 			| "VA - Sales"                                                    | ''               | ''          | ''           | ''                | ''          | ''            | ''             | ''          | ''            | ''           | ''           | ''            |
 			| ''                                                                | ''               | ''          | ''           | ''                | ''          | ''            | ''             | ''          | ''            | ''           | ''           | ''            |
 			| ''                                                                | "January 2024" | ''          | ''           | "February 2024" | ''          | ''            | "March 2024" | ''          | ''            | "TOTAL"      | ''           | ''            |
-			| ''                                                                | "Quantity"     | "Price"      | "Amount"      | "Quantity"      | "Price"      | "Amount"       | "Quantity"   | "Price"      | "Amount"       | "Quantity" | "Price"       | "Amount"       |
+			| ''                                                                | "Count"     | "Price"      | "Amount"      | "Count"      | "Price"      | "Amount"       | "Count"   | "Price"      | "Amount"       | "Count" | "Price"       | "Amount"       |
 			| "Product range"                                                    | '80'             | '6,030,000' | '63,800,000' | '130'             | '6,633,000' | '136,510,000' | '160'          | '7,495,400' | '158,607,200' | '370'        | '20,158,400' | '358,917,200' |
 			| "5C:Corporate performance management "                                      | '5'              | '1,250,000' | '6,250,000'  | '15'              | '1,375,000' | '20,625,000'  | '10'           | '1,553,800' | '15,538,000'  | '30'         | '4,178,800'  | '42,413,000'  |
 			| "2C:Corporation "                                                  | '7'              | '2,050,000' | '14,350,000' | '17'              | '2,255,000' | '38,335,000'  | '14'           | '2,548,200' | '35,674,800'  | '38'         | '6,853,200'  | '88,359,800'  |
@@ -265,7 +265,7 @@
 			| "VA - Sales" | ''               | ''     | ''      | ''                | ''     | ''      | ''             | ''     | ''      | ''           | ''     | ''      |
 			| ''             | ''               | ''     | ''      | ''                | ''     | ''      | ''             | ''     | ''      | ''           | ''     | ''      |
 			| ''             | "January 2024" | ''     | ''      | "February 2024" | ''     | ''      | "March 2024" | ''     | ''      | "TOTAL"      | ''     | ''      |
-			| ''             | "Quantity"     | "Price" | "Amount" | "Quantity"      | "Price" | "Amount" | "Quantity"   | "Price" | "Amount" | "Quantity" | "Price" | "Amount" |
+			| ''             | "Count"     | "Price" | "Amount" | "Count"      | "Price" | "Amount" | "Count"   | "Price" | "Amount" | "Count" | "Price" | "Amount" |
 			| "Product range" | '0'              | '0'    | '0'     | '0'               | '0'    | '0'     | '0'            | '0'    | '0'     | '0'          | '0'    | '0'     |
 
 	* Рассчитаем документ
@@ -277,7 +277,7 @@
 			| "VA - Sales"                                                    | ''               | ''          | ''           | ''                | ''          | ''            | ''             | ''          | ''            | ''           | ''           | ''            |
 			| ''                                                                | ''               | ''          | ''           | ''                | ''          | ''            | ''             | ''          | ''            | ''           | ''           | ''            |
 			| ''                                                                | "January 2024" | ''          | ''           | "February 2024" | ''          | ''            | "March 2024" | ''          | ''            | "TOTAL"      | ''           | ''            |
-			| ''                                                                | "Quantity"     | "Price"      | "Amount"      | "Quantity"      | "Price"      | "Amount"       | "Quantity"   | "Price"      | "Amount"       | "Quantity" | "Price"       | "Amount"       |
+			| ''                                                                | "Count"     | "Price"      | "Amount"      | "Count"      | "Price"      | "Amount"       | "Count"   | "Price"      | "Amount"       | "Count" | "Price"       | "Amount"       |
 			| "Product range"                                                    | '80'             | '6,030,000' | '63,800,000' | '130'             | '6,633,000' | '136,510,000' | '160'          | '7,495,400' | '158,607,200' | '370'        | '20,158,400' | '358,917,200' |
 			| "5C:Corporate performance management "                                      | '5'              | '1,250,000' | '6,250,000'  | '15'              | '1,375,000' | '20,625,000'  | '10'           | '1,553,800' | '15,538,000'  | '30'         | '4,178,800'  | '42,413,000'  |
 			| "2C:Corporation "                                                  | '7'              | '2,050,000' | '14,350,000' | '17'              | '2,255,000' | '38,335,000'  | '14'           | '2,548,200' | '35,674,800'  | '38'         | '6,853,200'  | '88,359,800'  |
@@ -354,7 +354,7 @@
 	* Ввод показателей
 		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст ' '
 		И в таблице 'UsedReportTypes' я нажимаю на кнопку с именем 'UsedReportTypesInsertIndicators'
-		И Я выбираю показатель с кодом "ProductRange_Quantity"
+		И Я выбираю показатель с кодом "ProductRange_count"
 		Когда открылось окно "VA - Sales, VA - Sales: Procedure before calculation *"
 		Если '$$InterfaceLanguage$$ = "Ru"' Тогда
 			Тогда элемент формы с именем 'TextDocumentFieldProcedure' стал равен 
@@ -365,7 +365,7 @@
 		Иначе
 			Тогда элемент формы с именем 'TextDocumentFieldProcedure' стал равен 
 				|' ArrayIndicators = New Array;'|
-				|'ArrayIndicators.Add(\"VASales:ProductRange_Quantity\");'|
+				|'ArrayIndicators.Add(\"VASales:ProductRange_Count\");'|
 				|'tValuesIndicators = UGetIndicatorsValue(New Structure(\"IndicatorsReports\", ArrayIndicators));'|
 				|''|
 		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст ' '
@@ -688,7 +688,7 @@
 				|'ExtraOptions = New Structure(\"Overall\",Enums.IndicatorTotalsTypes.Sum);'|
 				|''|
 				|'ArrayIndicators = New Array;'|
-				|'ArrayIndicators.Add(\"VASales:ProductRange_Quantity\");'|
+				|'ArrayIndicators.Add(\"VASales:ProductRange_Count\");'|
 				|'ReportData.Insert(\"ReportsIndicators\", ArrayIndicators);'|
 				|'tValuesIndicators_Number = UGetIndicatorsValue('|
 				|' 	ReportData, DisclosedAnalysts);'|
@@ -760,7 +760,7 @@
 			| "VA - Sales"                                                    | ''               | ''     | ''      | ''                | ''           | ''      | ''             | ''           | ''      | ''           | ''           | ''      |
 			| ''                                                                | ''               | ''     | ''      | ''                | ''           | ''      | ''             | ''           | ''      | ''           | ''           | ''      |
 			| ''                                                                | "January 2024" | ''     | ''      | "February 2024" | ''           | ''      | "March 2024" | ''           | ''      | "TOTAL"      | ''           | ''      |
-			| ''                                                                | "Quantity"     | "Price" | "Amount" | "Quantity"      | "Price"       | "Amount" | "Quantity"   | "Price"       | "Amount" | "Quantity" | "Price"       | "Amount" |
+			| ''                                                                | "Count"     | "Price" | "Amount" | "Count"      | "Price"       | "Amount" | "Count"   | "Price"       | "Amount" | "Count" | "Price"       | "Amount" |
 			| "Product range"                                                    | '0'              | '0'    | '0'     | '130'             | '12,060,000' | '0'     | '180'          | '13,266,000' | '0'     | '310'        | '25,326,000' | '0'     |
 			| "5C:Corporate performance management "                                      | '0'              | '0'    | '0'     | '15'              | '2,500,000'  | '0'     | '25'           | '2,750,000'  | '0'     | '40'         | '5,250,000'  | '0'     |
 			| "2C:Corporation "                                                  | '0'              | '0'    | '0'     | '17'              | '4,100,000'  | '0'     | '27'           | '4,510,000'  | '0'     | '44'         | '8,610,000'  | '0'     |
@@ -790,7 +790,7 @@
 			| "VA - Sales"                                                    | ''               | ''     | ''      | ''                | ''        | ''      | ''             | ''        | ''      | ''           | ''        | ''      |
 			| ''                                                                | ''               | ''     | ''      | ''                | ''        | ''      | ''             | ''        | ''      | ''           | ''        | ''      |
 			| ''                                                                | "January 2024" | ''     | ''      | "February 2024" | ''        | ''      | "March 2024" | ''        | ''      | "TOTAL"      | ''        | ''      |
-			| ''                                                                | "Quantity"     | "Price" | "Amount" | "Quantity"      | "Price"    | "Amount" | "Quantity"   | "Price"    | "Amount" | "Quantity" | "Price"    | "Amount" |
+			| ''                                                                | "Count"     | "Price" | "Amount" | "Count"      | "Price"    | "Amount" | "Count"   | "Price"    | "Amount" | "Count" | "Price"    | "Amount" |
 			| "Product range"                                                    | '0'              | '0'    | '0'     | '130'             | '134,101' | '0'     | '180'          | '149,591' | '0'     | '310'        | '283,692' | '0'     |
 			| "5C:Corporate performance management "                                      | '0'              | '0'    | '0'     | '15'              | '27,799'  | '0'     | '25'           | '31,010'  | '0'     | '40'         | '58,808'  | '0'     |
 			| "2C:Corporation "                                                  | '0'              | '0'    | '0'     | '17'              | '45,590'  | '0'     | '27'           | '50,856'  | '0'     | '44'         | '96,446'  | '0'     |
@@ -830,7 +830,7 @@
 			| "VA - Sales"                                                    | ''               | ''          | ''           | ''                | ''          | ''            | ''             | ''          | ''            | ''           | ''           | ''            |
 			| ''                                                                | ''               | ''          | ''           | ''                | ''          | ''            | ''             | ''          | ''            | ''           | ''           | ''            |
 			| ''                                                                | "January 2024" | ''          | ''           | "February 2024" | ''          | ''            | "March 2024" | ''          | ''            | "TOTAL"      | ''           | ''            |
-			| ''                                                                | "Quantity"     | "Price"      | "Amount"      | "Quantity"      | "Price"      | "Amount"       | "Quantity"   | "Price"      | "Amount"       | "Quantity" | "Price"       | "Amount"       |
+			| ''                                                                | "Count"     | "Price"      | "Amount"      | "Count"      | "Price"      | "Amount"       | "Count"   | "Price"      | "Amount"       | "Count" | "Price"       | "Amount"       |
 			| "Product range"                                                    | '80'             | '6,030,000' | '63,800,000' | '130'             | '6,633,000' | '136,510,000' | '160'          | '7,495,400' | '158,607,200' | '370'        | '20,158,400' | '358,917,200' |
 			| "5C:Corporate performance management "                                      | '5'              | '1,250,000' | '6,250,000'  | '15'              | '1,375,000' | '20,625,000'  | '10'           | '1,553,800' | '15,538,000'  | '30'         | '4,178,800'  | '42,413,000'  |
 			| "2C:Corporation "                                                  | '7'              | '2,050,000' | '14,350,000' | '17'              | '2,255,000' | '38,335,000'  | '14'           | '2,548,200' | '35,674,800'  | '38'         | '6,853,200'  | '88,359,800'  |
