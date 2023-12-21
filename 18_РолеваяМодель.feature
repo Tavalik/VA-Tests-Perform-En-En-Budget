@@ -929,7 +929,7 @@
 			| "Mercury LLC" | "No"          |
 		И в таблице 'Companies' я устанавливаю флаг с именем 'CompaniesUse'
 		Тогда таблица 'List' стала равной:
-			| "Report type"                              | "Company"  | "Report period"  | "End period" | "Scenario"               | "State" | "Project"               | "Performer" | "Approval" | "Dimension 1"   | "Dimension 2" | "Dimension 3" | "Dimension 4" | "Dimension 5" | "Dimension 6" | "Primary currency" | "External infobase" |
+			| "Report type"                              | "Company"  | "Report period"  | "End period" | "Scenario"               | "State" | "Project"               | "Assignee" | "Approval" | "Dimension 1"   | "Dimension 2" | "Dimension 3" | "Dimension 4" | "Dimension 5" | "Dimension 6" | "Primary currency" | "External infobase" |
 			| "VA - Checking access settings (record)" | "Mercury LLC" | "January 2024" | "March 2024"     | "VA - Main scenario" | "Draft"  | "VA - Main project" | ""            | ""             | "Administration" | ""            | ""            | ""            | ""            | ""            | "RUB"             | ""           |
 	
 	* Создание и копирование
@@ -955,7 +955,7 @@
 			|"No person responsible for approval is specified in the responsibility assignment matrix for *. Enter proper approval status manually."|
 			|"Approval has not been initiated for object *."|
 			|"Person responsible for approval of the * object is not specified in the responsibility assignment matrix. The Status field is available for editing. Set the required approval status manually"|
-			|"Для организации \"Mercury LLC\" текущий пользователь не обладает ролью \"Суперпользователь\""|
+			|"Current user does not have the \"Superuser\" role for company \"Mercury LLC\""|
 		И я нажимаю на кнопку с именем 'FormCommonCommandUniversalApproval_ApprovalRoute'
 		Тогда открылось окно "Process management console"
 		И Я закрываю окно "Process management console"
@@ -1010,7 +1010,7 @@
 			| "Description"            |
 			| "Main period data" |
 			| "Setting"               |
-			| "Currency exchange rates"             |
+			| "Exchange rates"             |
 		И элемент формы с именем 'ChangePeriod' отсутствует на форме
 		И я нажимаю на кнопку с именем 'ReportOrganizationStructure'
 		Тогда открылось окно "Organizational structure briefly"

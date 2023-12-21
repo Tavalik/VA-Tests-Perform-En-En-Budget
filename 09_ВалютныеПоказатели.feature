@@ -1318,7 +1318,7 @@
 		Тогда открылось окно "Periodic exchange rates"
 		И из выпадающего списка с именем 'Currency' я выбираю точное значение "EUR"
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-			| "Currency"          | "Exchange rate at the beginning of the period" | "Exchange rate at the end of the period" | "Average rate" | "Average rate IFRS" | "Average rate (CB)" | "Multiplying factor" |
+			| "Currency"          | "Exchange rate at the beginning of the period" | "Exchange rate at the end of the period" | "Average rate" | "Average rate IFRS" | "Average rate (CB)" | "Multiplier" |
 			| "EUR"             | ''                       | ''                      | ''             | ''                  | ''                  | ''          |
 			| "January 2024"  | '90.7932'                | '92.2963'               | '90.4971'      | '91.5448'           | '90.4537'           | '1.0000'    |
 			| "February 2024" | '92.2963'                | '90.3743'               | '89.9321'      | '91.3353'           | '90.0038'           | '1.0000'    |
@@ -1347,7 +1347,7 @@
 //		И в таблице 'RatesViewTable' я нажимаю на кнопку с именем 'RatesTable_ChangeModeWithoutSave'
 //		Когда открылось окно '$WindowTitle$'
 //		И в таблице 'RatesEditTable' я перехожу к строке:
-//			| "Currency" | "Current value" | "Multiplying factor" | "Rate period"   |
+//			| "Currency" | "Current value" | "Multiplier" | "Rate period"   |
 //			| 'EUR'    | '90.7932'          | '1.0000'    | "January 2024" |
 //		И в таблице 'RatesEditTable' я выбираю текущую строку
 //		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '90.7932'

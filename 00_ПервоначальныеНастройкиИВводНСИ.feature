@@ -539,7 +539,7 @@
 		* EUR
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period"   |
+				| "Currency" | "Current value" | "Multiplier" | "Rate period"   |
 				| 'EUR'    | '90.7932'          | '1.0000'    | "January 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '90.7932'
@@ -552,7 +552,7 @@
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '0'
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period"    |
+				| "Currency" | "Current value" | "Multiplier" | "Rate period"    |
 				| 'EUR'    | '92.2963'          | '1.0000'    | "February 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '92.2963'
@@ -565,7 +565,7 @@
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '90.4537'	
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period" |
+				| "Currency" | "Current value" | "Multiplier" | "Rate period" |
 				| 'EUR'    | '90.3743'          | '1.0000'    | "March 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '90.3743'
@@ -579,7 +579,7 @@
 		* USD
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period"   |
+				| "Currency" | "Current value" | "Multiplier" | "Rate period"   |
 				| 'USD'    | '73.8757'          | '1.0000'    | "January 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '73.8757'
@@ -592,7 +592,7 @@
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '0'
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period"    |
+				| "Currency" | "Current value" | "Multiplier" | "Rate period"    |
 				| 'USD'    | '76.2527'          | '1.0000'    | "February 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '76.2527'
@@ -605,7 +605,7 @@
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '74.1489'	
 			Когда открылось окно '$WindowTitle$ *'
 			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period" |
+				| "Currency" | "Current value" | "Multiplier" | "Rate period" |
 				| 'USD'    | '74.4373'          | '1.0000'    | "March 2024" |
 			И в таблице 'RatesEditTable' я выбираю текущую строку
 			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '74.4373'
