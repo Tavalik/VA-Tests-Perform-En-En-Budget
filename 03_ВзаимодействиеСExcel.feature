@@ -24,17 +24,19 @@
 
 	* Создаем строки отчета
 		И Я открываю контруктор отчета с именем "VA - ImportExcel"
-		И Я в конструкторе отчета добавляю строку с именем "Line_Synthetic_1"
-		И Я в конструкторе отчета добавляю строку с именем "Group_Synthetic"
-		И Я в конструкторе отчета добавляю строку с именем "Line_Synthetic_2"
-		И Я в конструкторе отчета добавляю строку с именем "Group_Dimensions_0"
-		И Я в конструкторе отчета добавляю строку с именем "Group_Dimensions_1_2"
-		И Я в конструкторе отчета добавляю строку с именем "Line_Dimensions_1"
-		И Я в конструкторе отчета добавляю строку с именем "Line_Dimensions_2"
-		И Я в конструкторе отчета добавляю строку с именем "Group_Dimensions_6"
-		И Я в конструкторе отчета добавляю строку с именем "Line_Dimensions_6"
-		И Я в конструкторе отчета добавляю строку с именем "Group_Currency"
-		И Я в конструкторе отчета добавляю строку с именем "Line_Dimensions_6_Currency"
+		И Я в конструкторе отчета добавляю строки
+			| 'Description'              |
+			| "Line_Synthetic_1"        |
+			| "Group_Synthetic"          |
+			| "Line_Synthetic_2"        |
+			| "Group_Dimensions_0"        |
+			| "Group_Dimensions_1_2"      |
+			| "Line_Dimensions_1"        |
+			| "Line_Dimensions_2"        |
+			| "Group_Dimensions_6"        |
+			| "Line_Dimensions_6"        |
+			| "Group_Currency"             |
+			| "Line_Dimensions_6_Currency" |
 
 	* Задаем иерархию строк
 		И Я в конструкторе отчета в ячейке 'R6C1' меняю родителя у строки на "Group_Dimensions_0"
@@ -47,8 +49,18 @@
 		И Я в конструкторе отчета в ячейке 'R4C1' меняю родителя у строки на "Group_Synthetic"
 	
 	* Создаем колонки отчета
-		И Я в конструкторе отчета добавляю колонку с именем "Count"
-		И Я в конструкторе отчета добавляю колонку с именем "Amount"
+		И Я в конструкторе отчета добавляю колонки
+			| 'Description' |
+			| "Date"         |
+			| "Boolean"       |
+			| "Line"       |
+			| "Count"   |
+			| "Amount"        |
+
+	* Настраиваем типы показателей
+		И я в конструкторе отчета в ячейке 'R2C2:R12C2' меняю свойства показателей 'ValueType' на "Date"
+		И я в конструкторе отчета в ячейке 'R2C3:R12C3' меняю свойства показателей 'ValueType' на "Boolean"
+		И я в конструкторе отчета в ячейке 'R2C4:R12C4' меняю свойства показателей 'ValueType' на "Line"
 
 	* Вводим аналитики
 		* Аналитика "Контрагенты"
@@ -113,75 +125,32 @@
 			| "Line_Dimensions_6_Currency" | "Counterparties" | "Counterparty contracts" | "Product categories" | "Product range" | "Cash flow items"  | "Income and expense items" | '■'                    | ''          |
 
 	* Настраиваем формулы расчета
-		Когда открылось окно "Report wizard"
-		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C2'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C2'
-		И я нажимаю на кнопку с именем 'ButtonSum'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		Тогда открылось окно "Report wizard"
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R3C3'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R4C3'
-		И я нажимаю на кнопку с именем 'ButtonSum'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		Тогда открылось окно "Report wizard"
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C2'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C2'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я нажимаю на кнопку с именем 'ButtonPlus'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C2'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		Тогда открылось окно "Report wizard"
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C3'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C3'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я нажимаю на кнопку с именем 'ButtonPlus'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C3'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		Тогда открылось окно "Report wizard"
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C2'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C2'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C2:R8C2'
-		И я нажимаю на кнопку с именем 'ButtonSum'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		Тогда открылось окно "Report wizard"
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R6C3'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C3'
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C3:R8C3'
-		И я нажимаю на кнопку с именем 'ButtonSum'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		Тогда открылось окно "Report wizard"
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C2'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C2'
-		И я нажимаю на кнопку с именем 'ButtonSum'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		Тогда открылось окно "Report wizard"
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C3'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C3'
-		И я нажимаю на кнопку с именем 'ButtonSum'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		Тогда открылось окно "Report wizard"
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C2'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C2'
-		И я нажимаю на кнопку с именем 'ButtonSum'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
-		Тогда открылось окно "Report wizard"
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C3'
-		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C3'
-		И я нажимаю на кнопку с именем 'ButtonSum'
-		И я нажимаю на кнопку с именем 'WriteAndCollapse'
+		* Группа_Синтетика
+			И Я в конструкторе отчета для ячейки 'R3C2' задаю формулу копирования ячейки 'R4C2'
+			И Я в конструкторе отчета для ячейки 'R3C3' задаю формулу копирования ячейки 'R4C3'
+			И Я в конструкторе отчета для ячейки 'R3C4' задаю формулу копирования ячейки 'R4C4'
+			И Я в конструкторе отчета для ячейки 'R3C5' задаю формулу копирования ячейки 'R4C5'
+			И Я в конструкторе отчета для ячейки 'R3C6' задаю формулу суммирования ячейки 'R4C6'
+		* Группа_Аналитики_0
+			И Я в конструкторе отчета для ячейки 'R5C2' задаю формулу 'MASQ({VAImportExcel.GroupDimensions12_Date},{VAImportExcel.GroupDimensions6_Date})'
+			И Я в конструкторе отчета для ячейки 'R5C3' задаю формулу 'MASQ({VAImportExcel.GroupDimensions12_Boolean}, {VAImportExcel.GroupDimensions6_Boolean})'
+			И Я в конструкторе отчета для ячейки 'R5C5' задаю формулу сумма ячеек 'R6C5' 'R9C5'
+			И Я в конструкторе отчета для ячейки 'R5C6' задаю формулу сумма ячеек 'R6C6' 'R9C6'
+		* Группа_Аналитики_1_2
+			И Я в конструкторе отчета для ячейки 'R6C2' задаю формулу 'MASQ({VAImportExcel.СТРКDimensions1_Date}, {VAImportExcel.СТРКDimensions2_Date})'
+			И Я в конструкторе отчета для ячейки 'R6C3' задаю формулу 'MASQ({VAImportExcel.СТРКDimensions1_Boolean}, {VAImportExcel.СТРКDimensions2_Boolean})'
+			И Я в конструкторе отчета для ячейки 'R6C5' задаю формулу сумма ячеек 'R7C5' 'R8C5'
+			И Я в конструкторе отчета для ячейки 'R6C6' задаю формулу суммирования ячейки 'R7C6:R8C6'
+		* Группа_Аналитики_6
+			И Я в конструкторе отчета для ячейки 'R9C2' задаю формулу 'MASQ({VAImportExcel.СТРКDimensions6_Date}, {VAImportExcel.GroupCurrency_Date})'
+			И Я в конструкторе отчета для ячейки 'R9C3' задаю формулу 'MASQ({VAImportExcel.СТРКDimensions6_Boolean}, {VAImportExcel.GroupCurrency_Boolean})'
+			И Я в конструкторе отчета для ячейки 'R9C5' задаю формулу суммирования ячейки 'R10C5:R11C5'
+			И Я в конструкторе отчета для ячейки 'R9C6' задаю формулу сумма ячеек 'R10C6' 'R11C6'
+		* Группа_Валюта
+			И Я в конструкторе отчета для ячейки 'R11C2' задаю формулу копирования ячейки 'R12C2'
+			И Я в конструкторе отчета для ячейки 'R11C3' задаю формулу копирования ячейки 'R12C3'
+			И Я в конструкторе отчета для ячейки 'R11C5' задаю формулу копирования ячейки 'R12C5'
+			И Я в конструкторе отчета для ячейки 'R11C6' задаю формулу копирования ячейки 'R12C6'
 
 	* Настраиваем тип информационной базы
 		Когда открылось окно "Report wizard"
@@ -269,7 +238,7 @@
 
 	* Настраиваем сортировку
 		И Я Для вида отчета "VA - ImportExcel" в бланке для группы раскрытия с адресом 'R18C1' меняю сортировку "Product range" "Description" на сортировку "Product range" "Product ID"
-		И Я Для вида отчета "VA - ImportExcel" в бланке для группы раскрытия с адресом 'R21C1' меняю сортировку "Product range" "Description" на сортировку "Product range" "Product ID"	
+		И Я Для вида отчета "VA - ImportExcel" в бланке для группы раскрытия с адресом 'R21C1' меняю сортировку "Product range" "Description" на сортировку "Product range" "Product ID"
 
 Сценарий: 03.04 Создаем бланк сводной таблицы
 
@@ -324,7 +293,7 @@
 	
 	Тогда открылось окно '$WindowTitle$'
 	И я нажимаю на кнопку с именем 'FormOpenSettings'
-	Тогда открылось окно "Edit report settings"
+	Тогда открылось окно "Settings документа"
 	И я нажимаю на кнопку с именем 'OpenRulesSettings'
 	Тогда открылось окно "Set up object filling rules for regulation VA - Main regulations"
 	И в табличном документе 'CustomField' я перехожу к ячейке "R2C3"
@@ -338,7 +307,7 @@
 	Тогда открылось окно "Set up object filling rules for regulation VA - Main regulations"
 	И я нажимаю на кнопку с именем 'FormApplySettings'
 	И Я закрываю окно "Set up object filling rules for regulation VA - Main regulations"
-	Тогда открылось окно "Edit report settings"
+	Тогда открылось окно "Settings документа"
 	И я нажимаю на кнопку с именем 'FormApplyANDClose'
 
 Сценарий: 03.06 Настройка прав для пользователя "Budgeting1"
@@ -354,11 +323,35 @@
 	* Документ должен быть пуст
 		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету "$КаталогПроекта$\Макеты\03\ВА_ИмпортExcel_Пустой.mxl"
 
+	* Проверяем настройки
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormOpenSettings'
+		Тогда открылось окно "Settings документа"
+		И я перехожу к закладке с именем 'GroupPageReportSettings'
+		И элемент формы с именем 'ИндивидуальныеSettings' стал равен "No"
+		И элемент формы с именем 'ReportGenerationMethod' стал равен "Import"
+		И элемент формы с именем 'ProcessingRule' стал равен "VA - ImportExcel"
+		И элемент формы с именем 'UsedIB' стал равен "VA - Import from Excel"
+		И элемент формы с именем 'CheckRule' стал равен "VA - ImportExcel"
+		И элемент формы с именем 'ImportTemplate' стал равен "VA - ImportExcel"
+		И я изменяю флаг с именем 'ИндивидуальныеSettings'
+		Тогда открылось окно "1C:Enterprise"
+		И я нажимаю на кнопку с именем 'Button0'
+		Тогда открылось окно "Settings документа"
+		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "By processing rule"
+		И Я закрываю окно "Settings документа *"
+		Тогда открылось окно "1C:Enterprise"
+		И я нажимаю на кнопку с именем 'Button1'						
+
 	* Загружаем без файла
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
 		Когда открылось окно "Select method to calculate indicators"
-		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Import"
+		И элемент формы с именем 'ReportGenerationMethod' стал равен "Import"
+		И элемент формы с именем 'ProcessingRule' стал равен "VA - ImportExcel"
+		И элемент формы с именем 'UsedIB' стал равен "VA - Import from Excel"
+		И элемент формы с именем 'CheckRule' стал равен "VA - ImportExcel"
+		И элемент формы с именем 'ImportTemplate' стал равен "VA - ImportExcel"
 		И я нажимаю на кнопку с именем 'FormSelect'
 		Когда открылось окно '$WindowTitle$'
 		Затем я жду, что в сообщениях пользователю будет подстрока "Imported file path not specified. Operation canceled." в течение 30 секунд
@@ -516,7 +509,11 @@
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'RecalculateOther'
 		Тогда открылось окно "Select method to calculate indicators"
-		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Import"
+		И элемент формы с именем 'ReportGenerationMethod' стал равен "Import"
+		И элемент формы с именем 'ProcessingRule' стал равен "VA - ImportExcel"
+		И элемент формы с именем 'UsedIB' стал равен "VA - Import from Excel"
+		И элемент формы с именем 'CheckRule' стал равен "VA - ImportExcel"
+		И элемент формы с именем 'ImportTemplate' стал равен "VA - ImportExcel"
 		И я нажимаю на кнопку с именем 'FormSelect'
 		Когда открылось окно '$WindowTitle$'
 		Затем я жду, что в сообщениях пользователю будет подстрока "Imported file path not specified. Operation canceled." в течение 30 секунд

@@ -27,7 +27,7 @@
 	* Формируем Бланк экземпляра отчета
 		Когда открылось окно "[TheReportKindName] (Report types)"
 		И я перехожу к закладке с именем 'DefaultSettings'
-		И я нажимаю на кнопку открытия поля с именем 'DefaultTemplateToDisplayMultiperiod'
+		И я нажимаю на кнопку открытия поля с именем 'FormОтображенияOnУмолчанию'
 		Тогда открылось окно "Template [TheReportKindName] report type: [TheReportKindName]"
 		И я нажимаю на кнопку с именем 'CreateTemplateWithDesigner'
 		Если открылось окно "1C:Enterprise" Тогда
@@ -53,7 +53,7 @@
 	* Открываем бланк по умолчанию
 		Когда открылось окно "[TheReportKindName] (Report types)"
 		И я перехожу к закладке с именем 'DefaultSettings'
-		И я нажимаю на кнопку открытия поля с именем 'DefaultTemplateToDisplayMultiperiod'
+		И я нажимаю на кнопку открытия поля с именем 'FormОтображенияOnУмолчанию'
 		Тогда открылось окно "Template [TheReportKindName] report type: [TheReportKindName]"
 
 	* Добавляем сортировку
@@ -82,7 +82,7 @@
 	* Открываем бланк по умолчанию
 		Когда открылось окно "[TheReportKindName] (Report types)"
 		И я перехожу к закладке с именем 'DefaultSettings'
-		И я нажимаю на кнопку открытия поля с именем 'DefaultTemplateToDisplayMultiperiod'
+		И я нажимаю на кнопку открытия поля с именем 'FormОтображенияOnУмолчанию'
 		Тогда открылось окно "Template [TheReportKindName] report type: [TheReportKindName]"
 
 	* Меняем сортировку
@@ -397,7 +397,7 @@
 	И элемент формы с именем '[TheProperty]' стал равен '[TheValue]'	
 	И Я закрываю окно "* (Report indicators)"
 
-Сценарий: Я в конструкторе отчета для ячейки 'TheCell' настраиваю связь с покзателем с кодом 'TheIndicatorCode' вида отчета 'TheReportKindName'
+Сценарий: Я в конструкторе отчета для ячейки 'TheCell' настраиваю связь с показателем с кодом 'TheIndicatorCode' вида отчета 'TheReportKindName'
 
 	Когда открылось окно "Report wizard*"
 	И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"
@@ -408,10 +408,79 @@
 	Тогда открылось окно "Report wizard *"
 	И я нажимаю на кнопку с именем 'WriteAndCollapse'
 
+Сценарий: Я в конструкторе отчета для ячейки 'TheCell' задаю формулу 'TheFormula'
+
+	Когда открылось окно "Report wizard*"
+	И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"
+
+	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCell]'
+	И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+	И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст '[TheFormula]'
+	
+	И я нажимаю на кнопку с именем 'WriteAndCollapse'	
+
+Сценарий: Я в конструкторе отчета для ячейки 'TheCell' задаю формулу копирования ячейки 'TheCell1'
+
+	Когда открылось окно "Report wizard*"
+	И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"
+
+	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCell]'
+	И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+
+	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCell1]'
+	И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+	
+	И я нажимаю на кнопку с именем 'WriteAndCollapse'	
+
+Сценарий: Я в конструкторе отчета для ячейки 'TheCell' задаю формулу суммирования ячейки 'TheCell1'
+
+	Когда открылось окно "Report wizard*"
+	И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"
+
+	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCell]'
+	И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+
+	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCell1]'
+	И я нажимаю на кнопку с именем 'ButtonSum'
+	
+	И я нажимаю на кнопку с именем 'WriteAndCollapse'
+
+Сценарий: Я в конструкторе отчета для ячейки 'TheCell' задаю формулу сумма ячеек 'TheCell1' 'TheCell2' 'TheCell3' 'TheCell4' 'TheCell5'
+
+	Когда открылось окно "Report wizard*"
+	И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"
+
+	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCell]'
+	И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+
+	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCell1]'
+	И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+	И я нажимаю на кнопку с именем 'ButtonPlus'
+	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCell2]'
+	И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+
+	Если 'NOT StrStartsWith("[TheCell3]", "[") AND NOT IsBlankString("[TheCell3]")' Тогда
+		И я нажимаю на кнопку с именем 'ButtonPlus'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCell3]'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+
+	Если 'NOT StrStartsWith("[TheCell4]", "[") AND NOT IsBlankString("[TheCell3]")' Тогда
+		И я нажимаю на кнопку с именем 'ButtonPlus'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCell4]'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке	
+
+	Если 'NOT StrStartsWith("[TheCell5]", "[") AND NOT IsBlankString("[TheCell3]")' Тогда
+		И я нажимаю на кнопку с именем 'ButtonPlus'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCell5]'
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке	
+	
+	И я нажимаю на кнопку с именем 'WriteAndCollapse'	
+
 Сценарий: Я в конструкторе отчета для ячейки 'TheCell' задаю формулу произведение ячеек 'TheCell1' 'TheCell2' 'TheCell3' 'TheCell4' 'TheCell5'
 
 	Когда открылось окно "Report wizard*"
 	И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Indicators calculation formulas"
+	
 	И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке '[TheCell]'
 	И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 
@@ -533,26 +602,26 @@
 		И в поле с именем 'DateBegin' я ввожу текст '[TheStartDate]'
 		И в поле с именем 'DateEnd' я ввожу текст '[TheEndDate]'
 		И я нажимаю на кнопку с именем 'select'
-		Тогда открылось окно "Specify key document attributes"
+		Тогда открылось окно "Specify key document attributes *"
 		И я нажимаю кнопку выбора у поля с именем 'Organization'
 		И Я выбираю организацию '[TheBusinessUnit]'
-		Тогда открылось окно "Specify key document attributes"
+		Тогда открылось окно "Specify key document attributes *"
 		Если 'NOT IsBlankString("[TheProject]")' Тогда
 			И из выпадающего списка с именем 'Project' я выбираю по строке '[TheProject]'
 		Если 'NOT IsBlankString("[TheDimension1]")' Тогда
-			И из выпадающего списка с именем 'ReportDimension1' я выбираю по строке '[TheDimension1]'
+			И из выпадающего списка с именем 'Dimension1' я выбираю по строке '[TheDimension1]'
 		Если 'NOT IsBlankString("[TheDimension2]")' Тогда
-			И из выпадающего списка с именем 'ReportDimension2' я выбираю по строке '[TheDimension2]'
+			И из выпадающего списка с именем 'Dimension2' я выбираю по строке '[TheDimension2]'
 		Если 'NOT IsBlankString("[TheDimension3]")' Тогда
-			И из выпадающего списка с именем 'ReportDimension3' я выбираю по строке '[TheDimension3]'
+			И из выпадающего списка с именем 'Dimension3' я выбираю по строке '[TheDimension3]'
 		Если 'NOT IsBlankString("[TheDimension4]")' Тогда
-			И из выпадающего списка с именем 'ReportDimension4' я выбираю по строке '[TheDimension4]'
+			И из выпадающего списка с именем 'Dimension4' я выбираю по строке '[TheDimension4]'
 		Если 'NOT IsBlankString("[TheDimension5]")' Тогда
-			И из выпадающего списка с именем 'ReportDimension1' я выбираю по строке '[TheDimension5]'
+			И из выпадающего списка с именем 'Dimension5' я выбираю по строке '[TheDimension5]'
 		Если 'NOT IsBlankString("[TheDimension6]")' Тогда
-			И из выпадающего списка с именем 'ReportDimension1' я выбираю по строке '[TheDimension6]'
-		Когда открылось окно "Specify key document attributes"
-		И я нажимаю на кнопку с именем 'OKButton'
+			И из выпадающего списка с именем 'Dimension6' я выбираю по строке '[TheDimension6]'
+		Когда открылось окно "Specify key document attributes *"
+		И я нажимаю на кнопку с именем 'FormApplyANDClose'
 		
 		И Открылся экземпляр отчета для вида отчета '[TheReportKind]' валюта '*' организация '[TheBusinessUnit]' сценарий '[TheScenario]' периодичность '[TheFrequency]' проект '[TheProject]' аналитики '[TheDimension1]' '[TheDimension2]' '[TheDimension3]' '[TheDimension4]' '[TheDimension5]' '[TheDimension6]' 	
 
@@ -614,6 +683,39 @@
 	И я нажимаю на кнопку с именем 'FormGoForward'
 	Тогда открылось окно '$FormCaption$'
 	И я нажимаю на кнопку с именем 'FormClose'
+
+Сценарий: Я создаю шаблон универсального процесса с именем "TheName" режимом "TheMode"
+
+	* Открываем форму справочника
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Process templates подготовки отчетности"
+
+	* Удаляем элемент
+		И Я в списке "Universal process templates" по полю "Description" ищу элемент '[TheName]' "Exact match" 
+		И Пока в таблице 'List' количество строк 'больше' 0 Тогда
+			* Переименовываем
+				И в таблице 'List' я выбираю текущую строку
+				Тогда открылось окно "Editing process stages: [TheName]"
+				И я нажимаю на кнопку с именем 'FormOpenProcessProperties'
+				Когда открылось окно "[TheName] (Universal process template)"
+				И Я запоминаю значение выражения 'StrReplace(New UUID, "-", "")' в переменную 'UID'
+				И в поле с именем 'Description' я ввожу значение переменной 'UID'
+				И я нажимаю на кнопку с именем 'FormWriteAndClose'
+				И я жду закрытия окна "[TheName] (Universal process template) *" в течение 20 секунд
+				Тогда открылось окно "Editing process stages: *"
+				И Я закрываю окно "Editing process stages: *"
+
+	* Создаем элемент
+		Когда открылось окно "Universal process templates"
+		И я нажимаю на кнопку с именем 'FormCreate'
+		Тогда открылось окно "Universal process template (create)"		
+		И в поле с именем 'Description' я ввожу текст '[TheName]'
+		Когда открылось окно "Universal process template (create)"
+		И из выпадающего списка с именем 'ProcessPurpose' я выбираю точное значение '[TheMode]'
+		Когда открылось окно "Universal process template (create) *"
+		И я нажимаю на кнопку с именем 'FormWriteAndClose'
+		И я жду закрытия окна "Universal process template (create) *" в течение 20 секунд
+		Тогда открылось окно "Editing process stages: *"
+		И Я закрываю окно "Editing process stages: *"
 
 Сценарий: Я для регламента 'TheRegulationName' изменяю флаг 'TheFlagName'
 
@@ -863,7 +965,7 @@
 	И я нажимаю на кнопку с именем 'EditSchemaOption'
 	Тогда открылось окно "Analytical report structure settings ([TheReportKind] ([TheBusinessUnit]))"
 	И я перехожу к закладке с именем 'OutputParametersPage'
-	И в таблице "Table_ParametersВывода" я перехожу к строке:
+	И в таблице "Table_Data parametersВывода" я перехожу к строке:
 		| "Value" | "Use" | "Parameter"                               |
 		| "Auto"     | "No"           | "Arrangement общих итогов to вертикали" |
 	И в таблице 'Table_OutputParameters' я активизирую поле с именем 'Table_OutputParametersValue'
@@ -934,26 +1036,93 @@
 	И я нажимаю на кнопку с именем 'FormPostAndClose'
 	И я жду закрытия окна "Indicator value adjustment (create) *" в течение 20 секунд
 
-Сценарий: Движения документа ставли равны "ThePath"
+Сценарий: Движения документа стали равны "ThePath"
 
-	И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
-	Тогда открылось окно "Flat table of indicator values"
-	И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 60 секунд
-	Если элемент формы с именем 'CheckBox1' имеет значение 'Yes' Тогда
-		И я снимаю флаг с именем 'CheckBox1'
-		И я нажимаю на кнопку с именем 'GenerateReport'
-		И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 60 секунд
-	Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "[ThePath]" по шаблону
-	И Я закрываю окно "Flat table of indicator values"
-
-Сценарий: Движения документа с реквизитами ставли равны "ThePath"
-
-	И я нажимаю на кнопку с именем 'FormOpenDocumentRegisterRecordsFlatTab'
-	Тогда открылось окно "Flat table of indicator values"
-	И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 60 секунд
-	И я устанавливаю флаг с именем 'CheckBox1'
-	И я нажимаю на кнопку с именем 'GenerateReport'
+	И я нажимаю на кнопку с именем 'FormDocumentRegisterRecords'
+	Тогда открылось окно "Flat table of indicator values From реквизитами"
 	И я жду когда в табличном документе 'ReportSpreadsheetDocument' заполнится ячейка 'R2C1' в течение 60 секунд
 	Дано Табличный документ 'ReportSpreadsheetDocument' равен макету "[ThePath]" по шаблону
-	И я снимаю флаг с именем 'CheckBox1'				
-	И Я закрываю окно "Flat table of indicator values"
+	И Я закрываю окно "Flat table of indicator values From реквизитами"
+
+Сценарий: Я заполняю таблицу курсов в управлении периодом сценария
+
+	И я перехожу к закладке с именем 'КурсыВалют'
+	И в таблице 'RatesEditTable' я нажимаю на кнопку с именем 'RatesEditTableRatesTable_Update'
+	И в таблице 'RatesEditTable' я нажимаю на кнопку с именем 'RatesEditTableRatesTable_Write'
+	И в таблице 'RatesViewTable' я нажимаю на кнопку с именем 'RatesTable_ChangeModeWithoutSave'		
+	* EUR
+		И в таблице 'RatesEditTable' я перехожу к строке:
+			| "Currency" | "Multiplier" | "Rate period"   |
+			| 'EUR'    | '1.0000'    | "January 2024" |
+		И в таблице 'RatesEditTable' я выбираю текущую строку
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '90.7932'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '92.2963'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriod_CurrentValue' я ввожу текст '90.4971'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodCentralBank_CurrentValue' я ввожу текст '90.4537'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodIFRS_CurrentValue' я ввожу текст '91.5448'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPreviousPeriodEnd_CurrentValue' я ввожу текст '0'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriod_CurrentValue' я ввожу текст '0'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '0'
+		И в таблице 'RatesEditTable' я перехожу к строке:
+			| "Currency" | "Multiplier" | "Rate period"    |
+			| 'EUR'    | '1.0000'    | "February 2024" |
+		И в таблице 'RatesEditTable' я выбираю текущую строку
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '92.2963'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '90.3743'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriod_CurrentValue' я ввожу текст '89.9321'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodCentralBank_CurrentValue' я ввожу текст '90.0038'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodIFRS_CurrentValue' я ввожу текст '91.3353'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPreviousPeriodEnd_CurrentValue' я ввожу текст '92.2963'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriod_CurrentValue' я ввожу текст '90.4971'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '90.4537'	
+		И в таблице 'RatesEditTable' я перехожу к строке:
+			| "Currency" | "Multiplier" | "Rate period" |
+			| 'EUR'    | '1.0000'    | "March 2024" |
+		И в таблице 'RatesEditTable' я выбираю текущую строку
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '90.3743'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '88.8821'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriod_CurrentValue' я ввожу текст '88.6820'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodCentralBank_CurrentValue' я ввожу текст '88.7338'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodIFRS_CurrentValue' я ввожу текст '89.6282'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPreviousPeriodEnd_CurrentValue' я ввожу текст '90.3743'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriod_CurrentValue' я ввожу текст '89.9321'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '90.0038'	
+	* USD
+		И в таблице 'RatesEditTable' я перехожу к строке:
+			| "Currency" | "Multiplier" | "Rate period"   |
+			| 'USD'    | '1.0000'    | "January 2024" |
+		И в таблице 'RatesEditTable' я выбираю текущую строку
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '73.8757'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '76.2527'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriod_CurrentValue' я ввожу текст '74.2204'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodCentralBank_CurrentValue' я ввожу текст '74.1489'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodIFRS_CurrentValue' я ввожу текст '75.0642'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPreviousPeriodEnd_CurrentValue' я ввожу текст '0'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriod_CurrentValue' я ввожу текст '0'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '0'
+		И в таблице 'RatesEditTable' я перехожу к строке:
+			| "Currency" | "Multiplier" | "Rate period"    |
+			| 'USD'    | '1.0000'    | "February 2024" |
+		И в таблице 'RatesEditTable' я выбираю текущую строку
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '76.2527'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '74.4373'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriod_CurrentValue' я ввожу текст '74.3747'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodCentralBank_CurrentValue' я ввожу текст '74.4435'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodIFRS_CurrentValue' я ввожу текст '75.3450'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPreviousPeriodEnd_CurrentValue' я ввожу текст '76.2527'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriod_CurrentValue' я ввожу текст '74.2204'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '74.1489'	
+		И в таблице 'RatesEditTable' я перехожу к строке:
+			| "Currency" | "Multiplier" | "Rate period" |
+			| 'USD'    | '1.0000'    | "March 2024" |
+		И в таблице 'RatesEditTable' я выбираю текущую строку
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '74.4373'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '75.7023'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriod_CurrentValue' я ввожу текст '74.4035'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodCentralBank_CurrentValue' я ввожу текст '74.3689'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodIFRS_CurrentValue' я ввожу текст '75.0698'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPreviousPeriodEnd_CurrentValue' я ввожу текст '74.4373'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriod_CurrentValue' я ввожу текст '74.3747'
+		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '74.4435'	
+	И в таблице 'RatesEditTable' я завершаю редактирование строки
+	И в таблице 'RatesEditTable' я нажимаю на кнопку с именем 'RatesEditTableRatesTable_Write'

@@ -43,11 +43,8 @@
 	И Я в конструкторе отчета добавляю колонку с именем "Value"
 
 	И Я в конструкторе отчета в ячейке 'R5C2' меняю свойство показателя 'ValueType' на "Date"
-	И Я в конструкторе отчета в ячейке 'R5C2' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
 	И Я в конструкторе отчета в ячейке 'R6C2' меняю свойство показателя 'NonFinancial' на "True"
-	И Я в конструкторе отчета в ячейке 'R6C2' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
 	И Я в конструкторе отчета в ячейке 'R7C2' меняю свойство показателя 'NonFinancial' на "True"
-	И Я в конструкторе отчета в ячейке 'R7C2' меняю свойство показателя 'PeriodTotalCalcMethod' на "Total by period is not calculated"
 	
 	И Я в конструкторе отчета добавляю аналитику с кодом "VA0Counter" в ячейку 'R2C2'
 	Когда открылось окно "Report wizard"
@@ -266,7 +263,6 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "* (Report indicators)"
 			И из выпадающего списка с именем 'ValueType' я выбираю точное значение "Date"
-			И из выпадающего списка с именем 'PeriodTotalCalcMethod' я выбираю точное значение "Total by period is not calculated"
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
 		* Выручка по валюте [Курс на дату указанную в показателе]	
@@ -298,7 +294,7 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R14C2'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "* (Report indicators)"
-			И из выпадающего списка с именем 'PeriodTotalCalcMethod' я выбираю точное значение "Total by period is not calculated"
+			И из выпадающего списка с именем 'TotalKind' я выбираю точное значение "Total to аналитикам не рассчитывается"
 			И я изменяю флаг с именем 'NonFinancial'
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
@@ -307,7 +303,7 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R15C2'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "* (Report indicators)"
-			И из выпадающего списка с именем 'PeriodTotalCalcMethod' я выбираю точное значение "Total by period is not calculated"
+			И из выпадающего списка с именем 'TotalKind' я выбираю точное значение "Total to аналитикам не рассчитывается"
 			И я изменяю флаг с именем 'NonFinancial'
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
@@ -399,9 +395,9 @@
 
 	* Вводим источники данных
 		* Выручка по валюте
-			И Я в конструкторе отчета для ячейки 'R2C2' настраиваю связь с покзателем с кодом "RevenueInCurrency_Value" вида отчета "VA - Currency indicators (source)"
+			И Я в конструкторе отчета для ячейки 'R2C2' настраиваю связь с показателем с кодом "RevenueInCurrency_Value" вида отчета "VA - Currency indicators (source)"
 		* Выручка по валюте [Средний курс за период]
-			И Я в конструкторе отчета для ячейки 'R3C2' настраиваю связь с покзателем с кодом "RevenueByCurrency_Value" вида отчета "VA - Currency indicators (source)"	
+			И Я в конструкторе отчета для ячейки 'R3C2' настраиваю связь с показателем с кодом "RevenueByCurrency_Value" вида отчета "VA - Currency indicators (source)"	
 		* Выручка по валюте [Средний курс за период МСФО]	
 			Тогда открылось окно "Report wizard"
 			И я нажимаю на кнопку с именем 'CopyFormula'
@@ -448,11 +444,11 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R17C2'
 			И я нажимаю на кнопку с именем 'InsertFormula'
 		* Дата курса
-			И Я в конструкторе отчета для ячейки 'R11C2' настраиваю связь с покзателем с кодом "EffectiveOn_Value" вида отчета "VA - Currency indicators (source)"	
+			И Я в конструкторе отчета для ячейки 'R11C2' настраиваю связь с показателем с кодом "EffectiveOn_Value" вида отчета "VA - Currency indicators (source)"	
 		* Курс (EUR)
-			И Я в конструкторе отчета для ячейки 'R14C2' настраиваю связь с покзателем с кодом "RateEUR_Value" вида отчета "VA - Currency indicators (source)"	
+			И Я в конструкторе отчета для ячейки 'R14C2' настраиваю связь с показателем с кодом "RateEUR_Value" вида отчета "VA - Currency indicators (source)"	
 		* Курс (USD)
-			И Я в конструкторе отчета для ячейки 'R15C2' настраиваю связь с покзателем с кодом "RateUSD_Value" вида отчета "VA - Currency indicators (source)"	
+			И Я в конструкторе отчета для ячейки 'R15C2' настраиваю связь с показателем с кодом "RateUSD_Value" вида отчета "VA - Currency indicators (source)"	
 
 	* Включим возможность редактирования показателей
 		Когда открылось окно "Report wizard"
@@ -872,8 +868,8 @@
 			| 'RUB '                                | '300,000'        | '300,000'     | '300,000'         | '300,000'     | '300,000'      | '300,000'     | '900,000'   | '900,000'  |
 			| 'USD '                                | '270,000'        | '3,638'       | '270,000'         | '3,630'       | '270,000'      | '3,629'       | '810,000'   | '10,897'   |
 			| "Effective on"                          | '3/1/2024'     | ''            | '2/1/2024'      | ''            | '1/1/2024'   | ''            | ''          | ''         |
-			| "Rate [EUR]"                          | '90'             | ''            | '91'              | ''            | '92'           | ''            | '0'         | ''         |
-			| "Rate [USD]"                          | '73'             | ''            | '74'              | ''            | '75'           | ''            | '0'         | ''         |
+			| "Rate [EUR]"                          | '90'             | ''            | '91'              | ''            | '92'           | ''            | '273'       | ''         |
+			| "Rate [USD]"                          | '73'             | ''            | '74'              | ''            | '75'           | ''            | '222'       | ''         |
 
 	* Записываем документ	
 		Когда открылось окно '$WindowTitle$'
@@ -1318,7 +1314,7 @@
 		Тогда открылось окно "Periodic exchange rates"
 		И из выпадающего списка с именем 'Currency' я выбираю точное значение "EUR"
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-			| "Currency"          | "Exchange rate at the beginning of the period" | "Exchange rate at the end of the period" | "Average rate" | "Average rate IFRS" | "Average rate (CB)" | "Multiplying factor" |
+			| "Currency"          | "Exchange rate at the beginning of the period" | "Exchange rate at the end of the period" | "Average rate" | "Average rate IFRS" | "Average rate (CB)" | "Multiplier" |
 			| "EUR"             | ''                       | ''                      | ''             | ''                  | ''                  | ''          |
 			| "January 2024"  | '90.7932'                | '92.2963'               | '90.4971'      | '91.5448'           | '90.4537'           | '1.0000'    |
 			| "February 2024" | '92.2963'                | '90.3743'               | '89.9321'      | '91.3353'           | '90.0038'           | '1.0000'    |
@@ -1347,7 +1343,7 @@
 //		И в таблице 'RatesViewTable' я нажимаю на кнопку с именем 'RatesTable_ChangeModeWithoutSave'
 //		Когда открылось окно '$WindowTitle$'
 //		И в таблице 'RatesEditTable' я перехожу к строке:
-//			| "Currency" | "Current value" | "Multiplying factor" | "Rate period"   |
+//			| "Currency" | "Current value" | "Multiplier" | "Rate period"   |
 //			| 'EUR'    | '90.7932'          | '1.0000'    | "January 2024" |
 //		И в таблице 'RatesEditTable' я выбираю текущую строку
 //		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '90.7932'

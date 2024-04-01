@@ -518,7 +518,7 @@
 		Тогда открылось окно "Dimension types (corporate)"
 		И в таблице 'List' я активизирую поле с именем 'Description'
 		И в таблице 'List' я выбираю текущую строку
-		Тогда открылось окно "DG_LineDimension6Currency (Report indicator dimension groups)"
+		Тогда открылось окно "DG_LineDimension6Currency (Report indicator dimension groups) *"
 		И в таблице 'TabFieldsDisplaySetting' я завершаю редактирование строки
 		И в таблице 'TabFieldsDisplaySetting' я перехожу к строке:
 			| "Group dimension" | "Required" |
@@ -752,6 +752,42 @@
 Сценарий: 01.07 Создание бланка вида отчета
 
 	И Я для вида отчета "VA - Manual entry for all analytics" создаю бланк по умолчанию
+
+	* Настраиваем дополнительный бланк
+		Когда открылось окно "VA - Manual entry for all analytics (Report types)"
+		И я нажимаю на кнопку открытия поля с именем 'FormОтображенияOnУмолчанию'
+		Тогда открылось окно "Template *"
+		И я нажимаю на кнопку с именем 'ShowIndicatorsPanel'
+		И я перехожу к закладке с именем 'GroupДополнительныеБланки'
+		И в таблице 'ДополнительныеБланки' я нажимаю на кнопку с именем 'ДополнительныеБланкиДобавить'
+		И я нажимаю на кнопку создать поля с именем 'ДополнительныеБланкиБланк'
+		Тогда открылось окно "Template *"
+		И я нажимаю на кнопку с именем 'ShowIndicatorsPanel'
+		И в поле с именем 'Description' я ввожу текст "Дополнительный бланк"
+		И из выпадающего списка с именем 'TemplateToDisplay' я выбираю точное значение "Только для отображения"
+		И я нажимаю на кнопку с именем 'CreateTemplateWithDesigner'
+		Тогда открылось окно "1C:Enterprise"
+		И я нажимаю на кнопку с именем 'Button0'
+		Тогда открылось окно "Report structure"
+		И я изменяю флаг с именем 'DisplayBankingDetails'
+		И я нажимаю на кнопку с именем 'FormSelect'
+		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R3C8"
+		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
+		И в табличный документ "FieldТабличногоДокументаМакет" я ввожу текст "VA - Manual entry for all analytics"
+		И я нажимаю на кнопку с именем 'FormButtonWriteAndClose'
+		Тогда открылось окно "Template *"		
+		И я перехожу к следующему реквизиту
+		И в таблице 'ДополнительныеБланки' я активизирую поле с именем 'ДополнительныеБланкиКартинкаЗакладки'
+		И в таблице 'ДополнительныеБланки' я завершаю редактирование строки
+		И в таблице 'ДополнительныеБланки' я выбираю текущую строку
+		Тогда открылось окно "Диалог выбора картинки"
+		И в таблице 'ListДоступныхКартинок' я перехожу к строке:
+			| "First name картинки"   |
+			| "Budgeting" |
+		И в таблице 'ListДоступныхКартинок' я выбираю текущую строку
+		Тогда открылось окно "Template *"
+		И я нажимаю на кнопку с именем 'FormButtonWriteAndClose'
+		И я жду закрытия окна "Template *" в течение 20 секунд
 
 Сценарий: 01.08 Созадем бланк сводной таблицы
 
@@ -1081,7 +1117,7 @@
 
 	* Проверяем движения документа
 		Когда открылось окно '$WindowTitle$'
-		И Движения документа ставли равны '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Меркурий_Движения.mxl'
+		И Движения документа стали равны '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Меркурий_Движения.mxl'
 
 	* Запишем и закроем документ
 		Тогда открылось окно '$WindowTitle$'
@@ -1160,14 +1196,14 @@
 		Когда открылось окно "Report instances"
 		И я выбираю пункт контекстного меню с именем 'ListContextMenuCopy' на элементе формы с именем 'List'
 		Когда открылось окно "Specify key document attributes"
-		И я нажимаю на кнопку с именем 'OKButton'
+		И я нажимаю на кнопку с именем 'FormApplyANDClose'
 		Тогда в логе сообщений TestClient есть строки:
 			|"A report instance with the specified key attributes already exists."|						
 		Когда открылось окно "Specify key document attributes"
 		И я нажимаю кнопку выбора у поля с именем 'Organization'
 		И Я выбираю организацию "Earth LLC"
-		Когда открылось окно "Specify key document attributes"
-		И я нажимаю на кнопку с именем 'OKButton'
+		Когда открылось окно "Specify key document attributes *"
+		И я нажимаю на кнопку с именем 'FormApplyANDClose'
 
 	* Сверим результат	
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'RUB' организация "Earth LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
@@ -1192,7 +1228,7 @@
 
 	* Еще раз меняем организацию		
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
-		Тогда открылось окно "Edit report settings"
+		Тогда открылось окно "Settings документа"
 		И из выпадающего списка с именем 'Organization' я выбираю по строке "Mars LLC"
 		И я нажимаю на кнопку с именем 'FormApplyANDClose'
 		Тогда открылось окно "1C:Enterprise"
@@ -1228,7 +1264,7 @@
 
 	* Еще раз меняем организацию		
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
-		Тогда открылось окно "Edit report settings"
+		Тогда открылось окно "Settings документа"
 		И из выпадающего списка с именем 'Organization' я выбираю по строке "Venus LLC"
 		И я нажимаю на кнопку с именем 'FormApplyANDClose'
 		Тогда открылось окно "1C:Enterprise"
@@ -1265,7 +1301,7 @@
 
 	* Проверяем движения документа
 		Когда открылось окно '$WindowTitle$'
-		И Движения документа ставли равны '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Венера_Движения.mxl'
+		И Движения документа стали равны '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Венера_Движения.mxl'
 
 	* Свернем все версии
 		Когда открылось окно '$WindowTitle$'
@@ -1281,23 +1317,99 @@
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'WriteAndClose'
 
-Сценарий: 01.13 Консолидация периметра
+Сценарий: 01.13 Проверяем форму создания документа ЭО
 
-	* Создаем документ
-		И Я создаю экземпляр отчета для вида отчета "VA - Manual entry for all analytics" сценарий "VA - Main scenario" период '1/1/2024' '3/31/2024' периодичность "Month" организация "System LLC" проект "VA - Main project" аналитики '' '' '' '' '' ''
+	И Я нахожу в списке вид отчета с именем "VA - Manual entry for all analytics"
 
-	* Рассчитываем по правилу
-		Когда открылось окно '$WindowTitle$'
-		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
-		Тогда открылось окно "Select method to calculate indicators"
-		И элемент формы с именем 'ReportGenerationMethod' стал равен "By processing rule"
+	* Все настройки должны подтянуться из хранилища настроек
+		Когда открылось окно "Report types and templates"
+		И в таблице 'ReportKindList' я нажимаю на кнопку с именем 'ReportKindListOpenInstancesList'
+		Тогда открылось окно "Report instances"
+		И я нажимаю на кнопку с именем 'FormCreate'
+		Тогда открылось окно "Specify key document attributes"
+		Тогда элемент формы с именем 'Dimension1' стал равен ""
+		И элемент формы с именем 'Dimension2' стал равен ""
+		И элемент формы с именем 'Dimension3' стал равен ""
+		И элемент формы с именем 'Dimension4' стал равен ""
+		И элемент формы с именем 'Dimension5' стал равен ""
+		И элемент формы с именем 'Dimension6' стал равен ""
+		И элемент формы с именем 'ImportTemplate' стал равен "VA - Manual entry for all analytics"
+		И элемент формы с именем 'DisplayCurrency' стал равен "RUB"
+		И элемент формы с именем 'ReportKind' стал равен "VA - Manual entry for all analytics"
+		И элемент формы с именем 'AdditionalCurrencies' стал равен "USD; EUR"
+		И у элемента формы с именем 'UnitOfMeasure' текст редактирования стал равен "units"
+		И элемент формы с именем 'CopyingValue' стал равен ""
+		И элемент формы с именем 'ИндивидуальныеSettings' стал равен "No"
+		И элемент формы с именем 'UsedIB' стал равен "Current infobase"
+		И элемент формы с именем 'Organization' стал равен "Venus LLC"
+		И элемент формы с именем 'MainCurrency' стал равен "RUB"
+		И элемент формы с именем 'Periodicity' стал равен "Month"
+		И элемент формы с именем 'PeriodОкончания' стал равен "March 2024"
+		И элемент формы с именем 'ReportPeriod' стал равен "January 2024"
 		И элемент формы с именем 'ProcessingRule' стал равен "VA - Manual entry for all analytics"
 		И элемент формы с именем 'CheckRule' стал равен "VA - Manual entry for all analytics"
+		И элемент формы с именем 'Project' стал равен ""
+		И элемент формы с именем 'Regulation' стал равен "VA - Main regulations"
+		И элемент формы с именем 'ReportGenerationMethod' стал равен "By processing rule"
+		И элемент формы с именем 'Scenario' стал равен "VA - Main scenario"
+		И элемент формы с именем 'PeriodManagement' стал равен "January 2024 г. - March 2024 г. (Frequency: Month) <VA - Main scenario>"
+		И элемент формы с именем 'УровеньТочности' стал равен "0"
+		И элемент формы с именем 'TemplateОтчета' стал равен "VA - Manual entry for all analytics"
+
+	* Меняем организацию
+		Когда открылось окно "Specify key document attributes"
+		И я нажимаю кнопку выбора у поля с именем 'Organization'
+		И Я выбираю организацию "System LLC"
+				
+	* Меняем реквизиты
+		Когда открылось окно "Specify key document attributes *"
+		И из выпадающего списка с именем 'Project' я выбираю по строке "ва - Main проект"
+		И я перехожу к закладке с именем 'GroupPageReportSettings'
+		И из выпадающего списка с именем 'UnitOfMeasure' я выбираю точное значение "thousands"
+		И в поле с именем 'УровеньТочности' я ввожу текст "2"
+		И я устанавливаю флаг с именем 'ИндивидуальныеSettings'
+		Тогда открылось окно "1C:Enterprise"
+		И я нажимаю на кнопку с именем 'Button0'
+		Тогда открылось окно "Specify key document attributes *"
 		И выпадающий список с именем 'ReportGenerationMethod' стал равен:
 			| "By processing rule"                       |
 			| "Consolidate perimeter (IFRS)"            |
 			| "Consolidate perimeter (Proportionally)" |
 			| "Collapse by period"                        |
+		Когда открылось окно "Specify key document attributes *"
+		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Collapse by period"
+		И из выпадающего списка с именем 'PeriodicityСвертывания' я выбираю точное значение "Day"
+		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+
+	* Смотрим настройки документа	
+		И Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта "RUB" организация "System LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''	
+		И я нажимаю на кнопку с именем 'FormOpenSettings'
+		Тогда открылось окно "Settings документа"
+		И я перехожу к закладке с именем 'GroupPageReportSettings'
+		И у элемента формы с именем 'UnitOfMeasure' текст редактирования стал равен "thousands"
+		И элемент формы с именем 'УровеньТочности' стал равен "2"
+		И элемент формы с именем 'ИндивидуальныеSettings' стал равен "Yes"
+		И элемент формы с именем 'ReportGenerationMethod' стал равен "Collapse by period"
+		И элемент формы с именем 'PeriodicityСвертывания' стал равен "Day"
+		И Я закрываю окно "Settings документа"
+
+	* Смотрим форму расчета
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
+		И элемент формы с именем 'ReportGenerationMethod' стал равен "Collapse by period"
+		И элемент формы с именем 'ProcessingRule' стал равен "VA - Manual entry for all analytics"
+		И элемент формы с именем 'UsedIB' стал равен "Current infobase"
+		И элемент формы с именем 'CheckRule' стал равен "VA - Manual entry for all analytics"
+		И элемент формы с именем 'PeriodicityСвертывания' стал равен "Day"
+		И выпадающий список с именем 'ReportGenerationMethod' стал равен:
+			| "By processing rule"                       |
+			| "Consolidate perimeter (IFRS)"            |
+			| "Consolidate perimeter (Proportionally)" |
+			| "Collapse by period"                        |
+		И выпадающий список с именем 'PeriodicityСвертывания' стал равен:
+			| "Day"   |
+			| "Week" |
+			| "Ten-day period" |
 		И я нажимаю на кнопку с именем 'FormSelect'
 		Когда открылось окно '$WindowTitle$'
 		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Пустой.mxl'
@@ -1306,12 +1418,8 @@
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
 		Тогда открылось окно "Select method to calculate indicators"
-		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Collapse by period"
-		И элемент формы с именем 'ReconciliationFrequency' стал равен "Ten-day period"
-		И выпадающий список с именем 'ReconciliationFrequency' стал равен:
-			| "Day"   |
-			| "Week" |
-			| "Ten-day period" |
+		И элемент формы с именем 'ReportGenerationMethod' стал равен "Collapse by period"
+		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "By processing rule"
 		И я нажимаю на кнопку с именем 'FormSelect'
 		Когда открылось окно '$WindowTitle$'	
 		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Пустой.mxl'		
@@ -1319,13 +1427,24 @@
 	* Рассчитываем по "Консолидировать периметр (МСФО)"
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormFillInUsingAnotherApproach'
-		И элемент формы с именем 'ReportGenerationMethod' стал равен "Collapse by period"
+		И элемент формы с именем 'ReportGenerationMethod' стал равен "By processing rule"
 		Тогда открылось окно "Select method to calculate indicators"
 		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Consolidate perimeter (IFRS)"
 		И я нажимаю на кнопку с именем 'FormSelect'
 		Когда открылось окно '$WindowTitle$'
 		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Система_МСФО.mxl' по шаблону
 
+	* Меняем настройки отображения
+		Когда открылось окно '$WindowTitle$'
+		И у элемента формы с именем 'UnitOfMeasure' текст редактирования стал равен "thousands"						
+		И из выпадающего списка с именем 'UnitOfMeasure' я выбираю точное значение "units"
+		Тогда элемент формы с именем 'УровеньТочности' стал равен "2"
+		И в поле с именем 'УровеньТочности' я уменьшаю значение
+		И в поле с именем 'УровеньТочности' я ввожу текст "1"
+		И в поле с именем 'УровеньТочности' я уменьшаю значение
+		И в поле с именем 'УровеньТочности' я ввожу текст "0"
+		И я нажимаю на кнопку с именем 'FormUpdateConsideringVersions'
+	
 	* Вводим количество		
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R11C2"
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
@@ -1372,8 +1491,8 @@
 			| "Change indicator"                    |
 			| "Change indicator"                    |
 			| "Automatic indicator consolidation" |
-			| "Collapsed automatically by period"        |
 			| "Fill in by rule"                   |
+			| "Collapsed automatically by period"        |
 		И я нажимаю на кнопку с именем 'FormCancel'				
 
 	* Сохраняем экземпляр отчета
@@ -1384,7 +1503,7 @@
 		И я нажимаю на кнопку с именем 'Write'
 
 	* Сверяем движения
-		И Движения документа с реквизитами ставли равны '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Система_Пропорционально_Движения.mxl'		
+		И Движения документа стали равны '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Система_Пропорционально_Движения.mxl'		
 	
 Сценарий: 01.14 Эллиминация и форма выбора расчета показателей
 
@@ -1497,11 +1616,11 @@
 
 	* Меняем параметры отображения в экземпляре отчета		
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
-		Тогда открылось окно "Edit report settings"
+		Тогда открылось окно "Settings документа"
 		И я перехожу к закладке с именем 'GroupPageReportSettings'
 		И из выпадающего списка с именем 'UnitOfMeasure' я выбираю точное значение "thousands"
-		И из выпадающего списка с именем 'SelectedCurrency' я выбираю точное значение "USD"
-		И в поле с именем 'CurrentPrecision' я ввожу текст '5'
+		И из выпадающего списка с именем 'DisplayCurrency' я выбираю точное значение "USD"
+		И в поле с именем 'УровеньТочности' я ввожу текст '5'
 		И я нажимаю на кнопку с именем 'FormApplyANDClose'
 
 	* Запомним заголовок окна
@@ -1674,10 +1793,10 @@
 	* Меняем параметры отображения в экземпляре отчета
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
-		Тогда открылось окно "Edit report settings"
+		Тогда открылось окно "Settings документа"
 		И я перехожу к закладке с именем 'GroupPageReportSettings'
 		И из выпадающего списка с именем 'UnitOfMeasure' я выбираю точное значение "thousands"
-		И в поле с именем 'CurrentPrecision' я ввожу текст '2'
+		И в поле с именем 'УровеньТочности' я ввожу текст '2'
 		И я нажимаю на кнопку с именем 'FormApplyANDClose'
 
 	* Открываем документ, вводим новые значения
@@ -1703,28 +1822,28 @@
 		И я нажимаю на кнопку с именем 'WriteAndClose'
 		И я жду закрытия окна '$WindowTitle$' в течение 20 секунд
 
-Сценарий: 01.23 Тестируем экземпляр отчета с бланком сводной таблицы
+Сценарий: 01.23 Тестируем экземпляр отчета с разными бланками
 
 	И Я открываю экземпляр отчета по сохраненной настройке "VA - Manual entry for all analytics - Venus LLC"
 	И Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'RUB' организация "Venus LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
 
+	* Проверяем дополнительный бланк
+		И я перехожу к закладке с именем 'Form_1'				
+		Дано Табличный документ 'SpreadsheetFieldTemlate1' равен макету '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Венера_3.mxl'
+
 	* Меняем параметры отображения в экземпляре отчета
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
-		Тогда открылось окно "Edit report settings"
-		И я перехожу к закладке с именем 'GroupPageReportSettings'
-		И из выпадающего списка с именем 'OutputApproachForm' я выбираю точное значение "VA - Manual entry for all analytics (pivot table)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю кнопку выбора у поля с именем 'TemplateОтчета'
+		Тогда открылось окно "Бланки отчетов"
+		И в таблице 'List' я перехожу к строке:
+			| "Description"                                          |
+			| "VA - Manual entry for all analytics (pivot table)" |
+		И я нажимаю на кнопку с именем 'ListChoose1'
 		И я нажимаю на кнопку с именем 'FormApplyANDClose'
-		Если открылось окно "1C:Enterprise" Тогда
-			И я нажимаю на кнопку с именем 'Button0'
-			Тогда открылось окно "Report instances"
-			И в таблице 'List' я выбираю текущую строку
-		// ДОДЕЛАТЬ: Меняется макет после изменения настроек	
-		И Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'RUB' организация "Venus LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
-
-	* Сравниваем результат
 		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Венера_СводнаяТаблица1.mxl'
-				
+	
 	* Настраиваем свойства
 		И я нажимаю на кнопку с именем 'EnableEdit'
 		* Состав строк
@@ -1805,6 +1924,29 @@
 	// ДОДЕЛАТЬ: Копирование значение ячейки не учитывает масштаб
 	// ДОДЕЛАТЬ: Изменение ячейки не учитывает масштаб
 
+	* Снова меняем бланк
+		Когда открылось окно '$WindowTitle$'
+		И я нажимаю на кнопку с именем 'FormOpenSettings'
+		Тогда открылось окно "Settings документа"
+		И я нажимаю кнопку выбора у поля с именем 'TemplateОтчета'
+		Тогда открылось окно "Бланки отчетов"
+		И в таблице 'List' я перехожу к строке:
+			| "Description"                        |
+			| "VA - Manual entry for all analytics" |
+		И я нажимаю на кнопку с именем 'ListChoose1'
+		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+		И я жду открытия окна '$WindowTitle$' в течение 20 секунд
+		И я нажимаю на кнопку с именем 'CancelAction'
+		И я перехожу к закладке с именем 'Form_1'
+		И я жду открытия окна '$WindowTitle$' в течение 20 секунд		
+		Дано Табличный документ 'SpreadsheetFieldTemlate1' равен макету '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Венера_3.mxl'
+
+	* Закрываем не сохраняя
+		Когда открылось окно '$WindowTitle$'
+		И Я закрываю окно '$WindowTitle$'
+		Тогда открылось окно "1C:Enterprise"
+		И я нажимаю на кнопку с именем 'Button1'
+
 Сценарий: 01.24 Переходим в режим отображения данных
 
 	И Я октрываю сводную таблицу отчета с именем "VA - Manual entry for all analytics"
@@ -1861,7 +2003,6 @@
 		И в таблице 'FiltersSettings' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'UpdateTabData'
 		И я жду открытия формы '$WindowTitle$' в течение 20 секунд
-		Когда открылось окно '$WindowTitle$'
 		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\01\ВА_ВидОтчетаСАналитиками_СводнаяТаблица2.mxl'
 				
 	* Меняем показатели
@@ -2026,7 +2167,6 @@
 		И я жду открытия формы '$WindowTitle$ *' в течение 20 секунд
 				
 	* Сравниваем результат
-		Тогда открылось окно '$WindowTitle$ *'
 		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\01\ВА_ВидОтчетаСАналитиками_СводнаяТаблица3.mxl' по шаблону		
 					
 	* Сохраним вариант
@@ -2053,6 +2193,8 @@
 		И в таблице 'List' я выбираю текущую строку
 		Тогда Открылась сводная таблица для варианта "VA - Main variant"
 		И я запоминаю текущее окно как 'WindowTitleВарианта'
+		И я нажимаю на кнопку с именем 'UpdateTabData'
+		И я жду открытия формы '$WindowTitleВарианта$' в течение 20 секунд
 		И из выпадающего списка с именем 'Divisor' я выбираю точное значение "thousands"
 		И я перехожу к следующему реквизиту		
 		И в поле с именем 'Accuracy' я ввожу текст '5'

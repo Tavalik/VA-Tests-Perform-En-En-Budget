@@ -420,9 +420,135 @@
 		Тогда в логе сообщений TestClient есть строки:
 			|"Insufficient access rights to save the document.\nCheck settings in Report type access matrix."|				
 
-	И я закрываю сеанс текущего клиента тестирования	
+Сценарий: 18.13 Проверка формы настроек экземпляров отчетов для "Budgeting1"
 
-Сценарий: 18.13 Проверка корректировок значений покзаталей для "Budgeting2"
+	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
+
+	И Я открываю первый экземпляр отчета для вида отчета "VA - Checking access settings (record)"
+
+	* Проверяем форму настроек
+		И я нажимаю на кнопку с именем 'FormOpenSettings'
+		Когда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'ReportKind'
+		Тогда открылось окно "VA - Checking access settings (record) (Report types)"
+		И Я закрываю окно "VA - Checking access settings (record) (Report types)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'TemplateОтчета'
+		Тогда открылось окно "Template VA - Checking access settings (N/A) report type: VA - Checking access settings (record)"
+		И Я закрываю окно "Template VA - Checking access settings (N/A) report type: VA - Checking access settings (record)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'Project'
+		Тогда открылось окно "VA - Main project (Projects and phases)"
+		И Я закрываю окно "VA - Main project (Projects and phases)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'Dimension1'
+		Когда открылось окно "Administration (Department)"
+		И Я закрываю окно "Administration (Department)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'Scenario'
+		Тогда открылось окно "Scenarios: VA - Main scenario (Scenarios)"
+		И Я закрываю окно "Scenarios: VA - Main scenario (Scenarios)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'PeriodManagement'
+		Тогда открылось окно "January * г. - March * г. (Frequency: Month) <VA - Main scenario>"
+		И Я закрываю окно "January * г. - March * г. (Frequency: Month) <VA - Main scenario>"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'Organization'
+		Тогда открылось окно "Mercury LLC (Business unit*)"
+		И Я закрываю окно "Mercury LLC (Business unit*)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'Regulation'
+		Тогда открылось окно "VA - Main regulations from * (Regulation for preparing reports)"
+		И Я закрываю окно "VA - Main regulations from * (Regulation for preparing reports)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'MainCurrency'
+		Тогда открылось окно "RUB (Currency)"
+		И Я закрываю окно "RUB (Currency)"
+		Тогда открылось окно "Settings документа"
+		И я перехожу к закладке с именем 'GroupPageReportSettings'
+		И я нажимаю на кнопку открытия поля с именем 'ProcessingRule'
+		Тогда открылось окно "VA - Checking access settings (no) (Calculation rules)"
+		И Я закрываю окно "VA - Checking access settings (no) (Calculation rules)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'UsedIB'
+		Тогда открылось окно "Current infobase (External infobases)"
+		И Я закрываю окно "Current infobase (External infobases)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'CheckRule'
+		Тогда открылось окно "VA - Checking access settings (no) (Правила проверки)"
+		И Я закрываю окно "VA - Checking access settings (no) (Правила проверки)"
+
+	* Меняем период
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку с именем 'ChangePeriod'
+		Тогда открылось окно "Select period"
+		И в поле с именем 'DateBegin' я ввожу текст '1/1/2023'
+		И в поле с именем 'DateEnd' я ввожу текст '3/31/2023'
+		И я нажимаю на кнопку с именем 'select'
+		И открылось окно "Settings документа *"
+		Тогда в логе сообщений TestClient есть строки:
+			|"Not удалось определить document управления отчетным периодом to параметрам:\n	Scenario: \"VA - Main scenario\",\n	Period: \"January 2023 г.\""|
+		И я очищаю окно сообщений пользователю
+		Тогда элемент формы с именем 'PeriodManagement' стал равен ""
+		Тогда элемент формы с именем 'Organization' стал равен ""	
+		Тогда элемент формы с именем 'Periodicity' стал равен "Month"
+		Тогда элемент формы с именем 'ReportPeriod' стал равен ""	
+		Тогда элемент формы с именем 'PeriodОкончания' стал равен ""	
+		Тогда элемент формы с именем 'Regulation' стал равен ""	
+		Тогда элемент формы с именем 'MainCurrency' стал равен ""			
+
+	* Выбрием документ управления периодом
+		Тогда открылось окно "Settings документа *"
+		И я нажимаю кнопку выбора у поля с именем 'PeriodManagement'
+		Тогда открылось окно "Reporting period management"
+		И в таблице 'List' я перехожу к строке:
+			| "Scenario"               | "Start period"  | "Period окончание" | "Frequency" | "Regulation"               |
+			| "VA - Main scenario" | "January 2024" | "March 2024"     | "Month"         | "VA - Main regulations" |
+		И в таблице 'List' я выбираю текущую строку
+		И элемент формы с именем 'AdditionalCurrencies' стал равен "USD; EUR"
+		И элемент формы с именем 'Organization' стал равен ""
+		И элемент формы с именем 'MainCurrency' стал равен "RUB"
+		И элемент формы с именем 'Periodicity' стал равен "Month"
+		И элемент формы с именем 'PeriodОкончания' стал равен "March 2024"
+		И элемент формы с именем 'ReportPeriod' стал равен "January 2024"
+		И элемент формы с именем 'Regulation' стал равен "VA - Main regulations"
+		И элемент формы с именем 'Scenario' стал равен "VA - Main scenario"
+		И элемент формы с именем 'PeriodManagement' стал равен "January 2024 г. - March 2024 г. (Frequency: Month) <VA - Main scenario>"
+
+	* Очищаем сценарий
+		Когда открылось окно "Settings документа *"
+		И я нажимаю кнопку очистить у поля с именем 'Scenario'
+		Тогда элемент формы с именем 'PeriodManagement' стал равен ""		
+		Тогда элемент формы с именем 'Periodicity' стал равен "Month"
+		Тогда элемент формы с именем 'ReportPeriod' стал равен ""	
+		Тогда элемент формы с именем 'PeriodОкончания' стал равен ""	
+		Тогда элемент формы с именем 'Regulation' стал равен ""	
+		Тогда элемент формы с именем 'MainCurrency' стал равен ""	
+
+	* Выбираем сценарий
+		Когда открылось окно "Settings документа *"
+		И из выпадающего списка с именем 'Scenario' я выбираю по строке "VA - Main scenario"
+		Тогда элемент формы с именем 'Dimension1' стал равен "Administration"
+		И элемент формы с именем 'AdditionalCurrencies' стал равен "USD; EUR"
+		И элемент формы с именем 'MainCurrency' стал равен "RUB"
+		И элемент формы с именем 'Periodicity' стал равен "Month"
+		И элемент формы с именем 'PeriodОкончания' стал равен "March 2024"
+		И элемент формы с именем 'ReportPeriod' стал равен "January 2024"
+		И элемент формы с именем 'Regulation' стал равен "VA - Main regulations"
+		И элемент формы с именем 'Scenario' стал равен "VA - Main scenario"
+		И элемент формы с именем 'PeriodManagement' стал равен "January 2024 г. - March 2024 г. (Frequency: Month) <VA - Main scenario>"
+
+	* Закрываем формы
+		Когда открылось окно "Settings документа *"
+		И Я закрываю окно "Settings документа *"
+		Тогда открылось окно "1C:Enterprise"
+		И я нажимаю на кнопку с именем 'Button1'
+		Тогда открылось окно "Report instance *"
+		И Я закрываю окно "Report instance *"
+		
+	И я закрываю сеанс текущего клиента тестирования
+
+Сценарий: 18.14 Проверка корректировок значений покзаталей для "Budgeting2"
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting2" пароль ''
 
@@ -447,7 +573,7 @@
 		И я нажимаю на кнопку с именем 'FormListSettings'			
 		И Я снимаю все отборы в форме списка
 
-Сценарий: 18.14 Проверка экземпляров отчетов для "Budgeting2"
+Сценарий: 18.15 Проверка экземпляров отчетов для "Budgeting2"
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting2" пароль ''
 
@@ -461,24 +587,22 @@
 			| "VA - Checking access settings (record)" | "Mercury LLC" | "January 2024" | "March 2024"     | "VA - Main scenario" | "Draft"  | "VA - Main project" | "Administration" | ''            | ''            | ''            | ''            | ''            | "RUB"             | ''           |
 	
 	* Создаем отчет по организации, к которой нет доступа
-		И Я создаю экземпляр отчета для вида отчета "VA - Checking access settings (record)" сценарий "VA - Main scenario" период '1/1/2024' '3/31/2024' периодичность "Month" организация "System LLC" проект "VA - Main project" аналитики "Administration" '' '' '' '' ''
+		И в таблице 'List' я перехожу к строке:
+			| "Report type"                              | "Company"  | "Report period"  | "End period" | "Scenario"               | "Project"               | "Dimension 1"   |
+			| "VA - Checking access settings (record)" | "Mercury LLC" | "January 2024" | "March 2024"     | "VA - Main scenario" | "VA - Main project" | "Administration" |
+		И я выбираю пункт контекстного меню с именем 'ListContextMenuCopy' на элементе формы с именем 'List'
+		Тогда открылось окно "Specify key document attributes"
+		И я нажимаю кнопку выбора у поля с именем 'Organization'
+		И Я выбираю организацию "System LLC"
+		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+		Тогда открылось окно "Specify key document attributes *"
 		Тогда в логе сообщений TestClient есть строки:
-			|"The Budgeting2 user\nhas insufficient rights to change report instances with the VA - Checking access settings (no) template by the System LLC company"|
-		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\18\ВА_ПроверкаНастроекДоступа_НетДоступа.mxl'
-		И элемент формы с именем 'EnableEdit' не доступен		
-		И я закрываю окно '$WindowTitle$'
-		Когда открылось окно "1C:Enterprise"
-		И я нажимаю на кнопку с именем 'Button0'
-		Тогда открылось окно "1C:Enterprise"
-		И я нажимаю на кнопку с именем 'OK'
-		Тогда в логе сообщений TestClient есть строки:
-			|"Insufficient access rights to save the document.\nCheck settings in Report type access matrix."|
-		Когда открылось окно '$WindowTitle$'
-		И Я закрываю окно '$WindowTitle$'
-		Тогда открылось окно "1C:Enterprise"
-		И я нажимаю на кнопку с именем 'Button1'				
+			|"У toльзователя Budgeting2\nотсутствуют права for просмотр бланка VA - Revision forстроек доступа (N/A) to организации System LLC.\nВыберите другой бланк."|
+		Когда открылось окно "Specify key document attributes *"
+		И Я закрываю окно "Specify key document attributes *"
+		Тогда открылось окно "Report instances"
 
-Сценарий: 18.15 Проверка СТ для пользователя "Budgeting2"
+Сценарий: 18.16 Проверка СТ для пользователя "Budgeting2"
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting2" пароль ''
 
@@ -495,8 +619,6 @@
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Report type"
 		И я меняю значение переключателя с именем 'CompareType' на "At beginning of line"
 		И в поле с именем 'Pattern' я ввожу текст "VA - Checking access settings (record)"
-		И Пауза 1		
-		И в поле с именем 'Pattern' я ввожу текст "VA - Checking access settings (record)"
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Report types and templates"
 		И в таблице 'List' я перехожу к строке:
@@ -504,6 +626,9 @@
 			| "VA - Checking access settings (no) (pivot table)" |
 		И я нажимаю на кнопку с именем 'ListChoose'
 		Тогда открылось окно "Pivot table: *"
+		И я нажимаю кнопку выбора у поля с именем 'PivotTableVariant'
+		Тогда открылось окно "Pivol table options"
+		И в таблице 'List' я выбираю текущую строку
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Main"
 		И я нажимаю на кнопку с именем 'ChangePeriod'
 		Тогда открылось окно "Select period"
@@ -555,8 +680,6 @@
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Report type"
 		И я меняю значение переключателя с именем 'CompareType' на "At beginning of line"
 		И в поле с именем 'Pattern' я ввожу текст "VA - Checking access settings (reading)"
-		И Пауза 1		
-		И в поле с именем 'Pattern' я ввожу текст "VA - Checking access settings (reading)"
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Report types and templates"
 		И в таблице 'List' я перехожу к строке:
@@ -564,6 +687,9 @@
 			| "VA - Checking access settings (no) (pivot table)" |
 		И я нажимаю на кнопку с именем 'ListChoose'
 		Тогда Открылась сводная таблица для вида отчета "VA - Checking access settings (no)"
+		И я нажимаю кнопку выбора у поля с именем 'PivotTableVariant'
+		Тогда открылось окно "Pivol table options"
+		И в таблице 'List' я выбираю текущую строку
 		И я нажимаю на кнопку с именем 'UpdateTabData1'
 		И я жду открытия формы '$WindowTitle$' в течение 20 секунд
 		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\18\ВА_ПроверкаНастроекДоступа_СТ_100.mxl'								
@@ -572,7 +698,7 @@
 
 	И я закрываю сеанс текущего клиента тестирования		
 								
-Сценарий: 18.16 Проверка корректировок значений покзаталей для "Budgeting3"
+Сценарий: 18.17 Проверка корректировок значений покзаталей для "Budgeting3"
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting3" пароль ''
 
@@ -617,7 +743,7 @@
 		И я нажимаю на кнопку с именем 'FormListSettings'			
 		И Я снимаю все отборы в форме списка	
 
-Сценарий: 18.17 Проверка экземпляров отчетов для "Budgeting3"
+Сценарий: 18.18 Проверка экземпляров отчетов и формы настроек для "Budgeting3"
 	
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting3" пароль ''
 
@@ -640,13 +766,78 @@
 		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\18\ВА_ПроверкаНастроекДоступа_100.mxl'
 		И элемент формы с именем 'EnableEdit' отсутствует на форме
 		Когда открылось окно '$WindowTitle$'
-		И из выпадающего списка с именем 'SelectedCurrency' я выбираю точное значение "USD"
-		И я нажимаю на кнопку с именем 'FormUpdateConsideringVersions'
-		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\18\ВА_ПроверкаНастроекДоступа_1.mxl'		
-		Когда открылось окно '$WindowTitle$'
-		И я закрываю окно '$WindowTitle$'
+		Попытка
+			И из выпадающего списка с именем 'DisplayCurrency' я выбираю точное значение "USD"
+			И я нажимаю на кнопку с именем 'WriteAndClose'
+		Исключение	
+			И я нажимаю на кнопку с именем 'FormOpenSettings'
+	
+	* Проверяем форму настроек
+		Когда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'ReportKind'
+		Тогда открылось окно "VA - Checking access settings (record) (Report types)"
+		И Я закрываю окно "VA - Checking access settings (record) (Report types)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'TemplateОтчета'
+		Тогда открылось окно "Template VA - Checking access settings (N/A) report type: VA - Checking access settings (record)"
+		И Я закрываю окно "Template VA - Checking access settings (N/A) report type: VA - Checking access settings (record)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'Project'
+		Тогда открылось окно "VA - Main project (Projects and phases)"
+		И Я закрываю окно "VA - Main project (Projects and phases)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'Dimension1'
+		Если '$$IsERPCPM$$' Тогда
+			Когда открылось окно "Administration (Department)"
+			И Я закрываю окно "Administration (Department)"
+		Иначе			
+			Тогда открылось окно "1C:Enterprise"
+			И я нажимаю на кнопку с именем 'OK'
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'Scenario'
+		Тогда открылось окно "Scenarios: VA - Main scenario (Scenarios)"
+		И Я закрываю окно "Scenarios: VA - Main scenario (Scenarios)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'PeriodManagement'
+		Тогда открылось окно "January * г. - March * г. (Frequency: Month) <VA - Main scenario>"
+		И Я закрываю окно "January * г. - March * г. (Frequency: Month) <VA - Main scenario>"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'Organization'
+		Тогда открылось окно "Mercury LLC (Business unit*)"
+		И Я закрываю окно "Mercury LLC (Business unit*)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'Regulation'
+		Тогда открылось окно "VA - Main regulations from * (Regulation for preparing reports)"
+		И Я закрываю окно "VA - Main regulations from * (Regulation for preparing reports)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'MainCurrency'
+		Тогда открылось окно "RUB (Currency)"
+		И Я закрываю окно "RUB (Currency)"
+		Тогда открылось окно "Settings документа"
+		И я перехожу к закладке с именем 'GroupPageReportSettings'
+		И я нажимаю на кнопку открытия поля с именем 'ProcessingRule'
+		Тогда открылось окно "VA - Checking access settings (no) (Calculation rules)"
+		И Я закрываю окно "VA - Checking access settings (no) (Calculation rules)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'UsedIB'
+		Тогда открылось окно "Current infobase (External infobases)"
+		И Я закрываю окно "Current infobase (External infobases)"
+		Тогда открылось окно "Settings документа"
+		И я нажимаю на кнопку открытия поля с именем 'CheckRule'
+		Тогда открылось окно "VA - Checking access settings (no) (Правила проверки)"
+		И Я закрываю окно "VA - Checking access settings (no) (Правила проверки)"
+
+	* Меняем период
+		Тогда открылось окно "Settings документа"
+		Попытка
+			И я нажимаю на кнопку с именем 'ChangePeriod'
+		Исключение
+			И я закрываю форму "Settings документа"
+
+	Когда открылось окно '$WindowTitle$'
+	И я закрываю окно '$WindowTitle$'
 		
-Сценарий: 18.18 Проверка СТ для пользователя "Budgeting3"
+Сценарий: 18.19 Проверка СТ для пользователя "Budgeting3"
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting3" пароль ''
 
@@ -663,8 +854,6 @@
 		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Report type"
 		И я меняю значение переключателя с именем 'CompareType' на "At beginning of line"
 		И в поле с именем 'Pattern' я ввожу текст "VA - Checking access settings (record)"
-		И Пауза 1		
-		И в поле с именем 'Pattern' я ввожу текст "VA - Checking access settings (record)"
 		И я нажимаю на кнопку с именем 'Find'
 		Тогда открылось окно "Report types and templates"
 		И в таблице 'List' я перехожу к строке:
@@ -672,6 +861,9 @@
 			| "VA - Checking access settings (no) (pivot table)" |
 		И я нажимаю на кнопку с именем 'ListChoose'
 		Тогда открылось окно "Pivot table: *"
+		И я нажимаю кнопку выбора у поля с именем 'PivotTableVariant'
+		Тогда открылось окно "Pivol table options"
+		И в таблице 'List' я выбираю текущую строку
 		И из выпадающего списка с именем 'WorkMode' я выбираю точное значение "Main"
 		И я нажимаю на кнопку с именем 'ChangePeriod'
 		Тогда открылось окно "Select period"
@@ -700,7 +892,7 @@
 		И я жду недоступности элемента с именем 'SpreadsheetFieldTemlate' в течение 20 секунд	
 		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\18\ВА_ПроверкаНастроекДоступа_НетДоступа.mxl'	
 
-Сценарий: 18.19 Тест интерфейса для пользователя "Budgeting3" - Панель разделов и функций
+Сценарий: 18.20 Тест интерфейса для пользователя "Budgeting3" - Панель разделов и функций
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting3" пароль ''
 
@@ -726,7 +918,6 @@
 			| "Indicator value adjustment" |
 			| "Indicator value adjustments templates" |
 			| "Budgeting classifiers" | // Подсистемы
-			| "Balanced scorecard" |
 			| "Investment projects" |
 			| "Reports" |
 			| "Tools" |
@@ -736,18 +927,17 @@
 			| "Periods" |
 			| "Dimension types (corporate)" |
 			| "Arbitrary classifier" |
-			| "Key indicator dashboards" | // Сбалансированная система показателей
 			| "Projects and phases" | // Инвестиционные проекты			
 			| "Organizational regulation structures" | // Отчеты
 			| "Report on report indicator links" |
 			| "Graphic report link report" |
 			| "Network diagram of project group" |
-			| "Copy report indicator data" | // Сервис
+			| "Copy values indicators отчетов" | // Сервис
 			| "Compare spreadsheet documents" |
 
 	И я закрываю сеанс текущего клиента тестирования					
 
-Сценарий: 18.20 Тест интерфейса для пользователя "Budgeting1" - Панель разделов и функций
+Сценарий: 18.21 Тест интерфейса для пользователя "Budgeting1" - Панель разделов и функций
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
 
@@ -773,7 +963,6 @@
 			| "Indicator value adjustment" |
 			| "Indicator value adjustments templates" |
 			| "Budgeting classifiers" | // Подсистемы
-			| "Balanced scorecard" |
 			| "Investment projects" |
 			| "Reports" |
 			| "Tools" |
@@ -783,16 +972,16 @@
 			| "Periods" |
 			| "Dimension types (corporate)" |
 			| "Arbitrary classifier" |
-			| "Key indicator dashboards" | // Сбалансированная система показателей
-			| "Projects and phases" | // Инвестиционные проекты			
-			| "Organizational regulation structures" | // Отчеты
+			| "Projects and phases" | // Инвестиционные проекты	
+			| "Матрица экземпляров отчетов" | // Отчеты
+			| "Organizational regulation structures" | 		
 			| "Report on report indicator links" |
 			| "Graphic report link report" |
 			| "Network diagram of project group" |
-			| "Copy report indicator data" | // Сервис
+			| "Copy values indicators отчетов" | // Сервис
 			| "Compare spreadsheet documents" |	
 
-Сценарий: 18.21 Тест интерфейса для пользователя "Budgeting1" - Персональные настройки
+Сценарий: 18.22 Тест интерфейса для пользователя "Budgeting1" - Персональные настройки
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
 
@@ -875,7 +1064,7 @@
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
 		И я жду закрытия окна "Personal settings" в течение 20 секунд
 
-Сценарий: 18.22 Тест интерфейса для пользователя "Budgeting1" - Виды отчетов, экземпляры отчетов, сводная таблица
+Сценарий: 18.23 Тест интерфейса для пользователя "Budgeting1" - Виды отчетов, экземпляры отчетов, сводная таблица
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
 
@@ -929,7 +1118,7 @@
 			| "Mercury LLC" | "No"          |
 		И в таблице 'Companies' я устанавливаю флаг с именем 'CompaniesUse'
 		Тогда таблица 'List' стала равной:
-			| "Report type"                              | "Company"  | "Report period"  | "End period" | "Scenario"               | "State" | "Project"               | "Performer" | "Approval" | "Dimension 1"   | "Dimension 2" | "Dimension 3" | "Dimension 4" | "Dimension 5" | "Dimension 6" | "Primary currency" | "External infobase" |
+			| "Report type"                              | "Company"  | "Report period"  | "End period" | "Scenario"               | "State" | "Project"               | "Assignee" | "Approval" | "Dimension 1"   | "Dimension 2" | "Dimension 3" | "Dimension 4" | "Dimension 5" | "Dimension 6" | "Primary currency" | "External infobase" |
 			| "VA - Checking access settings (record)" | "Mercury LLC" | "January 2024" | "March 2024"     | "VA - Main scenario" | "Draft"  | "VA - Main project" | ""            | ""             | "Administration" | ""            | ""            | ""            | ""            | ""            | "RUB"             | ""           |
 	
 	* Создание и копирование
@@ -955,7 +1144,7 @@
 			|"No person responsible for approval is specified in the responsibility assignment matrix for *. Enter proper approval status manually."|
 			|"Approval has not been initiated for object *."|
 			|"Person responsible for approval of the * object is not specified in the responsibility assignment matrix. The Status field is available for editing. Set the required approval status manually"|
-			|"Для организации \"Mercury LLC\" текущий пользователь не обладает ролью \"Суперпользователь\""|
+			|"Current user does not have the \"Superuser\" role for company \"Mercury LLC\""|
 		И я нажимаю на кнопку с именем 'FormCommonCommandUniversalApproval_ApprovalRoute'
 		Тогда открылось окно "Process management console"
 		И Я закрываю окно "Process management console"
@@ -982,7 +1171,7 @@
 		Тогда открылось окно "Pivot table: *"
 		И Я закрываю окно "Pivot table: *"
 			
-Сценарий: 18.23 Тест интерфейса для пользователя "Budgeting1" - Управление отчетным периодом
+Сценарий: 18.24 Тест интерфейса для пользователя "Budgeting1" - Управление отчетным периодом
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
 
@@ -1024,7 +1213,7 @@
 		Тогда открылось окно "Reporting period management"
 		И Я закрываю окно "Reporting period management"
 				
-Сценарий: 18.24 Тест интерфейса для пользователя "Budgeting1" - Корректировка значений показателей
+Сценарий: 18.25 Тест интерфейса для пользователя "Budgeting1" - Корректировка значений показателей
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
 
@@ -1068,7 +1257,7 @@
 		И я нажимаю на кнопку с именем 'FormListSettings'			
 		И Я снимаю все отборы в форме списка
 
-Сценарий: 18.25 Тест интерфейса для пользователя "Budgeting1" - Шаблон корректировка значений показателей
+Сценарий: 18.26 Тест интерфейса для пользователя "Budgeting1" - Шаблон корректировка значений показателей
 	
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
 
@@ -1119,7 +1308,7 @@
 	Тогда открылось окно "Indicator value adjustments templates"
 	И Я закрываю окно "Indicator value adjustments templates"
 		
-Сценарий: 18.26 Тест интерфейса для пользователя "Budgeting1" - Регламент подготовки отчетности
+Сценарий: 18.27 Тест интерфейса для пользователя "Budgeting1" - Регламент подготовки отчетности
 	
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
 
@@ -1178,7 +1367,7 @@
 	Когда открылось окно "Regulations for preparing reports"
 	И я закрываю окно "Regulations for preparing reports"
 			
-Сценарий: 18.27 Тест интерфейса для пользователя "Budgeting1" - Сценарии
+Сценарий: 18.28 Тест интерфейса для пользователя "Budgeting1" - Сценарии
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
 
@@ -1190,7 +1379,6 @@
 
 	Тогда открылось окно "Scenarios: VA - Main scenario (Scenarios)"
 	И я перехожу к закладке с именем 'Budgeting'
-	И я перехожу к закладке с именем 'LinkedRegulations'
 	И я перехожу к закладке с именем 'MainProperties'
 	Попытка
 		И я нажимаю на кнопку с именем 'FormWrite'
@@ -1200,7 +1388,7 @@
 	Когда открылось окно "Scenarios"
 	И я закрываю окно "Scenarios"	
 
-Сценарий: 18.28 Тест интерфейса для пользователя "Budgeting1" - Организации
+Сценарий: 18.29 Тест интерфейса для пользователя "Budgeting1" - Организации
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
 
@@ -1275,9 +1463,8 @@
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Business units"
 		Тогда открылось окно "Business units"
 
-		Тогда таблица 'List' содержит '6' строк из списка:
+		Тогда таблица 'List' содержит '5' строк из списка:
 			| "Name in the application" | "Company type"       |
-			| "Business units"  | ""                      |
 			| "System LLC"              | "Tax resident" |
 			| "Venus LLC"               | "Financial responsibility center"                   |
 			| "Earth LLC"                | "Financial responsibility center"                   |
@@ -1301,7 +1488,8 @@
 		И Я закрываю окно "Attachments: Mercury LLC"
 
 		Тогда открылось окно "Business units"
-		И я нажимаю на кнопку с именем 'FormCommonCommandAdditionalInfoCommandBar'
+		Когда открылось окно "Business units"
+		И я нажимаю на кнопку с именем 'CommonCommandAdditionalInfoCommandBar'
 		Тогда открылось окно "Additional information records"
 		И Я закрываю окно "Additional information records"
 
@@ -1320,7 +1508,7 @@
 		И В текущем окне я нажимаю кнопку командного интерфейса "Stored files of business units"
 		И Я закрываю окно "Mercury LLC (Business unit)"
 
-Сценарий: 18.29 Тест интерфейса для пользователя "Budgeting1" - Периоды
+Сценарий: 18.30 Тест интерфейса для пользователя "Budgeting1" - Периоды
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
 
@@ -1334,7 +1522,7 @@
 	Тогда открылось окно "2024 year (Periods)"
 	И Я закрываю окно "2024 year (Periods)"
 
-Сценарий: 18.30 Тест интерфейса для пользователя "Budgeting1" - Виды аналитик (корпоративные)	
+Сценарий: 18.31 Тест интерфейса для пользователя "Budgeting1" - Виды аналитик (корпоративные)	
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
 
@@ -1380,7 +1568,7 @@
 	Тогда открылось окно "Dimension types (corporate)"
 	И Я закрываю окно "Dimension types (corporate)"
 
-Сценарий: 18.31 Тест интерфейса для пользователя "Budgeting1" - Произвольный классификатор
+Сценарий: 18.32 Тест интерфейса для пользователя "Budgeting1" - Произвольный классификатор
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
 
@@ -1401,7 +1589,7 @@
 	Тогда открылось окно "Arbitrary classifier"
 	И Я закрываю окно "Arbitrary classifier"
 
-Сценарий: 18.32 Тест интерфейса для пользователя "Budgeting1" - Проекты и этапы		
+Сценарий: 18.33 Тест интерфейса для пользователя "Budgeting1" - Проекты и этапы		
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
 
@@ -1431,7 +1619,7 @@
 	Когда открылось окно "Projects and phases"
 	И Я закрываю окно "Projects and phases"
 			
-Сценарий: 18.33 Тест интерфейса для пользователя "Budgeting1" - Отчеты
+Сценарий: 18.34 Тест интерфейса для пользователя "Budgeting1" - Отчеты
 
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
 
@@ -1478,14 +1666,14 @@
 		И я нажимаю на кнопку с именем 'FormFormulate'
 		И Я закрываю окно "Network diagram of project group"
 			
-Сценарий: 18.34 Тест интерфейса для пользователя "Budgeting1" - Сервис
+Сценарий: 18.35 Тест интерфейса для пользователя "Budgeting1" - Сервис
 		
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
 
 	* Копирование данных показателей отчетов
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Copy report indicator data"
-		Тогда открылось окно "Copy report indicator data"
-		И Я закрываю окно "Copy report indicator data"
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Copy values indicators отчетов"
+		Тогда открылось окно "Copy values indicators отчетов"
+		И Я закрываю окно "Copy values indicators отчетов"
 
 	* Сравнение табличных документов	
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Compare spreadsheet documents"

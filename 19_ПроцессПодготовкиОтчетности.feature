@@ -90,8 +90,8 @@
 		И Я в конструкторе отчета добавляю аналитику с кодом "VA0Product" в ячейку 'R2C2'
 		
 	* Настраиваем формулы
-		И Я в конструкторе отчета для ячейки 'R2C2' настраиваю связь с покзателем с кодом "Goods_Count" вида отчета "VA - ProcessCount"
-		И Я в конструкторе отчета для ячейки 'R2C3' настраиваю связь с покзателем с кодом "Goods_Price" вида отчета "VA - ProcessPrice"
+		И Я в конструкторе отчета для ячейки 'R2C2' настраиваю связь с показателем с кодом "Goods_Count" вида отчета "VA - ProcessCount"
+		И Я в конструкторе отчета для ячейки 'R2C3' настраиваю связь с показателем с кодом "Goods_Price" вида отчета "VA - ProcessPrice"
 		И Я в конструкторе отчета для ячейки 'R2C4' задаю формулу произведение ячеек 'R2C2' 'R2C3'
 
 	* Закрываем конструктор
@@ -101,7 +101,11 @@
 	* Создаем бланк
 		И Я Для вида отчета "VA - ProcessAmount" создаю бланк по умолчанию
 
-Сценарий: 19.06 Создание регламента и процесса подготовки отчетности "VA - Report preparation process"
+Сценарий: 19.06 Создание процесса подготовки отчетности "VA - Report preparation process"
+
+	И Я создаю шаблон универсального процесса с именем "VA - Report preparation process" режимом "Report preparation process"
+
+Сценарий: 19.07 Создание копированием регламента "VA - Report preparation process"
 
 	* Открываем регламент
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Regulations for preparing reports"
@@ -119,20 +123,6 @@
 			И в таблице 'List' я выбираю текущую строку
 			Тогда Открылся регламент подготовки отчетности "VA - Report preparation process"
 			И я перехожу к закладке с именем 'GroupMainPage'			
-			* Удаляем процесс
-				И я нажимаю на кнопку с именем 'ShowProcessTemplate'
-				Тогда открылось окно "Editing process stages: VA - Report preparation process"
-				И я нажимаю на кнопку с именем 'FormOpenProcessProperties'
-				Тогда открылось окно "VA - Report preparation process (Universal process template)"
-				И в поле с именем 'Description' я ввожу значение переменной 'UID'
-				И я нажимаю на кнопку с именем 'FormSetDeletionMark'
-				Тогда открылось окно "1C:Enterprise"
-				И я нажимаю на кнопку с именем 'Button0'
-				И я нажимаю на кнопку с именем 'FormWriteAndClose'
-				И я жду закрытия окна "VA - Report preparation process (Universal process template) *" в течение 20 секунд
-				Тогда открылось окно "Editing process stages: VA - Report preparation process"
-				И Я закрываю окно "Editing process stages: VA - Report preparation process"
-			Когда открылось окно '$WindowTitle$'
 			И в поле с именем 'Description' я ввожу значение переменной 'UID'
 			И я нажимаю на кнопку с именем 'FormSetDeletionMark'
 			Тогда открылось окно "1C:Enterprise"
@@ -150,49 +140,31 @@
 		И я нажимаю на кнопку с именем 'Find'
 		И в таблице 'List' количество строк 'равно' 1
 		И я нажимаю на кнопку с именем 'FormCopy'
+
+	* Заполняем новый элемент	
 		Тогда открылось окно "VA - Main regulations from *"
 		И в поле с именем 'Description' я ввожу текст "VA - Report preparation process"
 		И из выпадающего списка с именем 'ReportKind' я выбираю по строке "VA - Report preparation process (group)"
-		* Создаем процесс
-			И я устанавливаю флаг с именем 'UseProcess'
-			И я нажимаю на кнопку с именем 'ShowProcessTemplate'
-			Тогда открылось окно "1C:Enterprise"
-			И я нажимаю на кнопку с именем 'Button0'
-			Тогда открылось окно "Enter a process template name"
-			И в поле с именем 'InputFld' я ввожу текст "VA - Report preparation process"
-			И я нажимаю на кнопку с именем 'OK'
-			Тогда открылось окно "Editing process stages: VA - Report preparation process"
-			И я нажимаю на кнопку с именем 'FormOpenProcessProperties'
-			* Проверяем заполнение
-				Тогда элемент формы с именем 'ProcessPurpose' стал равен "Report preparation process"
-				И элемент формы с именем 'Description' стал равен "VA - Report preparation process"
-				И таблица 'ProcessParameters' стала равной:
-					| "Predefined" | "Key" | "Parameter code"              | "Parameter name"                | "Parameter type"                | "Default value" |
-					| "Yes"               | "Yes"       | 'AccountingPeriodManagement' | "Reporting period management" | "Reporting period management" | ""                      |
-					| "Yes"               | "No"      | 'ProcessInitiator'          | "Process initiator"           | "User"                 | ""                      |
-				И элемент формы с именем 'Parent' стал равен ''
-				И элемент формы с именем 'LinkedRegulation' стал равен "VA - Report preparation process"
-				Когда открылось окно "VA - Report preparation process (Universal process template)"
-				И Я закрываю окно "VA - Report preparation process (Universal process template)"
-			Тогда открылось окно "Editing process stages: VA - Report preparation process"
-			И Я закрываю окно "Editing process stages: VA - Report preparation process"
-			Тогда открылось окно "VA - Report preparation process from * (Regulation for preparing reports)"
-			И я нажимаю на кнопку с именем 'FormWriteAndClose'
-			И я жду закрытия окна "VA - Report preparation process from * (Regulation for preparing reports)" в течение 20 секунд
+		И я устанавливаю флаг с именем 'UseProcess'
+		И я нажимаю кнопку выбора у поля с именем 'ProcessTemplate'
+		И Я в списке "Universal process templates" по полю "Description" ищу и выбираю элемент "VA - Report preparation process" "Exact match" 
+		И я перехожу к закладке с именем 'PerimeterSetting'
+		Тогда таблица 'GroupStructure' стала равной:
+			| "Consolidating company\n/ Business unit" | "Primary currency" | "Additional currencies" | "Effective share, %" | "Company status for consolidation"        | "Company kind" | "Intercompany transactions exclusion method" |
+			| "System LLC"                                            | "RUB"             | ""                      | "- "                  | "Group"                    | "VA - Package CFR"  | "- "                   |
+			| "Mars LLC"                                               | "RUB"             | "EUR; USD"              | "100"                 | "Eliminating"             | "VA - Package CFR"  | "Eliminating"        |
+			| "Venus LLC"                                             | "RUB"             | "EUR; USD"              | "100"                 | "Financial responsibility center"                       | "VA - Package CFR"  | "Financial responsibility center"                  |
+			| "Earth LLC"                                              | "RUB"             | "USD"                   | "100"                 | "Financial responsibility center"                       | "VA - Package CFR"  | "Financial responsibility center"                  |
+			| "Mercury LLC"                                           | "RUB"             | "EUR; USD"              | "50.000"              | "VA - Subsidiary" | "VA - Package CFR"  | "Balance and turnovers"    |
+		Тогда открылось окно "VA - Main regulations from *"
+		И я нажимаю на кнопку с именем 'FormWriteAndClose'
+		И я жду закрытия окна "VA - Main regulations from *" в течение 20 секунд
 
-Сценарий: 19.07 Тестируем кнопки управления процессом
+Сценарий: 19.08 Тестируем кнопки создания процесса подготовки отчетности
 
 	* Ищем элемент
-		И В командном интерфейсе я выбираю "Processes and approval" "Process templates"
-		Когда открылось окно "Universal process templates"
-		И я нажимаю на кнопку с именем 'FormFind'
-		Тогда открылось окно "Find"
-		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Description"
-		И в поле с именем 'Pattern' я ввожу текст "VA - Report preparation process"
-		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И я нажимаю на кнопку с именем 'Find'
-		И в таблице 'List' количество строк 'равно' 1
-		И в таблице 'List' я выбираю текущую строку
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Process templates подготовки отчетности"
+		И Я в списке "Universal process templates" по полю "Description" ищу и выбираю элемент "VA - Report preparation process" "Exact match" 
 
 	* Проверяем, что документ пустой
 		Когда открылось окно "Editing process stages: VA - Report preparation process"
@@ -202,7 +174,7 @@
 		И элемент формы с именем 'ProcessTemplate' стал равен "VA - Report preparation process"
 		И я закрываю окно "Select step"
 
-	* Добавляем процесс для удаления
+	* Добавляем этап для удаления
 		Когда открылось окно "Editing process stages: VA - Report preparation process"
 		И я нажимаю на кнопку с именем 'AddStage_ReportPreparationProcessStep'
 		Тогда открылось окно "Step of report preparation process (Universal process step)"
@@ -210,7 +182,7 @@
 		И я нажимаю на кнопку с именем 'FormWriteAndClose'
 		И я жду закрытия окна "Step of report preparation process (Universal process step) *" в течение 20 секунд
 
-	* Копируем процесс
+	* Копируем этап
 		Когда открылось окно "Editing process stages: VA - Report preparation process"
 		И я нажимаю на кнопку с именем 'Copy'
 		И Я в списке "Select step" по полю "Description" ищу и выбираю элемент "Для удаления" "Exact match"		
@@ -262,19 +234,11 @@
 		И элемент формы с именем 'ProcessTemplate' стал равен "VA - Report preparation process"
 		И я закрываю окно "Select step"		
 
-Сценарий: 19.08 Настройка процесса
+Сценарий: 19.09 Настройка процесса подготовки отчетности
 
 	* Ищем элемент
-		И В командном интерфейсе я выбираю "Processes and approval" "Process templates"
-		Когда открылось окно "Universal process templates"
-		И я нажимаю на кнопку с именем 'FormFind'
-		Тогда открылось окно "Find"
-		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Description"
-		И в поле с именем 'Pattern' я ввожу текст "VA - Report preparation process"
-		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И я нажимаю на кнопку с именем 'Find'
-		И в таблице 'List' количество строк 'равно' 1
-		И в таблице 'List' я выбираю текущую строку
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Process templates подготовки отчетности"
+		И Я в списке "Universal process templates" по полю "Description" ищу и выбираю элемент "VA - Report preparation process" "Exact match" 
 
 	* Этап для "ВА - ПроцессКоличество"
 		Когда открылось окно "Editing process stages: VA - Report preparation process"
@@ -301,9 +265,23 @@
 			Тогда открылось окно "Step of report preparation process (Universal process step) *"
 		* Настройки регламента
 			И я перехожу к закладке с именем 'Page_RegulationSettings'
-			И я нажимаю на кнопку с именем 'SetupAutofillRules'			
+			И я нажимаю на кнопку с именем 'SetupAutofillRules'	
+			Тогда открылось окно "1C:Enterprise"
+			И я нажимаю на кнопку с именем 'Button0'
 			* Меркурий
 				Тогда открылось окно "Set up object filling rules for regulation VA - Report preparation process"
+				Тогда табличный документ 'CustomField' равен:
+					| 'Organization \ Object' | ''                    | 'DimenKind - Process_Count'        |
+					| 'Mercury LLC'         | 'Отображение Report_'  | 'DimenKind - Process_Count'        |
+					| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        |
+					| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        |
+					| ''                     | 'Method формирования' | 'On правилу обработки'          |
+					| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' |
+					| 'Венера LLC'           | 'Отображение Report_'  | 'DimenKind - Process_Count'        |
+					| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        |
+					| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        |
+					| ''                     | 'Method формирования' | 'On правилу обработки'          |
+					| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' |
 				И в табличном документе 'CustomField' я перехожу к ячейке 'R5C3'
 				И в табличном документе 'CustomField' я делаю двойной клик на текущей ячейке
 				Тогда открылось окно "Set up report filling rules"
@@ -311,13 +289,25 @@
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			* Венера
 				Тогда открылось окно "Set up object filling rules for regulation VA - Report preparation process"
-				И в табличном документе 'CustomField' я перехожу к ячейке 'R12C3'
+				И в табличном документе 'CustomField' я перехожу к ячейке 'R10C3'
 				И в табличном документе 'CustomField' я делаю двойной клик на текущей ячейке
 				Тогда открылось окно "Set up report filling rules"
 				И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Manual filling"
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			* Применение настроек
 				Тогда открылось окно "Set up object filling rules for regulation VA - Report preparation process"
+				Тогда табличный документ 'CustomField' равен:
+					| 'Organization \ Object' | ''                    | 'DimenKind - Process_Count'        |
+					| 'Mercury LLC'         | 'Отображение Report_'  | 'DimenKind - Process_Count'        |
+					| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        |
+					| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        |
+					| ''                     | 'Method формирования' | 'Ручное заполнение'             |
+					| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' |
+					| 'Венера LLC'           | 'Отображение Report_'  | 'DimenKind - Process_Count'        |
+					| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        |
+					| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        |
+					| ''                     | 'Method формирования' | 'Ручное заполнение'             |
+					| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' |
 				И я нажимаю на кнопку с именем 'FormApplySettings'
 				И Я закрываю окно "Set up object filling rules for regulation VA - Report preparation process"
 		* Сохранение
@@ -350,7 +340,9 @@
 			Тогда открылось окно "Step of report preparation process (Universal process step) *"
 		* Настройки регламента
 			И я перехожу к закладке с именем 'Page_RegulationSettings'
-			И я нажимаю на кнопку с именем 'SetupAutofillRules'			
+			И я нажимаю на кнопку с именем 'SetupAutofillRules'
+			Тогда открылось окно "1C:Enterprise"
+			И я нажимаю на кнопку с именем 'Button0'			
 			* Меркурий
 				Тогда открылось окно "Set up object filling rules for regulation VA - Report preparation process"
 				И в табличном документе 'CustomField' я перехожу к ячейке 'R5C3'
@@ -371,7 +363,7 @@
 				И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			* Венера
 				Тогда открылось окно "Set up object filling rules for regulation VA - Report preparation process"
-				И в табличном документе 'CustomField' я перехожу к ячейке 'R12C3'
+				И в табличном документе 'CustomField' я перехожу к ячейке 'R10C3'
 				И в табличном документе 'CustomField' я делаю двойной клик на текущей ячейке
 				Тогда открылось окно "Set up report filling rules"
 				И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Import"
@@ -411,7 +403,9 @@
 			Тогда открылось окно "Step of report preparation process (Universal process step) *"
 		* Настройки регламента
 			И я перехожу к закладке с именем 'Page_RegulationSettings'
-			И я нажимаю на кнопку с именем 'SetupAutofillRules'			
+			И я нажимаю на кнопку с именем 'SetupAutofillRules'
+			Тогда открылось окно "1C:Enterprise"
+			И я нажимаю на кнопку с именем 'Button0'			
 			* Меркурий
 				Тогда открылось окно "Set up object filling rules for regulation VA - Report preparation process"
 				И в табличном документе 'CustomField' я перехожу к ячейке 'R5C3'
@@ -447,7 +441,9 @@
 			И в таблице 'BusinessUnitsFilterDCSSettingsFilter' из выпадающего списка с именем 'BusinessUnitsFilterDCSSettingsFilterRightValue' я выбираю по строке "System LLC"
 		* Настройки регламента
 			И я перехожу к закладке с именем 'Page_RegulationSettings'
-			И я нажимаю на кнопку с именем 'SetupAutofillRules'			
+			И я нажимаю на кнопку с именем 'SetupAutofillRules'
+			Тогда открылось окно "1C:Enterprise"
+			И я нажимаю на кнопку с именем 'Button0'			
 			* Система
 				Тогда открылось окно "Set up object filling rules for regulation VA - Report preparation process"
 				И в табличном документе 'CustomField' я перехожу к ячейке 'R5C3'
@@ -484,10 +480,11 @@
 		И Я в списке "Select initial link step" по полю "Description" ищу и выбираю элемент "Calculation by rule - \"VA - ProcessAmount\"" "Exact match"
 		И Я в списке "Select end link step" по полю "Description" ищу и выбираю элемент "Consolidation - \"VA - ProcessAmount\"" "Exact match"		
 
-Сценарий: 19.09 Созданеие сценария и документа управления отчетным периодом
+Сценарий: 19.10 Создание сценария
 
-	* Создаем сценарий
-		И Я создаю сценарий с именем "VA - Report preparation process"
+	И Я создаю сценарий с именем "VA - Report preparation process"
+
+Сценарий: 19.11 Создание документа управления отчетным периодом		
 
 	* Создаем новый документ управления отчетным периодом
 		* Основная вкладка
@@ -516,131 +513,114 @@
 			И я нажимаю на кнопку с именем 'FormGoForward'
 			Тогда открылось окно "1C:Enterprise"
 			И я нажимаю на кнопку с именем 'Button0'
+		* Управление лимитами
+			Когда открылось окно '$WindowTitle$'
+			И я нажимаю на кнопку с именем 'FormGoForward'
 		* Настройка отчетов
 			Тогда открылось окно '$WindowTitle$'
 			И я нажимаю на кнопку с именем 'ReportReconciliationByDefaultInBulk'
 			Когда открылось окно "Set up object filling rules for regulation VA - Report preparation process"
 			Тогда табличный документ 'CustomField' равен:
-				| "Company / Object" | ''                    | "VA - ProcessAmount"                          | "VA - ProcessCount"        | "VA - ProcessPrice"                                                    |
-				| "System LLC"           | "Display report"  | "VA - ProcessAmount"                          | ''                              | ''                                                                    |
-				| ''                      | "Calculation rule"     | "VA - ProcessAmount"                          | ''                              | ''                                                                    |
-				| ''                      | "Check rule"    | "VA - ProcessAmount"                          | ''                              | ''                                                                    |
-				| ''                      | "Generation method" | "Consolidate perimeter (Proportionally)" | ''                              | ''                                                                    |
-				| ''                      | "Import rule"     | ''                                           | ''                              | ''                                                                    |
-				| ''                      | "Object currency"      | "From regulation: RUB"                         | ''                              | ''                                                                    |
-				| ''                      | "Translation template"   | ''                                           | ''                              | ''                                                                    |
-				| "Mercury LLC"          | "Display report"  | "VA - ProcessAmount"                          | "VA - ProcessCount"        | "VA - ProcessPrice"                                                    |
-				| ''                      | "Calculation rule"     | "VA - ProcessAmount"                          | "VA - ProcessCount"        | "VA - ProcessPrice"                                                    |
-				| ''                      | "Check rule"    | "VA - ProcessAmount"                          | "VA - ProcessCount"        | "VA - ProcessPrice"                                                    |
-				| ''                      | "Generation method" | "By processing rule"                       | "Manual filling"             | "Import\nExternal infobase: VA - ProcessImportPrice\n(Microsoft Excel files)" |
-				| ''                      | "Import rule"     | ''                                           | ''                              | ''                                                                    |
-				| ''                      | "Object currency"      | "From regulation: RUB (EUR, USD)"              | "From regulation: RUB (EUR, USD)" | "From regulation: RUB (EUR, USD)"                                       |
-				| ''                      | "Translation template"   | ''                                           | ''                              | ''                                                                    |
-				| "Venus LLC"            | "Display report"  | "VA - ProcessAmount"                          | "VA - ProcessCount"        | "VA - ProcessPrice"                                                    |
-				| ''                      | "Calculation rule"     | "VA - ProcessAmount"                          | "VA - ProcessCount"        | "VA - ProcessPrice"                                                    |
-				| ''                      | "Check rule"    | "VA - ProcessAmount"                          | "VA - ProcessCount"        | "VA - ProcessPrice"                                                    |
-				| ''                      | "Generation method" | ''                                           | "Manual filling"             | "Import\nExternal infobase: VA - ProcessImportPrice\n(Microsoft Excel files)" |
-				| ''                      | "Import rule"     | ''                                           | ''                              | ''                                                                    |
-				| ''                      | "Object currency"      | "From regulation: RUB (EUR, USD)"              | "From regulation: RUB (EUR, USD)" | "From regulation: RUB (EUR, USD)"                                       |
-				| ''                      | "Translation template"   | ''                                           | ''                              | ''                                                                    |
+				| 'Organization \ Object' | ''                    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| 'Система LLC'          | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Method формирования' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'Консолидировать периметр (Пропорционально)' |
+				| ''                     | 'Currency Object_'      | 'From регламента: RUB'            | 'From регламента: RUB'                                                  | 'From регламента: RUB'                         |
+				| 'Mercury LLC'         | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Method формирования' | 'Ручное заполнение'             | 'Импорт\nВнешняя ИБ: DimenKind - ПроцессИмпортЦена\n(Microsoft Excel files)' | 'On правилу обработки'                       |
+				| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' | 'From регламента: RUB (USD, EUR)'                                       | 'From регламента: RUB (USD, EUR)'              |
+				| 'Венера LLC'           | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Method формирования' | 'Ручное заполнение'             | 'Импорт\nВнешняя ИБ: DimenKind - ПроцессИмпортЦена\n(Microsoft Excel files)' | 'On правилу обработки'                       |
+				| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' | 'From регламента: RUB (USD, EUR)'                                       | 'From регламента: RUB (USD, EUR)'              |
+				| 'Земля LLC'            | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Method формирования' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'On правилу обработки'                       |
+				| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD)'      | 'From регламента: RUB (USD)'                                            | 'From регламента: RUB (USD)'                   |
+				| 'Марс LLC'             | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Method формирования' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'On правилу обработки'                       |
+				| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' | 'From регламента: RUB (USD, EUR)'                                       | 'From регламента: RUB (USD, EUR)'              |
 			И Я закрываю окно "Set up object filling rules for regulation VA - Report preparation process"			
 			Тогда открылось окно '$WindowTitle$'
 			И я нажимаю на кнопку с именем 'ReportReconciliationByDefaultIndividual'
 			Тогда открылось окно "Set up object filling rules for regulation VA - Report preparation process by scenario VA - Report preparation process for period January *"
 			Тогда табличный документ 'CustomField' равен:
-				| "Company / Object" | ''                    | "VA - ProcessAmount"                          | "VA - ProcessCount"        | "VA - ProcessPrice"                                                    |
-				| "System LLC"           | "Display report"  | "VA - ProcessAmount"                          | ''                              | ''                                                                    |
-				| ''                      | "Calculation rule"     | "VA - ProcessAmount"                          | ''                              | ''                                                                    |
-				| ''                      | "Check rule"    | "VA - ProcessAmount"                          | ''                              | ''                                                                    |
-				| ''                      | "Generation method" | "Consolidate perimeter (Proportionally)" | ''                              | ''                                                                    |
-				| ''                      | "Import rule"     | ''                                           | ''                              | ''                                                                    |
-				| ''                      | "Object currency"      | "From regulation: RUB"                         | ''                              | ''                                                                    |
-				| ''                      | "Translation template"   | ''                                           | ''                              | ''                                                                    |
-				| "Mercury LLC"          | "Display report"  | "VA - ProcessAmount"                          | "VA - ProcessCount"        | "VA - ProcessPrice"                                                    |
-				| ''                      | "Calculation rule"     | "VA - ProcessAmount"                          | "VA - ProcessCount"        | "VA - ProcessPrice"                                                    |
-				| ''                      | "Check rule"    | "VA - ProcessAmount"                          | "VA - ProcessCount"        | "VA - ProcessPrice"                                                    |
-				| ''                      | "Generation method" | "By processing rule"                       | "Manual filling"             | "Import\nExternal infobase: VA - ProcessImportPrice\n(Microsoft Excel files)" |
-				| ''                      | "Import rule"     | ''                                           | ''                              | ''                                                                    |
-				| ''                      | "Object currency"      | "From regulation: RUB (EUR, USD)"              | "From regulation: RUB (EUR, USD)" | "From regulation: RUB (EUR, USD)"                                       |
-				| ''                      | "Translation template"   | ''                                           | ''                              | ''                                                                    |
-				| "Venus LLC"            | "Display report"  | "VA - ProcessAmount"                          | "VA - ProcessCount"        | "VA - ProcessPrice"                                                    |
-				| ''                      | "Calculation rule"     | "VA - ProcessAmount"                          | "VA - ProcessCount"        | "VA - ProcessPrice"                                                    |
-				| ''                      | "Check rule"    | "VA - ProcessAmount"                          | "VA - ProcessCount"        | "VA - ProcessPrice"                                                    |
-				| ''                      | "Generation method" | ''                                           | "Manual filling"             | "Import\nExternal infobase: VA - ProcessImportPrice\n(Microsoft Excel files)" |
-				| ''                      | "Import rule"     | ''                                           | ''                              | ''                                                                    |
-				| ''                      | "Object currency"      | "From regulation: RUB (EUR, USD)"              | "From regulation: RUB (EUR, USD)" | "From regulation: RUB (EUR, USD)"                                       |
-				| ''                      | "Translation template"   | ''                                           | ''                              | ''                                                                    |
+				| 'Organization \ Object' | ''                    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| 'Система LLC'          | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Method формирования' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'Консолидировать периметр (Пропорционально)' |
+				| ''                     | 'Currency Object_'      | 'From регламента: RUB'            | 'From регламента: RUB'                                                  | 'From регламента: RUB'                         |
+				| 'Mercury LLC'         | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Method формирования' | 'Ручное заполнение'             | 'Импорт\nВнешняя ИБ: DimenKind - ПроцессИмпортЦена\n(Microsoft Excel files)' | 'On правилу обработки'                       |
+				| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' | 'From регламента: RUB (USD, EUR)'                                       | 'From регламента: RUB (USD, EUR)'              |
+				| 'Венера LLC'           | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Method формирования' | 'Ручное заполнение'             | 'Импорт\nВнешняя ИБ: DimenKind - ПроцессИмпортЦена\n(Microsoft Excel files)' | 'On правилу обработки'                       |
+				| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' | 'From регламента: RUB (USD, EUR)'                                       | 'From регламента: RUB (USD, EUR)'              |
+				| 'Земля LLC'            | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Method формирования' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'On правилу обработки'                       |
+				| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD)'      | 'From регламента: RUB (USD)'                                            | 'From регламента: RUB (USD)'                   |
+				| 'Марс LLC'             | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| ''                     | 'Method формирования' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'On правилу обработки'                       |
+				| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' | 'From регламента: RUB (USD, EUR)'                                       | 'From регламента: RUB (USD, EUR)'              |
 			И Я закрываю окно "Set up object filling rules for regulation VA - Report preparation process by scenario VA - Report preparation process for period January *"
-		* Управление лимитами
-			Когда открылось окно '$WindowTitle$'
-			И я нажимаю на кнопку с именем 'FormGoForward'
 		* Процесс
 			Когда открылось окно '$WindowTitle$'
 			И я нажимаю на кнопку с именем 'FormGoForward'
 			И элемент формы с именем 'StartProcess' доступен
 			И элемент формы с именем 'TerminateProcess' не доступен
-			И элемент формы с именем 'ReportsMatrix' доступен
-			И элемент формы с именем 'ProcessesManagementReportPreparation' не доступен
-			И элемент формы с именем 'ReportingPreparationProcessChart' не доступен			
+			И элемент формы с именем 'Group_УправлениеХодомПроцессаTable' не доступен
 			И я нажимаю на кнопку с именем 'StartProcess'
+			Когда открылось окно "1C:Enterprise"
+			И я нажимаю на кнопку с именем 'Button0'
+			И Я запоминаю значение выражения 'ТекущаяDate() - 864000' в переменную 'StartDateПроцесса'
+			И в поле с именем 'StartDateПроцесса' я ввожу значение переменной '$StartDateПроцесса$'
+			И я нажимаю на кнопку с именем 'StartProcess'
+			Когда открылось окно "1C:Enterprise"
+			И я нажимаю на кнопку с именем 'Button0'
 			И элемент формы с именем 'StartProcess' не доступен
 			И элемент формы с именем 'TerminateProcess' доступен
-			И элемент формы с именем 'ReportsMatrix' доступен
-			И элемент формы с именем 'ProcessesManagementReportPreparation' доступен
-			И элемент формы с именем 'ReportingPreparationProcessChart' доступен
+			И элемент формы с именем 'Group_УправлениеХодомПроцессаTable' доступен
 			И я жду открытия окна '$WindowTitle$' в течение 20 секунд	
 		* Кнопки открытия обработок управления процессом
-			* Матрица отчетов
-				Тогда открылось окно '$WindowTitle$'
-				И я нажимаю на кнопку с именем 'ReportsMatrix'
-				Когда открылось окно "Report matrix"
-				Тогда элемент формы с именем 'PeriodManagement' стал равен '$WindowTitle$'
-				Если '$$InterfaceLanguage$$ = "En"' Тогда
-					Тогда табличный документ 'ResultReportsMatrix' равен:
-						| 'January 2024 - March 2024 (Frequency: Month) <VA - Report preparation process>\n reporting period management.' | '' | '' | '' | 'Earth LLC' | 'Mercury LLC'      | 'System LLC' | 'Venus LLC'        |
-						| 'Calculation by rule - "VA - ProcessAmount"'                                                                    | '' | '' | '' | ''          | ''                 | ''           | ''                 |
-						| 'VA - ProcessAmount'                                                                                            | '' | '' | '' | 'X'         | ''                 | 'X'          | ''                 |
-						| 'Consolidation - "VA - ProcessAmount"'                                                                          | '' | '' | '' | ''          | ''                 | ''           | ''                 |
-						| 'VA - ProcessAmount'                                                                                            | '' | '' | '' | 'X'         | 'X'                | ''           | 'X'                |
-						| 'Import - "VA - ProcessPrice"'                                                                                  | '' | '' | '' | ''          | ''                 | ''           | ''                 |
-						| 'VA - ProcessPrice'                                                                                             | '' | '' | '' | 'X'         | ''                 | 'X'          | ''                 |
-						| 'VA - ProcessPrice'                                                                                             | '' | '' | '' | ''          | 'Work in progress' | ''           | 'Work in progress' |
-						| 'Manual filling - "VA - ProcessCount"'                                                                       | '' | '' | '' | ''          | ''                 | ''           | ''                 |
-						| 'VA - ProcessCount'                                                                                          | '' | '' | '' | 'X'         | ''                 | 'X'          | ''                 |
-						| 'VA - ProcessCount'                                                                                          | '' | '' | '' | ''          | 'Work in progress' | ''           | 'Work in progress' |
-				Иначе
-					Тогда табличный документ 'ResultReportsMatrix' равен:
-						| "January 2024 - March 2024 (Frequency: Month) <VA - Report preparation process>\n reporting period management." | '' | '' | '' | "Venus LLC" | "Earth LLC" | "Mercury LLC" | "System LLC" |
-						| "Import - \"VA - ProcessPrice\""                                                                                            | '' | '' | '' | ''           | ''          | ''             | ''            |
-						| "VA - ProcessPrice"                                                                                                         | '' | '' | '' | ''           | 'X'         | ''             | 'X'           |
-						| "VA - ProcessPrice"                                                                                                         | '' | '' | '' | "Work in progress"        | ''          | "Work in progress"          | ''            |
-						| "Consolidation - \"VA - ProcessAmount\""                                                                                     | '' | '' | '' | ''           | ''          | ''             | ''            |
-						| "VA - ProcessAmount"                                                                                                        | '' | '' | '' | 'X'          | 'X'         | 'X'            | ''            |
-						| "Calculation by rule - \"VA - ProcessAmount\""                                                                                | '' | '' | '' | ''           | ''          | ''             | ''            |
-						| "VA - ProcessAmount"                                                                                                        | '' | '' | '' | ''           | 'X'         | ''             | 'X'           |
-						| "Manual filling - \"VA - ProcessCount\""                                                                           | '' | '' | '' | ''           | ''          | ''             | ''            |
-						| "VA - ProcessCount"                                                                                                   | '' | '' | '' | ''           | 'X'         | ''             | 'X'           |
-						| "VA - ProcessCount"                                                                                                   | '' | '' | '' | "Work in progress"        | ''          | "Work in progress"          | ''            |
-				И Я закрываю окно "Report matrix"
 			* Управление процессом подготовки отчетности
 				Тогда открылось окно '$WindowTitle$'
 				И я нажимаю на кнопку с именем 'ProcessesManagementReportPreparation'
 				Тогда открылось окно "Reporting preparation management"
 				Тогда элемент формы с именем 'PeriodManagement' стал равен '$WindowTitle$'
+				И я перехожу к закладке с именем 'PageTreeЭтапов'
 				Тогда таблица 'StepsTree' стала равной:
-					| "Step/Company"                               | "Step state" |
+					| "Stage / Company"                             | "Step state" |
 					| "Manual filling - \"VA - ProcessCount\"" | "Not active"      |
 					| "Import - \"VA - ProcessPrice\""                  | "Not active"      |
 					| "Calculation by rule - \"VA - ProcessAmount\""      | "Not active"      |
 					| "Consolidation - \"VA - ProcessAmount\""           | "Not active"      |
 				И Я закрываю окно "Reporting preparation management"
-			* Ход выполнения процесса подготовки отчетности	
-				Тогда открылось окно '$WindowTitle$'	
-				И я нажимаю на кнопку с именем 'ReportingPreparationProcessChart'
-				Тогда открылось окно "Diagram of report preparation process"								
-				Тогда элемент формы с именем 'PeriodManagement' стал равен '$WindowTitle$'
-				И Я закрываю окно "Diagram of report preparation process"				
-			
+			* Матрица отчетов
+				Тогда открылось окно '$WindowTitle$'
+				И я нажимаю на кнопку с именем 'ReportsMatrix'
+				Тогда открылось окно "Матрица экземпляров отчетов"
+				И я нажимаю на кнопку с именем 'FormSettings'
+				И из выпадающего списка с именем 'SettingsComposerUserSettingsItem1Value' я выбираю точное значение "Yes"
+				И из выпадающего списка с именем 'SettingsComposerUserSettingsItem2Value' я выбираю точное значение "Yes"
+				И я нажимаю на кнопку с именем 'FormFormulate'
+				Тогда табличный документ 'Result' равен макету "\Макеты\19\ВА_ПроцессПодготовкиОтчетности_МатрицаОтчетов1.mxl"	
+				И Я закрываю окно "Матрица экземпляров отчетов"	
 		* Сохраняем документ						
 			И я нажимаю на кнопку с именем 'FormGoForward'
 			И я нажимаю на кнопку с именем 'FormClose'
@@ -648,187 +628,70 @@
 	* Кнопки открытия обработок управления процессом		
 		* Управление процессом подготовки отчетности
 			Когда открылось окно "Reporting period management"
-			И я нажимаю на кнопку с именем 'ProcessesManagementReportPreparation'
+			И я нажимаю на кнопку с именем 'FormProcessesManagementReportPreparation'
 			Тогда открылось окно "Reporting preparation management"
 			Тогда элемент формы с именем 'PeriodManagement' стал равен '$WindowTitle$'
 			Тогда таблица 'StepsTree' стала равной:
-				| "Step/Company"                               | "Step state" |
+				| "Stage / Company"                             | "Step state" |
 				| "Manual filling - \"VA - ProcessCount\"" | "Not active"      |
 				| "Import - \"VA - ProcessPrice\""                  | "Not active"      |
 				| "Calculation by rule - \"VA - ProcessAmount\""      | "Not active"      |
 				| "Consolidation - \"VA - ProcessAmount\""           | "Not active"      |
 			И Я закрываю окно "Reporting preparation management"
-		* Ход выполнения процесса подготовки отчетности
-			Когда открылось окно "Reporting period management"
-			И я нажимаю на кнопку с именем 'ReportingPreparationProcessChart'
-			Тогда открылось окно "Diagram of report preparation process"			
-			Тогда элемент формы с именем 'PeriodManagement' стал равен '$WindowTitle$'
-			И Я закрываю окно "Diagram of report preparation process"
 		* Матрица отчетов
 			Когда открылось окно "Reporting period management"
-			И я нажимаю на кнопку с именем 'ReportsMatrix'
-			Когда открылось окно "Report matrix"
-			Тогда элемент формы с именем 'PeriodManagement' стал равен '$WindowTitle$'
-			И Я закрываю окно "Report matrix"
+			И я нажимаю на кнопку с именем 'FormМатрицаЭкземпляровОтчетов'
+			Когда открылось окно "Матрица экземпляров отчетов"
+			Тогда табличный документ 'Result' равен макету "\Макеты\19\ВА_ПроцессПодготовкиОтчетности_МатрицаОтчетов1.mxl"
+			И Я закрываю окно "Матрица экземпляров отчетов"
 
 	* Закрытие формы
 		Когда открылось окно "Reporting period management"
 		И Я закрываю окно "Reporting period management"	
 
-Сценарий: 19.10 Диаграмма процесса подготовки отчетности
-
-	И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Diagram of report preparation process"
-	Когда открылось окно "Diagram of report preparation process"
-
-	* Останавливаем процесс
-		И элемент формы с именем 'GroupProcessStarted' присутствует на форме
-		И я нажимаю на кнопку с именем 'StopProcess'
-		И элемент формы с именем 'GroupProcessStarted' отсутствует на форме
-		И я нажимаю на кнопку с именем 'StartProcess'
-		И элемент формы с именем 'GroupProcessStarted' присутствует на форме		
-
-	* Включаем сообщения
-		Тогда открылось окно "Diagram of report preparation process"
-		Если у элемента формы с именем 'OutputMessages' не установлена пометка Тогда
-			И я нажимаю на кнопку с именем 'OutputMessages'
-
-	* Обрабатываем один этап
-
-		* Создание документов этапа
-			Когда открылось окно "Diagram of report preparation process"		
-			И я нажимаю на кнопку с именем 'CreateStepDocuments'
-			Тогда открылось окно "Select a step for processing"
-			И в таблице 'List' я перехожу к строке:
-				| "Description"                  | "Step type"                           |
-				| "Import - \"VA - ProcessPrice\"" | "Step of report preparation process" |
-			И в таблице 'List' я выбираю текущую строку			
-		
-		* Обработка этапа
-			Тогда открылось окно "Diagram of report preparation process"
-			И я нажимаю на кнопку с именем 'DoProcessStep'
-			Тогда открылось окно "Select a step for processing"
-			И в таблице 'List' я перехожу к строке:
-				| "Description"                  | "Step type"                           |
-				| "Import - \"VA - ProcessPrice\"" | "Step of report preparation process" |
-			И в таблице 'List' я выбираю текущую строку
-			Тогда в логе сообщений TestClient есть строки по шаблону:
-				|"The Report instance * document is calculated by regulation"|
-				|"The Report instance * document is calculated by regulation"|
-			И я очищаю окно сообщений пользователю
-		
-		* Обработка этапа до текущего
-			Когда открылось окно "Diagram of report preparation process"
-			И я нажимаю на кнопку с именем 'ProcessAndCompleteStagesUpToCurrent'
-			Тогда открылось окно "Select a step for processing"
-			И в таблице 'List' я перехожу к строке:
-				| "Description"                  | "Step type"                           |
-				| "Import - \"VA - ProcessPrice\"" | "Step of report preparation process" |
-			И в таблице 'List' я выбираю текущую строку
-			Тогда в логе сообщений TestClient есть строки по шаблону:
-				|"The Report instance * document is calculated by regulation"|
-				|"The \"Report instance *\" document is set to the \"Confirmed\" state"|
-				|"The Report instance * document is calculated by regulation"|
-				|"The \"Report instance *\" document is set to the \"Confirmed\" state"|
-			И я очищаю окно сообщений пользователю	
-		
-		* Отмена обработки этапа
-			Когда открылось окно "Diagram of report preparation process"
-			И я нажимаю на кнопку с именем 'CancelStepProcessing'
-			Тогда открылось окно "Select a step for processing"
-			И в таблице 'List' я перехожу к строке:
-				| "Description"                  | "Step type"                           |
-				| "Import - \"VA - ProcessPrice\"" | "Step of report preparation process" |
-			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "Cancel the step processing for the companies:"
-			И я нажимаю на кнопку с именем 'Execute'
-			Тогда в логе сообщений TestClient есть строки по шаблону:
-				|"The \"Report instance *\" document is set to the \"Draft\" state"|
-				|"The \"Import - \"VA - ProcessPrice\"\" step is set to the \"Not opened\" state"|
-				|"The \"Report instance *\" document is set to the \"Draft\" state"|
-				|"The \"Import - \"VA - ProcessPrice\"\" step is set to the \"Not opened\" state"|
-			И я очищаю окно сообщений пользователю
-		
-		* Завершаем этап по одной организации
-			Когда открылось окно "Diagram of report preparation process"
-			И я нажимаю на кнопку с именем 'FinishStageProcessing'
-			Тогда открылось окно "Select a step for processing"
-			И в таблице 'List' я перехожу к строке:
-				| "Description"                  | "Step type"                           |
-				| "Import - \"VA - ProcessPrice\"" | "Step of report preparation process" |
-			И в таблице 'List' я выбираю текущую строку
-			Тогда открылось окно "Complete the step processing for the companies:"
-			И в таблице 'ScenariosPeriodsTable' я нажимаю на кнопку с именем 'ScenariosPeriodsTableUncheckAll'
-			И в таблице 'ScenariosPeriodsTable' я перехожу к строке:
-				| "Selected" | "Company"  |
-				| "No"    | "Mercury LLC" |						
-			И в таблице 'ScenariosPeriodsTable' я изменяю флаг с именем 'ScenariosPeriodsTableSelected'
-			И в таблице 'ScenariosPeriodsTable' я завершаю редактирование строки
-			И я нажимаю на кнопку с именем 'Execute'
-			Тогда в логе сообщений TestClient есть строки по шаблону:
-				|"The Report instance * document is calculated by regulation"|
-				|"The \"Report instance *\" document is set to the \"Confirmed\" state"|
-
-	* Проверяем состояние процесса
-		Когда открылось окно "Diagram of report preparation process"
-		И я нажимаю на кнопку с именем 'OpenReportPreparationProcessManagement'
-		Тогда открылось окно "Reporting preparation management"
-		И в таблице 'StepsTree' я нажимаю на кнопку с именем 'StepsTreeExpandAll'
-		Тогда таблица 'StepsTree' содержит "14" строк из списка:
-			| "Step/Company"                               | "Relevant step"                                | "Step state" | "Operation progress" |
-			| "Manual filling - \"VA - ProcessCount\"" | ""                                               | "Not active"      | ""                  |
-			| "System LLC"                                    | ""                                               | "Not active"      | ""                  |
-			| "Venus LLC"                                     | "Import - \"VA - ProcessPrice\""                  | "Not active"      | ""                  |
-			| "Mercury LLC"                                   | "Manual filling - \"VA - ProcessCount\"" | "Not active"      | ""                  |
-			| "Import - \"VA - ProcessPrice\""                  | ""                                               | "Processing"     | "50.00"             |
-			| "System LLC"                                    | ""                                               | "Processing"     | "50.00"             |
-			| "Venus LLC"                                     | "Import - \"VA - ProcessPrice\""                  | "Not active"      | ""                  |
-			| "Mercury LLC"                                   | "Manual filling - \"VA - ProcessCount\"" | "Completed"        | "100.00"            |
-			| "Calculation by rule - \"VA - ProcessAmount\""      | ""                                               | "Not active"      | ""                  |
-			| "System LLC"                                    | ""                                               | "Not active"      | ""                  |
-			| "Venus LLC"                                     | "Import - \"VA - ProcessPrice\""                  | "Not active"      | ""                  |
-			| "Mercury LLC"                                   | "Manual filling - \"VA - ProcessCount\"" | "Not active"      | ""                  |
-			| "Consolidation - \"VA - ProcessAmount\""           | ""                                               | "Not active"      | ""                  |
-			| "System LLC"                                    | "Consolidation - \"VA - ProcessAmount\""           | "Not active"      | ""                  |
-		Когда открылось окно "Reporting preparation management"
-		И Я закрываю окно "Reporting preparation management"
-
-	Когда открылось окно "Diagram of report preparation process"
-	И Я закрываю окно "Diagram of report preparation process"							
-
-Сценарий: 19.11 Ручное заполнение - "VA - ProcessCount"
+Сценарий: 19.12 Ручное заполнение - "VA - ProcessCount"
 
 	И Я открываю управление процессом подготовки отчетности для сценария "VA - Report preparation process"
 
 	* Останавливаем и запускаем процесс
 		Когда открылось окно "Reporting preparation management"
+		Если у элемента формы с именем 'StepsTreeOutputMessages' не установлена пометка Тогда
+			И я нажимаю на кнопку с именем 'StepsTreeOutputMessages'
+		Если у элемента формы с именем 'ShowTreeОпераций' не установлена пометка Тогда
+			И я нажимаю на кнопку с именем 'ShowTreeОпераций'
+		И элемент формы с именем 'НадписьСостояниеПроцесса' стал равен "Report preparation process запущен *" по шаблону
 		И я нажимаю на кнопку с именем 'StopProcess'
+		Когда открылось окно "1C:Enterprise"
+		И я нажимаю на кнопку с именем 'Button0'
+		И элемент формы с именем 'НадписьСостояниеПроцесса' стал равен "Report preparation process не запущен"
 		И я нажимаю на кнопку с именем 'StartProcess'
-		И в таблице 'StepsTree' я нажимаю на кнопку с именем 'StepsTreeExpandAll'
-		Тогда таблица 'StepsTree' содержит "14" строк из списка:
-			| "Step/Company"                               | "Step state" | "Operation progress" |
-			| "Manual filling - \"VA - ProcessCount\"" | "Not active"      | ""                  |
-			| "System LLC"                                    | "Not active"      | ""                  |
-			| "Venus LLC"                                     | "Not active"      | ""                  |
-			| "Mercury LLC"                                   | "Not active"      | ""                  |
-			| "Import - \"VA - ProcessPrice\""                  | "Not active"      | ""                  |
-			| "System LLC"                                    | "Not active"      | ""                  |
-			| "Venus LLC"                                     | "Not active"      | ""                  |
-			| "Mercury LLC"                                   | "Not active"      | ""                  |
-			| "Calculation by rule - \"VA - ProcessAmount\""      | "Not active"      | ""                  |
-			| "System LLC"                                    | "Not active"      | ""                  |
-			| "Venus LLC"                                     | "Not active"      | ""                  |
-			| "Mercury LLC"                                   | "Not active"      | ""                  |
-			| "Consolidation - \"VA - ProcessAmount\""           | "Not active"      | ""                  |
-			| "System LLC"                                    | "Not active"      | ""                  |
+		Когда открылось окно "1C:Enterprise"
+		И я нажимаю на кнопку с именем 'Button0'
+		И элемент формы с именем 'НадписьСостояниеПроцесса' стал равен "Report preparation process запущен *" по шаблону
+		И я перехожу к закладке с именем 'PageTreeЭтапов'
+		Тогда таблица 'StepsTree' содержит "11" строк из списка:
+			| "Stage / Company"                             | "Relevant step"                                | "Step state" | "End date (план)" | "End date (факт)" | "Осталось / Отклонение" |
+			| "Manual filling - \"VA - ProcessCount\"" | ""                                               | "Not active"      | ""                      | ""                      | ""                      |
+			| "Mercury LLC"                                   | "Manual filling - \"VA - ProcessCount\"" | "Not active"      | ""                      | ""                      | ""                      |
+			| "Venus LLC"                                     | "Manual filling - \"VA - ProcessCount\"" | "Not active"      | ""                      | ""                      | ""                      |
+			| "Import - \"VA - ProcessPrice\""                  | ""                                               | "Not active"      | ""                      | ""                      | ""                      |
+			| "Mercury LLC"                                   | "Import - \"VA - ProcessPrice\""                  | "Not active"      | ""                      | ""                      | ""                      |
+			| "Venus LLC"                                     | "Import - \"VA - ProcessPrice\""                  | "Not active"      | ""                      | ""                      | ""                      |
+			| "Calculation by rule - \"VA - ProcessAmount\""      | ""                                               | "Not active"      | ""                      | ""                      | ""                      |
+			| "Mercury LLC"                                   | "Manual filling - \"VA - ProcessCount\"" | "Not active"      | ""                      | ""                      | ""                      |
+			| "Venus LLC"                                     | "Manual filling - \"VA - ProcessCount\"" | "Not active"      | ""                      | ""                      | ""                      |
+			| "Consolidation - \"VA - ProcessAmount\""           | ""                                               | "Not active"      | ""                      | ""                      | ""                      |
+			| "System LLC"                                    | "Manual filling - \"VA - ProcessCount\"" | "Not active"      | ""                      | ""                      | ""                      |
 
 	* Заполняем по оганизации Меркурий
 		И в таблице 'StepsTree' я перехожу к строке:
-			| "Step/Company"                               |
+			| "Stage / Company"                             |
 			| "Manual filling - \"VA - ProcessCount\"" |
+		И я выбираю пункт контекстного меню с именем 'StepsTreeContextMenuCreateStepDocuments' на элементе формы с именем 'StepsTree'
 		И в таблице 'TransactionsTree' я перехожу к строке:
-			| "Report type/Company" |
-			| "Mercury LLC"           |
-		И в таблице 'TransactionsTree' я активизирую поле с именем 'OperationTreeCompanyReportKind'
+			| "Template документа / Company" |
+			| "Mercury LLC"                   |
+		И в таблице 'TransactionsTree' я активизирую поле с именем 'TransactionsTreeOrganizationTemplateДокумента'
 		И в таблице 'TransactionsTree' я выбираю текущую строку
 		
 		И Открылся экземпляр отчета для вида отчета "VA - ProcessCount" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Report preparation process" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
@@ -856,9 +719,9 @@
 	* Заполняем по оганизации Венера
 		Тогда открылось окно "Reporting preparation management"	
 		И в таблице 'TransactionsTree' я перехожу к строке:
-			| "Report type/Company" |
+			| "Template документа / Company" |
 			| "Venus LLC"             |
-		И в таблице 'TransactionsTree' я активизирую поле с именем 'OperationTreeCompanyReportKind'	
+		И в таблице 'TransactionsTree' я активизирую поле с именем 'TransactionsTreeOrganizationTemplateДокумента'	
 		И в таблице 'TransactionsTree' я выбираю текущую строку
 			
 		И Открылся экземпляр отчета для вида отчета "VA - ProcessCount" валюта 'RUB' организация "Venus LLC" сценарий "VA - Report preparation process" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
@@ -879,43 +742,41 @@
 			Тогда открылось окно "1C:Enterprise"
 			И я нажимаю на кнопку с именем 'OK'
 			Тогда в логе сообщений TestClient есть строки по шаблону:
-				|"Cannot save document *:\n- Process step Manual filling - \"VA - ProcessCount\" uses the report type VA - ProcessCount and is in status \"Closed\"."|
+				|"Document * участinует in stepе подготоinки отчетности \"Manual filling - \"VA - ProcessКоличестinо\"\", который находится in состоянии \"Заinершен\".\nДля изменения документа откройте указанный step процесса подготоinки отчетности."|
 			И Я закрываю окно '$WindowTitle$'
 
 	* Проверяем результат
 		Когда открылось окно "Reporting preparation management"
 		И я нажимаю на кнопку с именем 'GenerateReport'				
 		И в таблице 'StepsTree' я перехожу к строке:
-			| "Step/Company"                               | "Step state" | "Operation progress" |
-			| "Manual filling - \"VA - ProcessCount\"" | "Completed"        | "100.00"            |
-		Тогда таблица 'TransactionsTree' содержит '4' строк из списка:
-			| "Report type/Company" | "State" |
-			| "VA - ProcessCount" | "Confirmed" |
-			| "System LLC"            | "Confirmed" |
-			| "Venus LLC"             | "Confirmed" |
-			| "Mercury LLC"           | "Confirmed" |		
+			| "Stage / Company"                             | "Step state" |
+			| "Manual filling - \"VA - ProcessCount\"" | "Completed"        |
+		Тогда таблица 'TransactionsTree' содержит '3' строк из списка:
+			| "Template документа / Company" | "State" |
+			| "VA - ProcessCount"   | "Confirmed" |
+			| "Venus LLC"               | "Confirmed" |
+			| "Mercury LLC"             | "Confirmed" |
 		
 	* Отменяем утверждение
 		Когда открылось окно "Reporting preparation management"
 		И в таблице 'StepsTree' я перехожу к строке:
-			| "Step/Company"                               | "Step state" | "Operation progress" |
-			| "Manual filling - \"VA - ProcessCount\"" | "Completed"        | "100.00"            |
+			| "Stage / Company"                             | "Step state" |
+			| "Manual filling - \"VA - ProcessCount\"" | "Completed"        |
 		И я выбираю пункт контекстного меню с именем 'StepsTreeContextMenuCancelStepProcessing' на элементе формы с именем 'StepsTree'
 		Тогда открылось окно "Cancel the step processing for the companies:"
 		И в таблице 'ScenariosPeriodsTable' я нажимаю на кнопку с именем 'ScenariosPeriodsTableCheckAll'				
 		И я нажимаю на кнопку с именем 'Execute'
-		Тогда таблица 'TransactionsTree' содержит '4' строк из списка:
-			| "Report type/Company" | "State" |
-			| "VA - ProcessCount" | "Draft"  |
-			| "System LLC"            | "Draft"  |
-			| "Venus LLC"             | "Draft"  |
-			| "Mercury LLC"           | "Draft"  |
+		Тогда таблица 'TransactionsTree' содержит '3' строк из списка:
+			| "Template документа / Company" | "State" |
+			| "VA - ProcessCount"   | "Draft"  |
+			| "Venus LLC"               | "Draft"  |
+			| "Mercury LLC"             | "Draft"  |
 
 	* Утверждаем снова
 		Когда открылось окно "Reporting preparation management"
 		И в таблице 'StepsTree' я перехожу к строке:
-			| "Step/Company"                               | "Step state" | "Operation progress" |
-			| "Manual filling - \"VA - ProcessCount\"" | "Not active"      | ""                  |
+			| "Stage / Company"                             | "Step state" |
+			| "Manual filling - \"VA - ProcessCount\"" | "Not active"      |
 		И я выбираю пункт контекстного меню с именем 'StepsTreeContextMenuFinishStageProcessing' на элементе формы с именем 'StepsTree'
 		Тогда открылось окно "Complete the step processing for the companies:"
 		И в таблице 'ScenariosPeriodsTable' я нажимаю на кнопку с именем 'ScenariosPeriodsTableCheckAll'
@@ -927,7 +788,7 @@
 	* Утверждаем вручную
 		Когда открылось окно "Reporting preparation management"
 		И в таблице 'TransactionsTree' я перехожу к строке:
-			| "Report type/Company"  | "State" |
+			| "Template документа / Company"  | "State" |
 			| "Mercury LLC"            | "Draft"  |
 		И в таблице 'TransactionsTree' я активизирую поле с именем 'OperationTreeState'
 		И в таблице 'TransactionsTree' я выбираю текущую строку	
@@ -937,7 +798,7 @@
 			| "Confirmed" |
 		И в таблице "List" я выбираю текущую строку
 		И в таблице 'TransactionsTree' я перехожу к строке:
-			| "Report type/Company" | "State" |
+			| "Template документа / Company" | "State" |
 			| "Venus LLC"             | "Draft"  |
 		И в таблице 'TransactionsTree' я активизирую поле с именем 'OperationTreeState'
 		И в таблице 'TransactionsTree' я выбираю текущую строку	
@@ -947,24 +808,23 @@
 			| "Confirmed" |
 		И в таблице "List" я выбираю текущую строку
 		И в таблице 'StepsTree' я перехожу к строке:
-			| "Step/Company"                               | "Step state" | "Operation progress" |
-			| "Manual filling - \"VA - ProcessCount\"" | "Completed"        | "100.00"            |
-		Тогда таблица 'TransactionsTree' содержит '4' строк из списка:
-			| "Report type/Company" | "State" |
-			| "VA - ProcessCount" | "Confirmed" |
-			| "System LLC"            | "Confirmed" |
-			| "Venus LLC"             | "Confirmed" |
-			| "Mercury LLC"           | "Confirmed" |	
+			| "Stage / Company"                             | "Step state" |
+			| "Manual filling - \"VA - ProcessCount\"" | "Completed"        |
+		Тогда таблица 'TransactionsTree' содержит '3' строк из списка:
+			| "Template документа / Company" | "State" |
+			| "VA - ProcessCount"   | "Confirmed" |
+			| "Venus LLC"               | "Confirmed" |
+			| "Mercury LLC"             | "Confirmed" |
 
-Сценарий: 19.12 Расчет по правилу - "VA - ProcessAmount"
+Сценарий: 19.13 Расчет по правилу - "VA - ProcessAmount"
 
 	И Я открываю управление процессом подготовки отчетности для сценария "VA - Report preparation process"
 
 	* Попытаем начать обработку этапа
 		Когда открылось окно "Reporting preparation management"
 		И в таблице 'StepsTree' я перехожу к строке:
-			| "Step/Company"                          | "Step state" | "Operation progress" |
-			| "Calculation by rule - \"VA - ProcessAmount\"" | "Not active"      | ""                  |
+			| "Stage / Company"                        | "Step state" |
+			| "Calculation by rule - \"VA - ProcessAmount\"" | "Not active"      |
 		И я нажимаю на кнопку с именем 'StartStageProcessing'
 		Тогда открылось окно "Start the step processing for the companies:"
 		И я нажимаю на кнопку с именем 'Execute'
@@ -980,53 +840,52 @@
 			|"Cannot complete the \"Calculation by rule - \"VA - ProcessAmount\"\" step as there is an uncompleted subordinate step: \"Import - \"VA - ProcessPrice\"\""|
 
 	* Проверим, что таблица не поменялась
+		И в таблице 'StepsTree' я нажимаю на кнопку с именем 'StepsTreeGroupByAll'
 		Тогда таблица 'StepsTree' стала равной:
-			| "Step/Company"                               | "Step state" | "Operation progress" |
-			| "Manual filling - \"VA - ProcessCount\"" | "Completed"        | "100.00"            |
-			| "Import - \"VA - ProcessPrice\""                  | "Not active"      | ""                  |
-			| "Calculation by rule - \"VA - ProcessAmount\""      | "Not active"      | ""                  |
-			| "Consolidation - \"VA - ProcessAmount\""           | "Not active"      | ""                  |
+			| "Stage / Company"                             | "Step state" |
+			| "Manual filling - \"VA - ProcessCount\"" | "Completed"        |
+			| "Import - \"VA - ProcessPrice\""                  | "Not active"      |
+			| "Calculation by rule - \"VA - ProcessAmount\""      | "Not active"      |
+			| "Consolidation - \"VA - ProcessAmount\""           | "Not active"      |
 					
-Сценарий: 19.13 Импорт - "VA - ProcessPrice"	
+Сценарий: 19.14 Импорт - "VA - ProcessPrice"	
 
 	И Я открываю управление процессом подготовки отчетности для сценария "VA - Report preparation process"
 
 	* Начинаем обработку этапа
 		И в таблице 'StepsTree' я перехожу к строке:
-			| "Step/Company"              | "Step state" | "Operation progress" |
-			| "Import - \"VA - ProcessPrice\"" | "Not active"      | ""                  |
-		Тогда таблица 'TransactionsTree' содержит "4" строк из списка:
-			| "Report type/Company" | "State"                |
-			| "VA - ProcessPrice"       | "Draft"                 |
-			| "System LLC"            | "Draft"                 |
-			| "Venus LLC"             | "Draft"                 |
-			| "Mercury LLC"           | "Checked, pending approval" |
+			| "Stage / Company"            | "Step state" |
+			| "Import - \"VA - ProcessPrice\"" | "Not active"      |
+		Тогда таблица 'TransactionsTree' содержит "3" строк из списка:
+			| "Template документа / Company" | "State" |
+			| "VA - ProcessPrice"         | "Draft"  |
+			| "Venus LLC"               | "Draft"  |
+			| "Mercury LLC"             | "Draft"  |
 		Когда открылось окно "Reporting preparation management"
 		И я нажимаю на кнопку с именем 'StartStageProcessing'
 		Тогда открылось окно "Start the step processing for the companies:"
-		И я снимаю флаг с именем 'ShouldFillDocuments'				
 		И я нажимаю на кнопку с именем 'Execute'
 		И я жду открытия окна "Reporting preparation management" в течение 20 секунд
 
 	* Проверяем, по организации Меркурий отчет должен быть заполнен
 		И в таблице 'StepsTree' я перехожу к строке:
-			| "Step/Company"              | "Step state" | "Operation progress" |
-			| "Import - \"VA - ProcessPrice\"" | "Processing"     | ""                  |	
+			| "Stage / Company"            | "Step state" |
+			| "Import - \"VA - ProcessPrice\"" | "Processing"     |
 		И в таблице 'TransactionsTree' я перехожу к строке:
-			| "Report type/Company" |
+			| "Template документа / Company" |
 			| "Mercury LLC"           |
-		И в таблице 'TransactionsTree' я активизирую поле с именем 'OperationTreeCompanyReportKind'
+		И в таблице 'TransactionsTree' я активизирую поле с именем 'TransactionsTreeOrganizationTemplateДокумента'
 		И в таблице 'TransactionsTree' я выбираю текущую строку
 		И Открылся экземпляр отчета для вида отчета "VA - ProcessPrice" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Report preparation process" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:			
-			| "VA - ProcessPrice" | ''                             | ''              | ''               | ''                | ''             |
-			| ''                 | ''                             | ''              | ''               | ''                | ''             |
-			| ''                 | "Product range"                 | "Product range"  | "January 2024" | "February 2024" | "March 2024" |
-			| ''                 | ''                             | ''              | "Price"           | "Price"            | "Price"         |
-			| "Goods"           | ''                             | ''              | '5,250,000'      | '5,400,000'       | '5,550,000'    |
-			| ''                 | "1C:ERP. Corporate performance management" | '2900001970198' | '1,950,000'      | '2,000,000'       | '2,050,000'    |
-			| ''                 | "2C:Corporation"                | '2900001871419' | '2,050,000'      | '2,100,000'       | '2,150,000'    |
-			| ''                 | "5C:Corporate performance management"    | '2900001871389' | '1,250,000'      | '1,300,000'       | '1,350,000'    |
+			| "VA - ProcessPrice" | ''                             | ''                     | ''               | ''                | ''             |
+			| ''                 | ''                             | ''                     | ''               | ''                | ''             |
+			| ''                 | "Product range_Description"    | "Product range_Product ID" | "January 2024" | "February 2024" | "March 2024" |
+			| ''                 | ''                             | ''                     | "Price"           | "Price"            | "Price"         |
+			| "Goods"           | ''                             | ''                     | '5,250,000'      | '5,400,000'       | '5,550,000'    |
+			| ''                 | "1C:ERP. Corporate performance management" | '2900001970198'        | '1,950,000'      | '2,000,000'       | '2,050,000'    |
+			| ''                 | "2C:Corporation"                | '2900001871419'        | '2,050,000'      | '2,100,000'       | '2,150,000'    |
+			| ''                 | "5C:Corporate performance management"    | '2900001871389'        | '1,250,000'      | '1,300,000'       | '1,350,000'    |
 		Когда открылось окно '$WindowTitle$'
 		И из выпадающего списка с именем 'StatusOfObject' я выбираю точное значение "Confirmed"
 		И Я закрываю окно '$WindowTitle$'
@@ -1046,56 +905,56 @@
 		И в таблице 'ScenariosPeriodsTable' я устанавливаю флаг с именем 'ScenariosPeriodsTableSelected'
 		И в таблице 'ScenariosPeriodsTable' я завершаю редактирование строки				
 		И я нажимаю на кнопку с именем 'Execute'
-		Тогда таблица 'TransactionsTree' содержит '4' строк из списка:
-			| "Report type/Company" | "State" |
-			| "VA - ProcessPrice"       | "Confirmed" |
-			| "System LLC"            | "Confirmed" |
-			| "Venus LLC"             | "Confirmed" |
-			| "Mercury LLC"           | "Confirmed" |
+		Тогда таблица 'TransactionsTree' содержит '3' строк из списка:
+			| "Template документа / Company" | "State" |
+			| "VA - ProcessPrice"         | "Confirmed" |
+			| "Venus LLC"               | "Confirmed" |
+			| "Mercury LLC"             | "Confirmed" |
 
 	* Сравниваем результат по организации Венера
 		И в таблице 'TransactionsTree' я перехожу к строке:
-			| "Report type/Company" |
+			| "Template документа / Company" |
 			| "Venus LLC"             |
-		И в таблице 'TransactionsTree' я активизирую поле с именем 'OperationTreeCompanyReportKind'
+		И в таблице 'TransactionsTree' я активизирую поле с именем 'TransactionsTreeOrganizationTemplateДокумента'
 		И в таблице 'TransactionsTree' я выбираю текущую строку	
 		И Открылся экземпляр отчета для вида отчета "VA - ProcessPrice" валюта 'RUB' организация "Venus LLC" сценарий "VA - Report preparation process" периодичность "Month" проект '' аналитики '' '' '' '' '' ''
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-			| "VA - ProcessPrice" | ''                                                               | ''              | ''               | ''                | ''             |
-			| ''                 | ''                                                               | ''              | ''               | ''                | ''             |
-			| ''                 | "Product range"                                                   | "Product range"  | "January 2024" | "February 2024" | "March 2024" |
-			| ''                 | ''                                                               | ''              | "Price"           | "Price"            | "Price"         |
-			| "Goods"           | ''                                                               | ''              | '780,000'        | '835,000'         | '890,000'      |
-			| ''                 | "3C:Enterprise 8 CORP. Client license for 100 users" | '4601546106674' | '600,000'        | '650,000'         | '700,000'      |
-			| ''                 | "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '2900001916059' | '180,000'        | '185,000'         | '190,000'      |
+			| "VA - ProcessPrice" | ''                                                               | ''                     | ''               | ''                | ''             |
+			| ''                 | ''                                                               | ''                     | ''               | ''                | ''             |
+			| ''                 | "Product range_Description"                                      | "Product range_Product ID" | "January 2024" | "February 2024" | "March 2024" |
+			| ''                 | ''                                                               | ''                     | "Price"           | "Price"            | "Price"         |
+			| "Goods"           | ''                                                               | ''                     | '780,000'        | '835,000'         | '890,000'      |
+			| ''                 | "3C:Enterprise 8 CORP. Client license for 100 users" | '4601546106674'        | '600,000'        | '650,000'         | '700,000'      |
+			| ''                 | "4C:Enterprise 8.3 CORP. Server License (x86-64)"           | '2900001916059'        | '180,000'        | '185,000'         | '190,000'      |
 		И я нажимаю на кнопку с именем 'Write'
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'OK'
 		Тогда в логе сообщений TestClient есть строки по шаблону:
-			|"Cannot save document *:\n- Process step Import - \"VA - ProcessPrice\" uses the report type VA - ProcessPrice and is in status \"Closed\"."|
+			|"Document * участinует in stepе подготоinки отчетности \"Import - \"VA - ProcessPrice\"\", который находится in состоянии \"Заinершен\".\nДля изменения документа откройте указанный step процесса подготоinки отчетности."|
 		И Я закрываю окно '$WindowTitle$'	
 
 	* Проверяем состояние дерева этапов
+		И в таблице 'StepsTree' я нажимаю на кнопку с именем 'StepsTreeGroupByAll'
 		Тогда таблица 'StepsTree' стала равной:
-			| "Step/Company"                               | "Step state" | "Operation progress" |
-			| "Manual filling - \"VA - ProcessCount\"" | "Completed"        | "100.00"            |
-			| "Import - \"VA - ProcessPrice\""                  | "Completed"        | "100.00"            |
-			| "Calculation by rule - \"VA - ProcessAmount\""      | "Not active"      | ""                  |
-			| "Consolidation - \"VA - ProcessAmount\""           | "Not active"      | ""                  |
+			| "Stage / Company"                             | "Step state" |
+			| "Manual filling - \"VA - ProcessCount\"" | "Completed"        |
+			| "Import - \"VA - ProcessPrice\""                  | "Completed"        |
+			| "Calculation by rule - \"VA - ProcessAmount\""      | "Not active"      |
+			| "Consolidation - \"VA - ProcessAmount\""           | "Not active"      |
 			
-Сценарий: 19.14 Консолидация - "VA - ProcessAmount"
+Сценарий: 19.15 Консолидация - "VA - ProcessAmount"
 
 	И Я открываю управление процессом подготовки отчетности для сценария "VA - Report preparation process"	
 
 	* Отменяем обработку этапов
 		И в таблице 'StepsTree' я перехожу к строке:
-			| "Step/Company"                          |
+			| "Stage / Company"                        |
 			| "Calculation by rule - \"VA - ProcessAmount\"" |
 		И я выбираю пункт контекстного меню с именем 'StepsTreeContextMenuCancelStepProcessing' на элементе формы с именем 'StepsTree'
 		Тогда открылось окно "Cancel the step processing for the companies:"
 		И я нажимаю на кнопку с именем 'Execute'
 		И в таблице 'StepsTree' я перехожу к строке:
-			| "Step/Company"                     |
+			| "Stage / Company"                   |
 			| "Consolidation - \"VA - ProcessAmount\"" |
 		И я выбираю пункт контекстного меню с именем 'StepsTreeContextMenuCancelStepProcessing' на элементе формы с именем 'StepsTree'
 		Тогда открылось окно "Cancel the step processing for the companies:"
@@ -1105,14 +964,16 @@
 		Когда открылось окно "Reporting preparation management"
 		И я выбираю пункт контекстного меню с именем 'StepsTreeContextMenuProcessStagesUpToCurrent' на элементе формы с именем 'StepsTree'
 		Тогда таблица 'TransactionsTree' стала равной:
-			| "Report type/Company" | "State" |
-			| "VA - ProcessAmount"      | "Draft"  |
+			| "Template документа / Company" | "State" |
+			| "VA - ProcessAmount"        | "Draft"  |
+			| "System LLC"              | "Draft"  |
 
 	* Заполняем с утрверждением
 		Когда открылось окно "Reporting preparation management"
 		И я выбираю пункт контекстного меню с именем 'StepsTreeContextMenuProcessAndCompleteStagesUpToCurrent' на элементе формы с именем 'StepsTree'
+		И в таблице 'StepsTree' я нажимаю на кнопку с именем 'StepsTreeGroupByAll'
 		Тогда таблица 'StepsTree' стала равной:
-			| "Step/Company"                               | "Step state" |
+			| "Stage / Company"                             | "Step state" |
 			| "Manual filling - \"VA - ProcessCount\"" | "Completed"        |
 			| "Import - \"VA - ProcessPrice\""                  | "Completed"        |
 			| "Calculation by rule - \"VA - ProcessAmount\""      | "Completed"        |
@@ -1120,23 +981,26 @@
 
 	* Проверяем статусы "ВА - ПроцессСумма"
 		И в таблице 'StepsTree' я перехожу к строке:
-			| "Step/Company"                          | "Step state" |
+			| "Stage / Company"                        | "Step state" |
 			| "Calculation by rule - \"VA - ProcessAmount\"" | "Completed"        |
-		Тогда таблица 'TransactionsTree' содержит '4' строк из списка:
-			| "Report type/Company" | "State" |
-			| "VA - ProcessAmount"      | "Confirmed" |
-			| "System LLC"            | "Confirmed" |
-			| "Venus LLC"             | "Confirmed" |
-			| "Mercury LLC"           | "Confirmed" |
+		Тогда таблица 'TransactionsTree' содержит '3' строк из списка:
+			| "Template документа / Company" | "State" |
+			| "VA - ProcessAmount"        | "Confirmed" |
+			| "Venus LLC"               | "Confirmed" |
+			| "Mercury LLC"             | "Confirmed" |
 
 	* Проверяем статусы "ВА - ПроцессСумма"
 		И в таблице 'StepsTree' я перехожу к строке:
-			| "Step/Company"                     | "Step state" |
+			| "Stage / Company"                   | "Step state" |
 			| "Consolidation - \"VA - ProcessAmount\"" | "Completed"        |
 		Тогда таблица 'TransactionsTree' стала равной:
-			| "Report type/Company" | "State" |
-			| "VA - ProcessAmount"      | "Confirmed" |
-		И в таблице 'TransactionsTree' я активизирую поле с именем 'OperationTreeCompanyReportKind'
+			| "Template документа / Company" | "State" |
+			| "VA - ProcessAmount"        | "Confirmed" |
+			| "System LLC"              | "Confirmed" |
+		И в таблице 'TransactionsTree' я перехожу к строке:
+			| "Template документа / Company" | "State" |
+			| "System LLC"              | "Confirmed" |
+		И в таблице 'TransactionsTree' я активизирую поле с именем 'TransactionsTreeOrganizationTemplateДокумента'
 		И в таблице 'TransactionsTree' я выбираю текущую строку
 		
 	* Сверяем итоговый отчет
@@ -1153,42 +1017,48 @@
 			| "4C:Enterprise 8.3 CORP. Server License (x86-64) "           | '20'             | '180,000'   | '3,600,000'  | '40'              | '185,000'   | '7,400,000'  | '60'           | '190,000'   | '11,400,000'  | '120'        | '555,000'    | '22,400,000'  |
 			| "5C:Corporate performance management "                                      | '10'             | '625,000'   | '6,250,000'  | '20'              | '650,000'   | '13,000,000' | '30'           | '675,000'   | '20,250,000'  | '60'         | '1,950,000'  | '39,500,000'  |
 		
-Сценарий: 19.15 Останавливаем процесс
+Сценарий: 19.16 Проверяем, что процесс завершен
 
 	* Ищем нужный документ
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Reporting period management"
 		Тогда открылось окно "Reporting period management"
-		И Я в списке "Reporting period management" по полю "Scenario" ищу и выбираю элемент "VA - Report preparation process" "Exact match" 
+		И Я в списке "Reporting period management" по полю "Scenario" ищу элемент "VA - Report preparation process" "Exact match" 
+
+	* Открываем управление процессом из списка
+		Тогда открылось окно "Reporting period management"
+		И я нажимаю на кнопку с именем 'FormProcessesManagementReportPreparation'
+		Тогда открылось окно "Reporting preparation management"
+		И таблица 'StepsTree' стала равной:
+			| "Stage / Company"                             | "Step state" |
+			| "Manual filling - \"VA - ProcessCount\"" | "Completed"        |
+			| "Import - \"VA - ProcessPrice\""                  | "Completed"        |
+			| "Calculation by rule - \"VA - ProcessAmount\""      | "Completed"        |
+			| "Consolidation - \"VA - ProcessAmount\""           | "Completed"        |
+		Тогда таблица 'TransactionsTree' стала равной:
+			| "Template документа / Company" | "State" |
+			| "VA - ProcessCount"   | "Confirmed" |
+			| "Mercury LLC"             | "Confirmed" |
+			| "Venus LLC"               | "Confirmed" |
+		И элемент формы с именем 'НадписьСостояниеПроцесса' стал равен "Report preparation process завершен *" по шаблону
+		И Я закрываю окно "Reporting preparation management"
+
+	* Открываем документ
+		Тогда открылось окно "Reporting period management"
+		И в таблице 'List' я выбираю текущую строку
 		Тогда Открылся документ управления периодом для сценария "VA - Report preparation process" периодичность "Month"
 		
-	* Останавливаем процесс	
+	* Проверяем состояние процесса
 		И в таблице 'Contents' я перехожу к строке:
 			| 'Description'                  |
 			| "Report preparation process" |
 		И я перехожу к закладке с именем 'ProcessSetup'
-		И я нажимаю на кнопку с именем 'TerminateProcess'
-		Тогда в логе сообщений TestClient есть строки:
-			|"Process is terminated"|
-		И я жду открытия окна '$WindowTitle$' в течение 20 секунд
-		Тогда в логе сообщений TestClient есть строки:
-			|"Process is terminated"|
+		И элемент формы с именем 'StartProcess' доступен
+		И элемент формы с именем 'TerminateProcess' не доступен
+		И элемент формы с именем 'Group_УправлениеХодомПроцессаTable' не доступен
 
-	* Закрываем окна
-		Тогда открылось окно '$WindowTitle$'
-		И Я закрываю окно '$WindowTitle$'
-		
-	* Проверяем результат
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Reporting preparation management"				
-		Тогда открылось окно "Reporting preparation management"
-		Тогда элемент формы с именем 'PeriodManagement' стал равен по шаблону '$WindowTitle$'
-		И в таблице 'StepsTree' я перехожу к строке:
-			| "Step/Company"                               |
-			| "Manual filling - \"VA - ProcessCount\"" |
-		Тогда таблица 'TransactionsTree' содержит '4' строк из списка:
-			| "Report type/Company" | "State"                |
-			| "VA - ProcessCount" | "Checked, pending approval" |
-			| "System LLC"            | "Checked, pending approval" |
-			| "Venus LLC"             | "Checked, pending approval" |
-			| "Mercury LLC"           | "Checked, pending approval" |
-		И Я закрываю окно "Reporting preparation management"
+	* Запускаем и останавливаем процесс
+		И я нажимаю на кнопку с именем 'StartProcess'
+		И я нажимаю на кнопку с именем 'TerminateProcess'
 				
+	
+		

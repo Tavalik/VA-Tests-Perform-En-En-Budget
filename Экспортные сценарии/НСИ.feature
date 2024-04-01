@@ -228,7 +228,7 @@
 			ИначеЕсли '"[TheBusinessUnitType]"="SelectIn_"' Тогда
 				// Нет примеров											
 		ИначеЕсли '$$IsCPM$$' Тогда
-			И я нажимаю на кнопку с именем 'FormCreate'
+			И я нажимаю на кнопку с именем 'CreateНовуюОрганизацию'
 			Тогда открылось окно "Company type"
 			И я нажимаю на кнопку с именем '[TheBusinessUnitType]'
 			Если '"[TheBusinessUnitType]"="SelectRF"' Тогда
@@ -1317,7 +1317,10 @@
 
 Сценарий: Я включаю производительный режим работы ограничений на уровне записей
 
-	И В командном интерфейсе я выбираю "Administration" "Users and rights settings"
+	Если '$$IsERPCPM$$' Тогда
+		И В командном интерфейсе я выбираю "Master data and адмandнandстрandрованandе" "Users and rights settings"
+	Иначе			
+		И В командном интерфейсе я выбираю "Administration" "Users and rights settings"
 	Тогда открылось окно "Users and rights settings"
 	И я разворачиваю группу с именем 'AccessGroupsGroup'
 	Если элемент формы с именем 'LimitAccessAtRecordLevelUniversally' присутствует на форме Тогда
@@ -1341,3 +1344,30 @@
 
 	Когда открылось окно "Update record-level access"
 	И Я закрываю окно "Update record-level access"
+
+Сценарий: Я создаю группу регламентов с именем 'TheName'
+
+	* Открываем регламент
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Regulations for preparing reports"
+
+	* Удаляем группу
+		И Я в списке "Regulations for preparing reports" по полю "Description" ищу элемент '[TheName]' "Exact match"
+		И Пока в таблице 'List' количество строк 'больше' 0 Тогда
+			* Ставим пометку на удаление	
+				И Я удаляю текущую строку в списке 'List'
+			* Перименовываем
+				И Я запоминаю значение выражения '"Delete_" + StrReplace(New UUID, "-", "")' в переменную 'UID'
+				И в таблице 'List' я выбираю текущую строку
+				Тогда открылось окно "[TheName] (Regulations for preparing reports)"
+				И в поле с именем 'Description' я ввожу значение переменной 'UID'
+				И я нажимаю на кнопку с именем 'FormWriteAndClose'
+				И я жду закрытия окна "[TheName] (Regulations for preparing reports) *" в течение 20 секунд
+
+	* Создаем группу
+		Когда открылось окно "Regulations for preparing reports"
+		И я нажимаю на кнопку с именем 'FormCreateFolder'
+		Тогда открылось окно "Regulations for preparing reports (create folder)"
+		И в поле с именем 'Description' я ввожу текст "VA - Group регламентов"
+		И я нажимаю на кнопку с именем 'FormWriteAndClose'
+		И я жду закрытия окна "Regulations for preparing reports (create folder) *" в течение 20 секунд
+				

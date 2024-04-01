@@ -264,22 +264,13 @@
 				
 Сценарий: 00.12 Создание Регламента подготовки отчетности
 
-	* Открываем регламент
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Regulations for preparing reports"
+	И Я создаю группу регламентов с именем "VA - Group регламентов"
 
 	* Удаляем текущий элемент	
-		Тогда открылось окно "Regulations for preparing reports"
-		И я нажимаю на кнопку с именем 'FormFind'
-		Тогда открылась форма с именем 'UniversalListFindExtForm'
-		И из выпадающего списка с именем 'FieldSelector' я выбираю точное значение "Description"
-		И я меняю значение переключателя с именем 'CompareType' на "Exact match"
-		И в поле с именем 'Pattern' я ввожу текст "VA - Main regulations"
-		И я нажимаю на кнопку с именем 'Find'
+		И Я в списке "Regulations for preparing reports" по полю "Description" ищу элемент "VA - Main regulations" "Exact match"
 		И Пока в таблице 'List' количество строк 'больше' 0 Тогда
 			* Ставим пометку на удаление	
-				И я выбираю пункт контекстного меню с именем 'ListContextMenuSetDeletionMark' на элементе формы с именем 'List'
-				Тогда открылось окно "1C:Enterprise"
-				И я нажимаю на кнопку с именем 'Button0'
+				И Я удаляю текущую строку в списке 'List'
 			* Перименовываем
 				И Я запоминаю значение выражения '"Delete_" + StrReplace(New UUID, "-", "")' в переменную 'UID'
 				И в таблице 'List' я выбираю текущую строку
@@ -294,7 +285,7 @@
 		И я нажимаю на кнопку с именем 'FormCreate'
 		Тогда Открылся регламент подготовки отчетности ''
 		И в поле с именем 'Description' я ввожу текст "VA - Main regulations"		
-		И в поле с именем 'Parent' я ввожу текст ''
+		И в поле с именем 'Parent' я ввожу текст "VA - Group регламентов"
 	
 	* Выбираем группу видов отчетов	
 		Тогда открылось окно '$WindowTitle$'
@@ -533,91 +524,7 @@
 
 	* Заполняем курсы валют
 		Тогда Открылся документ управления периодом для сценария "VA - Main scenario" периодичность "Month"
-		И в таблице 'RatesEditTable' я нажимаю на кнопку с именем 'RatesEditTableRatesTable_Update'
-		И в таблице 'RatesEditTable' я нажимаю на кнопку с именем 'RatesEditTableRatesTable_Write'
-		И в таблице 'RatesViewTable' я нажимаю на кнопку с именем 'RatesTable_ChangeModeWithoutSave'		
-		* EUR
-			Когда открылось окно '$WindowTitle$ *'
-			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period"   |
-				| 'EUR'    | '90.7932'          | '1.0000'    | "January 2024" |
-			И в таблице 'RatesEditTable' я выбираю текущую строку
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '90.7932'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '92.2963'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriod_CurrentValue' я ввожу текст '90.4971'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodCentralBank_CurrentValue' я ввожу текст '90.4537'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodIFRS_CurrentValue' я ввожу текст '91.5448'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPreviousPeriodEnd_CurrentValue' я ввожу текст '0'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriod_CurrentValue' я ввожу текст '0'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '0'
-			Когда открылось окно '$WindowTitle$ *'
-			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period"    |
-				| 'EUR'    | '92.2963'          | '1.0000'    | "February 2024" |
-			И в таблице 'RatesEditTable' я выбираю текущую строку
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '92.2963'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '90.3743'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriod_CurrentValue' я ввожу текст '89.9321'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodCentralBank_CurrentValue' я ввожу текст '90.0038'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodIFRS_CurrentValue' я ввожу текст '91.3353'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPreviousPeriodEnd_CurrentValue' я ввожу текст '92.2963'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriod_CurrentValue' я ввожу текст '90.4971'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '90.4537'	
-			Когда открылось окно '$WindowTitle$ *'
-			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period" |
-				| 'EUR'    | '90.3743'          | '1.0000'    | "March 2024" |
-			И в таблице 'RatesEditTable' я выбираю текущую строку
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '90.3743'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '88.8821'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriod_CurrentValue' я ввожу текст '88.6820'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodCentralBank_CurrentValue' я ввожу текст '88.7338'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodIFRS_CurrentValue' я ввожу текст '89.6282'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPreviousPeriodEnd_CurrentValue' я ввожу текст '90.3743'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriod_CurrentValue' я ввожу текст '89.9321'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '90.0038'	
-		* USD
-			Когда открылось окно '$WindowTitle$ *'
-			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period"   |
-				| 'USD'    | '73.8757'          | '1.0000'    | "January 2024" |
-			И в таблице 'RatesEditTable' я выбираю текущую строку
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '73.8757'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '76.2527'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriod_CurrentValue' я ввожу текст '74.2204'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodCentralBank_CurrentValue' я ввожу текст '74.1489'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodIFRS_CurrentValue' я ввожу текст '75.0642'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPreviousPeriodEnd_CurrentValue' я ввожу текст '0'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriod_CurrentValue' я ввожу текст '0'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '0'
-			Когда открылось окно '$WindowTitle$ *'
-			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period"    |
-				| 'USD'    | '76.2527'          | '1.0000'    | "February 2024" |
-			И в таблице 'RatesEditTable' я выбираю текущую строку
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '76.2527'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '74.4373'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriod_CurrentValue' я ввожу текст '74.3747'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodCentralBank_CurrentValue' я ввожу текст '74.4435'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodIFRS_CurrentValue' я ввожу текст '75.3450'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPreviousPeriodEnd_CurrentValue' я ввожу текст '76.2527'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriod_CurrentValue' я ввожу текст '74.2204'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '74.1489'	
-			Когда открылось окно '$WindowTitle$ *'
-			И в таблице 'RatesEditTable' я перехожу к строке:
-				| "Currency" | "Current value" | "Multiplying factor" | "Rate period" |
-				| 'USD'    | '74.4373'          | '1.0000'    | "March 2024" |
-			И в таблице 'RatesEditTable' я выбираю текущую строку
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '74.4373'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodEnd_CurrentValue' я ввожу текст '75.7023'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriod_CurrentValue' я ввожу текст '74.4035'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodCentralBank_CurrentValue' я ввожу текст '74.3689'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPeriodIFRS_CurrentValue' я ввожу текст '75.0698'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPreviousPeriodEnd_CurrentValue' я ввожу текст '74.4373'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriod_CurrentValue' я ввожу текст '74.3747'
-			И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '74.4435'	
-		И в таблице 'RatesEditTable' я завершаю редактирование строки
-		И в таблице 'RatesEditTable' я нажимаю на кнопку с именем 'RatesEditTableRatesTable_Write'
+		И Я заполняю таблицу курсов в управлении периодом сценария
 		И я нажимаю на кнопку с именем 'FormGoForward'
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
@@ -687,7 +594,7 @@
 
 	И Я создаю вид аналитики с кодом "VA0Contrac" именем "Counterparty contracts" типом 'CatalogRef.CounterpartyContracts'
 	Если '$$IsERPCPM$$' Тогда
-		И Я для вида аналитики с кодом "VA0Contrac" делаю ключом реквизит "Full name"
+		И Я для вида аналитики с кодом "VA0Contrac" делаю ключом реквизит "Рабочее наименование"
 	Иначе
 		И Я для вида аналитики с кодом "VA0Contrac" делаю ключом реквизит "Description"
 
