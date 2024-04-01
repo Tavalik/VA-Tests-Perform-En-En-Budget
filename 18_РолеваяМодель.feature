@@ -1199,7 +1199,7 @@
 			| "Description"            |
 			| "Main period data" |
 			| "Setting"               |
-			| "Currency exchange rates"             |
+			| "Exchange rates"             |
 		И элемент формы с именем 'ChangePeriod' отсутствует на форме
 		И я нажимаю на кнопку с именем 'ReportOrganizationStructure'
 		Тогда открылось окно "Organizational structure briefly"
