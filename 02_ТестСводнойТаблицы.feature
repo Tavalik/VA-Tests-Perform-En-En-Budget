@@ -842,7 +842,7 @@
 		И я нажимаю на кнопку с именем 'DataCopying'
 		Тогда открылось окно "Copy values indicators отчетов"
 		И из выпадающего списка с именем 'DataProcessorRunMode' я выбираю точное значение "All data for reporting period"
-		И я нажимаю кнопку выбора у поля с именем 'UAboutPИсточник'
+		И я нажимаю кнопку выбора у поля с именем 'MDESource'
 		Тогда открылось окно "Reporting period management"
 		И в таблице 'List' я перехожу к строке:
 			| "Scenario"               | "Start period"  | "Period окончание" | "Frequency" | "Regulation"               |
@@ -863,7 +863,7 @@
 		И в таблице 'SKDSelection' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'Apply'
 		Тогда открылось окно "Copy values indicators отчетов"
-		И я нажимаю кнопку выбора у поля с именем 'UAboutPPриемник'
+		И я нажимаю кнопку выбора у поля с именем 'MDEDestination'
 		Тогда открылось окно "Reporting period management"
 		И в таблице 'List' я перехожу к строке:
 			| "Scenario"                     | "Start period"  | "Period окончание" | "Frequency" | "Regulation"               |

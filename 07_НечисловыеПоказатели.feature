@@ -1304,30 +1304,30 @@
 		И элемент формы с именем 'AdditionalCurrencies' стал равен "USD; EUR"
 		И у элемента формы с именем 'UnitOfMeasure' текст редактирования стал равен "units"
 		И элемент формы с именем 'CopyingValue' стал равен "Report instance *" по шаблону
-		И элемент формы с именем 'ИндивидуальныеSettings' стал равен "No"
+		И элемент формы с именем 'IndividualSettings' стал равен "No"
 		И элемент формы с именем 'UsedIB' стал равен "Current infobase"
 		И элемент формы с именем 'Organization' стал равен "Mercury LLC"
 		И элемент формы с именем 'MainCurrency' стал равен "RUB"
 		И элемент формы с именем 'Periodicity' стал равен "Month"
-		И элемент формы с именем 'PeriodicityСвертывания' стал равен "Ten-day period"
-		И элемент формы с именем 'PeriodОкончания' стал равен "March 2024"
+		И элемент формы с именем 'RollupFrequency' стал равен "Ten-day period"
+		И элемент формы с именем 'EndingPeriod' стал равен "March 2024"
 		И элемент формы с именем 'ReportPeriod' стал равен "January 2024"
-		И элемент формы с именем 'ПоследнийРедактировавший' стал равен ""
+		И элемент формы с именем 'LastEditedBy' стал равен ""
 		И элемент формы с именем 'ProcessingRule' стал равен "VA - Non-Numbers (recipient)"
 		И элемент формы с именем 'CheckRule' стал равен "VA - Non-Numbers (recipient)"
 		И элемент формы с именем 'Project' стал равен "VA - Main project"
 		И элемент формы с именем 'Regulation' стал равен "VA - Main regulations"
 		И элемент формы с именем 'ReportGenerationMethod' стал равен "By processing rule"
 		И элемент формы с именем 'Scenario' стал равен "VA - Main scenario"
-		И элемент формы с именем 'PeriodManagement' стал равен "January 2024 г. - March 2024 г. (Frequency: Month) <VA - Main scenario>"
-		И элемент формы с именем 'УровеньТочности' стал равен "0"
-		И элемент формы с именем 'TemplateОтчета' стал равен "VA - Non-Numbers (recipient)"
+		И элемент формы с именем 'PeriodManagement' стал равен "January 2024 - March 2024 (Frequency: Month) <VA - Main scenario>"
+		И элемент формы с именем 'AccuracyLevel' стал равен "0"
+		И элемент формы с именем 'TemplateForReport' стал равен "VA - Non-Numbers (recipient)"
 
 	* Меняем организацию
 		Когда открылось окно "Specify key document attributes"
 		И я нажимаю кнопку выбора у поля с именем 'Organization'
 		И я выбираю организацию "Venus LLC"		
-		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+		И я нажимаю на кнопку с именем 'FormApplyAndClose'
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Non-Numbers (recipient)" валюта 'RUB' организация "Venus LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики "3Software sale" '' '' '' '' '' 
 
 	* Удаляем область расчитанных показтелей

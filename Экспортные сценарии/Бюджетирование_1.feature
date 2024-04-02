@@ -22,7 +22,7 @@
 	Если '$$InterfaceLanguage$$ = "Ru"' Тогда
 		И я запоминаю строку 'Instance Report_ \"[TheReportKind]\": <[TheCurrency]> <[TheBusinessUnit]> <* - * (Periodicity: [TheFrequency]) <[TheScenario]>>' в переменную 'WindowTitle'
 	ИначеЕсли '$$InterfaceLanguage$$ = "En"' Тогда
-		И я запоминаю строку 'Report instance \"[TheReportKind]\": <[TheCurrency]> <[TheBusinessUnit]> <* - * (Frequency: [TheFrequency]) <[TheScenario]>>' в переменную 'WindowTitle'		
+		И я запоминаю строку 'The \"[TheReportKind]\" report instance: <[TheCurrency]> <[TheBusinessUnit]> <* - * (Frequency: [TheFrequency]) <[TheScenario]>>' в переменную 'WindowTitle'		
 
 	Если 'NOT IsBlankString("[TheProject]")' Тогда
 		И я запоминаю строку '$WindowTitle$ <[TheProject]>' в переменную 'WindowTitle'

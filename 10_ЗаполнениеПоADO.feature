@@ -374,13 +374,13 @@
 	* Устанавливаем ИБ
 		Тогда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я перехожу к закладке с именем 'GroupPageReportSettings'
-		И я устанавливаю флаг с именем 'ИндивидуальныеSettings'
+		И я устанавливаю флаг с именем 'IndividualSettings'
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'				
 		И из выпадающего списка с именем 'UsedIB' я выбираю точное значение "VA - ADO Import (Excel)"
-		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+		И я нажимаю на кнопку с именем 'FormApplyAndClose'
 	
 	* Делаем расчет
 		Тогда открылось окно '$WindowTitle$'

@@ -780,10 +780,10 @@
 	
 	* Проверим суммы в валюте
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я перехожу к закладке с именем 'GroupPageReportSettings'
 		И из выпадающего списка с именем 'DisplayCurrency' я выбираю точное значение "EUR"
-		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+		И я нажимаю на кнопку с именем 'FormApplyAndClose'
 		Когда Открылся экземпляр отчета для вида отчета "VA - Sales" валюта 'EUR' организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект '' аналитики '' '' '' '' '' ''
 		И я запоминаю текущее окно как 'WindowTitle' 
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:

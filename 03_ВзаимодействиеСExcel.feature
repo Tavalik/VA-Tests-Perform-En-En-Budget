@@ -221,7 +221,7 @@
 		И в поле с именем 'UploadFileName' я ввожу текст "$КаталогПроекта$\Макеты\03\ВА_ИмпортExcel+Шаблон.xlsx"
 		И из выпадающего списка с именем 'Periodicity' я выбираю точное значение "Month"
 		И в поле с именем 'NumberOfPeriods' я ввожу текст '3'
-		И я нажимаю на кнопку с именем 'FormExport'
+		И я нажимаю на кнопку с именем 'FormUnload'
 		Тогда открылось окно '$WindowTitle$'
 		И Я закрываю окно '$WindowTitle$'
 
@@ -293,7 +293,7 @@
 	
 	Тогда открылось окно '$WindowTitle$'
 	И я нажимаю на кнопку с именем 'FormOpenSettings'
-	Тогда открылось окно "Settings документа"
+	Тогда открылось окно "Document settings"
 	И я нажимаю на кнопку с именем 'OpenRulesSettings'
 	Тогда открылось окно "Set up object filling rules for regulation VA - Main regulations"
 	И в табличном документе 'CustomField' я перехожу к ячейке "R2C3"
@@ -307,8 +307,8 @@
 	Тогда открылось окно "Set up object filling rules for regulation VA - Main regulations"
 	И я нажимаю на кнопку с именем 'FormApplySettings'
 	И Я закрываю окно "Set up object filling rules for regulation VA - Main regulations"
-	Тогда открылось окно "Settings документа"
-	И я нажимаю на кнопку с именем 'FormApplyANDClose'
+	Тогда открылось окно "Document settings"
+	И я нажимаю на кнопку с именем 'FormApplyAndClose'
 
 Сценарий: 03.06 Настройка прав для пользователя "Budgeting1"
 
@@ -326,20 +326,20 @@
 	* Проверяем настройки
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я перехожу к закладке с именем 'GroupPageReportSettings'
-		И элемент формы с именем 'ИндивидуальныеSettings' стал равен "No"
+		И элемент формы с именем 'IndividualSettings' стал равен "No"
 		И элемент формы с именем 'ReportGenerationMethod' стал равен "Import"
 		И элемент формы с именем 'ProcessingRule' стал равен "VA - ImportExcel"
 		И элемент формы с именем 'UsedIB' стал равен "VA - Import from Excel"
 		И элемент формы с именем 'CheckRule' стал равен "VA - ImportExcel"
 		И элемент формы с именем 'ImportTemplate' стал равен "VA - ImportExcel"
-		И я изменяю флаг с именем 'ИндивидуальныеSettings'
+		И я изменяю флаг с именем 'IndividualSettings'
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "By processing rule"
-		И Я закрываю окно "Settings документа *"
+		И Я закрываю окно "Document settings *"
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button1'						
 

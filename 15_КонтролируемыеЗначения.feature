@@ -210,7 +210,7 @@
 		И я нажимаю кнопку выбора у поля с именем 'Organization'
 		И Я выбираю организацию "Mercury LLC"
 		Когда открылось окно "Specify key document attributes *"
-		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+		И я нажимаю на кнопку с именем 'FormApplyAndClose'
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Controlled indicators" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Scenario with control" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' '' 
 		
 	* Меняем значения

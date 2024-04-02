@@ -31,7 +31,7 @@
 				И я нажимаю на кнопку с именем 'FormPickFromМакета'
 				Тогда открылось окно "All-Russian Classifier of Measurement Units"
 				И в поле с именем 'SearchString' я ввожу текст '[TheCode]'
-				И я нажимаю на кнопку с именем 'ToSearchGoForward'
+				И я нажимаю на кнопку с именем 'SearchForward'
 				И Пауза 1
 				И я нажимаю на кнопку с именем 'FormSelect'						
 				Тогда открылось окно "Classifier of Measurement Units (create)"

@@ -755,16 +755,16 @@
 
 	* Настраиваем дополнительный бланк
 		Когда открылось окно "VA - Manual entry for all analytics (Report types)"
-		И я нажимаю на кнопку открытия поля с именем 'FormОтображенияOnУмолчанию'
+		И я нажимаю на кнопку открытия поля с именем 'DefaultTemplateToDisplay'
 		Тогда открылось окно "Template *"
 		И я нажимаю на кнопку с именем 'ShowIndicatorsPanel'
-		И я перехожу к закладке с именем 'GroupДополнительныеБланки'
-		И в таблице 'ДополнительныеБланки' я нажимаю на кнопку с именем 'ДополнительныеБланкиДобавить'
-		И я нажимаю на кнопку создать поля с именем 'ДополнительныеБланкиБланк'
+		И я перехожу к закладке с именем 'GroupAdditionalTemplates'
+		И в таблице 'AdditionalTemplates' я нажимаю на кнопку с именем 'AdditionalTemplatesAdd'
+		И я нажимаю на кнопку создать поля с именем 'AdditionalTemplatesForm'
 		Тогда открылось окно "Template *"
 		И я нажимаю на кнопку с именем 'ShowIndicatorsPanel'
 		И в поле с именем 'Description' я ввожу текст "Дополнительный бланк"
-		И из выпадающего списка с именем 'TemplateToDisplay' я выбираю точное значение "Только для отображения"
+		И из выпадающего списка с именем 'TemplateToDisplay' я выбираю точное значение "Only to display"
 		И я нажимаю на кнопку с именем 'CreateTemplateWithDesigner'
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
@@ -773,18 +773,18 @@
 		И я нажимаю на кнопку с именем 'FormSelect'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке "R3C8"
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
-		И в табличный документ "FieldТабличногоДокументаМакет" я ввожу текст "VA - Manual entry for all analytics"
+		И в табличный документ 'SpreadsheetFieldTemlate' я ввожу текст "VA - Manual entry for all analytics"
 		И я нажимаю на кнопку с именем 'FormButtonWriteAndClose'
 		Тогда открылось окно "Template *"		
 		И я перехожу к следующему реквизиту
-		И в таблице 'ДополнительныеБланки' я активизирую поле с именем 'ДополнительныеБланкиКартинкаЗакладки'
-		И в таблице 'ДополнительныеБланки' я завершаю редактирование строки
-		И в таблице 'ДополнительныеБланки' я выбираю текущую строку
-		Тогда открылось окно "Диалог выбора картинки"
-		И в таблице 'ListДоступныхКартинок' я перехожу к строке:
-			| "First name картинки"   |
+		И в таблице 'AdditionalTemplates' я активизирую поле с именем 'AdditionalTemplatesBookmarkPicture'
+		И в таблице 'AdditionalTemplates' я завершаю редактирование строки
+		И в таблице 'AdditionalTemplates' я выбираю текущую строку
+		Тогда открылось окно "Picture selection dialog box"
+		И в таблице 'ListOfAvailablePics' я перехожу к строке:
+			| "Picture name"   |
 			| "Budgeting" |
-		И в таблице 'ListДоступныхКартинок' я выбираю текущую строку
+		И в таблице 'ListOfAvailablePics' я выбираю текущую строку
 		Тогда открылось окно "Template *"
 		И я нажимаю на кнопку с именем 'FormButtonWriteAndClose'
 		И я жду закрытия окна "Template *" в течение 20 секунд
@@ -1196,14 +1196,14 @@
 		Когда открылось окно "Report instances"
 		И я выбираю пункт контекстного меню с именем 'ListContextMenuCopy' на элементе формы с именем 'List'
 		Когда открылось окно "Specify key document attributes"
-		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+		И я нажимаю на кнопку с именем 'FormApplyAndClose'
 		Тогда в логе сообщений TestClient есть строки:
 			|"A report instance with the specified key attributes already exists."|						
 		Когда открылось окно "Specify key document attributes"
 		И я нажимаю кнопку выбора у поля с именем 'Organization'
 		И Я выбираю организацию "Earth LLC"
 		Когда открылось окно "Specify key document attributes *"
-		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+		И я нажимаю на кнопку с именем 'FormApplyAndClose'
 
 	* Сверим результат	
 		Тогда Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'RUB' организация "Earth LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
@@ -1228,9 +1228,9 @@
 
 	* Еще раз меняем организацию		
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И из выпадающего списка с именем 'Organization' я выбираю по строке "Mars LLC"
-		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+		И я нажимаю на кнопку с именем 'FormApplyAndClose'
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
 		Тогда открылось окно "Report instances"
@@ -1264,9 +1264,9 @@
 
 	* Еще раз меняем организацию		
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И из выпадающего списка с именем 'Organization' я выбираю по строке "Venus LLC"
-		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+		И я нажимаю на кнопку с именем 'FormApplyAndClose'
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
 		Тогда открылось окно "Report instances"
@@ -1339,12 +1339,12 @@
 		И элемент формы с именем 'AdditionalCurrencies' стал равен "USD; EUR"
 		И у элемента формы с именем 'UnitOfMeasure' текст редактирования стал равен "units"
 		И элемент формы с именем 'CopyingValue' стал равен ""
-		И элемент формы с именем 'ИндивидуальныеSettings' стал равен "No"
+		И элемент формы с именем 'IndividualSettings' стал равен "No"
 		И элемент формы с именем 'UsedIB' стал равен "Current infobase"
 		И элемент формы с именем 'Organization' стал равен "Venus LLC"
 		И элемент формы с именем 'MainCurrency' стал равен "RUB"
 		И элемент формы с именем 'Periodicity' стал равен "Month"
-		И элемент формы с именем 'PeriodОкончания' стал равен "March 2024"
+		И элемент формы с именем 'EndingPeriod' стал равен "March 2024"
 		И элемент формы с именем 'ReportPeriod' стал равен "January 2024"
 		И элемент формы с именем 'ProcessingRule' стал равен "VA - Manual entry for all analytics"
 		И элемент формы с именем 'CheckRule' стал равен "VA - Manual entry for all analytics"
@@ -1352,9 +1352,9 @@
 		И элемент формы с именем 'Regulation' стал равен "VA - Main regulations"
 		И элемент формы с именем 'ReportGenerationMethod' стал равен "By processing rule"
 		И элемент формы с именем 'Scenario' стал равен "VA - Main scenario"
-		И элемент формы с именем 'PeriodManagement' стал равен "January 2024 г. - March 2024 г. (Frequency: Month) <VA - Main scenario>"
-		И элемент формы с именем 'УровеньТочности' стал равен "0"
-		И элемент формы с именем 'TemplateОтчета' стал равен "VA - Manual entry for all analytics"
+		И элемент формы с именем 'PeriodManagement' стал равен "January 2024 - March 2024 (Frequency: Month) <VA - Main scenario>"
+		И элемент формы с именем 'AccuracyLevel' стал равен "0"
+		И элемент формы с именем 'TemplateForReport' стал равен "VA - Manual entry for all analytics"
 
 	* Меняем организацию
 		Когда открылось окно "Specify key document attributes"
@@ -1366,8 +1366,8 @@
 		И из выпадающего списка с именем 'Project' я выбираю по строке "ва - Main проект"
 		И я перехожу к закладке с именем 'GroupPageReportSettings'
 		И из выпадающего списка с именем 'UnitOfMeasure' я выбираю точное значение "thousands"
-		И в поле с именем 'УровеньТочности' я ввожу текст "2"
-		И я устанавливаю флаг с именем 'ИндивидуальныеSettings'
+		И в поле с именем 'AccuracyLevel' я ввожу текст "2"
+		И я устанавливаю флаг с именем 'IndividualSettings'
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
 		Тогда открылось окно "Specify key document attributes *"
@@ -1378,20 +1378,20 @@
 			| "Collapse by period"                        |
 		Когда открылось окно "Specify key document attributes *"
 		И из выпадающего списка с именем 'ReportGenerationMethod' я выбираю точное значение "Collapse by period"
-		И из выпадающего списка с именем 'PeriodicityСвертывания' я выбираю точное значение "Day"
-		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+		И из выпадающего списка с именем 'RollupFrequency' я выбираю точное значение "Day"
+		И я нажимаю на кнопку с именем 'FormApplyAndClose'
 
 	* Смотрим настройки документа	
 		И Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта "RUB" организация "System LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''	
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я перехожу к закладке с именем 'GroupPageReportSettings'
 		И у элемента формы с именем 'UnitOfMeasure' текст редактирования стал равен "thousands"
-		И элемент формы с именем 'УровеньТочности' стал равен "2"
-		И элемент формы с именем 'ИндивидуальныеSettings' стал равен "Yes"
+		И элемент формы с именем 'AccuracyLevel' стал равен "2"
+		И элемент формы с именем 'IndividualSettings' стал равен "Yes"
 		И элемент формы с именем 'ReportGenerationMethod' стал равен "Collapse by period"
-		И элемент формы с именем 'PeriodicityСвертывания' стал равен "Day"
-		И Я закрываю окно "Settings документа"
+		И элемент формы с именем 'RollupFrequency' стал равен "Day"
+		И Я закрываю окно "Document settings"
 
 	* Смотрим форму расчета
 		Когда открылось окно '$WindowTitle$'
@@ -1400,13 +1400,13 @@
 		И элемент формы с именем 'ProcessingRule' стал равен "VA - Manual entry for all analytics"
 		И элемент формы с именем 'UsedIB' стал равен "Current infobase"
 		И элемент формы с именем 'CheckRule' стал равен "VA - Manual entry for all analytics"
-		И элемент формы с именем 'PeriodicityСвертывания' стал равен "Day"
+		И элемент формы с именем 'RollupFrequency' стал равен "Day"
 		И выпадающий список с именем 'ReportGenerationMethod' стал равен:
 			| "By processing rule"                       |
 			| "Consolidate perimeter (IFRS)"            |
 			| "Consolidate perimeter (Proportionally)" |
 			| "Collapse by period"                        |
-		И выпадающий список с именем 'PeriodicityСвертывания' стал равен:
+		И выпадающий список с именем 'RollupFrequency' стал равен:
 			| "Day"   |
 			| "Week" |
 			| "Ten-day period" |
@@ -1438,11 +1438,11 @@
 		Когда открылось окно '$WindowTitle$'
 		И у элемента формы с именем 'UnitOfMeasure' текст редактирования стал равен "thousands"						
 		И из выпадающего списка с именем 'UnitOfMeasure' я выбираю точное значение "units"
-		Тогда элемент формы с именем 'УровеньТочности' стал равен "2"
-		И в поле с именем 'УровеньТочности' я уменьшаю значение
-		И в поле с именем 'УровеньТочности' я ввожу текст "1"
-		И в поле с именем 'УровеньТочности' я уменьшаю значение
-		И в поле с именем 'УровеньТочности' я ввожу текст "0"
+		Тогда элемент формы с именем 'AccuracyLevel' стал равен "2"
+		И в поле с именем 'AccuracyLevel' я уменьшаю значение
+		И в поле с именем 'AccuracyLevel' я ввожу текст "1"
+		И в поле с именем 'AccuracyLevel' я уменьшаю значение
+		И в поле с именем 'AccuracyLevel' я ввожу текст "0"
 		И я нажимаю на кнопку с именем 'FormUpdateConsideringVersions'
 	
 	* Вводим количество		
@@ -1616,12 +1616,12 @@
 
 	* Меняем параметры отображения в экземпляре отчета		
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я перехожу к закладке с именем 'GroupPageReportSettings'
 		И из выпадающего списка с именем 'UnitOfMeasure' я выбираю точное значение "thousands"
 		И из выпадающего списка с именем 'DisplayCurrency' я выбираю точное значение "USD"
-		И в поле с именем 'УровеньТочности' я ввожу текст '5'
-		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+		И в поле с именем 'AccuracyLevel' я ввожу текст '5'
+		И я нажимаю на кнопку с именем 'FormApplyAndClose'
 
 	* Запомним заголовок окна
 		И Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'USD' организация "Venus LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
@@ -1793,11 +1793,11 @@
 	* Меняем параметры отображения в экземпляре отчета
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я перехожу к закладке с именем 'GroupPageReportSettings'
 		И из выпадающего списка с именем 'UnitOfMeasure' я выбираю точное значение "thousands"
-		И в поле с именем 'УровеньТочности' я ввожу текст '2'
-		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+		И в поле с именем 'AccuracyLevel' я ввожу текст '2'
+		И я нажимаю на кнопку с именем 'FormApplyAndClose'
 
 	* Открываем документ, вводим новые значения
 		Тогда открылось окно '$WindowTitle$'
@@ -1828,20 +1828,20 @@
 	И Открылся экземпляр отчета для вида отчета "VA - Manual entry for all analytics" валюта 'RUB' организация "Venus LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики '' '' '' '' '' ''
 
 	* Проверяем дополнительный бланк
-		И я перехожу к закладке с именем 'Form_1'				
+		И я перехожу к закладке с именем 'Template_1'				
 		Дано Табличный документ 'SpreadsheetFieldTemlate1' равен макету '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Венера_3.mxl'
 
 	* Меняем параметры отображения в экземпляре отчета
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
-		Тогда открылось окно "Settings документа"
-		И я нажимаю кнопку выбора у поля с именем 'TemplateОтчета'
-		Тогда открылось окно "Бланки отчетов"
+		Тогда открылось окно "Document settings"
+		И я нажимаю кнопку выбора у поля с именем 'TemplateForReport'
+		Тогда открылось окно "Report templates"
 		И в таблице 'List' я перехожу к строке:
 			| "Description"                                          |
 			| "VA - Manual entry for all analytics (pivot table)" |
 		И я нажимаю на кнопку с именем 'ListChoose1'
-		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+		И я нажимаю на кнопку с именем 'FormApplyAndClose'
 		Дано Табличный документ 'SpreadsheetFieldTemlate' равен макету '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Венера_СводнаяТаблица1.mxl'
 	
 	* Настраиваем свойства
@@ -1927,17 +1927,17 @@
 	* Снова меняем бланк
 		Когда открылось окно '$WindowTitle$'
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
-		Тогда открылось окно "Settings документа"
-		И я нажимаю кнопку выбора у поля с именем 'TemplateОтчета'
-		Тогда открылось окно "Бланки отчетов"
+		Тогда открылось окно "Document settings"
+		И я нажимаю кнопку выбора у поля с именем 'TemplateForReport'
+		Тогда открылось окно "Report templates"
 		И в таблице 'List' я перехожу к строке:
 			| "Description"                        |
 			| "VA - Manual entry for all analytics" |
 		И я нажимаю на кнопку с именем 'ListChoose1'
-		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+		И я нажимаю на кнопку с именем 'FormApplyAndClose'
 		И я жду открытия окна '$WindowTitle$' в течение 20 секунд
 		И я нажимаю на кнопку с именем 'CancelAction'
-		И я перехожу к закладке с именем 'Form_1'
+		И я перехожу к закладке с именем 'Template_1'
 		И я жду открытия окна '$WindowTitle$' в течение 20 секунд		
 		Дано Табличный документ 'SpreadsheetFieldTemlate1' равен макету '\\Макеты\01\ВА_ВидОтчетаСАналитиками_Венера_3.mxl'
 

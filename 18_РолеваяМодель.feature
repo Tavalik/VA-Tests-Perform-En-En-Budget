@@ -428,64 +428,64 @@
 
 	* Проверяем форму настроек
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
-		Когда открылось окно "Settings документа"
+		Когда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'ReportKind'
 		Тогда открылось окно "VA - Checking access settings (record) (Report types)"
 		И Я закрываю окно "VA - Checking access settings (record) (Report types)"
-		Тогда открылось окно "Settings документа"
-		И я нажимаю на кнопку открытия поля с именем 'TemplateОтчета'
+		Тогда открылось окно "Document settings"
+		И я нажимаю на кнопку открытия поля с именем 'TemplateForReport'
 		Тогда открылось окно "Template VA - Checking access settings (N/A) report type: VA - Checking access settings (record)"
 		И Я закрываю окно "Template VA - Checking access settings (N/A) report type: VA - Checking access settings (record)"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'Project'
 		Тогда открылось окно "VA - Main project (Projects and phases)"
 		И Я закрываю окно "VA - Main project (Projects and phases)"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'Dimension1'
 		Когда открылось окно "Administration (Department)"
 		И Я закрываю окно "Administration (Department)"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'Scenario'
 		Тогда открылось окно "Scenarios: VA - Main scenario (Scenarios)"
 		И Я закрываю окно "Scenarios: VA - Main scenario (Scenarios)"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'PeriodManagement'
 		Тогда открылось окно "January * г. - March * г. (Frequency: Month) <VA - Main scenario>"
 		И Я закрываю окно "January * г. - March * г. (Frequency: Month) <VA - Main scenario>"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'Organization'
 		Тогда открылось окно "Mercury LLC (Business unit*)"
 		И Я закрываю окно "Mercury LLC (Business unit*)"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'Regulation'
 		Тогда открылось окно "VA - Main regulations from * (Regulation for preparing reports)"
 		И Я закрываю окно "VA - Main regulations from * (Regulation for preparing reports)"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'MainCurrency'
 		Тогда открылось окно "RUB (Currency)"
 		И Я закрываю окно "RUB (Currency)"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я перехожу к закладке с именем 'GroupPageReportSettings'
 		И я нажимаю на кнопку открытия поля с именем 'ProcessingRule'
 		Тогда открылось окно "VA - Checking access settings (no) (Calculation rules)"
 		И Я закрываю окно "VA - Checking access settings (no) (Calculation rules)"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'UsedIB'
 		Тогда открылось окно "Current infobase (External infobases)"
 		И Я закрываю окно "Current infobase (External infobases)"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'CheckRule'
 		Тогда открылось окно "VA - Checking access settings (no) (Правила проверки)"
 		И Я закрываю окно "VA - Checking access settings (no) (Правила проверки)"
 
 	* Меняем период
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку с именем 'ChangePeriod'
 		Тогда открылось окно "Select period"
 		И в поле с именем 'DateBegin' я ввожу текст '1/1/2023'
 		И в поле с именем 'DateEnd' я ввожу текст '3/31/2023'
 		И я нажимаю на кнопку с именем 'select'
-		И открылось окно "Settings документа *"
+		И открылось окно "Document settings *"
 		Тогда в логе сообщений TestClient есть строки:
 			|"Not удалось определить document управления отчетным периодом to параметрам:\n	Scenario: \"VA - Main scenario\",\n	Period: \"January 2023 г.\""|
 		И я очищаю окно сообщений пользователю
@@ -493,12 +493,12 @@
 		Тогда элемент формы с именем 'Organization' стал равен ""	
 		Тогда элемент формы с именем 'Periodicity' стал равен "Month"
 		Тогда элемент формы с именем 'ReportPeriod' стал равен ""	
-		Тогда элемент формы с именем 'PeriodОкончания' стал равен ""	
+		Тогда элемент формы с именем 'EndingPeriod' стал равен ""	
 		Тогда элемент формы с именем 'Regulation' стал равен ""	
 		Тогда элемент формы с именем 'MainCurrency' стал равен ""			
 
 	* Выбрием документ управления периодом
-		Тогда открылось окно "Settings документа *"
+		Тогда открылось окно "Document settings *"
 		И я нажимаю кнопку выбора у поля с именем 'PeriodManagement'
 		Тогда открылось окно "Reporting period management"
 		И в таблице 'List' я перехожу к строке:
@@ -509,38 +509,38 @@
 		И элемент формы с именем 'Organization' стал равен ""
 		И элемент формы с именем 'MainCurrency' стал равен "RUB"
 		И элемент формы с именем 'Periodicity' стал равен "Month"
-		И элемент формы с именем 'PeriodОкончания' стал равен "March 2024"
+		И элемент формы с именем 'EndingPeriod' стал равен "March 2024"
 		И элемент формы с именем 'ReportPeriod' стал равен "January 2024"
 		И элемент формы с именем 'Regulation' стал равен "VA - Main regulations"
 		И элемент формы с именем 'Scenario' стал равен "VA - Main scenario"
-		И элемент формы с именем 'PeriodManagement' стал равен "January 2024 г. - March 2024 г. (Frequency: Month) <VA - Main scenario>"
+		И элемент формы с именем 'PeriodManagement' стал равен "January 2024 - March 2024 (Frequency: Month) <VA - Main scenario>"
 
 	* Очищаем сценарий
-		Когда открылось окно "Settings документа *"
+		Когда открылось окно "Document settings *"
 		И я нажимаю кнопку очистить у поля с именем 'Scenario'
 		Тогда элемент формы с именем 'PeriodManagement' стал равен ""		
 		Тогда элемент формы с именем 'Periodicity' стал равен "Month"
 		Тогда элемент формы с именем 'ReportPeriod' стал равен ""	
-		Тогда элемент формы с именем 'PeriodОкончания' стал равен ""	
+		Тогда элемент формы с именем 'EndingPeriod' стал равен ""	
 		Тогда элемент формы с именем 'Regulation' стал равен ""	
 		Тогда элемент формы с именем 'MainCurrency' стал равен ""	
 
 	* Выбираем сценарий
-		Когда открылось окно "Settings документа *"
+		Когда открылось окно "Document settings *"
 		И из выпадающего списка с именем 'Scenario' я выбираю по строке "VA - Main scenario"
 		Тогда элемент формы с именем 'Dimension1' стал равен "Administration"
 		И элемент формы с именем 'AdditionalCurrencies' стал равен "USD; EUR"
 		И элемент формы с именем 'MainCurrency' стал равен "RUB"
 		И элемент формы с именем 'Periodicity' стал равен "Month"
-		И элемент формы с именем 'PeriodОкончания' стал равен "March 2024"
+		И элемент формы с именем 'EndingPeriod' стал равен "March 2024"
 		И элемент формы с именем 'ReportPeriod' стал равен "January 2024"
 		И элемент формы с именем 'Regulation' стал равен "VA - Main regulations"
 		И элемент формы с именем 'Scenario' стал равен "VA - Main scenario"
-		И элемент формы с именем 'PeriodManagement' стал равен "January 2024 г. - March 2024 г. (Frequency: Month) <VA - Main scenario>"
+		И элемент формы с именем 'PeriodManagement' стал равен "January 2024 - March 2024 (Frequency: Month) <VA - Main scenario>"
 
 	* Закрываем формы
-		Когда открылось окно "Settings документа *"
-		И Я закрываю окно "Settings документа *"
+		Когда открылось окно "Document settings *"
+		И Я закрываю окно "Document settings *"
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button1'
 		Тогда открылось окно "Report instance *"
@@ -594,7 +594,7 @@
 		Тогда открылось окно "Specify key document attributes"
 		И я нажимаю кнопку выбора у поля с именем 'Organization'
 		И Я выбираю организацию "System LLC"
-		И я нажимаю на кнопку с именем 'FormApplyANDClose'
+		И я нажимаю на кнопку с именем 'FormApplyAndClose'
 		Тогда открылось окно "Specify key document attributes *"
 		Тогда в логе сообщений TestClient есть строки:
 			|"У toльзователя Budgeting2\nотсутствуют права for просмотр бланка VA - Revision forстроек доступа (N/A) to организации System LLC.\nВыберите другой бланк."|
@@ -773,19 +773,19 @@
 			И я нажимаю на кнопку с именем 'FormOpenSettings'
 	
 	* Проверяем форму настроек
-		Когда открылось окно "Settings документа"
+		Когда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'ReportKind'
 		Тогда открылось окно "VA - Checking access settings (record) (Report types)"
 		И Я закрываю окно "VA - Checking access settings (record) (Report types)"
-		Тогда открылось окно "Settings документа"
-		И я нажимаю на кнопку открытия поля с именем 'TemplateОтчета'
+		Тогда открылось окно "Document settings"
+		И я нажимаю на кнопку открытия поля с именем 'TemplateForReport'
 		Тогда открылось окно "Template VA - Checking access settings (N/A) report type: VA - Checking access settings (record)"
 		И Я закрываю окно "Template VA - Checking access settings (N/A) report type: VA - Checking access settings (record)"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'Project'
 		Тогда открылось окно "VA - Main project (Projects and phases)"
 		И Я закрываю окно "VA - Main project (Projects and phases)"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'Dimension1'
 		Если '$$IsERPCPM$$' Тогда
 			Когда открылось окно "Administration (Department)"
@@ -793,46 +793,46 @@
 		Иначе			
 			Тогда открылось окно "1C:Enterprise"
 			И я нажимаю на кнопку с именем 'OK'
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'Scenario'
 		Тогда открылось окно "Scenarios: VA - Main scenario (Scenarios)"
 		И Я закрываю окно "Scenarios: VA - Main scenario (Scenarios)"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'PeriodManagement'
 		Тогда открылось окно "January * г. - March * г. (Frequency: Month) <VA - Main scenario>"
 		И Я закрываю окно "January * г. - March * г. (Frequency: Month) <VA - Main scenario>"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'Organization'
 		Тогда открылось окно "Mercury LLC (Business unit*)"
 		И Я закрываю окно "Mercury LLC (Business unit*)"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'Regulation'
 		Тогда открылось окно "VA - Main regulations from * (Regulation for preparing reports)"
 		И Я закрываю окно "VA - Main regulations from * (Regulation for preparing reports)"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'MainCurrency'
 		Тогда открылось окно "RUB (Currency)"
 		И Я закрываю окно "RUB (Currency)"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я перехожу к закладке с именем 'GroupPageReportSettings'
 		И я нажимаю на кнопку открытия поля с именем 'ProcessingRule'
 		Тогда открылось окно "VA - Checking access settings (no) (Calculation rules)"
 		И Я закрываю окно "VA - Checking access settings (no) (Calculation rules)"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'UsedIB'
 		Тогда открылось окно "Current infobase (External infobases)"
 		И Я закрываю окно "Current infobase (External infobases)"
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'CheckRule'
 		Тогда открылось окно "VA - Checking access settings (no) (Правила проверки)"
 		И Я закрываю окно "VA - Checking access settings (no) (Правила проверки)"
 
 	* Меняем период
-		Тогда открылось окно "Settings документа"
+		Тогда открылось окно "Document settings"
 		Попытка
 			И я нажимаю на кнопку с именем 'ChangePeriod'
 		Исключение
-			И я закрываю форму "Settings документа"
+			И я закрываю форму "Document settings"
 
 	Когда открылось окно '$WindowTitle$'
 	И я закрываю окно '$WindowTitle$'

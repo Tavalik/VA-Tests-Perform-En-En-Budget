@@ -249,7 +249,7 @@
 			И в таблице 'GeneratedDocuments_' я нажимаю на кнопку с именем 'GeneratedDocuments_Add'
 			И в таблице 'GeneratedDocuments_' я нажимаю кнопку выбора у реквизита с именем 'DocumentsToGenerateDBDocument'
 			И Я в списке "Infobase documents" по полю "Document" ищу и выбираю элемент "Report instance" "At beginning of line"
-			И в таблице 'GeneratedDocuments_' из выпадающего списка с именем 'GeneratedDocumentsDocumentTemplate' я выбираю по строке "VA - ProcessCount"
+			И в таблице 'GeneratedDocuments_' из выпадающего списка с именем 'GeneratedDocuments_DocumentTemplate_' я выбираю по строке "VA - ProcessCount"
 		* Организации
 			И я перехожу к закладке с именем 'Page_BusinessUnitsFilter'
 			И в таблице 'BusinessUnitsFilterDCSSettingsFilter' я нажимаю на кнопку с именем 'BusinessUnitsFilterDCSSettingsFilterAddFilterItem'
@@ -272,15 +272,15 @@
 				Тогда открылось окно "Set up object filling rules for regulation VA - Report preparation process"
 				Тогда табличный документ 'CustomField' равен:
 					| 'Organization \ Object' | ''                    | 'DimenKind - Process_Count'        |
-					| 'Mercury LLC'         | 'Отображение Report_'  | 'DimenKind - Process_Count'        |
+					| 'Mercury LLC'         | 'Representation Report_'  | 'DimenKind - Process_Count'        |
 					| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        |
 					| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        |
-					| ''                     | 'Method формирования' | 'On правилу обработки'          |
+					| ''                     | 'Method Formations' | 'On правилу обработки'          |
 					| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' |
-					| 'Венера LLC'           | 'Отображение Report_'  | 'DimenKind - Process_Count'        |
+					| 'Венера LLC'           | 'Representation Report_'  | 'DimenKind - Process_Count'        |
 					| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        |
 					| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        |
-					| ''                     | 'Method формирования' | 'On правилу обработки'          |
+					| ''                     | 'Method Formations' | 'On правилу обработки'          |
 					| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' |
 				И в табличном документе 'CustomField' я перехожу к ячейке 'R5C3'
 				И в табличном документе 'CustomField' я делаю двойной клик на текущей ячейке
@@ -298,15 +298,15 @@
 				Тогда открылось окно "Set up object filling rules for regulation VA - Report preparation process"
 				Тогда табличный документ 'CustomField' равен:
 					| 'Organization \ Object' | ''                    | 'DimenKind - Process_Count'        |
-					| 'Mercury LLC'         | 'Отображение Report_'  | 'DimenKind - Process_Count'        |
+					| 'Mercury LLC'         | 'Representation Report_'  | 'DimenKind - Process_Count'        |
 					| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        |
 					| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        |
-					| ''                     | 'Method формирования' | 'Ручное заполнение'             |
+					| ''                     | 'Method Formations' | 'Ручное заполнение'             |
 					| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' |
-					| 'Венера LLC'           | 'Отображение Report_'  | 'DimenKind - Process_Count'        |
+					| 'Венера LLC'           | 'Representation Report_'  | 'DimenKind - Process_Count'        |
 					| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        |
 					| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        |
-					| ''                     | 'Method формирования' | 'Ручное заполнение'             |
+					| ''                     | 'Method Formations' | 'Ручное заполнение'             |
 					| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' |
 				И я нажимаю на кнопку с именем 'FormApplySettings'
 				И Я закрываю окно "Set up object filling rules for regulation VA - Report preparation process"
@@ -324,7 +324,7 @@
 			И в таблице 'GeneratedDocuments_' я нажимаю на кнопку с именем 'GeneratedDocuments_Add'
 			И в таблице 'GeneratedDocuments_' я нажимаю кнопку выбора у реквизита с именем 'DocumentsToGenerateDBDocument'
 			И Я в списке "Infobase documents" по полю "Document" ищу и выбираю элемент "Report instance" "At beginning of line"
-			И в таблице 'GeneratedDocuments_' из выпадающего списка с именем 'GeneratedDocumentsDocumentTemplate' я выбираю по строке "VA - ProcessPrice"
+			И в таблице 'GeneratedDocuments_' из выпадающего списка с именем 'GeneratedDocuments_DocumentTemplate_' я выбираю по строке "VA - ProcessPrice"
 		* Организации
 			И я перехожу к закладке с именем 'Page_BusinessUnitsFilter'
 			И в таблице 'BusinessUnitsFilterDCSSettingsFilter' я нажимаю на кнопку с именем 'BusinessUnitsFilterDCSSettingsFilterAddFilterItem'
@@ -387,7 +387,7 @@
 			И в таблице 'GeneratedDocuments_' я нажимаю на кнопку с именем 'GeneratedDocuments_Add'
 			И в таблице 'GeneratedDocuments_' я нажимаю кнопку выбора у реквизита с именем 'DocumentsToGenerateDBDocument'
 			И Я в списке "Infobase documents" по полю "Document" ищу и выбираю элемент "Report instance" "At beginning of line"
-			И в таблице 'GeneratedDocuments_' из выпадающего списка с именем 'GeneratedDocumentsDocumentTemplate' я выбираю по строке "VA - ProcessAmount"
+			И в таблице 'GeneratedDocuments_' из выпадающего списка с именем 'GeneratedDocuments_DocumentTemplate_' я выбираю по строке "VA - ProcessAmount"
 		* Организации
 			И я перехожу к закладке с именем 'Page_BusinessUnitsFilter'
 			И в таблице 'BusinessUnitsFilterDCSSettingsFilter' я нажимаю на кнопку с именем 'BusinessUnitsFilterDCSSettingsFilterAddFilterItem'
@@ -432,7 +432,7 @@
 			И в таблице 'GeneratedDocuments_' я нажимаю на кнопку с именем 'GeneratedDocuments_Add'
 			И в таблице 'GeneratedDocuments_' я нажимаю кнопку выбора у реквизита с именем 'DocumentsToGenerateDBDocument'
 			И Я в списке "Infobase documents" по полю "Document" ищу и выбираю элемент "Report instance" "At beginning of line"
-			И в таблице 'GeneratedDocuments_' из выпадающего списка с именем 'GeneratedDocumentsDocumentTemplate' я выбираю по строке "VA - ProcessAmount"
+			И в таблице 'GeneratedDocuments_' из выпадающего списка с именем 'GeneratedDocuments_DocumentTemplate_' я выбираю по строке "VA - ProcessAmount"
 		* Организации
 			И я перехожу к закладке с именем 'Page_BusinessUnitsFilter'
 			И в таблице 'BusinessUnitsFilterDCSSettingsFilter' я нажимаю на кнопку с именем 'BusinessUnitsFilterDCSSettingsFilterAddFilterItem'
@@ -522,30 +522,30 @@
 			Когда открылось окно "Set up object filling rules for regulation VA - Report preparation process"
 			Тогда табличный документ 'CustomField' равен:
 				| 'Organization \ Object' | ''                    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
-				| 'Система LLC'          | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| 'Система LLC'          | 'Representation Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
-				| ''                     | 'Method формирования' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'Консолидировать периметр (Пропорционально)' |
+				| ''                     | 'Method Formations' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'Consolidate периметр (Пропорционально)' |
 				| ''                     | 'Currency Object_'      | 'From регламента: RUB'            | 'From регламента: RUB'                                                  | 'From регламента: RUB'                         |
-				| 'Mercury LLC'         | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| 'Mercury LLC'         | 'Representation Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
-				| ''                     | 'Method формирования' | 'Ручное заполнение'             | 'Импорт\nВнешняя ИБ: DimenKind - ПроцессИмпортЦена\n(Microsoft Excel files)' | 'On правилу обработки'                       |
+				| ''                     | 'Method Formations' | 'Ручное заполнение'             | 'Import\nOuter IB: DimenKind - Process_ImportPrice\n(Microsoft Excel files)' | 'On правилу обработки'                       |
 				| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' | 'From регламента: RUB (USD, EUR)'                                       | 'From регламента: RUB (USD, EUR)'              |
-				| 'Венера LLC'           | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| 'Венера LLC'           | 'Representation Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
-				| ''                     | 'Method формирования' | 'Ручное заполнение'             | 'Импорт\nВнешняя ИБ: DimenKind - ПроцессИмпортЦена\n(Microsoft Excel files)' | 'On правилу обработки'                       |
+				| ''                     | 'Method Formations' | 'Ручное заполнение'             | 'Import\nOuter IB: DimenKind - Process_ImportPrice\n(Microsoft Excel files)' | 'On правилу обработки'                       |
 				| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' | 'From регламента: RUB (USD, EUR)'                                       | 'From регламента: RUB (USD, EUR)'              |
-				| 'Земля LLC'            | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| 'Земля LLC'            | 'Representation Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
-				| ''                     | 'Method формирования' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'On правилу обработки'                       |
+				| ''                     | 'Method Formations' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'On правилу обработки'                       |
 				| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD)'      | 'From регламента: RUB (USD)'                                            | 'From регламента: RUB (USD)'                   |
-				| 'Марс LLC'             | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| 'Марс LLC'             | 'Representation Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
-				| ''                     | 'Method формирования' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'On правилу обработки'                       |
+				| ''                     | 'Method Formations' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'On правилу обработки'                       |
 				| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' | 'From регламента: RUB (USD, EUR)'                                       | 'From регламента: RUB (USD, EUR)'              |
 			И Я закрываю окно "Set up object filling rules for regulation VA - Report preparation process"			
 			Тогда открылось окно '$WindowTitle$'
@@ -553,30 +553,30 @@
 			Тогда открылось окно "Set up object filling rules for regulation VA - Report preparation process by scenario VA - Report preparation process for period January *"
 			Тогда табличный документ 'CustomField' равен:
 				| 'Organization \ Object' | ''                    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
-				| 'Система LLC'          | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| 'Система LLC'          | 'Representation Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
-				| ''                     | 'Method формирования' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'Консолидировать периметр (Пропорционально)' |
+				| ''                     | 'Method Formations' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'Consolidate периметр (Пропорционально)' |
 				| ''                     | 'Currency Object_'      | 'From регламента: RUB'            | 'From регламента: RUB'                                                  | 'From регламента: RUB'                         |
-				| 'Mercury LLC'         | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| 'Mercury LLC'         | 'Representation Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
-				| ''                     | 'Method формирования' | 'Ручное заполнение'             | 'Импорт\nВнешняя ИБ: DimenKind - ПроцессИмпортЦена\n(Microsoft Excel files)' | 'On правилу обработки'                       |
+				| ''                     | 'Method Formations' | 'Ручное заполнение'             | 'Import\nOuter IB: DimenKind - Process_ImportPrice\n(Microsoft Excel files)' | 'On правилу обработки'                       |
 				| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' | 'From регламента: RUB (USD, EUR)'                                       | 'From регламента: RUB (USD, EUR)'              |
-				| 'Венера LLC'           | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| 'Венера LLC'           | 'Representation Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
-				| ''                     | 'Method формирования' | 'Ручное заполнение'             | 'Импорт\nВнешняя ИБ: DimenKind - ПроцессИмпортЦена\n(Microsoft Excel files)' | 'On правилу обработки'                       |
+				| ''                     | 'Method Formations' | 'Ручное заполнение'             | 'Import\nOuter IB: DimenKind - Process_ImportPrice\n(Microsoft Excel files)' | 'On правилу обработки'                       |
 				| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' | 'From регламента: RUB (USD, EUR)'                                       | 'From регламента: RUB (USD, EUR)'              |
-				| 'Земля LLC'            | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| 'Земля LLC'            | 'Representation Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
-				| ''                     | 'Method формирования' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'On правилу обработки'                       |
+				| ''                     | 'Method Formations' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'On правилу обработки'                       |
 				| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD)'      | 'From регламента: RUB (USD)'                                            | 'From регламента: RUB (USD)'                   |
-				| 'Марс LLC'             | 'Отображение Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
+				| 'Марс LLC'             | 'Representation Report_'  | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule обработки'   | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
 				| ''                     | 'Rule проверки'    | 'DimenKind - Process_Count'        | 'DimenKind - Process_Price'                                                    | 'DimenKind - Process_Sum'                          |
-				| ''                     | 'Method формирования' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'On правилу обработки'                       |
+				| ''                     | 'Method Formations' | 'On правилу обработки'          | 'On правилу обработки'                                                | 'On правилу обработки'                       |
 				| ''                     | 'Currency Object_'      | 'From регламента: RUB (USD, EUR)' | 'From регламента: RUB (USD, EUR)'                                       | 'From регламента: RUB (USD, EUR)'              |
 			И Я закрываю окно "Set up object filling rules for regulation VA - Report preparation process by scenario VA - Report preparation process for period January *"
 		* Процесс
@@ -584,18 +584,18 @@
 			И я нажимаю на кнопку с именем 'FormGoForward'
 			И элемент формы с именем 'StartProcess' доступен
 			И элемент формы с именем 'TerminateProcess' не доступен
-			И элемент формы с именем 'Group_УправлениеХодомПроцессаTable' не доступен
+			И элемент формы с именем 'Group_ProcessProgressManagementTable' не доступен
 			И я нажимаю на кнопку с именем 'StartProcess'
 			Когда открылось окно "1C:Enterprise"
 			И я нажимаю на кнопку с именем 'Button0'
-			И Я запоминаю значение выражения 'ТекущаяDate() - 864000' в переменную 'StartDateПроцесса'
-			И в поле с именем 'StartDateПроцесса' я ввожу значение переменной '$StartDateПроцесса$'
+			И Я запоминаю значение выражения 'CurrentDate() - 864000' в переменную 'ProcessStartDate'
+			И в поле с именем 'ProcessStartDate' я ввожу значение переменной '$ProcessStartDate$'
 			И я нажимаю на кнопку с именем 'StartProcess'
 			Когда открылось окно "1C:Enterprise"
 			И я нажимаю на кнопку с именем 'Button0'
 			И элемент формы с именем 'StartProcess' не доступен
 			И элемент формы с именем 'TerminateProcess' доступен
-			И элемент формы с именем 'Group_УправлениеХодомПроцессаTable' доступен
+			И элемент формы с именем 'Group_ProcessProgressManagementTable' доступен
 			И я жду открытия окна '$WindowTitle$' в течение 20 секунд	
 		* Кнопки открытия обработок управления процессом
 			* Управление процессом подготовки отчетности
@@ -603,7 +603,7 @@
 				И я нажимаю на кнопку с именем 'ProcessesManagementReportPreparation'
 				Тогда открылось окно "Reporting preparation management"
 				Тогда элемент формы с именем 'PeriodManagement' стал равен '$WindowTitle$'
-				И я перехожу к закладке с именем 'PageTreeЭтапов'
+				И я перехожу к закладке с именем 'PageTransactionTree'
 				Тогда таблица 'StepsTree' стала равной:
 					| "Stage / Company"                             | "Step state" |
 					| "Manual filling - \"VA - ProcessCount\"" | "Not active"      |
@@ -640,7 +640,7 @@
 			И Я закрываю окно "Reporting preparation management"
 		* Матрица отчетов
 			Когда открылось окно "Reporting period management"
-			И я нажимаю на кнопку с именем 'FormМатрицаЭкземпляровОтчетов'
+			И я нажимаю на кнопку с именем 'FormReportInstancesMatrix'
 			Когда открылось окно "Матрица экземпляров отчетов"
 			Тогда табличный документ 'Result' равен макету "\Макеты\19\ВА_ПроцессПодготовкиОтчетности_МатрицаОтчетов1.mxl"
 			И Я закрываю окно "Матрица экземпляров отчетов"
@@ -657,18 +657,18 @@
 		Когда открылось окно "Reporting preparation management"
 		Если у элемента формы с именем 'StepsTreeOutputMessages' не установлена пометка Тогда
 			И я нажимаю на кнопку с именем 'StepsTreeOutputMessages'
-		Если у элемента формы с именем 'ShowTreeОпераций' не установлена пометка Тогда
-			И я нажимаю на кнопку с именем 'ShowTreeОпераций'
-		И элемент формы с именем 'НадписьСостояниеПроцесса' стал равен "Report preparation process запущен *" по шаблону
+		Если у элемента формы с именем 'ShowTransactionTree' не установлена пометка Тогда
+			И я нажимаю на кнопку с именем 'ShowTransactionTree'
+		И элемент формы с именем 'LabelProcessState' стал равен "Report preparation process запущен *" по шаблону
 		И я нажимаю на кнопку с именем 'StopProcess'
 		Когда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
-		И элемент формы с именем 'НадписьСостояниеПроцесса' стал равен "Report preparation process не запущен"
+		И элемент формы с именем 'LabelProcessState' стал равен "Report preparation process не запущен"
 		И я нажимаю на кнопку с именем 'StartProcess'
 		Когда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button0'
-		И элемент формы с именем 'НадписьСостояниеПроцесса' стал равен "Report preparation process запущен *" по шаблону
-		И я перехожу к закладке с именем 'PageTreeЭтапов'
+		И элемент формы с именем 'LabelProcessState' стал равен "Report preparation process запущен *" по шаблону
+		И я перехожу к закладке с именем 'PageTransactionTree'
 		Тогда таблица 'StepsTree' содержит "11" строк из списка:
 			| "Stage / Company"                             | "Relevant step"                                | "Step state" | "End date (план)" | "End date (факт)" | "Осталось / Отклонение" |
 			| "Manual filling - \"VA - ProcessCount\"" | ""                                               | "Not active"      | ""                      | ""                      | ""                      |
@@ -691,7 +691,7 @@
 		И в таблице 'TransactionsTree' я перехожу к строке:
 			| "Template документа / Company" |
 			| "Mercury LLC"                   |
-		И в таблице 'TransactionsTree' я активизирую поле с именем 'TransactionsTreeOrganizationTemplateДокумента'
+		И в таблице 'TransactionsTree' я активизирую поле с именем 'TransactionsTreeOrganizationDocumentTemplate_'
 		И в таблице 'TransactionsTree' я выбираю текущую строку
 		
 		И Открылся экземпляр отчета для вида отчета "VA - ProcessCount" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Report preparation process" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
@@ -721,7 +721,7 @@
 		И в таблице 'TransactionsTree' я перехожу к строке:
 			| "Template документа / Company" |
 			| "Venus LLC"             |
-		И в таблице 'TransactionsTree' я активизирую поле с именем 'TransactionsTreeOrganizationTemplateДокумента'	
+		И в таблице 'TransactionsTree' я активизирую поле с именем 'TransactionsTreeOrganizationDocumentTemplate_'	
 		И в таблице 'TransactionsTree' я выбираю текущую строку
 			
 		И Открылся экземпляр отчета для вида отчета "VA - ProcessCount" валюта 'RUB' организация "Venus LLC" сценарий "VA - Report preparation process" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
@@ -840,7 +840,7 @@
 			|"Cannot complete the \"Calculation by rule - \"VA - ProcessAmount\"\" step as there is an uncompleted subordinate step: \"Import - \"VA - ProcessPrice\"\""|
 
 	* Проверим, что таблица не поменялась
-		И в таблице 'StepsTree' я нажимаю на кнопку с именем 'StepsTreeGroupByAll'
+		И в таблице 'StepsTree' я нажимаю на кнопку с именем 'StepsTreeCollapseAll'
 		Тогда таблица 'StepsTree' стала равной:
 			| "Stage / Company"                             | "Step state" |
 			| "Manual filling - \"VA - ProcessCount\"" | "Completed"        |
@@ -874,7 +874,7 @@
 		И в таблице 'TransactionsTree' я перехожу к строке:
 			| "Template документа / Company" |
 			| "Mercury LLC"           |
-		И в таблице 'TransactionsTree' я активизирую поле с именем 'TransactionsTreeOrganizationTemplateДокумента'
+		И в таблице 'TransactionsTree' я активизирую поле с именем 'TransactionsTreeOrganizationDocumentTemplate_'
 		И в таблице 'TransactionsTree' я выбираю текущую строку
 		И Открылся экземпляр отчета для вида отчета "VA - ProcessPrice" валюта 'RUB' организация "Mercury LLC" сценарий "VA - Report preparation process" периодичность "Month" проект '' аналитики '' '' '' '' '' '' 
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:			
@@ -915,7 +915,7 @@
 		И в таблице 'TransactionsTree' я перехожу к строке:
 			| "Template документа / Company" |
 			| "Venus LLC"             |
-		И в таблице 'TransactionsTree' я активизирую поле с именем 'TransactionsTreeOrganizationTemplateДокумента'
+		И в таблице 'TransactionsTree' я активизирую поле с именем 'TransactionsTreeOrganizationDocumentTemplate_'
 		И в таблице 'TransactionsTree' я выбираю текущую строку	
 		И Открылся экземпляр отчета для вида отчета "VA - ProcessPrice" валюта 'RUB' организация "Venus LLC" сценарий "VA - Report preparation process" периодичность "Month" проект '' аналитики '' '' '' '' '' ''
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
@@ -934,7 +934,7 @@
 		И Я закрываю окно '$WindowTitle$'	
 
 	* Проверяем состояние дерева этапов
-		И в таблице 'StepsTree' я нажимаю на кнопку с именем 'StepsTreeGroupByAll'
+		И в таблице 'StepsTree' я нажимаю на кнопку с именем 'StepsTreeCollapseAll'
 		Тогда таблица 'StepsTree' стала равной:
 			| "Stage / Company"                             | "Step state" |
 			| "Manual filling - \"VA - ProcessCount\"" | "Completed"        |
@@ -971,7 +971,7 @@
 	* Заполняем с утрверждением
 		Когда открылось окно "Reporting preparation management"
 		И я выбираю пункт контекстного меню с именем 'StepsTreeContextMenuProcessAndCompleteStagesUpToCurrent' на элементе формы с именем 'StepsTree'
-		И в таблице 'StepsTree' я нажимаю на кнопку с именем 'StepsTreeGroupByAll'
+		И в таблице 'StepsTree' я нажимаю на кнопку с именем 'StepsTreeCollapseAll'
 		Тогда таблица 'StepsTree' стала равной:
 			| "Stage / Company"                             | "Step state" |
 			| "Manual filling - \"VA - ProcessCount\"" | "Completed"        |
@@ -1000,7 +1000,7 @@
 		И в таблице 'TransactionsTree' я перехожу к строке:
 			| "Template документа / Company" | "State" |
 			| "System LLC"              | "Confirmed" |
-		И в таблице 'TransactionsTree' я активизирую поле с именем 'TransactionsTreeOrganizationTemplateДокумента'
+		И в таблице 'TransactionsTree' я активизирую поле с именем 'TransactionsTreeOrganizationDocumentTemplate_'
 		И в таблице 'TransactionsTree' я выбираю текущую строку
 		
 	* Сверяем итоговый отчет
@@ -1039,7 +1039,7 @@
 			| "VA - ProcessCount"   | "Confirmed" |
 			| "Mercury LLC"             | "Confirmed" |
 			| "Venus LLC"               | "Confirmed" |
-		И элемент формы с именем 'НадписьСостояниеПроцесса' стал равен "Report preparation process завершен *" по шаблону
+		И элемент формы с именем 'LabelProcessState' стал равен "Report preparation process завершен *" по шаблону
 		И Я закрываю окно "Reporting preparation management"
 
 	* Открываем документ
@@ -1054,7 +1054,7 @@
 		И я перехожу к закладке с именем 'ProcessSetup'
 		И элемент формы с именем 'StartProcess' доступен
 		И элемент формы с именем 'TerminateProcess' не доступен
-		И элемент формы с именем 'Group_УправлениеХодомПроцессаTable' не доступен
+		И элемент формы с именем 'Group_ProcessProgressManagementTable' не доступен
 
 	* Запускаем и останавливаем процесс
 		И я нажимаю на кнопку с именем 'StartProcess'
