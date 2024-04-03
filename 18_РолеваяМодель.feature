@@ -434,8 +434,8 @@
 		И Я закрываю окно "VA - Checking access settings (record) (Report types)"
 		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'TemplateForReport'
-		Тогда открылось окно "Template VA - Checking access settings (N/A) report type: VA - Checking access settings (record)"
-		И Я закрываю окно "Template VA - Checking access settings (N/A) report type: VA - Checking access settings (record)"
+		Тогда открылось окно "Template VA - Checking access settings (no) report type: VA - Checking access settings (record)"
+		И Я закрываю окно "Template VA - Checking access settings (no) report type: VA - Checking access settings (record)"
 		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'Project'
 		Тогда открылось окно "VA - Main project (Projects and phases)"
@@ -450,8 +450,8 @@
 		И Я закрываю окно "Scenarios: VA - Main scenario (Scenarios)"
 		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'PeriodManagement'
-		Тогда открылось окно "January * г. - March * г. (Frequency: Month) <VA - Main scenario>"
-		И Я закрываю окно "January * г. - March * г. (Frequency: Month) <VA - Main scenario>"
+		Тогда открылось окно "January 2024 - March 2024 (Frequency: Month) <VA - Main scenario>"
+		И Я закрываю окно "January 2024 - March 2024 (Frequency: Month) <VA - Main scenario>"
 		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'Organization'
 		Тогда открылось окно "Mercury LLC (Business unit*)"
@@ -475,8 +475,8 @@
 		И Я закрываю окно "Current infobase (External infobases)"
 		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'CheckRule'
-		Тогда открылось окно "VA - Checking access settings (no) (Правила проверки)"
-		И Я закрываю окно "VA - Checking access settings (no) (Правила проверки)"
+		Тогда открылось окно "VA - Checking access settings (no) (Check rules)"
+		И Я закрываю окно "VA - Checking access settings (no) (Check rules)"
 
 	* Меняем период
 		Тогда открылось окно "Document settings"
@@ -487,7 +487,7 @@
 		И я нажимаю на кнопку с именем 'select'
 		И открылось окно "Document settings *"
 		Тогда в логе сообщений TestClient есть строки:
-			|"Not удалось определить document управления отчетным периодом to параметрам:\n	Scenario: \"VA - Main scenario\",\n	Period: \"January 2023 г.\""|
+			|"Cannot identify a reporting period management document by the parameters:\n	Scenario: VA - Main scenario,\n	Period: January 2023"|
 		И я очищаю окно сообщений пользователю
 		Тогда элемент формы с именем 'PeriodManagement' стал равен ""
 		Тогда элемент формы с именем 'Organization' стал равен ""	
@@ -543,8 +543,8 @@
 		И Я закрываю окно "Document settings *"
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button1'
-		Тогда открылось окно "Report instance *"
-		И Я закрываю окно "Report instance *"
+		Тогда открылось окно "The * report instance: *"
+		И Я закрываю окно "The * report instance: *"
 		
 	И я закрываю сеанс текущего клиента тестирования
 
@@ -597,7 +597,7 @@
 		И я нажимаю на кнопку с именем 'FormApplyAndClose'
 		Тогда открылось окно "Specify key document attributes *"
 		Тогда в логе сообщений TestClient есть строки:
-			|"У toльзователя Budgeting2\nотсутствуют права for просмотр бланка VA - Revision forстроек доступа (N/A) to организации System LLC.\nВыберите другой бланк."|
+			|"The Budgeting2 user\nhas insufficient rights to view the VA - Checking access settings (no) template by the System LLC company.\nSelect another template."|
 		Когда открылось окно "Specify key document attributes *"
 		И Я закрываю окно "Specify key document attributes *"
 		Тогда открылось окно "Report instances"
@@ -779,8 +779,8 @@
 		И Я закрываю окно "VA - Checking access settings (record) (Report types)"
 		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'TemplateForReport'
-		Тогда открылось окно "Template VA - Checking access settings (N/A) report type: VA - Checking access settings (record)"
-		И Я закрываю окно "Template VA - Checking access settings (N/A) report type: VA - Checking access settings (record)"
+		Тогда открылось окно "Template VA - Checking access settings (no) report type: VA - Checking access settings (record)"
+		И Я закрываю окно "Template VA - Checking access settings (no) report type: VA - Checking access settings (record)"
 		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'Project'
 		Тогда открылось окно "VA - Main project (Projects and phases)"
@@ -799,8 +799,8 @@
 		И Я закрываю окно "Scenarios: VA - Main scenario (Scenarios)"
 		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'PeriodManagement'
-		Тогда открылось окно "January * г. - March * г. (Frequency: Month) <VA - Main scenario>"
-		И Я закрываю окно "January * г. - March * г. (Frequency: Month) <VA - Main scenario>"
+		Тогда открылось окно "January 2024 - March 2024 (Frequency: Month) <VA - Main scenario>"
+		И Я закрываю окно "January 2024 - March 2024 (Frequency: Month) <VA - Main scenario>"
 		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'Organization'
 		Тогда открылось окно "Mercury LLC (Business unit*)"
@@ -824,8 +824,8 @@
 		И Я закрываю окно "Current infobase (External infobases)"
 		Тогда открылось окно "Document settings"
 		И я нажимаю на кнопку открытия поля с именем 'CheckRule'
-		Тогда открылось окно "VA - Checking access settings (no) (Правила проверки)"
-		И Я закрываю окно "VA - Checking access settings (no) (Правила проверки)"
+		Тогда открылось окно "VA - Checking access settings (no) (Check rules)"
+		И Я закрываю окно "VA - Checking access settings (no) (Check rules)"
 
 	* Меняем период
 		Тогда открылось окно "Document settings"
@@ -973,7 +973,7 @@
 			| "Dimension types (corporate)" |
 			| "Arbitrary classifier" |
 			| "Projects and phases" | // Инвестиционные проекты	
-			| "Матрица экземпляров отчетов" | // Отчеты
+			| "Report instance matrix" | // Отчеты
 			| "Organizational regulation structures" | 		
 			| "Report on report indicator links" |
 			| "Graphic report link report" |

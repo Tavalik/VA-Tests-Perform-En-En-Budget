@@ -642,7 +642,7 @@
 
 Сценарий: В экземпляре отчета я удалю все существующие версии
 
-	Когда открылось окно "Report instance *"
+	Когда открылось окно "The * report instance: *"
 	И я нажимаю на кнопку с именем 'FormVersionsManagement'
 	Тогда открылось окно "Indicator version management"
 	И Пока в таблице 'List' количество строк ">" 0 Тогда
@@ -687,7 +687,7 @@
 Сценарий: Я создаю шаблон универсального процесса с именем "TheName" режимом "TheMode"
 
 	* Открываем форму справочника
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Process templates подготовки отчетности"
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Templates of report preparation process"
 
 	* Удаляем элемент
 		И Я в списке "Universal process templates" по полю "Description" ищу элемент '[TheName]' "Exact match" 
@@ -1052,7 +1052,7 @@
 	И в таблице 'RatesViewTable' я нажимаю на кнопку с именем 'RatesTable_ChangeModeWithoutSave'		
 	* EUR
 		И в таблице 'RatesEditTable' я перехожу к строке:
-			| "Currency" | "Multiplying factor" | "Rate period"   |
+			| "Currency" | "Multiplier" | "Rate period"   |
 			| 'EUR'    | '1.0000'    | "January 2024" |
 		И в таблице 'RatesEditTable' я выбираю текущую строку
 		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '90.7932'
@@ -1064,7 +1064,7 @@
 		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriod_CurrentValue' я ввожу текст '0'
 		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '0'
 		И в таблице 'RatesEditTable' я перехожу к строке:
-			| "Currency" | "Multiplying factor" | "Rate period"    |
+			| "Currency" | "Multiplier" | "Rate period"    |
 			| 'EUR'    | '1.0000'    | "February 2024" |
 		И в таблице 'RatesEditTable' я выбираю текущую строку
 		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '92.2963'
@@ -1076,7 +1076,7 @@
 		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriod_CurrentValue' я ввожу текст '90.4971'
 		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '90.4537'	
 		И в таблице 'RatesEditTable' я перехожу к строке:
-			| "Currency" | "Multiplying factor" | "Rate period" |
+			| "Currency" | "Multiplier" | "Rate period" |
 			| 'EUR'    | '1.0000'    | "March 2024" |
 		И в таблице 'RatesEditTable' я выбираю текущую строку
 		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '90.3743'
@@ -1089,7 +1089,7 @@
 		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '90.0038'	
 	* USD
 		И в таблице 'RatesEditTable' я перехожу к строке:
-			| "Currency" | "Multiplying factor" | "Rate period"   |
+			| "Currency" | "Multiplier" | "Rate period"   |
 			| 'USD'    | '1.0000'    | "January 2024" |
 		И в таблице 'RatesEditTable' я выбираю текущую строку
 		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '73.8757'
@@ -1101,7 +1101,7 @@
 		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriod_CurrentValue' я ввожу текст '0'
 		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '0'
 		И в таблице 'RatesEditTable' я перехожу к строке:
-			| "Currency" | "Multiplying factor" | "Rate period"    |
+			| "Currency" | "Multiplier" | "Rate period"    |
 			| 'USD'    | '1.0000'    | "February 2024" |
 		И в таблице 'RatesEditTable' я выбираю текущую строку
 		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '76.2527'
@@ -1113,7 +1113,7 @@
 		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriod_CurrentValue' я ввожу текст '74.2204'
 		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableAverageRateForPreviousPeriodCentralBank_CurrentValue' я ввожу текст '74.1489'	
 		И в таблице 'RatesEditTable' я перехожу к строке:
-			| "Currency" | "Multiplying factor" | "Rate period" |
+			| "Currency" | "Multiplier" | "Rate period" |
 			| 'USD'    | '1.0000'    | "March 2024" |
 		И в таблице 'RatesEditTable' я выбираю текущую строку
 		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '74.4373'

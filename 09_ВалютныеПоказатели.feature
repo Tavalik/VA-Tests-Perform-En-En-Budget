@@ -89,7 +89,7 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И в табличный документ 'SpreadsheetFieldTemlate' я ввожу текст 'Sum (вал)'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C5:R10C5'
-		И я нажимаю на кнопку с именем 'ClearContent'
+		И я нажимаю на кнопку с именем 'ClearUpContent'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C5'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		Тогда открылось окно "Indicator value filter settings"
@@ -97,14 +97,14 @@
 		И я нажимаю на кнопку с именем 'FormApply'
 		Тогда открылось окно '$WindowTitle$ *'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C5'
-		И я нажимаю на кнопку с именем 'ClearContent'
+		И я нажимаю на кнопку с именем 'ClearUpContent'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C5'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		Тогда открылось окно "Indicator value filter settings"
 		И я изменяю флаг с именем 'AmountInAddlCurrency'
 		И я нажимаю на кнопку с именем 'FormApply'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R14C5:R16C5'
-		И я нажимаю на кнопку с именем 'ClearContent'
+		И я нажимаю на кнопку с именем 'ClearUpContent'
 	
 	* Добавляем колонку с значением валюта для итога
 		Когда открылось окно '$WindowTitle$ *'
@@ -115,7 +115,7 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C7:R16C7'
 		И я нажимаю на кнопку с именем 'PasteFromClipboard'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C7:R10C7'
-		И я нажимаю на кнопку с именем 'ClearContent'
+		И я нажимаю на кнопку с именем 'ClearUpContent'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C7'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		Тогда открылось окно "Indicator value filter settings"
@@ -123,14 +123,14 @@
 		И я нажимаю на кнопку с именем 'FormApply'
 		Тогда открылось окно '$WindowTitle$ *'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C7'
-		И я нажимаю на кнопку с именем 'ClearContent'
+		И я нажимаю на кнопку с именем 'ClearUpContent'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C7'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		Тогда открылось окно "Indicator value filter settings"
 		И я изменяю флаг с именем 'AmountInAddlCurrency'
 		И я нажимаю на кнопку с именем 'FormApply'
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R14C7:R16C7'
-		И я нажимаю на кнопку с именем 'ClearContent'
+		И я нажимаю на кнопку с именем 'ClearUpContent'
 	
 	* Записываем макет
 		Тогда открылось окно '$WindowTitle$ *'
@@ -537,7 +537,7 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C4:R5C5'
 			И я нажимаю на кнопку с именем 'Union'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C5:R8C5'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C5'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -545,7 +545,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C5'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C5'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -553,7 +553,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C5'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C5'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -561,7 +561,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R14C5'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R15C5'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -569,7 +569,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R16C5'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R17C5'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -577,7 +577,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R18C5'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R19C5'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -585,7 +585,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R20C5'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R21C5'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -593,7 +593,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R22C5'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R23C5'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -601,7 +601,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R24C5'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R25C5'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -609,7 +609,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R26C5:R27C5'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R28C5'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -617,7 +617,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R29C5'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R30C5'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -625,7 +625,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R31C5:R33C5'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R34C5'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -633,7 +633,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R35C5'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R36C5'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -650,7 +650,7 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R5C6:R5C7'
 			И я нажимаю на кнопку с именем 'Union'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R7C7:R8C7'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R9C7'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -658,7 +658,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R10C7'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R11C7'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -666,7 +666,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R12C7'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R13C7'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -674,7 +674,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R14C7'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R15C7'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -682,7 +682,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R16C7'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R17C7'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -690,7 +690,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R18C7'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R19C7'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -698,7 +698,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R20C7'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R21C7'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -706,7 +706,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R22C7'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R23C7'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -714,7 +714,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R24C7'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R25C7'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -722,7 +722,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R26C7:R27C7'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R28C7'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -730,7 +730,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R29C7'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R30C7'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -738,7 +738,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R31C7:R33C7'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R34C7'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -746,7 +746,7 @@
 			И я нажимаю на кнопку с именем 'FormApply'
 			Тогда открылось окно '$WindowTitle$ *'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R35C7'
-			И я нажимаю на кнопку с именем 'ClearContent'
+			И я нажимаю на кнопку с именем 'ClearUpContent'
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R36C7'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "Indicator value filter settings"
@@ -1314,7 +1314,7 @@
 		Тогда открылось окно "Periodic exchange rates"
 		И из выпадающего списка с именем 'Currency' я выбираю точное значение "EUR"
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
-			| "Currency"          | "Exchange rate at the beginning of the period" | "Exchange rate at the end of the period" | "Average rate" | "Average rate IFRS" | "Average rate (CB)" | "Multiplying factor" |
+			| "Currency"          | "Exchange rate at the beginning of the period" | "Exchange rate at the end of the period" | "Average rate" | "Average rate IFRS" | "Average rate (CB)" | "Multiplier" |
 			| "EUR"             | ''                       | ''                      | ''             | ''                  | ''                  | ''          |
 			| "January 2024"  | '90.7932'                | '92.2963'               | '90.4971'      | '91.5448'           | '90.4537'           | '1.0000'    |
 			| "February 2024" | '92.2963'                | '90.3743'               | '89.9321'      | '91.3353'           | '90.0038'           | '1.0000'    |
@@ -1343,7 +1343,7 @@
 //		И в таблице 'RatesViewTable' я нажимаю на кнопку с именем 'RatesTable_ChangeModeWithoutSave'
 //		Когда открылось окно '$WindowTitle$'
 //		И в таблице 'RatesEditTable' я перехожу к строке:
-//			| "Currency" | "Current value" | "Multiplying factor" | "Rate period"   |
+//			| "Currency" | "Current value" | "Multiplier" | "Rate period"   |
 //			| 'EUR'    | '90.7932'          | '1.0000'    | "January 2024" |
 //		И в таблице 'RatesEditTable' я выбираю текущую строку
 //		И в таблице 'RatesEditTable' в поле с именем 'RatesEditTableRateAtPeriodStart_CurrentValue' я ввожу текст '90.7932'
