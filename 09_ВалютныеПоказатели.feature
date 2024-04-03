@@ -294,7 +294,7 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R14C2'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "* (Report indicators)"
-			И из выпадающего списка с именем 'TotalKind' я выбираю точное значение "Total to аналитикам не рассчитывается"
+			И из выпадающего списка с именем 'TotalKind' я выбираю точное значение "Total by dimensions is not calculated"
 			И я изменяю флаг с именем 'NonFinancial'
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд
@@ -303,7 +303,7 @@
 			И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R15C2'
 			И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 			Тогда открылось окно "* (Report indicators)"
-			И из выпадающего списка с именем 'TotalKind' я выбираю точное значение "Total to аналитикам не рассчитывается"
+			И из выпадающего списка с именем 'TotalKind' я выбираю точное значение "Total by dimensions is not calculated"
 			И я изменяю флаг с именем 'NonFinancial'
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "* (Report indicators) *" в течение 20 секунд

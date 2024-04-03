@@ -502,7 +502,7 @@
 		И я нажимаю кнопку выбора у поля с именем 'PeriodManagement'
 		Тогда открылось окно "Reporting period management"
 		И в таблице 'List' я перехожу к строке:
-			| "Scenario"               | "Start period"  | "Period окончание" | "Frequency" | "Regulation"               |
+			| "Scenario"               | "Start period"  | "Period end" | "Frequency" | "Regulation"               |
 			| "VA - Main scenario" | "January 2024" | "March 2024"     | "Month"         | "VA - Main regulations" |
 		И в таблице 'List' я выбираю текущую строку
 		И элемент формы с именем 'AdditionalCurrencies' стал равен "USD; EUR"
@@ -932,7 +932,7 @@
 			| "Report on report indicator links" |
 			| "Graphic report link report" |
 			| "Network diagram of project group" |
-			| "Copy values indicators отчетов" | // Сервис
+			| "Copy report indicator values" | // Сервис
 			| "Compare spreadsheet documents" |
 
 	И я закрываю сеанс текущего клиента тестирования					
@@ -978,7 +978,7 @@
 			| "Report on report indicator links" |
 			| "Graphic report link report" |
 			| "Network diagram of project group" |
-			| "Copy values indicators отчетов" | // Сервис
+			| "Copy report indicator values" | // Сервис
 			| "Compare spreadsheet documents" |	
 
 Сценарий: 18.22 Тест интерфейса для пользователя "Budgeting1" - Персональные настройки
@@ -1671,9 +1671,9 @@
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
 
 	* Копирование данных показателей отчетов
-		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Copy values indicators отчетов"
-		Тогда открылось окно "Copy values indicators отчетов"
-		И Я закрываю окно "Copy values indicators отчетов"
+		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Copy report indicator values"
+		Тогда открылось окно "Copy report indicator values"
+		И Я закрываю окно "Copy report indicator values"
 
 	* Сравнение табличных документов	
 		И В командном интерфейсе я выбираю "Budgeting, reporting, and analysis" "Compare spreadsheet documents"

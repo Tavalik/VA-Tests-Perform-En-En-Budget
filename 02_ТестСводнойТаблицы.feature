@@ -840,15 +840,15 @@
 
 	* Копируем данные
 		И я нажимаю на кнопку с именем 'DataCopying'
-		Тогда открылось окно "Copy values indicators отчетов"
+		Тогда открылось окно "Copy report indicator values"
 		И из выпадающего списка с именем 'DataProcessorRunMode' я выбираю точное значение "All data for reporting period"
 		И я нажимаю кнопку выбора у поля с именем 'MDESource'
 		Тогда открылось окно "Reporting period management"
 		И в таблице 'List' я перехожу к строке:
-			| "Scenario"               | "Start period"  | "Period окончание" | "Frequency" | "Regulation"               |
+			| "Scenario"               | "Start period"  | "Period end" | "Frequency" | "Regulation"               |
 			| "VA - Main scenario" | "January 2024" | "March 2024"     | "Month"         | "VA - Main regulations" |
 		И я нажимаю на кнопку с именем 'FormSelect'
-		Тогда открылось окно "Copy values indicators отчетов"
+		Тогда открылось окно "Copy report indicator values"
 		И в таблице 'AdvancedSettingFilter' я изменяю флаг с именем 'AdvancedSettingFilterIsBeingEdited'
 		И в таблице 'AdvancedSettingFilter' я завершаю редактирование строки
 		И в таблице 'AdvancedSettingFilter' я активизирую поле с именем 'FilterSource'
@@ -862,16 +862,16 @@
 		И в таблице 'SKDSelection' из выпадающего списка с именем 'SKDSelectionRightValue' я выбираю по строке "Mercury LLC"
 		И в таблице 'SKDSelection' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'Apply'
-		Тогда открылось окно "Copy values indicators отчетов"
+		Тогда открылось окно "Copy report indicator values"
 		И я нажимаю кнопку выбора у поля с именем 'MDEDestination'
 		Тогда открылось окно "Reporting period management"
 		И в таблице 'List' я перехожу к строке:
-			| "Scenario"                     | "Start period"  | "Period окончание" | "Frequency" | "Regulation"               |
+			| "Scenario"                     | "Start period"  | "Period end" | "Frequency" | "Regulation"               |
 			| "VA - Script for indexing" | "January 2024" | "March 2024"     | "Month"         | "VA - Main regulations" |
 		И я нажимаю на кнопку с именем 'FormSelect'
-		Тогда открылось окно "Copy values indicators отчетов"
+		Тогда открылось окно "Copy report indicator values"
 		И в таблице 'AdvancedSettingFilterDestination' я выбираю текущую строку
-		И в меню формы я выбираю 'Фиксированное значение'
+		И в меню формы я выбираю "Fixed value"
 		И я выбираю организацию "Venus LLC"
 		И я устанавливаю флаг с именем 'TransferReportsInstances'
 		И я нажимаю на кнопку с именем 'Execute'
@@ -879,7 +879,7 @@
 		И я очищаю окно сообщений пользователю
 		И я нажимаю на кнопку с именем 'Execute'
 		Затем я жду, что в сообщениях пользователю будет подстрока "Copy successful" в течение 60 секунд		
-		И Я закрываю окно "Copy values indicators отчетов"
+		И Я закрываю окно "Copy report indicator values"
 
 	И Я устанавливаю отбор сводной таблицы 'Item_Scenario' со значением "VA - Script for indexing"
 	И Я устанавливаю отбор сводной таблицы 'Organization' со значением "Venus LLC"				
@@ -903,7 +903,7 @@
 	* Копируем данные
 		И я нажимаю на кнопку с именем 'DataCopying'
 
-		Тогда открылось окно "Copy values indicators отчетов"
+		Тогда открылось окно "Copy report indicator values"
 		И из выпадающего списка с именем 'ScenarioDestination' я выбираю по строке "VA - Script for indexing"
 		И в таблице 'AdvancedSettingFilter' я перехожу к строке:
 			| "Dimension"   | "Filter value" | "Being edited" |
@@ -922,11 +922,11 @@
 		И в таблице 'SKDSelection' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'Apply'
 		
-		Тогда открылось окно "Copy values indicators отчетов"
+		Тогда открылось окно "Copy report indicator values"
 		И в таблице 'AdvancedSettingFilterDestination' я выбираю текущую строку
 		И в меню формы я выбираю "Fixed value"
 		И Я выбираю организацию "Mercury LLC"
-		Тогда открылось окно "Copy values indicators отчетов"
+		Тогда открылось окно "Copy report indicator values"
 
 		И в таблице 'AdvancedSettingFilter' я перехожу к строке:
 			| "Dimension"  | "Filter value" | "Being edited" |
@@ -946,11 +946,11 @@
 		И в таблице 'SKDSelection' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'Apply'
 		
-		Тогда открылось окно "Copy values indicators отчетов"
+		Тогда открылось окно "Copy report indicator values"
 		И в таблице 'AdvancedSettingFilterDestination' я выбираю текущую строку
 		И в меню формы я выбираю "By source values"
 
-		Тогда открылось окно "Copy values indicators отчетов"
+		Тогда открылось окно "Copy report indicator values"
 		И в таблице 'AdvancedSettingFilter' я перехожу к строке:
 			| "Dimension"    | "Filter value" | "Being edited" |
 			| "Product range" | "<Without filter>"    | "No"           |
@@ -971,7 +971,7 @@
 		И в таблице 'SKDSelection' я завершаю редактирование строки
 		И я нажимаю на кнопку с именем 'Apply'
 		
-		Тогда открылось окно "Copy values indicators отчетов"
+		Тогда открылось окно "Copy report indicator values"
 		И я нажимаю на кнопку с именем 'Execute'
 
 	* Должен появиться лог с ошибкой
@@ -982,27 +982,27 @@
 		И Я закрываю окно "Protocol"
 
 	* Копируем со сдвигом периода
-		Когда открылось окно "Copy values indicators отчетов"
+		Когда открылось окно "Copy report indicator values"
 		И я нажимаю на кнопку с именем 'ButtonChangePeriodSource'
 		Тогда открылось окно "Select period"
 		И в поле с именем 'DateBegin' я ввожу текст '1/1/2024'
 		И я перехожу к следующему реквизиту
 		И в поле с именем 'DateEnd' я ввожу текст '1/31/2024'
 		И я нажимаю на кнопку с именем 'select'
-		Тогда открылось окно "Copy values indicators отчетов"
+		Тогда открылось окно "Copy report indicator values"
 		И я нажимаю на кнопку с именем 'ButtonChangePeriodDestination'
 		Тогда открылось окно "Select period"
 		И в поле с именем 'DateBegin' я ввожу текст '2/1/2024'
 		И я перехожу к следующему реквизиту
 		И в поле с именем 'DateEnd' я ввожу текст '2/28/2024'
 		И я нажимаю на кнопку с именем 'select'
-		Тогда открылось окно "Copy values indicators отчетов"
+		Тогда открылось окно "Copy report indicator values"
 		И я нажимаю на кнопку с именем 'Execute'
 		Затем я жду, что в сообщениях пользователю будет подстрока "Copy successful" в течение 60 секунд
 		И я очищаю окно сообщений пользователю
 		И я нажимаю на кнопку с именем 'Execute'
 		Затем я жду, что в сообщениях пользователю будет подстрока "Copy successful" в течение 60 секунд		
-		И Я закрываю окно "Copy values indicators отчетов"
+		И Я закрываю окно "Copy report indicator values"
 
 	* Проверяем результат
 		И Я устанавливаю отбор сводной таблицы 'Item_Organization' со значением "Mercury LLC"	

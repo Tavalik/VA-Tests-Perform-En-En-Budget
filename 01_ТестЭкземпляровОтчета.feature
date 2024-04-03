@@ -1363,7 +1363,7 @@
 				
 	* Меняем реквизиты
 		Когда открылось окно "Specify key document attributes *"
-		И из выпадающего списка с именем 'Project' я выбираю по строке "ва - Main проект"
+		И из выпадающего списка с именем 'Project' я выбираю по строке "VA - Main project"
 		И я перехожу к закладке с именем 'GroupPageReportSettings'
 		И из выпадающего списка с именем 'UnitOfMeasure' я выбираю точное значение "thousands"
 		И в поле с именем 'AccuracyLevel' я ввожу текст "2"

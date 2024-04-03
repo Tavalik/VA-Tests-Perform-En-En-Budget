@@ -132,18 +132,18 @@
 			И Я в конструкторе отчета для ячейки 'R3C5' задаю формулу копирования ячейки 'R4C5'
 			И Я в конструкторе отчета для ячейки 'R3C6' задаю формулу суммирования ячейки 'R4C6'
 		* Группа_Аналитики_0
-			И Я в конструкторе отчета для ячейки 'R5C2' задаю формулу 'MASQ({VAImportExcel.GroupDimensions12_Date},{VAImportExcel.GroupDimensions6_Date})'
-			И Я в конструкторе отчета для ячейки 'R5C3' задаю формулу 'MASQ({VAImportExcel.GroupDimensions12_Boolean}, {VAImportExcel.GroupDimensions6_Boolean})'
+			И Я в конструкторе отчета для ячейки 'R5C2' задаю формулу 'MAX({VAImportExcel.GroupDimensions12_Date},{VAImportExcel.GroupDimensions6_Date})'
+			И Я в конструкторе отчета для ячейки 'R5C3' задаю формулу 'MAX({VAImportExcel.GroupDimensions12_Boolean}, {VAImportExcel.GroupDimensions6_Boolean})'
 			И Я в конструкторе отчета для ячейки 'R5C5' задаю формулу сумма ячеек 'R6C5' 'R9C5'
 			И Я в конструкторе отчета для ячейки 'R5C6' задаю формулу сумма ячеек 'R6C6' 'R9C6'
 		* Группа_Аналитики_1_2
-			И Я в конструкторе отчета для ячейки 'R6C2' задаю формулу 'MASQ({VAImportExcel.СТРКDimensions1_Date}, {VAImportExcel.СТРКDimensions2_Date})'
-			И Я в конструкторе отчета для ячейки 'R6C3' задаю формулу 'MASQ({VAImportExcel.СТРКDimensions1_Boolean}, {VAImportExcel.СТРКDimensions2_Boolean})'
+			И Я в конструкторе отчета для ячейки 'R6C2' задаю формулу 'MAX({VAImportExcel.LineDimensions1_Date}, {VAImportExcel.LineDimensions2_Date})'
+			И Я в конструкторе отчета для ячейки 'R6C3' задаю формулу 'MAX({VAImportExcel.LineDimensions1_Boolean}, {VAImportExcel.LineDimensions2_Boolean})'
 			И Я в конструкторе отчета для ячейки 'R6C5' задаю формулу сумма ячеек 'R7C5' 'R8C5'
 			И Я в конструкторе отчета для ячейки 'R6C6' задаю формулу суммирования ячейки 'R7C6:R8C6'
 		* Группа_Аналитики_6
-			И Я в конструкторе отчета для ячейки 'R9C2' задаю формулу 'MASQ({VAImportExcel.СТРКDimensions6_Date}, {VAImportExcel.GroupCurrency_Date})'
-			И Я в конструкторе отчета для ячейки 'R9C3' задаю формулу 'MASQ({VAImportExcel.СТРКDimensions6_Boolean}, {VAImportExcel.GroupCurrency_Boolean})'
+			И Я в конструкторе отчета для ячейки 'R9C2' задаю формулу 'MAX({VAImportExcel.LineDimensions6_Date}, {VAImportExcel.GroupCurrency_Date})'
+			И Я в конструкторе отчета для ячейки 'R9C3' задаю формулу 'MAX({VAImportExcel.LineDimensions6_Boolean}, {VAImportExcel.GroupCurrency_Boolean})'
 			И Я в конструкторе отчета для ячейки 'R9C5' задаю формулу суммирования ячейки 'R10C5:R11C5'
 			И Я в конструкторе отчета для ячейки 'R9C6' задаю формулу сумма ячеек 'R10C6' 'R11C6'
 		* Группа_Валюта
@@ -221,7 +221,7 @@
 		И в поле с именем 'UploadFileName' я ввожу текст "$КаталогПроекта$\Макеты\03\ВА_ИмпортExcel+Шаблон.xlsx"
 		И из выпадающего списка с именем 'Periodicity' я выбираю точное значение "Month"
 		И в поле с именем 'NumberOfPeriods' я ввожу текст '3'
-		И я нажимаю на кнопку с именем 'FormUnload'
+		И я нажимаю на кнопку с именем 'FormExport'
 		Тогда открылось окно '$WindowTitle$'
 		И Я закрываю окно '$WindowTitle$'
 

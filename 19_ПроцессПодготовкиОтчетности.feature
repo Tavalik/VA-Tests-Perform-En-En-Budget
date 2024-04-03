@@ -880,7 +880,7 @@
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:			
 			| "VA - ProcessPrice" | ''                             | ''                     | ''               | ''                | ''             |
 			| ''                 | ''                             | ''                     | ''               | ''                | ''             |
-			| ''                 | "Product range_Description"    | "Product range_Product ID" | "January 2024" | "February 2024" | "March 2024" |
+			| ''                 | "Product range_Description"    | "Product range_SKU" | "January 2024" | "February 2024" | "March 2024" |
 			| ''                 | ''                             | ''                     | "Price"           | "Price"            | "Price"         |
 			| "Goods"           | ''                             | ''                     | '5,250,000'      | '5,400,000'       | '5,550,000'    |
 			| ''                 | "1C:ERP. Corporate performance management" | '2900001970198'        | '1,950,000'      | '2,000,000'       | '2,050,000'    |
@@ -921,7 +921,7 @@
 		Тогда табличный документ 'SpreadsheetFieldTemlate' равен:
 			| "VA - ProcessPrice" | ''                                                               | ''                     | ''               | ''                | ''             |
 			| ''                 | ''                                                               | ''                     | ''               | ''                | ''             |
-			| ''                 | "Product range_Description"                                      | "Product range_Product ID" | "January 2024" | "February 2024" | "March 2024" |
+			| ''                 | "Product range_Description"                                      | "Product range_SKU" | "January 2024" | "February 2024" | "March 2024" |
 			| ''                 | ''                                                               | ''                     | "Price"           | "Price"            | "Price"         |
 			| "Goods"           | ''                                                               | ''                     | '780,000'        | '835,000'         | '890,000'      |
 			| ''                 | "3C:Enterprise 8 CORP. Client license for 100 users" | '4601546106674'        | '600,000'        | '650,000'         | '700,000'      |
