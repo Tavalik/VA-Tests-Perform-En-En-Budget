@@ -425,6 +425,7 @@
 	И я подключаю TestClient "CPM - Budget" логин "Budgeting1" пароль ''
 
 	И Я открываю первый экземпляр отчета для вида отчета "VA - Checking access settings (record)"
+	Тогда Открылся экземпляр отчета для вида отчета "VA - Checking access settings (record)" валюта "RUB" организация "Mercury LLC" сценарий "VA - Main scenario" периодичность "Month" проект "VA - Main project" аналитики "Administration" '' '' '' '' '' 
 
 	* Проверяем форму настроек
 		И я нажимаю на кнопку с именем 'FormOpenSettings'
@@ -497,7 +498,7 @@
 		Тогда элемент формы с именем 'Regulation' стал равен ""	
 		Тогда элемент формы с именем 'MainCurrency' стал равен ""			
 
-	* Выбрием документ управления периодом
+	* Выбираем документ управления периодом
 		Тогда открылось окно "Document settings *"
 		И я нажимаю кнопку выбора у поля с именем 'PeriodManagement'
 		Тогда открылось окно "Reporting period management"
@@ -543,8 +544,8 @@
 		И Я закрываю окно "Document settings *"
 		Тогда открылось окно "1C:Enterprise"
 		И я нажимаю на кнопку с именем 'Button1'
-		Тогда открылось окно "The * report instance: *"
-		И Я закрываю окно "The * report instance: *"
+		Тогда открылось окно '$WindowTitle$'
+		И Я закрываю окно '$WindowTitle$'
 		
 	И я закрываю сеанс текущего клиента тестирования
 

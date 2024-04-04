@@ -847,7 +847,7 @@
 		И в таблице 'List' я перехожу к строке:
 			| "Scenario"               | "Start period"  | "Period end" | "Frequency" | "Regulation"               |
 			| "VA - Main scenario" | "January 2024" | "March 2024"     | "Month"         | "VA - Main regulations" |
-		И я нажимаю на кнопку с именем 'FormSelect'
+		И в таблице 'List' я выбираю текущую строку
 		Тогда открылось окно "Copy report indicator values"
 		И в таблице 'AdvancedSettingFilter' я изменяю флаг с именем 'AdvancedSettingFilterIsBeingEdited'
 		И в таблице 'AdvancedSettingFilter' я завершаю редактирование строки
@@ -868,7 +868,7 @@
 		И в таблице 'List' я перехожу к строке:
 			| "Scenario"                     | "Start period"  | "Period end" | "Frequency" | "Regulation"               |
 			| "VA - Script for indexing" | "January 2024" | "March 2024"     | "Month"         | "VA - Main regulations" |
-		И я нажимаю на кнопку с именем 'FormSelect'
+		И в таблице 'List' я выбираю текущую строку
 		Тогда открылось окно "Copy report indicator values"
 		И в таблице 'AdvancedSettingFilterDestination' я выбираю текущую строку
 		И в меню формы я выбираю "Fixed value"

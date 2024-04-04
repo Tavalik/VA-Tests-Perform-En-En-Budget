@@ -258,22 +258,22 @@
 			| ''                       | ''                 | 'Code'                   | "LinesGroup_Count1*"     | "LinesGroup_Price1*"     | "LinesGroup_Amount1*"     | ''               |
 			| "LineSynthetic"        | "LineSynthetic*"   | ''                      | '■'                            | '■'                      | '■'                       | ''               |
 			| ''                       | ''                 | 'Code'                   | "LineSynthetic_Count1*"   | "LineSynthetic_Price1*"   | "LineSynthetic_Amount1*"   | ''               |
-			| "LineDimension1"       | "LineANLT1*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LineANLT1_Count1*"       | "LineANLT1_Price1*"       | "LineANLT1_Amount1*"       | ''               |
-			| "LineDimension2"       | "LineANLT2*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LineANLT2_Count1*"       | "LineANLT2_Price1*"       | "LineANLT2_Amount1*"       | ''               |
-			| "LineDimension3"       | "LineANLT3*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LineANLT3_Count1*"       | "LineANLT3_Price1*"       | "LineANLT3_Amount1*"       | ''               |
-			| "LineDimension4"       | "LineANLT4*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LineANLT4_Count1*"       | "LineANLT4_Price1*"       | "LineANLT4_Amount1*"       | ''               |
-			| "LineDimension5"       | "LineANLT5*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LineANLT5_Count1*"       | "LineANLT5_Price1*"       | "LineANLT5_Amount1*"       | ''               |
-			| "LineDimension6"       | "LineANLT6*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LineANLT6_Count1*"       | "LineANLT6_Price1*"       | "LineANLT6_Amount1*"       | ''               |
-			| "LineDimension6Currency" | "LineANLT6Currency*" | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LineANLT6Currency_Count1*" | "LineANLT6Currency_Price1*" | "LineANLT6Currency_Amount1*" | ''               |
-			| "LineDimensionCurrency"  | "LineANLTCurrency*"  | ''                      | '■'                            | '■'                      | '■'                       | ''               |
-			| ''                       | ''                 | 'Code'                   | "LineANLTCurrency_Count1*"  | "LineANLTCurrency_Price1*"  | "LineANLTCurrency_Amount1*"  | ''               |
+			| "LineDimension1"       | "LineDimension1*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineDimension1_Count1*"       | "LineDimension1_Price1*"       | "LineDimension1_Amount1*"       | ''               |
+			| "LineDimension2"       | "LineDimension2*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineDimension2_Count1*"       | "LineDimension2_Price1*"       | "LineDimension2_Amount1*"       | ''               |
+			| "LineDimension3"       | "LineDimension3*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineDimension3_Count1*"       | "LineDimension3_Price1*"       | "LineDimension3_Amount1*"       | ''               |
+			| "LineDimension4"       | "LineDimension4*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineDimension4_Count1*"       | "LineDimension4_Price1*"       | "LineDimension4_Amount1*"       | ''               |
+			| "LineDimension5"       | "LineDimension5*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineDimension5_Count1*"       | "LineDimension5_Price1*"       | "LineDimension5_Amount1*"       | ''               |
+			| "LineDimension6"       | "LineDimension6*"       | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineDimension6_Count1*"       | "LineDimension6_Price1*"       | "LineDimension6_Amount1*"       | ''               |
+			| "LineDimension6Currency" | "LineDimension6Curren*" | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineDimension6Curren_Count1*" | "LineDimension6Curren_Price1*" | "LineDimension6Curren_Amount1*" | ''               |
+			| "LineDimensionCurrency"  | "LineDimensionCurrenc*"  | ''                      | '■'                            | '■'                      | '■'                       | ''               |
+			| ''                       | ''                 | 'Code'                   | "LineDimensionCurrenc_Count1*"  | "LineDimensionCurrenc_Price1*"  | "LineDimensionCurrenc_Amount1*"  | ''               |
 			| "LineDelete"          | "LineDelete*"     | ''                      | ''                             | ''                       | ''                        | ''               |
 			| ''                       | ''                 | 'Code'                   | ''                             | ''                       | ''                        | ''               |
 
@@ -615,7 +615,7 @@
 		И в табличном документе 'SpreadsheetFieldTemlate' я перехожу к ячейке 'R2C3'
 		И в табличном документе 'SpreadsheetFieldTemlate' я делаю двойной клик на текущей ячейке
 		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст ' '
-		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст "({VAManualEntryForAllAnalytics.LineSynthetic_Price1}+{VAManualEntryForAllAnalytics.LineANLT1_Price1}+{VAManualEntryForAllAnalytics.LineANLT2_Price1}+{VAManualEntryForAllAnalytics.LineANLT3_Price1}+{VAManualEntryForAllAnalytics.LineANLT4_Price1}+{VAManualEntryForAllAnalytics.LineANLT5_Price1}+{VAManualEntryForAllAnalytics.LineANLT6_Price1}+{VAManualEntryForAllAnalytics.LineANLT6Currency_Price1}+{VAManualEntryForAllAnalytics.LineANLTCurrency_Price1})/13"
+		И в поле с именем 'TextDocumentFieldProcedure' я ввожу текст "({VAManualEntryForAllAnalytics.LineSynthetic_Price1}+{VAManualEntryForAllAnalytics.LineDimension1_Price1}+{VAManualEntryForAllAnalytics.LineDimension2_Price1}+{VAManualEntryForAllAnalytics.LineDimension3_Price1}+{VAManualEntryForAllAnalytics.LineDimension4_Price1}+{VAManualEntryForAllAnalytics.LineDimension5_Price1}+{VAManualEntryForAllAnalytics.LineDimension6_Price1}+{VAManualEntryForAllAnalytics.LineDimension6Curren_Price1}+{VAManualEntryForAllAnalytics.LineDimensionCurrenc_Price1})/13"
 		И я нажимаю на кнопку с именем 'WriteAndCollapse'
 
 	* Вводим формулу кнопками - 'ГруппаСтрок - Сумма'	
@@ -689,7 +689,7 @@
 			И я выбираю пункт контекстного меню с именем 'ListContextMenuChange' на элементе формы с именем 'List'
 			Тогда открылось окно "VA - Manual entry for all analytics_LineDimension1 count (Data source)"
 			И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-			И Я выбираю показатель с кодом "LineANLT6Currency_Count1"
+			И Я выбираю показатель с кодом "LineDimension6Curren_Count1"
 			Тогда открылось окно "VA - Manual entry for all analytics_LineDimension1 count (Data source) *"
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "VA - Manual entry for all analytics_LineDimension1 count *" в течение 5 секунд
@@ -704,7 +704,7 @@
 			И я выбираю пункт контекстного меню с именем 'ListContextMenuChange' на элементе формы с именем 'List'
 			Когда открылось окно "VA - Manual entry for all analytics_LineDimension1 price (Data source)"
 			И я нажимаю кнопку выбора у поля с именем 'IndicatorFilter'
-			И Я выбираю показатель с кодом "LineANLT6Currency_Price1"
+			И Я выбираю показатель с кодом "LineDimension6Curren_Price1"
 			Тогда открылось окно "VA - Manual entry for all analytics_LineDimension1 price (Data source) *"
 			И я нажимаю на кнопку с именем 'FormWriteAndClose'
 			И я жду закрытия окна "VA - Manual entry for all analytics_LineDimension1 price *" в течение 5 секунд
@@ -1852,11 +1852,11 @@
 			Тогда открылось окно "Set up line list"
 			И в таблице 'TreeOfSelectedLines' я перехожу к строке по шаблону:
 				| "Report type"                          | "Drilldown group"          | "Code"              | "Report line"          |
-				| "VA - Manual entry for all analytics" | "DG_LineDimension6Currency" | "LineANLT6Currency*" | "LineDimension6Currency" |
+				| "VA - Manual entry for all analytics" | "DG_LineDimension6Currency" | "LineDimension6Curren*" | "LineDimension6Currency" |
 			И я нажимаю на кнопку с именем 'Delete'
 			И в таблице 'TreeOfSelectedLines' я перехожу к строке по шаблону:
 				| "Report type"                          | "Drilldown group"         | "Code"             | "Report line"         |
-				| "VA - Manual entry for all analytics" | "DG_LineDimensionCurrency" | "LineANLTCurrency*" | "LineDimensionCurrency" |
+				| "VA - Manual entry for all analytics" | "DG_LineDimensionCurrency" | "LineDimensionCurrenc*" | "LineDimensionCurrency" |
 			И я нажимаю на кнопку с именем 'Delete'
 			И я нажимаю на кнопку с именем 'ApplyTheChanges'
 		* Состав колонок
