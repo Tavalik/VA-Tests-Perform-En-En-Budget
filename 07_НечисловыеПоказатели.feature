@@ -1303,10 +1303,7 @@
 		И элемент формы с именем 'ReportKind' стал равен "VA - Non-Numbers (recipient)"
 		И элемент формы с именем 'AdditionalCurrencies' стал равен "USD; EUR"
 		И у элемента формы с именем 'UnitOfMeasure' текст редактирования стал равен "units"
-		Если '$$InterfaceLanguage$$ = En' Тогда
-			И элемент формы с именем 'CopyingValue' стал равен "The * report instance: *" по шаблону
-		Иначе
-			И элемент формы с именем 'CopyingValue' стал равен "Report instance *" по шаблону
+		И элемент формы с именем 'CopyingValue' стал равен "Report instance *" по шаблону
 		И элемент формы с именем 'IndividualSettings' стал равен "No"
 		И элемент формы с именем 'UsedIB' стал равен "Current infobase"
 		И элемент формы с именем 'Organization' стал равен "Mercury LLC"
